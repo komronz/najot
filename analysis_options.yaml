@@ -1,0 +1,66 @@
+include: package:lint/analysis_options.yaml
+
+analyzer:
+  strong-mode:
+    # Will become the default once non-nullable types land
+    # https://github.com/dart-lang/sdk/issues/31410#issuecomment-510683629
+    implicit-casts: true
+  exclude:
+    - '*.g.dart'
+    - 'lib1/data/db/*.g.dart'
+  #    - '**/*.g.dart'
+  errors:
+    undefined_identifier: error
+    undefined_class: error
+    undefined_method: error
+    undefined_function: error
+    missing_return: error
+    return_of_invalid_type: false
+    no_adjacent_strings_in_list: error
+    dead_code: info
+    unused_import: info
+    must_be_immutable: ignore
+
+linter:
+  rules:
+    # Use parameter order as in json response
+    always_put_required_named_parameters_first: true
+    avoid_classes_with_only_static_members: false
+
+    # Make constructors the first thing in every class
+    sort_constructors_first: false
+
+    # The new tabs vs. spaces. Choose wisely
+    prefer_single_quotes: false
+    prefer_double_quotes: false
+
+    # Good packages document everything
+    public_member_api_docs: false
+
+    # Blindly follow the Flutter code style, which prefers types everywhere
+    always_specify_types: false
+
+    # Back to the 80s
+    # lines_longer_than_80_chars: true
+
+    avoid_print: true
+
+    close_sinks: false
+
+    constant_identifier_names: ALL_CAPS
+
+    curly_braces_in_flow_control_structures: true
+
+    empty_statements: true
+
+    always_declare_return_types: true
+
+    return_of_invalid_type: true
+
+    unawaited_futures: false
+
+    avoid_void_async: true
+
+    avoid_relative_lib_imports: true
+
+    non_constant_default_value: false
