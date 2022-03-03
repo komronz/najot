@@ -1,9 +1,5 @@
-import 'dart:async';
-
-import 'package:najot/data/db/dao/task_model_dao.dart';
-import 'package:najot/data/model/task_model.dart';
 import 'package:floor/floor.dart';
-import 'package:sqflite/sqflite.dart' as sqflite;
+import 'package:najot/data/model/task_model.dart';
 
 // part 'database.g.dart';
 

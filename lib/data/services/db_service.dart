@@ -1,8 +1,7 @@
 // 📦 Package imports:
 // 🌎 Project imports:
-import 'package:najot/data/db/database.dart';
-import 'package:najot/data/model/task_model.dart';
 import 'package:get_it/get_it.dart';
+import 'package:najot/data/db/database.dart';
 
 class DBService {
   static AppDatabase? _appDatabase;
