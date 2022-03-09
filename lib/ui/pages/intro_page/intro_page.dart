@@ -50,7 +50,7 @@ class IntroPage extends StatelessWidget {
                   top: 72,
                   left: 148,
                   child: Container(
-                    height: 19,
+                    height: 19.h,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: _buildIndicator(state),

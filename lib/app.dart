@@ -11,6 +11,7 @@ import 'package:najot/data/styles/app_themes.dart';
 import 'package:najot/data/utils/app_route_utils.dart';
 import 'package:najot/ui/pages/counter_page/counter_page.dart';
 import 'package:najot/ui/pages/intro_page/intro_page.dart';
+import 'package:najot/ui/pages/intro_page/project_information_page/asking_question_common.dart';
 
 import 'data/bloc/language_cubit/language_cubit.dart';
 import 'data/services/navigator_service.dart';
@@ -38,7 +39,7 @@ class App extends StatelessWidget {
           darkTheme: AppThemes.darkTheme(),
           localizationsDelegates: context.localizationDelegates,
           builder: BotToastInit(),
-          home:IntroPage(),
+          home:AskingQuestionCommon(),
           navigatorObservers: [
             BotToastNavigatorObserver(),
           ],
