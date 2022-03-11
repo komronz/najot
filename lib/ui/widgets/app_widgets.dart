@@ -112,7 +112,10 @@ class AppWidgets {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            child: SvgPicture.asset(AppImageUtils.MENU),
+            child: Container(
+                height: 35.w,
+                width: 35.w,
+                child: SvgPicture.asset(AppImageUtils.MENU)),
             onTap: onTapMenu,
           ),
           AppWidgets.textLocale(
@@ -122,7 +125,11 @@ class AppWidgets {
           ),
           visibleIcon
               ? InkWell(
-                  child: SvgPicture.asset(icon),
+                  child: Container(
+                    height: 35.w,
+                    width: 35.w,
+                    child: SvgPicture.asset(icon),
+                  ),
                   onTap: onTapIcon,
                 )
               : SizedBox(
