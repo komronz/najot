@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/theme_cubit/theme_cubit.dart';
 import 'package:najot/data/styles/app_themes.dart';
 import 'package:najot/data/utils/app_route_utils.dart';
+import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/intro_page/intro_page.dart';
 import 'package:najot/ui/pages/intro_page/project_information_page/asking_question_common.dart';
 
@@ -36,7 +37,7 @@ class App extends StatelessWidget {
           darkTheme: AppThemes.darkTheme(),
           localizationsDelegates: context.localizationDelegates,
           builder: BotToastInit(),
-          home: IntroPage(),
+          home: HomePage(),
           navigatorObservers: [
             BotToastNavigatorObserver(),
           ],

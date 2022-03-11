@@ -53,6 +53,8 @@ class KraudfandingCardWidget extends StatelessWidget {
                       // ),
                       child: Image.asset(
                         sliderModel.image,
+                        fit: BoxFit.cover,
+                        width: MediaQuery.of(context).size.width,
                       ),
                     ),
                     flex: 1,
@@ -66,14 +68,14 @@ class KraudfandingCardWidget extends StatelessWidget {
                           AppWidgets.text(
                             text:
                                 "Drenajni kuzatish uchun mo’jallangan moslama...",
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
                             maxLines: 2,
                           ),
                           LinearPercentIndicator(
                             animation: true,
                             padding: EdgeInsets.all(0),
-                            lineHeight: 10.0,
+                            lineHeight: 10.h,
                             animationDuration: 2000,
                             percent: 0.45,
                             linearStrokeCap: LinearStrokeCap.roundAll,
@@ -89,7 +91,7 @@ class KraudfandingCardWidget extends StatelessWidget {
                                   AppWidgets.textLocale(
                                     text: LocaleKeys.collected,
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 10,
+                                    fontSize: 10.sp,
                                     color: AppColorUtils.DARK6,
                                   ),
                                   SizedBox(
@@ -97,7 +99,7 @@ class KraudfandingCardWidget extends StatelessWidget {
                                   ),
                                   AppWidgets.text(
                                       text: "10 000 000 so'm",
-                                      fontSize: 14,
+                                      fontSize: 14.sp,
                                       fontWeight: FontWeight.w600,
                                       color: AppColorUtils.GREEN_TEXT)
                                 ],
@@ -108,7 +110,7 @@ class KraudfandingCardWidget extends StatelessWidget {
                                   AppWidgets.textLocale(
                                     text: LocaleKeys.done,
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 10,
+                                    fontSize: 10.sp,
                                     color: AppColorUtils.DARK6,
                                   ),
                                   SizedBox(
@@ -116,7 +118,7 @@ class KraudfandingCardWidget extends StatelessWidget {
                                   ),
                                   AppWidgets.text(
                                       text: "60%",
-                                      fontSize: 14,
+                                      fontSize: 14.sp,
                                       fontWeight: FontWeight.w600,
                                       color: AppColorUtils.BLUE_PERCENT)
                                 ],

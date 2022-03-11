@@ -35,26 +35,14 @@ class HomePage extends StatelessWidget {
                 color: AppColorUtils.BACKGROUND,
                 child: Column(
                   children: [
-                    Container(
-                      height: 80,
-                      padding: EdgeInsets.all(20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          InkWell(
-                            child: SvgPicture.asset(AppImageUtils.MENU),
-                            onTap: () {
-                              _globalKey.currentState?.openDrawer();
-                            },
-                          ),
-                          AppWidgets.textLocale(
-                            text: LocaleKeys.main,
-                            fontSize: 26,
-                            fontWeight: FontWeight.w600,
-                          ),
-                          SvgPicture.asset(AppImageUtils.NOTIFICATION)
-                        ],
-                      ),
+                    AppWidgets.appBarMenu(
+                      title: "Asosiy",
+                      onTapMenu: () {
+                        _globalKey.currentState?.openDrawer();
+                      },
+                      icon: AppImageUtils.NOTIFICATION,
+                      visibleIcon: true
+
                     ),
                     Expanded(
                       child: SingleChildScrollView(
@@ -75,7 +63,11 @@ class HomePage extends StatelessWidget {
                                 ).paddingOnly(left: 20.w),
                                 Padding(
                                   padding: const EdgeInsets.only(
-                                      right: 20, top: 10, bottom: 20, left: 20),
+                                    right: 20,
+                                    top: 10,
+                                    bottom: 20,
+                                    left: 20,
+                                  ),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -98,8 +90,8 @@ class HomePage extends StatelessWidget {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                              builder: (context) => VolunteerPage()
-                                            ),
+                                                builder: (context) =>
+                                                    VolunteerPage()),
                                           );
                                         },
                                       ),
@@ -150,7 +142,7 @@ class HomePage extends StatelessWidget {
                                   top: 20.h,
                                 ),
                                 SizedBox(
-                                  height: 300.h,
+                                  height: 310.h,
                                   child: SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
                                     child: Row(
@@ -172,7 +164,9 @@ class HomePage extends StatelessWidget {
                                   fontWeight: FontWeight.w600,
                                   fontSize: 22.sp,
                                 ).paddingOnly(
-                                    left: 20.w, top: 10.h, bottom: 10.h),
+                                  left: 20.w,
+                                  top: 10.h,
+                                ),
                                 SizedBox(
                                   height: 300.h,
                                   child: SingleChildScrollView(
