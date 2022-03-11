@@ -10,6 +10,7 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/home_page/widget/drawer_body_widget.dart';
 import 'package:najot/ui/pages/loading_page/loading_page.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
@@ -92,6 +93,51 @@ class AppWidgets {
       ),
       onTap: onTap,
     ).paddingSymmetric(horizontal: 20);
+  }
+
+  static Widget appBarMenu(
+      {required String title,
+      required VoidCallback onTapMenu,
+      VoidCallback? onTapIcon,
+      Color? textColor = AppColorUtils.BLACK,
+      bool visibleIcon = false,
+      String icon = ""}) {
+    return Container(
+      height: 80.h,
+      padding: EdgeInsets.only(
+        left: 20,
+        right: 20,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          InkWell(
+            child: Container(
+                height: 35.w,
+                width: 35.w,
+                child: SvgPicture.asset(AppImageUtils.MENU)),
+            onTap: onTapMenu,
+          ),
+          AppWidgets.textLocale(
+            text: title,
+            fontSize: 26.sp,
+            fontWeight: FontWeight.w600,
+          ),
+          visibleIcon
+              ? InkWell(
+                  child: Container(
+                    height: 35.w,
+                    width: 35.w,
+                    child: SvgPicture.asset(icon),
+                  ),
+                  onTap: onTapIcon,
+                )
+              : SizedBox(
+                  width: 20,
+                )
+        ],
+      ),
+    );
   }
 
   static Widget appBarWidget({

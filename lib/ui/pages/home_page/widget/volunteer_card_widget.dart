@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/slider_model.dart';
@@ -15,8 +16,8 @@ class VolunteerCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
-        height: 300,
-        width: 220,
+        height: 310.h,
+        width: 220.w,
         child: Stack(
           children: [
             Card(
@@ -45,6 +46,8 @@ class VolunteerCardWidget extends StatelessWidget {
                       // ),
                       child: Image.asset(
                         sliderModel.image,
+                        fit: BoxFit.cover,
+                        width: MediaQuery.of(context).size.width,
                       ),
                     ),
                     flex: 1,
@@ -59,7 +62,7 @@ class VolunteerCardWidget extends StatelessWidget {
                           AppWidgets.text(
                             text:
                                 "Onaxonni yoshlari katta, ularga ovqat qilib beri...",
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
                             maxLines: 2,
                           ),
@@ -69,15 +72,15 @@ class VolunteerCardWidget extends StatelessWidget {
                               AppWidgets.textLocale(
                                 text: LocaleKeys.help_type,
                                 fontWeight: FontWeight.w400,
-                                fontSize: 10,
+                                fontSize: 10.sp,
                                 color: AppColorUtils.DARK6,
                               ),
                               SizedBox(
-                                height: 2,
+                                height: 2.h,
                               ),
                               AppWidgets.text(
                                   text: "Ovqat qilib berish",
-                                  fontSize: 14,
+                                  fontSize: 14.sp,
                                   fontWeight: FontWeight.w600,
                                   color: AppColorUtils.GREEN_TEXT),
                             ],
@@ -90,7 +93,7 @@ class VolunteerCardWidget extends StatelessWidget {
                                   AppWidgets.textLocale(
                                     text: LocaleKeys.Executable_date,
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 10,
+                                    fontSize: 10.sp,
                                     color: AppColorUtils.DARK6,
                                   ),
                                   AppWidgets.text(
@@ -100,11 +103,11 @@ class VolunteerCardWidget extends StatelessWidget {
                                 ],
                               ),
                               SizedBox(
-                                height: 2,
+                                height: 2.h,
                               ),
                               AppWidgets.text(
                                 text: "25.08.2022",
-                                fontSize: 14,
+                                fontSize: 14.sp,
                                 fontWeight: FontWeight.w600,
                                 color: AppColorUtils.BLUE_PERCENT,
                               )

@@ -22,6 +22,7 @@ class AppImageUtils {
    static const String LOGOUT1 = "assets/app_icons/logout1.svg";
    static const String LOGOUT2 = "assets/app_icons/logout2.svg";
    static const String PERSON = "assets/app_icons/person.svg";
+   static const String BACK = "assets/app_icons/back.svg";
    static const String SHADOW = "assets/images/shadow.png";
    static const String Slider = "assets/images/slider.png";
 

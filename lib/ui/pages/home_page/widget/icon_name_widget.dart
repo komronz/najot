@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -24,8 +25,12 @@ class IconAndName extends StatelessWidget {
       onTap: voidCallback,
       child: Column(
         children: [
-          SvgPicture.asset(
-            icon,
+          SizedBox(
+            height: 85.h,
+            width: 85.h,
+            child: SvgPicture.asset(
+              icon,
+            ),
           ),
           AppWidgets.textLocale(
               text: text,
