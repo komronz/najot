@@ -1,4 +1,3 @@
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -6,8 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
+import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/loading_page/loading_page.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
@@ -62,6 +64,79 @@ Widget _baseText({
 }
 
 class AppWidgets {
+  static Widget appButton({
+    required String title,
+    required VoidCallback onTap,
+    double? width,
+    double? height,
+    Color? color = AppColorUtils.GREEN_APP,
+    Color? textColor = AppColorUtils.WHITE,
+    double borderRadius = 12.0,
+  }) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(borderRadius),
+      child: Ink(
+        width: width ?? ScreenUtil().screenWidth,
+        height: height ?? 50,
+        decoration: BoxDecoration(
+            color: color, borderRadius: BorderRadius.circular(borderRadius)),
+        child: Center(
+          child: textLocale(
+            textAlign: TextAlign.center,
+            text: title,
+            color: textColor,
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
+      onTap: onTap,
+    ).paddingSymmetric(horizontal: 20);
+  }
+
+  static Widget appBarWidget({
+    required String title,
+    required VoidCallback onTap,
+    Color? color = AppColorUtils.BACK_BUTTON,
+    Color? textColor = AppColorUtils.BLACK,
+  }) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        children: [
+          InkWell(
+            child: Container(
+              width: 31,
+              height: 34,
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: color,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: SvgPicture.asset(AppImageUtils.BACK_ICON),
+            ),
+            onTap: onTap,
+          ),
+          Expanded(
+            child: Container(
+              child: AppWidgets.textLocale(
+                text: title,
+                fontWeight: FontWeight.w600,
+                color: textColor,
+                fontSize: 20,
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 34,
+            width: 31,
+          )
+        ],
+      ),
+    );
+  }
+
   static Widget text({
     required String text,
     double? fontSize,
@@ -89,38 +164,38 @@ class AppWidgets {
       height: height,
     );
   }
-  
-  static Widget rowIconText({
-  required String icon,
-    required String text,
-    FontWeight fontWeight=FontWeight.w500,
-    double fontSize=15,
-    Color color= Colors.black,
-    EdgeInsets padding= const EdgeInsets.all(10),
-   required VoidCallback onTap
 
-  
-}){
-    
+  static Widget rowIconText({
+    required String icon,
+    required String text,
+    required VoidCallback onTap,
+    FontWeight fontWeight = FontWeight.w500,
+    double fontSize = 15,
+    Color color = Colors.black,
+    EdgeInsets padding = const EdgeInsets.all(10),
+  }) {
     return InkWell(
       onTap: onTap,
-    child: Padding(
-      padding:  padding,
-      child: Row(
-      children: [
-        SvgPicture.asset(icon),
-        SizedBox(width: 8.w,),
-        textLocale(text: text,
-        fontWeight: fontWeight,
-        fontSize: fontSize,
-        color: color,
-        )
-      ],
+      child: Padding(
+        padding: padding,
+        child: Row(
+          children: [
+            SvgPicture.asset(icon),
+            SizedBox(
+              width: 8.w,
+            ),
+            textLocale(
+              text: text,
+              fontWeight: fontWeight,
+              fontSize: fontSize,
+              color: color,
+            )
+          ],
+        ),
       ),
-    ),
     );
-}
-  
+  }
+
   static Widget textLocale({
     required String text,
     double? fontSize,
@@ -182,12 +257,6 @@ class AppWidgets {
     );
   }
 
-
-
-
-
-
-
   static void showText({
     required String text,
     Duration? duration,
@@ -233,7 +302,6 @@ class AppWidgets {
     );
   }
 
-
   static void isLoading(bool value) {
     if (value) {
       NavigatorService.to.push(
@@ -247,5 +315,4 @@ class AppWidgets {
       NavigatorService.to.pop();
     }
   }
-
 }

@@ -1,4 +1,5 @@
 class AppImageUtils {
+   static const String BACK_ICON = "assets/images/icons/back_icon.svg";
   // static const String INTRO_1 = "assets/images/intro_1.png";
    static const String MENU = "assets/app_icons/menu.svg";
    static const String NOTIFICATION = "assets/app_icons/notification.svg";
