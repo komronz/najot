@@ -41,7 +41,10 @@ class HomePage extends StatelessWidget {
                         _globalKey.currentState?.openDrawer();
                       },
                       icon: AppImageUtils.NOTIFICATION,
-                      visibleIcon: true
+                      visibleIcon: true,
+                      onTapIcon: (){
+
+                      }
 
                     ),
                     Expanded(
