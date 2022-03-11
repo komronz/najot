@@ -1,3 +1,4 @@
+import 'package:najot/data/bloc/home_cubit/home_cubit.dart';
 import 'package:najot/data/bloc/language_cubit/language_cubit.dart';
 import 'package:najot/data/bloc/theme_cubit/theme_cubit.dart';
 
@@ -10,6 +11,7 @@ class DIService {
 
     // BloCs
     await LanguageCubit.init();
+    await HomeCubit.init();
     await ThemeCubit.init();
   }
 }
