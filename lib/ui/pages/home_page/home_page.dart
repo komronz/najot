@@ -7,6 +7,7 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/home_page/volunteer_page/volunteer_page.dart';
 import 'package:najot/ui/pages/home_page/widget/carousel_slider_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/drawer_body_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/icon_name_widget.dart';
@@ -83,7 +84,7 @@ class HomePage extends StatelessWidget {
                                         text: 'Kraudfanding',
                                         icon: AppImageUtils.KRAUDFANDING,
                                         fontWeight: FontWeight.w600,
-                                        fontsize: 14,
+                                        fontsize: 14.sp,
                                         color: AppColorUtils.KRAUDFANDING,
                                         voidCallback: () {},
                                       ),
@@ -91,9 +92,16 @@ class HomePage extends StatelessWidget {
                                         text: 'Volontyorlik',
                                         icon: AppImageUtils.VOLONTYOR,
                                         fontWeight: FontWeight.w600,
-                                        fontsize: 14,
+                                        fontsize: 14.sp,
                                         color: AppColorUtils.VOLONTYOR,
-                                        voidCallback: () {},
+                                        voidCallback: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => VolunteerPage()
+                                            ),
+                                          );
+                                        },
                                       ),
                                       IconAndName(
                                         text: 'Xayriya',
