@@ -245,11 +245,12 @@ class PinPutState extends State<PinPut>
       return _buildCursor();
     }
 
-    if (widget.preFilledWidget != null)
-      return SizedBox(
+    if (widget.preFilledWidget != null) {
+      return  SizedBox(
         key: ValueKey<String>(index < pin.length ? pin[index] : ''),
         child: widget.preFilledWidget,
       );
+    }
     return Text(
       '',
       key: ValueKey<String>(index < pin.length ? pin[index] : ''),

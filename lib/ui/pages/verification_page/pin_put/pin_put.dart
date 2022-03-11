@@ -6,8 +6,8 @@ import 'package:najot/ui/pages/verification_page/pin_put/pin_put_state.dart';
 
 class PinPut extends StatefulWidget {
   const PinPut({
-    Key? key,
     required this.fieldsCount,
+    Key? key,
     this.onSubmit,
     this.onSaved,
     this.onChanged,

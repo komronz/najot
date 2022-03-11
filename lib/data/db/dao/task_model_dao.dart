@@ -1,6 +1,5 @@
 // 📦 Package imports:
 // 🌎 Project imports:
-import 'package:najot/data/model/task_model.dart';
 import 'package:floor/floor.dart';
 
 @dao

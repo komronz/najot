@@ -19,7 +19,10 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LoginBloc(),
-      child: BlocBuilder<LoginBloc, LoginState>(
+      child: BlocConsumer<LoginBloc, LoginState>(
+        listener: (context, state) {
+
+        },
         builder: (context, state) => Scaffold(
           body: SingleChildScrollView(
             physics: ClampingScrollPhysics(),

@@ -5,7 +5,7 @@ class AppColorUtils {
 
   // static const Color MAIN_50 = Color(0x8019C685);
   static const Color BLACK = Colors.black;
-  static const Color BACKGROUND = Color(0xFC8F5E5);
+  // static const Color BACKGROUND = Color(0xFC8F5E5);
   static const Color KRAUDFANDING = Color(0xFF048D6A);
   static const Color VOLONTYOR = Color(0xFF093D8D);
   static const Color CHARITY = Color(0xFF04602E);

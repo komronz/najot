@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:najot/ui/pages/intro_page/project_information_page/open_alert_box_widget.dart';
 

@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/loading_page/loading_page.dart';
 import 'package:super_rich_text/super_rich_text.dart';
-import 'package:najot/data/extensions/widget_padding_extension.dart';
 
 /// Please don't change [fontSize] directly.
 /// [fontSize] used project wide.
@@ -79,9 +79,7 @@ class AppWidgets {
         width: width ?? ScreenUtil().screenWidth,
         height: height ?? 50,
         decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(borderRadius)
-        ),
+            color: color, borderRadius: BorderRadius.circular(borderRadius)),
         child: Center(
           child: textLocale(
             textAlign: TextAlign.center,
@@ -101,7 +99,6 @@ class AppWidgets {
     required VoidCallback onTap,
     Color? color = AppColorUtils.BACK_BUTTON,
     Color? textColor = AppColorUtils.BLACK,
-
   }) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
@@ -167,38 +164,38 @@ class AppWidgets {
       height: height,
     );
   }
-  
-  static Widget rowIconText({
-  required String icon,
-    required String text,
-    FontWeight fontWeight=FontWeight.w500,
-    double fontSize=15,
-    Color color= Colors.black,
-    EdgeInsets padding= const EdgeInsets.all(10),
-   required VoidCallback onTap
 
-  
-}){
-    
+  static Widget rowIconText({
+    required String icon,
+    required String text,
+    required VoidCallback onTap,
+    FontWeight fontWeight = FontWeight.w500,
+    double fontSize = 15,
+    Color color = Colors.black,
+    EdgeInsets padding = const EdgeInsets.all(10),
+  }) {
     return InkWell(
       onTap: onTap,
-    child: Padding(
-      padding:  padding,
-      child: Row(
-      children: [
-        SvgPicture.asset(icon),
-        SizedBox(width: 8.w,),
-        textLocale(text: text,
-        fontWeight: fontWeight,
-        fontSize: fontSize,
-        color: color,
-        )
-      ],
+      child: Padding(
+        padding: padding,
+        child: Row(
+          children: [
+            SvgPicture.asset(icon),
+            SizedBox(
+              width: 8.w,
+            ),
+            textLocale(
+              text: text,
+              fontWeight: fontWeight,
+              fontSize: fontSize,
+              color: color,
+            )
+          ],
+        ),
       ),
-    ),
     );
-}
-  
+  }
+
   static Widget textLocale({
     required String text,
     double? fontSize,

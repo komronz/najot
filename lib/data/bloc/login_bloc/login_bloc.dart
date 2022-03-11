@@ -4,7 +4,9 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:najot/data/model/user.dart';
+import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
+import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 part 'login_event.dart';
@@ -155,10 +157,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     );
     AppLoggerUtil.i(phoneNumberFormatter.getUnmaskedText());
     AppLoggerUtil.i(phone);
-    if (phone==phoneNumberFormatter.getUnmaskedText()) {
+    if (phone == phoneNumberFormatter.getUnmaskedText()) {
       AppWidgets.showText(text: 'Success');
+      NavigatorService.to.pushNamedAndRemoveUntil(HomePage.routeName);
       emit(state.copyWith(hasError: false));
-    }else{
+    } else {
       emit(state.copyWith(hasError: true));
     }
     AppLoggerUtil.i(user.toJson().toString());
