@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/ui/pages/intro_page/project_information_page/open_success_alert_box.dart';
-
+import 'package:najot/ui/pages/project_information_page/open_success_alert_box.dart';
 Future openAlertBox(BuildContext context) {
   return showDialog(
       context: context,
