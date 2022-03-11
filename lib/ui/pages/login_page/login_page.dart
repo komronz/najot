@@ -40,11 +40,6 @@ class LoginPage extends StatelessWidget {
                           color: Color(0xFF25D7A8),
                           textColor: AppColorUtils.WHITE,
                         ),
-                        // Container(
-                        //   height: 125,
-                        //   width: 150,
-                        //   color: Colors.grey,
-                        // )
                       ],
                     ).paddingOnly(top: 40.h),
                   ],

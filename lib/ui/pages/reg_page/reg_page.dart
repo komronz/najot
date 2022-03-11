@@ -23,6 +23,7 @@ class RegPage extends StatelessWidget {
           backgroundColor: AppColorUtils.BACKGROUND,
           resizeToAvoidBottomInset: true,
           body: SingleChildScrollView(
+            reverse: true,
             child: Column(
               children: [
                 AppWidgets.appBarWidget(
@@ -98,8 +99,9 @@ class RegPage extends StatelessWidget {
                             }
                           : () {
                               AppWidgets.showText(
-                                  text: "loyiha shartlariga rozi boling",
-                                  duration: Duration(seconds: 1));
+                                text: "loyiha shartlariga rozi boling",
+                                duration: Duration(seconds: 1),
+                              );
                             },
                       color: context.read<LoginBloc>().state.isNextBtnActive
                           ? AppColorUtils.GREEN_APP
