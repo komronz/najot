@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/pages/counter_page/counter_page.dart';
-import 'package:najot/ui/pages/intro_page/intro_page.dart';
 import 'package:najot/ui/pages/loading_page/loading_page.dart';
+import 'package:najot/ui/pages/login_page/login_page.dart';
+import 'package:najot/ui/pages/reg_page/reg_page.dart';
+import 'package:najot/ui/pages/verification_page/verification_page.dart';
 
 class AppRouteUtils {
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
@@ -15,7 +18,22 @@ class AppRouteUtils {
         return CupertinoPageRoute(
           builder: (context) => CounterPage(),
         );
-
+      case AuthPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => AuthPage(),
+        );
+      case LoginPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => LoginPage(),
+        );
+      case RegPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => RegPage(),
+        );
+        case VerificationPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => VerificationPage(),
+        );
     }
   }
 }

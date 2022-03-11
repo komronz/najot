@@ -10,7 +10,6 @@ class IntroPageNextState extends IntroState{
   IntroPageNextState({required this.currentIndex});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [currentIndex];
 
 
