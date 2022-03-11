@@ -89,7 +89,38 @@ class AppWidgets {
       height: height,
     );
   }
+  
+  static Widget rowIconText({
+  required String icon,
+    required String text,
+    FontWeight fontWeight=FontWeight.w500,
+    double fontSize=15,
+    Color color= Colors.black,
+    EdgeInsets padding= const EdgeInsets.all(10),
+   required VoidCallback onTap
 
+  
+}){
+    
+    return InkWell(
+      onTap: onTap,
+    child: Padding(
+      padding:  padding,
+      child: Row(
+      children: [
+        SvgPicture.asset(icon),
+        SizedBox(width: 8.w,),
+        textLocale(text: text,
+        fontWeight: fontWeight,
+        fontSize: fontSize,
+        color: color,
+        )
+      ],
+      ),
+    ),
+    );
+}
+  
   static Widget textLocale({
     required String text,
     double? fontSize,

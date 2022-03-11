@@ -21,7 +21,7 @@ dependencies:
   floor: ^1.1.0
   flutter_bloc: ^8.0.1
   get_it: ^7.2.0
-  google_fonts: ^2.0.0
+  google_fonts: 2.1.1
   hive: ^2.0.2
   hive_flutter: ^1.0.0
   logger: ^1.0.0
@@ -32,7 +32,13 @@ dependencies:
   bot_toast: ^4.0.1
   auto_size_text: ^3.0.0
   flutter_svg: ^1.0.3
+  card_swiper: ^2.0.1
+  cached_network_image: ^3.1.0+1
   super_rich_text: ^1.0.0
+  percent_indicator: ^4.0.0
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -51,6 +57,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/langs/
+    - assets/app_icons/
     - assets/images/
 import_sorter:
   emojis: true
