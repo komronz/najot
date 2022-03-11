@@ -1,5 +1,12 @@
 {
     "app_name": "Najot",
     "cancel": "Cancel",
-    "add": "Add"
+    "add": "Add",
+    "main": "Asosiy",
+    "str_uzbek": "uz",
+    "str_russian": "ru",
+    "collected": "To'plandi",
+    "done": "Bajarildi",
+    "help_type": "Yordam turi",
+    "Executable_date": "Bajariladigan sana"
 }

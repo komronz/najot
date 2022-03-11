@@ -1,5 +1,14 @@
 {
     "app_name": "Najot",
     "cancel": "Cancel",
-    "add": "Add"
+    "add": "Add",
+    "main": "Основной",
+    "str_uzbek": "uz",
+    "str_russian": "ru",
+    "collected": "Собрано",
+    "done": "Сделанный",
+    "help_type": "Тип поддержки",
+    "Executable_date": "Дата исполняемый"
+
+
 }

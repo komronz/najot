@@ -5,6 +5,22 @@ class AppColorUtils {
 
   // static const Color MAIN_50 = Color(0x8019C685);
   static const Color BLACK = Colors.black;
+  static const Color BACKGROUND = Color(0xFC8F5E5);
+  static const Color KRAUDFANDING = Color(0xFF048D6A);
+  static const Color VOLONTYOR = Color(0xFF093D8D);
+  static const Color CHARITY = Color(0xFF04602E);
+  static const Color PERCENT_COLOR = Color(0xFF0BBF90);
+  static const Color PERCENT_COLOR2 = Color(0xFFE8FEF9);
+  static const Color DARK6 = Color(0xFF939598);
+  static const Color DARK3 = Color(0xFF58595B);
+  static const Color GREEN_TEXT = Color(0xFF027859);
+  static const Color BLUE_PERCENT = Color(0xFF0344A7);
+  static const Color LEFT_MENU_BACK = Color(0xFFF9FFFD);
+  static const Color DIVIDER = Color(0xFFC8ECE5);
+  static const Color TEXT_COLOR = Color(0xFF183D33);
+  static const Color GREEN_ACCENT1 = Color(0xFFE8FEF2);
+  static const Color GREEN_ACCENT2 = Color(0xFFD0FFD8);
+  static const Color BLUE_ACCENT1 = Color(0xFFEBF3FF);
 
   // static const Color GREY = Colors.grey;
   static const Color BG_GREY = Color(0xffEDEDED);

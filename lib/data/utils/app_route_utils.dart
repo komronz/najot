@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/pages/counter_page/counter_page.dart';
+import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/loading_page/loading_page.dart';
 import 'package:najot/ui/pages/login_page/login_page.dart';
 import 'package:najot/ui/pages/reg_page/reg_page.dart';
@@ -33,6 +34,10 @@ class AppRouteUtils {
         case VerificationPage.routeName:
         return MaterialPageRoute(
           builder: (context) => VerificationPage(),
+        );
+      case HomePage.routeName:
+        return CupertinoPageRoute(
+          builder: (context) => HomePage(),
         );
     }
   }
