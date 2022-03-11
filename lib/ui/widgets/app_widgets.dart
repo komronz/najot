@@ -10,7 +10,6 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/home_page/widget/drawer_body_widget.dart';
 import 'package:najot/ui/pages/loading_page/loading_page.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
@@ -213,20 +212,25 @@ class AppWidgets {
 
   static Widget rowIconText({
     required String icon,
+    required String iconSelect,
     required String text,
     required VoidCallback onTap,
+    bool isActive = false,
     FontWeight fontWeight = FontWeight.w500,
     double fontSize = 15,
-    Color color = Colors.black,
     EdgeInsets padding = const EdgeInsets.all(10),
   }) {
+    var color = isActive ? AppColorUtils.GREEN_TEXT : AppColorUtils.DARK3;
+    var iconSelected = isActive ? iconSelect : icon;
     return InkWell(
       onTap: onTap,
       child: Padding(
         padding: padding,
         child: Row(
           children: [
-            SvgPicture.asset(icon),
+            SvgPicture.asset(
+              iconSelected,
+            ),
             SizedBox(
               width: 8.w,
             ),

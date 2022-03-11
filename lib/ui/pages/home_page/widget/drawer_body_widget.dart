@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
@@ -103,7 +105,9 @@ class DrawerBody extends StatelessWidget {
                       left: 20.w,
                     ),
                     child: ButtonCard(
-                      onPress: () {},
+                      onPress: () {
+
+                      },
                       text: "Volontyor bo'lish",
                       width: 226.w,
                       height: 44.h,
@@ -116,34 +120,46 @@ class DrawerBody extends StatelessWidget {
                     ),
                   ),
                   AppWidgets.rowIconText(
+                    iconSelect:AppImageUtils.MAIN ,
                     icon: AppImageUtils.MAIN,
+                    isActive: context.read<AppPageCubit>().state.pageType==AppPageType.MAIN,
                     text: "Asosiy",
                     fontWeight: FontWeight.w600,
-                    color: AppColorUtils.GREEN_TEXT,
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,
                       vertical: 14,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      context
+                          .read<AppPageCubit>()
+                          .changePage(pageType: AppPageType.MAIN);
+                      Navigator.pop(context);
+                    },
                   ),
                   AppWidgets.rowIconText(
+                    isActive: context.read<AppPageCubit>().state.pageType==AppPageType.CHARITY,
                     icon: AppImageUtils.HISTORY,
+                    iconSelect: AppImageUtils.HISTORY,
                     text: "Xayriya tarixi",
                     fontWeight: FontWeight.w500,
-                    color: AppColorUtils.DARK3,
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,
                       vertical: 14,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      context
+                          .read<AppPageCubit>()
+                          .changePage(pageType: AppPageType.CHARITY);
+                      Navigator.pop(context);
+                    },
                   ),
                   AppWidgets.rowIconText(
                     icon: AppImageUtils.PRODUCTS,
+                    iconSelect: AppImageUtils.PRODUCTS,
                     text: "Mahsulotlarim",
                     fontWeight: FontWeight.w500,
-                    color: AppColorUtils.DARK3,
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,
@@ -153,9 +169,9 @@ class DrawerBody extends StatelessWidget {
                   ),
                   AppWidgets.rowIconText(
                     icon: AppImageUtils.RULES,
+                    iconSelect: AppImageUtils.RULES,
                     text: "Loyiha qoidalari",
                     fontWeight: FontWeight.w500,
-                    color: AppColorUtils.DARK3,
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,
@@ -165,9 +181,9 @@ class DrawerBody extends StatelessWidget {
                   ),
                   AppWidgets.rowIconText(
                     icon: AppImageUtils.FAQ,
+                    iconSelect: AppImageUtils.FAQ,
                     text: "FAQ",
                     fontWeight: FontWeight.w500,
-                    color: AppColorUtils.DARK3,
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,
@@ -177,9 +193,9 @@ class DrawerBody extends StatelessWidget {
                   ),
                   AppWidgets.rowIconText(
                     icon: AppImageUtils.ABOUT_US,
+                    iconSelect: AppImageUtils.ABOUT_US,
                     text: "Biz haqimizda",
                     fontWeight: FontWeight.w500,
-                    color: AppColorUtils.DARK3,
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,
