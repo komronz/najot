@@ -167,20 +167,25 @@ class AppWidgets {
 
   static Widget rowIconText({
     required String icon,
+    required String iconSelect,
     required String text,
     required VoidCallback onTap,
+    bool isActive = false,
     FontWeight fontWeight = FontWeight.w500,
     double fontSize = 15,
-    Color color = Colors.black,
     EdgeInsets padding = const EdgeInsets.all(10),
   }) {
+    var color = isActive ? AppColorUtils.GREEN_TEXT : AppColorUtils.DARK3;
+    var iconSelected = isActive ? iconSelect : icon;
     return InkWell(
       onTap: onTap,
       child: Padding(
         padding: padding,
         child: Row(
           children: [
-            SvgPicture.asset(icon),
+            SvgPicture.asset(
+              iconSelected,
+            ),
             SizedBox(
               width: 8.w,
             ),
