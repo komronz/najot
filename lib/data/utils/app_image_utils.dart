@@ -31,5 +31,6 @@ class AppImageUtils {
    static const String MAIN2 = "assets/app_icons/main2.svg";
    static const String SHADOW = "assets/images/shadow.png";
    static const String Slider = "assets/images/slider.png";
+   static const String IC_SEARCH = "assets/app_icons/search.svg";
 
 }
