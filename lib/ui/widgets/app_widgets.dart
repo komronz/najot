@@ -168,7 +168,7 @@ class AppWidgets {
                 text: title,
                 fontWeight: FontWeight.w600,
                 color: textColor,
-                fontSize: 20,
+                fontSize: 20.sp,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -216,12 +216,12 @@ class AppWidgets {
     required String text,
     required VoidCallback onTap,
     bool isActive = false,
-    FontWeight fontWeight = FontWeight.w500,
     double fontSize = 15,
     EdgeInsets padding = const EdgeInsets.all(10),
   }) {
     var color = isActive ? AppColorUtils.GREEN_TEXT : AppColorUtils.DARK3;
     var iconSelected = isActive ? iconSelect : icon;
+    var fontWeight = isActive ? FontWeight.w600 : FontWeight.w500;
     return InkWell(
       onTap: onTap,
       child: Padding(

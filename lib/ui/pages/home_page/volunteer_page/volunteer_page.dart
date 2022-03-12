@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,41 +8,33 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class VolunteerPage extends StatelessWidget {
-   VolunteerPage({Key? key}) : super(key: key);
-  VolunteerCubit volunteerCubit=VolunteerCubit();
+  VolunteerPage({Key? key}) : super(key: key);
+  VolunteerCubit volunteerCubit = VolunteerCubit();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (BuildContext context)=> volunteerCubit,
-    child: Scaffold(
-      body:  BlocBuilder<VolunteerCubit,VolunteerState>(
-        builder: (context,state){
+    return BlocProvider(
+      create: (BuildContext context) => volunteerCubit,
+      child: Scaffold(body: BlocBuilder<VolunteerCubit, VolunteerState>(
+        builder: (context, state) {
           return SafeArea(
             child: Container(
-              height: 80,
-              padding: EdgeInsets.all(20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    child: SvgPicture.asset(AppImageUtils.BACK),
-                    onTap: () {
+                height: 80,
+                padding: EdgeInsets.only(top: 20),
+                child: Column(
+                  children: [
+                    AppWidgets.appBarWidget(
+                      title: "Volontyorlik",
+                      onTap: () {},
+                    ),
 
-                    },
-                  ),
-                  AppWidgets.textLocale(
-                    text: "Volontyorlik",
-                    fontSize: 26.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  SizedBox()
-                ],
-              ),
+                  ],
+                ),
             ),
           );
         },
-      )
-    ),);
-
+      ),
+      ),
+    );
   }
 }
