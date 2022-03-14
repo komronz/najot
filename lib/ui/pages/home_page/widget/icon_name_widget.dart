@@ -7,7 +7,7 @@ class IconAndName extends StatelessWidget {
   IconAndName(
       {required this.icon,
       required this.text,
-      required this.voidCallback,
+      required this.onTap,
       this.color = Colors.black,
       this.fontWeight = FontWeight.w500,
       this.fontsize = 18});
@@ -17,12 +17,12 @@ class IconAndName extends StatelessWidget {
   Color color;
   double fontsize;
   FontWeight fontWeight;
-  VoidCallback voidCallback;
+  VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: voidCallback,
+      onTap: onTap,
       child: Column(
         children: [
           SizedBox(
@@ -32,6 +32,7 @@ class IconAndName extends StatelessWidget {
               icon,
             ),
           ),
+          SizedBox(height: 5.h,),
           AppWidgets.textLocale(
               text: text,
               color: color,

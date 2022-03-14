@@ -124,7 +124,6 @@ class DrawerBody extends StatelessWidget {
                     icon: AppImageUtils.MAIN,
                     isActive: context.read<AppPageCubit>().state.pageType==AppPageType.MAIN,
                     text: "Asosiy",
-                    fontWeight: FontWeight.w600,
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,
@@ -142,7 +141,6 @@ class DrawerBody extends StatelessWidget {
                     icon: AppImageUtils.HISTORY,
                     iconSelect: AppImageUtils.HISTORY,
                     text: "Xayriya tarixi",
-                    fontWeight: FontWeight.w500,
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,
@@ -159,7 +157,6 @@ class DrawerBody extends StatelessWidget {
                     icon: AppImageUtils.PRODUCTS,
                     iconSelect: AppImageUtils.PRODUCTS,
                     text: "Mahsulotlarim",
-                    fontWeight: FontWeight.w500,
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,
@@ -171,7 +168,6 @@ class DrawerBody extends StatelessWidget {
                     icon: AppImageUtils.RULES,
                     iconSelect: AppImageUtils.RULES,
                     text: "Loyiha qoidalari",
-                    fontWeight: FontWeight.w500,
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,
@@ -183,7 +179,6 @@ class DrawerBody extends StatelessWidget {
                     icon: AppImageUtils.FAQ,
                     iconSelect: AppImageUtils.FAQ,
                     text: "FAQ",
-                    fontWeight: FontWeight.w500,
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,
@@ -195,7 +190,6 @@ class DrawerBody extends StatelessWidget {
                     icon: AppImageUtils.ABOUT_US,
                     iconSelect: AppImageUtils.ABOUT_US,
                     text: "Biz haqimizda",
-                    fontWeight: FontWeight.w500,
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,
