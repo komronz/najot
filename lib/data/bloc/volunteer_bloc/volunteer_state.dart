@@ -1,22 +1,12 @@
 part of 'volunteer_cubit.dart';
 
- class VolunteerState extends Equatable{
-   VolunteerState({required this.list});
-   List<SliderModel> list;
+@immutable
+abstract class VolunteerState extends Equatable{}
 
-   @override
-   // TODO: implement props
-   List<Object?> get props => [list];
+class VolunteerInitial extends VolunteerState {
 
-   VolunteerState copyWith({
-     List<SliderModel>? list
-   }) {
-     return VolunteerState(
-       list: list ?? this.list
-
-     );
-   }
-
- }
-
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
 

@@ -42,8 +42,18 @@ class AppColorUtils {
   static const Color DARK_6 = Color(0xFF939598);
   static const Color GRAY_4 = Color(0xFFBCBEC0);
   static const Color TEXT_GREEN = Color(0xFF048D6A);
+  static const Color TEXT_GREEN2 = Color(0xFF043F3B);
   static const Color TEXT_BLUE = Color(0xFF0344A7);
   static const Color BACKGROUND = Color(0xFFE5E5E5);
   static const Color RED = Color(0xFFF50000);
   static const Color BORDER_COLOR = Color(0xFF79B4A8);
+  static const Color BACK_AD = Color(0xFFEFFAF6);
+  static const Color IC_GREEN = Color(0xFF07C025);
+  static const Color IC_GREEN2 = Color(0xFF004D39);
+  static const Color PURPLE = Color(0xFFFFE7E7);
+  static const Color GREEN_BTN = Color(0xFFEAF9F6);
+  static const Color GREEN_BACK = Color(0xFFF2FEFC);
+
+
+
 }
