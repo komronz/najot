@@ -16,7 +16,7 @@ class VolunteerCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
-        height: 310.h,
+        height: 310.w,
         width: 220.w,
         child: Stack(
           children: [
