@@ -9,6 +9,7 @@ import 'package:najot/data/utils/app_route_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/intro_page/intro_page.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
+import 'package:najot/ui/pages/my_profil_page/my_profile_page.dart';
 
 import 'data/bloc/language_cubit/language_cubit.dart';
 import 'data/services/navigator_service.dart';
@@ -37,7 +38,7 @@ class App extends StatelessWidget {
           darkTheme: AppThemes.darkTheme(),
           localizationsDelegates: context.localizationDelegates,
           builder: BotToastInit(),
-          home: HomePage(),
+          home: MyProfilePage(),
           navigatorObservers: [
             BotToastNavigatorObserver(),
           ],

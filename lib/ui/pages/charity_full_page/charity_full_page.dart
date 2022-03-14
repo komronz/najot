@@ -1,17 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
+import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-
-
 
 class CharityFullPage extends StatelessWidget {
   final CharityModel model;
@@ -65,7 +65,7 @@ class CharityFullPage extends StatelessWidget {
                           height: 35.w,
                           width: 60.w,
                           decoration: BoxDecoration(
-                            color: AppColorUtils.BLUE_PERCENT,
+                            color: AppColorUtils.BLUE,
                             borderRadius: BorderRadius.horizontal(
                               left: Radius.circular(12),
                             ),
@@ -87,114 +87,13 @@ class CharityFullPage extends StatelessWidget {
                   ).paddingSymmetric(horizontal: 20),
                   CharityAuthorWidget(model: model).paddingOnly(top: 18.w),
                   CharityPriceWidget(model: model).paddingOnly(top: 18.w),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      AppliedUserWidgets(model: model),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AppWidgets.starTextWidget(
-                            text: "Sanagacha to'planishi kerak",
-                          ),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.calendar_today_outlined,
-                                color: AppColorUtils.BLUE_PERCENT,
-                                size: 14.sp,
-                              ),
-                              AppWidgets.text(
-                                text: model.createdDate!,
-                                color: AppColorUtils.BLUE_PERCENT,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14.sp,
-                              ).paddingOnly(left: 6),
-                            ],
-                          ).paddingOnly(top: 3)
-                        ],
-                      ).paddingOnly(left: 30)
-                    ],
-                  ).paddingSymmetric(horizontal: 20, vertical: 18.w)
+
                 ],
               ),
-            ),
+            )
           ],
         ),
       ),
-    );
-  }
-}
-
-class AppliedUserWidgets extends StatelessWidget {
-  final CharityModel model;
-
-  const AppliedUserWidgets({
-    required this.model,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AppWidgets.textLocale(
-          text: "Odam qo'lladi",
-          color: AppColorUtils.DARK_6,
-          fontSize: 10.sp,
-          fontWeight: FontWeight.w400,
-        ),
-        Row(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  height: 30.w,
-                  width: 30.w,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage(AppImageUtils.DEF_PERSON),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 10),
-                  height: 30.w,
-                  width: 30.w,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage(AppImageUtils.DEF_PERSON),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 20),
-                  height: 30.w,
-                  width: 30.w,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: NetworkImage(model.imgUrl!),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            AppWidgets.text(
-              text: "+${model.applied!}",
-              color: AppColorUtils.TEXT_GREEN2,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-            ).paddingOnly(left: 3),
-          ],
-        ).paddingOnly(top: 3)
-      ],
     );
   }
 }
@@ -275,7 +174,7 @@ class CharityPriceWidget extends StatelessWidget {
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.GREEN_TEXT,
-                    args: [model.currentSum!],
+                    args: [model.totalSum!],
                   ),
                   AppWidgets.text(
                     text: "${model.percent.toString().split('.').first} %",
@@ -300,9 +199,6 @@ class CharityPriceWidget extends StatelessWidget {
             vertical: 12.w,
           ),
         ).paddingOnly(top: 12.w),
-        Container(
-          decoration: DecorationConst.DEC_WITH_SHADOW,
-        )
       ],
     );
   }

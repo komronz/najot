@@ -5,9 +5,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/bloc/home_cubit/home_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/charity_page/charity_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
+import 'package:najot/ui/pages/home_page/volunteer_page/volunteer_page.dart';
 import 'package:najot/ui/pages/home_page/widget/carousel_slider_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/icon_name_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/kraudfanding_card_widget.dart';
@@ -82,7 +85,7 @@ class MainPage extends StatelessWidget {
                                         fontWeight: FontWeight.w600,
                                         fontsize: 14,
                                         color: AppColorUtils.KRAUDFANDING,
-                                        voidCallback: () {},
+                                        onTap: () {},
                                       ),
                                       IconAndName(
                                         text: 'Volontyorlik',
@@ -90,7 +93,10 @@ class MainPage extends StatelessWidget {
                                         fontWeight: FontWeight.w600,
                                         fontsize: 14,
                                         color: AppColorUtils.VOLONTYOR,
-                                        voidCallback: () {},
+                                        onTap: () {
+                                          NavigatorService.to
+                                              .pushNamed(VolunteerPage.routeName);
+                                        },
                                       ),
                                       IconAndName(
                                         text: 'Xayriya',
@@ -98,7 +104,10 @@ class MainPage extends StatelessWidget {
                                         fontWeight: FontWeight.w600,
                                         fontsize: 14,
                                         color: AppColorUtils.CHARITY,
-                                        voidCallback: () {},
+                                        onTap: () {
+                                          NavigatorService.to
+                                              .pushNamed(CharityPage.routeName);
+                                        },
                                       ),
                                     ],
                                   ),
