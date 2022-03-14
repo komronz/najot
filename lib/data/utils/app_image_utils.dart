@@ -37,6 +37,7 @@ class AppImageUtils {
    static const String IMG_CHARITY = "assets/images/charity_img.svg";
    static const String IC_FAVORITE_ADD = "assets/app_icons/favorite_add.svg";
    static const String IC_FAVORITE_REMO = "assets/app_icons/favorite_remove.svg";
+   static const String DEF_PERSON = "assets/images/person_def.png";
 
 
 }
