@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/kraudfanding_cubit/kraud_fanding_cubit.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-
 import 'kraudfanding_widget/kraudfanding_mini_card_widget.dart';
 import 'kraudfanding_widget/kraudfanding_widgets.dart';
 
@@ -61,7 +60,7 @@ class _KraudFandingPageState extends State<KraudFandingPage> {
           body: BlocBuilder<KraudFandingCubit, KraudFandingState>(
             builder: (context, state) {
               return SingleChildScrollView(
-                child: Column(
+                child:  Column (
                   children: [
                     SizedBox(
                       height: 18.0.h,
@@ -88,20 +87,16 @@ class _KraudFandingPageState extends State<KraudFandingPage> {
                                   // suffixIcon: Icon(Icons.search_rounded, color: Color(0xFF048D6A),),
                                   border: InputBorder.none,
                                   hintStyle: TextStyle(
-                                      color: Color(0xFFBCBEC0),
-                                      fontSize: 14.sp),
+                                      color: Color(0xFFBCBEC0), fontSize: 14.sp),
                                 ),
                               ),
                             ),
                             Expanded(
                               flex: 1,
                               child: Container(
-                                height: 21,
-                                width: 21,
-                                // child: Image.asset(
-                                //   AppImageUtils.Search,
-                                // ),
-                              ),
+                                  height: 21,
+                                  width: 21,
+                                  child: Image.asset(AppImageUtils.Search)),
                             ),
                           ],
                         )),
@@ -120,60 +115,54 @@ class _KraudFandingPageState extends State<KraudFandingPage> {
                       child: Row(
                         children: [
                           Expanded(
-                            child: Container(
-                              width: 153.w,
-                              height: 112.h,
-                              // child: Image.asset(
-                              //   AppImageUtils.Splash2,
-                              // ),
-                            ),
-                          ),
+                              child: Container(
+                                  width: 153.w,
+                                  height: 112.h,
+                                  child: Image.asset(AppImageUtils.Splash2))),
                           SizedBox(width: 14.w),
                           Expanded(
                               child: Container(
-                            margin: EdgeInsets.only(top: 20, bottom: 20),
-                            child: Column(
-                              children: [
-                                Expanded(
-                                    child: Text(
-                                  "G'oya bor ammo maglag' yo'q?",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600),
-                                  textAlign: TextAlign.center,
-                                )),
-                                SizedBox(height: 5),
-                                Text(
-                                  "Biz sizga yordam beramiz!",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w300),
-                                  textAlign: TextAlign.center,
-                                ),
-                                SizedBox(height: 20),
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: Container(
-                                    padding: EdgeInsets.all(10),
-                                    width: 146.w,
-                                    height: 35.h,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Color(0xFF0BBF90),
-                                    ),
-                                    child: Text(
-                                      "Loyiha qo'shish",
+                                margin: EdgeInsets.only(top: 20, bottom: 20),
+                                child: Column(
+                                  children: [
+                                    Expanded(
+                                        child: Text(
+                                          "G'oya bor ammo maglag' yo'q?",
+                                          style: TextStyle(
+                                              fontSize: 18, fontWeight: FontWeight.w600),
+                                          textAlign: TextAlign.center,
+                                        )),
+                                    SizedBox(height: 5),
+                                    Text(
+                                      "Biz sizga yordam beramiz!",
                                       style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white),
+                                          fontSize: 12, fontWeight: FontWeight.w300),
                                       textAlign: TextAlign.center,
                                     ),
-                                  ),
+                                    SizedBox(height: 20),
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: Container(
+                                        padding: EdgeInsets.all(10),
+                                        width: 146.w,
+                                        height: 35.h,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10),
+                                          color: Color(0xFF0BBF90),
+                                        ),
+                                        child: Text(
+                                          "Loyiha qo'shish",
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.white),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                          )),
+                              )),
                         ],
                       ),
                     ),
@@ -202,7 +191,7 @@ class _KraudFandingPageState extends State<KraudFandingPage> {
                                 child: Row(
                                   children: List.generate(
                                     state.cardList.length,
-                                    (index) => Container(
+                                        (index) => Container(
                                       margin: EdgeInsets.only(right: 12),
                                       child: KraudfandingMiniCardWidget(
                                         cardModel: state.cardList[index],
@@ -267,11 +256,11 @@ class _KraudFandingPageState extends State<KraudFandingPage> {
                                 height: 577.h,
                                 child: GridView.builder(
                                     gridDelegate:
-                                        SliverGridDelegateWithMaxCrossAxisExtent(
-                                            maxCrossAxisExtent: 267,
-                                            childAspectRatio: 3 / 4.45,
-                                            crossAxisSpacing: 1,
-                                            mainAxisSpacing: 2),
+                                    SliverGridDelegateWithMaxCrossAxisExtent(
+                                        maxCrossAxisExtent: 267,
+                                        childAspectRatio: 3 / 4.45,
+                                        crossAxisSpacing: 1,
+                                        mainAxisSpacing: 2),
                                     itemCount: state.cardList.length,
                                     itemBuilder: (context, index) {
                                       return Container(
@@ -287,7 +276,9 @@ class _KraudFandingPageState extends State<KraudFandingPage> {
                       ),
                     ),
                   ],
-                ),
+
+
+                    ),
               );
             },
           ),

@@ -11,6 +11,5 @@ abstract class  LocaleKeys {
   static const done = 'done';
   static const help_type = 'help_type';
   static const Executable_date = 'Executable_date';
-  static const sum = 'sum';
 
 }
