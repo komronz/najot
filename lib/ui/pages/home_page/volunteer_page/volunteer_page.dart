@@ -1,10 +1,6 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -14,7 +10,7 @@ class VolunteerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:  SafeArea(
+      body: SafeArea(
         child: Container(
           height: 80,
           padding: EdgeInsets.all(20),
@@ -23,9 +19,7 @@ class VolunteerPage extends StatelessWidget {
             children: [
               InkWell(
                 child: SvgPicture.asset(AppImageUtils.BACK),
-                onTap: () {
-
-                },
+                onTap: () {},
               ),
               AppWidgets.textLocale(
                 text: "Volontyorlik",
@@ -38,6 +32,5 @@ class VolunteerPage extends StatelessWidget {
         ),
       ),
     );
-
   }
 }
