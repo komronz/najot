@@ -15,13 +15,15 @@ class BannerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 173.h,
       padding: EdgeInsets.all(10.w),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: AppColorUtils.GREEN_ACCENT3,
-          border:
-          Border.all(width: 1, color: AppColorUtils.DIVIDER)),
+        borderRadius: BorderRadius.circular(12),
+        color: AppColorUtils.GREEN_ACCENT3,
+        border: Border.all(
+          width: 1,
+          color: AppColorUtils.DIVIDER,
+        ),
+      ),
       child: Row(
         children: [
           SizedBox(
@@ -32,11 +34,12 @@ class BannerCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppWidgets.text(
-                    text: "Lorem Ipsum is simply dummy "
-                        "text of the printing and ?",
-                    color: AppColorUtils.GRAY_4,
-                    fontSize: 12,
-                    maxLines: 2),
+                  text: "Lorem Ipsum is simply dummy "
+                      "text of the printing and ?",
+                  color: AppColorUtils.GRAY_4,
+                  fontSize: 12,
+                  maxLines: 2,
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

@@ -51,7 +51,6 @@ class AppColorUtils {
   static const Color IC_GREEN = Color(0xFF07C025);
   static const Color IC_GREEN2 = Color(0xFF004D39);
   static const Color PURPLE = Color(0xFFFFE7E7);
-  static const Color DARK2 = Color(0xFF414042);
   static const Color GREEN_BTN = Color(0xFFEAF9F6);
   static const Color GREEN_BACK = Color(0xFFF2FEFC);
 
