@@ -7,6 +7,7 @@ class AppImageUtils {
    static const String VOLONTYOR = "assets/app_icons/volontyor.svg";
    static const String CHARITY = "assets/app_icons/charity.svg";
    static const String LIKE = "assets/app_icons/like.svg";
+   static const String UNLIKE = "assets/app_icons/un_like.svg";
    static const String USER = "assets/app_icons/user.svg";
    static const String QUESTION = "assets/app_icons/question.svg";
    static const String EDIT = "assets/app_icons/edit.svg";
@@ -25,5 +26,7 @@ class AppImageUtils {
    static const String BACK = "assets/app_icons/back.svg";
    static const String SHADOW = "assets/images/shadow.png";
    static const String Slider = "assets/images/slider.png";
+   static const String Search="assets/images/search.png";
+   static const String Splash2="assets/images/splash_2.png";
 
 }

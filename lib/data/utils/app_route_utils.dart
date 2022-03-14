@@ -8,6 +8,8 @@ import 'package:najot/ui/pages/login_page/login_page.dart';
 import 'package:najot/ui/pages/reg_page/reg_page.dart';
 import 'package:najot/ui/pages/verification_page/verification_page.dart';
 
+import '../../ui/pages/kraudfanding_page_main/kraudfanding_widget/project_details_page.dart';
+
 class AppRouteUtils {
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -38,6 +40,10 @@ class AppRouteUtils {
       case HomePage.routeName:
         return CupertinoPageRoute(
           builder: (context) => HomePage(),
+        );
+      case ProjectDetailsPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => ProjectDetailsPage(),
         );
     }
   }
