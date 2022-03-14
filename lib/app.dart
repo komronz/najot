@@ -7,7 +7,6 @@ import 'package:najot/data/bloc/theme_cubit/theme_cubit.dart';
 import 'package:najot/data/styles/app_themes.dart';
 import 'package:najot/data/utils/app_route_utils.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
-import 'package:najot/ui/pages/faq_page/faq_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 
 import 'data/bloc/language_cubit/language_cubit.dart';
@@ -37,7 +36,7 @@ class App extends StatelessWidget {
           darkTheme: AppThemes.darkTheme(),
           localizationsDelegates: context.localizationDelegates,
           builder: BotToastInit(),
-          home: FaqPage(),
+          home: HomePage(),
           navigatorObservers: [
             BotToastNavigatorObserver(),
           ],

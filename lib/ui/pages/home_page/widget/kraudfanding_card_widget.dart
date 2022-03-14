@@ -78,7 +78,6 @@ class KraudfandingCardWidget extends StatelessWidget {
                             lineHeight: 10.h,
                             animationDuration: 2000,
                             percent: 0.45,
-                            linearStrokeCap: LinearStrokeCap.roundAll,
                             progressColor: AppColorUtils.PERCENT_COLOR,
                             backgroundColor: AppColorUtils.PERCENT_COLOR2,
                           ),

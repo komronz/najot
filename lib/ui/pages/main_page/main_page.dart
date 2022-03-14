@@ -93,6 +93,7 @@ class MainPage extends StatelessWidget {
                                                     KraudFandingPage(),
                                               ));
                                         },
+                                        onTap: () {},
                                       ),
                                       IconAndName(
                                         text: 'Volontyorlik',
@@ -103,6 +104,10 @@ class MainPage extends StatelessWidget {
                                         onTap: () {
                                           // NavigatorService.to.pushNamed(
                                           //     VolunteerPage.routeName);
+                                        },
+                                        onTap: () {
+                                          NavigatorService.to
+                                              .pushNamed(VolunteerPage.routeName);
                                         },
                                       ),
                                       IconAndName(
