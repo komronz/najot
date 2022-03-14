@@ -12,7 +12,7 @@ import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
 import '../../home_page/widget/button_card_widget.dart';
-import 'project_details_page.dart';
+import '../project_details/project_details_page.dart';
 
 class KraudfandingMiniCardWidget extends StatelessWidget {
   KraudfandingMiniCardWidget({
