@@ -4,6 +4,7 @@ import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
 import 'package:najot/ui/pages/counter_page/counter_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
+import 'package:najot/ui/pages/home_page/volunteer_page/volunteer_page.dart';
 import 'package:najot/ui/pages/loading_page/loading_page.dart';
 import 'package:najot/ui/pages/login_page/login_page.dart';
 import 'package:najot/ui/pages/reg_page/reg_page.dart';
@@ -43,6 +44,10 @@ class AppRouteUtils {
       case CharityPage.routeName:
         return MaterialPageRoute(
           builder: (context) => CharityPage(),
+        );
+      case VolunteerPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => VolunteerPage(),
         );
     }
   }

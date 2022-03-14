@@ -13,6 +13,7 @@ class AppColorUtils {
   static const Color PERCENT_COLOR2 = Color(0xFFE8FEF9);
   static const Color DARK6 = Color(0xFF939598);
   static const Color DARK3 = Color(0xFF58595B);
+  static const Color DARK2 = Color(0xFF414042);
   static const Color GREEN_TEXT = Color(0xFF027859);
   static const Color BLUE_PERCENT = Color(0xFF0344A7);
   static const Color LEFT_MENU_BACK = Color(0xFFF9FFFD);
@@ -21,6 +22,7 @@ class AppColorUtils {
   static const Color GREEN_ACCENT1 = Color(0xFFE8FEF2);
   static const Color GREEN_ACCENT2 = Color(0xFFD0FFD8);
   static const Color BLUE_ACCENT1 = Color(0xFFEBF3FF);
+  static const Color GREEN_ACCENT3 = Color(0xFC8ECE5);
 
   // static const Color GREY = Colors.grey;
   static const Color BG_GREY = Color(0xffEDEDED);

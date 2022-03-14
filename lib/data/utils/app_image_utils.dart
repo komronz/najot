@@ -26,11 +26,13 @@ class AppImageUtils {
    static const String HEADPHONE = "assets/app_icons/headphone.svg";
    static const String LOGOUT1 = "assets/app_icons/logout1.svg";
    static const String LOGOUT2 = "assets/app_icons/logout2.svg";
+   static const String UNLIKE = "assets/app_icons/unlike.svg";
    static const String PERSON = "assets/app_icons/person.svg";
    static const String BACK = "assets/app_icons/back.svg";
    static const String MAIN2 = "assets/app_icons/main2.svg";
    static const String SHADOW = "assets/images/shadow.png";
    static const String Slider = "assets/images/slider.png";
+   static const String HELPER = "assets/images/helper.svg";
    static const String IC_SEARCH = "assets/app_icons/search.svg";
 
 }
