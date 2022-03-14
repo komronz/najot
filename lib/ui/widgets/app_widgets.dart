@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
@@ -63,25 +64,6 @@ Widget _baseText({
 }
 
 class AppWidgets {
-  static Widget starTextWidget({
-    required String text,
-    Color? color = AppColorUtils.DARK_6,
-    double? fontSize = 10,
-    FontWeight fontWeight = FontWeight.w400,
-  }) {
-    return Row(
-      children: [
-        textLocale(text: '*', fontSize: 10, color: AppColorUtils.RED),
-        textLocale(
-          text: text,
-          color: color,
-          fontSize: fontSize,
-          fontWeight: fontWeight,
-        ),
-      ],
-    );
-  }
-
   static Widget appButton({
     required String title,
     required VoidCallback onTap,
@@ -97,9 +79,7 @@ class AppWidgets {
         width: width ?? ScreenUtil().screenWidth,
         height: height ?? 50,
         decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(borderRadius),
-        ),
+            color: color, borderRadius: BorderRadius.circular(borderRadius)),
         child: Center(
           child: textLocale(
             textAlign: TextAlign.center,
@@ -111,7 +91,7 @@ class AppWidgets {
         ),
       ),
       onTap: onTap,
-    );
+    ).paddingSymmetric(horizontal: 20);
   }
 
   static Widget appBarMenu(
@@ -188,7 +168,7 @@ class AppWidgets {
                 text: title,
                 fontWeight: FontWeight.w600,
                 color: textColor,
-                fontSize: 20.sp,
+                fontSize: 20,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -236,12 +216,12 @@ class AppWidgets {
     required String text,
     required VoidCallback onTap,
     bool isActive = false,
+    FontWeight fontWeight = FontWeight.w500,
     double fontSize = 15,
     EdgeInsets padding = const EdgeInsets.all(10),
   }) {
     var color = isActive ? AppColorUtils.GREEN_TEXT : AppColorUtils.DARK3;
     var iconSelected = isActive ? iconSelect : icon;
-    var fontWeight = isActive ? FontWeight.w600 : FontWeight.w500;
     return InkWell(
       onTap: onTap,
       child: Padding(

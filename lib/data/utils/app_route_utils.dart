@@ -1,16 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
-import 'package:najot/ui/pages/charity_full_page/charity_full_page.dart';
-import 'package:najot/ui/pages/charity_page/charity_page.dart';
 import 'package:najot/ui/pages/counter_page/counter_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/pages/home_page/volunteer_page/volunteer_page.dart';
 import 'package:najot/ui/pages/loading_page/loading_page.dart';
 import 'package:najot/ui/pages/login_page/login_page.dart';
 import 'package:najot/ui/pages/reg_page/reg_page.dart';
 import 'package:najot/ui/pages/verification_page/verification_page.dart';
+
+import '../../ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
+import '../../ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
 
 class AppRouteUtils {
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
@@ -35,27 +34,21 @@ class AppRouteUtils {
         return MaterialPageRoute(
           builder: (context) => RegPage(),
         );
-      case VerificationPage.routeName:
+        case VerificationPage.routeName:
         return MaterialPageRoute(
           builder: (context) => VerificationPage(),
         );
       case HomePage.routeName:
-        return MaterialPageRoute(
+        return CupertinoPageRoute(
           builder: (context) => HomePage(),
         );
-      case CharityPage.routeName:
+      case ProjectDetailsPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => CharityPage(),
+          builder: (context) => ProjectDetailsPage(),
         );
-      case VolunteerPage.routeName:
+      case KraudFandingPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => VolunteerPage(),
-        );
-      case CharityFullPage.routName:
-        return MaterialPageRoute(
-          builder: (context) => CharityFullPage(
-            model: settings.arguments as CharityModel,
-          ),
+          builder: (context) => KraudFandingPage(),
         );
     }
   }

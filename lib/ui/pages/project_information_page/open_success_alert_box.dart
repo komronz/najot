@@ -28,24 +28,7 @@ Future openSuccessAlertBox(BuildContext context) {
                       height: 14.0.h,
                     ),
                     Image.asset('assets/images/send_success.png'),
-                    // Column(
-                    //   children:[
-                    //     Text.rich(TextSpan(
-                    //     text: "Savolingiz ",
-                    //       style: TextStyle(color: Colors.black,letterSpacing: 0.5, fontSize: 18, fontWeight: FontWeight.w600),
-                    //     children: <InlineSpan>[
-                    //       TextSpan(
-                    //         text: "muavvaqiyatli ",
-                    //         style: TextStyle(color: Color(0xFF0BBF90),
-                    //           decorationStyle: TextDecorationStyle.wavy
-                    //         ),
-                    //       ),
-                    //       TextSpan(text: "yuborildi")
-                    //     ]
-                    //   ),
-                    //   ),
-                    //   ]
-                    // ),
+
                     SizedBox(height: 14.h),
                     Text("Iltimos mualif javobini kuting!",style: TextStyle(color: Color(0xFF6D6E71),fontWeight:FontWeight.w500,fontSize: 14),),
                     SizedBox(height: 20.h),
