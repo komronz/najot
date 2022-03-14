@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
+import 'package:najot/ui/pages/charity_full_page/charity_full_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
 import 'package:najot/ui/pages/counter_page/counter_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
@@ -43,6 +45,12 @@ class AppRouteUtils {
       case CharityPage.routeName:
         return MaterialPageRoute(
           builder: (context) => CharityPage(),
+        );
+      case CharityFullPage.routName:
+        return MaterialPageRoute(
+          builder: (context) => CharityFullPage(
+            model: settings.arguments as CharityModel,
+          ),
         );
     }
   }

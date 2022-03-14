@@ -26,5 +26,9 @@ class AppImageUtils {
    static const String SHADOW = "assets/images/shadow.png";
    static const String Slider = "assets/images/slider.png";
    static const String IC_SEARCH = "assets/app_icons/search.svg";
+   static const String IMG_CHARITY = "assets/images/charity_img.svg";
+   static const String IC_FAVORITE_ADD = "assets/app_icons/favorite_add.svg";
+   static const String IC_FAVORITE_REMO = "assets/app_icons/favorite_remove.svg";
+
 
 }
