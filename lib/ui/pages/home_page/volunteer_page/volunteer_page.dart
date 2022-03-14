@@ -49,7 +49,7 @@ class VolunteerPage extends StatelessWidget {
                   vertical: 20.w,
                 ),
                 AppWidgets.textLocale(
-                    text: "Yango qo'shilganlar",
+                    text: "Yangi qo'shilganlar",
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.DARK2)
@@ -76,7 +76,6 @@ class VolunteerPage extends StatelessWidget {
                     color: AppColorUtils.DARK2)
                     .paddingOnly(
                   left: 15.w,
-                  bottom: 7.w,
                   top: 15.w,
                 ),
                 GridView.count(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
 import 'package:najot/ui/pages/counter_page/counter_page.dart';
+import 'package:najot/ui/pages/home_page/about_announcement_page/about_announcement_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/home_page/volunteer_page/volunteer_page.dart';
 import 'package:najot/ui/pages/loading_page/loading_page.dart';
@@ -48,6 +49,10 @@ class AppRouteUtils {
       case VolunteerPage.routeName:
         return MaterialPageRoute(
           builder: (context) => VolunteerPage(),
+        );
+      case AboutAnnouncementPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => AboutAnnouncementPage(),
         );
     }
   }

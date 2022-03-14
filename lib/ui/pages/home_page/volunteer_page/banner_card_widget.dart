@@ -15,7 +15,7 @@ class BannerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 173.h,
+      height: 173.w ,
       padding: EdgeInsets.all(10.w),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
