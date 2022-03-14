@@ -15,6 +15,7 @@ import 'package:najot/ui/pages/home_page/widget/carousel_slider_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/icon_name_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/kraudfanding_card_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/volunteer_card_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class MainPage extends StatelessWidget {
@@ -43,7 +44,7 @@ class MainPage extends StatelessWidget {
                           InkWell(
                             child: SvgPicture.asset(AppImageUtils.MENU),
                             onTap: () {
-                            HomePage.globalKey.currentState!.openDrawer();
+                              HomePage.globalKey.currentState!.openDrawer();
                             },
                           ),
                           AppWidgets.textLocale(
@@ -77,7 +78,7 @@ class MainPage extends StatelessWidget {
                                       right: 20, top: 10, bottom: 20, left: 20),
                                   child: Row(
                                     mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       IconAndName(
                                         text: 'Kraudfanding',
@@ -85,7 +86,14 @@ class MainPage extends StatelessWidget {
                                         fontWeight: FontWeight.w600,
                                         fontsize: 14,
                                         color: AppColorUtils.KRAUDFANDING,
-                                        onTap: () {},
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    KraudFandingPage(),
+                                              ));
+                                        },
                                       ),
                                       IconAndName(
                                         text: 'Volontyorlik',
@@ -94,8 +102,8 @@ class MainPage extends StatelessWidget {
                                         fontsize: 14,
                                         color: AppColorUtils.VOLONTYOR,
                                         onTap: () {
-                                          NavigatorService.to
-                                              .pushNamed(VolunteerPage.routeName);
+                                          NavigatorService.to.pushNamed(
+                                              VolunteerPage.routeName);
                                         },
                                       ),
                                       IconAndName(
@@ -127,11 +135,11 @@ class MainPage extends StatelessWidget {
                                     child: Row(
                                       children: List.generate(
                                         state.sliderList.length,
-                                            (index) => Container(
+                                        (index) => Container(
                                           margin: EdgeInsets.only(left: 10.w),
                                           child: KraudfandingCardWidget(
                                             sliderModel:
-                                            state.sliderList[index],
+                                                state.sliderList[index],
                                             visible: true,
                                           ),
                                         ),
@@ -154,11 +162,11 @@ class MainPage extends StatelessWidget {
                                     child: Row(
                                       children: List.generate(
                                         state.sliderList.length,
-                                            (index) => Container(
+                                        (index) => Container(
                                           margin: EdgeInsets.only(left: 10.w),
                                           child: VolunteerCardWidget(
                                             sliderModel:
-                                            state.sliderList[index],
+                                                state.sliderList[index],
                                           ),
                                         ),
                                       ),
@@ -178,11 +186,11 @@ class MainPage extends StatelessWidget {
                                     child: Row(
                                       children: List.generate(
                                         state.sliderList.length,
-                                            (index) => Container(
+                                        (index) => Container(
                                           margin: EdgeInsets.only(left: 10.w),
                                           child: KraudfandingCardWidget(
                                             sliderModel:
-                                            state.sliderList[index],
+                                                state.sliderList[index],
                                             visible: false,
                                           ),
                                         ),
