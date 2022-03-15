@@ -9,5 +9,20 @@
     "done": "Bajarildi",
     "help_type": "Yordam turi",
     "Executable_date": "Bajariladigan sana",
-    "sum": "{} so'm"
+    "sum": "{} so'm",
+    "My Profile": "Mening profilim",
+    "Degree": "Daraja",
+    "Oddiy foydalanuvchi": "Oddiy foydalanuvchi",
+    "Ism": "Ism",
+    "Familiya": "Familiya",
+    "Jinsi": "Jinsi",
+    "Erkak": "Erkak",
+    "Ayol": "Ayol",
+    "Telefon raqami": "Telefon raqami",
+    "Tahrirlash": "Tahrirlash",
+    "Saqlash": "Saqlash",
+    "Yangi telefon raqami": "Yangi telefon raqami",
+    "Kod Yuborish": "Kod Yuborish",
+    "Tasdiqlash": "Tasdiqlash"
+
 }

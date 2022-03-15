@@ -39,7 +39,13 @@ class AppImageUtils {
    static const String IMG_CHARITY = "assets/images/charity_img.svg";
    static const String IC_FAVORITE_ADD = "assets/app_icons/favorite_add.svg";
    static const String IC_FAVORITE_REMO = "assets/app_icons/favorite_remove.svg";
+   static const String CHECK = "assets/app_icons/check.svg";
+   static const String BACK_TO = "assets/app_icons/backto.svg";
+   static const String CHECK_SMALL = "assets/app_icons/checksmall.svg";
+   static const String VOLONTORGREEN = "assets/app_icons/volontorgreen.svg";
+   static const String REMOVE = "assets/app_icons/remove.svg";
    static const String Search="assets/images/search.png";
    static const String Splash2="assets/images/splash_2.png";
    static const String DEF_PERSON = "assets/images/person_def.png";
+
 }
