@@ -26,9 +26,6 @@ class App extends StatelessWidget {
           navigatorKey: NavigatorService.to.key,
           title: "Najot",
           debugShowCheckedModeBanner: false,
-          // initialRoute: StorageService.to.getSignedIn()
-          //     ? CounterPage.routeName
-          //     : CounterPage.routeName,
           onGenerateRoute: AppRouteUtils.onGenerateRoute,
           supportedLocales: context.supportedLocales,
           themeMode: ThemeCubit.to.state.themeMode,

@@ -42,4 +42,7 @@ class AppImageUtils {
    static const String Search="assets/images/search.png";
    static const String Splash2="assets/images/splash_2.png";
    static const String DEF_PERSON = "assets/images/person_def.png";
+   static const String FAQ_IMG = "assets/images/faq_img.svg";
+   static const String IC_FAQ_OPEN = "assets/app_icons/faq_open_icon.svg";
+
 }
