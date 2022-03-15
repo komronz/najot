@@ -1,17 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../data/localization/locale_keys.g.dart';
-import '../../../data/services/navigator_service.dart';
 import '../../../data/utils/app_color_utils.dart';
 import '../../../data/utils/app_image_utils.dart';
 import '../../widgets/app_widgets.dart';
 import '../home_page/home_page.dart';
-import 'my_profile_pages/number_update_page.dart';
-import 'my_profile_pages/user_degree_page.dart';
-import 'my_profile_pages/user_update_page.dart';
 
 class MyProfilePage extends StatefulWidget {
   static const String routeName = "/myProfilePage";
@@ -37,9 +32,8 @@ class _MyProfilePageState extends State<MyProfilePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
-                      child: AppWidgets.imageSvg(path:AppImageUtils.MENU),
+                      child: SvgPicture.asset(AppImageUtils.MENU),
                       onTap: () {
-
                       },
                     ),
                     AppWidgets.textLocale(
