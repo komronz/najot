@@ -13,5 +13,6 @@ class DIService {
     await LanguageCubit.init();
     await HomeCubit.init();
     await ThemeCubit.init();
+
   }
 }

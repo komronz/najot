@@ -5,7 +5,7 @@ import 'package:najot/data/bloc/kraudfanding_cubit/kraud_fanding_cubit.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'kraudfanding_widget/kraudfanding_mini_card_widget.dart';
 import 'kraudfanding_widget/kraudfanding_widgets.dart';
-
+///todo stless
 class KraudFandingPage extends StatefulWidget {
   static const String routeName = "/kraudFandingPage";
 
@@ -276,8 +276,6 @@ class _KraudFandingPageState extends State<KraudFandingPage> {
                       ),
                     ),
                   ],
-
-
                     ),
               );
             },
