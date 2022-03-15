@@ -13,11 +13,10 @@ class DrawerBody extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    AppPageType pageType=context.read<AppPageCubit>().state.pageType;
+    AppPageType pageType = context.read<AppPageCubit>().state.pageType;
     return Container(
       width: 266.w,
       decoration: BoxDecoration(
@@ -186,7 +185,12 @@ class DrawerBody extends StatelessWidget {
                       horizontal: 18.w,
                       vertical: 14,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      context
+                          .read<AppPageCubit>()
+                          .changePage(pageType: AppPageType.FAQ);
+                      Navigator.pop(context);
+                    },
                   ),
                   AppWidgets.rowIconText(
                     icon: AppImageUtils.ABOUT_US,

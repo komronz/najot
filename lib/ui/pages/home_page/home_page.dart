@@ -17,15 +17,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) => cubit,
-      child: SafeArea(
-        child: Scaffold(
-          key: globalKey,
-          drawer: DrawerBody(),
-          body: BlocBuilder<AppPageCubit, AppPageState>(
-            builder: (context, state) {
-              return buildBody(state);
-            },
-          ),
+      child: Scaffold(
+        key: globalKey,
+        drawer: DrawerBody(),
+        body: BlocBuilder<AppPageCubit, AppPageState>(
+          builder: (context, state) {
+            return buildBody(state);
+          },
         ),
       ),
     );

@@ -26,8 +26,7 @@ class AppBarWithTitle extends StatelessWidget implements PreferredSizeWidget {
         children: [
           InkWell(
             child: Container(
-              width: 31.w,
-              height: 34.w,
+              padding: EdgeInsets.all(5),
               decoration: BoxDecoration(
                 color: AppColorUtils.BACK_BUTTON,
                 borderRadius: BorderRadius.circular(10),
@@ -35,7 +34,7 @@ class AppBarWithTitle extends StatelessWidget implements PreferredSizeWidget {
               child: Icon(
                 Icons.arrow_back_ios_rounded,
                 color: AppColorUtils.IC_GREEN2,
-                size: 20.w,
+                size: 20,
               ),
             ),
             onTap: onPress,
