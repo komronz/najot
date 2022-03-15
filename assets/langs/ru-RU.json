@@ -10,6 +10,21 @@
     "help_type": "Тип поддержки",
     "Executable_date": "Дата исполняемый",
     "sum": "{} сум",
+    "My Profile": "Мой профайл",
+    "Degree": "Степень",
+    "Oddiy foydalanuvchi": "Обычный пользователь",
+    "Ism": "Имя",
+    "Familiya": "Фамилия",
+    "Jinsi": "Пол",
+    "Erkak": "Мужчина",
+    "Ayol": "Женщина",
+    "Telefon raqami": "Телефонный номер",
+    "Tahrirlash": "Редактировать",
+    "Saqlash": "Сохранять",
+    "Yangi telefon raqami": "Новый номер телефона",
+    "Kod Yuborish": "Отправить код",
+    "Tasdiqlash": "Подтверждение"
+    "sum": "{} сум",
     "str_registration": "Ro'yxatdan o'tish"
 
 

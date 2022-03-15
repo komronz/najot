@@ -18,6 +18,8 @@ import 'package:najot/ui/pages/home_page/widget/volunteer_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../home_page/volunteer_page/volunteer_page.dart';
+
 class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);
   static const String routeName = "/homePage";
@@ -101,10 +103,12 @@ class MainPage extends StatelessWidget {
                                         fontWeight: FontWeight.w600,
                                         fontsize: 14,
                                         color: AppColorUtils.VOLONTYOR,
+
                                         onTap: () {
                                           NavigatorService.to
                                               .pushNamed(VolunteerPage.routeName);
                                         },
+
                                       ),
                                       IconAndName(
                                         text: 'Xayriya',
