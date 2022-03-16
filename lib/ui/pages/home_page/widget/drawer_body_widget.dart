@@ -1,11 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
+import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -118,11 +120,11 @@ class DrawerBody extends StatelessWidget {
                     ),
                     child: ButtonCard(
                       onPress: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => AuthPage(),
-                            ));
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: (context) => AuthPage(),
+                        //     ));
                       },
                       text: "Volontyor bo'lish",
                       width: 226.w,
@@ -163,10 +165,10 @@ class DrawerBody extends StatelessWidget {
                       vertical: 14,
                     ),
                     onTap: () {
-                      context
-                          .read<AppPageCubit>()
-                          .changePage(pageType: AppPageType.CHARITY);
-                      Navigator.pop(context);
+                      // context
+                      //     .read<AppPageCubit>()
+                      //     .changePage(pageType: AppPageType.CHARITY);
+                      // Navigator.pop(context);
                     },
                   ),
                   AppWidgets.rowIconText(
@@ -275,7 +277,9 @@ class DrawerBody extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 20.w),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      exit(0);
+                    },
                     child: Container(
                       height: 44.h,
                       width: 120.w,
@@ -310,7 +314,7 @@ class DrawerBody extends StatelessWidget {
               ],
             )
           ],
-        ),
+        ).paddingOnly(top: 20.w),
       ),
     );
   }

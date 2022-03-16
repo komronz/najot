@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/kraudfanding_applied_user_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/kraudfanding_authot_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/kraudfanding_price_widget.dart';
@@ -28,12 +29,13 @@ class ProjectDetailsPage extends StatefulWidget {
 class _ProjectDetailsState extends State<ProjectDetailsPage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
       backgroundColor: AppColorUtils.BACKGROUND,
       appBar: AppBarWithTitle(
         title: 'Loyiha haqida',
-        onPress: () {},
+        onPress: () {
+          NavigatorService.to.pop();
+        },
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -146,7 +148,6 @@ class _ProjectDetailsState extends State<ProjectDetailsPage> {
             ),
             Container(
               padding: EdgeInsets.symmetric(vertical: 20.w),
-
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(11.0)),
@@ -183,19 +184,19 @@ class _ProjectDetailsState extends State<ProjectDetailsPage> {
                     ).paddingOnly(left: 15, top: 8),
                     SizedBox(
                       height: 1000,
-                      child: TabBarView(children:
-                      List.generate(
-
-                        widget.cardModel.infoModel.length,
+                      child: TabBarView(
+                        children: List.generate(
+                            widget.cardModel.infoModel.length,
                             (index) => Column(
-                              children: List.generate(
-                                widget.cardModel.infoModel.length,
+                                  children: List.generate(
+                                    widget.cardModel.infoModel.length,
                                     (index) => listDetail(
-                                widget.cardModel.infoModel[index].title,
-                                widget.cardModel.infoModel[index].text,
-                              ).paddingSymmetric(horizontal: 20.w),),
-                            )
-                      ),),
+                                      widget.cardModel.infoModel[index].title,
+                                      widget.cardModel.infoModel[index].text,
+                                    ).paddingSymmetric(horizontal: 20.w),
+                                  ),
+                                )),
+                      ),
                     ),
                     SizedBox(
                       height: 20.h,
@@ -253,6 +254,6 @@ class _ProjectDetailsState extends State<ProjectDetailsPage> {
           ],
         ),
       ),
-    ));
+    );
   }
 }
