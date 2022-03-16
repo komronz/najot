@@ -24,5 +24,8 @@
     "New_phone_number": "Новый номер телефона",
     "Send_code": "Отправить код",
     "Confirmation": "Подтверждение",
-    "send_again": "Отправь снова"
+    "send_again": "Отправь снова",
+    "write_operator": "Напишите оператору",
+    "no_messages_found_yet": "Сообщений пока не найдено",
+    "send_message": "Отправить сообщение"
 }

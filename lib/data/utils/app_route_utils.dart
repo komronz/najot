@@ -20,6 +20,7 @@ import '../../ui/pages/my_profil_page/my_profile_pages/number_update_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/number_update_step1_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/user_degree_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/user_update_page.dart';
+import '../../ui/pages/sms_with_operator_page/sms_with_operator_page.dart';
 
 class AppRouteUtils {
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
@@ -97,6 +98,10 @@ class AppRouteUtils {
       case UserDegreePage.routeName:
         return MaterialPageRoute(
           builder: (context) => UserDegreePage(),
+        );
+      case SmsWithOperatorPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => SmsWithOperatorPage(),
         );
     }
   }

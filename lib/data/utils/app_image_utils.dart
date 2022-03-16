@@ -44,6 +44,8 @@ class AppImageUtils {
    static const String CHECK_SMALL = "assets/app_icons/checksmall.svg";
    static const String VOLONTORGREEN = "assets/app_icons/volontorgreen.svg";
    static const String REMOVE = "assets/app_icons/remove.svg";
+   static const String DELETE = "assets/app_icons/delete_icon.svg";
+   static const String MESSAGE = "assets/app_icons/message_rounded.svg";
    static const String Search="assets/images/search.png";
    static const String Splash2="assets/images/splash_2.png";
    static const String DEF_PERSON = "assets/images/person_def.png";

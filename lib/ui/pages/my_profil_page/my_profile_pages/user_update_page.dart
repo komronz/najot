@@ -26,7 +26,6 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
           children: [
             Container(
               color: Color(0xFFF6FCFA),
-              height: 80,
               padding: EdgeInsets.all(20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,9 +48,8 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                 ],
               ),
             ),
-            Expanded(
+            SingleChildScrollView(
               child: Container(
-                height: 758.h,
                 width: 375.w,
                 padding: EdgeInsets.only(left: 19, right: 20),
                 decoration: BoxDecoration(
@@ -60,15 +58,12 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                 ),
                 child: Column(
                   children: [
-                    SizedBox(height: 25.h),
                     Container(
                       width: 107.w,
                       height: 129.h,
                       child: SvgPicture.asset(AppImageUtils.USERADD),
-                    ),
-                    SizedBox(height: 24.h),
+                    ).paddingOnly(top: 25, bottom: 24),
                     Container(
-                      height: 275.h,
                       width: 336.w,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,12 +72,10 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                               text: "Name",
                               color: Color(0xFF6D6E71),
                               fontSize: 13.sp,
-                              fontWeight: FontWeight.w400),
-                          SizedBox(height: 8.h),
+                              fontWeight: FontWeight.w400).paddingOnly(bottom: 8.h),
                           Container(
-                            height: 48.h,
                             padding:
-                                EdgeInsets.only(left: 18, top: 10, bottom: 3),
+                                EdgeInsets.only(left: 18),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
                                 color: Color(0xFFFDFFFF),
@@ -100,8 +93,7 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                                     fontWeight: FontWeight.w500),
                               ),
                             ),
-                          ),
-                          SizedBox(height: 23.h),
+                          ).paddingOnly(bottom: 23.h),
                           AppWidgets.textLocale(
                               text: "Surname",
                               color: Color(0xFF6D6E71),
@@ -109,9 +101,8 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                               fontWeight: FontWeight.w400),
                           SizedBox(height: 8.h),
                           Container(
-                            height: 48.h,
                             padding:
-                                EdgeInsets.only(left: 18, top: 10, bottom: 3),
+                                EdgeInsets.only(left: 18),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
                                 color: Color(0xFFFDFFFF),
@@ -129,8 +120,7 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                                     fontWeight: FontWeight.w500),
                               ),
                             ),
-                          ),
-                          SizedBox(height: 20.h),
+                          ).paddingOnly(bottom: 20.h),
                           AppWidgets.textLocale(
                               text: "Gender",
                               color: Color(0xFF6D6E71),
@@ -156,7 +146,6 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                                   children: [
                                     Container(
                                       padding: EdgeInsets.all(2.0),
-
                                       height: 24.h,
                                       width: 24.w,
                                       decoration: BoxDecoration(
@@ -184,8 +173,7 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                                         fontWeight: FontWeight.w500)
                                   ],
                                 ),
-                              ),
-                              SizedBox(width: 30.w),
+                              ).paddingOnly(right: 30.w),
                               Container(
                                 height: 48.h,
                                 width: 103.w,
@@ -225,12 +213,10 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                           ),
                         ],
                       ),
-                    ),
-                    SizedBox(height: 24.h),
+                    ).paddingOnly(bottom: 24.h),
                     Container(
-                      height: 48.h,
                       width: 335.w,
-                      padding: EdgeInsets.only( top: 10, bottom: 5),
+                      padding: EdgeInsets.only( top: 10, bottom: 15,),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           color: Color(0xFF0BBF90),
