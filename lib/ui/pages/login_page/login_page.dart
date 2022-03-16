@@ -85,7 +85,7 @@ class LoginPage extends StatelessWidget {
                     context.read<LoginBloc>().add(LoginSignUp());
                   },
                   hasError: context.read<LoginBloc>().state.hasError,
-                )
+                ).paddingSymmetric(horizontal: 20)
               ],
             ),
           ),

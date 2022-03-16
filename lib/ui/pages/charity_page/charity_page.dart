@@ -35,7 +35,9 @@ class CharityPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBarWithTitle(
         title: "Xayriya",
-        onPress: () {},
+        onPress: () {
+          NavigatorService.to.pop();
+        },
       ),
       backgroundColor: AppColorUtils.BACKGROUND,
       body: SingleChildScrollView(

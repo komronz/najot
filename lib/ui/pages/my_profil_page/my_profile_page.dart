@@ -2,13 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:najot/ui/pages/home_page/home_page.dart';
 
-import '../../../data/localization/locale_keys.g.dart';
 import '../../../data/services/navigator_service.dart';
 import '../../../data/utils/app_color_utils.dart';
 import '../../../data/utils/app_image_utils.dart';
 import '../../widgets/app_widgets.dart';
-import '../home_page/home_page.dart';
 import 'my_profile_pages/number_update_page.dart';
 import 'my_profile_pages/user_degree_page.dart';
 import 'my_profile_pages/user_update_page.dart';
@@ -39,6 +38,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     InkWell(
                       child: SvgPicture.asset(AppImageUtils.MENU),
                       onTap: () {
+                        HomePage.globalKey.currentState!.openDrawer();
                       },
                     ),
                     AppWidgets.textLocale(
@@ -78,22 +78,32 @@ class _MyProfilePageState extends State<MyProfilePage> {
                       SizedBox(height: 12.h),
                       Container(
                         height: 20.h,
-                        width: 65.w,
-                        child: Row(
-                          crossAxisAlignment:CrossAxisAlignment.start,
-                          children: [
-                            AppWidgets.textLocale(text: "degree",fontSize: 12.sp,color: Color(0xFFBCBEC0),fontWeight: FontWeight.w400),
-                            Container(
-                              padding: EdgeInsets.only(top: 1,bottom: 1),
-                                child: InkWell(
-                                  onTap: (){
-                                    NavigatorService.to
-                                        .pushNamed(UserDegreePage.routeName);
-                                  },
-                                    child: SvgPicture.asset(AppImageUtils.FAQ,color: Color(0xFF007A58),)))
-                          ],
-                        ),
+                      width: 65.w,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppWidgets.textLocale(
+                            text: "degree",
+                            fontSize: 12.sp,
+                            color: Color(0xFFBCBEC0),
+                            fontWeight: FontWeight.w400,
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(top: 1, bottom: 1),
+                            child: InkWell(
+                              onTap: () {
+                                NavigatorService.to
+                                    .pushNamed(UserDegreePage.routeName);
+                              },
+                              child: SvgPicture.asset(
+                                AppImageUtils.FAQ,
+                                color: Color(0xFF007A58),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
+                    ),
                       SizedBox(height: 6.h),
                       Container(
                         height: 29.h,
@@ -103,9 +113,15 @@ class _MyProfilePageState extends State<MyProfilePage> {
                           children: [
                             SvgPicture.asset(AppImageUtils.PERSON),
                             Container(
-                              margin: EdgeInsets.only(left: 5),
-                                child: AppWidgets.textLocale(text: "Normal_user",color: Color(0xFF0344A7),fontSize: 16.sp,fontWeight: FontWeight.w600),)
-                          ],
+                            margin: EdgeInsets.only(left: 5),
+                            child: AppWidgets.textLocale(
+                              text: "Normal_user",
+                              color: Color(0xFF0344A7),
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          )
+                        ],
                         ),
 
                       ),
@@ -133,13 +149,13 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                   hintText: "Fakhriyor",
                                   border: InputBorder.none,
                                   hintStyle:
-                                  TextStyle(color: Color(0xFFBCBEC0), fontSize: 15.sp,fontWeight: FontWeight.w500),
+                                  TextStyle(color: Color(0xFFBCBEC0), fontSize: 15.sp,fontWeight: FontWeight.w500,),
                                 ),
                               ),
 
                             ),
                             SizedBox(height: 22.h),
-                            AppWidgets.textLocale(text: "Surname",color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400),
+                            AppWidgets.textLocale(text: "Surname",color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400,),
                             SizedBox(height: 7.h),
                             Container(
                               height: 48.h,

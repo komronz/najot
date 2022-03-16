@@ -84,16 +84,24 @@ class DrawerBody extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 20.h, right: 15.w),
-                        child: Align(
-                          alignment: Alignment.topRight,
-                          child: SizedBox(
-                            height: 33.w,
-                            width: 33.w,
-                            child: SvgPicture.asset(AppImageUtils.EDIT),
+                      GestureDetector(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 20.h, right: 15.w),
+                          child: Align(
+                            alignment: Alignment.topRight,
+                            child: SizedBox(
+                              height: 33.w,
+                              width: 33.w,
+                              child: SvgPicture.asset(AppImageUtils.EDIT),
+                            ),
                           ),
                         ),
+                        onTap: () {
+                          context
+                              .read<AppPageCubit>()
+                              .changePage(pageType: AppPageType.PROFILE);
+                          Navigator.pop(context);
+                        },
                       )
                     ],
                   ),

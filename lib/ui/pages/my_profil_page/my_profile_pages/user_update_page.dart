@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:najot/data/extensions/widget_padding_extension.dart';
 
-import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
@@ -95,18 +93,20 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                                 hintText: "Fakhriyor",
                                 border: InputBorder.none,
                                 hintStyle: TextStyle(
-                                    color: Color(0xFFBCBEC0),
-                                    fontSize: 15.sp,
-                                    fontWeight: FontWeight.w500),
+                                  color: Color(0xFFBCBEC0),
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                           ),
                           SizedBox(height: 23.h),
                           AppWidgets.textLocale(
-                              text: "Surname",
-                              color: Color(0xFF6D6E71),
-                              fontSize: 13.sp,
-                              fontWeight: FontWeight.w400),
+                            text: "Surname",
+                            color: Color(0xFF6D6E71),
+                            fontSize: 13.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
                           SizedBox(height: 8.h),
                           Container(
                             height: 48.h,
@@ -178,10 +178,11 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                                       ),
                                     ),
                                     AppWidgets.textLocale(
-                                        text: "Man",
-                                        fontSize: 15.sp,
-                                        color: Color(0xFF048D6A),
-                                        fontWeight: FontWeight.w500)
+                                      text: "Man",
+                                      fontSize: 15.sp,
+                                      color: Color(0xFF048D6A),
+                                      fontWeight: FontWeight.w500,
+                                    )
                                   ],
                                 ),
                               ),

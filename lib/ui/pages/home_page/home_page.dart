@@ -5,6 +5,7 @@ import 'package:najot/ui/pages/about_page/about_page.dart';
 import 'package:najot/ui/pages/faq_page/faq_page.dart';
 import 'package:najot/ui/pages/home_page/widget/drawer_body_widget.dart';
 import 'package:najot/ui/pages/main_page/main_page.dart';
+import 'package:najot/ui/pages/my_profil_page/my_profile_page.dart';
 import 'package:najot/ui/pages/rules_page/rules_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -41,6 +42,8 @@ class HomePage extends StatelessWidget {
         return RulesPage();
       case AppPageType.ABOUT:
         return AboutPage();
+        case AppPageType.PROFILE:
+        return MyProfilePage();
       default:
         return Container();
     }

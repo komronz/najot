@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/volunteer_bloc/volunteer_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/home_page/volunteer_page/banner_card_widget.dart';
 import 'package:najot/ui/pages/home_page/volunteer_page/new_volunteer_card.dart';
@@ -33,7 +34,9 @@ class VolunteerPage extends StatelessWidget {
                       padding: EdgeInsets.only(top: 20),
                       child: AppWidgets.appBarWidget(
                         title: "Volontyorlik",
-                        onTap: () {},
+                        onTap: () {
+                          NavigatorService.to.pop();
+                        },
                       ),
                     ),
                     AppSearchWidget(
