@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/kraudfanding_authot_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/tabbar_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -181,7 +179,6 @@ Widget projectHeader(BuildContext context) {
                   lineHeight: 7.h,
                   animationDuration: 2000,
                   percent: 0.60,
-                  linearStrokeCap: LinearStrokeCap.roundAll,
                   progressColor: AppColorUtils.PERCENT_COLOR,
                   backgroundColor: AppColorUtils.WHITE,
                 ),
