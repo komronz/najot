@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_page.dart';
 
 import '../../../../data/services/navigator_service.dart';
@@ -21,10 +22,8 @@ class UserDegreePage extends StatelessWidget {
           children: [
             Container(
               color: Color(0xFFF6FCFA),
-              height: 80,
               padding: EdgeInsets.all(20),
               child: Row(
-
                 children: [
                   Container(
                     child: InkWell(
@@ -46,7 +45,6 @@ class UserDegreePage extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                height: 758.h,
                 width: 375.w,
                 padding: EdgeInsets.only(left: 20, right: 20),
                 decoration: BoxDecoration(
@@ -57,20 +55,16 @@ class UserDegreePage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 18.h),
                       Container(
                         child: AppWidgets.textLocale(text: "Daraja turlari",fontSize: 22.sp,fontWeight: FontWeight.w600,color: Color(0xFF414042)),
-                      ),
-                      SizedBox(height: 10.h),
+                      ).paddingOnly(top: 18.h, bottom: 10.h),
                       Container(
                         child: Text("Lorem Ipsum is simply dummy text of the printing "
                             "and typesetting industry. "
                             "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
                           style:TextStyle(color: Color(0xFF58595B),fontWeight: FontWeight.w400,fontSize: 16.sp,height: 1.5),),
-                      ),
-                      SizedBox(height: 24.h),
+                      ).paddingOnly(bottom: 24.h),
                       Container(
-                        height: 28.h,
                         width: 200.w,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -82,8 +76,7 @@ class UserDegreePage extends StatelessWidget {
                           ],
                         ),
 
-                      ),
-                      SizedBox(height: 12.h),
+                      ).paddingOnly(bottom: 12.h),
                       Container(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,7 +84,6 @@ class UserDegreePage extends StatelessWidget {
                             AppWidgets.textLocale(text: "Imkoniyatlari",color: Color(0xFF58595B),fontSize: 13.sp,fontWeight: FontWeight.w600),
                             SizedBox(height: 12.h),
                             Container(
-                              height: 37.h,
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -109,7 +101,7 @@ class UserDegreePage extends StatelessWidget {
                                       )
                                     ),
                                      child: SvgPicture.asset(AppImageUtils.CHECK_SMALL),
-                                  ),
+                                  ).paddingOnly(bottom: 8.h),
                                   SizedBox(width: 8),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -119,13 +111,10 @@ class UserDegreePage extends StatelessWidget {
                                       Text("(kiyimlarni hayriya qilish bundan mustasno)",style: TextStyle(fontSize: 12.sp,color: Color(0xFF6D6E71),fontWeight: FontWeight.w400),),
                                     ],
                                   ),
-
                                 ],
                               ),
-                            ),
-                            SizedBox(height: 13.h),
+                            ).paddingOnly(bottom: 13.h),
                             Container(
-                              height: 37.h,
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -149,9 +138,8 @@ class UserDegreePage extends StatelessWidget {
 
                                 ],
                               ),
-                            ),
+                            ).paddingOnly(bottom: 13.h),
                             Container(
-                              height: 37.h,
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -175,9 +163,8 @@ class UserDegreePage extends StatelessWidget {
 
                                 ],
                               ),
-                            ),
+                            ).paddingOnly(bottom: 13.h),
                             Container(
-                              height: 37.h,
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -201,9 +188,8 @@ class UserDegreePage extends StatelessWidget {
 
                                 ],
                               ),
-                            ),
+                            ).paddingOnly(bottom: 13.h),
                             Container(
-                              height: 37.h,
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -230,11 +216,10 @@ class UserDegreePage extends StatelessWidget {
                             ),
                           ],
                         ),
-                      ),
+                      ).paddingOnly(bottom: 18.h),
 
-                      SizedBox(height: 10.h),
+
                       Container(
-                        height: 28.h,
                         width: 185.w,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -246,8 +231,7 @@ class UserDegreePage extends StatelessWidget {
                           ],
                         ),
 
-                      ),
-                      SizedBox(height: 12.h),
+                      ).paddingOnly(bottom: 12.h),
                       Container(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -280,7 +264,6 @@ class UserDegreePage extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              height: 40.h,
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -304,10 +287,8 @@ class UserDegreePage extends StatelessWidget {
 
                                 ],
                               ),
-                            ),
-                            SizedBox(height: 5.h),
+                            ).paddingOnly(bottom: 20.h),
                             Container(
-                              height: 37.h,
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -331,9 +312,8 @@ class UserDegreePage extends StatelessWidget {
 
                                 ],
                               ),
-                            ),
+                            ).paddingOnly(bottom: 15.h),
                             Container(
-                              height: 37.h,
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -357,10 +337,8 @@ class UserDegreePage extends StatelessWidget {
 
                                 ],
                               ),
-                            ),
-                            SizedBox(height: 5.h),
+                            ).paddingOnly(bottom: 15.h),
                             Container(
-                              height: 37.h,
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -384,7 +362,7 @@ class UserDegreePage extends StatelessWidget {
 
                                 ],
                               ),
-                            ),
+                            ).paddingOnly(bottom: 15.h),
                           ],
                         ),
                       ),
