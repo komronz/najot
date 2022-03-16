@@ -10,14 +10,13 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
+import 'package:najot/ui/pages/home_page/volunteer_page/volunteer_page.dart';
 import 'package:najot/ui/pages/home_page/widget/carousel_slider_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/icon_name_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/kraudfanding_card_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/volunteer_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-
-import '../home_page/volunteer_page/volunteer_page.dart';
 
 class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);
@@ -36,26 +35,19 @@ class MainPage extends StatelessWidget {
                 color: AppColorUtils.BACKGROUND,
                 child: Column(
                   children: [
-                    Container(
-                      height: 80,
-                      padding: EdgeInsets.all(20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          InkWell(
-                            child: SvgPicture.asset(AppImageUtils.MENU),
-                            onTap: () {
-                              HomePage.globalKey.currentState!.openDrawer();
-                            },
-                          ),
-                          AppWidgets.textLocale(
-                            text: LocaleKeys.main,
-                            fontSize: 26,
-                            fontWeight: FontWeight.w600,
-                          ),
-                          SvgPicture.asset(AppImageUtils.NOTIFICATION)
-                        ],
-                      ),
+                    AppWidgets.appBarMenu(
+                      title: "Asosiy",
+                      onTapMenu: () {
+                        HomePage.globalKey.currentState!.openDrawer();
+                      },
+                      visibleIcon: true,
+                      onTapIcon: (){
+
+                      },
+                      icon:AppImageUtils.NOTIFICATION,
+
+
+
                     ),
                     Expanded(
                       child: SingleChildScrollView(
