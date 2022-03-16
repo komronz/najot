@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
+import 'package:najot/data/extensions/widget_padding_extension.dart';
 
 class UserUpdatePage extends StatefulWidget {
   static const String routeName = "/userUpdatePage";
