@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/volunteer_bloc/volunteer_cubit.dart';
-import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/home_page/volunteer_page/banner_card_widget.dart';
 import 'package:najot/ui/pages/home_page/volunteer_page/new_volunteer_card.dart';
+import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_search_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+import 'package:najot/data/extensions/widget_padding_extension.dart';
 
 class VolunteerPage extends StatelessWidget {
   VolunteerPage({Key? key}) : super(key: key);
@@ -20,6 +20,10 @@ class VolunteerPage extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context) => volunteerCubit,
       child: Scaffold(
+        appBar: AppBarWithTitle(
+          title: 'Volontyorlik',
+          onPress: () {},
+        ),
         backgroundColor: AppColorUtils.BACKGROUND,
         body: BlocBuilder<VolunteerCubit, VolunteerState>(
           builder: (context, state) {
@@ -29,16 +33,6 @@ class VolunteerPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      height: 80,
-                      padding: EdgeInsets.only(top: 20),
-                      child: AppWidgets.appBarWidget(
-                        title: "Volontyorlik",
-                        onTap: () {
-                          NavigatorService.to.pop();
-                        },
-                      ),
-                    ),
                     AppSearchWidget(
                       onChange: (v) {},
                       search: () {},
@@ -48,7 +42,7 @@ class VolunteerPage extends StatelessWidget {
                       vertical: 20.w,
                     ),
                     AppWidgets.textLocale(
-                            text: "Yango qo'shilganlar",
+                            text: "Yangi qo'shilganlar",
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w600,
                             color: AppColorUtils.DARK2)
@@ -74,7 +68,6 @@ class VolunteerPage extends StatelessWidget {
                             color: AppColorUtils.DARK2)
                         .paddingOnly(
                       left: 15.w,
-                      bottom: 7.w,
                       top: 15.w,
                     ),
                     GridView.count(

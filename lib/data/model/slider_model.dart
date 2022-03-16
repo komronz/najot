@@ -18,4 +18,6 @@ class SliderModel{
     SliderModel(AppImageUtils.Slider, "Lorem Ipsum is simple",false),
   ];
 
+
+
 }
