@@ -72,7 +72,7 @@ class UserDegreePage extends StatelessWidget {
                       SizedBox(height: 24.h),
                       Container(
                         height: 28.h,
-                        width: 185.w,
+                        width: 200.w,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [

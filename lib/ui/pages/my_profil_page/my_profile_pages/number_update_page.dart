@@ -31,7 +31,7 @@ class NumberUpdatePage extends StatelessWidget {
                     onTap: () {},
                   ),
                   AppWidgets.textLocale(
-                      text: "Tahrirlash",
+                      text: "Edit",
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
                       color: Color(0xFF414042)),
@@ -59,12 +59,12 @@ class NumberUpdatePage extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AppWidgets.textLocale(text: "Telefon raqami",color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400),
+                        AppWidgets.textLocale(text: "Phone_number",color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400),
                         SizedBox(height: 8.h),
                         Container(
                           height: 48.h,
                           width: 335.w,
-                          padding: EdgeInsets.only(left: 18,top: 18,bottom: 10),
+                          padding: EdgeInsets.only(left: 18,top: 10,bottom: 3),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12),
                               color: Color(0xFFEDFCF9),
@@ -77,7 +77,7 @@ class NumberUpdatePage extends StatelessWidget {
                               hintText: "(+998)97 628 28 82",
                               border: InputBorder.none,
                               hintStyle:
-                              TextStyle(color: Color(0xFFBCBEC0), fontSize: 16,fontWeight: FontWeight.w500),
+                              TextStyle(color: Color(0xFFBCBEC0), fontSize: 15.sp,fontWeight: FontWeight.w500),
                             ),
                           ),
 
@@ -92,7 +92,7 @@ class NumberUpdatePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           AppWidgets.textLocale(
-                              text: "Yangi telefon raqami",
+                              text: "New_phone_number",
                               color: Color(0xFF6D6E71),
                               fontSize: 13.sp,
                               fontWeight: FontWeight.w400),
@@ -100,7 +100,7 @@ class NumberUpdatePage extends StatelessWidget {
                           Container(
                             height: 48.h,
                             padding:
-                            EdgeInsets.only(left: 18, top: 18, bottom: 6),
+                            EdgeInsets.only(left: 18, top: 10, bottom: 3),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
                                 color: Color(0xFFFDFFFF),
@@ -128,12 +128,12 @@ class NumberUpdatePage extends StatelessWidget {
                             child: Container(
                               height: 48.h,
                               width: 142.w,
-                              padding: EdgeInsets.only( top: 10, bottom: 8),
+                              padding: EdgeInsets.only( top: 10, bottom: 3),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
                                 color: Color(0xFF1F6ADE),
                               ),
-                              child: AppWidgets.textLocale(text: "Kod Yuborish",textAlign:TextAlign.center ,color: Color(0xFFFFFFFF),fontSize: 15.sp,fontWeight: FontWeight.w600),
+                              child: AppWidgets.textLocale(text: "Send_code",textAlign:TextAlign.center ,color: Color(0xFFFFFFFF),fontSize: 15.sp,fontWeight: FontWeight.w600),
                             ),
                           )
 

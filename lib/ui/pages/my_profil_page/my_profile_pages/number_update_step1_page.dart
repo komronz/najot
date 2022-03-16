@@ -31,7 +31,7 @@ class NumberUpdateStep1Page extends StatelessWidget {
                     onTap: () {},
                   ),
                   AppWidgets.textLocale(
-                      text: "Tahrirlash",
+                      text: "Edit",
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
                       color: Color(0xFF414042)),
@@ -59,12 +59,12 @@ class NumberUpdateStep1Page extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AppWidgets.textLocale(text: "Telefon raqami",color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400),
+                        AppWidgets.textLocale(text: "Phone_number",color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400),
                         SizedBox(height: 8.h),
                         Container(
                           height: 48.h,
                           width: 335.w,
-                          padding: EdgeInsets.only(left: 18,top: 18,bottom: 10),
+                          padding: EdgeInsets.only(left: 18,top: 10,bottom: 5),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12),
                               color: Color(0xFFEDFCF9),
@@ -92,7 +92,7 @@ class NumberUpdateStep1Page extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           AppWidgets.textLocale(
-                              text: "Yangi telefon raqami",
+                              text: "New_phone_number",
                               color: Color(0xFF6D6E71),
                               fontSize: 13.sp,
                               fontWeight: FontWeight.w400),
@@ -100,7 +100,7 @@ class NumberUpdateStep1Page extends StatelessWidget {
                           Container(
                             height: 48.h,
                             padding:
-                            EdgeInsets.only(left: 18, top: 18, bottom: 6),
+                            EdgeInsets.only(left: 18, top: 10, bottom: 3),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
                                 color: Color(0xFFFDFFFF),
@@ -141,19 +141,19 @@ class NumberUpdateStep1Page extends StatelessWidget {
                             child: Container(
                               height: 48.h,
                               width: 335.w,
-                              padding: EdgeInsets.only( top: 8, bottom: 8),
+                              padding: EdgeInsets.only( top: 10, bottom: 3),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
                                 color: Color(0xFF0BBF90),
                               ),
-                              child: AppWidgets.textLocale(text: "Tasdiqlash",textAlign:TextAlign.center ,color: Color(0xFFFFFFFF),fontSize: 15.sp,fontWeight: FontWeight.w600),
+                              child: AppWidgets.textLocale(text: "Confirmation",textAlign:TextAlign.center ,color: Color(0xFFFFFFFF),fontSize: 15.sp,fontWeight: FontWeight.w600),
                             ),
                           ),
                           SizedBox(height: 18.h),
                           Container(
                             margin: EdgeInsets.only(left: 120),
-                            height: 22.h,
-                            width: 117.w,
+                            height: 28.h,
+                            width: 200.w,
                             child: AppWidgets.textLocale(text: "Qayta yuborish",color: Color(0xFF0B58B2),fontSize: 16.sp, fontWeight: FontWeight.w500),
 
                           ),

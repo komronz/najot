@@ -36,7 +36,7 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                     onTap: () {},
                   ),
                   AppWidgets.textLocale(
-                      text: "Tahrirlash",
+                      text: "Edit",
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
                       color: Color(0xFF414042)),
@@ -74,7 +74,7 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           AppWidgets.textLocale(
-                              text: "Ism",
+                              text: "Name",
                               color: Color(0xFF6D6E71),
                               fontSize: 13.sp,
                               fontWeight: FontWeight.w400),
@@ -82,7 +82,7 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                           Container(
                             height: 48.h,
                             padding:
-                                EdgeInsets.only(left: 18, top: 18, bottom: 6),
+                                EdgeInsets.only(left: 18, top: 10, bottom: 3),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
                                 color: Color(0xFFFDFFFF),
@@ -103,7 +103,7 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                           ),
                           SizedBox(height: 23.h),
                           AppWidgets.textLocale(
-                              text: "Familiya",
+                              text: "Surname",
                               color: Color(0xFF6D6E71),
                               fontSize: 13.sp,
                               fontWeight: FontWeight.w400),
@@ -111,7 +111,7 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                           Container(
                             height: 48.h,
                             padding:
-                                EdgeInsets.only(left: 18, top: 18, bottom: 6),
+                                EdgeInsets.only(left: 18, top: 10, bottom: 3),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
                                 color: Color(0xFFFDFFFF),
@@ -130,9 +130,9 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 24.h),
+                          SizedBox(height: 20.h),
                           AppWidgets.textLocale(
-                              text: "Jinsi",
+                              text: "Gender",
                               color: Color(0xFF6D6E71),
                               fontSize: 13.sp,
                               fontWeight: FontWeight.w400),
@@ -155,6 +155,8 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Container(
+                                      padding: EdgeInsets.all(2.0),
+
                                       height: 24.h,
                                       width: 24.w,
                                       decoration: BoxDecoration(
@@ -176,7 +178,7 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                                       ),
                                     ),
                                     AppWidgets.textLocale(
-                                        text: "Erkak",
+                                        text: "Man",
                                         fontSize: 15.sp,
                                         color: Color(0xFF048D6A),
                                         fontWeight: FontWeight.w500)
@@ -212,7 +214,7 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                                       ),
                                     ),
                                     AppWidgets.textLocale(
-                                        text: "Ayol",
+                                        text: "Woman",
                                         fontSize: 15.sp,
                                         color: Color(0xFF414042),
                                         fontWeight: FontWeight.w500)
@@ -228,12 +230,12 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                     Container(
                       height: 48.h,
                       width: 335.w,
-                      padding: EdgeInsets.only( top: 8, bottom: 8),
+                      padding: EdgeInsets.only( top: 10, bottom: 5),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           color: Color(0xFF0BBF90),
                           ),
-                      child: AppWidgets.textLocale(text: "Saqlash",textAlign:TextAlign.center ,color: Color(0xFFFFFFFF),fontSize: 15.sp,fontWeight: FontWeight.w600),
+                      child: AppWidgets.textLocale(text: "Save",textAlign:TextAlign.center ,color: Color(0xFFFFFFFF),fontSize: 15.sp,fontWeight: FontWeight.w600),
                     )
                   ],
                 ),

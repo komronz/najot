@@ -1,11 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:najot/data/services/navigator_service.dart';
 
+import '../../../data/localization/locale_keys.g.dart';
+import '../../../data/services/navigator_service.dart';
 import '../../../data/utils/app_color_utils.dart';
 import '../../../data/utils/app_image_utils.dart';
 import '../../widgets/app_widgets.dart';
+import '../home_page/home_page.dart';
 import 'my_profile_pages/number_update_page.dart';
 import 'my_profile_pages/user_degree_page.dart';
 import 'my_profile_pages/user_update_page.dart';
@@ -39,7 +42,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                       },
                     ),
                     AppWidgets.textLocale(
-                      text: "My Profile",
+                      text: "my_profile",
                       fontSize: 24.sp,
                       fontWeight: FontWeight.w600,
                       color: Color(0xFF414042)
@@ -74,11 +77,12 @@ class _MyProfilePageState extends State<MyProfilePage> {
                       ),
                       SizedBox(height: 12.h),
                       Container(
-                        height: 17.h,
+                        height: 20.h,
                         width: 65.w,
                         child: Row(
+                          crossAxisAlignment:CrossAxisAlignment.start,
                           children: [
-                            AppWidgets.textLocale(text: "Degree",fontSize: 12.sp,color: Color(0xFFBCBEC0),fontWeight: FontWeight.w400),
+                            AppWidgets.textLocale(text: "degree",fontSize: 12.sp,color: Color(0xFFBCBEC0),fontWeight: FontWeight.w400),
                             Container(
                               padding: EdgeInsets.only(top: 1,bottom: 1),
                                 child: InkWell(
@@ -92,15 +96,15 @@ class _MyProfilePageState extends State<MyProfilePage> {
                       ),
                       SizedBox(height: 6.h),
                       Container(
-                        height: 28.h,
-                        width: 185.w,
+                        height: 29.h,
+                        width: 190.w,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SvgPicture.asset(AppImageUtils.PERSON),
                             Container(
                               margin: EdgeInsets.only(left: 5),
-                                child: AppWidgets.textLocale(text: "Oddiy foydalanuvchi",color: Color(0xFF0344A7),fontSize: 16.sp,fontWeight: FontWeight.w600),)
+                                child: AppWidgets.textLocale(text: "Normal_user",color: Color(0xFF0344A7),fontSize: 16.sp,fontWeight: FontWeight.w600),)
                           ],
                         ),
 
@@ -112,11 +116,11 @@ class _MyProfilePageState extends State<MyProfilePage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            AppWidgets.textLocale(text: "Ism",color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400),
-                            SizedBox(height: 8.h),
+                            AppWidgets.textLocale(text: "Name",color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400),
+                            SizedBox(height: 7.h),
                             Container(
-                              height: 48.h,
-                              padding: EdgeInsets.only(left: 18,top: 18,bottom: 10),
+                              height: 49.h,
+                              padding: EdgeInsets.only(left: 18,top: 10,bottom: 5),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
                                   color: Color(0xFFEDFCF9),
@@ -134,12 +138,12 @@ class _MyProfilePageState extends State<MyProfilePage> {
                               ),
 
                             ),
-                            SizedBox(height: 23.h),
-                            AppWidgets.textLocale(text: "Familiya",color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400),
-                            SizedBox(height: 8.h),
+                            SizedBox(height: 22.h),
+                            AppWidgets.textLocale(text: "Surname",color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400),
+                            SizedBox(height: 7.h),
                             Container(
                               height: 48.h,
-                              padding: EdgeInsets.only(left: 18,top: 18,bottom: 10),
+                              padding: EdgeInsets.only(left: 18,top: 10,bottom: 5),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
                                   color: Color(0xFFEDFCF9),
@@ -157,8 +161,8 @@ class _MyProfilePageState extends State<MyProfilePage> {
                               ),
 
                             ),
-                            SizedBox(height: 24.h),
-                            AppWidgets.textLocale(text: "Jinsi", color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400),
+                            SizedBox(height: 20.h),
+                            AppWidgets.textLocale(text: "Gender", color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400),
                             SizedBox(height: 8.h),
                             Row(
                               children: [
@@ -188,7 +192,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                             ),
                                         ),
                                       ),
-                                      AppWidgets.textLocale(text: "Erkak",fontSize: 15.sp,color: Color(0xFFA8C5BF),fontWeight: FontWeight.w500)
+                                      AppWidgets.textLocale(text: "Man",fontSize: 15.sp,color: Color(0xFFA8C5BF),fontWeight: FontWeight.w500)
                                     ],
                                   ),
                                 ),
@@ -219,7 +223,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                             ),
                                         ),
                                       ),
-                                      AppWidgets.textLocale(text: "Ayol",fontSize: 16,color: Color(0xFFA8C5BF),fontWeight: FontWeight.w500)
+                                      AppWidgets.textLocale(text: "Woman",fontSize: 15.sp,color: Color(0xFFA8C5BF),fontWeight: FontWeight.w500)
                                     ],
                                   ),
                                 ),
@@ -241,14 +245,14 @@ class _MyProfilePageState extends State<MyProfilePage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            AppWidgets.textLocale(text: "Telefon raqami",color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400),
+                            AppWidgets.textLocale(text: "Phone_number",color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400),
                             SizedBox(height: 8.h),
                             Row(
                               children: [
                                 Container(
                                   height: 48.h,
                                   width: 283.w,
-                                  padding: EdgeInsets.only(left: 18,top: 18,bottom: 10),
+                                  padding: EdgeInsets.only(left: 18,top: 10,bottom: 5),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(12),
                                       color: Color(0xFFEDFCF9),
