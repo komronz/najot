@@ -49,27 +49,6 @@ class MainPage extends StatelessWidget {
 
 
                     ),
-                    // Container(
-                    //   height: 80,
-                    //   padding: EdgeInsets.all(20),
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //     children: [
-                    //       InkWell(
-                    //         child: SvgPicture.asset(AppImageUtils.MENU),
-                    //         onTap: () {
-                    //           HomePage.globalKey.currentState!.openDrawer();
-                    //         },
-                    //       ),
-                    //       AppWidgets.textLocale(
-                    //         text: LocaleKeys.main,
-                    //         fontSize: 26.sp,
-                    //         fontWeight: FontWeight.w600,
-                    //       ),
-                    //       SvgPicture.asset(AppImageUtils.NOTIFICATION)
-                    //     ],
-                    //   ),
-                    // ),
                     Expanded(
                       child: SingleChildScrollView(
                         child: Column(
@@ -115,11 +94,12 @@ class MainPage extends StatelessWidget {
                                         fontWeight: FontWeight.w600,
                                         fontsize: 14,
                                         color: AppColorUtils.VOLONTYOR,
+
                                         onTap: () {
-                                          NavigatorService.to.pushNamed(
-                                            VolunteerPage.routeName,
-                                          );
+                                          NavigatorService.to
+                                              .pushNamed(VolunteerPage.routeName);
                                         },
+
                                       ),
                                       IconAndName(
                                         text: 'Xayriya',
@@ -144,7 +124,7 @@ class MainPage extends StatelessWidget {
                                   height: 10.h,
                                 ),
                                 SizedBox(
-                                  height: 300.w,
+                                  height: 300.h,
                                   child: SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
                                     child: Row(
@@ -171,6 +151,7 @@ class MainPage extends StatelessWidget {
                                   top: 20.h,
                                 ),
                                 SizedBox(
+                                  height: 300.h,
                                   child: SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
                                     child: Row(
@@ -194,7 +175,7 @@ class MainPage extends StatelessWidget {
                                 ).paddingOnly(
                                     left: 20.w, top: 10.h, bottom: 10.h),
                                 SizedBox(
-                                  height: 300.w,
+                                  height: 300.h,
                                   child: SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
                                     child: Row(

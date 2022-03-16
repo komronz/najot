@@ -13,13 +13,17 @@ class DrawerBody extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    AppPageType pageType=context.read<AppPageCubit>().state.pageType;
     return Container(
       width: 266.w,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: AppColorUtils.WHITE),
+        borderRadius: BorderRadius.circular(20),
+        color: AppColorUtils.WHITE,
+      ),
       child: Drawer(
         child: Column(
           children: [
@@ -105,9 +109,7 @@ class DrawerBody extends StatelessWidget {
                       left: 20.w,
                     ),
                     child: ButtonCard(
-                      onPress: () {
-
-                      },
+                      onPress: () {},
                       text: "Volontyor bo'lish",
                       width: 226.w,
                       height: 44.h,
@@ -120,9 +122,9 @@ class DrawerBody extends StatelessWidget {
                     ),
                   ),
                   AppWidgets.rowIconText(
-                    iconSelect:AppImageUtils.MAIN ,
-                    icon: AppImageUtils.MAIN,
-                    isActive: context.read<AppPageCubit>().state.pageType==AppPageType.MAIN,
+                    iconSelect: AppImageUtils.MAIN,
+                    icon: AppImageUtils.MAIN2,
+                    isActive: pageType == AppPageType.MAIN,
                     text: "Asosiy",
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
@@ -137,9 +139,9 @@ class DrawerBody extends StatelessWidget {
                     },
                   ),
                   AppWidgets.rowIconText(
-                    isActive: context.read<AppPageCubit>().state.pageType==AppPageType.CHARITY,
+                    isActive: pageType == AppPageType.CHARITY,
                     icon: AppImageUtils.HISTORY,
-                    iconSelect: AppImageUtils.HISTORY,
+                    iconSelect: AppImageUtils.HISTORY2,
                     text: "Xayriya tarixi",
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
@@ -155,7 +157,7 @@ class DrawerBody extends StatelessWidget {
                   ),
                   AppWidgets.rowIconText(
                     icon: AppImageUtils.PRODUCTS,
-                    iconSelect: AppImageUtils.PRODUCTS,
+                    iconSelect: AppImageUtils.PRODUCTS2,
                     text: "Mahsulotlarim",
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
@@ -166,7 +168,7 @@ class DrawerBody extends StatelessWidget {
                   ),
                   AppWidgets.rowIconText(
                     icon: AppImageUtils.RULES,
-                    iconSelect: AppImageUtils.RULES,
+                    iconSelect: AppImageUtils.RULES2,
                     text: "Loyiha qoidalari",
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
@@ -177,7 +179,7 @@ class DrawerBody extends StatelessWidget {
                   ),
                   AppWidgets.rowIconText(
                     icon: AppImageUtils.FAQ,
-                    iconSelect: AppImageUtils.FAQ,
+                    iconSelect: AppImageUtils.FAQ2,
                     text: "FAQ",
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
@@ -188,7 +190,7 @@ class DrawerBody extends StatelessWidget {
                   ),
                   AppWidgets.rowIconText(
                     icon: AppImageUtils.ABOUT_US,
-                    iconSelect: AppImageUtils.ABOUT_US,
+                    iconSelect: AppImageUtils.ABOUT_US2,
                     text: "Biz haqimizda",
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
