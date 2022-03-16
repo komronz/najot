@@ -19,7 +19,7 @@ class AppBarWithTitle extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColorUtils.BACKGROUND,
       elevation: 0,
       leading: Row(
         mainAxisAlignment: MainAxisAlignment.start,

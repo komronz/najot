@@ -19,7 +19,7 @@ class BannerCard extends StatelessWidget {
       padding: EdgeInsets.all(10.w),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: AppColorUtils.GREEN_ACCENT3,
+          color: AppColorUtils.BACK_AD,
           border:
           Border.all(width: 1, color: AppColorUtils.DIVIDER)),
       child: Row(

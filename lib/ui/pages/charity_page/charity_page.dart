@@ -45,7 +45,7 @@ class CharityPage extends StatelessWidget {
             AppSearchWidget(
               onChange: (v) {},
               search: () {},
-            ).paddingSymmetric(horizontal: 20, vertical: 24),
+            ).paddingSymmetric(horizontal: 20, vertical: 15.w),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 20.w),
               width: context.width,
@@ -128,7 +128,7 @@ class CharityPage extends StatelessWidget {
                   boxShadow: [
                     BoxShadow(
                         color: Color.fromRGBO(11, 191, 144, 0.02),
-                        blurRadius: 11)
+                        blurRadius: 11,)
                   ],
                 ),
                 child: Column(
@@ -361,7 +361,7 @@ class FavoriteButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(2),
             ),
             child: AppWidgets.imageSvg(
-              path: AppImageUtils.IC_FAVORITE_REMO,
+              path: AppImageUtils.UNLIKE,
               fit: BoxFit.none,
             ),
           )

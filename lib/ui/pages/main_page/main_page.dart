@@ -10,6 +10,7 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
+import 'package:najot/ui/pages/home_page/volunteer_page/volunteer_page.dart';
 import 'package:najot/ui/pages/home_page/widget/carousel_slider_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/icon_name_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/kraudfanding_card_widget.dart';
@@ -34,27 +35,41 @@ class MainPage extends StatelessWidget {
                 color: AppColorUtils.BACKGROUND,
                 child: Column(
                   children: [
-                    Container(
-                      height: 80,
-                      padding: EdgeInsets.all(20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          InkWell(
-                            child: SvgPicture.asset(AppImageUtils.MENU),
-                            onTap: () {
-                              HomePage.globalKey.currentState!.openDrawer();
-                            },
-                          ),
-                          AppWidgets.textLocale(
-                            text: LocaleKeys.main,
-                            fontSize: 26,
-                            fontWeight: FontWeight.w600,
-                          ),
-                          SvgPicture.asset(AppImageUtils.NOTIFICATION)
-                        ],
-                      ),
+                    AppWidgets.appBarMenu(
+                      title: "Asosiy",
+                      onTapMenu: () {
+                        HomePage.globalKey.currentState!.openDrawer();
+                      },
+                      visibleIcon: true,
+                      onTapIcon: (){
+
+                      },
+                      icon:AppImageUtils.NOTIFICATION,
+
+
+
                     ),
+                    // Container(
+                    //   height: 80,
+                    //   padding: EdgeInsets.all(20),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: [
+                    //       InkWell(
+                    //         child: SvgPicture.asset(AppImageUtils.MENU),
+                    //         onTap: () {
+                    //           HomePage.globalKey.currentState!.openDrawer();
+                    //         },
+                    //       ),
+                    //       AppWidgets.textLocale(
+                    //         text: LocaleKeys.main,
+                    //         fontSize: 26.sp,
+                    //         fontWeight: FontWeight.w600,
+                    //       ),
+                    //       SvgPicture.asset(AppImageUtils.NOTIFICATION)
+                    //     ],
+                    //   ),
+                    // ),
                     Expanded(
                       child: SingleChildScrollView(
                         child: Column(
@@ -101,8 +116,9 @@ class MainPage extends StatelessWidget {
                                         fontsize: 14,
                                         color: AppColorUtils.VOLONTYOR,
                                         onTap: () {
-                                          // NavigatorService.to.pushNamed(
-                                          //     VolunteerPage.routeName);
+                                          NavigatorService.to.pushNamed(
+                                            VolunteerPage.routeName,
+                                          );
                                         },
                                       ),
                                       IconAndName(
@@ -128,7 +144,7 @@ class MainPage extends StatelessWidget {
                                   height: 10.h,
                                 ),
                                 SizedBox(
-                                  height: 300.h,
+                                  height: 300.w,
                                   child: SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
                                     child: Row(
@@ -155,7 +171,6 @@ class MainPage extends StatelessWidget {
                                   top: 20.h,
                                 ),
                                 SizedBox(
-                                  height: 300.h,
                                   child: SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
                                     child: Row(
@@ -179,7 +194,7 @@ class MainPage extends StatelessWidget {
                                 ).paddingOnly(
                                     left: 20.w, top: 10.h, bottom: 10.h),
                                 SizedBox(
-                                  height: 300.h,
+                                  height: 300.w,
                                   child: SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
                                     child: Row(

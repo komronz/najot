@@ -3,68 +3,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/kraudfanding_authot_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/tabbar_widget.dart';
+import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../data/utils/app_color_utils.dart';
 
-Widget projectHeader(BuildContext context){
-  return Stack(
-    children:[
-      Column(
+Widget projectHeader(BuildContext context) {
+  return Stack(children: [
+    Column(
       children: [
-        Container(
-          margin: EdgeInsets.only(
-              top: 18, right: 20, left: 20, bottom: 18),
-          padding: EdgeInsets.all(4.0),
-          height: 46,
-          width: 335,
-          decoration: BoxDecoration(
-              color: Color(0xFFF8FFFE),
-              borderRadius: BorderRadius.circular(30.0),
-              border:
-              Border.all(width: 1.0, color: Color(0xFFB7E4DB))),
-          child: Row(
-            children: [
-              Expanded(
-                  child: Container(
-                    height: 38,
-                    padding: EdgeInsets.all(7.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30.0),
-                      color: Color(0xFF0BBF90),
-                    ),
-                    child: Text(
-                      "Loyiha haqida",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  )),
-              Expanded(
-                  child: Container(
-                    height: 38,
-                    padding: EdgeInsets.all(8.0),
-                    margin: EdgeInsets.only(left: 44),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                    child: Text(
-                      "Mahsulotlar",
-                      style: TextStyle(
-                          color: Color(0xFF71958E),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  )),
-            ],
-          ),
+        SizedBox(
+          height: 15.w,
         ),
+        TabBarWidget(),
         Container(
-          height: 308.h,
-          width: 335.w,
-          margin: EdgeInsets.only(left: 20, right: 20, bottom: 18),
+          height: 300.w,
+          margin: EdgeInsets.symmetric(
+            horizontal: 20.w,
+            vertical: 18.w,
+          ),
           child: ClipRRect(
             borderRadius: BorderRadius.all(
               Radius.circular(12),
@@ -76,83 +35,15 @@ Widget projectHeader(BuildContext context){
             ),
           ),
         ),
-        Container(
-          margin: EdgeInsets.only(left: 20, right: 20, bottom: 18),
-          height: 52.h,
-          child: Text(
-            "Drenajni kuzatish uchun mo’jallangan moslama",
-            style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 20,
-                color: Color(0xFF414042)),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.only(right: 20, left: 20),
-          height: 50,
-          child: Row(
-            children: [
-              Container(
-                  height: 50.h,
-                  width: 50.h,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(50),
-                    ),
-                    child: Image.asset(
-                      "assets/images/rasm.jpg",
-                      fit: BoxFit.cover,
-                    ),
-                  )),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(left: 6),
-                    height: 17,
-                    child: Text(
-                      'Loyiha muallifi',
-                      style: TextStyle(
-                          color: Color(0xFF939598), fontSize: 12),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 6),
-                    height: 20,
-                    child: Text(
-                      'Eshonov Fakhriyor',
-                      style: TextStyle(
-                          color: Color(0xFF043F3B),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                ],
-              ),
-              Expanded(
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    padding: EdgeInsets.only(
-                        top: 8, bottom: 8, left: 12, right: 12),
-                    height: 33.h,
-                    width: 96.w,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Color(0xFFEAF9F6),
-                    ),
-                    child: Text("Savol berish",
-                        style: TextStyle(
-                            fontSize: 12,
-                            color: Color(0xFF055641),
-                            fontWeight: FontWeight.w600)),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+        AppWidgets.text(
+          text: "Drenajni kuzatish uchun mo’jallangan moslama",
+          fontSize: 20.sp,
+          color: AppColorUtils.DARK2,
+          fontWeight: FontWeight.w500,
+          maxLines: 2,
+
+        ).paddingSymmetric(horizontal: 20.w),
+
         SizedBox(height: 18.h),
         Container(
           margin: EdgeInsets.only(right: 20, left: 20),
@@ -166,8 +57,7 @@ Widget projectHeader(BuildContext context){
                       text: TextSpan(children: [
                         TextSpan(
                             text: "*",
-                            style: TextStyle(
-                                color: Colors.red, fontSize: 10)),
+                            style: TextStyle(color: Colors.red, fontSize: 10)),
                         TextSpan(
                           text: " Lozim bo’lgan summa",
                           style: TextStyle(
@@ -225,8 +115,7 @@ Widget projectHeader(BuildContext context){
           width: 375.w,
           color: Color(0xFFF2FEFC),
           child: Container(
-            margin: EdgeInsets.only(
-                right: 20, top: 12, bottom: 12, left: 20),
+            margin: EdgeInsets.only(right: 20, top: 12, bottom: 12, left: 20),
             child: Column(children: [
               Row(
                 children: [
@@ -316,9 +205,7 @@ Widget projectHeader(BuildContext context){
                     Container(
                       child: Row(
                         children: [
-                          Container(
-
-                          ),
+                          Container(),
                           Container(
                             margin: EdgeInsets.only(top: 3),
                             height: 20,
@@ -326,8 +213,7 @@ Widget projectHeader(BuildContext context){
                             child: Text(
                               "+100",
                               style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500),
+                                  fontSize: 14, fontWeight: FontWeight.w500),
                             ),
                           ),
                         ],
@@ -346,8 +232,8 @@ Widget projectHeader(BuildContext context){
                         text: TextSpan(children: [
                           TextSpan(
                               text: "*",
-                              style: TextStyle(
-                                  color: Colors.red, fontSize: 10)),
+                              style:
+                                  TextStyle(color: Colors.red, fontSize: 10)),
                           TextSpan(
                             text: " Sanagacha to’planishi kerak",
                             style: TextStyle(
@@ -362,8 +248,7 @@ Widget projectHeader(BuildContext context){
                     Container(
                       child: Row(
                         children: [
-                          SvgPicture.asset(
-                              "assets/app_icons/calendar.svg"),
+                          SvgPicture.asset("assets/app_icons/calendar.svg"),
                           SizedBox(width: 5.w),
                           Text(
                             "25.08.2022",
@@ -381,26 +266,22 @@ Widget projectHeader(BuildContext context){
             ],
           ),
         ),
-
       ],
     ),
-      Positioned(
-        top: 238.h,
-        left: 318.w,
-        child: Container(
-          height: 35.h,
-          width: 105.w,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: Color(0xFF0344A7),
-          ),
-          child: Container(
-            padding: EdgeInsets.only(top: 8,bottom: 7, right: 61, left: 24),
-
-              child: SvgPicture.asset("assets/app_icons/dollar_icon.svg")),
+    Positioned(
+      top: 238.h,
+      left: 318.w,
+      child: Container(
+        height: 35.h,
+        width: 105.w,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Color(0xFF0344A7),
         ),
-
-      )
-    ]
-  );
+        child: Container(
+            padding: EdgeInsets.only(top: 8, bottom: 7, right: 61, left: 24),
+            child: SvgPicture.asset("assets/app_icons/dollar_icon.svg")),
+      ),
+    )
+  ]);
 }

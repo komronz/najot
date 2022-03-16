@@ -23,7 +23,7 @@ class KraudfandingCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
-        height: 300.h,
+        height: 300.w,
         width: 220.w,
         child: Stack(
           children: [
