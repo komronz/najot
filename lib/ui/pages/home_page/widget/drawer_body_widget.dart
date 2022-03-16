@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -108,7 +109,13 @@ class DrawerBody extends StatelessWidget {
                       left: 20.w,
                     ),
                     child: ButtonCard(
-                      onPress: () {},
+                      onPress: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AuthPage(),
+                            ));
+                      },
                       text: "Volontyor bo'lish",
                       width: 226.w,
                       height: 44.h,
@@ -166,6 +173,7 @@ class DrawerBody extends StatelessWidget {
                     onTap: () {},
                   ),
                   AppWidgets.rowIconText(
+                    isActive: pageType == AppPageType.RULES,
                     icon: AppImageUtils.RULES,
                     iconSelect: AppImageUtils.RULES2,
                     text: "Loyiha qoidalari",
@@ -174,9 +182,15 @@ class DrawerBody extends StatelessWidget {
                       horizontal: 18.w,
                       vertical: 14,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      context
+                          .read<AppPageCubit>()
+                          .changePage(pageType: AppPageType.RULES);
+                      Navigator.pop(context);
+                    },
                   ),
                   AppWidgets.rowIconText(
+                    isActive: pageType == AppPageType.FAQ,
                     icon: AppImageUtils.FAQ,
                     iconSelect: AppImageUtils.FAQ2,
                     text: "FAQ",
@@ -193,6 +207,7 @@ class DrawerBody extends StatelessWidget {
                     },
                   ),
                   AppWidgets.rowIconText(
+                    isActive: pageType == AppPageType.ABOUT,
                     icon: AppImageUtils.ABOUT_US,
                     iconSelect: AppImageUtils.ABOUT_US2,
                     text: "Biz haqimizda",
@@ -201,7 +216,12 @@ class DrawerBody extends StatelessWidget {
                       horizontal: 18.w,
                       vertical: 14,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      context
+                          .read<AppPageCubit>()
+                          .changePage(pageType: AppPageType.ABOUT);
+                      Navigator.pop(context);
+                    },
                   ),
                 ],
               ),

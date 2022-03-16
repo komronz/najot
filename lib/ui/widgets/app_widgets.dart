@@ -91,26 +91,30 @@ class AppWidgets {
     Color? textColor = AppColorUtils.WHITE,
     double borderRadius = 12.0,
   }) {
-    return InkWell(
+    return Material(
+      color: color,
       borderRadius: BorderRadius.circular(borderRadius),
-      child: Ink(
-        width: width ?? ScreenUtil().screenWidth,
-        height: height ?? 50,
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(borderRadius),
-        ),
-        child: Center(
-          child: textLocale(
-            textAlign: TextAlign.center,
-            text: title,
-            color: textColor,
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w600,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(borderRadius),
+        child: Ink(
+          width: width ?? ScreenUtil().screenWidth,
+          height: height ?? 50,
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(borderRadius),
+          ),
+          child: Center(
+            child: textLocale(
+              textAlign: TextAlign.center,
+              text: title,
+              color: textColor,
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
+        onTap: onTap,
       ),
-      onTap: onTap,
     );
   }
 

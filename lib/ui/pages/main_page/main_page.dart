@@ -31,10 +31,10 @@ class MainPage extends StatelessWidget {
       create: (BuildContext context) => cubit,
       child: SafeArea(
         child: Scaffold(
+          backgroundColor: AppColorUtils.BACKGROUND,
           body: BlocBuilder<HomeCubit, HomeState>(
             builder: (context, state) {
               return Container(
-                color: AppColorUtils.BACKGROUND,
                 child: Column(
                   children: [
                     Container(

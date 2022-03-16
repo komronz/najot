@@ -7,7 +7,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/faq_cubit/faq_cubit.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/faq_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -26,24 +25,33 @@ class FaqPage extends StatelessWidget {
         backgroundColor: AppColorUtils.BACKGROUND,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
+          titleSpacing: 0,
           elevation: 0,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               InkWell(
-                child: SvgPicture.asset(AppImageUtils.MENU),
+                child: SvgPicture.asset(
+                  AppImageUtils.MENU,
+                  height: 35.w,
+                  width: 35.w,
+                ),
                 onTap: () {
                   HomePage.globalKey.currentState!.openDrawer();
                 },
               ),
               AppWidgets.textLocale(
-                text: LocaleKeys.main,
+                text: "FAQ",
                 fontSize: 26,
                 fontWeight: FontWeight.w600,
               ),
-              SvgPicture.asset(AppImageUtils.NOTIFICATION)
+              SvgPicture.asset(
+                AppImageUtils.NOTIFICATION,
+                height: 35.w,
+                width: 35.w,
+              )
             ],
-          ),
+          ).paddingSymmetric(horizontal: 20),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -53,8 +61,7 @@ class FaqPage extends StatelessWidget {
                 width: context.width,
                 height: 336.w,
               ).paddingSymmetric(
-                horizontal: 20,
-                vertical: 20,
+                horizontal: 20,vertical: 30,
               ),
               BlocBuilder<FaqCubit, FaqState>(
                 builder: (context, state) => buildBody(state),
@@ -85,7 +92,7 @@ class FaqPage extends StatelessWidget {
               index: index,
             ),
           ),
-        ),
+        ).paddingOnly(bottom: 30),
       );
     }
   }
@@ -146,9 +153,9 @@ class FaqItemWidget extends StatelessWidget {
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w400,
                 height: 1.5,
-              ),
+              ).paddingOnly(top: 20),
             ),
-          ).paddingOnly(top: 20)
+          )
         ],
       ).paddingOnly(
         top: 32.w,

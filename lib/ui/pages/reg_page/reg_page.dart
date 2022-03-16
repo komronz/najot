@@ -106,7 +106,7 @@ class RegPage extends StatelessWidget {
                       color: context.read<LoginBloc>().state.isNextBtnActive
                           ? AppColorUtils.GREEN_APP
                           : AppColorUtils.DISABLE_BC,
-                    ),
+                    ).paddingSymmetric(horizontal: 20),
                     context.read<LoginBloc>().state.agree
                         ? SizedBox()
                         : Row(

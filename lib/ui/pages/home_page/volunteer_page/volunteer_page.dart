@@ -19,6 +19,7 @@ class VolunteerPage extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context) => volunteerCubit,
       child: Scaffold(
+        backgroundColor: AppColorUtils.BACKGROUND,
         body: BlocBuilder<VolunteerCubit, VolunteerState>(
           builder: (context, state) {
             var list = context.read<VolunteerCubit>().state.list;
