@@ -23,4 +23,5 @@ enum AppPageType {
   FAQ,
   ABOUT,
   PROFILE,
+  VOLUNTEER
 }

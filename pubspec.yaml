@@ -37,6 +37,7 @@ dependencies:
   super_rich_text: ^1.0.0
   mask_text_input_formatter: ^2.1.0
   percent_indicator: ^4.0.0
+  smooth_page_indicator: ^1.0.0+2
 
 
 

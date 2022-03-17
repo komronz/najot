@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -68,8 +69,11 @@ class AppWidgets {
     Color? color = AppColorUtils.DARK_6,
     double? fontSize = 10,
     FontWeight fontWeight = FontWeight.w400,
+    bool isCenter = false,
   }) {
     return Row(
+      mainAxisAlignment:
+          isCenter ? MainAxisAlignment.center : MainAxisAlignment.start,
       children: [
         textLocale(text: '*', fontSize: 10, color: AppColorUtils.RED),
         textLocale(

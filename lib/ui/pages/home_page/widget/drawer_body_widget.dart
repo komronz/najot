@@ -120,11 +120,10 @@ class DrawerBody extends StatelessWidget {
                     ),
                     child: ButtonCard(
                       onPress: () {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => AuthPage(),
-                        //     ));
+                        context.read<AppPageCubit>().changePage(
+                              pageType: AppPageType.VOLUNTEER,
+                            );
+                        Navigator.pop(context);
                       },
                       text: "Volontyor bo'lish",
                       width: 226.w,
