@@ -32,8 +32,8 @@ class NumberUpdatePage extends StatelessWidget {
                     onTap: () {},
                   ),
                   AppWidgets.textLocale(
-                      text: "Edit",
-                      fontSize: 24,
+                      text: "edit_my_profile",
+                      fontSize: 24.sp,
                       fontWeight: FontWeight.w600,
                       color: Color(0xFF414042)),
                   InkWell(

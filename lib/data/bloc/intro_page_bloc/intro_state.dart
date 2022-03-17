@@ -1,4 +1,6 @@
-part of 'intro_cubit.dart';
+
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 @immutable
 abstract class IntroState extends Equatable{}
