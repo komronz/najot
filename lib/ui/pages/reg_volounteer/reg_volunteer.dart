@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/services/navigator_service.dart';
+import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
@@ -11,6 +14,7 @@ import 'package:najot/ui/widgets/app_radio_button.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class RegVolunteer extends StatelessWidget {
   const RegVolunteer({Key? key}) : super(key: key);
@@ -157,7 +161,17 @@ class Page1 extends StatelessWidget {
             print(v);
           },
         ).paddingOnly(top: 20, left: 20),
-        AppDatePicker()
+        AppDatePicker(),
+        ElevatedButton(
+            onPressed: () async {
+              await showDatePicker(
+                context: context,
+                initialDate: DateTime.now(),
+                firstDate: DateTime(2010),
+                lastDate: DateTime(2022),
+              );
+            },
+            child: Text("sd;gjdnfbdfn"))
       ],
     );
   }
@@ -204,13 +218,153 @@ class _AppDatePickerState extends State<AppDatePicker> {
         vertical: 24,
       ),
       onTap: () async {
-        // print('open date picker');
-        var date = await showDatePicker(
+        showDialog(
             context: context,
-            initialDate: DateTime.now(),
-            firstDate: DateTime(1996),
-            lastDate: DateTime(2022));
+            builder: (context) => AppDatePickerWidget(
+                  selectFunction: () {},
+                ));
+        // await _selectDate(context);
+        // print('open date picker');
+        // var date = await showDatePicker(
+        //   context: context,
+        //   initialDate: DateTime.now(),
+        //   firstDate: DateTime(1996),
+        //   lastDate: DateTime(2022),
+        // );
       },
+    );
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000, 1, 1),
+      lastDate: DateTime(2022),
+    );
+  }
+}
+
+class AppDatePickerWidget extends StatelessWidget {
+  AppDatePickerWidget({
+    required this.selectFunction,
+    Key? key,
+  }) : super(key: key);
+  final Function selectFunction;
+  DateTime dateTime = DateTime.now();
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Material(
+        color: Colors.transparent,
+        child: Container(
+          margin: EdgeInsets.all(20.0),
+          padding: EdgeInsets.all(15.0),
+          // height: 180.0,
+          decoration: ShapeDecoration(
+            color: AppColors.WHITE,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Icon(
+                    Icons.calendar_today_outlined,
+                    size: 24.sp,
+                  ),
+                  AppWidgets.text(
+                    text: "Sanani tanlang",
+                    fontSize: 20.sp,
+                    color: AppColorUtils.DARK2,
+                    fontWeight: FontWeight.w600,
+                  ).paddingOnly(left: 8)
+                ],
+              ).paddingOnly(
+                top: 20,
+                bottom: 18,
+              ),
+              Container(
+                height: 280.h,
+                child: SfDateRangePicker(
+                  onSelectionChanged: (dateRangePickerSelectionChangedArgs) {
+                    dateTime =
+                        dateRangePickerSelectionChangedArgs.value as DateTime;
+                  },
+                  selectionMode: DateRangePickerSelectionMode.single,
+                  allowViewNavigation: true,
+                  toggleDaySelection: true,
+                  showNavigationArrow: true,
+                  navigationMode: DateRangePickerNavigationMode.snap,
+                  view: DateRangePickerView.month,
+                  monthViewSettings: DateRangePickerMonthViewSettings(
+                    weekNumberStyle: DateRangePickerWeekNumberStyle(
+                      textStyle: TextStyle(color: AppColorUtils.RED),
+                      backgroundColor: AppColors.RED,
+                    ),
+                    viewHeaderStyle: DateRangePickerViewHeaderStyle(
+                      textStyle: GoogleFonts.lato(
+                        color: AppColorUtils.DARK_6,
+                        fontSize: 13.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    firstDayOfWeek: 1,
+                  ),
+                  headerStyle: DateRangePickerHeaderStyle(
+                    textStyle: GoogleFonts.lato(
+                      color: AppColors.BLACK,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  monthCellStyle: DateRangePickerMonthCellStyle(
+                    textStyle: TextStyle(color: Colors.black),
+                    todayTextStyle: TextStyle(color: Colors.black),
+                  ),
+                  selectionColor: AppColorUtils.PERCENT_COLOR,
+                  yearCellStyle: DateRangePickerYearCellStyle(
+                      todayTextStyle: TextStyle(color: Colors.black)),
+                  todayHighlightColor: AppColorUtils.PERCENT_COLOR,
+                  startRangeSelectionColor: AppColorUtils.PERCENT_COLOR,
+                  selectionShape: DateRangePickerSelectionShape.circle,
+                ),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: AppWidgets.appButton(
+                      color: AppColorUtils.LIGHT_GRAY,
+                      textColor: AppColorUtils.BLACK,
+                      onTap: () {
+                        NavigatorService.to.pop();
+                      },
+                      title: "Chiqish",
+                    ).paddingOnly(top: 20.h),
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Expanded(
+                    child: AppWidgets.appButton(
+                      onTap: () {
+                        selectFunction(dateTime);
+                        NavigatorService.to.pop();
+                      },
+                      title: "Saqlash",
+                    ).paddingOnly(top: 20.h),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

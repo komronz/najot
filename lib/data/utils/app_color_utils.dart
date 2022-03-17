@@ -55,6 +55,8 @@ class AppColorUtils {
   static const Color GREEN_BTN = Color(0xFFEAF9F6);
   static const Color GREEN_BACK = Color(0xFFF2FEFC);
   static const Color INDICATOR = Color(0xFFE0F4EF);
+  static const Color LIGHT_GRAY = Color(0xFFF8F7FA);
+
 
 
 
