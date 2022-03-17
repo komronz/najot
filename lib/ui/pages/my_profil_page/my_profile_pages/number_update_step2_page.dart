@@ -43,106 +43,108 @@ class NumberUpdateStep2Page extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: Container(
-                width: 375.w,
-                padding: EdgeInsets.only(left: 19, right: 20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: AppColorUtils.WHITE,
-                ),
-                child: Column(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        AppWidgets.textLocale(text: "Phone_number",
-                            color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400).paddingOnly(top: 24.h, bottom: 8.h),
-                        Container(
-                          width: 335.w,
-                          padding: EdgeInsets.only(left: 18),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: Color(0xFFEDFCF9),
-                              border: Border.all(
-                                width: 1,
-                                color: Color(0xFFCEE1DD),
-                              )),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: "(+998)97 628 28 82",
-                              border: InputBorder.none,
-                              hintStyle:
-                              TextStyle(color: Color(0xFFBCBEC0), fontSize: 15.sp,fontWeight: FontWeight.w500),
-                            ),
-                          ),
-
-                        ),
-                      ],
-                    ).paddingOnly(bottom: 24.h),
-                    Container(
-                      width: 336.w,
-                      child: Column(
+              child: SingleChildScrollView(
+                child: Container(
+                  width: 375.w,
+                  padding: EdgeInsets.only(left: 19, right: 20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: AppColorUtils.WHITE,
+                  ),
+                  child: Column(
+                    children: [
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          AppWidgets.textLocale(
-                              text: "New_phone_number",
-                              color: Color(0xFF6D6E71),
-                              fontSize: 13.sp,
-                              fontWeight: FontWeight.w400),
-                          SizedBox(height: 8.h),
-                          Container(padding:
-                            EdgeInsets.only(left: 18),
+                          AppWidgets.textLocale(text: "Phone_number",
+                              color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400).paddingOnly(top: 24.h, bottom: 8.h),
+                          Container(
+                            width: 335.w,
+                            padding: EdgeInsets.only(left: 18),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
-                                color: Color(0xFFFDFFFF),
+                                color: Color(0xFFEDFCF9),
                                 border: Border.all(
-                                  width: 2,
-                                  color: Color(0xFF79B4A8),
+                                  width: 1,
+                                  color: Color(0xFFCEE1DD),
                                 )),
                             child: TextField(
                               decoration: InputDecoration(
-                                hintText: "+998 97 628 28 82",
+                                hintText: "(+998)97 628 28 82",
                                 border: InputBorder.none,
-                                hintStyle: TextStyle(
-                                    color: Color(0xFF6D6E71),
-                                    fontSize: 15.sp,
-                                    fontWeight: FontWeight.w500),
+                                hintStyle:
+                                TextStyle(color: Color(0xFFBCBEC0), fontSize: 15.sp,fontWeight: FontWeight.w500),
                               ),
                             ),
-                          ).paddingOnly(bottom: 16.h),
-                          Container(
-                            width: 144.w,
-                            padding: EdgeInsets.only( top: 8, bottom: 8, left: 15,right: 15),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: Color(0xFFFDFFFF),
-                              border: Border.all(color: Color(0xFF97C2BA),
-                                  width: 2),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                AppWidgets.textLocale(text: "1 2 3 4 5 6",textAlign:TextAlign.center ,color: Color(0xFF0BA42D),fontSize: 15.sp,fontWeight: FontWeight.w600),
-                                Container(
-                                  child: SvgPicture.asset(AppImageUtils.CHECK),
-                                )
-                              ],
-                            ),
-                          ).paddingOnly(bottom: 16.h),
-                          Container(
-                            width: 335.w,
-                            padding: EdgeInsets.only( top: 10, bottom: 13),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: Color(0xFF0BBF90),
-                            ),
-                            child: AppWidgets.textLocale(text: "Confirmation",textAlign:TextAlign.center ,color: Color(0xFFFFFFFF),fontSize: 15.sp,fontWeight: FontWeight.w600),
-                          ),
 
+                          ),
                         ],
+                      ).paddingOnly(bottom: 24.h),
+                      Container(
+                        width: 336.w,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AppWidgets.textLocale(
+                                text: "New_phone_number",
+                                color: Color(0xFF6D6E71),
+                                fontSize: 13.sp,
+                                fontWeight: FontWeight.w400),
+                            SizedBox(height: 8.h),
+                            Container(padding:
+                              EdgeInsets.only(left: 18),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: Color(0xFFFDFFFF),
+                                  border: Border.all(
+                                    width: 2,
+                                    color: Color(0xFF79B4A8),
+                                  )),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  hintText: "+998 97 628 28 82",
+                                  border: InputBorder.none,
+                                  hintStyle: TextStyle(
+                                      color: Color(0xFF6D6E71),
+                                      fontSize: 15.sp,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                            ).paddingOnly(bottom: 16.h),
+                            Container(
+                              width: 144.w,
+                              padding: EdgeInsets.only( top: 8, bottom: 8, left: 15,right: 15),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Color(0xFFFDFFFF),
+                                border: Border.all(color: Color(0xFF97C2BA),
+                                    width: 2),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  AppWidgets.textLocale(text: "1 2 3 4 5 6",textAlign:TextAlign.center ,color: Color(0xFF0BA42D),fontSize: 15.sp,fontWeight: FontWeight.w600),
+                                  Container(
+                                    child: SvgPicture.asset(AppImageUtils.CHECK),
+                                  )
+                                ],
+                              ),
+                            ).paddingOnly(bottom: 16.h),
+                            Container(
+                              width: 335.w,
+                              padding: EdgeInsets.only( top: 10, bottom: 13),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Color(0xFF0BBF90),
+                              ),
+                              child: AppWidgets.textLocale(text: "Confirmation",textAlign:TextAlign.center ,color: Color(0xFFFFFFFF),fontSize: 15.sp,fontWeight: FontWeight.w600),
+                            ),
+
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

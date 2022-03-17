@@ -35,7 +35,9 @@ class _MyProfilePageState extends State<MyProfilePage> {
                 color: Color(0xFFF6FCFA),
                 child: AppWidgets.appBarMenu(
                   title: "my_profile",
-                  onTapMenu: () {},
+                  onTapMenu: () {
+
+                  },
                   visibleIcon: true,
                   onTapIcon: () {
                     NavigatorService.to.pushNamed(UserUpdatePage.routeName);
@@ -280,7 +282,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                             fontWeight: FontWeight.w500),
                                       ),
                                     ),
-                                  ).paddingOnly(right: 12.w),
+                                  ),
                                   InkWell(
                                     onTap: () {
                                       NavigatorService.to.pushNamed(
