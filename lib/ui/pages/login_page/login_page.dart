@@ -79,13 +79,13 @@ class LoginPage extends StatelessWidget {
                   onTap: () {
                     context.read<LoginBloc>().add(LoginSignIn());
                   },
-                ).paddingSymmetric(vertical: 24.h),
+                ).paddingSymmetric(vertical: 24.h,horizontal: 20),
                 LoginRegBtnWidget(
                   onTap: () {
                     context.read<LoginBloc>().add(LoginSignUp());
                   },
                   hasError: context.read<LoginBloc>().state.hasError,
-                )
+                ).paddingSymmetric(horizontal: 20)
               ],
             ),
           ),

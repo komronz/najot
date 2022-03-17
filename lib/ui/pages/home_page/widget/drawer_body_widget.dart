@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
+import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
@@ -13,11 +16,10 @@ class DrawerBody extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    AppPageType pageType=context.read<AppPageCubit>().state.pageType;
+    AppPageType pageType = context.read<AppPageCubit>().state.pageType;
     return Container(
       width: 266.w,
       decoration: BoxDecoration(
@@ -84,16 +86,24 @@ class DrawerBody extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 20.h, right: 15.w),
-                        child: Align(
-                          alignment: Alignment.topRight,
-                          child: SizedBox(
-                            height: 33.w,
-                            width: 33.w,
-                            child: SvgPicture.asset(AppImageUtils.EDIT),
+                      GestureDetector(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 20.h, right: 15.w),
+                          child: Align(
+                            alignment: Alignment.topRight,
+                            child: SizedBox(
+                              height: 33.w,
+                              width: 33.w,
+                              child: SvgPicture.asset(AppImageUtils.EDIT),
+                            ),
                           ),
                         ),
+                        onTap: () {
+                          context
+                              .read<AppPageCubit>()
+                              .changePage(pageType: AppPageType.PROFILE);
+                          Navigator.pop(context);
+                        },
                       )
                     ],
                   ),
@@ -109,7 +119,12 @@ class DrawerBody extends StatelessWidget {
                       left: 20.w,
                     ),
                     child: ButtonCard(
-                      onPress: () {},
+                      onPress: () {
+                        context.read<AppPageCubit>().changePage(
+                              pageType: AppPageType.VOLUNTEER,
+                            );
+                        Navigator.pop(context);
+                      },
                       text: "Volontyor bo'lish",
                       width: 226.w,
                       height: 44.h,
@@ -149,10 +164,10 @@ class DrawerBody extends StatelessWidget {
                       vertical: 14,
                     ),
                     onTap: () {
-                      context
-                          .read<AppPageCubit>()
-                          .changePage(pageType: AppPageType.CHARITY);
-                      Navigator.pop(context);
+                      // context
+                      //     .read<AppPageCubit>()
+                      //     .changePage(pageType: AppPageType.CHARITY);
+                      // Navigator.pop(context);
                     },
                   ),
                   AppWidgets.rowIconText(
@@ -167,6 +182,7 @@ class DrawerBody extends StatelessWidget {
                     onTap: () {},
                   ),
                   AppWidgets.rowIconText(
+                    isActive: pageType == AppPageType.RULES,
                     icon: AppImageUtils.RULES,
                     iconSelect: AppImageUtils.RULES2,
                     text: "Loyiha qoidalari",
@@ -175,9 +191,15 @@ class DrawerBody extends StatelessWidget {
                       horizontal: 18.w,
                       vertical: 14,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      context
+                          .read<AppPageCubit>()
+                          .changePage(pageType: AppPageType.RULES);
+                      Navigator.pop(context);
+                    },
                   ),
                   AppWidgets.rowIconText(
+                    isActive: pageType == AppPageType.FAQ,
                     icon: AppImageUtils.FAQ,
                     iconSelect: AppImageUtils.FAQ2,
                     text: "FAQ",
@@ -186,9 +208,15 @@ class DrawerBody extends StatelessWidget {
                       horizontal: 18.w,
                       vertical: 14,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      context
+                          .read<AppPageCubit>()
+                          .changePage(pageType: AppPageType.FAQ);
+                      Navigator.pop(context);
+                    },
                   ),
                   AppWidgets.rowIconText(
+                    isActive: pageType == AppPageType.ABOUT,
                     icon: AppImageUtils.ABOUT_US,
                     iconSelect: AppImageUtils.ABOUT_US2,
                     text: "Biz haqimizda",
@@ -197,7 +225,12 @@ class DrawerBody extends StatelessWidget {
                       horizontal: 18.w,
                       vertical: 14,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      context
+                          .read<AppPageCubit>()
+                          .changePage(pageType: AppPageType.ABOUT);
+                      Navigator.pop(context);
+                    },
                   ),
                 ],
               ),
@@ -243,7 +276,9 @@ class DrawerBody extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 20.w),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      exit(0);
+                    },
                     child: Container(
                       height: 44.h,
                       width: 120.w,
@@ -278,7 +313,7 @@ class DrawerBody extends StatelessWidget {
               ],
             )
           ],
-        ),
+        ).paddingOnly(top: 20.w),
       ),
     );
   }

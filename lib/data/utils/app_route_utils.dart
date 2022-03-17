@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
+import 'package:najot/ui/pages/charity_full_page/charity_full_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
 import 'package:najot/ui/pages/counter_page/counter_page.dart';
 import 'package:najot/ui/pages/home_page/about_announcement_page/about_announcement_page.dart';

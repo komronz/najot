@@ -35,7 +35,9 @@ class CharityPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBarWithTitle(
         title: "Xayriya",
-        onPress: () {},
+        onPress: () {
+          NavigatorService.to.pop();
+        },
       ),
       backgroundColor: AppColorUtils.BACKGROUND,
       body: SingleChildScrollView(
@@ -127,8 +129,9 @@ class CharityPage extends StatelessWidget {
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
-                        color: Color.fromRGBO(11, 191, 144, 0.02),
-                        blurRadius: 11,)
+                      color: Color.fromRGBO(11, 191, 144, 0.02),
+                      blurRadius: 11,
+                    ),
                   ],
                 ),
                 child: Column(
@@ -179,7 +182,7 @@ class CharityPage extends StatelessWidget {
                             crossAxisSpacing: 8,
                             mainAxisSpacing: 6,
                             children: List.generate(
-                              10,
+                              4,
                               (index) => CharityItemWidget(
                                 onTap: () {},
                                 model: model,

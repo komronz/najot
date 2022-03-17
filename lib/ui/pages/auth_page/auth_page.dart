@@ -53,7 +53,7 @@ class AuthPage extends StatelessWidget {
                   ),
                 );
               },
-            ),
+            ).paddingSymmetric(horizontal: 20),
             AppWidgets.appButton(
               title: "Tizimga kirish",
               onTap: () {
@@ -63,6 +63,7 @@ class AuthPage extends StatelessWidget {
               textColor: AppColorUtils.TEXT_GREEN,
             ).paddingSymmetric(
               vertical: 10.h,
+              horizontal: 20,
             ),
           ],
         ),

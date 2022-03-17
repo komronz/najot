@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/bloc/home_cubit/home_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -29,10 +27,10 @@ class MainPage extends StatelessWidget {
       create: (BuildContext context) => cubit,
       child: SafeArea(
         child: Scaffold(
+          backgroundColor: AppColorUtils.BACKGROUND,
           body: BlocBuilder<HomeCubit, HomeState>(
             builder: (context, state) {
               return Container(
-                color: AppColorUtils.BACKGROUND,
                 child: Column(
                   children: [
                     AppWidgets.appBarMenu(
