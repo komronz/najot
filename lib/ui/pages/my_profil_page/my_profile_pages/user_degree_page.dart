@@ -367,10 +367,6 @@ class UserDegreePage extends StatelessWidget {
                         ),
                       ),
 
-
-
-
-
                     ],
                   ),
                 ),

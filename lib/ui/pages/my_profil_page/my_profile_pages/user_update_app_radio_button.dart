@@ -5,16 +5,16 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-class AppRadioButton extends StatefulWidget {
+class UserUpdateAppRadioButton extends StatefulWidget {
   final ValueChanged<int> onChanged;
 
-  const AppRadioButton({required this.onChanged, Key? key}) : super(key: key);
+  const UserUpdateAppRadioButton({required this.onChanged, Key? key}) : super(key: key);
 
   @override
   _AppRadioButtonState createState() => _AppRadioButtonState();
 }
 
-class _AppRadioButtonState extends State<AppRadioButton> {
+class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
   var _selection = 1;
 
   void selectTime(int timeSelected) {
@@ -39,7 +39,7 @@ class _AppRadioButtonState extends State<AppRadioButton> {
           children: [
             InkWell(
               child: Container(
-                height: 50.w,
+                height: 48.h,
                 width: 114.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
@@ -47,7 +47,7 @@ class _AppRadioButtonState extends State<AppRadioButton> {
                     color: _selection == 1
                         ? AppColorUtils.KRAUDFANDING
                         : AppColorUtils.DARK_6,
-                    width: 1,
+                    width: 2,
                   ),
                 ),
                 child: Row(
@@ -78,7 +78,7 @@ class _AppRadioButtonState extends State<AppRadioButton> {
             ),
             InkWell(
               child: Container(
-                height: 50.w,
+                height: 48.h,
                 width: 114.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
@@ -86,7 +86,7 @@ class _AppRadioButtonState extends State<AppRadioButton> {
                     color: _selection == 2
                         ? AppColorUtils.KRAUDFANDING
                         : AppColorUtils.DARK_6,
-                    width: 1,
+                    width: 2,
                   ),
                 ),
                 child: Row(

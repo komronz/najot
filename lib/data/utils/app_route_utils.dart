@@ -15,6 +15,7 @@ import 'package:najot/ui/pages/my_profil_page/my_profile_pages/number_update_ste
 import 'package:najot/ui/pages/reg_page/reg_page.dart';
 import 'package:najot/ui/pages/verification_page/verification_page.dart';
 
+import '../../ui/pages/charity_full_page/charity_full_page.dart';
 import '../../ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
 import '../../ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_page.dart';
@@ -23,6 +24,8 @@ import '../../ui/pages/my_profil_page/my_profile_pages/number_update_step1_page.
 import '../../ui/pages/my_profil_page/my_profile_pages/user_degree_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/user_update_page.dart';
 import '../../ui/pages/sms_with_operator_page/sms_with_operator_page.dart';
+import '../model/card_model.dart';
+import '../model/charity_model.dart';
 
 class AppRouteUtils {
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
