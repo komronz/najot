@@ -9,12 +9,6 @@ class MyProfileState extends Equatable {
   // TODO: implement props
   List<Object?> get props => [isVisibled];
 
-
-  MyProfileState copyWith({
-    bool? isVisibled
-  }){
-    return MyProfileState(isVisibled: isVisibled ?? this.isVisibled);
-  }
 }
 
 

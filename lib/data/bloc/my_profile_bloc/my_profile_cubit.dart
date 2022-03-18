@@ -7,10 +7,6 @@ part 'my_profile_state.dart';
 class MyProfileCubit extends Cubit<MyProfileState> {
   MyProfileCubit() :super(MyProfileState(isVisibled: true));
     bool isVisibled=true;
-  Future changePageNext(bool isShowed) async{
-    if(isVisibled = isShowed){
-      isVisibled =! isShowed;
-    }
-    emit(MyProfileState(isVisibled: !isShowed));
-  }
+  void changePageNext(bool isShowed)=> emit(MyProfileState(isVisibled: !isShowed));
+
 }
