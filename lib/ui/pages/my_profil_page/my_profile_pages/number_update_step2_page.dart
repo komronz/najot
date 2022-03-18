@@ -29,7 +29,7 @@ class NumberUpdateStep2Page extends StatelessWidget {
                     onTap: () {},
                   ),
                   AppWidgets.textLocale(
-                      text: "Edit",
+                      text: "edit_my_profile",
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
                       color: Color(0xFF414042)),
@@ -45,7 +45,7 @@ class NumberUpdateStep2Page extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
-                  width: 375.w,
+                  width: double.infinity,
                   padding: EdgeInsets.only(left: 19, right: 20),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
@@ -56,10 +56,14 @@ class NumberUpdateStep2Page extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          AppWidgets.textLocale(text: "Phone_number",
-                              color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400).paddingOnly(top: 24.h, bottom: 8.h),
+                          AppWidgets.textLocale(
+                                  text: "Phone_number",
+                                  color: Color(0xFF6D6E71),
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w400)
+                              .paddingOnly(top: 24.h, bottom: 8.h),
                           Container(
-                            width: 335.w,
+                            width: double.infinity,
                             padding: EdgeInsets.only(left: 18),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
@@ -70,18 +74,20 @@ class NumberUpdateStep2Page extends StatelessWidget {
                                 )),
                             child: TextField(
                               decoration: InputDecoration(
+                                enabled: false,
                                 hintText: "(+998)97 628 28 82",
                                 border: InputBorder.none,
-                                hintStyle:
-                                TextStyle(color: Color(0xFFBCBEC0), fontSize: 15.sp,fontWeight: FontWeight.w500),
+                                hintStyle: TextStyle(
+                                    color: Color(0xFFBCBEC0),
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.w500),
                               ),
                             ),
-
                           ),
                         ],
                       ).paddingOnly(bottom: 24.h),
                       Container(
-                        width: 336.w,
+                        width: double.infinity,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -91,8 +97,8 @@ class NumberUpdateStep2Page extends StatelessWidget {
                                 fontSize: 13.sp,
                                 fontWeight: FontWeight.w400),
                             SizedBox(height: 8.h),
-                            Container(padding:
-                              EdgeInsets.only(left: 18),
+                            Container(
+                              padding: EdgeInsets.only(left: 18),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
                                   color: Color(0xFFFDFFFF),
@@ -112,34 +118,44 @@ class NumberUpdateStep2Page extends StatelessWidget {
                               ),
                             ).paddingOnly(bottom: 16.h),
                             Container(
-                              width: 144.w,
-                              padding: EdgeInsets.only( top: 8, bottom: 8, left: 15,right: 15),
+                              width: 140.w,
+                              padding: EdgeInsets.only(
+                                  top: 8, bottom: 8, left: 15, right: 15),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
                                 color: Color(0xFFFDFFFF),
-                                border: Border.all(color: Color(0xFF97C2BA),
-                                    width: 2),
+                                border: Border.all(
+                                    color: Color(0xFF97C2BA), width: 2),
                               ),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  AppWidgets.textLocale(text: "1 2 3 4 5 6",textAlign:TextAlign.center ,color: Color(0xFF0BA42D),fontSize: 15.sp,fontWeight: FontWeight.w600),
+                                  AppWidgets.textLocale(
+                                      text: "1 2 3 4 5 6",
+                                      textAlign: TextAlign.center,
+                                      color: Color(0xFF0BA42D),
+                                      fontSize: 15.sp,
+                                      fontWeight: FontWeight.w600).paddingOnly(right: 10),
                                   Container(
-                                    child: SvgPicture.asset(AppImageUtils.CHECK),
+                                    child:
+                                        SvgPicture.asset(AppImageUtils.CHECK),
                                   )
                                 ],
                               ),
                             ).paddingOnly(bottom: 16.h),
                             Container(
-                              width: 335.w,
-                              padding: EdgeInsets.only( top: 10, bottom: 13),
+                              width: double.infinity,
+                              padding: EdgeInsets.only(top: 10, bottom: 13),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
                                 color: Color(0xFF0BBF90),
                               ),
-                              child: AppWidgets.textLocale(text: "Confirmation",textAlign:TextAlign.center ,color: Color(0xFFFFFFFF),fontSize: 15.sp,fontWeight: FontWeight.w600),
+                              child: AppWidgets.textLocale(
+                                  text: "Confirmation",
+                                  textAlign: TextAlign.center,
+                                  color: Color(0xFFFFFFFF),
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.w600),
                             ),
-
                           ],
                         ),
                       ),

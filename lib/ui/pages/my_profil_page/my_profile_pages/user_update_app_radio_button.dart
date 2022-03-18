@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -8,7 +7,8 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 class UserUpdateAppRadioButton extends StatefulWidget {
   final ValueChanged<int> onChanged;
 
-  const UserUpdateAppRadioButton({required this.onChanged, Key? key}) : super(key: key);
+  const UserUpdateAppRadioButton({required this.onChanged, Key? key})
+      : super(key: key);
 
   @override
   _AppRadioButtonState createState() => _AppRadioButtonState();
@@ -40,7 +40,6 @@ class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
             InkWell(
               child: Container(
                 height: 48.h,
-                width: 114.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
@@ -67,7 +66,7 @@ class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
                       fontWeight: FontWeight.w500,
                     ),
                   ],
-                ),
+                ).paddingOnly(right: 18.w),
               ),
               onTap: () {
                 setState(() {
@@ -79,7 +78,6 @@ class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
             InkWell(
               child: Container(
                 height: 48.h,
-                width: 114.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
@@ -108,7 +106,7 @@ class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
                       fontWeight: FontWeight.w500,
                     ),
                   ],
-                ),
+                ).paddingOnly(right: 18.w),
               ).paddingOnly(left: 20),
               onTap: () {
                 setState(() {

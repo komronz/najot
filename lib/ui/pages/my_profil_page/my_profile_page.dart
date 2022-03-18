@@ -105,6 +105,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               AppWidgets.textLocale(
+
                                       text: "Name",
                                       color: Color(0xFF6D6E71),
                                       fontSize: 13.sp,
@@ -120,6 +121,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                       color: Color(0xFFCEE1DD),
                                     )),
                                 child: TextField(
+                                  enabled: false,
                                   decoration: InputDecoration(
                                     hintText: "Fakhriyor",
                                     border: InputBorder.none,
@@ -146,6 +148,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                       color: Color(0xFFCEE1DD),
                                     )),
                                 child: TextField(
+                                  enabled: false,
                                   decoration: InputDecoration(
                                     hintText: "Eshonov",
                                     border: InputBorder.none,
@@ -166,7 +169,6 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                 children: [
                                   Container(
                                     height: 48.h,
-                                    width: 114.w,
                                     decoration: BoxDecoration(
                                         borderRadius:
                                             BorderRadius.circular(12),
@@ -193,18 +195,17 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                               color: Color(0xFFCEE1DD),
                                             ),
                                           ),
-                                        ),
+                                        ).paddingOnly(right: 7.w),
                                         AppWidgets.textLocale(
                                             text: "Man",
                                             fontSize: 15.sp,
                                             color: Color(0xFFA8C5BF),
                                             fontWeight: FontWeight.w500)
                                       ],
-                                    ),
+                                    ).paddingOnly(right: 18.w,left: 18.w),
                                   ).paddingOnly(right: 24.h),
                                   Container(
                                     height: 48.h,
-                                    width: 103.w,
                                     decoration: BoxDecoration(
                                         borderRadius:
                                             BorderRadius.circular(12),
@@ -231,14 +232,14 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                               color: Color(0xFFCEE1DD),
                                             ),
                                           ),
-                                        ),
+                                        ).paddingOnly(right: 7.w),
                                         AppWidgets.textLocale(
                                             text: "Woman",
                                             fontSize: 15.sp,
                                             color: Color(0xFFA8C5BF),
                                             fontWeight: FontWeight.w500)
                                       ],
-                                    ),
+                                    ).paddingOnly(right: 18.w,left: 18.w),
                                   ),
                                 ],
                               ),
@@ -274,6 +275,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                         )),
                                     child: TextField(
                                       decoration: InputDecoration(
+                                        enabled: false,
                                         hintText: "+998976282882",
                                         border: InputBorder.none,
                                         hintStyle: TextStyle(
@@ -289,9 +291,9 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                           NumberUpdatePage.routeName);
                                     },
                                     child: Container(
-                                      height: 34.h,
-                                      width: 34.w,
-                                      child: SvgPicture.asset(
+                                      height: 33.w,
+                                      width: 33.w,
+                                      child: AppWidgets.imageSvg(path:
                                           AppImageUtils.EDIT),
                                     ),
                                   ),
