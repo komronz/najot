@@ -1,14 +1,15 @@
 part of 'my_profile_cubit.dart';
 
 @immutable
-abstract class MyProfileState extends Equatable {}
+class MyProfileState extends Equatable {
+  MyProfileState({required this.isVisibled});
 
-
-class ChangeState extends MyProfileState{
-  final bool isSelected;
-
-  ChangeState({required this.isSelected});
-
-  List<Object?> get props => [isSelected];
+  final bool isVisibled;
+  @override
+  // TODO: implement props
+  List<Object?> get props => [isVisibled];
 
 }
+
+
+

@@ -41,7 +41,6 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
-                  width: 375.w,
                   padding: EdgeInsets.only(left: 19, right: 20),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
@@ -50,12 +49,10 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                   child: Column(
                     children: [
                       Container(
-                        width: 107.w,
-                        height: 129.h,
+
                         child: SvgPicture.asset(AppImageUtils.USERADD),
                       ).paddingOnly(top: 25, bottom: 24),
                       Container(
-                        width: 336.w,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -126,7 +123,7 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                         ),
                       ).paddingOnly(bottom: 24.h),
                       Container(
-                        width: 335.w,
+                        width: double.infinity,
                         padding: EdgeInsets.only( top: 10, bottom: 15,),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
