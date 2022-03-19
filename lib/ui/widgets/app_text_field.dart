@@ -112,7 +112,11 @@ class _AppTextFieldState extends State<AppTextField> {
               enabledBorder: _border,
               contentPadding: EdgeInsets.all(14),
               hintText: widget.hintText,
-              hintStyle: GoogleFonts.inter(fontSize: 16),
+              hintStyle: GoogleFonts.inter(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w500,
+                color: AppColorUtils.GRAY_4,
+              ),
               suffixIcon: widget.isPassword
                   ? InkWell(
                       onTap: () {

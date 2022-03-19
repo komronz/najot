@@ -56,6 +56,8 @@ class AppColorUtils {
   static const Color GREEN_BACK = Color(0xFFF2FEFC);
   static const Color INDICATOR = Color(0xFFE0F4EF);
   static const Color LIGHT_GRAY = Color(0xFFF8F7FA);
+  static const Color DOT_COLOR = Color(0xFFABCFC8);
+  static const Color SUCCESS_GREEN = Color(0xFF0BA42C);
 
 
 

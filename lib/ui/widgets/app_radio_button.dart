@@ -39,8 +39,8 @@ class _AppRadioButtonState extends State<AppRadioButton> {
           children: [
             InkWell(
               child: Container(
+                padding: EdgeInsets.only(right: 10),
                 height: 50.w,
-                width: 114.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
@@ -79,7 +79,7 @@ class _AppRadioButtonState extends State<AppRadioButton> {
             InkWell(
               child: Container(
                 height: 50.w,
-                width: 114.w,
+                padding: EdgeInsets.only(right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(

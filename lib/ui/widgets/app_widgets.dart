@@ -70,17 +70,22 @@ class AppWidgets {
     double? fontSize = 10,
     FontWeight fontWeight = FontWeight.w400,
     bool isCenter = false,
+    bool hasStar = true,
+    int maxLines = 2
   }) {
     return Row(
       mainAxisAlignment:
           isCenter ? MainAxisAlignment.center : MainAxisAlignment.start,
       children: [
-        textLocale(text: '*', fontSize: 10, color: AppColorUtils.RED),
+        hasStar
+            ? textLocale(text: '*', fontSize: fontSize, color: AppColorUtils.RED)
+            : SizedBox(),
         textLocale(
           text: text,
           color: color,
           fontSize: fontSize,
           fontWeight: fontWeight,
+          maxLines: maxLines
         ),
       ],
     );

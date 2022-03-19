@@ -57,5 +57,7 @@ class AppImageUtils {
   static const String DELETE = "assets/app_icons/delete_icon.svg";
   static const String MESSAGE = "assets/app_icons/message_rounded.svg";
   static const String IMG_VOLUNTEER = "assets/images/img_voluteer.png";
-
+  static const String IC_QUESTION = "assets/app_icons/ic_question.svg";
+  static const String IC_SUCCESS = "assets/app_icons/ic_success.svg";
+  static const String IC_UPLOAD = "assets/app_icons/ic_upload_img.svg";
 }
