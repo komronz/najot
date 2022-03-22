@@ -4,6 +4,8 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../../../data/localization/locale_keys.g.dart';
+
 class UserUpdateAppRadioButton extends StatefulWidget {
   final ValueChanged<int> onChanged;
 
@@ -30,7 +32,7 @@ class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AppWidgets.text(
-          text: "Gender",
+          text: LocaleKeys.gender,
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,
           color: AppColorUtils.DARK_4,
@@ -58,7 +60,7 @@ class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
                       onChanged: (v) => selectTime(v as int),
                     ),
                     AppWidgets.textLocale(
-                      text: "Man",
+                      text: LocaleKeys.man,
                       color: _selection == 1
                           ? AppColorUtils.KRAUDFANDING
                           : AppColorUtils.DARK_6,
@@ -98,7 +100,7 @@ class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
                       onChanged: (v) => selectTime(v as int),
                     ),
                     AppWidgets.textLocale(
-                      text: "Woman",
+                      text: LocaleKeys.woman,
                       color: _selection == 2
                           ? AppColorUtils.KRAUDFANDING
                           : AppColorUtils.DARK_6,

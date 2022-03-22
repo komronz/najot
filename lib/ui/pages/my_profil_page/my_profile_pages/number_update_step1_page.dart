@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 
+import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../widgets/app_widgets.dart';
 import 'number_update_step2_page.dart';
@@ -23,19 +24,22 @@ class NumberUpdateStep1Page extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: Color(0xFFFDFFFF),
-              border: Border.all(color: Color(0xFF97C2BA), width: 2),
+              border: Border.all(
+                color: Color(0xFF97C2BA),
+                width: 2,
+              ),
             ),
             child: AppWidgets.textLocale(
-                text: "1 2 3 4 5 6",
-                textAlign: TextAlign.center,
-                color: Color(0xFFBCBEC0),
-                fontSize: 15.sp,
-                fontWeight: FontWeight.w600),
+              text: "1 2 3 4 5 6",
+              textAlign: TextAlign.center,
+              color: Color(0xFFBCBEC0),
+              fontSize: 15.sp,
+              fontWeight: FontWeight.w600,
+            ),
           ),
           SizedBox(height: 16.h),
           InkWell(
             onTap: () {
-              NavigatorService.to.pushNamed(NumberUpdateStep2Page.routeName);
             },
             child: Container(
               width: 335.w,
@@ -45,19 +49,21 @@ class NumberUpdateStep1Page extends StatelessWidget {
                 color: Color(0xFF0BBF90),
               ),
               child: AppWidgets.textLocale(
-                  text: "Confirmation",
-                  textAlign: TextAlign.center,
-                  color: Color(0xFFFFFFFF),
-                  fontSize: 15.sp,
-                  fontWeight: FontWeight.w600),
+                text: LocaleKeys.confirmation,
+                textAlign: TextAlign.center,
+                color: Color(0xFFFFFFFF),
+                fontSize: 15.sp,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ).paddingOnly(bottom: 18.h),
           Container(
             child: AppWidgets.textLocale(
-                text: "send_again",
-                color: Color(0xFF0B58B2),
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w500),
+              text: LocaleKeys.send_again,
+              color: Color(0xFF0B58B2),
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w500,
+            ),
           ).paddingOnly(left: 120.w),
         ],
       ),

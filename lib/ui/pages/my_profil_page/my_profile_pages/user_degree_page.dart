@@ -35,10 +35,11 @@ class UserDegreePage extends StatelessWidget {
                   ),
                   SizedBox(width: 93.w),
                   AppWidgets.textLocale(
-                      text: "Darajalar",
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF414042)),
+                    text: "Darajalar",
+                    fontSize: 24,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF414042),
+                  ),
                 ],
               ),
             ),
@@ -55,10 +56,11 @@ class UserDegreePage extends StatelessWidget {
                     children: [
                       Container(
                         child: AppWidgets.textLocale(
-                            text: "Daraja turlari",
-                            fontSize: 22.sp,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFF414042)),
+                          text: "Daraja turlari",
+                          fontSize: 22.sp,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF414042),
+                        ),
                       ).paddingOnly(top: 18.h, bottom: 10.h),
                       Container(
                         child: Text(
@@ -66,10 +68,11 @@ class UserDegreePage extends StatelessWidget {
                           "and typesetting industry. "
                           "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
                           style: TextStyle(
-                              color: Color(0xFF58595B),
-                              fontWeight: FontWeight.w400,
-                              fontSize: 16.sp,
-                              height: 1.5),
+                            color: Color(0xFF58595B),
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16.sp,
+                            height: 1.5,
+                          ),
                         ),
                       ).paddingOnly(bottom: 24.h),
                       Container(
@@ -84,7 +87,7 @@ class UserDegreePage extends StatelessWidget {
                                   color: Color(0xFF0344A7),
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.w600),
-                            )
+                            ),
                           ],
                         ),
                       ).paddingOnly(bottom: 12.h),
@@ -93,10 +96,11 @@ class UserDegreePage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             AppWidgets.textLocale(
-                                text: "Imkoniyatlari",
-                                color: Color(0xFF58595B),
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w600),
+                              text: "Imkoniyatlari",
+                              color: Color(0xFF58595B),
+                              fontSize: 13.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
                             SizedBox(height: 12.h),
                             Container(
                               child: Row(
@@ -108,12 +112,13 @@ class UserDegreePage extends StatelessWidget {
                                     height: 14.h,
                                     width: 14.w,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF0344A7),
-                                        )),
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Color(0xFFFFFFFF),
+                                      border: Border.all(
+                                        width: 1,
+                                        color: Color(0xFF0344A7),
+                                      ),
+                                    ),
                                     child: SvgPicture.asset(
                                         AppImageUtils.CHECK_SMALL),
                                   ).paddingOnly(bottom: 8.h),
@@ -127,16 +132,18 @@ class UserDegreePage extends StatelessWidget {
                                       Text(
                                         "Xayriya qilish",
                                         style: TextStyle(
-                                            fontSize: 14.sp,
-                                            color: Color(0xFF6D6E71),
-                                            fontWeight: FontWeight.w500),
+                                          fontSize: 14.sp,
+                                          color: Color(0xFF6D6E71),
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
                                       Text(
                                         "(kiyimlarni hayriya qilish bundan mustasno)",
                                         style: TextStyle(
-                                            fontSize: 12.sp,
-                                            color: Color(0xFF6D6E71),
-                                            fontWeight: FontWeight.w400),
+                                          fontSize: 12.sp,
+                                          color: Color(0xFF6D6E71),
+                                          fontWeight: FontWeight.w400,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -153,22 +160,25 @@ class UserDegreePage extends StatelessWidget {
                                     height: 14.h,
                                     width: 14.w,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF0344A7),
-                                        )),
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Color(0xFFFFFFFF),
+                                      border: Border.all(
+                                        width: 1,
+                                        color: Color(0xFF0344A7),
+                                      ),
+                                    ),
                                     child: SvgPicture.asset(
-                                        AppImageUtils.CHECK_SMALL),
+                                      AppImageUtils.CHECK_SMALL,
+                                    ),
                                   ),
                                   SizedBox(width: 8),
                                   Text(
                                     "Mukorofot sotib olish",
                                     style: TextStyle(
-                                        fontSize: 14.sp,
-                                        color: Color(0xFF6D6E71),
-                                        fontWeight: FontWeight.w500),
+                                      fontSize: 14.sp,
+                                      color: Color(0xFF6D6E71),
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -183,22 +193,25 @@ class UserDegreePage extends StatelessWidget {
                                     height: 14.h,
                                     width: 14.w,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF0344A7),
-                                        )),
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Color(0xFFFFFFFF),
+                                      border: Border.all(
+                                        width: 1,
+                                        color: Color(0xFF0344A7),
+                                      ),
+                                    ),
                                     child: SvgPicture.asset(
-                                        AppImageUtils.CHECK_SMALL),
+                                      AppImageUtils.CHECK_SMALL,
+                                    ),
                                   ),
                                   SizedBox(width: 8),
                                   Text(
                                     "Loyihalarni qo’llash",
                                     style: TextStyle(
-                                        fontSize: 14.sp,
-                                        color: Color(0xFF6D6E71),
-                                        fontWeight: FontWeight.w500),
+                                      fontSize: 14.sp,
+                                      color: Color(0xFF6D6E71),
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -213,22 +226,25 @@ class UserDegreePage extends StatelessWidget {
                                     height: 14.h,
                                     width: 14.w,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF0344A7),
-                                        )),
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Color(0xFFFFFFFF),
+                                      border: Border.all(
+                                        width: 1,
+                                        color: Color(0xFF0344A7),
+                                      ),
+                                    ),
                                     child: SvgPicture.asset(
-                                        AppImageUtils.CHECK_SMALL),
+                                      AppImageUtils.CHECK_SMALL,
+                                    ),
                                   ),
                                   SizedBox(width: 8),
                                   Text(
                                     "Savollar berish",
                                     style: TextStyle(
-                                        fontSize: 14.sp,
-                                        color: Color(0xFF6D6E71),
-                                        fontWeight: FontWeight.w500),
+                                      fontSize: 14.sp,
+                                      color: Color(0xFF6D6E71),
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -243,22 +259,25 @@ class UserDegreePage extends StatelessWidget {
                                     height: 14.h,
                                     width: 14.w,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF0344A7),
-                                        )),
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Color(0xFFFFFFFF),
+                                      border: Border.all(
+                                        width: 1,
+                                        color: Color(0xFF0344A7),
+                                      ),
+                                    ),
                                     child: SvgPicture.asset(
-                                        AppImageUtils.CHECK_SMALL),
+                                      AppImageUtils.CHECK_SMALL,
+                                    ),
                                   ),
                                   SizedBox(width: 8),
                                   Text(
                                     "Izoh qoldirish",
                                     style: TextStyle(
-                                        fontSize: 14.sp,
-                                        color: Color(0xFF6D6E71),
-                                        fontWeight: FontWeight.w500),
+                                      fontSize: 14.sp,
+                                      color: Color(0xFF6D6E71),
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -274,11 +293,12 @@ class UserDegreePage extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.only(left: 5),
                               child: AppWidgets.textLocale(
-                                  text: "Volontyor",
-                                  color: Color(0xFF048D6A),
-                                  fontSize: 18.sp,
-                                  fontWeight: FontWeight.w600),
-                            )
+                                text: "Volontyor",
+                                color: Color(0xFF048D6A),
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
                           ],
                         ),
                       ).paddingOnly(bottom: 12.h),
@@ -287,10 +307,11 @@ class UserDegreePage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             AppWidgets.textLocale(
-                                text: "Imkoniyatlari",
-                                color: Color(0xFF58595B),
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w600),
+                              text: "Imkoniyatlari",
+                              color: Color(0xFF58595B),
+                              fontSize: 13.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
                             SizedBox(height: 12.h),
                             Container(
                               height: 37.h,
@@ -303,12 +324,13 @@ class UserDegreePage extends StatelessWidget {
                                     height: 14.h,
                                     width: 14.w,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF038D69),
-                                        )),
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Color(0xFFFFFFFF),
+                                      border: Border.all(
+                                        width: 1,
+                                        color: Color(0xFF038D69),
+                                      ),
+                                    ),
                                     child: SvgPicture.asset(
                                       AppImageUtils.CHECK_SMALL,
                                       color: Color(0xFF038D69),
@@ -318,9 +340,10 @@ class UserDegreePage extends StatelessWidget {
                                   Text(
                                     "Oddiy foydalanuvchi barcha imkoniyatlari",
                                     style: TextStyle(
-                                        fontSize: 14.sp,
-                                        color: Color(0xFF6D6E71),
-                                        fontWeight: FontWeight.w500),
+                                      fontSize: 14.sp,
+                                      color: Color(0xFF6D6E71),
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -335,12 +358,13 @@ class UserDegreePage extends StatelessWidget {
                                     height: 14.h,
                                     width: 14.w,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF038D69),
-                                        )),
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Color(0xFFFFFFFF),
+                                      border: Border.all(
+                                        width: 1,
+                                        color: Color(0xFF038D69),
+                                      ),
+                                    ),
                                     child: SvgPicture.asset(
                                       AppImageUtils.CHECK_SMALL,
                                       color: Color(0xFF038D69),
@@ -348,14 +372,15 @@ class UserDegreePage extends StatelessWidget {
                                   ),
                                   SizedBox(width: 8),
                                   Expanded(
-                                      child: Text(
-                                    "Volontyorlik kategoriyasidan to’liq foydalana olish",
-                                    style: TextStyle(
-                                        height: 1.3,
-                                        fontSize: 14.sp,
-                                        color: Color(0xFF6D6E71),
-                                        fontWeight: FontWeight.w500),
-                                  )),
+                                    child: Text(
+                                      "Volontyorlik kategoriyasidan to’liq foydalana olish",
+                                      style: TextStyle(
+                                          height: 1.3,
+                                          fontSize: 14.sp,
+                                          color: Color(0xFF6D6E71),
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ).paddingOnly(bottom: 20.h),
@@ -369,12 +394,13 @@ class UserDegreePage extends StatelessWidget {
                                     height: 14.h,
                                     width: 14.w,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF038D69),
-                                        )),
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Color(0xFFFFFFFF),
+                                      border: Border.all(
+                                        width: 1,
+                                        color: Color(0xFF038D69),
+                                      ),
+                                    ),
                                     child: SvgPicture.asset(
                                       AppImageUtils.CHECK_SMALL,
                                       color: Color(0xFF038D69),
@@ -384,9 +410,10 @@ class UserDegreePage extends StatelessWidget {
                                   Text(
                                     "Kiyimlar xayriya qilish",
                                     style: TextStyle(
-                                        fontSize: 14.sp,
-                                        color: Color(0xFF6D6E71),
-                                        fontWeight: FontWeight.w500),
+                                      fontSize: 14.sp,
+                                      color: Color(0xFF6D6E71),
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -401,12 +428,13 @@ class UserDegreePage extends StatelessWidget {
                                     height: 14.h,
                                     width: 14.w,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF038D69),
-                                        )),
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Color(0xFFFFFFFF),
+                                      border: Border.all(
+                                        width: 1,
+                                        color: Color(0xFF038D69),
+                                      ),
+                                    ),
                                     child: SvgPicture.asset(
                                       AppImageUtils.CHECK_SMALL,
                                       color: Color(0xFF038D69),
@@ -414,13 +442,15 @@ class UserDegreePage extends StatelessWidget {
                                   ),
                                   SizedBox(width: 8),
                                   Expanded(
-                                      child: Text(
-                                    "Loyiha tomonidan ajoyib sovg’alarni qo’lga kiritish",
-                                    style: TextStyle(
+                                    child: Text(
+                                      "Loyiha tomonidan ajoyib sovg’alarni qo’lga kiritish",
+                                      style: TextStyle(
                                         fontSize: 14.sp,
                                         color: Color(0xFF6D6E71),
-                                        fontWeight: FontWeight.w500),
-                                  )),
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ).paddingOnly(bottom: 15.h),
@@ -434,23 +464,26 @@ class UserDegreePage extends StatelessWidget {
                                     height: 14.h,
                                     width: 14.w,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF038D69),
-                                        )),
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Color(0xFFFFFFFF),
+                                      border: Border.all(
+                                        width: 1,
+                                        color: Color(0xFF038D69),
+                                      ),
+                                    ),
                                     child: SvgPicture.asset(
-                                        AppImageUtils.CHECK_SMALL,
-                                        color: Color(0xFF038D69)),
+                                      AppImageUtils.CHECK_SMALL,
+                                      color: Color(0xFF038D69),
+                                    ),
                                   ),
                                   SizedBox(width: 8),
                                   Text(
                                     "Loyiha qo’shish",
                                     style: TextStyle(
-                                        fontSize: 14.sp,
-                                        color: Color(0xFF6D6E71),
-                                        fontWeight: FontWeight.w500),
+                                      fontSize: 14.sp,
+                                      color: Color(0xFF6D6E71),
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ],
                               ),
