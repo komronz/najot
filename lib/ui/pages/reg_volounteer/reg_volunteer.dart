@@ -21,7 +21,7 @@ class RegVolunteer extends StatefulWidget {
   _RegVolunteerState createState() => _RegVolunteerState();
 }
 
-class _RegVolunteerState extends State<RegVolunteer> {
+class _RegVolunteerState extends State<RegVolunteer> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

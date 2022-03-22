@@ -16,7 +16,7 @@ class View1 extends StatefulWidget {
   _View1State createState() => _View1State();
 }
 
-class _View1State extends State<View1> {
+class _View1State extends State<View1> with SingleTickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
     var bloc = context.read<RegVolunteerBloc>();
@@ -24,6 +24,7 @@ class _View1State extends State<View1> {
       children: [
         AppTextField(
           hintText: "Abdumalik",
+          initialText: bloc.state.firstName,
           onChanged: (v) {
             bloc.add(VolunteerFirstNameChanged(v));
           },
@@ -32,6 +33,7 @@ class _View1State extends State<View1> {
         ).paddingOnly(top: 18),
         AppTextField(
           hintText: "Sapokulov",
+          initialText: bloc.state.lastName,
           onChanged: (v) {
             bloc.add(VolunteerLastNameChanged(v));
           },
@@ -40,6 +42,7 @@ class _View1State extends State<View1> {
         ).paddingOnly(top: 24),
         AppTextField(
           hintText: "Manzilni kiriting",
+          initialText: bloc.state.address,
           onChanged: (v) {
             bloc.add(VolunteerAddressChanged(v));
           },
@@ -47,12 +50,14 @@ class _View1State extends State<View1> {
           isFill: bloc.state.address.isNotEmpty,
         ).paddingOnly(top: 24),
         AppRadioButton(
+          initial: bloc.state.gender,
           onChanged: (v) {
             bloc.add(VolunteerGenderChanged(v));
           },
         ).paddingOnly(top: 20, left: 20),
         AppDatePicker(
           title: "Tug'ilgan sanangiz",
+
           onTap: () async {
             await showDialog(
               context: context,

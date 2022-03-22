@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profile_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 
-import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
@@ -137,18 +136,24 @@ class NumberUpdatePage extends StatelessWidget {
                                     child: state.isVisibled? Visibility(
                                       visible: isVisible,
                                       child: Container(
-                                        padding: EdgeInsets.only(top: 10, bottom: 13,right: 10,left: 10),
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(12),
-                                          color: Color(0xFF1F6ADE),
+                                        padding: EdgeInsets.only(
+                                            top: 10,
+                                            bottom: 13,
+                                            right: 10,
+                                            left: 10,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                            color: Color(0xFF1F6ADE),
+                                          ),
+                                          child: AppWidgets.textLocale(
+                                              text: "Send_code",
+                                              textAlign: TextAlign.center,
+                                              color: Color(0xFFFFFFFF),
+                                              fontSize: 15.sp,
+                                              fontWeight: FontWeight.w600),
                                         ),
-                                        child: AppWidgets.textLocale(
-                                            text: "Send_code",
-                                            textAlign: TextAlign.center,
-                                            color: Color(0xFFFFFFFF),
-                                            fontSize: 15.sp,
-                                            fontWeight: FontWeight.w600),
-                                      ),
                                     ): NumberUpdateStep1Page(),
                                   ),
 

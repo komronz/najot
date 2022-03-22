@@ -1,21 +1,31 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class AppRadioButton extends StatefulWidget {
   final ValueChanged<int> onChanged;
+  final Gender initial;
 
-  const AppRadioButton({required this.onChanged, Key? key}) : super(key: key);
+  const AppRadioButton(
+      {required this.onChanged, required this.initial, Key? key})
+      : super(key: key);
 
   @override
   _AppRadioButtonState createState() => _AppRadioButtonState();
 }
 
 class _AppRadioButtonState extends State<AppRadioButton> {
-  var _selection = 1;
+  late int _selection;
+
+  @override
+  void initState() {
+    _selection = widget.initial == Gender.MAN ? 1 : 2;
+    super.initState();
+  }
 
   void selectTime(int timeSelected) {
     setState(() {

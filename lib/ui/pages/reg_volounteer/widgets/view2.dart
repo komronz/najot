@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +7,6 @@ import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/app_date_picker.dart';
 import 'package:najot/ui/widgets/app_date_picker_widget.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
@@ -22,7 +20,7 @@ class View2 extends StatefulWidget {
   _View2State createState() => _View2State();
 }
 
-class _View2State extends State<View2> {
+class _View2State extends State<View2> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     var bloc = context.read<RegVolunteerBloc>();
@@ -35,8 +33,10 @@ class _View2State extends State<View2> {
                 title: "Passport seriyasi",
                 textInputType: TextInputType.name,
                 onChanged: (v) {
-
+                  bloc.add(VolunteerSerialChanged(v));
                 },
+                isFill: bloc.state.serial.isNotEmpty,
+                initialText: bloc.state.serial,
                 hintText: "(AA)",
               ),
             ),
@@ -44,7 +44,11 @@ class _View2State extends State<View2> {
               child: AppTextField(
                 title: "Passport raqami",
                 textInputType: TextInputType.number,
-                onChanged: (v) {},
+                onChanged: (v) {
+                  bloc.add(VolunteerSerialNumberChanged(v));
+                },
+                isFill: bloc.state.serialNumber.isNotEmpty,
+                initialText: bloc.state.serialNumber,
                 hintText: "(123456)",
               ),
             )
@@ -52,7 +56,11 @@ class _View2State extends State<View2> {
         ).paddingOnly(top: 15),
         AppTextField(
           hintText: "Toshkent shahar Yunsobod IIB",
-          onChanged: (v) {},
+          onChanged: (v) {
+            bloc.add(VolunteerGiveAddressChanged(v));
+          },
+          isFill: bloc.state.givenAddress.isNotEmpty,
+          initialText: bloc.state.givenAddress,
           title: "Kim tomonidan berilgan",
           textInputType: TextInputType.name,
         ).paddingOnly(top: 24),
@@ -64,11 +72,12 @@ class _View2State extends State<View2> {
               builder: (context) => AppDatePickerWidget(
                 selectFunction: (dateTime) {
                   print(dateTime.toUtc().toString());
+                  bloc.add(VolunteerGiveDateSelected(dateTime));
                 },
               ),
             );
           },
-          text: null,
+          text: bloc.state.givenDate,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,14 +105,10 @@ class _View2State extends State<View2> {
                 Expanded(
                   child: ImgUploadWidget(
                     uploadBtn: () async {
-                      XFile? pickedFile = await ImagePicker()
-                          .pickImage(source: ImageSource.gallery);
-                      if (pickedFile != null) {
-                        File imageFile = File(pickedFile.path);
-                        AppLoggerUtil.i(imageFile.path.toString());
-                      }
+
+                      bloc.add(VolunteerPassImgUploaded());
                     },
-                    isUploaded: false,
+                    img: bloc.state.passportImgPath,
                     title: " Pasportni ma'lumotlar sahifasi",
                   ),
                 ),
@@ -114,13 +119,29 @@ class _View2State extends State<View2> {
                   child: ImgUploadWidget(
                     title: " Ro’yxatga olinganligiz to’grisidagi sahifa",
                     uploadBtn: () {},
-                    isUploaded: false,
+                    img: null,
                   ),
                 ),
               ],
             ),
-            AppWidgets.appButton(title: "Yuborish", onTap: () {})
-                .paddingOnly(top: 20),
+            AppWidgets.appButton(
+              title: "Yuborish",
+              onTap: bloc.state.sendBtnActive
+                  ? () {
+                      AppWidgets.showText(
+                          text: "Next page",
+                          duration: Duration(milliseconds: 800));
+                    }
+                  : () {
+                      AppWidgets.showText(
+                        text: "Bo'sh maydonlarni to'ldiring",
+                        duration: Duration(milliseconds: 800),
+                      );
+                    },
+              color: bloc.state.sendBtnActive
+                  ? AppColorUtils.GREEN_APP
+                  : AppColorUtils.DISABLE_BC,
+            ).paddingOnly(top: 20),
             SizedBox(
               height: 20,
             )
@@ -132,14 +153,14 @@ class _View2State extends State<View2> {
 }
 
 class ImgUploadWidget extends StatelessWidget {
-  final bool isUploaded;
+  final XFile? img;
   final VoidCallback uploadBtn;
   final String title;
 
   const ImgUploadWidget({
     required this.uploadBtn,
     required this.title,
-    this.isUploaded = true,
+   required this.img,
     Key? key,
   }) : super(key: key);
 
@@ -155,11 +176,11 @@ class ImgUploadWidget extends StatelessWidget {
           color: AppColorUtils.DOT_COLOR,
           child: ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(12)),
-            child: isUploaded
+            child: img != null
                 ? Container(
                     height: 114.w,
                     width: double.infinity,
-                    child: AppWidgets.imageAsset(path: AppImageUtils.IMG_ABOUT),
+                    child: AppWidgets.imageAsset(path: img!.path),
                   )
                 : Container(
                     height: 114.w,
@@ -175,8 +196,9 @@ class ImgUploadWidget extends StatelessWidget {
                               width: 35.w,
                               height: 35.w,
                               child: AppWidgets.imageSvg(
-                                  path: AppImageUtils.IC_UPLOAD,
-                                  fit: BoxFit.none),
+                                path: AppImageUtils.IC_UPLOAD,
+                                fit: BoxFit.none,
+                              ),
                             ),
                           ),
                         ),
@@ -185,7 +207,7 @@ class ImgUploadWidget extends StatelessWidget {
                   ),
           ),
         ),
-        isUploaded
+        img != null
             ? Row(
                 children: [
                   AppWidgets.imageSvg(

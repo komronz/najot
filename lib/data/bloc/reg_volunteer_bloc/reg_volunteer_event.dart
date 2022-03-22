@@ -85,3 +85,13 @@ class VolunteerGiveDateSelected extends RegVolunteerEvent {
   @override
   List<Object?> get props => [giveDate];
 }
+
+class VolunteerPassImgUploaded extends RegVolunteerEvent {
+  @override
+  List<Object?> get props => throw UnimplementedError();
+}
+
+class VolunteerPageImgUploaded extends RegVolunteerEvent {
+  @override
+  List<Object?> get props => throw UnimplementedError();
+}

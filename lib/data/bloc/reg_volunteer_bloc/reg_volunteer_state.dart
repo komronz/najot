@@ -58,6 +58,7 @@ class RegVolunteerState extends Equatable {
       pageImgPath: passportImgPath ?? this.passportImgPath,
       passportImgPath: passportImgPath ?? this.passportImgPath,
       serial: serial ?? this.serial,
+      serialNumber: serialNumber??this.serialNumber,
       sendBtnActive: sendBtnActive ?? this.sendBtnActive,
     );
   }
