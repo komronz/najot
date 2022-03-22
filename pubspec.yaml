@@ -39,6 +39,7 @@ dependencies:
   percent_indicator: ^4.0.0
   cupertino_radio_choice: ^1.0.2
   smooth_page_indicator: ^1.0.0+2
+  image_picker: ^0.8.4+11
 
 
 

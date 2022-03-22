@@ -91,7 +91,7 @@ class VolunteerCardWidget extends StatelessWidget {
                               Row(
                                 children: [
                                   AppWidgets.textLocale(
-                                    text: LocaleKeys.Executable_date,
+                                    text: LocaleKeys.executable_date,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 10.sp,
                                     color: AppColorUtils.DARK6,
