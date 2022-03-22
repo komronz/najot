@@ -4,6 +4,14 @@ part of 'my_profil_update_bloc.dart';
 abstract class MyProfileUpdateEvent extends Equatable {
   const MyProfileUpdateEvent();
 }
+
+class MyProfileLoad extends MyProfileUpdateEvent {
+  const MyProfileLoad();
+
+  @override
+  List<Object?> get props => [];
+}
+
 class ImageChanged extends MyProfileUpdateEvent {
   final String imageUrl;
 
@@ -12,14 +20,18 @@ class ImageChanged extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [imageUrl];
 }
-  class FirstNameChanged extends MyProfileUpdateEvent {
+
+class FirstNameChanged extends MyProfileUpdateEvent {
   final String name;
 
-  const FirstNameChanged(this.name,);
+  const FirstNameChanged(
+    this.name,
+  );
 
   @override
   List<Object?> get props => [name];
-  }
+}
+
 class LastNameChanged extends MyProfileUpdateEvent {
   final String sureName;
 
@@ -28,6 +40,7 @@ class LastNameChanged extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [sureName];
 }
+
 class GenderChanged extends MyProfileUpdateEvent {
   final Gender isMan;
 

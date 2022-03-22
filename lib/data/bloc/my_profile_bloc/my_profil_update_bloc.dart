@@ -6,14 +6,17 @@ import 'package:meta/meta.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_page.dart';
+
 import '../../../ui/widgets/app_widgets.dart';
 import '../../model/user.dart';
 import '../../services/navigator_service.dart';
 import '../../utils/app_logger_util.dart';
+
 part 'my_profil_update_event.dart';
 
 class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateState> {
   MyProfileUpdateBloc() : super(MyProfileUpdateState()) {
+    on<MyProfileLoad>(_loadProfile);
     on<ImageChanged>(_onImageChanged);
     on<FirstNameChanged>(_onNameChanged);
     on<LastNameChanged>(_onLastNameChanged);
@@ -47,13 +50,12 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
       GenderChanged event,
       Emitter<MyProfileUpdateState> emit,
       ) async {
-    emit(state.copyWith(
-      isMan: event.isMan,
-
-    ));
+    emit(
+      state.copyWith(
+        isMan: event.isMan,
+      ),
+    );
   }
-
-
 
   Future _onLastNameChanged(
       LastNameChanged event,
@@ -92,5 +94,22 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
       emit(state.copyWith(hasError: true));
     }
   }
-  }
 
+  Future _loadProfile(
+    MyProfileLoad event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
+    var user = HiveService().getUser();
+    if (user != null) {
+      emit(
+        state.copyWith(
+          name: user.firstName,
+          sureName: user.lastName,
+          isMan: user.isMan,
+        ),
+      );
+    } else {
+      AppLoggerUtil.e('User null ');
+    }
+  }
+}

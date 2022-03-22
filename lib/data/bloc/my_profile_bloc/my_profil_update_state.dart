@@ -1,3 +1,4 @@
+import 'dart:html';
 
 import 'package:equatable/equatable.dart';
 
@@ -12,16 +13,18 @@ class MyProfileUpdateState extends Equatable {
   final bool nameFill;
   final bool sureNameFill;
   final bool hasError;
+  final File? imgFile;
 
   const MyProfileUpdateState({
     this.name = '',
     this.sureName = '',
-    this.imageUrl='',
+    this.imageUrl = '',
     this.isMan = Gender.MAN,
     this.isSavedBtn = false,
-    this.nameFill=false,
-    this.sureNameFill=false,
-    this.hasError=false
+    this.nameFill = false,
+    this.sureNameFill = false,
+    this.hasError = false,
+    this.imgFile,
   });
 
   @override

@@ -4,7 +4,6 @@ import 'dart:ui';
 // 📦 Package imports:
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
-
 // 🌎 Project imports:
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/user.dart';
@@ -31,7 +30,9 @@ class HiveService {
   }
 
   User? getUser() {
-  var user=User.fromJson(_box.get(_HiveKeys.USER, defaultValue: null));
+  var user = User.fromJson(
+      _box.get(_HiveKeys.USER, defaultValue: null),
+    );
     return user;
   }
 
