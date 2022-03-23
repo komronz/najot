@@ -60,4 +60,8 @@ class AppImageUtils {
   static const String IC_QUESTION = "assets/app_icons/ic_question.svg";
   static const String IC_SUCCESS = "assets/app_icons/ic_success.svg";
   static const String IC_UPLOAD = "assets/app_icons/ic_upload_img.svg";
+  static const String IC_EARPHONES = "assets/app_icons/ic_earphones.svg";
+  static const String IMG_WAIT = "assets/images/img_wait.svg";
+  static const String IC_BASKET = "assets/app_icons/ic_basket.svg";
+
 }

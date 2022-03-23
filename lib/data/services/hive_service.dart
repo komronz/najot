@@ -12,6 +12,7 @@ class HiveService {
   late Box _box;
   static Future init() async {
     final getIt = GetIt.instance;
+
     getIt.registerSingleton<HiveService>(HiveService());
     await getIt<HiveService>().create();
   }

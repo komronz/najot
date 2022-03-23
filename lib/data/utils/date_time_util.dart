@@ -10,8 +10,8 @@ class DateTimeUtil {
     return DateFormat("d MMMM, EEE", locale.toString()).format(dateTime);
   }
 
-  static String dm(DateTime dateTime, Locale locale) {
-    return DateFormat("dd/MM", locale.toString()).format(dateTime);
+  static String dmy(DateTime dateTime, Locale locale) {
+    return DateFormat("dd.MM.yyyy", locale.toString()).format(dateTime);
   }
 
   static String addZero(int data) {

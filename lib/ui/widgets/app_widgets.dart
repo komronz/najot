@@ -1,7 +1,8 @@
+import 'dart:io';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -64,28 +65,51 @@ Widget _baseText({
 }
 
 class AppWidgets {
-  static Widget starTextWidget({
-    required String text,
-    Color? color = AppColorUtils.DARK_6,
-    double? fontSize = 10,
-    FontWeight fontWeight = FontWeight.w400,
-    bool isCenter = false,
-    bool hasStar = true,
-    int maxLines = 2
+  static Widget iconButton({
+    required VoidCallback onTap,
+    required Widget iconWidget,
+    Color? color = AppColorUtils.GREEN_BTN,
+    double borderRadius = 3.0,
+    double height = 23,
+    double width = 23,
   }) {
+    return Material(
+      color: color,
+      borderRadius: BorderRadius.circular(borderRadius),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(borderRadius),
+        child: Ink(
+          child: iconWidget,
+          height: height,
+          width: width,
+        ),
+        onTap: onTap,
+      ),
+    );
+  }
+
+  static Widget starTextWidget(
+      {required String text,
+      Color? color = AppColorUtils.DARK_6,
+      double? fontSize = 10,
+      FontWeight fontWeight = FontWeight.w400,
+      bool isCenter = false,
+      bool hasStar = true,
+      int maxLines = 2}) {
     return Row(
       mainAxisAlignment:
           isCenter ? MainAxisAlignment.center : MainAxisAlignment.start,
       children: [
         hasStar
-            ? textLocale(text: '*', fontSize: fontSize, color: AppColorUtils.RED)
+            ? textLocale(
+                text: '*', fontSize: fontSize, color: AppColorUtils.RED)
             : SizedBox(),
         textLocale(
           text: text,
           color: color,
           fontSize: fontSize,
           fontWeight: fontWeight,
-          maxLines: maxLines
+          maxLines: maxLines,
         ),
       ],
     );
@@ -317,6 +341,22 @@ class AppWidgets {
   }) {
     return Image.asset(
       path,
+      height: height,
+      width: width,
+      fit: fit,
+      color: color,
+    );
+  }
+
+  static Widget imageFile({
+    required String path,
+    double? height,
+    double? width,
+    Color? color,
+    BoxFit fit = BoxFit.cover,
+  }) {
+    return Image.file(
+      File(path),
       height: height,
       width: width,
       fit: fit,

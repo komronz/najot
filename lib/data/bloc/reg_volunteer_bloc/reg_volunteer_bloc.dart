@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 part 'reg_volunteer_event.dart';
@@ -26,6 +27,9 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     on<VolunteerGiveDateSelected>(_onGiveDateSelected);
     on<VolunteerPageImgUploaded>(_onPageImgUploaded);
     on<VolunteerPassImgUploaded>(_onPassImgUploaded);
+    on<VolunteerSendBtn>(_onSendBtnPressed);
+    on<VolunteerPageImgDeleted>(_onPageImgDeleted);
+    on<VolunteerPassImgDeleted>(_onPassImgDeleted);
   }
 
   Future _onFirstNameChanged(
@@ -145,6 +149,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
           state.serialNumber,
           state.givenAddress,
           state.givenDate,
+          state.passportImgPath,
+          state.pageImgPath,
         ),
       ),
     );
@@ -155,11 +161,15 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     String serialNum,
     String giveAdd,
     DateTime? giveDate,
+    XFile? passPage,
+    XFile? regPage,
   ) {
     if (_isNotEmpty(serial) &&
         _isNotEmpty(serialNum) &&
         _isNotEmpty(giveAdd) &&
-        giveDate != null) {
+        giveDate != null &&
+        passPage != null &&
+        regPage != null) {
       return true;
     }
     return false;
@@ -177,6 +187,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
           event.serialNumber,
           state.givenAddress,
           state.givenDate,
+          state.passportImgPath,
+          state.pageImgPath,
         ),
       ),
     );
@@ -194,6 +206,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
           state.serialNumber,
           event.giveAddress,
           state.givenDate,
+          state.passportImgPath,
+          state.pageImgPath,
         ),
       ),
     );
@@ -211,6 +225,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
           state.serialNumber,
           state.givenAddress,
           event.giveDate,
+          state.passportImgPath,
+          state.pageImgPath,
         ),
       ),
     );
@@ -219,7 +235,26 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
   Future _onPageImgUploaded(
     VolunteerPageImgUploaded event,
     Emitter<RegVolunteerState> emit,
-  ) async {}
+  ) async {
+    XFile? imagePicker = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+    );
+    AppWidgets.isLoading(true);
+    if (imagePicker != null) {
+      emit(state.copyWith(
+        pageImgPath: imagePicker,
+        sendBtnActive: _sendBtnActive(
+          state.serial,
+          state.serialNumber,
+          state.givenAddress,
+          state.givenDate,
+          state.passportImgPath,
+          imagePicker,
+        ),
+      ));
+      AppWidgets.isLoading(false);
+    }
+  }
 
   Future _onPassImgUploaded(
     VolunteerPassImgUploaded event,
@@ -230,8 +265,77 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     );
     AppWidgets.isLoading(true);
     if (imagePicker != null) {
-      emit(state.copyWith(passportImgPath: imagePicker));
+      emit(
+        state.copyWith(
+          passportImgPath: imagePicker,
+          sendBtnActive: _sendBtnActive(
+            state.serial,
+            state.serialNumber,
+            state.givenAddress,
+            state.givenDate,
+            imagePicker,
+            state.pageImgPath,
+          ),
+        ),
+      );
       AppWidgets.isLoading(false);
     }
+  }
+
+  Future _onSendBtnPressed(
+    VolunteerSendBtn event,
+    Emitter<RegVolunteerState> emit,
+  ) async {
+    emit(state.copyWith(waitVolunteer: true));
+  }
+
+  Future _onPageImgDeleted(
+    VolunteerPageImgDeleted event,
+    Emitter<RegVolunteerState> emit,
+  ) async {
+    emit(
+      RegVolunteerState(
+        waitVolunteer: state.waitVolunteer,
+        address: state.address,
+        birthDate: state.birthDate,
+        firstName: state.firstName,
+        gender: state.gender,
+        givenAddress: state.givenAddress,
+        givenDate: state.givenDate,
+        isActiveNextBtn: state.isActiveNextBtn,
+        lastName: state.lastName,
+        pageImgPath: null,
+        passportImgPath: state.passportImgPath,
+        sendBtnActive: state.sendBtnActive,
+        serial: state.serial,
+        serialNumber: state.serialNumber,
+      ),
+    );
+    AppLoggerUtil.i(state.toString());
+  }
+
+  Future _onPassImgDeleted(
+    VolunteerPassImgDeleted event,
+    Emitter<RegVolunteerState> emit,
+  ) async {
+    emit(
+      RegVolunteerState(
+        waitVolunteer: state.waitVolunteer,
+        address: state.address,
+        birthDate: state.birthDate,
+        firstName: state.firstName,
+        gender: state.gender,
+        givenAddress: state.givenAddress,
+        givenDate: state.givenDate,
+        isActiveNextBtn: state.isActiveNextBtn,
+        lastName: state.lastName,
+        pageImgPath: state.pageImgPath,
+        passportImgPath: null,
+        sendBtnActive: state.sendBtnActive,
+        serial: state.serial,
+        serialNumber: state.serialNumber,
+      ),
+    );
+    AppLoggerUtil.i('deled');
   }
 }

@@ -88,10 +88,29 @@ class VolunteerGiveDateSelected extends RegVolunteerEvent {
 
 class VolunteerPassImgUploaded extends RegVolunteerEvent {
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
+}
+
+class VolunteerPassImgDeleted extends RegVolunteerEvent {
+  @override
+  List<Object?> get props => [];
 }
 
 class VolunteerPageImgUploaded extends RegVolunteerEvent {
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
+}
+
+class VolunteerPageImgDeleted extends RegVolunteerEvent {
+  final XFile? file;
+
+  VolunteerPageImgDeleted(this.file);
+
+  @override
+  List<Object?> get props => [file];
+}
+
+class VolunteerSendBtn extends RegVolunteerEvent {
+  @override
+  List<Object?> get props => [];
 }

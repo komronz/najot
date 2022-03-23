@@ -1,26 +1,24 @@
-
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/app_date_picker.dart';
+import 'package:najot/ui/pages/reg_volounteer/widgets/img_view.dart';
+import 'package:najot/ui/pages/reg_volounteer/widgets/volunteer_pass_info_dialog.dart';
+import 'package:najot/ui/pages/reg_volounteer/widgets/volunteer_seccess_widget.dart';
 import 'package:najot/ui/widgets/app_date_picker_widget.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:provider/src/provider.dart';
 
-class View2 extends StatefulWidget {
+import 'img_upload_widget.dart';
+
+class View2 extends StatelessWidget {
   const View2({Key? key}) : super(key: key);
 
-  @override
-  _View2State createState() => _View2State();
-}
-
-class _View2State extends State<View2> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     var bloc = context.read<RegVolunteerBloc>();
@@ -92,11 +90,18 @@ class _View2State extends State<View2> with SingleTickerProviderStateMixin {
                   fontSize: 14.sp,
                   color: AppColorUtils.DARK_4,
                 ),
-                AppWidgets.imageSvg(
-                  path: AppImageUtils.IC_QUESTION,
-                  width: 18.w,
-                  height: 18.w,
-                ).paddingOnly(left: 6)
+                GestureDetector(
+                  child: AppWidgets.imageSvg(
+                    path: AppImageUtils.IC_QUESTION,
+                    width: 18.w,
+                    height: 18.w,
+                  ).paddingOnly(left: 6),
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) => VolunteerPassInfoDialog());
+                  },
+                )
               ],
             ),
             Row(
@@ -104,8 +109,17 @@ class _View2State extends State<View2> with SingleTickerProviderStateMixin {
               children: [
                 Expanded(
                   child: ImgUploadWidget(
+                    deleteImg: () {
+                      bloc.add(VolunteerPassImgDeleted());
+                      print("deletre");
+                    },
+                    onTapImg: () {
+                      NavigatorService.to.pushNamed(
+                        ImgView.routeName,
+                        arguments: bloc.state.passportImgPath!.path,
+                      );
+                    },
                     uploadBtn: () async {
-
                       bloc.add(VolunteerPassImgUploaded());
                     },
                     img: bloc.state.passportImgPath,
@@ -117,9 +131,23 @@ class _View2State extends State<View2> with SingleTickerProviderStateMixin {
                 ),
                 Expanded(
                   child: ImgUploadWidget(
+                    deleteImg: () {
+                      print("deletre");
+                      context
+                          .read<RegVolunteerBloc>()
+                          .add(VolunteerPageImgDeleted(null));
+                    },
+                    onTapImg: () {
+                      NavigatorService.to.pushNamed(
+                        ImgView.routeName,
+                        arguments: bloc.state.pageImgPath!.path,
+                      );
+                    },
                     title: " Ro’yxatga olinganligiz to’grisidagi sahifa",
-                    uploadBtn: () {},
-                    img: null,
+                    uploadBtn: () {
+                      bloc.add(VolunteerPageImgUploaded());
+                    },
+                    img: bloc.state.pageImgPath,
                   ),
                 ),
               ],
@@ -127,10 +155,17 @@ class _View2State extends State<View2> with SingleTickerProviderStateMixin {
             AppWidgets.appButton(
               title: "Yuborish",
               onTap: bloc.state.sendBtnActive
-                  ? () {
+                  ? () async {
                       AppWidgets.showText(
-                          text: "Next page",
-                          duration: Duration(milliseconds: 800));
+                        text: "Next page",
+                        duration: Duration(milliseconds: 800),
+                      );
+                      await showDialog(
+                        context: context,
+                        builder: (ctx) => VolunteerSuccessWidget(
+                          bloc: context.read<RegVolunteerBloc>(),
+                        ),
+                      );
                     }
                   : () {
                       AppWidgets.showText(
@@ -149,105 +184,5 @@ class _View2State extends State<View2> with SingleTickerProviderStateMixin {
         ).paddingSymmetric(horizontal: 20)
       ],
     );
-  }
-}
-
-class ImgUploadWidget extends StatelessWidget {
-  final XFile? img;
-  final VoidCallback uploadBtn;
-  final String title;
-
-  const ImgUploadWidget({
-    required this.uploadBtn,
-    required this.title,
-   required this.img,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        DottedBorder(
-          borderType: BorderType.RRect,
-          strokeWidth: 1,
-          radius: Radius.circular(12),
-          color: AppColorUtils.DOT_COLOR,
-          child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
-            child: img != null
-                ? Container(
-                    height: 114.w,
-                    width: double.infinity,
-                    child: AppWidgets.imageAsset(path: img!.path),
-                  )
-                : Container(
-                    height: 114.w,
-                    color: Color(0xFFFDFFFF),
-                    child: Center(
-                      child: ClipOval(
-                        child: Material(
-                          color: AppColorUtils.PERCENT_COLOR,
-                          child: InkWell(
-                            splashColor: AppColorUtils.DISABLE_BC,
-                            onTap: uploadBtn,
-                            child: SizedBox(
-                              width: 35.w,
-                              height: 35.w,
-                              child: AppWidgets.imageSvg(
-                                path: AppImageUtils.IC_UPLOAD,
-                                fit: BoxFit.none,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-          ),
-        ),
-        img != null
-            ? Row(
-                children: [
-                  AppWidgets.imageSvg(
-                    path: AppImageUtils.IC_SUCCESS,
-                    width: 12,
-                    height: 12,
-                  ),
-                  AppWidgets.textLocale(
-                    text: "Yuklandi",
-                    color: AppColorUtils.SUCCESS_GREEN,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w400,
-                    fontStyle: FontStyle.italic,
-                  ).paddingOnly(left: 2)
-                ],
-              ).paddingOnly(top: 10)
-            : Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AppWidgets.text(
-                    text: '*',
-                    color: AppColorUtils.RED,
-                    fontSize: 13.sp,
-                    fontWeight: FontWeight.w400,
-                    height: 1.5,
-                  ),
-                  Expanded(
-                    child: AppWidgets.text(
-                      text: title,
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
-                      color: AppColorUtils.GRAY_4,
-                      maxLines: 2,
-                      fontStyle: FontStyle.italic,
-                      height: 1.5,
-                    ),
-                  )
-                ],
-              ).paddingOnly(top: 10)
-      ],
-    ).paddingOnly(top: 8);
   }
 }
