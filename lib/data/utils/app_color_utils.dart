@@ -58,6 +58,8 @@ class AppColorUtils {
   static const Color LIGHT_GRAY = Color(0xFFF8F7FA);
   static const Color DOT_COLOR = Color(0xFFABCFC8);
   static const Color SUCCESS_GREEN = Color(0xFF0BA42C);
+  static const Color WAIT_COLOR = Color(0xFFF5FCFA);
+  static const Color BLUE_TEXT = Color(0xFF032963);
 
 
 

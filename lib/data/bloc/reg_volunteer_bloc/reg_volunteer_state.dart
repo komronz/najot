@@ -14,6 +14,7 @@ class RegVolunteerState extends Equatable {
   final XFile? passportImgPath;
   final XFile? pageImgPath;
   final bool sendBtnActive;
+  final bool waitVolunteer;
 
   RegVolunteerState({
     this.firstName = '',
@@ -29,6 +30,7 @@ class RegVolunteerState extends Equatable {
     this.passportImgPath,
     this.pageImgPath,
     this.sendBtnActive = false,
+    this.waitVolunteer = false,
   });
 
   RegVolunteerState copyWith({
@@ -45,6 +47,7 @@ class RegVolunteerState extends Equatable {
     XFile? passportImgPath,
     XFile? pageImgPath,
     bool? sendBtnActive,
+    bool? waitVolunteer,
   }) {
     return RegVolunteerState(
       firstName: firstName ?? this.firstName,
@@ -55,11 +58,12 @@ class RegVolunteerState extends Equatable {
       givenAddress: givenAddress ?? this.givenAddress,
       givenDate: givenDate ?? this.givenDate,
       isActiveNextBtn: isActiveNextBtn ?? this.isActiveNextBtn,
-      pageImgPath: passportImgPath ?? this.passportImgPath,
+      pageImgPath: pageImgPath ?? this.pageImgPath,
       passportImgPath: passportImgPath ?? this.passportImgPath,
       serial: serial ?? this.serial,
-      serialNumber: serialNumber??this.serialNumber,
+      serialNumber: serialNumber ?? this.serialNumber,
       sendBtnActive: sendBtnActive ?? this.sendBtnActive,
+      waitVolunteer: waitVolunteer ?? this.waitVolunteer,
     );
   }
 
@@ -77,6 +81,7 @@ class RegVolunteerState extends Equatable {
         givenDate,
         pageImgPath,
         passportImgPath,
+        waitVolunteer,
       ];
 }
 

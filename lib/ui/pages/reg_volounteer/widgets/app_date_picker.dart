@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/data/utils/date_time_util.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class AppDatePicker extends StatelessWidget {
@@ -26,7 +28,7 @@ class AppDatePicker extends StatelessWidget {
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,
           color: AppColorUtils.DARK_4,
-          hasStar: text!=null?false:true,
+          hasStar: text != null ? false : true,
         ).paddingOnly(bottom: 8),
         GestureDetector(
           child: Container(
@@ -55,7 +57,15 @@ class AppDatePicker extends StatelessWidget {
                       ).paddingOnly(left: 15),
                     ],
                   )
-                : Container(),
+                : Row(
+                    children: [
+                      AppWidgets.text(
+                        text: DateTimeUtil.dmy(text!, context.locale),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ).paddingOnly(left: 10),
+                    ],
+                  ),
           ),
           onTap: onTap,
         ),

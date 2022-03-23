@@ -99,7 +99,8 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
     MyProfileLoad event,
     Emitter<MyProfileUpdateState> emit,
   ) async {
-    var user = HiveService().getUser();
+    var user = HiveService.to.getUser();
+
     if (user != null) {
       emit(
         state.copyWith(
@@ -111,5 +112,6 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
     } else {
       AppLoggerUtil.e('User null ');
     }
+
   }
 }

@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -69,7 +69,7 @@ class _AppRadioButtonState extends State<AppRadioButton> {
                       onChanged: (v) => selectTime(v as int),
                     ),
                     AppWidgets.textLocale(
-                      text: "Man",
+                      text: LocaleKeys.man,
                       color: _selection == 1
                           ? AppColorUtils.KRAUDFANDING
                           : AppColorUtils.DARK_6,
@@ -110,7 +110,7 @@ class _AppRadioButtonState extends State<AppRadioButton> {
                       onChanged: (v) => selectTime(v as int),
                     ),
                     AppWidgets.textLocale(
-                      text: "Woman",
+                      text: LocaleKeys.woman,
                       color: _selection == 2
                           ? AppColorUtils.KRAUDFANDING
                           : AppColorUtils.DARK_6,

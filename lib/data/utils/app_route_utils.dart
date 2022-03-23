@@ -13,6 +13,7 @@ import 'package:najot/ui/pages/loading_page/loading_page.dart';
 import 'package:najot/ui/pages/login_page/login_page.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_pages/number_update_step2_page.dart';
 import 'package:najot/ui/pages/reg_page/reg_page.dart';
+import 'package:najot/ui/pages/reg_volounteer/widgets/img_view.dart';
 import 'package:najot/ui/pages/verification_page/verification_page.dart';
 
 import '../../ui/pages/charity_full_page/charity_full_page.dart';
@@ -121,6 +122,10 @@ class AppRouteUtils {
       case SmsWithOperatorPage.routeName:
         return MaterialPageRoute(
           builder: (context) => SmsWithOperatorPage(),
+        );
+      case ImgView.routeName:
+        return MaterialPageRoute(
+          builder: (context) => ImgView(imgPath: settings.arguments as String),
         );
     }
   }

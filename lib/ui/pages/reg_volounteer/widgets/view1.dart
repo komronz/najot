@@ -9,14 +9,9 @@ import 'package:najot/ui/widgets/app_text_field.dart';
 
 import 'next_button_widget.dart';
 
-class View1 extends StatefulWidget {
+class View1 extends StatelessWidget {
   const View1({Key? key}) : super(key: key);
 
-  @override
-  _View1State createState() => _View1State();
-}
-
-class _View1State extends State<View1> with SingleTickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
     var bloc = context.read<RegVolunteerBloc>();
@@ -57,7 +52,6 @@ class _View1State extends State<View1> with SingleTickerProviderStateMixin{
         ).paddingOnly(top: 20, left: 20),
         AppDatePicker(
           title: "Tug'ilgan sanangiz",
-
           onTap: () async {
             await showDialog(
               context: context,
@@ -84,4 +78,3 @@ class _View1State extends State<View1> with SingleTickerProviderStateMixin{
     );
   }
 }
-
