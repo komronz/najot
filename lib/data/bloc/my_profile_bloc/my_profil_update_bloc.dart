@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/services/hive_service.dart';
@@ -21,8 +23,23 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
     on<FirstNameChanged>(_onNameChanged);
     on<LastNameChanged>(_onLastNameChanged);
     on<GenderChanged>(_onGenderChanged);
+    on<ImagePickers>(_onImagePicker);
     on<SaveIn>(_saveIn);
   }
+  Future _onImagePicker(
+      ImagePickers event,
+      Emitter<MyProfileUpdateState> emit,
+      ) async{
+    XFile? imagePicker = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+    );
+    AppWidgets.isLoading(true);
+    if (imagePicker != null) {
+      emit(state.copyWith(userImgPath: imagePicker));
+      AppWidgets.isLoading(false);
+    }
+  }
+
   Future _onImageChanged(
       ImageChanged event,
       Emitter<MyProfileUpdateState> emit,
@@ -85,9 +102,8 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
         lastName: state.sureName,
         isMan: state.isMan,
       );
-      HiveService().setUser(user);
+      HiveService.to.setUser(user);
       AppWidgets.showText(text: 'Success');
-      NavigatorService.to.pushNamedAndRemoveUntil(MyProfilePage.routeName);
       emit(state.copyWith(hasError: false));
       AppLoggerUtil.i(user.toJson().toString());
     } else {
@@ -99,10 +115,11 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
     MyProfileLoad event,
     Emitter<MyProfileUpdateState> emit,
   ) async {
-    var user = HiveService().getUser();
+    var user = HiveService.to.getUser();
     if (user != null) {
       emit(
         state.copyWith(
+          imageUrl: user.imageUrl,
           name: user.firstName,
           sureName: user.lastName,
           isMan: user.isMan,

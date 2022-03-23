@@ -25,19 +25,19 @@ class _ShowPickerPageState extends State<ShowPickerPage> {
     try{
       final image=await ImagePicker().pickImage(source: source);
       if(image==null) return;
-      // final imageTemporary=File(image.path);
-      final imagePermanent= await saveImagePermanently(image.path);
-      setState(()=>this.image=imagePermanent);
+      final imageTemporary=File(image.path);
+      // final imagePermanent= await saveImagePermanently(image.path);
+      setState(()=>this.image=imageTemporary);
     } on PlatformException catch(e){
       print('Failed to pick image: $e');
     }
   }
-  Future<File>saveImagePermanently(String imagePath) async {
-    final directory=await getApplicationDocumentsDirectory();
-    final name = basename(imagePath);
-    final image=File('${directory.path}/$name');
-    return File(imagePath).copy(image.path);
-  }
+  // Future<File>saveImagePermanently(String imagePath) async {
+  //   final directory=await getApplicationDocumentsDirectory();
+  //   final name = basename(imagePath);
+  //   final image=File('${directory.path}/$name');
+  //   return File(imagePath).copy(image.path);
+  // }
   @override
   Widget build(BuildContext context) {
     return InkWell(

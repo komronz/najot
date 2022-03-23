@@ -5,7 +5,7 @@ class User {
   String? lastName;
   String? phone;
   String? imageUrl;
-  Gender ? isMan;
+  Gender? isMan;
 
 
   User({

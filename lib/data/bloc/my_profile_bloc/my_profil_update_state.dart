@@ -1,6 +1,5 @@
-import 'dart:html';
-
 import 'package:equatable/equatable.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'my_profil_update_bloc.dart';
 
@@ -13,7 +12,7 @@ class MyProfileUpdateState extends Equatable {
   final bool nameFill;
   final bool sureNameFill;
   final bool hasError;
-  final File? imgFile;
+  final XFile? userImgPath;
 
   const MyProfileUpdateState({
     this.name = '',
@@ -24,7 +23,7 @@ class MyProfileUpdateState extends Equatable {
     this.nameFill = false,
     this.sureNameFill = false,
     this.hasError = false,
-    this.imgFile,
+    this.userImgPath,
   });
 
   @override
@@ -37,6 +36,7 @@ class MyProfileUpdateState extends Equatable {
         nameFill,
         sureNameFill,
         hasError,
+    userImgPath,
       ];
 
   MyProfileUpdateState copyWith({
@@ -48,6 +48,7 @@ class MyProfileUpdateState extends Equatable {
     bool? nameFill,
     bool? sureNameFill,
     bool? hasError,
+    XFile? userImgPath,
   }) {
     return MyProfileUpdateState(
       name: name ?? this.name,
@@ -58,6 +59,7 @@ class MyProfileUpdateState extends Equatable {
       nameFill: nameFill ?? this.nameFill,
       sureNameFill: sureNameFill ?? this.sureNameFill,
       hasError: hasError ?? this.hasError,
+      userImgPath: userImgPath ?? this.userImgPath,
     );
   }
 }

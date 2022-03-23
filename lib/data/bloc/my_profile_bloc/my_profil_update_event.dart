@@ -54,6 +54,10 @@ class SaveIn extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [];
 }
+class ImagePickers extends MyProfileUpdateEvent {
+  @override
+  List<Object?> get props => [];
+}
 enum Gender{
   WOMAN, MAN
 }
