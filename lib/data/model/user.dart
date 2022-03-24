@@ -5,7 +5,7 @@ class User {
   String? lastName;
   String? phone;
   String? imageUrl;
-  Gender ? isMan;
+  Gender? isMan;
 
 
   User({
@@ -21,7 +21,7 @@ class User {
     lastName = json['last_name']?.toString();
     phone = json['phone']?.toString();
     imageUrl=json['imageUrl']?.toString();
-    isMan=json['isMan'];
+    isMan=genderFromJson(json['isMan']);
 
   }
 
@@ -31,7 +31,18 @@ class User {
     data['last_name'] = lastName;
     data['phone'] = phone;
     data['imageUrl'] = imageUrl;
-    data['isMan']=isMan;
+    data['isMan']=genderToJson();
     return data;
+  }
+
+   String? genderToJson(){
+    if(isMan==null) return null;
+    if(isMan==Gender.MAN) return "man";
+    return "woman";
+  }
+  static Gender? genderFromJson(String? value){
+    if(value==null) return null;
+    if(value=="man") return Gender.MAN;
+    return Gender.WOMAN;
   }
 }

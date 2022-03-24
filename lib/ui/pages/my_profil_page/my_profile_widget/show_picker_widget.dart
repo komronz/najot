@@ -7,19 +7,19 @@ import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_image_utils.dart';
 
-class ShowPickerPage extends StatefulWidget {
-  ShowPickerPage({Key? key}) : super(key: key);
+class ShowPickerWidget extends StatefulWidget {
+  ShowPickerWidget({Key? key}) : super(key: key);
   @override
   _ShowPickerPageState createState() => _ShowPickerPageState();
 }
 
-class _ShowPickerPageState extends State<ShowPickerPage> {
+class _ShowPickerPageState extends State<ShowPickerWidget> {
   File? image;
   Future pickImage(ImageSource source) async{
     try{
@@ -45,8 +45,7 @@ class _ShowPickerPageState extends State<ShowPickerPage> {
               child:Container(
                 child: image!=null?Container(
                     child: ClipRRect(
-                        child: Image.file(
-                          image!, width: 130,height: 130, fit: BoxFit.cover,
+                        child: Image.file(image!, width: 130,height: 130, fit: BoxFit.cover,
                         ),
                       borderRadius: BorderRadius.circular(75),
                     ),

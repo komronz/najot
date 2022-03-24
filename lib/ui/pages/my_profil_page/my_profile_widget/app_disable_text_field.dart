@@ -3,10 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-class AppTextField extends StatefulWidget {
+import '../../../../data/utils/app_color_utils.dart';
+
+class AppDisableTextField extends StatefulWidget {
   final String hintText;
   final ValueChanged<String> onChanged;
   final String title;
@@ -20,7 +21,7 @@ class AppTextField extends StatefulWidget {
   final bool isMultiLine;
   final double? height;
 
-  AppTextField({
+  AppDisableTextField({
     required this.hintText,
     required this.onChanged,
     required this.title,
@@ -28,7 +29,7 @@ class AppTextField extends StatefulWidget {
     this.inputFormatter,
     this.textInputType,
     this.isPassword = false,
-    this.enabled = true,
+    this.enabled = false,
     this.isFill = false,
     this.initialText = '',
     this.hasError = false,
@@ -39,7 +40,7 @@ class AppTextField extends StatefulWidget {
   _AppTextFieldState createState() => _AppTextFieldState();
 }
 
-class _AppTextFieldState extends State<AppTextField> {
+class _AppTextFieldState extends State<AppDisableTextField> {
   late TextEditingController _textEditingController;
   late bool obscureText;
 
@@ -60,13 +61,14 @@ class _AppTextFieldState extends State<AppTextField> {
   Widget build(BuildContext context) {
     InputBorder _border = widget.hasError
         ? OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(width: 2, color: AppColorUtils.RED),
-          )
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide(width: 2, color: AppColorUtils.RED),
+    )
         : OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(width: 2, color: AppColorUtils.BORDER_COLOR),
-          );
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide(width: 1, color: Color(0xFFCEE1DD),
+      ),
+    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -77,11 +79,11 @@ class _AppTextFieldState extends State<AppTextField> {
             widget.isFill
                 ? SizedBox()
                 : AppWidgets.textLocale(
-                    text: "*",
-                    color: AppColorUtils.RED,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w400,
-                  ),
+              text: "",
+              color: AppColorUtils.RED,
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w400,
+            ),
             AppWidgets.textLocale(
               text: widget.title,
               color: AppColorUtils.DARK_4,
@@ -93,7 +95,7 @@ class _AppTextFieldState extends State<AppTextField> {
         Container(
           height: widget.height,
           decoration: BoxDecoration(
-            color: AppColorUtils.WHITE,
+            color: Color(0xFFEDFCF9),
             borderRadius: BorderRadius.circular(12),
           ),
           child: TextField(
@@ -117,30 +119,11 @@ class _AppTextFieldState extends State<AppTextField> {
                 fontWeight: FontWeight.w500,
                 color: AppColorUtils.GRAY_4,
               ),
-              suffixIcon: widget.isPassword
-                  ? InkWell(
-                      onTap: () {
-                        setState(() {
-                          obscureText = !obscureText;
-                        });
-                      },
-                      child: Icon(
-                        obscureText ? Icons.visibility : Icons.visibility_off,
-                      ),
-                    )
-                  : null,
             ),
-            obscureText: obscureText,
-            keyboardType: widget.textInputType,
             onChanged: (v) => widget.onChanged(v),
-            inputFormatters: widget.inputFormatter == null
-                ? null
-                : [
-                    widget.inputFormatter!,
-                  ],
           ),
         )
       ],
-    ).paddingSymmetric(horizontal: 20);
+    );
   }
 }

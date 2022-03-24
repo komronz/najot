@@ -8,10 +8,10 @@ import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
 
-class NumberUpdateStep2Page extends StatelessWidget {
+class NumberUpdateStep2 extends StatelessWidget {
   static const String routeName = "/numberUpdateStep2Page";
 
-  const NumberUpdateStep2Page({Key? key}) : super(key: key);
+  const NumberUpdateStep2({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
