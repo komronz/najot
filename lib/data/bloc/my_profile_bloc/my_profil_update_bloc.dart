@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -7,13 +6,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/services/hive_service.dart';
-import 'package:najot/ui/pages/my_profil_page/my_profile_page.dart';
-
 import '../../../ui/widgets/app_widgets.dart';
 import '../../model/user.dart';
-import '../../services/navigator_service.dart';
 import '../../utils/app_logger_util.dart';
-
 part 'my_profil_update_event.dart';
 
 class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateState> {
@@ -23,7 +18,9 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
     on<FirstNameChanged>(_onNameChanged);
     on<LastNameChanged>(_onLastNameChanged);
     on<GenderChanged>(_onGenderChanged);
-    on<ImagePickers>(_onImagePicker);
+    on<PhoneChanged>(_onPhoneChanged);
+    on<SendCode>(_sendCode);
+    // on<ImagePickers>(_onImagePicker);
     on<SaveIn>(_saveIn);
   }
   Future _onImagePicker(
@@ -39,7 +36,6 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
       AppWidgets.isLoading(false);
     }
   }
-
   Future _onImageChanged(
       ImageChanged event,
       Emitter<MyProfileUpdateState> emit,
@@ -58,6 +54,17 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
       state.copyWith(
         name: event.name,
         nameFill: _isNotEmpty(event.name),
+      ),
+    );
+  }
+  Future _onPhoneChanged(
+      PhoneChanged event,
+      Emitter<MyProfileUpdateState> emit,
+      ) async {
+    emit(
+      state.copyWith(
+        phoneNumber: event.phoneNumber,
+        phoneNumberFill: _isNotEmpty(event.phoneNumber),
 
       ),
     );
@@ -123,10 +130,27 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
           name: user.firstName,
           sureName: user.lastName,
           isMan: user.isMan,
+          phoneNumber: user.phone,
         ),
       );
     } else {
       AppLoggerUtil.e('User null ');
+    }
+  }
+  Future _sendCode(
+      SendCode event,
+      Emitter<MyProfileUpdateState> emit,
+      ) async {
+    if (_isNotEmpty(state.phoneNumber)) {
+      var user = User(
+        imageUrl: state.phoneNumber,
+      );
+      HiveService.to.setUser(user);
+      AppWidgets.showText(text: 'Success');
+      emit(state.copyWith(hasError: false));
+      AppLoggerUtil.i(user.toJson().toString());
+    } else {
+      emit(state.copyWith(hasError: true));
     }
   }
 }

@@ -7,13 +7,14 @@ import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/services/hive_service.dart';
+import 'package:najot/ui/pages/my_profil_page/my_profile_widget/app_disable_text_field.dart';
 
 import '../../../data/localization/locale_keys.g.dart';
 import '../../../data/services/navigator_service.dart';
 import '../../../data/utils/app_color_utils.dart';
 import '../../../data/utils/app_image_utils.dart';
 import '../../widgets/app_widgets.dart';
-import 'my_profile_pages/my_profile_radio_button.dart';
+import 'my_profile_widget/my_profile_radio_button.dart';
 import 'my_profile_pages/number_update_page.dart';
 import 'my_profile_pages/user_degree_page.dart';
 import 'my_profile_pages/user_update_page.dart';
@@ -112,70 +113,22 @@ class _MyProfilePageState extends State<MyProfilePage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              AppWidgets.textLocale(
-                                  text: LocaleKeys.name,
-                                  color: Color(0xFF6D6E71),
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.w400)
-                                  .paddingOnly(bottom: 7.h),
-                              Container(
-                                padding: EdgeInsets.only(left: 18),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Color(0xFFEDFCF9),
-                                  border: Border.all(
-                                    width: 1,
-                                    color: Color(0xFFCEE1DD),
-                                  ),
-                                ),
-                                child: TextField(
-                                  enabled: false,
-                                decoration: InputDecoration(
-                                  hintText:
-                                  context
-                                      .read<MyProfileUpdateBloc>()
-                                      .state
-                                      .name,
-                                  border: InputBorder.none,
-                                  hintStyle: TextStyle(
-                                      color: Color(0xFFBCBEC0),
-                                      fontSize: 15.sp,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ),
-                              ).paddingOnly(bottom: 24.h),
-                              AppWidgets.textLocale(
-                                  text: LocaleKeys.surname,
-                                  color: Color(0xFF6D6E71),
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.w400)
-                                  .paddingOnly(bottom: 7.h),
-                              Container(
-                                padding: EdgeInsets.only(left: 18),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: Color(0xFFEDFCF9),
-                                border: Border.all(
-                                  width: 1,
-                                  color: Color(0xFFCEE1DD),
-                                ),
-                              ),
-                              child: TextField(
-                                enabled: false,
-                                decoration: InputDecoration(
-                                  hintText: context
-                                      .read<MyProfileUpdateBloc>()
-                                      .state
-                                      .sureName,
-                                  border: InputBorder.none,
-                                  hintStyle: TextStyle(
-                                    color: Color(0xFFBCBEC0),
-                                    fontSize: 15.sp,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ).paddingOnly(bottom: 24.h),
+                              AppDisableTextField(
+                                isFill: false,
+                                hintText: context.read<MyProfileUpdateBloc>().state.name,
+                                onChanged: (v) {
+
+                                },
+                                title: LocaleKeys.name,
+                              ).paddingOnly(bottom: 23.h),
+                              AppDisableTextField(
+                                isFill: false,
+                                hintText: context.read<MyProfileUpdateBloc>().state.sureName,
+                                onChanged: (v) {
+
+                                },
+                                title: LocaleKeys.surname,
+                              ).paddingOnly(bottom: 23.h),
                             MyProfileRadioButton(
                               gender: context
                                   .read<MyProfileUpdateBloc>()
@@ -219,7 +172,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                     child: TextField(
                                       decoration: InputDecoration(
                                         enabled: false,
-                                        hintText: "+998976282882",
+                                        hintText: context.read<MyProfileUpdateBloc>().state.phoneNumber,
                                         border: InputBorder.none,
                                         hintStyle: TextStyle(
                                           color: Color(0xFFBCBEC0),

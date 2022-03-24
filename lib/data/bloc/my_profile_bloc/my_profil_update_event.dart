@@ -32,6 +32,16 @@ class FirstNameChanged extends MyProfileUpdateEvent {
   List<Object?> get props => [name];
 }
 
+class PhoneChanged extends MyProfileUpdateEvent {
+  final String phoneNumber;
+
+  const PhoneChanged(
+      this.phoneNumber,
+      );
+
+  @override
+  List<Object?> get props => [phoneNumber];
+}
 class LastNameChanged extends MyProfileUpdateEvent {
   final String sureName;
 
@@ -40,7 +50,6 @@ class LastNameChanged extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [sureName];
 }
-
 class GenderChanged extends MyProfileUpdateEvent {
   final Gender isMan;
 
@@ -50,6 +59,11 @@ class GenderChanged extends MyProfileUpdateEvent {
   List<Object?> get props => [isMan];
 }
 class SaveIn extends MyProfileUpdateEvent {
+
+  @override
+  List<Object?> get props => [];
+}
+class SendCode extends MyProfileUpdateEvent {
 
   @override
   List<Object?> get props => [];

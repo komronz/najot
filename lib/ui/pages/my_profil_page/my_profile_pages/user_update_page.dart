@@ -4,13 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/ui/pages/my_profil_page/my_profile_pages/show_picker_page.dart';
-import 'package:najot/ui/pages/my_profil_page/my_profile_pages/user_update_app_radio_button.dart';
+import 'package:najot/ui/pages/my_profil_page/my_profile_widget/show_picker_widget.dart';
+import 'package:najot/ui/pages/my_profil_page/my_profile_widget/user_update_app_radio_button.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
+import '../../../widgets/app_text_field.dart';
 import '../../../widgets/app_widgets.dart';
 import '../my_profile_page.dart';
 
@@ -18,16 +19,11 @@ class UserUpdatePage extends StatefulWidget {
   static const String routeName = "/userUpdatePage";
   TextEditingController nameController=TextEditingController();
   TextEditingController surNameController=TextEditingController();
-
-
   UserUpdatePage({Key? key}) : super(key: key);
-
   @override
   _UserUpdatePageState createState() => _UserUpdatePageState();
 }
-
 class _UserUpdatePageState extends State<UserUpdatePage> {
-
 
   @override
   Widget build(BuildContext context) {
@@ -52,86 +48,34 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
-                  padding: EdgeInsets.only(left: 19, right: 20),
+                  padding: EdgeInsets.only(),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     color: AppColorUtils.WHITE,
                   ),
                   child: Column(
                     children: [
-                      ShowPickerPage(),
+                      ShowPickerWidget(),
                       Container(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            AppWidgets.textLocale(
-                                    text: "Name",
-                                    color: Color(0xFF6D6E71),
-                                    fontSize: 13.sp,
-                                    fontWeight: FontWeight.w400)
-                                .paddingOnly(bottom: 8.h),
-                            Container(
-                              padding: EdgeInsets.only(left: 18),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: Color(0xFFFDFFFF),
-                                border: Border.all(
-                                  width: 2,
-                                  color: Color(0xFF79B4A8),
-                                ),
-                              ),
-                              child: TextField(
-                                controller: widget.nameController,
-                                onChanged: (v) {
-                                  context
-                                      .read<MyProfileUpdateBloc>()
-                                      .add(FirstNameChanged(v));
-                                },
-                                decoration: InputDecoration(
-                                  hintText: "Fakhriyor",
-                                  border: InputBorder.none,
-                                  hintStyle: TextStyle(
-                                    color: Color(0xFFBCBEC0),
-                                    fontSize: 15.sp,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
+                            AppTextField(
+                              isFill: context.read<MyProfileUpdateBloc>().state.nameFill,
+                              hintText: "(abdumalik)",
+                              onChanged: (v) {
+                                context.read<MyProfileUpdateBloc>().add(FirstNameChanged(v));
+                              },
+                              title: LocaleKeys.name,
                             ).paddingOnly(bottom: 23.h),
-                            AppWidgets.textLocale(
-                                text: LocaleKeys.surname,
-                                color: Color(0xFF6D6E71),
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w400),
-                            SizedBox(height: 8.h),
-                            Container(
-                              padding: EdgeInsets.only(left: 18),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: Color(0xFFFDFFFF),
-                                border: Border.all(
-                                  width: 2,
-                                  color: Color(0xFF79B4A8),
-                                ),
-                              ),
-                              child: TextField(
-                                controller: widget.surNameController,
-                                onChanged: (v) {
-                                  context
-                                      .read<MyProfileUpdateBloc>()
-                                      .add(LastNameChanged(v));
-                                },
-                                decoration: InputDecoration(
-                                  hintText: "Fakhriyor",
-                                  border: InputBorder.none,
-                                  hintStyle: TextStyle(
-                                      color: Color(0xFFBCBEC0),
-                                      fontSize: 15.sp,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ),
-                            ).paddingOnly(bottom: 20.h),
-                            SizedBox(height: 8.h),
+                            AppTextField(
+                              isFill: context.read<MyProfileUpdateBloc>().state.sureNameFill,
+                              hintText: "(sapoqulov)",
+                              onChanged: (v) {
+                                context.read<MyProfileUpdateBloc>().add(LastNameChanged(v));
+                              },
+                               title: LocaleKeys.surname,
+                            ).paddingOnly(bottom: 24.h),
                             Row(
                               children: [
                                 UserUpdateAppRadioButton(
@@ -144,7 +88,7 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                                   },
                                 ).paddingOnly(top: 20),
                               ],
-                            ),
+                            ).paddingOnly(left: 20,right: 20),
                           ],
                         ),
                       ).paddingOnly(bottom: 24.h),
@@ -171,7 +115,7 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w600,
                           ),
-                        ),
+                        ).paddingOnly(right: 20, left: 20),
                       ),
                     ],
                   ),

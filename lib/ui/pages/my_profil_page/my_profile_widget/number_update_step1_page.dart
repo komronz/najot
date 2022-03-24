@@ -7,10 +7,10 @@ import '../../../../data/services/navigator_service.dart';
 import '../../../widgets/app_widgets.dart';
 import 'number_update_step2_page.dart';
 
-class NumberUpdateStep1Page extends StatelessWidget {
+class NumberUpdateStep1 extends StatelessWidget {
   static const String routeName = "/numberUpdateStep1Page";
 
-  const NumberUpdateStep1Page({Key? key}) : super(key: key);
+  const NumberUpdateStep1({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class NumberUpdateStep1Page extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: Color(0xFFFDFFFF),
@@ -42,7 +42,7 @@ class NumberUpdateStep1Page extends StatelessWidget {
             onTap: () {
             },
             child: Container(
-              width: 335.w,
+              width: double.infinity,
               padding: EdgeInsets.only(top: 10, bottom: 13),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
