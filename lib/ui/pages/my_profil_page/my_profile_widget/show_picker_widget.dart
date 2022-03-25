@@ -15,48 +15,62 @@ import '../../../../data/utils/app_image_utils.dart';
 
 class ShowPickerWidget extends StatefulWidget {
   ShowPickerWidget({Key? key}) : super(key: key);
+
   @override
   _ShowPickerPageState createState() => _ShowPickerPageState();
 }
 
 class _ShowPickerPageState extends State<ShowPickerWidget> {
   File? image;
-  Future pickImage(ImageSource source) async{
-    try{
-      final image=await ImagePicker().pickImage(source: source);
-      if(image==null) return;
+
+  Future pickImage(ImageSource source) async {
+    try {
+      final image = await ImagePicker().pickImage(source: source);
+      if (image == null) return;
       // final imageTemporary=File(image.path);
-      final imagePermanent= await saveImagePermanently(image.path);
-      setState(()=>this.image=imagePermanent);
-    } on PlatformException catch(e){
+      final imagePermanent = await saveImagePermanently(image.path);
+      setState(() => this.image = imagePermanent);
+    } on PlatformException catch (e) {
       print('Failed to pick image: $e');
     }
   }
-  Future<File>saveImagePermanently(String imagePath) async {
-    final directory=await getApplicationDocumentsDirectory();
+
+  Future<File> saveImagePermanently(String imagePath) async {
+    final directory = await getApplicationDocumentsDirectory();
     final name = basename(imagePath);
-    final image=File('${directory.path}/$name');
+    final image = File('${directory.path}/$name');
     return File(imagePath).copy(image.path);
   }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       child: SafeArea(
-              child:Container(
-                child: image!=null?Container(
-                    child: ClipRRect(
-                        child: Image.file(image!, width: 130,height: 130, fit: BoxFit.cover,
-                        ),
-                      borderRadius: BorderRadius.circular(75),
+        child: Container(
+          child: image != null
+              ? Container(
+                  child: ClipRRect(
+                    child: Image.file(
+                      image!,
+                      width: 130,
+                      height: 130,
+                      fit: BoxFit.cover,
                     ),
-                ) : SvgPicture.asset(AppImageUtils.USERADD,width: 130,),
-              ).paddingOnly(top: 25, bottom: 24),
-            ),
-      onTap: (){
+                    borderRadius: BorderRadius.circular(75),
+                  ),
+                )
+              : SvgPicture.asset(
+                  AppImageUtils.USERADD,
+                  width: 130,
+                ),
+        ).paddingOnly(top: 25, bottom: 24),
+      ),
+      onTap: () {
         _showPicker(context);
       },
     );
   }
+
   _showPicker(context) {
     showModalBottomSheet(
         context: context,
@@ -66,7 +80,8 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
               children: <Widget>[
                 ListTile(
                     leading: const Icon(Icons.photo_library),
-                    title: AppWidgets.textLocale(text: LocaleKeys.photo_library),
+                    title:
+                        AppWidgets.textLocale(text: LocaleKeys.photo_library),
                     onTap: () {
                       pickImage(ImageSource.gallery);
                       Navigator.of(context).pop();
@@ -82,8 +97,6 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
               ],
             ),
           );
-        }
-    );
+        });
   }
-
 }

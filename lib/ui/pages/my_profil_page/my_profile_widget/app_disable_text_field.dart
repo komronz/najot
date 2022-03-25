@@ -21,20 +21,19 @@ class AppDisableTextField extends StatefulWidget {
   final bool isMultiLine;
   final double? height;
 
-  AppDisableTextField({
-    required this.hintText,
-    required this.onChanged,
-    required this.title,
-    this.isMultiLine=false,
-    this.inputFormatter,
-    this.textInputType,
-    this.isPassword = false,
-    this.enabled = false,
-    this.isFill = false,
-    this.initialText = '',
-    this.hasError = false,
-    this.height
-  });
+  AppDisableTextField(
+      {required this.hintText,
+      required this.onChanged,
+      required this.title,
+      this.isMultiLine = false,
+      this.inputFormatter,
+      this.textInputType,
+      this.isPassword = false,
+      this.enabled = false,
+      this.isFill = false,
+      this.initialText = '',
+      this.hasError = false,
+      this.height});
 
   @override
   _AppTextFieldState createState() => _AppTextFieldState();
@@ -61,14 +60,16 @@ class _AppTextFieldState extends State<AppDisableTextField> {
   Widget build(BuildContext context) {
     InputBorder _border = widget.hasError
         ? OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide(width: 2, color: AppColorUtils.RED),
-    )
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(width: 2, color: AppColorUtils.RED),
+          )
         : OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide(width: 1, color: Color(0xFFCEE1DD),
-      ),
-    );
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(
+              width: 1,
+              color: Color(0xFFCEE1DD),
+            ),
+          );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -79,11 +80,11 @@ class _AppTextFieldState extends State<AppDisableTextField> {
             widget.isFill
                 ? SizedBox()
                 : AppWidgets.textLocale(
-              text: "",
-              color: AppColorUtils.RED,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
-            ),
+                    text: "",
+                    color: AppColorUtils.RED,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
             AppWidgets.textLocale(
               text: widget.title,
               color: AppColorUtils.DARK_4,
@@ -99,9 +100,9 @@ class _AppTextFieldState extends State<AppDisableTextField> {
             borderRadius: BorderRadius.circular(12),
           ),
           child: TextField(
-            expands: widget.isMultiLine?true:false,
+            expands: widget.isMultiLine ? true : false,
             textAlignVertical: TextAlignVertical.top,
-            maxLines: widget.isMultiLine?null:1,
+            maxLines: widget.isMultiLine ? null : 1,
             controller: _textEditingController,
             enabled: widget.enabled,
             style: GoogleFonts.inter(

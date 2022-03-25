@@ -58,6 +58,22 @@ class GenderChanged extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [isMan];
 }
+class PageChanged extends MyProfileUpdateEvent {
+  final bool isVisible;
+
+  PageChanged(this.isVisible);
+
+  @override
+  List<Object?> get props => [isVisible];
+}
+class PageNext extends MyProfileUpdateEvent {
+  final bool isNext;
+
+  PageNext(this.isNext);
+
+  @override
+  List<Object?> get props => [isNext];
+}
 class SaveIn extends MyProfileUpdateEvent {
 
   @override

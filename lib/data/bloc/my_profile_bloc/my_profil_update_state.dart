@@ -13,8 +13,9 @@ class MyProfileUpdateState extends Equatable {
   final bool nameFill;
   final bool sureNameFill;
   final bool phoneNumberFill;
+  final bool isVisible;
   final bool hasError;
-  final bool sendBtnActive;
+  final bool nextPage;
   final XFile? userImgPath;
 
   const MyProfileUpdateState({
@@ -27,9 +28,10 @@ class MyProfileUpdateState extends Equatable {
     this.nameFill = false,
     this.phoneNumberFill=false,
     this.sureNameFill = false,
+    this.isVisible=true,
+    this.nextPage=false,
     this.hasError = false,
     this.userImgPath,
-    this.sendBtnActive=false,
   });
 
   @override
@@ -44,7 +46,9 @@ class MyProfileUpdateState extends Equatable {
         sureNameFill,
         hasError,
         userImgPath,
-        phoneNumberFill
+        phoneNumberFill,
+        nextPage,
+        isVisible
       ];
 
   MyProfileUpdateState copyWith({
@@ -59,6 +63,8 @@ class MyProfileUpdateState extends Equatable {
     bool? sureNameFill,
     bool? hasError,
     bool? sendBtnActive,
+    bool? isVisible,
+    bool? nextPage,
     XFile? userImgPath,
   }) {
     return MyProfileUpdateState(
@@ -71,6 +77,8 @@ class MyProfileUpdateState extends Equatable {
       isSavedBtn: isSavedBtn ?? this.isSavedBtn,
       nameFill: nameFill ?? this.nameFill,
       sureNameFill: sureNameFill ?? this.sureNameFill,
+      isVisible: isVisible ?? this.isVisible,
+      nextPage: nextPage ?? this.nextPage,
       hasError: hasError ?? this.hasError,
       userImgPath: userImgPath ?? this.userImgPath,
     );

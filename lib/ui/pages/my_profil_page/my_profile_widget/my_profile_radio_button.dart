@@ -3,42 +3,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 
-class MyProfileRadioButton extends StatefulWidget {
-  final ValueChanged<int> onChanged;
-  final Gender gender;
+class MyProfileRadioButton extends StatelessWidget {
+  final Gender initial;
 
   const MyProfileRadioButton({
-    required this.onChanged,
-    required this.gender,
+    required this.initial,
     Key? key,
   }) : super(key: key);
 
   @override
-  _AppRadioButtonState createState() => _AppRadioButtonState();
-}
-
-class _AppRadioButtonState extends State<MyProfileRadioButton> {
-  late int _selection;
-
-  @override
-  void initState() {
-    _selection = widget.gender == Gender.MAN ? 1 : 2;
-    super.initState();
-  }
-
-  void selectTime(int timeSelected) {
-    setState(() {
-      _selection = timeSelected;
-      widget.onChanged(_selection);
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    var _selection = initial == Gender.MAN ? 1 : 2;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -65,7 +43,7 @@ class _AppRadioButtonState extends State<MyProfileRadioButton> {
                     activeColor: AppColorUtils.DARK_6,
                     value: 1,
                     groupValue: _selection,
-                    onChanged: null,
+                    onChanged: (v) {},
                   ),
                   AppWidgets.textLocale(
                     text: LocaleKeys.man,
@@ -91,7 +69,7 @@ class _AppRadioButtonState extends State<MyProfileRadioButton> {
                     activeColor: AppColorUtils.DARK_6,
                     value: 2,
                     groupValue: _selection,
-                    onChanged: null,
+                    onChanged: (v) {},
                   ),
                   AppWidgets.textLocale(
                     text: LocaleKeys.woman,
