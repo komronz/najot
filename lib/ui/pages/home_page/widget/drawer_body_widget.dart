@@ -164,10 +164,10 @@ class DrawerBody extends StatelessWidget {
                       vertical: 14,
                     ),
                     onTap: () {
-                      // context
-                      //     .read<AppPageCubit>()
-                      //     .changePage(pageType: AppPageType.CHARITY);
-                      // Navigator.pop(context);
+                      context.read<AppPageCubit>().changePage(
+                            pageType: AppPageType.CHARITY,
+                          );
+                      Navigator.pop(context);
                     },
                   ),
                   AppWidgets.rowIconText(
@@ -179,7 +179,12 @@ class DrawerBody extends StatelessWidget {
                       horizontal: 18.w,
                       vertical: 14,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      context.read<AppPageCubit>().changePage(
+                            pageType: AppPageType.ORDERS,
+                          );
+                      Navigator.pop(context);
+                    },
                   ),
                   AppWidgets.rowIconText(
                     isActive: pageType == AppPageType.RULES,
