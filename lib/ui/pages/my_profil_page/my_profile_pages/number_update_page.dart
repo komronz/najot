@@ -21,7 +21,7 @@ class NumberUpdatePage extends StatelessWidget {
 
   NumberUpdatePage({Key? key}) : super(key: key);
   bool isVisible = true;
-  User user = HiveService.to.getUser()!;
+  User? user = HiveService.to.getUser();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -61,7 +61,7 @@ class NumberUpdatePage extends StatelessWidget {
                             children: [
                               AppDisableTextField(
                                 isFill: false,
-                                hintText: user.phone!,
+                                hintText: user==null?user.toString():user!.phone.toString(),
                                 onChanged: (v) {},
                                 title: LocaleKeys.phone_number,
                               ).paddingOnly(

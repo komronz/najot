@@ -137,6 +137,7 @@ class MyProfileUpdateBloc
         firstName: state.name,
         lastName: state.sureName,
         isMan: state.isMan,
+        phone: state.phoneNumber
       );
       HiveService.to.setUser(user);
       AppWidgets.showText(text: 'Success');
