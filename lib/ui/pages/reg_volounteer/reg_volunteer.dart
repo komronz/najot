@@ -205,7 +205,7 @@ class _RegVolunteerState extends State<RegVolunteer>
                 Container(
                   height: 620.w,
                   child: PageView(
-                    // physics: NeverScrollableScrollPhysics(),
+                    physics: NeverScrollableScrollPhysics(),
                     controller: context.read<RegVolunteerBloc>().pageController,
                     children: [
                       View1(),
