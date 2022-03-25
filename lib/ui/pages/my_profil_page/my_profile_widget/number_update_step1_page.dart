@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/ui/pages/my_profil_page/my_profile_page.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_pages/number_update_page.dart';
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/services/navigator_service.dart';
@@ -60,7 +61,9 @@ class NumberUpdateStep1 extends StatelessWidget {
               ),
               SizedBox(height: 16.h),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  NavigatorService.to.pushNamed(MyProfilePage.routeName);
+                },
                 child: Container(
                   width: double.infinity,
                   padding: EdgeInsets.only(top: 10, bottom: 13),
@@ -78,21 +81,21 @@ class NumberUpdateStep1 extends StatelessWidget {
                 ),
               ).paddingOnly(bottom: 18.h),
               state.nextPage
-                  ? InkWell(
-                      onTap: () {
-                        NavigatorService.to
-                            .pushNamed(NumberUpdatePage.routeName);
-                      },
-                      child: Container(
-                        child: AppWidgets.textLocale(
-                          text: LocaleKeys.send_again,
-                          color: Color(0xFF0B58B2),
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ).paddingOnly(left: 120.w),
-                    )
-                  : SizedBox(),
+                  ? SizedBox()
+                  : InkWell(
+                onTap: () {
+                  NavigatorService.to
+                      .pushNamed(NumberUpdatePage.routeName);
+                },
+                child: Container(
+                  child: AppWidgets.textLocale(
+                    text: LocaleKeys.send_again,
+                    color: Color(0xFF0B58B2),
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ).paddingOnly(left: 120.w),
+              ),
             ],
           ),
         );
