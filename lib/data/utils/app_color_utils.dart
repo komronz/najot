@@ -63,6 +63,7 @@ class AppColorUtils {
   static const Color ITEM_CHARITY_COLOR = Color(0xFFF2FFFB);
   static const Color ITEM_CHARITY_TEXT = Color(0xFF314A46);
   static const Color ITEM_CHARITY_TEXT2 = Color(0xFF739E96);
+  static const Color ITEM_ORDERS_TEXT2 = Color(0xFF9CB2AF);
 
 
 
