@@ -60,6 +60,9 @@ class AppColorUtils {
   static const Color SUCCESS_GREEN = Color(0xFF0BA42C);
   static const Color WAIT_COLOR = Color(0xFFF5FCFA);
   static const Color BLUE_TEXT = Color(0xFF032963);
+  static const Color ITEM_CHARITY_COLOR = Color(0xFFF2FFFB);
+  static const Color ITEM_CHARITY_TEXT = Color(0xFF314A46);
+  static const Color ITEM_CHARITY_TEXT2 = Color(0xFF739E96);
 
 
 

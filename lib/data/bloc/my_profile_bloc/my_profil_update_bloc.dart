@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -6,12 +7,15 @@ import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/services/hive_service.dart';
+
 import '../../../ui/widgets/app_widgets.dart';
 import '../../model/user.dart';
 import '../../utils/app_logger_util.dart';
+
 part 'my_profil_update_event.dart';
 
-class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateState> {
+class MyProfileUpdateBloc
+    extends Bloc<MyProfileUpdateEvent, MyProfileUpdateState> {
   MyProfileUpdateBloc() : super(MyProfileUpdateState()) {
     on<MyProfileLoad>(_loadProfile);
     on<ImageChanged>(_onImageChanged);
@@ -23,10 +27,11 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
     // on<ImagePickers>(_onImagePicker);
     on<SaveIn>(_saveIn);
   }
+
   Future _onImagePicker(
-      ImagePickers event,
-      Emitter<MyProfileUpdateState> emit,
-      ) async{
+    ImagePickers event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     XFile? imagePicker = await ImagePicker().pickImage(
       source: ImageSource.gallery,
     );
@@ -36,20 +41,22 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
       AppWidgets.isLoading(false);
     }
   }
+
   Future _onImageChanged(
-      ImageChanged event,
-      Emitter<MyProfileUpdateState> emit,
-      ) async {
+    ImageChanged event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         name: event.imageUrl,
       ),
     );
   }
+
   Future _onNameChanged(
-      FirstNameChanged event,
-      Emitter<MyProfileUpdateState> emit,
-      ) async {
+    FirstNameChanged event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         name: event.name,
@@ -57,23 +64,23 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
       ),
     );
   }
+
   Future _onPhoneChanged(
-      PhoneChanged event,
-      Emitter<MyProfileUpdateState> emit,
-      ) async {
+    PhoneChanged event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         phoneNumber: event.phoneNumber,
         phoneNumberFill: _isNotEmpty(event.phoneNumber),
-
       ),
     );
   }
 
   Future _onGenderChanged(
-      GenderChanged event,
-      Emitter<MyProfileUpdateState> emit,
-      ) async {
+    GenderChanged event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         isMan: event.isMan,
@@ -82,9 +89,9 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
   }
 
   Future _onLastNameChanged(
-      LastNameChanged event,
-      Emitter<MyProfileUpdateState> emit,
-      ) async {
+    LastNameChanged event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         sureName: event.sureName,
@@ -98,10 +105,9 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
   }
 
   Future _saveIn(
-      SaveIn event,
-      Emitter<MyProfileUpdateState> emit,
-      ) async {
-
+    SaveIn event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     if (_isNotEmpty(state.name) && _isNotEmpty(state.sureName)) {
       var user = User(
         imageUrl: state.imageUrl,
@@ -111,8 +117,9 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
       );
       HiveService.to.setUser(user);
       AppWidgets.showText(text: 'Success');
-      emit(state.copyWith(hasError: false));
-      AppLoggerUtil.i(user.toJson().toString());
+      add(MyProfileLoad());
+      // emit(state.copyWith(hasError: false));
+      // AppLoggerUtil.i(user.toJson().toString());
     } else {
       emit(state.copyWith(hasError: true));
     }
@@ -133,14 +140,16 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
           phoneNumber: user.phone,
         ),
       );
+      AppWidgets.showText(text: "Save");
     } else {
       AppLoggerUtil.e('User null ');
     }
   }
+
   Future _sendCode(
-      SendCode event,
-      Emitter<MyProfileUpdateState> emit,
-      ) async {
+    SendCode event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     if (_isNotEmpty(state.phoneNumber)) {
       var user = User(
         imageUrl: state.phoneNumber,
