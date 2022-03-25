@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+import '../../../../data/localization/locale_keys.g.dart';
+import '../../../../data/utils/app_color_utils.dart';
 
 class MyProfileRadioButton extends StatelessWidget {
   final Gender initial;
@@ -43,7 +43,7 @@ class MyProfileRadioButton extends StatelessWidget {
                     activeColor: AppColorUtils.DARK_6,
                     value: 1,
                     groupValue: _selection,
-                    onChanged: null,
+                    onChanged: (v) {},
                   ),
                   AppWidgets.textLocale(
                     text: LocaleKeys.man,
@@ -69,7 +69,7 @@ class MyProfileRadioButton extends StatelessWidget {
                     activeColor: AppColorUtils.DARK_6,
                     value: 2,
                     groupValue: _selection,
-                    onChanged: null,
+                    onChanged: (v) {},
                   ),
                   AppWidgets.textLocale(
                     text: LocaleKeys.woman,
@@ -86,36 +86,3 @@ class MyProfileRadioButton extends StatelessWidget {
     );
   }
 }
-
-// class MyProfileRadioButton extends StatefulWidget {
-//   final ValueChanged<int> onChanged;
-//   final Gender gender;
-//
-//   const MyProfileRadioButton({
-//     required this.onChanged,
-//     required this.gender,
-//     Key? key,
-//   }) : super(key: key);
-//
-//   @override
-//   _AppRadioButtonState createState() => _AppRadioButtonState();
-// }
-//
-// class _AppRadioButtonState extends State<MyProfileRadioButton> {
-//   late int _selection;
-//
-//   @override
-//   void initState() {
-//     _selection = widget.gender == Gender.MAN ? 1 : 2;
-//     super.initState();
-//   }
-//
-//   void selectTime(int timeSelected) {
-//     setState(() {
-//       _selection = timeSelected;
-//       widget.onChanged(_selection);
-//     });
-//   }
-//
-//
-// }

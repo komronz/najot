@@ -23,9 +23,32 @@ class MyProfileUpdateBloc
     on<LastNameChanged>(_onLastNameChanged);
     on<GenderChanged>(_onGenderChanged);
     on<PhoneChanged>(_onPhoneChanged);
+    on<PageChanged>(_onPageChanged);
+    on<PageNext>(_onPageNext);
     on<SendCode>(_sendCode);
     // on<ImagePickers>(_onImagePicker);
     on<SaveIn>(_saveIn);
+  }
+
+  Future _onPageChanged(
+    PageChanged event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        isVisible: event.isVisible,
+      ),
+    );
+  }
+  Future _onPageNext(
+      PageNext event,
+      Emitter<MyProfileUpdateState> emit,
+      ) async {
+    emit(
+      state.copyWith(
+        nextPage: event.isNext,
+      ),
+    );
   }
 
   Future _onImagePicker(
@@ -48,7 +71,7 @@ class MyProfileUpdateBloc
   ) async {
     emit(
       state.copyWith(
-        name: event.imageUrl,
+        imageUrl: event.imageUrl,
       ),
     );
   }
@@ -117,9 +140,9 @@ class MyProfileUpdateBloc
       );
       HiveService.to.setUser(user);
       AppWidgets.showText(text: 'Success');
+      emit(state.copyWith(hasError: false));
+      AppLoggerUtil.i(user.toJson().toString());
       add(MyProfileLoad());
-      // emit(state.copyWith(hasError: false));
-      // AppLoggerUtil.i(user.toJson().toString());
     } else {
       emit(state.copyWith(hasError: true));
     }
@@ -140,7 +163,6 @@ class MyProfileUpdateBloc
           phoneNumber: user.phone,
         ),
       );
-      AppWidgets.showText(text: "Save");
     } else {
       AppLoggerUtil.e('User null ');
     }
@@ -152,13 +174,22 @@ class MyProfileUpdateBloc
   ) async {
     if (_isNotEmpty(state.phoneNumber)) {
       var user = User(
-        imageUrl: state.phoneNumber,
+        imageUrl: state.imageUrl,
+        firstName: state.name,
+        lastName: state.sureName,
+        isMan: state.isMan,
+        phone: state.phoneNumber,
       );
       HiveService.to.setUser(user);
       AppWidgets.showText(text: 'Success');
-      emit(state.copyWith(hasError: false));
+      emit(state.copyWith(hasError: false, isVisible: true));
       AppLoggerUtil.i(user.toJson().toString());
+      emit(state.copyWith(isVisible: false));
+      await Future.delayed(Duration(seconds: 3));
+      emit(state.copyWith(nextPage: true));
+      add(MyProfileLoad());
     } else {
+      AppWidgets.showText(text: 'fail');
       emit(state.copyWith(hasError: true));
     }
   }

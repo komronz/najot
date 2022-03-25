@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/show_picker_widget.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/user_update_app_radio_button.dart';
 
@@ -11,6 +13,7 @@ import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_text_field.dart';
 import '../../../widgets/app_widgets.dart';
+import '../my_profile_page.dart';
 
 class UserUpdatePage extends StatefulWidget {
   final MyProfileUpdateBloc bloc;
@@ -42,7 +45,7 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
               },
               icon: AppImageUtils.REMOVE,
             ),
-          ),
+          ).paddingOnly(top: 10),
           Expanded(
             child: SingleChildScrollView(
               child: Container(

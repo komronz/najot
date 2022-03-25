@@ -29,7 +29,6 @@ class MyProfilePage extends StatefulWidget {
 }
 
 class _MyProfilePageState extends State<MyProfilePage> {
-  var user = HiveService.to.getUser();
 
   @override
   Widget build(BuildContext context) {
@@ -47,14 +46,12 @@ class _MyProfilePageState extends State<MyProfilePage> {
                   onTapMenu: () {},
                   visibleIcon: true,
                   onTapIcon: () {
-                    NavigatorService.to.pushNamed(
-                      UserUpdatePage.routeName,
-                      arguments: context.read<MyProfileUpdateBloc>(),
-                    );
+                    NavigatorService.to.pushNamed(UserUpdatePage.routeName,
+                        arguments: context.read<MyProfileUpdateBloc>());
                   },
                   icon: AppImageUtils.EDIT,
                 ),
-              ),
+              ).paddingOnly(top: 10),
               Expanded(
                 child: SingleChildScrollView(
                   child: Container(
@@ -136,8 +133,11 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                 title: LocaleKeys.surname,
                               ).paddingOnly(bottom: 23.h),
                               MyProfileRadioButton(
-                                initial: context.read<MyProfileUpdateBloc>().state.isMan,
-                              ),
+                                initial: context
+                                    .read<MyProfileUpdateBloc>()
+                                    .state
+                                    .isMan,
+                              ).paddingOnly(top: 20),
                             ],
                           ),
                         ).paddingOnly(bottom: 24.h),

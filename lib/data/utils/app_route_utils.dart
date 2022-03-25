@@ -15,7 +15,6 @@ import 'package:najot/ui/pages/login_page/login_page.dart';
 import 'package:najot/ui/pages/reg_page/reg_page.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/img_view.dart';
 import 'package:najot/ui/pages/verification_page/verification_page.dart';
-
 import '../../ui/pages/charity_full_page/charity_full_page.dart';
 import '../../ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
 import '../../ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
@@ -100,14 +99,13 @@ class AppRouteUtils {
         );
       case UserUpdatePage.routeName:
         return MaterialPageRoute(
-          builder: (context) =>
-              UserUpdatePage(bloc: settings.arguments as MyProfileUpdateBloc),
+          builder: (context) => UserUpdatePage(bloc: settings.arguments as MyProfileUpdateBloc),
         );
       case NumberUpdatePage.routeName:
         return MaterialPageRoute(
           builder: (context) => NumberUpdatePage(),
         );
-      case UserDegreePage.routeName:
+          case UserDegreePage.routeName:
         return MaterialPageRoute(
           builder: (context) => UserDegreePage(),
         );
