@@ -21,27 +21,26 @@ class AppBarWithTitle extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: AppColorUtils.BACKGROUND,
       elevation: 0,
-      leading: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          InkWell(
-            child: Container(
-              width: 31.w,
-              height: 34.w,
-              decoration: BoxDecoration(
-                color: AppColorUtils.BACK_BUTTON,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Icon(
-                Icons.arrow_back_ios_rounded,
-                color: AppColorUtils.IC_GREEN2,
-                size: 20.w,
-              ),
-            ),
-            onTap: onPress,
+      leading: InkWell(
+        child: Container(
+          width: 31.w,
+          height: 34.w,
+          decoration: BoxDecoration(
+            color: AppColorUtils.BACK_BUTTON,
+            borderRadius: BorderRadius.circular(10),
           ),
-        ],
-      ).paddingOnly(left: 24.w),
+          child: Icon(
+            Icons.arrow_back_ios_rounded,
+            color: AppColorUtils.IC_GREEN2,
+            size: 20.w,
+          ),
+        ),
+        onTap: onPress,
+      ).paddingOnly(
+        left: 24.w,
+        top: 10.w,
+        bottom: 10.w,
+      ),
       title: AppWidgets.textLocale(
         text: title,
         fontWeight: FontWeight.w600,

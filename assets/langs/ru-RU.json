@@ -24,5 +24,17 @@
     "New_phone_number": "Новый номер телефона",
     "Send_code": "Отправить код",
     "Confirmation": "Подтверждение",
-    "send_again": "Отправь снова"
+    "send_again": "Отправь снова",
+    "author_answer": "Ответ автора",
+    "project_implementation": "Реализация проекта",
+    "news_empty": "Пока новостей не нашел",
+    "questions_empty": "Вопросы еще не заданы",
+    "more": "Подробнее",
+    "news": "Новости",
+    "questions_asked": "Вопросы",
+    "comments": "Комментарии",
+    "writing_comment": "Написать комментарий"
+
+
+
 }

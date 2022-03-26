@@ -39,7 +39,7 @@ class KraudfandingAuthorWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppWidgets.textLocale(
-                  text: "E'lon muallifi",
+                  text: "Loyiha muallifi",
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColorUtils.DARK_6,

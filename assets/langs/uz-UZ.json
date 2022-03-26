@@ -25,5 +25,14 @@
     "Send_code": "Kod Yuborish",
     "Confirmation": "Tasdiqlash",
     "send_again": "Qayta yuborish",
-  "str_registration": "Ro'yxatdan o'tish"
+    "str_registration": "Ro'yxatdan o'tish",
+    "author_answer": "Muallif javobi",
+    "project_implementation": "Loyihani qo'llash",
+    "news_empty": "Hozircha hech qanday yangiliklar topilmadi",
+    "questions_empty": "Hozircha berilgan savollar yo'q",
+    "more": "Batafsil",
+    "news": "Yangiliklar",
+    "questions_asked": "Berilgan savollar",
+    "comments": "Izohlar",
+    "writing_comment": "Izoh yozish"
 }

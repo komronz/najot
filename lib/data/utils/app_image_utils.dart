@@ -13,6 +13,10 @@ class AppImageUtils {
    static const String QUESTION = "assets/app_icons/question.svg";
    static const String EDIT = "assets/app_icons/edit.svg";
    static const String HANDS = "assets/app_icons/hends.svg";
+   static const String NEWS = "assets/app_icons/news.svg";
+   static const String EMPTY_QUESTIONS = "assets/app_icons/empty_questions.svg";
+   static const String LIKE_ICON = "assets/app_icons/like_icon.svg";
+   static const String UNLIKE_ICON = "assets/app_icons/unlike_icon.svg";
    static const String HISTORY = "assets/app_icons/history.svg";
    static const String HISTORY2 = "assets/app_icons/history2.svg";
    static const String PRODUCTS = "assets/app_icons/products.svg";

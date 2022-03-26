@@ -27,183 +27,181 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) => cubit,
-      child: SafeArea(
-        child: Scaffold(
-          body: BlocBuilder<HomeCubit, HomeState>(
-            builder: (context, state) {
-              return Container(
-                color: AppColorUtils.BACKGROUND,
-                child: Column(
-                  children: [
-                    AppWidgets.appBarMenu(
-                      title: "Asosiy",
-                      onTapMenu: () {
-                        HomePage.globalKey.currentState!.openDrawer();
-                      },
-                      visibleIcon: true,
-                      onTapIcon: (){
+      child: Scaffold(
+        body: BlocBuilder<HomeCubit, HomeState>(
+          builder: (context, state) {
+            return Container(
+              color: AppColorUtils.BACKGROUND,
+              child: Column(
+                children: [
+                  AppWidgets.appBarMenu(
+                    title: "Asosiy",
+                    onTapMenu: () {
+                      HomePage.globalKey.currentState!.openDrawer();
+                    },
+                    visibleIcon: true,
+                    onTapIcon: (){
 
-                      },
-                      icon:AppImageUtils.NOTIFICATION,
-
+                    },
+                    icon:AppImageUtils.NOTIFICATION,
 
 
-                    ),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CarouselSliderWidget(sliderList: state.sliderList),
-                            SizedBox(
-                              height: 20.h,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                AppWidgets.textLocale(
-                                  text: "Kategoriyalar",
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 22.sp,
-                                ).paddingOnly(left: 20.w),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: 20, top: 10, bottom: 20, left: 20),
+
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CarouselSliderWidget(sliderList: state.sliderList),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AppWidgets.textLocale(
+                                text: "Kategoriyalar",
+                                fontWeight: FontWeight.w600,
+                                fontSize: 22.sp,
+                              ).paddingOnly(left: 20.w),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    right: 20, top: 10, bottom: 20, left: 20),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    IconAndName(
+                                      text: 'Kraudfanding',
+                                      icon: AppImageUtils.KRAUDFANDING,
+                                      fontWeight: FontWeight.w600,
+                                      fontsize: 14,
+                                      color: AppColorUtils.KRAUDFANDING,
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  KraudfandingPage(),
+                                            ));
+                                      },
+                                    ),
+                                    IconAndName(
+                                      text: 'Volontyorlik',
+                                      icon: AppImageUtils.VOLONTYOR,
+                                      fontWeight: FontWeight.w600,
+                                      fontsize: 14,
+                                      color: AppColorUtils.VOLONTYOR,
+
+                                      onTap: () {
+                                        NavigatorService.to
+                                            .pushNamed(VolunteerPage.routeName);
+                                      },
+
+                                    ),
+                                    IconAndName(
+                                      text: 'Xayriya',
+                                      icon: AppImageUtils.CHARITY,
+                                      fontWeight: FontWeight.w600,
+                                      fontsize: 14,
+                                      color: AppColorUtils.CHARITY,
+                                      onTap: () {
+                                        NavigatorService.to
+                                            .pushNamed(CharityPage.routeName);
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              AppWidgets.textLocale(
+                                text: "Kraudfanding",
+                                fontWeight: FontWeight.w600,
+                                fontSize: 22.sp,
+                              ).paddingOnly(left: 20.w),
+                              SizedBox(
+                                height: 10.h,
+                              ),
+                              SizedBox(
+                                height: 300.h,
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
                                   child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      IconAndName(
-                                        text: 'Kraudfanding',
-                                        icon: AppImageUtils.KRAUDFANDING,
-                                        fontWeight: FontWeight.w600,
-                                        fontsize: 14,
-                                        color: AppColorUtils.KRAUDFANDING,
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    KraudFandingPage(),
-                                              ));
-                                        },
-                                      ),
-                                      IconAndName(
-                                        text: 'Volontyorlik',
-                                        icon: AppImageUtils.VOLONTYOR,
-                                        fontWeight: FontWeight.w600,
-                                        fontsize: 14,
-                                        color: AppColorUtils.VOLONTYOR,
-
-                                        onTap: () {
-                                          NavigatorService.to
-                                              .pushNamed(VolunteerPage.routeName);
-                                        },
-
-                                      ),
-                                      IconAndName(
-                                        text: 'Xayriya',
-                                        icon: AppImageUtils.CHARITY,
-                                        fontWeight: FontWeight.w600,
-                                        fontsize: 14,
-                                        color: AppColorUtils.CHARITY,
-                                        onTap: () {
-                                          NavigatorService.to
-                                              .pushNamed(CharityPage.routeName);
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                AppWidgets.textLocale(
-                                  text: "Kraudfanding",
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 22.sp,
-                                ).paddingOnly(left: 20.w),
-                                SizedBox(
-                                  height: 10.h,
-                                ),
-                                SizedBox(
-                                  height: 300.h,
-                                  child: SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      children: List.generate(
-                                        state.sliderList.length,
-                                        (index) => Container(
-                                          margin: EdgeInsets.only(left: 10.w),
-                                          child: KraudfandingCardWidget(
-                                            sliderModel:
-                                                state.sliderList[index],
-                                            visible: true,
-                                          ),
+                                    children: List.generate(
+                                      state.sliderList.length,
+                                      (index) => Container(
+                                        margin: EdgeInsets.only(left: 10.w),
+                                        child: KraudfandingCardWidget(
+                                          sliderModel:
+                                              state.sliderList[index],
+                                          visible: true,
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                                AppWidgets.textLocale(
-                                  text: "Volontyorlik",
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 22.sp,
-                                ).paddingOnly(
-                                  left: 20.w,
-                                  top: 20.h,
-                                ),
-                                SizedBox(
-                                  height: 300.h,
-                                  child: SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      children: List.generate(
-                                        state.sliderList.length,
-                                        (index) => Container(
-                                          margin: EdgeInsets.only(left: 10.w),
-                                          child: VolunteerCardWidget(
-                                            sliderModel:
-                                                state.sliderList[index],
-                                          ),
+                              ),
+                              AppWidgets.textLocale(
+                                text: "Volontyorlik",
+                                fontWeight: FontWeight.w600,
+                                fontSize: 22.sp,
+                              ).paddingOnly(
+                                left: 20.w,
+                                top: 20.h,
+                              ),
+                              SizedBox(
+                                height: 300.h,
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: List.generate(
+                                      state.sliderList.length,
+                                      (index) => Container(
+                                        margin: EdgeInsets.only(left: 10.w),
+                                        child: VolunteerCardWidget(
+                                          sliderModel:
+                                              state.sliderList[index],
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                                AppWidgets.textLocale(
-                                  text: "Xayriya",
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 22.sp,
-                                ).paddingOnly(
-                                    left: 20.w, top: 10.h, bottom: 10.h),
-                                SizedBox(
-                                  height: 300.h,
-                                  child: SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      children: List.generate(
-                                        state.sliderList.length,
-                                        (index) => Container(
-                                          margin: EdgeInsets.only(left: 10.w),
-                                          child: KraudfandingCardWidget(
-                                            sliderModel:
-                                                state.sliderList[index],
-                                            visible: false,
-                                          ),
+                              ),
+                              AppWidgets.textLocale(
+                                text: "Xayriya",
+                                fontWeight: FontWeight.w600,
+                                fontSize: 22.sp,
+                              ).paddingOnly(
+                                  left: 20.w, top: 10.h, bottom: 10.h),
+                              SizedBox(
+                                height: 300.h,
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: List.generate(
+                                      state.sliderList.length,
+                                      (index) => Container(
+                                        margin: EdgeInsets.only(left: 10.w),
+                                        child: KraudfandingCardWidget(
+                                          sliderModel:
+                                              state.sliderList[index],
+                                          visible: false,
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ],
-                            )
-                          ],
-                        ),
+                              ),
+                            ],
+                          )
+                        ],
                       ),
-                    )
-                  ],
-                ),
-              );
-            },
-          ),
+                    ),
+                  )
+                ],
+              ),
+            );
+          },
         ),
       ),
     );
