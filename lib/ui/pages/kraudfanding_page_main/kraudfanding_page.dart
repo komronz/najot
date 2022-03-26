@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/kraudfanding_cubit/kraud_fanding_cubit.dart';
-import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
@@ -88,22 +87,22 @@ class KraudfandingPage extends StatelessWidget {
                             ),
                           ),
 
-                          TabBar(
-                            enableFeedback: true,
-                            labelColor: AppColorUtils.GREEN_APP,
-                            unselectedLabelColor: AppColorUtils.DARK_6,
-                            unselectedLabelStyle: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                            labelStyle: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                            ),
-                            tabs: [
-                              Text("Barchasi"),
-                              Text("Texnologiya'"),
-                              Text("Texnologiya"),
+                            TabBar(
+                              enableFeedback: true,
+                              labelColor: AppColorUtils.GREEN_APP,
+                              unselectedLabelColor: AppColorUtils.DARK_6,
+                              unselectedLabelStyle: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w400,
+                              ),
+                              labelStyle: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              tabs: [
+                                Text("Barchasi"),
+                                Text("Texnologiya'"),
+                                Text("Texnologiya"),
 
                             ],
                             isScrollable: true,

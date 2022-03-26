@@ -17,11 +17,14 @@ class AppTextField extends StatefulWidget {
   final bool enabled;
   final String initialText;
   final bool hasError;
+  final bool isMultiLine;
+  final double? height;
 
   AppTextField({
     required this.hintText,
     required this.onChanged,
     required this.title,
+    this.isMultiLine=false,
     this.inputFormatter,
     this.textInputType,
     this.isPassword = false,
@@ -29,6 +32,7 @@ class AppTextField extends StatefulWidget {
     this.isFill = false,
     this.initialText = '',
     this.hasError = false,
+    this.height
   });
 
   @override
@@ -56,13 +60,13 @@ class _AppTextFieldState extends State<AppTextField> {
   Widget build(BuildContext context) {
     InputBorder _border = widget.hasError
         ? OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide(width: 2, color: AppColorUtils.RED),
-    )
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(width: 2, color: AppColorUtils.RED),
+          )
         : OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide(width: 2, color: AppColorUtils.BORDER_COLOR),
-    );
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(width: 2, color: AppColorUtils.BORDER_COLOR),
+          );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -78,7 +82,7 @@ class _AppTextFieldState extends State<AppTextField> {
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
                   ),
-            AppWidgets.text(
+            AppWidgets.textLocale(
               text: widget.title,
               color: AppColorUtils.DARK_4,
               fontSize: 14.sp,
@@ -87,10 +91,15 @@ class _AppTextFieldState extends State<AppTextField> {
           ],
         ).paddingOnly(bottom: 8),
         Container(
+          height: widget.height,
           decoration: BoxDecoration(
-              color: AppColorUtils.WHITE,
-              borderRadius: BorderRadius.circular(12)),
+            color: AppColorUtils.WHITE,
+            borderRadius: BorderRadius.circular(12),
+          ),
           child: TextField(
+            expands: widget.isMultiLine?true:false,
+            textAlignVertical: TextAlignVertical.top,
+            maxLines: widget.isMultiLine?null:1,
             controller: _textEditingController,
             enabled: widget.enabled,
             style: GoogleFonts.inter(
@@ -103,7 +112,11 @@ class _AppTextFieldState extends State<AppTextField> {
               enabledBorder: _border,
               contentPadding: EdgeInsets.all(14),
               hintText: widget.hintText,
-              hintStyle: GoogleFonts.inter(fontSize: 16),
+              hintStyle: GoogleFonts.inter(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w500,
+                color: AppColorUtils.GRAY_4,
+              ),
               suffixIcon: widget.isPassword
                   ? InkWell(
                       onTap: () {

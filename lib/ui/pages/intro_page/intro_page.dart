@@ -7,6 +7,8 @@ import 'package:najot/ui/pages/intro_page/widgets/intro_page_three_widget.dart';
 import 'package:najot/ui/pages/intro_page/widgets/intro_page_two_widget.dart';
 import 'package:najot/ui/pages/intro_page/widgets/intro_view_widgets.dart';
 
+import '../../../data/bloc/intro_page_bloc/intro_state.dart';
+
 class IntroPage extends StatelessWidget {
   const IntroPage({Key? key}) : super(key: key);
   static const String routeName = "/introPage";

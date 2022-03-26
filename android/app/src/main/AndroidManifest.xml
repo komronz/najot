@@ -1,8 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.najot">
    <application
-        android:label="najot"
-        android:name="${applicationName}"
+        android:label="Najot"
+       android:name="${applicationName}"
+       android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

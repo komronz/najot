@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,22 +7,24 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class ButtonCard extends StatelessWidget {
-  ButtonCard(
-      {required this.onPress,
-        required this.text,
-        this.color = AppColorUtils.WHITE,
-        this.textColor = AppColorUtils.BLACK,
-        this.width = 25.0,
-        this.height = 25.0,
-        this.borderRadius = 10,
-        this.textSize = SizeConst.FONT_16,
-        this.elevation = 0,
-        this.fontWeight = FontWeight.bold,
-        this.borderWidth = 0,
-        this.borderColor,
-        this.visibleIcon = false,
-        this.key,
-        this.addIcon = AppImageUtils.EDIT});
+  ButtonCard({
+    required this.onPress,
+    required this.text,
+    this.color = AppColorUtils.WHITE,
+    this.textColor = AppColorUtils.BLACK,
+    this.width = 25.0,
+    this.height = 25.0,
+    this.borderRadius = 10,
+    this.textSize = SizeConst.FONT_16,
+    this.elevation = 0,
+    this.fontWeight = FontWeight.bold,
+    this.borderWidth = 0,
+    this.borderColor,
+    this.visibleIcon = false,
+    this.key,
+    this.addIcon = AppImageUtils.EDIT,
+    this.iconColor = AppColorUtils.BLACK,
+  });
 
   final VoidCallback onPress;
   final String text;
@@ -40,11 +40,11 @@ class ButtonCard extends StatelessWidget {
   final Color? borderColor;
   final String addIcon;
   final bool visibleIcon;
+  final Color iconColor;
   final Key? key;
 
   @override
   Widget build(BuildContext context) {
-
     return Material(
       color: color,
       elevation: elevation,
@@ -74,15 +74,15 @@ class ButtonCard extends StatelessWidget {
                     visible: visibleIcon,
                     child: Row(
                       children: [
-
                         SizedBox(
                           width: 18.w,
                           height: 17.w,
-                          child: SvgPicture.asset(addIcon),
+                          child: SvgPicture.asset(
+                            addIcon,
+                            color: iconColor,
+                          ),
                         ),
-                        SizedBox(
-                          width: 5,
-                        ),
+                        SizedBox(width: 5),
                       ],
                     ),
                   ),
@@ -92,7 +92,6 @@ class ButtonCard extends StatelessWidget {
                     color: textColor,
                     fontSize: textSize,
                   ),
-
                 ],
               ),
             ),

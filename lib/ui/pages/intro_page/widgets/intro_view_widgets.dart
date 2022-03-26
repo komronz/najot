@@ -5,6 +5,8 @@ import 'package:najot/data/bloc/intro_page_bloc/intro_cubit.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
 
+import '../../../../data/bloc/intro_page_bloc/intro_state.dart';
+
 Widget viewOfOnePage(BuildContext context) {
   return Container(
     height: 770.h,

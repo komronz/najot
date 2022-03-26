@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_page.dart';
+import 'package:najot/ui/pages/my_profil_page/my_profile_widget/user_degree_widgets.dart';
 
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
@@ -22,33 +23,29 @@ class UserDegreePage extends StatelessWidget {
           children: [
             Container(
               color: Color(0xFFF6FCFA),
-              height: 80,
               padding: EdgeInsets.all(20),
               child: Row(
-
                 children: [
                   Container(
                     child: InkWell(
                       child: SvgPicture.asset(AppImageUtils.BACK_TO),
                       onTap: () {
-                        NavigatorService.to
-                            .pushNamed(MyProfilePage.routeName);
+                        NavigatorService.to.pushNamed(MyProfilePage.routeName);
                       },
                     ),
                   ),
                   SizedBox(width: 93.w),
                   AppWidgets.textLocale(
-                      text: "Darajalar",
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF414042)),
+                    text: "Darajalar",
+                    fontSize: 24,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF414042),
+                  ),
                 ],
               ),
             ),
             Expanded(
               child: Container(
-                height: 758.h,
-                width: 375.w,
                 padding: EdgeInsets.only(left: 20, right: 20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
@@ -58,41 +55,55 @@ class UserDegreePage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 18.h),
                       Container(
-                        child: AppWidgets.textLocale(text: "Daraja turlari",fontSize: 22.sp,fontWeight: FontWeight.w600,color: Color(0xFF414042)),
-                      ),
-                      SizedBox(height: 10.h),
+                        child: AppWidgets.textLocale(
+                          text: "Daraja turlari",
+                          fontSize: 22.sp,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF414042),
+                        ),
+                      ).paddingOnly(top: 18.h, bottom: 10.h),
                       Container(
-                        child: Text("Lorem Ipsum is simply dummy text of the printing "
-                            "and typesetting industry. "
-                            "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
-                          style:TextStyle(color: Color(0xFF58595B),fontWeight: FontWeight.w400,fontSize: 16.sp,height: 1.5),),
-                      ),
-                      SizedBox(height: 24.h),
+                        child: Text(
+                          "Lorem Ipsum is simply dummy text of the printing "
+                          "and typesetting industry. "
+                          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+                          style: TextStyle(
+                            color: Color(0xFF58595B),
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16.sp,
+                            height: 1.5,
+                          ),
+                        ),
+                      ).paddingOnly(bottom: 24.h),
                       Container(
-                        height: 28.h,
-                        width: 200.w,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SvgPicture.asset(AppImageUtils.PERSON),
                             Container(
                               margin: EdgeInsets.only(left: 5),
-                              child: AppWidgets.textLocale(text: "Oddiy foydalanuvchi",color: Color(0xFF0344A7),fontSize: 16.sp,fontWeight: FontWeight.w600),)
+                              child: AppWidgets.textLocale(
+                                  text: "Oddiy foydalanuvchi",
+                                  color: Color(0xFF0344A7),
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w600),
+                            ),
                           ],
                         ),
-
-                      ),
-                      SizedBox(height: 12.h),
+                      ).paddingOnly(bottom: 12.h),
                       Container(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            AppWidgets.textLocale(text: "Imkoniyatlari",color: Color(0xFF58595B),fontSize: 13.sp,fontWeight: FontWeight.w600),
+                            AppWidgets.textLocale(
+                              text: "Imkoniyatlari",
+                              color: Color(0xFF58595B),
+                              fontSize: 13.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
                             SizedBox(height: 12.h),
                             Container(
-                              height: 37.h,
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -107,293 +118,91 @@ class UserDegreePage extends StatelessWidget {
                                       border: Border.all(
                                         width: 1,
                                         color: Color(0xFF0344A7),
-                                      )
+                                      ),
                                     ),
-                                     child: SvgPicture.asset(AppImageUtils.CHECK_SMALL),
-                                  ),
+                                    child: SvgPicture.asset(
+                                        AppImageUtils.CHECK_SMALL),
+                                  ).paddingOnly(bottom: 8.h),
                                   SizedBox(width: 8),
                                   Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text("Xayriya qilish",style: TextStyle(fontSize: 14.sp,color: Color(0xFF6D6E71),fontWeight: FontWeight.w500),),
-                                      Text("(kiyimlarni hayriya qilish bundan mustasno)",style: TextStyle(fontSize: 12.sp,color: Color(0xFF6D6E71),fontWeight: FontWeight.w400),),
+                                      Text(
+                                        "Xayriya qilish",
+                                        style: TextStyle(
+                                          fontSize: 14.sp,
+                                          color: Color(0xFF6D6E71),
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      Text(
+                                        "(kiyimlarni hayriya qilish bundan mustasno)",
+                                        style: TextStyle(
+                                          fontSize: 12.sp,
+                                          color: Color(0xFF6D6E71),
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
                                     ],
                                   ),
-
                                 ],
                               ),
-                            ),
-                            SizedBox(height: 13.h),
-                            Container(
-                              height: 37.h,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(1),
-                                    height: 14.h,
-                                    width: 14.w,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF0344A7),
-                                        )
-                                    ),
-                                    child: SvgPicture.asset(AppImageUtils.CHECK_SMALL),
-                                  ),
-                                  SizedBox(width: 8),
-                                  Text("Mukorofot sotib olish",style: TextStyle(fontSize: 14.sp,color: Color(0xFF6D6E71),fontWeight: FontWeight.w500),),
-
-                                ],
-                              ),
-                            ),
-                            Container(
-                              height: 37.h,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(1),
-                                    height: 14.h,
-                                    width: 14.w,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF0344A7),
-                                        )
-                                    ),
-                                    child: SvgPicture.asset(AppImageUtils.CHECK_SMALL),
-                                  ),
-                                  SizedBox(width: 8),
-                                  Text("Loyihalarni qo’llash",style: TextStyle(fontSize: 14.sp,color: Color(0xFF6D6E71),fontWeight: FontWeight.w500),),
-
-                                ],
-                              ),
-                            ),
-                            Container(
-                              height: 37.h,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(1),
-                                    height: 14.h,
-                                    width: 14.w,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF0344A7),
-                                        )
-                                    ),
-                                    child: SvgPicture.asset(AppImageUtils.CHECK_SMALL),
-                                  ),
-                                  SizedBox(width: 8),
-                                  Text("Savollar berish",style: TextStyle(fontSize: 14.sp,color: Color(0xFF6D6E71),fontWeight: FontWeight.w500),),
-
-                                ],
-                              ),
-                            ),
-                            Container(
-                              height: 37.h,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(1),
-                                    height: 14.h,
-                                    width: 14.w,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF0344A7),
-                                        )
-                                    ),
-                                    child: SvgPicture.asset(AppImageUtils.CHECK_SMALL),
-                                  ),
-                                  SizedBox(width: 8),
-                                  Text("Izoh qoldirish",style: TextStyle(fontSize: 14.sp,color: Color(0xFF6D6E71),fontWeight: FontWeight.w500),),
-
-                                ],
-                              ),
-                            ),
+                            ).paddingOnly(bottom: 13.h),
+                            blueCheckWidgets(title: "Mukorofot sotib olish")
+                                .paddingOnly(bottom: 13.h),
+                            blueCheckWidgets(title: "Loyihalarni qo’llash")
+                                .paddingOnly(bottom: 13.h),
+                            blueCheckWidgets(title: "Savollar berish")
+                                .paddingOnly(bottom: 13.h),
+                            blueCheckWidgets(title: "Izoh qoldirish"),
                           ],
                         ),
-                      ),
-
-                      SizedBox(height: 10.h),
+                      ).paddingOnly(bottom: 18.h),
                       Container(
-                        height: 28.h,
-                        width: 185.w,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SvgPicture.asset(AppImageUtils.VOLONTORGREEN),
                             Container(
                               margin: EdgeInsets.only(left: 5),
-                              child: AppWidgets.textLocale(text: "Volontyor",color: Color(0xFF048D6A),fontSize: 18.sp,fontWeight: FontWeight.w600),)
+                              child: AppWidgets.textLocale(
+                                text: "Volontyor",
+                                color: Color(0xFF048D6A),
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
                           ],
                         ),
-
-                      ),
-                      SizedBox(height: 12.h),
+                      ).paddingOnly(bottom: 12.h),
                       Container(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            AppWidgets.textLocale(text: "Imkoniyatlari",color: Color(0xFF58595B),fontSize: 13.sp,fontWeight: FontWeight.w600),
+                            AppWidgets.textLocale(
+                              text: "Imkoniyatlari",
+                              color: Color(0xFF58595B),
+                              fontSize: 13.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
                             SizedBox(height: 12.h),
-                            Container(
-                              height: 37.h,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(1),
-                                    height: 14.h,
-                                    width: 14.w,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF038D69),
-                                        )
-                                    ),
-                                    child: SvgPicture.asset(AppImageUtils.CHECK_SMALL,color: Color(0xFF038D69),),
-                                  ),
-                                  SizedBox(width: 8),
-                                      Text("Oddiy foydalanuvchi barcha imkoniyatlari",style: TextStyle(fontSize: 14.sp,color: Color(0xFF6D6E71),fontWeight: FontWeight.w500),),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              height: 40.h,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(1),
-                                    height: 14.h,
-                                    width: 14.w,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF038D69),
-                                        )
-                                    ),
-                                    child: SvgPicture.asset(AppImageUtils.CHECK_SMALL,color: Color(0xFF038D69),),
-                                  ),
-                                  SizedBox(width: 8),
-                                  Expanded(child: Text("Volontyorlik kategoriyasidan to’liq foydalana olish",style: TextStyle(height:1.3,fontSize: 14.sp,color: Color(0xFF6D6E71),fontWeight: FontWeight.w500),)),
-
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 5.h),
-                            Container(
-                              height: 37.h,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(1),
-                                    height: 14.h,
-                                    width: 14.w,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF038D69),
-                                        )
-                                    ),
-                                    child: SvgPicture.asset(AppImageUtils.CHECK_SMALL,color: Color(0xFF038D69),),
-                                  ),
-                                  SizedBox(width: 8),
-                                  Text("Kiyimlar xayriya qilish",style: TextStyle(fontSize: 14.sp,color: Color(0xFF6D6E71),fontWeight: FontWeight.w500),),
-
-                                ],
-                              ),
-                            ),
-                            Container(
-                              height: 37.h,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(1),
-                                    height: 14.h,
-                                    width: 14.w,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF038D69),
-                                        )
-                                    ),
-                                    child: SvgPicture.asset(AppImageUtils.CHECK_SMALL,color: Color(0xFF038D69),),
-                                  ),
-                                  SizedBox(width: 8),
-                                  Expanded(child: Text("Loyiha tomonidan ajoyib sovg’alarni qo’lga kiritish",style: TextStyle(fontSize: 14.sp,color: Color(0xFF6D6E71),fontWeight: FontWeight.w500),)),
-
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 5.h),
-                            Container(
-                              height: 37.h,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(1),
-                                    height: 14.h,
-                                    width: 14.w,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: Color(0xFFFFFFFF),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: Color(0xFF038D69),
-                                        )
-                                    ),
-                                    child: SvgPicture.asset(AppImageUtils.CHECK_SMALL,color:Color(0xFF038D69)),
-                                  ),
-                                  SizedBox(width: 8),
-                                  Text("Loyiha qo’shish",style: TextStyle(fontSize: 14.sp,color: Color(0xFF6D6E71),fontWeight: FontWeight.w500),),
-
-                                ],
-                              ),
-                            ),
+                            greenCheckWidgets(
+                                title:
+                                    "Oddiy foydalanuvchi barcha imkoniyatlari"),
+                            greenCheckWidgets(
+                                title:
+                                    "Volontyorlik kategoriyasidan to’liq foydalana olish"),
+                            greenCheckWidgets(title: "Kiyimlar xayriya qilish"),
+                            greenCheckWidgets(
+                                title:
+                                    "Loyiha tomonidan ajoyib sovg’alarni qo’lga kiritish"),
+                            greenCheckWidgets(title: "Loyiha qo’shish"),
                           ],
                         ),
                       ),
-
-
-
-
-
                     ],
                   ),
                 ),

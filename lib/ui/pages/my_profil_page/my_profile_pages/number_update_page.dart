@@ -1,152 +1,144 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
+import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
+import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/model/user.dart';
+import 'package:najot/data/services/hive_service.dart';
+import 'package:najot/ui/widgets/app_text_field.dart';
 
-import '../../../../data/services/navigator_service.dart';
+import '../../../../data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
+import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
-import 'number_update_step1_page.dart';
+import '../my_profile_widget/app_disable_text_field.dart';
+import '../my_profile_widget/number_update_step1_page.dart';
 
 class NumberUpdatePage extends StatelessWidget {
   static const String routeName = "/numberUpdatePage";
 
-  const NumberUpdatePage({Key? key}) : super(key: key);
-
+  NumberUpdatePage({Key? key}) : super(key: key);
+  bool isVisible = true;
+  User? user = HiveService.to.getUser();
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: [
-            Container(
-              color: Color(0xFFF6FCFA),
-              height: 80,
-              padding: EdgeInsets.all(20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    child: SvgPicture.asset(AppImageUtils.MENU),
-                    onTap: () {},
-                  ),
-                  AppWidgets.textLocale(
-                      text: "Edit",
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF414042)),
-                  InkWell(
-                    child: SvgPicture.asset(AppImageUtils.REMOVE),
-                    onTap: () {
+    return BlocProvider(
+      create: (BuildContext context) =>
+          MyProfileUpdateBloc()..add(MyProfileLoad()),
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: AppColorUtils.WHITE,
+          body: BlocBuilder<MyProfileUpdateBloc, MyProfileUpdateState>(
+              builder: (context, state) {
+            return Column(
+              children: [
+                Container(
+                  color: Color(0xFFF6FCFA),
+                  child: AppWidgets.appBarMenu(
+                    title: LocaleKeys.edit_my_profile,
+                    onTapMenu: () {},
+                    visibleIcon: true,
+                    onTapIcon: () {
                       Navigator.of(context).pop();
                     },
+                    icon: AppImageUtils.REMOVE,
                   ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Container(
-                height: 708.h,
-                width: 375.w,
-                padding: EdgeInsets.only(left: 19, right: 20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: AppColorUtils.WHITE,
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(height: 24.h),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        AppWidgets.textLocale(text: "Phone_number",color: Color(0xFF6D6E71),fontSize: 13.sp,fontWeight: FontWeight.w400),
-                        SizedBox(height: 8.h),
-                        Container(
-                          height: 48.h,
-                          width: 335.w,
-                          padding: EdgeInsets.only(left: 18,top: 10,bottom: 3),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: Color(0xFFEDFCF9),
-                              border: Border.all(
-                                width: 1,
-                                color: Color(0xFFCEE1DD),
-                              )),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: "(+998)97 628 28 82",
-                              border: InputBorder.none,
-                              hintStyle:
-                              TextStyle(color: Color(0xFFBCBEC0), fontSize: 15.sp,fontWeight: FontWeight.w500),
-                            ),
-                          ),
-
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 24.h),
-                    Container(
-                      height: 275.h,
-                      width: 336.w,
+                ).paddingOnly(top: 10),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Container(
+                      width: 375.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: AppColorUtils.WHITE,
+                      ),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          AppWidgets.textLocale(
-                              text: "New_phone_number",
-                              color: Color(0xFF6D6E71),
-                              fontSize: 13.sp,
-                              fontWeight: FontWeight.w400),
-                          SizedBox(height: 8.h),
-                          Container(
-                            height: 48.h,
-                            padding:
-                            EdgeInsets.only(left: 18, top: 10, bottom: 3),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: Color(0xFFFDFFFF),
-                                border: Border.all(
-                                  width: 2,
-                                  color: Color(0xFF79B4A8),
-                                )),
-                            child: TextField(
-                              decoration: InputDecoration(
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AppDisableTextField(
+                                isFill: false,
+                                hintText: user==null?user.toString():user!.phone.toString(),
+                                onChanged: (v) {},
+                                title: LocaleKeys.phone_number,
+                              ).paddingOnly(
+                                  bottom: 23.h, top: 20.h, left: 20, right: 20),
+                              AppTextField(
+                                isFill: context
+                                    .read<MyProfileUpdateBloc>()
+                                    .state
+                                    .phoneNumberFill,
+                                initialText: context
+                                    .read<MyProfileUpdateBloc>()
+                                    .state
+                                    .phoneNumber,
                                 hintText: "+998",
-                                border: InputBorder.none,
-                                hintStyle: TextStyle(
-                                    color: Color(0xFF6D6E71),
-                                    fontSize: 15.sp,
-                                    fontWeight: FontWeight.w500),
-                              ),
+                                onChanged: (v) {
+                                  context
+                                      .read<MyProfileUpdateBloc>()
+                                      .add(PhoneChanged(v));
+                                },
+                                title: LocaleKeys.new_phone_number,
+                              ).paddingOnly(bottom: 23.h),
+                            ],
+                          ),
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            width: double.infinity,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 8.h),
+                                InkWell(
+                                  onTap: () {
+                                    context
+                                        .read<MyProfileUpdateBloc>()
+                                        .add(SendCode());
+                                  },
+                                  child: context
+                                          .read<MyProfileUpdateBloc>()
+                                          .state
+                                          .isVisible
+                                      ? Visibility(
+                                          visible: context
+                                              .read<MyProfileUpdateBloc>()
+                                              .state
+                                              .isVisible,
+                                          child: Container(
+                                            padding: EdgeInsets.only(
+                                                top: 10,
+                                                bottom: 13,
+                                                right: 10,
+                                                left: 10),
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                              color: Color(0xFF1F6ADE),
+                                            ),
+                                            child: AppWidgets.textLocale(
+                                                text: LocaleKeys.send_code,
+                                                textAlign: TextAlign.center,
+                                                color: Color(0xFFFFFFFF),
+                                                fontSize: 15.sp,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        )
+                                      : NumberUpdateStep1(),
+                                ),
+                              ],
                             ),
                           ),
-                          SizedBox(height: 16.h),
-                          InkWell(
-                            onTap: (){
-                              NavigatorService.to
-                                  .pushNamed(NumberUpdateStep1Page.routeName);
-                            },
-                            child: Container(
-                              height: 48.h,
-                              width: 142.w,
-                              padding: EdgeInsets.only( top: 10, bottom: 3),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: Color(0xFF1F6ADE),
-                              ),
-                              child: AppWidgets.textLocale(text: "Send_code",textAlign:TextAlign.center ,color: Color(0xFFFFFFFF),fontSize: 15.sp,fontWeight: FontWeight.w600),
-                            ),
-                          )
-
-
-
                         ],
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-          ],
+              ],
+            );
+          }),
         ),
       ),
     );

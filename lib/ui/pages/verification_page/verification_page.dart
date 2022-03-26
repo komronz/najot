@@ -3,19 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/ui/pages/verification_page/pin_put/pin_put.dart';
+import 'package:najot/ui/pages/verification_page/widgets/pin_put_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class VerificationPage extends StatelessWidget {
   const VerificationPage({Key? key}) : super(key: key);
   static const String routeName = '/verificationPage';
-
-  BoxDecoration get _pinPutDecoration {
-    return BoxDecoration(
-        color: Color(0xffD8F2EB),
-        shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.circular(12));
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +36,6 @@ class VerificationPage extends StatelessWidget {
                 PinPutWidget(
                   pinPutFocusNode: _pinPutFocusNode,
                   pinPutController: _pinPutController,
-                  pinPutDecoration: _pinPutDecoration,
                 ).paddingOnly(top: 20),
                 TextButton(
                   onPressed: () {},
@@ -70,42 +62,3 @@ class VerificationPage extends StatelessWidget {
   }
 }
 
-class PinPutWidget extends StatelessWidget {
-  const PinPutWidget({
-    required FocusNode pinPutFocusNode,
-    required TextEditingController pinPutController,
-    required BoxDecoration pinPutDecoration,
-  })  : _pinPutFocusNode = pinPutFocusNode,
-        _pinPutController = pinPutController,
-        _pinPutDecoration = pinPutDecoration;
-
-  final FocusNode _pinPutFocusNode;
-  final TextEditingController _pinPutController;
-  final BoxDecoration _pinPutDecoration;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 250,
-      child: PinPut(
-        textStyle: TextStyle(
-          color: AppColorUtils.TEXT_GREEN,
-          fontSize: 18,
-        ),
-        fieldsCount: 5,
-        onSubmit: (String pin) {
-          FocusScope.of(context).unfocus();
-        },
-        focusNode: _pinPutFocusNode,
-        controller: _pinPutController,
-        submittedFieldDecoration: _pinPutDecoration.copyWith(),
-        selectedFieldDecoration: _pinPutDecoration,
-        followingFieldDecoration: _pinPutDecoration.copyWith(
-          border: Border.all(
-            color: AppColorUtils.GREEN_APP,
-          ),
-        ),
-      ),
-    );
-  }
-}

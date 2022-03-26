@@ -39,9 +39,9 @@ Future runMainApp() async {
     EasyLocalization(
       path: 'assets/langs',
       supportedLocales: [
+        Locale("uz", "UZ"),
         Locale("ru", "RU"),
         Locale("en", "EN"),
-        Locale("uz", "UZ"),
       ],
       fallbackLocale: Locale('uz', 'UZ'),
       child: App(),
