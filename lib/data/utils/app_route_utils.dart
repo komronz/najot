@@ -22,7 +22,6 @@ import '../../ui/pages/my_profil_page/my_profile_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/number_update_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/user_degree_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/user_update_page.dart';
-import '../../ui/pages/sms_with_operator_page/sms_with_operator_page.dart';
 import '../model/card_model.dart';
 import '../model/charity_model.dart';
 
@@ -109,10 +108,7 @@ class AppRouteUtils {
         return MaterialPageRoute(
           builder: (context) => UserDegreePage(),
         );
-      case SmsWithOperatorPage.routeName:
-        return MaterialPageRoute(
-          builder: (context) => SmsWithOperatorPage(),
-        );
+
       case ImgView.routeName:
         return MaterialPageRoute(
           builder: (context) => ImgView(imgPath: settings.arguments as String),
