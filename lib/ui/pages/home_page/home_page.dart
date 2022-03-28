@@ -7,6 +7,7 @@ import 'package:najot/ui/pages/faq_page/faq_page.dart';
 import 'package:najot/ui/pages/home_page/widget/drawer_body_widget.dart';
 import 'package:najot/ui/pages/main_page/main_page.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_page.dart';
+import 'package:najot/ui/pages/operator_page/operator_page.dart';
 import 'package:najot/ui/pages/orders_page/orders_page.dart';
 import 'package:najot/ui/pages/reg_volounteer/reg_volunteer.dart';
 import 'package:najot/ui/pages/rules_page/rules_page.dart';
@@ -51,6 +52,8 @@ class HomePage extends StatelessWidget {
         return RegVolunteer();
       case AppPageType.CHARITY:
         return CharityHistoryPage();
+      case AppPageType.OPERATOR:
+        return OperatorPage();
       case AppPageType.ORDERS:
         return OrdersPage();
       default:
@@ -58,4 +61,3 @@ class HomePage extends StatelessWidget {
     }
   }
 }
-

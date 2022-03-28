@@ -1,37 +1,43 @@
-part of 'orders_cubit.dart';
+part of 'operator_cubit.dart';
 
-class OrdersState extends Equatable {
-  final List<KraufandingModel> list;
+class OperatorState extends Equatable {
+  final List<SmsModel> list;
   final bool hasError;
   final bool hasConnection;
+  final String sendSmsTxt;
   final bool isLoading;
 
-  OrdersState({
+  OperatorState({
     this.list = const [],
     this.hasError = false,
     this.hasConnection = true,
     this.isLoading = false,
+    this.sendSmsTxt = "",
   });
 
-  OrdersState copyWith({
-    List<KraufandingModel>? list,
+  OperatorState copyWith({
+    List<SmsModel>? list,
     bool? hasError,
     bool? hasConnection,
     bool? isLoading,
+    String? sendSmsTxt,
   }) {
-    return OrdersState(
+    return OperatorState(
+      list: list ?? this.list,
+      hasConnection: hasConnection ?? this.hasConnection,
       hasError: hasError ?? this.hasError,
       isLoading: isLoading ?? this.isLoading,
-      hasConnection: hasConnection ?? this.hasConnection,
-      list: list ?? this.list,
+      sendSmsTxt: sendSmsTxt ?? this.sendSmsTxt,
     );
   }
 
   @override
+  // TODO: implement props
   List<Object?> get props => [
         list,
         hasError,
         hasConnection,
         isLoading,
+        sendSmsTxt,
       ];
 }

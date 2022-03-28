@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -88,14 +89,16 @@ class AppWidgets {
     );
   }
 
-  static Widget starTextWidget(
-      {required String text,
-      Color? color = AppColorUtils.DARK_6,
-      double? fontSize = 10,
-      FontWeight fontWeight = FontWeight.w400,
-      bool isCenter = false,
-      bool hasStar = true,
-      int maxLines = 2}) {
+  static Widget starTextWidget({
+    required String text,
+    Color? color = AppColorUtils.DARK_6,
+    double? fontSize = 10,
+    FontWeight fontWeight = FontWeight.w400,
+    bool isCenter = false,
+    bool hasStar = true,
+    int maxLines = 2,
+    FontStyle fontStyle = FontStyle.normal,
+  }) {
     return Row(
       mainAxisAlignment:
           isCenter ? MainAxisAlignment.center : MainAxisAlignment.start,
@@ -110,6 +113,7 @@ class AppWidgets {
           fontSize: fontSize,
           fontWeight: fontWeight,
           maxLines: maxLines,
+          fontStyle: fontStyle,
         ),
       ],
     );
@@ -120,9 +124,12 @@ class AppWidgets {
     required VoidCallback onTap,
     double? width,
     double? height,
-    Color? color = AppColorUtils.GREEN_APP,
-    Color? textColor = AppColorUtils.WHITE,
+    Color color = AppColorUtils.GREEN_APP,
+    Color textColor = AppColorUtils.WHITE,
+    double fontSize =  16.0,
+    FontWeight fontWeight = FontWeight.w600,
     double borderRadius = 12.0,
+    Widget icon = const SizedBox(),
   }) {
     return Material(
       color: color,
@@ -137,12 +144,18 @@ class AppWidgets {
             borderRadius: BorderRadius.circular(borderRadius),
           ),
           child: Center(
-            child: textLocale(
-              textAlign: TextAlign.center,
-              text: title,
-              color: textColor,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w600,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                icon,
+                textLocale(
+                  textAlign: TextAlign.center,
+                  text: title,
+                  color: textColor,
+                  fontSize: fontSize,
+                  fontWeight: fontWeight,
+                ),
+              ],
             ),
           ),
         ),

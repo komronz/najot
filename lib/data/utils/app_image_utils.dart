@@ -68,5 +68,10 @@ class AppImageUtils {
   static const String IC_BASKET = "assets/app_icons/ic_basket.svg";
   static const String IMG_DOLLAR = "assets/images/img_dollar.svg";
   static const String IMG_CHARITY_EMPTY = "assets/images/img_charity_empty.svg";
+  static const String IMG_ORDERS_EMPTY = "assets/images/img_orders_empty.svg";
+  static const String IC_ORDERS_SUCCESS = "assets/app_icons/ic_success_round.svg";
+  static const String IC_OTHER_FILE = "assets/app_icons/ic_other_file.svg";
+  static const String IC_SMS_EMPTY = "assets/app_icons/ic_sms_empty.svg";
+  static const String IC_OPERATOR_DELETE = "assets/images/icons/ic_operator_delete.svg";
 
 }
