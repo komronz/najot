@@ -79,9 +79,9 @@ class AppRouteUtils {
             cardModel: settings.arguments as CardModel,
           ),
         );
-      case KraudFandingPage.routeName:
+      case KraudfandingPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => KraudFandingPage(),
+          builder: (context) => KraudfandingPage(),
         );
       case AboutAnnouncementPage.routeName:
         return MaterialPageRoute(

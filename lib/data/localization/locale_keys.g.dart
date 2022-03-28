@@ -26,7 +26,6 @@ abstract class  LocaleKeys {
   static const New_phone_number = 'New_phone_number';
   static const Send_code = 'Send_code';
   static const Confirmation = 'Confirmation';
-  static const send_again = 'send_again';
   static const author_answer = 'author_answer';
   static const project_implementation = 'project_implementation';
   static const news_empty = 'news_empty';
@@ -36,9 +35,6 @@ abstract class  LocaleKeys {
   static const questions_asked = 'questions_asked';
   static const comments = 'comments';
   static const writing_comment = 'writing_comment';
-  static const my_profile = 'my_profile';
-  static const degree = 'degree';
-  static const Normal_user = 'Normal_user';
   static const name = 'name';
   static const surname = 'surname';
   static const gender = 'gender';
@@ -56,5 +52,7 @@ abstract class  LocaleKeys {
   static const send_message = 'send_message';
   static const photo_library = 'photo_library';
   static const camera = 'camera';
+  static const write_your_comment = 'write_your_comment';
+  static const comment_title = 'comment_title';
 
 }

@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hive/hive.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -14,11 +13,10 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kr
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_price_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/more_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/news_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/project_details_widgets.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/tabbar_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
-import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../../data/services/navigator_service.dart';
@@ -39,10 +37,13 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final TextEditingController controller = TextEditingController();
+  final TextEditingController controller1 = TextEditingController();
 
   @override
   void dispose() {
     _tabController.dispose();
+    controller.dispose();
+    controller1.dispose();
     super.dispose();
   }
 
@@ -70,6 +71,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
         },
       ),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             Container(
@@ -243,127 +245,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
                         MoreWidget(widget: widget),
                         NewsWidget(widget: widget).paddingAll(20.w),
                         QuestionsAskedWidget(widget: widget).paddingAll(20.w),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.only(
-                                top: 12.w,
-                                left: 12.w,
-                                right: 12.w,
-                              ),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: AppColorUtils.GREEN_ACCENT4,
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Container(
-                                        height: 50.w,
-                                        width: 50.w,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          image: DecorationImage(
-                                              image: NetworkImage(
-                                                widget.cardModel.image,
-                                              ),
-                                              fit: BoxFit.cover),
-                                        ),
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          SizedBox(
-                                            child: AppWidgets.text(
-                                              text: "Zo'r loyiha",
-                                              color: AppColorUtils.TEXT_GREEN2,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 14.sp,
-                                            ),
-                                            width: 220.w,
-                                          ),
-                                          AppWidgets.textLocale(
-                                            text: "Eshonov Fakhriyor",
-                                            fontSize: 12.sp,
-                                            fontWeight: FontWeight.w400,
-                                            color: AppColorUtils.DARK_6,
-                                          ).paddingOnly(top: 5.w),
-                                        ],
-                                      ).paddingOnly(left: 10),
-                                    ],
-                                  ),
-                                  AppWidgets.text(
-                                    text: widget.cardModel.infoModel[0].text,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14.sp,
-                                    color: AppColorUtils.TEXT_GREY2,
-                                    maxLines: 100,
-                                    height: 1.5,
-                                  ).paddingSymmetric(vertical: 15.w),
-                                ],
-                              ),
-                            ),
-                            Divider(
-                              thickness: 1,
-                              color: AppColorUtils.BLACK_12,
-                            ),
-                            AppWidgets.textLocale(
-                              text: LocaleKeys.writing_comment,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColorUtils.TEXT_GREEN2,
-                            ).paddingSymmetric(vertical: 8.w),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  child: TextFormField(
-                                    controller: controller,
-                                    decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.symmetric(
-                                          vertical: 10.w,
-                                          horizontal: 18.w,
-                                        ),
-                                        hintText: "Izoh sarlavhasi",
-                                        hintStyle: TextStyle(
-                                            color: AppColorUtils.GRAY_4,
-                                            fontSize: 16.sp),
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                width: 1,
-                                                color: AppColorUtils.DIVIDER,),
-                                            borderRadius:
-                                                BorderRadius.circular(12),),),
-                                  ),
-                                  width: 270.w,
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    height: 46.w,
-                                    width: 46.w,
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: controller.text==""
-                                            ? AppColorUtils.DISABLE_BC
-                                            :AppColorUtils.PERCENT_COLOR,
-
-                                    ),
-                                    child: Icon(
-                                      Icons.arrow_upward,
-                                      color: AppColorUtils.WHITE,
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-
-                          ],
-                        ).paddingAll(20.w)
+                        comments().paddingAll(20.w)
                       ][_tabController.index],
                     ),
                     SizedBox(
@@ -373,7 +255,14 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         ButtonCard(
-                          onPress: () {},
+                          onPress: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return SupportProjectDialog();
+                              },
+                            );
+                          },
                           text: LocaleKeys.project_implementation,
                           height: 48.w,
                           width: 274.w,
@@ -416,4 +305,159 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
       ),
     );
   }
+
+  Widget comments() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: EdgeInsets.only(
+            top: 12.w,
+            left: 12.w,
+            right: 12.w,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: AppColorUtils.GREEN_ACCENT4,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    height: 50.w,
+                    width: 50.w,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: NetworkImage(
+                            widget.cardModel.image,
+                          ),
+                          fit: BoxFit.cover),
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        child: AppWidgets.text(
+                          text: "Zo'r loyiha",
+                          color: AppColorUtils.TEXT_GREEN2,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14.sp,
+                        ),
+                        width: 220.w,
+                      ),
+                      AppWidgets.textLocale(
+                        text: "Eshonov Fakhriyor",
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
+                        color: AppColorUtils.DARK_6,
+                      ).paddingOnly(top: 5.w),
+                    ],
+                  ).paddingOnly(left: 10),
+                ],
+              ),
+              AppWidgets.text(
+                text: widget.cardModel.infoModel[0].text,
+                fontWeight: FontWeight.w400,
+                fontSize: 14.sp,
+                color: AppColorUtils.TEXT_GREY2,
+                maxLines: 100,
+                height: 1.5,
+              ).paddingSymmetric(vertical: 15.w),
+            ],
+          ),
+        ),
+        Divider(
+          thickness: 1,
+          color: AppColorUtils.BLACK_12,
+        ),
+        AppWidgets.textLocale(
+          text: LocaleKeys.writing_comment.tr(),
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w600,
+          color: AppColorUtils.TEXT_GREEN2,
+        ).paddingSymmetric(vertical: 8.w),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox(
+              child: TextFormField(
+                controller: controller,
+                onChanged: (v) {
+                  setState(() {
+                    controller.text;
+                  });
+                },
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: 10.w,
+                    horizontal: 18.w,
+                  ),
+                  hintText: LocaleKeys.comment_title,
+                  hintStyle:
+                      TextStyle(color: AppColorUtils.GRAY_4, fontSize: 16.sp),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+              width: 270.w,
+            ),
+            Material(
+              child: Ink(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: controller1.text == ""
+                      ? AppColorUtils.DISABLE_BC
+                      : AppColorUtils.PERCENT_COLOR,
+                ),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(25),
+                  onTap: () {},
+                  child: Container(
+                    height: 46.w,
+                    width: 46.w,
+                    child: Icon(
+                      Icons.arrow_upward,
+                      color: AppColorUtils.WHITE,
+                    ),
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+        TextFormField(
+          maxLines: 10,
+          controller: controller1,
+          onChanged: (v) {
+            setState(() {
+              controller.text;
+            });
+          },
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(
+              vertical: 10.w,
+              horizontal: 18.w,
+            ),
+            hintText: LocaleKeys.write_your_comment.tr(),
+            hintStyle: TextStyle(color: AppColorUtils.GRAY_4, fontSize: 16.sp),
+            border: OutlineInputBorder(
+              borderSide: BorderSide(
+                width: 1,
+                color: AppColorUtils.LINE_TEXT_FIELD,
+              ),
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+        ).paddingOnly(top: 12.w),
+      ],
+    );
+  }
 }
+
+
