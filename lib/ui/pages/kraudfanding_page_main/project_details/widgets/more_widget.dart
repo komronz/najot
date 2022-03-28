@@ -1,5 +1,3 @@
-
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,14 +20,17 @@ class MoreWidget extends StatelessWidget {
         Column(
           children: List.generate(
             widget.cardModel.infoModel.length,
-                (index) => listDetail(
+            (index) => listDetail(
               widget.cardModel.infoModel[index].title,
               widget.cardModel.infoModel[index].text,
             ).paddingSymmetric(horizontal: 20.w),
           ),
         ),
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          padding: EdgeInsets.symmetric(
+            horizontal: 20.w,
+            vertical: 10.w,
+          ),
           height: 218.w,
           child: ClipRRect(
             borderRadius: BorderRadius.all(
@@ -42,8 +43,7 @@ class MoreWidget extends StatelessWidget {
               placeholder: (context, url) => Center(
                 child: CircularProgressIndicator(),
               ),
-              errorWidget: (context, url, error) =>
-                  Icon(Icons.error),
+              errorWidget: (context, url, error) => Icon(Icons.error),
             ),
           ),
         ),

@@ -1,6 +1,8 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/text_field_widget.dart';
@@ -37,20 +39,20 @@ class SupportProjectDialog extends StatelessWidget {
                 fontSize: 20.sp,
                 color: AppColorUtils.DARK2,
                 textAlign: TextAlign.center,
-                text: "Loyihani qo'llash",
+                text: LocaleKeys.project_implementation,
               ),
               AppWidgets.textLocale(
                 fontWeight: FontWeight.w400,
                 fontSize: 16.sp,
                 color: AppColorUtils.DARK_6,
                 textAlign: TextAlign.center,
-                text: "Summani kiriting",
+                text: LocaleKeys.enter_amount,
               ).paddingSymmetric(vertical: 10.w),
-              TextFieldWidget(
-                hintText: "500 000 so'm",
-                onChanged: (v) {},
-                title: "title",
-              ),
+              // TextFieldWidget(
+              //   hintText: "500 000 so'm",
+              //   onChanged: (v) {},
+              //
+              // ),
               RichText(
                   text: TextSpan(children: [
                     TextSpan(
@@ -60,27 +62,27 @@ class SupportProjectDialog extends StatelessWidget {
                     ),
                     TextSpan(
                       text:
-                      "Summa muallifga borib tushishini ",
+                      LocaleKeys.send_payment1.tr(),
                       style: TextStyle(
                         color: AppColorUtils.DARK3,),
                     ),
                     TextSpan(
-                      text: "Najot.uz ",
+                      text: " Najot.uz ",
                       style: TextStyle(
                         color: AppColorUtils.BORDER_COLOR,),
                     ),
                     TextSpan(
-                      text: "platformasi ta'minlaydi.",
+                      text:  LocaleKeys.send_payment2.tr(),
                       style: TextStyle(
                         color: AppColorUtils.DARK3,),
                     )
                   ])).paddingSymmetric(vertical: 12.w),
               ButtonCard(
                 onPress: () {},
-                text: "To'lov tizimiga o'tish",
+                text: LocaleKeys.switch_amount,
                 textSize: 16.sp,
                 fontWeight: FontWeight.w500,
-                height: 50,
+                height: 50.w,
                 width: 296.w,
                 color: AppColorUtils.PERCENT_COLOR,
                 textColor: AppColorUtils.WHITE,
@@ -88,11 +90,13 @@ class SupportProjectDialog extends StatelessWidget {
               ),
               SizedBox(height: 12.w,),
               ButtonCard(
-                onPress: () {},
-                text: "Chiqish",
+                onPress: () {
+                  Navigator.pop(context);
+                },
+                text: LocaleKeys.exit,
                 textSize: 16.sp,
                 fontWeight: FontWeight.w500,
-                height: 50,
+                height: 50.w,
                 width: 296.w,
                 color: AppColorUtils.GREEN_ACCENT5,
                 textColor: AppColorUtils.BLACK,
@@ -100,6 +104,7 @@ class SupportProjectDialog extends StatelessWidget {
               )
             ],
           ),
-        ));
+        ),
+    );
   }
 }

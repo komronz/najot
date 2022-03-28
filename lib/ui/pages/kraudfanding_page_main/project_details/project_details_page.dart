@@ -13,6 +13,7 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kr
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_price_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/more_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/news_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/payment_history_dialog.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/tabbar_widget.dart';
@@ -78,105 +79,111 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(11.0)),
-              child: Stack(
+              child: Column(
                 children: [
-                  Column(
+                  SizedBox(
+                    height: 15.w,
+                  ),
+                  TabBarWidget(),
+                  Stack(
                     children: [
-                      SizedBox(
-                        height: 15.w,
-                      ),
-                      TabBarWidget(),
-                      Stack(
-                        children: [
-                          Container(
-                            height: 300.w,
-                            margin: EdgeInsets.symmetric(
-                              horizontal: 20.w,
-                              vertical: 18.w,
+                      Container(
+                        height: 300.w,
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 20.w,
+                          vertical: 18.w,
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(12),
+                          ),
+                          child: CachedNetworkImage(
+                            imageUrl: widget.cardModel.image,
+                            fit: BoxFit.cover,
+                            width: MediaQuery.of(context).size.width,
+                            placeholder: (context, url) => Center(
+                              child: CircularProgressIndicator(),
                             ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(12),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 120.w,
+                        right: 0,
+                        child: InkWell(
+                          onTap: (){
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return PaymentHistoryDialog();
+                              },
+                            );
+                          },
+                          child: Container(
+                            height: 35.w,
+                            width: 60.w,
+                            decoration: BoxDecoration(
+                              color: AppColorUtils.BLUE_PERCENT,
+                              borderRadius: BorderRadius.horizontal(
+                                left: Radius.circular(12),
                               ),
-                              child: CachedNetworkImage(
-                                imageUrl: widget.cardModel.image,
-                                fit: BoxFit.cover,
-                                width: MediaQuery.of(context).size.width,
-                                placeholder: (context, url) => Center(
-                                  child: CircularProgressIndicator(),
-                                ),
-                                errorWidget: (context, url, error) =>
-                                    Icon(Icons.error),
-                              ),
+                            ),
+                            child: Icon(
+                              Icons.monetization_on_outlined,
+                              color: Colors.white,
                             ),
                           ),
-                          Positioned(
-                            bottom: 120.w,
-                            right: 0,
-                            child: Container(
-                              height: 35.w,
-                              width: 60.w,
-                              decoration: BoxDecoration(
-                                color: AppColorUtils.BLUE_PERCENT,
-                                borderRadius: BorderRadius.horizontal(
-                                  left: Radius.circular(12),
-                                ),
-                              ),
-                              child: Icon(
-                                Icons.monetization_on_outlined,
-                                color: Colors.white,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                      AppWidgets.text(
-                        text: "Drenajni kuzatish uchun mo’jallangan moslama",
-                        fontSize: 20.sp,
-                        color: AppColorUtils.DARK2,
-                        fontWeight: FontWeight.w500,
-                        maxLines: 2,
-                      ).paddingSymmetric(horizontal: 20.w),
-                      KraudfandingAuthorWidget(model: widget.cardModel)
-                          .paddingOnly(top: 15.w),
-                      SizedBox(height: 12.w),
-                      KraudfandingPriceWidget(model: widget.cardModel),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          KraudfandingAppliedUserWidgets(
-                            model: widget.cardModel,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              AppWidgets.starTextWidget(
-                                text: "Sanagacha to'planishi kerak",
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.calendar_today_outlined,
-                                    color: AppColorUtils.BLUE_PERCENT,
-                                    size: 14.sp,
-                                  ),
-                                  AppWidgets.text(
-                                    text: "25.02.2022",
-                                    color: AppColorUtils.BLUE_PERCENT,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14.sp,
-                                  ).paddingOnly(left: 6.w),
-                                ],
-                              ).paddingOnly(top: 3.w)
-                            ],
-                          ).paddingOnly(left: 30.w)
-                        ],
-                      ).paddingSymmetric(
-                        horizontal: 20.w,
-                        vertical: 18.w,
+                        ),
                       )
                     ],
                   ),
+                  AppWidgets.text(
+                    text: "Drenajni kuzatish uchun mo’jallangan moslama",
+                    fontSize: 20.sp,
+                    color: AppColorUtils.DARK2,
+                    fontWeight: FontWeight.w500,
+                    maxLines: 2,
+                  ).paddingSymmetric(horizontal: 20.w),
+                  KraudfandingAuthorWidget(model: widget.cardModel)
+                      .paddingOnly(top: 15.w),
+                  SizedBox(height: 12.w),
+                  KraudfandingPriceWidget(model: widget.cardModel),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      KraudfandingAppliedUserWidgets(
+                        model: widget.cardModel,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppWidgets.starTextWidget(
+                            text: "Sanagacha to'planishi kerak",
+                          ),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.calendar_today_outlined,
+                                color: AppColorUtils.BLUE_PERCENT,
+                                size: 14.sp,
+                              ),
+                              AppWidgets.text(
+                                text: "25.02.2022",
+                                color: AppColorUtils.BLUE_PERCENT,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14.sp,
+                              ).paddingOnly(left: 6.w),
+                            ],
+                          ).paddingOnly(top: 3.w)
+                        ],
+                      ).paddingOnly(left: 30.w)
+                    ],
+                  ).paddingSymmetric(
+                    horizontal: 20.w,
+                    vertical: 18.w,
+                  )
                 ],
               ),
             ),

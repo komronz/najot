@@ -134,7 +134,7 @@ class _KraudfandingPageState extends State<KraudfandingPage>
                               ),
                               tabs: [
                                 Text("Barchasi"),
-                                Text("Texnologiya'"),
+                                Text("Texnologiya"),
                                 Text("Texnologiya"),
 
                             ],

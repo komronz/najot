@@ -50,6 +50,17 @@
     "send_message": "Отправить сообщение",
     "photo_library": "Фото библиотека",
     "camera": "Камера",
-    "write_your_comment": "IНапишите свой комментарий",
-    "comment_title": "Название комментария"
+    "write_your_comment": "Напишите свой комментарий",
+    "comment_title": "Название комментария",
+    "enter_amount": "Введите сумму",
+    "send_payment1": "Сумма достается автору",
+    "send_payment2": "платформа предоставляет",
+    "switch_amount": "Перейти на платежную систему",
+    "about_project": "О проекте",
+    "payment_history": "Дата платежа",
+    "was_implementation": "Вы использовали Проект:",
+    "summa": "Сумма: ",
+    "project_author": "Автор проекта",
+    "ask_question": "Задать вопрос",
+    "exit": "Выход"
 }

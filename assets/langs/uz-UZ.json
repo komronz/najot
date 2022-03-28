@@ -41,5 +41,16 @@
     "comments": "Izohlar",
     "writing_comment": "Izoh yozish",
     "write_your_comment": "Izohingizni yozing",
-    "comment_title": "Izoh sarlavhasi"
+    "comment_title": "Izoh sarlavhasi",
+    "enter_amount": "Summani Kiriting",
+    "send_payment1": "Summa muallifga borib tushishini",
+    "send_payment2": "platformasi ta'minlaydi",
+    "switch_amount": "To'lov tizimiga o'tish",
+    "about_project": "Loyiha haqida",
+    "payment_history": "To'lov tarixi",
+    "was_implementation": "Siz Loyihani qo'llagansiz:",
+    "summa": "Summa: ",
+    "project_author": "Loyiha muallifi",
+    "ask_question": "Savol berish",
+    "exit": "Chiqish"
 }

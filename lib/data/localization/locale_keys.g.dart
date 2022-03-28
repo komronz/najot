@@ -54,5 +54,16 @@ abstract class  LocaleKeys {
   static const camera = 'camera';
   static const write_your_comment = 'write_your_comment';
   static const comment_title = 'comment_title';
+  static const enter_amount = 'enter_amount';
+  static const send_payment1 = 'send_payment1';
+  static const send_payment2 = 'send_payment2';
+  static const switch_amount = 'switch_amount';
+  static const about_project = 'about_project';
+  static const payment_history = 'payment_history';
+  static const was_implementation = 'was_implementation';
+  static const summa = 'summa';
+  static const project_author = 'project_author';
+  static const ask_question = 'ask_question';
+  static const exit = 'exit';
 
 }
