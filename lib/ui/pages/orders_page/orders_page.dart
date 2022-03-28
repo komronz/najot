@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,7 +13,6 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/charity_history_page/widgets/date_widget.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class OrdersPage extends StatelessWidget {
@@ -74,13 +74,13 @@ class OrdersPage extends StatelessWidget {
       decoration: DecorationConst.DEC_WITH_SHADOW,
       height: context.height,
       width: context.width,
-      child: buildList(state.list),
+      child: buildList(state),
     );
   }
 
-  Widget buildList(List list) {
-    if (list.isEmpty) {
-      Column(
+  Widget buildList(OrdersState state) {
+    if (state.list.isEmpty) {
+      return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           AppWidgets.imageSvg(path: AppImageUtils.IMG_ORDERS_EMPTY),
@@ -94,9 +94,9 @@ class OrdersPage extends StatelessWidget {
     }
     return ListView.builder(
       itemBuilder: (context, index) => OrdersItemsWidget(
-        model: list[index],
+        model: state.list[index],
       ),
-      itemCount: list.length,
+      itemCount: state.list.length,
     );
   }
 }
@@ -112,6 +112,15 @@ class OrdersItemsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: context.width,
+      decoration: BoxDecoration(
+        color: AppColorUtils.ITEM_ORDERS_CARD,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: AppColorUtils.ITEM_ORDERS_BORDER,
+          width: 1,
+        ),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -122,13 +131,14 @@ class OrdersItemsWidget extends StatelessWidget {
             color: AppColorUtils.ITEM_ORDERS_TEXT2,
           ).paddingOnly(bottom: 3.w),
           AppWidgets.text(
-              text: model.title!,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-              color: AppColorUtils.DARK2,
-              maxLines: 3),
+            text: model.title!,
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w500,
+            color: AppColorUtils.DARK2,
+            maxLines: 2,
+          ),
           AppWidgets.textLocale(
-            text: "Loyiha nomi",
+            text: "Mahsulot haqida qisqa",
             fontSize: 10.sp,
             fontWeight: FontWeight.w400,
             color: AppColorUtils.ITEM_ORDERS_TEXT2,
@@ -138,6 +148,7 @@ class OrdersItemsWidget extends StatelessWidget {
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
             fontSize: 12.sp,
             fontWeight: FontWeight.w400,
+            height: 1.3,
             color: AppColorUtils.DARK2,
             maxLines: 3,
           ),
@@ -151,7 +162,7 @@ class OrdersItemsWidget extends StatelessWidget {
                 color: AppColorUtils.ITEM_ORDERS_TEXT2,
               ),
               AppWidgets.textLocale(
-                text: "Loyiha summasi",
+                text: "Mahsulot summasi",
                 fontSize: 10.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColorUtils.ITEM_ORDERS_TEXT2,
@@ -171,14 +182,18 @@ class OrdersItemsWidget extends StatelessWidget {
               ),
             ],
           ),
-          ButtonCard(
-            onPress: () {},
-            text: "Qabul qildim",
-            width: 145.w,
+          AppWidgets.appButton(
+            title: "Qabul qildim",
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w500,
+            borderRadius: 10,
+            onTap: () {},
+            color: AppColorUtils.ITEM_ORDERS_BUTTON,
             height: 38.w,
-            visibleIcon: true,
-
-          )
+            width: 145.w,
+            icon: AppWidgets.imageSvg(path: AppImageUtils.IC_ORDERS_SUCCESS)
+                .paddingOnly(right: 5),
+          ).paddingOnly(top: 15.w),
         ],
       ).paddingAll(12),
     ).paddingSymmetric(horizontal: 20).paddingOnly(bottom: 18);

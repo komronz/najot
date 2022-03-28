@@ -50,8 +50,8 @@ class _RegVolunteerState extends State<RegVolunteer>
                 },
               ),
               AppWidgets.textLocale(
-                text: "Volontyor bo'lish",
-                fontSize: 26,
+                text: "Volontyor  bo'lish",
+                fontSize: 26.sp,
                 fontWeight: FontWeight.w600,
               ),
               SvgPicture.asset(
@@ -124,7 +124,7 @@ class _RegVolunteerState extends State<RegVolunteer>
                 ),
               ],
               color: AppColorUtils.DARK2,
-            ).paddingOnly(top: 24, left: 60, right: 60),
+            ).paddingOnly(top: 24, left: 60.w, right: 60.w),
             ButtonCard(
               width: context.width,
               height: 45.w,
@@ -176,6 +176,7 @@ class _RegVolunteerState extends State<RegVolunteer>
             fontWeight: FontWeight.w600,
             color: AppColorUtils.DARK2,
             maxLines: 2,
+            height: 1.2,
             textAlign: TextAlign.center,
           ).paddingOnly(
             top: 18,
@@ -187,6 +188,7 @@ class _RegVolunteerState extends State<RegVolunteer>
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             isCenter: true,
+            fontStyle: FontStyle.italic,
           ).paddingOnly(top: 6),
           Container(
             decoration: DecorationConst.DEC_WITH_SHADOW,

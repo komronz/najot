@@ -19,12 +19,13 @@ class AppTextField extends StatefulWidget {
   final bool hasError;
   final bool isMultiLine;
   final double? height;
+  final bool hasTitle;
 
   AppTextField({
     required this.hintText,
     required this.onChanged,
     required this.title,
-    this.isMultiLine=false,
+    this.isMultiLine = false,
     this.inputFormatter,
     this.textInputType,
     this.isPassword = false,
@@ -32,7 +33,8 @@ class AppTextField extends StatefulWidget {
     this.isFill = false,
     this.initialText = '',
     this.hasError = false,
-    this.height
+    this.height,
+    this.hasTitle = true,
   });
 
   @override
@@ -71,25 +73,27 @@ class _AppTextFieldState extends State<AppTextField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            widget.isFill
-                ? SizedBox()
-                : AppWidgets.textLocale(
-                    text: "*",
-                    color: AppColorUtils.RED,
+        widget.hasTitle
+            ? Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  widget.isFill
+                      ? SizedBox()
+                      : AppWidgets.textLocale(
+                          text: "*",
+                          color: AppColorUtils.RED,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
+                  AppWidgets.textLocale(
+                    text: widget.title,
+                    color: AppColorUtils.DARK_4,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
-                  ),
-            AppWidgets.textLocale(
-              text: widget.title,
-              color: AppColorUtils.DARK_4,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
-            ).paddingOnly(top: 4),
-          ],
-        ).paddingOnly(bottom: 8),
+                  ).paddingOnly(top: 4),
+                ],
+              ).paddingOnly(bottom: 8)
+            : SizedBox(),
         Container(
           height: widget.height,
           decoration: BoxDecoration(
@@ -97,9 +101,9 @@ class _AppTextFieldState extends State<AppTextField> {
             borderRadius: BorderRadius.circular(12),
           ),
           child: TextField(
-            expands: widget.isMultiLine?true:false,
+            expands: widget.isMultiLine ? true : false,
             textAlignVertical: TextAlignVertical.top,
-            maxLines: widget.isMultiLine?null:1,
+            maxLines: widget.isMultiLine ? null : 1,
             controller: _textEditingController,
             enabled: widget.enabled,
             style: GoogleFonts.inter(

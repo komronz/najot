@@ -268,7 +268,12 @@ class DrawerBody extends StatelessWidget {
                   child: ButtonCard(
                     width: size.width,
                     height: 44.h,
-                    onPress: () {},
+                    onPress: () {
+                      context.read<AppPageCubit>().changePage(
+                            pageType: AppPageType.OPERATOR,
+                          );
+                      Navigator.pop(context);
+                    },
                     text: "Operatorga yozish",
                     visibleIcon: true,
                     color: AppColorUtils.BLUE_ACCENT1,

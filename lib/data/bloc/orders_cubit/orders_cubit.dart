@@ -11,8 +11,17 @@ class OrdersCubit extends Cubit<OrdersState> {
 
   Future load() async {
     emit(state.copyWith(isLoading: true));
-    var list = await service.getOrderList();
     await Future.delayed(Duration(seconds: 3));
+
+    emit(state.copyWith(isLoading: false, list: []));
+    await Future.delayed(Duration(seconds: 3));
+
+    emit(state.copyWith(isLoading: true));
+    await Future.delayed(Duration(seconds: 3));
+
+    var list = await service.getOrderList();
     emit(state.copyWith(isLoading: false, list: list));
+    // emit(state.copyWith(isLoading: true));
+
   }
 }
