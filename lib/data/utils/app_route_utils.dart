@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/charity_model.dart';
@@ -77,9 +79,9 @@ class AppRouteUtils {
             cardModel: settings.arguments as CardModel,
           ),
         );
-      case KraudFandingPage.routeName:
+      case KraudfandingPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => KraudFandingPage(),
+          builder: (context) => KraudfandingPage(),
         );
       case AboutAnnouncementPage.routeName:
         return MaterialPageRoute(
