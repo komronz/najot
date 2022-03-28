@@ -104,11 +104,14 @@ class AppRouteUtils {
         return MaterialPageRoute(
           builder: (context) => NumberUpdatePage(),
         );
-          case UserDegreePage.routeName:
+      case UserDegreePage.routeName:
         return MaterialPageRoute(
           builder: (context) => UserDegreePage(),
         );
-
+      case VolunteerPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => VolunteerPage(),
+        );
       case ImgView.routeName:
         return MaterialPageRoute(
           builder: (context) => ImgView(imgPath: settings.arguments as String),
