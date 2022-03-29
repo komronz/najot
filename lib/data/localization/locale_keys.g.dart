@@ -55,5 +55,6 @@ abstract class  LocaleKeys {
   static const saved = 'saved';
   static const write_your_comment = 'write_your_comment';
   static const comment_title = 'comment_title';
+  static const volunteering = 'volunteering';
 
 }

@@ -4,7 +4,6 @@ import 'package:meta/meta.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/charity_saved_service.dart';
 
-import '../../model/charity_model_for_saved.dart';
 
 
 

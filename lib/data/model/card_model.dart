@@ -61,7 +61,6 @@ class CardModel {
 
   static final List<CardModel> list = [
     CardModel(
-        ""
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         "Texnalogiya",
         "Drenajni kuzatish uchun mo'ljallangan",

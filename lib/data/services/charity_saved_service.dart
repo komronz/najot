@@ -1,6 +1,5 @@
 import 'package:najot/data/model/card_model.dart';
 
-import '../model/charity_model_for_saved.dart';
 
 class CharitySavedService {
   Future<List<CardModel>?>? getKraufandingList() async {
