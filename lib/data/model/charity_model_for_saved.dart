@@ -1,27 +1,23 @@
-class CardModel {
+class CharityModelSaved {
   String? image;
-  String? name;
   String? title;
   double? progres;
   bool? isFavorite;
   List<InfoModel>? infoModel;
 
-  CardModel(
-    this.image,
-    this.name,
-    this.title,
-    this.progres,
-    this.isFavorite,
-    this.infoModel,
-  );
-  CardModel.named(
+  CharityModelSaved(
       this.image,
-      this.name,
+      this.title,
+      this.progres,
+      this.isFavorite,
+      this.infoModel,
+      );
+  CharityModelSaved.named(
+      this.image,
       this.title,
       this.progres,
       this.isFavorite,
       );
-
 
   static final List<InfoModel> info = [
     InfoModel(
@@ -50,31 +46,27 @@ class CardModel {
             "and scrambled it to make a type specimen book")
   ];
 
-  static final List<CardModel> list = [
-    CardModel(
+  static final List<CharityModelSaved> list = [
+    CharityModelSaved(
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
-        "Texnalogiya",
         "Drenajni kuzatish uchun mo'ljallangan",
         0.6,
         true,
         info),
-    CardModel(
+    CharityModelSaved(
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
-        "Texnalogiya",
         "Drenajni kuzatish uchun mo'ljallangan",
         0.6,
         false,
         info),
-    CardModel(
+    CharityModelSaved(
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
-        "Texnalogiya",
         "Drenajni kuzatish uchun mo'ljallangan",
         0.6,
         true,
         info),
-    CardModel(
+    CharityModelSaved(
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
-        "Texnalogiya",
         "Drenajni kuzatish uchun mo'ljallangan",
         0.6,
         true,
@@ -86,6 +78,6 @@ class CardModel {
 class InfoModel {
   InfoModel(this.title, this.text);
 
-  String? title;
-  String? text;
+  String title;
+  String text;
 }

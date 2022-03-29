@@ -65,7 +65,7 @@ class _ProjectDetailsState extends State<ProjectDetailsPage> {
                                 Radius.circular(12),
                               ),
                               child: CachedNetworkImage(
-                                imageUrl: widget.cardModel.image,
+                                imageUrl: widget.cardModel.image!,
                                 fit: BoxFit.cover,
                                 width: MediaQuery.of(context).size.width,
                                 placeholder: (context, url) => Center(
@@ -186,13 +186,13 @@ class _ProjectDetailsState extends State<ProjectDetailsPage> {
                       height: 1000,
                       child: TabBarView(
                         children: List.generate(
-                            widget.cardModel.infoModel.length,
+                            widget.cardModel.infoModel!.length,
                             (index) => Column(
                                   children: List.generate(
-                                    widget.cardModel.infoModel.length,
+                                    widget.cardModel.infoModel!.length,
                                     (index) => listDetail(
-                                      widget.cardModel.infoModel[index].title,
-                                      widget.cardModel.infoModel[index].text,
+                                      widget.cardModel.infoModel![index].title!,
+                                      widget.cardModel.infoModel![index].text!,
                                     ).paddingSymmetric(horizontal: 20.w),
                                   ),
                                 )),

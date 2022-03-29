@@ -63,7 +63,7 @@ class KraudfandingAppliedUserWidgets extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                      image: NetworkImage(model.image),
+                      image: NetworkImage(model.image!),
                       fit: BoxFit.cover,
                     ),
                   ),

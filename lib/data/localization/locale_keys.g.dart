@@ -32,5 +32,6 @@ abstract class  LocaleKeys {
   static const send_message = 'send_message';
   static const photo_library = 'photo_library';
   static const camera = 'camera';
+  static const saved = 'saved';
 
 }

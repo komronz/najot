@@ -31,7 +31,7 @@ class KraudfandingAuthorWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                    image: NetworkImage(model.image), fit: BoxFit.cover),
+                    image: NetworkImage(model.image!), fit: BoxFit.cover),
               ),
             ),
             Column(
