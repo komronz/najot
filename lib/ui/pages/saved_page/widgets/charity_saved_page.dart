@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/data/model/charity_model_for_saved.dart';
 import 'package:najot/data/services/navigator_service.dart';
@@ -16,8 +17,8 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class CharitySavedPage extends StatelessWidget {
-  CharitySavedPage({required this.charityModelSaved, required this.visible, Key? key }) : super(key: key);
-  final CharityModelSaved charityModelSaved;
+  CharitySavedPage({required this.cardModel, required this.visible, Key? key }) : super(key: key);
+  final CardModel cardModel;
   final bool visible;
   // static const String routeName = '/routeName';
 
@@ -54,7 +55,7 @@ class CharitySavedPage extends StatelessWidget {
                             placeholder: (context, url) => Center(
                               child: CircularProgressIndicator(),
                             ),
-                            imageUrl: charityModelSaved.image!,
+                            imageUrl: cardModel.image!,
                             errorWidget: (context, url, error) =>
                                 Icon(Icons.error),
                             fit: BoxFit.cover,
@@ -68,7 +69,7 @@ class CharitySavedPage extends StatelessWidget {
                       Expanded(child: SizedBox()),
                       InkWell(
                         child: FavoriteButton(
-                          isFavorite: charityModelSaved.isFavorite!,
+                          isFavorite: cardModel.isFavorite!,
                         ),
                         onTap: () {},
                       ),
@@ -84,7 +85,7 @@ class CharitySavedPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppWidgets.text(
-                    text: charityModelSaved.title!,
+                    text: cardModel.title!,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
                     maxLines: 2,
@@ -94,7 +95,7 @@ class CharitySavedPage extends StatelessWidget {
                     padding: EdgeInsets.all(0),
                     lineHeight: 10.h,
                     animationDuration: 2000,
-                    percent: charityModelSaved.progres! / 100,
+                    percent: cardModel.progres! / 100,
                     progressColor: AppColorUtils.PERCENT_COLOR,
                     backgroundColor: AppColorUtils.PERCENT_COLOR2,
                   ).paddingOnly(top: 12.w),
@@ -105,7 +106,7 @@ class CharitySavedPage extends StatelessWidget {
                     color: AppColorUtils.DARK_6,
                   ).paddingOnly(top: 12.w),
                   AppWidgets.text(
-                    text: "${charityModelSaved.progres.toString().split(".").first}%",
+                    text: "${cardModel.progres.toString().split(".").first}%",
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.BLUE_PERCENT,
                   ).paddingOnly(top: 5.w),

@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,9 +10,8 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/project_de
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class NewsWidget extends StatelessWidget {
-  const NewsWidget({
-    Key? key,
-    required this.widget,
+  const NewsWidget({required this.widget,
+    Key? key
   }) : super(key: key);
 
   final ProjectDetailsPage widget;
@@ -45,7 +43,7 @@ class NewsWidget extends StatelessWidget {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                                image: NetworkImage(widget.cardModel.image),
+                                image: NetworkImage(widget.cardModel.image!),
                                 fit: BoxFit.cover),
                           ),
                         ),
@@ -81,7 +79,7 @@ class NewsWidget extends StatelessWidget {
                   ],
                 ),
                 AppWidgets.text(
-                        text: widget.cardModel.infoModel[0].title,
+                        text: widget.cardModel.infoModel![0].title!,
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w600,
                         color: AppColorUtils.BLACK)
@@ -91,7 +89,7 @@ class NewsWidget extends StatelessWidget {
                 ),
                 AppWidgets.text(
                     height: 1.5,
-                    text: widget.cardModel.infoModel[0].text,
+                    text: widget.cardModel.infoModel![0].text!,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.TEXT_GREY2,
@@ -106,7 +104,7 @@ class NewsWidget extends StatelessWidget {
                       Radius.circular(12),
                     ),
                     child: CachedNetworkImage(
-                      imageUrl: widget.cardModel.image,
+                      imageUrl: widget.cardModel.image!,
                       fit: BoxFit.cover,
                       width: MediaQuery.of(context).size.width,
                       placeholder: (context, url) => Center(
@@ -118,8 +116,7 @@ class NewsWidget extends StatelessWidget {
                 ),
               ],
             ),
-          )
-        : Container(
+          ): Container(
             child: Center(
               child: Column(
                 children: [

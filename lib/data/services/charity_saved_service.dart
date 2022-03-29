@@ -4,7 +4,8 @@ import '../model/charity_model_for_saved.dart';
 
 class CharitySavedService {
   Future<List<CardModel>?>? getKraufandingList() async {
-    var model = CardModel.named(
+    var model = CardModel.kraufanding(
+        "KraudfandingSavedPage",
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         "Texnalogiya",
         "Drenajni kuzatish uchun mo'ljallangan",
@@ -19,8 +20,9 @@ class CharitySavedService {
     ];
     return list;
   }
-  Future<List<CharityModelSaved>?>? getCharityList() async {
-    var model = CharityModelSaved.named(
+  Future<List<CardModel>?>? getCharityList() async {
+    var model = CardModel.charity(
+        "CharitySavedPage",
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         "Drenajni kuzatish uchun mo'ljallangan",
         0.6,

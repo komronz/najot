@@ -1,4 +1,5 @@
 class CardModel {
+  String? type;
   String? image;
   String? name;
   String? title;
@@ -14,9 +15,17 @@ class CardModel {
     this.isFavorite,
     this.infoModel,
   );
-  CardModel.named(
+  CardModel.kraufanding(
+      this.type,
       this.image,
       this.name,
+      this.title,
+      this.progres,
+      this.isFavorite,
+      );
+  CardModel.charity(
+      this.type,
+      this.image,
       this.title,
       this.progres,
       this.isFavorite,
@@ -52,6 +61,7 @@ class CardModel {
 
   static final List<CardModel> list = [
     CardModel(
+        ""
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         "Texnalogiya",
         "Drenajni kuzatish uchun mo'ljallangan",

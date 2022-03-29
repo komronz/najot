@@ -72,7 +72,7 @@ class AppRouteUtils {
             model: settings.arguments as CharityModel,
           ),
         );
-      case ProjectDetailsPage.routeName:
+      case ProjectDetailsPage.routName:
         return MaterialPageRoute(
           builder: (context) => ProjectDetailsPage(
             cardModel: settings.arguments as CardModel,

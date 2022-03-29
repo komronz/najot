@@ -73,7 +73,6 @@ class SavedPage extends StatelessWidget {
     return Container(
         child: ListView(
         children: [
-        CharitySavedListWidget(list: state.charitySavedList),
         KraufandingSavedListWidget(list: state.kraufandingSavedList)
         ],
     ),

@@ -23,6 +23,8 @@ import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 
 class ProjectDetailsPage extends StatefulWidget {
+  static const String routName = '/projectDetailsPage';
+
   ProjectDetailsPage({required this.cardModel});
 
   CardModel cardModel;
@@ -253,7 +255,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
                           child: Ink(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: widget.cardModel.isFavorite
+                              color: widget.cardModel.isFavorite!
                                   ? AppColorUtils.IC_GREEN
                                   : AppColorUtils.PURPLE,
                             ),
@@ -264,7 +266,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
                                 height: 48.w,
                                 width: 48.w,
                                 child: SvgPicture.asset(
-                                  widget.cardModel.isFavorite
+                                  widget.cardModel.isFavorite!
                                       ? AppImageUtils.LIKE_ICON
                                       : AppImageUtils.UNLIKE_ICON,
                                 ).paddingAll(12.w),
@@ -310,7 +312,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
                       shape: BoxShape.circle,
                       image: DecorationImage(
                           image: NetworkImage(
-                            widget.cardModel.image,
+                            widget.cardModel.image!,
                           ),
                           fit: BoxFit.cover),
                     ),
@@ -338,7 +340,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
                 ],
               ),
               AppWidgets.text(
-                text: widget.cardModel.infoModel[0].text,
+                text: widget.cardModel.infoModel![0].text!,
                 fontWeight: FontWeight.w400,
                 fontSize: 14.sp,
                 color: AppColorUtils.TEXT_GREY2,
@@ -434,77 +436,6 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
           ),
         ).paddingOnly(top: 12.w),
       ],
-                      height: 1000,
-                      child: TabBarView(
-                        children: List.generate(
-                            widget.cardModel.infoModel!.length,
-                            (index) => Column(
-                                  children: List.generate(
-                                    widget.cardModel.infoModel!.length,
-                                    (index) => listDetail(
-                                      widget.cardModel.infoModel![index].title!,
-                                      widget.cardModel.infoModel![index].text!,
-                                    ).paddingSymmetric(horizontal: 20.w),
-                                  ),
-                                )),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    Container(
-                      height: 218.h,
-                      width: 335.w,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(12),
-                        ),
-                        child: Image.asset(
-                          "assets/images/rasm.jpg",
-                          fit: BoxFit.cover,
-                          width: MediaQuery.of(context).size.width,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 16.h,
-                    ),
-                    Container(
-                      height: 48.h,
-                      child: Row(
-                        children: [
-                          Container(
-                            height: 48.h,
-                            width: 275.w,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: Color(0xFF0BBF90)),
-                            child: Container(
-                                margin: EdgeInsets.symmetric(vertical: 10),
-                                child: Text("Loyihani qo'llash",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600))),
-                          ),
-                          SizedBox(width: 13.h),
-                          Container(
-                            height: 48.h,
-                            width: 48.h,
-                            child: SvgPicture.asset(
-                                "assets/app_icons/like_detail.svg"),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
