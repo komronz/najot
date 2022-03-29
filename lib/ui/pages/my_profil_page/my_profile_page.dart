@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/app_disable_text_field.dart';
 
 import '../../../data/localization/locale_keys.g.dart';
@@ -29,7 +27,6 @@ class MyProfilePage extends StatefulWidget {
 }
 
 class _MyProfilePageState extends State<MyProfilePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

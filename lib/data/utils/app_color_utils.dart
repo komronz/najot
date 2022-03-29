@@ -23,6 +23,11 @@ class AppColorUtils {
   static const Color GREEN_ACCENT2 = Color(0xFFD0FFD8);
   static const Color BLUE_ACCENT1 = Color(0xFFEBF3FF);
   static const Color GREEN_ACCENT3 = Color(0xFC8ECE5);
+  static const Color GREEN_TAB = Color(0xFF71958E);
+  static const Color TEXT_GREY2 = Color(0xFF5A6D6A);
+  static const Color GREEN_ACCENT4 = Color(0xFFF8FEFD);
+  static const Color LINE_TEXT_FIELD = Color(0xFF9FC9C0);
+  static const Color GREEN_ACCENT5 = Color(0xFFEBF8F4);
 
   // static const Color GREY = Colors.grey;
   static const Color BG_GREY = Color(0xffEDEDED);
@@ -63,6 +68,19 @@ class AppColorUtils {
   static const Color ITEM_CHARITY_COLOR = Color(0xFFF2FFFB);
   static const Color ITEM_CHARITY_TEXT = Color(0xFF314A46);
   static const Color ITEM_CHARITY_TEXT2 = Color(0xFF739E96);
+  static const Color ITEM_ORDERS_TEXT2 = Color(0xFF9CB2AF);
+  static const Color ITEM_ORDERS_BUTTON = Color(0xFF0AC254);
+  static const Color ITEM_ORDERS_CARD= Color(0xFFF8FFFE);
+  static const Color ITEM_ORDERS_BORDER= Color(0xFFB7E4DB);
+  static const Color DELETE_BTN= Color(0xffFFF5F5);
+  static const Color SMS_BTN1= Color(0xFFEAEAEA);
+  static const Color SMS_OPERATOR= Color(0xFFF4FEFD);
+  static const Color SMS_OPERATOR_TEXT= Color(0xFF2E413F);
+  static const Color SMS_USER= Color(0xFF12B561);
+  static const Color SMS_BTN2= Color(0xFFE7EFEE);
+  static const Color SMS_BTN3= Color(0xFF055641);
+  static const Color GRAY_3= Color(0xFFE6E7E8);
+
 
 
 

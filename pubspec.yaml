@@ -42,6 +42,7 @@ dependencies:
   syncfusion_flutter_datepicker: ^19.4.56
   dotted_border: ^2.0.0+2
   image_picker: ^0.8.4+11
+  keyboard_attachable: ^2.1.0
 
 
 

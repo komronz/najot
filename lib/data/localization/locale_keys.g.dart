@@ -15,6 +15,26 @@ abstract class  LocaleKeys {
   static const my_profile = 'my_profile';
   static const degree = 'degree';
   static const Normal_user = 'Normal_user';
+  static const Name = 'Name';
+  static const Surname = 'Surname';
+  static const Gender = 'Gender';
+  static const Man = 'Man';
+  static const Woman = 'Woman';
+  static const Phone_number = 'Phone_number';
+  static const Edit = 'Edit';
+  static const Save = 'Save';
+  static const New_phone_number = 'New_phone_number';
+  static const Send_code = 'Send_code';
+  static const Confirmation = 'Confirmation';
+  static const author_answer = 'author_answer';
+  static const project_implementation = 'project_implementation';
+  static const news_empty = 'news_empty';
+  static const questions_empty = 'questions_empty';
+  static const more = 'more';
+  static const news = 'news';
+  static const questions_asked = 'questions_asked';
+  static const comments = 'comments';
+  static const writing_comment = 'writing_comment';
   static const name = 'name';
   static const surname = 'surname';
   static const gender = 'gender';
@@ -33,5 +53,7 @@ abstract class  LocaleKeys {
   static const photo_library = 'photo_library';
   static const camera = 'camera';
   static const saved = 'saved';
+  static const write_your_comment = 'write_your_comment';
+  static const comment_title = 'comment_title';
 
 }

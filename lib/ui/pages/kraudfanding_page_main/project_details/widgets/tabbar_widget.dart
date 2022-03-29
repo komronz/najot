@@ -34,7 +34,7 @@ class TabBarWidget extends StatelessWidget {
                     color: AppColorUtils.DIVIDER,
                   )),
               child: TabBar(
-                unselectedLabelColor: AppColorUtils.BLACK,
+                unselectedLabelColor: AppColorUtils.GREEN_TAB,
                 labelColor: AppColorUtils.WHITE,
                 onTap: (i) {
                   if (i == 1) {
@@ -49,11 +49,21 @@ class TabBarWidget extends StatelessWidget {
                 ),
                 tabs: [
                   Tab(
-                    child: Text("Loyiha haqida"),
+                    child: Text(
+                      "Loyiha haqida",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14.sp,
+                      ),
+                    ),
                   ),
                   Tab(
                     child: Text(
                       "Mahsulotlar",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14.sp,
+                      ),
                     ),
                   ),
                 ],

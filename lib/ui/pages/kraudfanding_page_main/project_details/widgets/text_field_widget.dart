@@ -6,7 +6,7 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-class AppTextField extends StatefulWidget {
+class TextFieldWidget extends StatefulWidget {
   final String hintText;
   final ValueChanged<String> onChanged;
   final String title;
@@ -19,13 +19,12 @@ class AppTextField extends StatefulWidget {
   final bool hasError;
   final bool isMultiLine;
   final double? height;
-  final bool hasTitle;
 
-  AppTextField({
+  TextFieldWidget({
     required this.hintText,
     required this.onChanged,
     required this.title,
-    this.isMultiLine = false,
+    this.isMultiLine=false,
     this.inputFormatter,
     this.textInputType,
     this.isPassword = false,
@@ -33,15 +32,14 @@ class AppTextField extends StatefulWidget {
     this.isFill = false,
     this.initialText = '',
     this.hasError = false,
-    this.height,
-    this.hasTitle = true,
+    this.height
   });
 
   @override
-  _AppTextFieldState createState() => _AppTextFieldState();
+  _TextFieldWidgetState createState() => _TextFieldWidgetState();
 }
 
-class _AppTextFieldState extends State<AppTextField> {
+class _TextFieldWidgetState extends State<TextFieldWidget> {
   late TextEditingController _textEditingController;
   late bool obscureText;
 
@@ -62,38 +60,17 @@ class _AppTextFieldState extends State<AppTextField> {
   Widget build(BuildContext context) {
     InputBorder _border = widget.hasError
         ? OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(width: 2, color: AppColorUtils.RED),
-          )
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide(width: 2, color: AppColorUtils.RED),
+    )
         : OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(width: 2, color: AppColorUtils.BORDER_COLOR),
-          );
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide(width: 2, color: AppColorUtils.BORDER_COLOR),
+    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        widget.hasTitle
-            ? Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  widget.isFill
-                      ? SizedBox()
-                      : AppWidgets.textLocale(
-                          text: "*",
-                          color: AppColorUtils.RED,
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w400,
-                        ),
-                  AppWidgets.textLocale(
-                    text: widget.title,
-                    color: AppColorUtils.DARK_4,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w400,
-                  ).paddingOnly(top: 4),
-                ],
-              ).paddingOnly(bottom: 8)
-            : SizedBox(),
         Container(
           height: widget.height,
           decoration: BoxDecoration(
@@ -101,13 +78,13 @@ class _AppTextFieldState extends State<AppTextField> {
             borderRadius: BorderRadius.circular(12),
           ),
           child: TextField(
-            expands: widget.isMultiLine ? true : false,
+            expands: widget.isMultiLine?true:false,
             textAlignVertical: TextAlignVertical.top,
-            maxLines: widget.isMultiLine ? null : 1,
+            maxLines: widget.isMultiLine?null:1,
             controller: _textEditingController,
             enabled: widget.enabled,
             style: GoogleFonts.inter(
-              fontSize: 16,
+              fontSize: 16.sp,
             ),
             decoration: InputDecoration(
               // border: _border,
@@ -123,15 +100,15 @@ class _AppTextFieldState extends State<AppTextField> {
               ),
               suffixIcon: widget.isPassword
                   ? InkWell(
-                      onTap: () {
-                        setState(() {
-                          obscureText = !obscureText;
-                        });
-                      },
-                      child: Icon(
-                        obscureText ? Icons.visibility : Icons.visibility_off,
-                      ),
-                    )
+                onTap: () {
+                  setState(() {
+                    obscureText = !obscureText;
+                  });
+                },
+                child: Icon(
+                  obscureText ? Icons.visibility : Icons.visibility_off,
+                ),
+              )
                   : null,
             ),
             obscureText: obscureText,
@@ -140,11 +117,11 @@ class _AppTextFieldState extends State<AppTextField> {
             inputFormatters: widget.inputFormatter == null
                 ? null
                 : [
-                    widget.inputFormatter!,
-                  ],
+              widget.inputFormatter!,
+            ],
           ),
         )
       ],
-    ).paddingSymmetric(horizontal: 20);
+    );
   }
 }

@@ -3,30 +3,61 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:najot/data/model/card_model.dart';
-import 'package:najot/data/services/navigator_service.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/kraudfanding_applied_user_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/kraudfanding_authot_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/kraudfanding_price_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/project_details_widgets.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/tabbar_widget.dart';
+import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_applied_user_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_price_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/more_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/news_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/tabbar_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 
 class ProjectDetailsPage extends StatefulWidget {
-  static const String routeName = "/projectDetailsPage";
-
   ProjectDetailsPage({required this.cardModel});
 
   CardModel cardModel;
 
   @override
-  _ProjectDetailsState createState() => _ProjectDetailsState();
+  State<ProjectDetailsPage> createState() => _ProjectDetailsPageState();
 }
 
-class _ProjectDetailsState extends State<ProjectDetailsPage> {
+class _ProjectDetailsPageState extends State<ProjectDetailsPage>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+  final TextEditingController controller = TextEditingController();
+  final TextEditingController controller1 = TextEditingController();
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    controller.dispose();
+    controller1.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    _tabController = TabController(length: 4, vsync: this);
+    _tabController.addListener(_handleTabSelection);
+    super.initState();
+  }
+
+  _handleTabSelection() {
+    if (_tabController.indexIsChanging) {
+      setState(() {});
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +69,7 @@ class _ProjectDetailsState extends State<ProjectDetailsPage> {
         },
       ),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             Container(
@@ -137,7 +169,10 @@ class _ProjectDetailsState extends State<ProjectDetailsPage> {
                             ],
                           ).paddingOnly(left: 30.w)
                         ],
-                      ).paddingSymmetric(horizontal: 20.w, vertical: 18.w)
+                      ).paddingSymmetric(
+                        horizontal: 20.w,
+                        vertical: 18.w,
+                      )
                     ],
                   ),
                 ],
@@ -157,6 +192,7 @@ class _ProjectDetailsState extends State<ProjectDetailsPage> {
                 child: Column(
                   children: [
                     TabBar(
+                      controller: _tabController,
                       enableFeedback: true,
                       labelColor: AppColorUtils.GREEN_APP,
                       unselectedLabelColor: AppColorUtils.DARK_6,
@@ -165,7 +201,7 @@ class _ProjectDetailsState extends State<ProjectDetailsPage> {
                         fontWeight: FontWeight.w400,
                       ),
                       labelStyle: TextStyle(
-                        fontSize: 14,
+                        fontSize: 14.sp,
                         fontWeight: FontWeight.w600,
                       ),
                       tabs: [
@@ -175,14 +211,229 @@ class _ProjectDetailsState extends State<ProjectDetailsPage> {
                         Text("Izohlar "),
                       ],
                       isScrollable: true,
-                      indicatorWeight: 4,
+                      indicatorWeight: 2,
                       indicatorColor: AppColorUtils.GREEN_APP,
                       indicatorSize: TabBarIndicatorSize.tab,
                       padding: EdgeInsets.only(right: 10),
                       indicatorPadding: EdgeInsets.only(right: 10, left: 10),
                       labelPadding: EdgeInsets.only(right: 10, left: 10),
-                    ).paddingOnly(left: 15, top: 8),
+                    ).paddingOnly(left: 15.w, top: 8.w),
+                    Container(
+                      child: [
+                        MoreWidget(widget: widget),
+                        NewsWidget(widget: widget).paddingAll(20.w),
+                        QuestionsAskedWidget(widget: widget).paddingAll(20.w),
+                        comments().paddingAll(20.w)
+                      ][_tabController.index],
+                    ),
                     SizedBox(
+                      height: 10.w,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ButtonCard(
+                          onPress: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return SupportProjectDialog();
+                              },
+                            );
+                          },
+                          text: LocaleKeys.project_implementation,
+                          height: 48.w,
+                          width: 274.w,
+                          color: AppColorUtils.PERCENT_COLOR,
+                          textSize: 16.sp,
+                          fontWeight: FontWeight.w600,
+                          textColor: AppColorUtils.WHITE,
+                        ),
+                        Material(
+                          child: Ink(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: widget.cardModel.isFavorite
+                                  ? AppColorUtils.IC_GREEN
+                                  : AppColorUtils.PURPLE,
+                            ),
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(10),
+                              onTap: () {},
+                              child: Container(
+                                height: 48.w,
+                                width: 48.w,
+                                child: SvgPicture.asset(
+                                  widget.cardModel.isFavorite
+                                      ? AppImageUtils.LIKE_ICON
+                                      : AppImageUtils.UNLIKE_ICON,
+                                ).paddingAll(12.w),
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ).paddingSymmetric(horizontal: 20.w),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget comments() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: EdgeInsets.only(
+            top: 12.w,
+            left: 12.w,
+            right: 12.w,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: AppColorUtils.GREEN_ACCENT4,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    height: 50.w,
+                    width: 50.w,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: NetworkImage(
+                            widget.cardModel.image,
+                          ),
+                          fit: BoxFit.cover),
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        child: AppWidgets.text(
+                          text: "Zo'r loyiha",
+                          color: AppColorUtils.TEXT_GREEN2,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14.sp,
+                        ),
+                        width: 220.w,
+                      ),
+                      AppWidgets.textLocale(
+                        text: "Eshonov Fakhriyor",
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
+                        color: AppColorUtils.DARK_6,
+                      ).paddingOnly(top: 5.w),
+                    ],
+                  ).paddingOnly(left: 10),
+                ],
+              ),
+              AppWidgets.text(
+                text: widget.cardModel.infoModel[0].text,
+                fontWeight: FontWeight.w400,
+                fontSize: 14.sp,
+                color: AppColorUtils.TEXT_GREY2,
+                maxLines: 100,
+                height: 1.5,
+              ).paddingSymmetric(vertical: 15.w),
+            ],
+          ),
+        ),
+        Divider(
+          thickness: 1,
+          color: AppColorUtils.BLACK_12,
+        ),
+        AppWidgets.textLocale(
+          text: LocaleKeys.writing_comment.tr(),
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w600,
+          color: AppColorUtils.TEXT_GREEN2,
+        ).paddingSymmetric(vertical: 8.w),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox(
+              child: TextFormField(
+                controller: controller,
+                onChanged: (v) {
+                  setState(() {
+                    controller.text;
+                  });
+                },
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: 10.w,
+                    horizontal: 18.w,
+                  ),
+                  hintText: LocaleKeys.comment_title,
+                  hintStyle:
+                      TextStyle(color: AppColorUtils.GRAY_4, fontSize: 16.sp),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+              width: 270.w,
+            ),
+            Material(
+              child: Ink(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: controller1.text == ""
+                      ? AppColorUtils.DISABLE_BC
+                      : AppColorUtils.PERCENT_COLOR,
+                ),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(25),
+                  onTap: () {},
+                  child: Container(
+                    height: 46.w,
+                    width: 46.w,
+                    child: Icon(
+                      Icons.arrow_upward,
+                      color: AppColorUtils.WHITE,
+                    ),
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+        TextFormField(
+          maxLines: 10,
+          controller: controller1,
+          onChanged: (v) {
+            setState(() {
+              controller.text;
+            });
+          },
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(
+              vertical: 10.w,
+              horizontal: 18.w,
+            ),
+            hintText: LocaleKeys.write_your_comment.tr(),
+            hintStyle: TextStyle(color: AppColorUtils.GRAY_4, fontSize: 16.sp),
+            border: OutlineInputBorder(
+              borderSide: BorderSide(
+                width: 1,
+                color: AppColorUtils.LINE_TEXT_FIELD,
+              ),
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+        ).paddingOnly(top: 12.w),
+      ],
                       height: 1000,
                       child: TabBarView(
                         children: List.generate(
@@ -257,3 +508,5 @@ class _ProjectDetailsState extends State<ProjectDetailsPage> {
     );
   }
 }
+
+
