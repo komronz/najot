@@ -12,6 +12,8 @@ import 'package:najot/ui/pages/orders_page/orders_page.dart';
 import 'package:najot/ui/pages/reg_volounteer/reg_volunteer.dart';
 import 'package:najot/ui/pages/rules_page/rules_page.dart';
 
+import '../saved_page/saved_page.dart';
+
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
   static const String routeName = "/homePage";
@@ -56,6 +58,8 @@ class HomePage extends StatelessWidget {
         return OperatorPage();
       case AppPageType.ORDERS:
         return OrdersPage();
+      case AppPageType.SAVED:
+        return SavedPage();
       default:
         return Container();
     }

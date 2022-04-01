@@ -248,7 +248,12 @@ class DrawerBody extends StatelessWidget {
                   child: ButtonCard(
                     width: size.width,
                     height: 44.h,
-                    onPress: () {},
+                    onPress: () {
+                      context
+                          .read<AppPageCubit>()
+                          .changePage(pageType: AppPageType.SAVED);
+                      Navigator.pop(context);
+                    },
                     text: "Saqlanganlar",
                     visibleIcon: true,
                     color: AppColorUtils.GREEN_ACCENT2,

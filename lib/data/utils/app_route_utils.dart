@@ -5,6 +5,7 @@ import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/charity_model.dart';
+import 'package:najot/ui/pages/%20my_volunteering_page/my_volunteering_page.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/pages/charity_full_page/charity_full_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
@@ -117,6 +118,10 @@ class AppRouteUtils {
       case ImgView.routeName:
         return MaterialPageRoute(
           builder: (context) => ImgView(imgPath: settings.arguments as String),
+        );
+      case MyVolunteeringPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => MyVolunteeringPage(),
         );
     }
   }

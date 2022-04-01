@@ -73,6 +73,9 @@ class AppImageUtils {
   static const String IC_ORDERS_SUCCESS = "assets/app_icons/ic_success_round.svg";
   static const String IC_OTHER_FILE = "assets/app_icons/ic_other_file.svg";
   static const String IC_SMS_EMPTY = "assets/app_icons/ic_sms_empty.svg";
+  static const String CALENDAR_RED = "assets/app_icons/calendar_red.svg";
   static const String IC_OPERATOR_DELETE = "assets/images/icons/ic_operator_delete.svg";
+  static const String NOTIFICATION_GREY = "assets/app_icons/notification_grey.svg";
+  static const String CLOCK = "assets/app_icons/clock.svg";
 
 }

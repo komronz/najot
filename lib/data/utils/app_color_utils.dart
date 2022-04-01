@@ -80,6 +80,8 @@ class AppColorUtils {
   static const Color SMS_BTN2= Color(0xFFE7EFEE);
   static const Color SMS_BTN3= Color(0xFF055641);
   static const Color GRAY_3= Color(0xFFE6E7E8);
+  static const Color DIVIDER_COLOR= Color(0xFFD7E8E3);
+
 
 
 
