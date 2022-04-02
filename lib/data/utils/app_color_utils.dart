@@ -50,7 +50,7 @@ class AppColorUtils {
   static const Color TEXT_GREEN = Color(0xFF048D6A);
   static const Color TEXT_GREEN2 = Color(0xFF043F3B);
   static const Color TEXT_BLUE = Color(0xFF0344A7);
-  static const Color BACKGROUND = Color(0xFFE5E5E5);
+  static const Color BACKGROUND = Color(0xFE5E5E5);
   static const Color RED = Color(0xFFF50000);
   static const Color BORDER_COLOR = Color(0xFF79B4A8);
   static const Color BACK_AD = Color(0xFFEFFAF6);
