@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/utils/app_route_utils.dart';
-import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/pages/intro_page/intro_page.dart';
 
 import 'data/bloc/language_cubit/language_cubit.dart';
 import 'data/services/navigator_service.dart';
+import 'ui/pages/ my_volunteering_page/my_volunteering_page.dart';
 
 class App extends StatelessWidget {
   @override
@@ -31,7 +30,7 @@ class App extends StatelessWidget {
           // darkTheme: AppThemes.darkTheme(),
           localizationsDelegates: context.localizationDelegates,
           builder: BotToastInit(),
-          home: HomePage(),
+          home: MyVolunteeringPage(),
           navigatorObservers: [
             BotToastNavigatorObserver(),
           ],

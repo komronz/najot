@@ -43,8 +43,7 @@ dependencies:
   dotted_border: ^2.0.0+2
   image_picker: ^0.8.4+11
   keyboard_attachable: ^2.1.0
-
-
+  flutter_picker: ^2.0.3
 
 dev_dependencies:
   flutter_test:

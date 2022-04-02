@@ -7,13 +7,16 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/charity_history_page/widgets/kraufanding_item_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/kraudfanding_widget/kraudfanding_mini_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
+import 'package:najot/ui/pages/saved_page/widgets/charity_kraufanding.dart';
+import 'package:najot/ui/pages/saved_page/widgets/kraufanding_saved_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-class KraufandingListWidget extends StatelessWidget {
-  final List<KraufandingModel> list;
+class KraufandingSavedListWidget extends StatelessWidget {
+  final List<CardModel> list;
 
-  const KraufandingListWidget({
+  const KraufandingSavedListWidget({
     required this.list,
     Key? key,
   }) : super(key: key);
@@ -25,7 +28,7 @@ class KraufandingListWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           AppWidgets.imageSvg(
-            path: AppImageUtils.IMG_DOLLAR,
+            path: AppImageUtils.BIG_HEART,
             height: 70.w,
             width: 70.w,
             fit: BoxFit.none,
@@ -39,26 +42,21 @@ class KraufandingListWidget extends StatelessWidget {
         ],
       );
     }
-    return ListView.builder(
-      physics: BouncingScrollPhysics(),
-      itemBuilder: (context, index) => KraufandingItemWidget(
-        model: list[index],
-        onTap: () {
-          var model = CardModel(
-            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
-            "Texnalogiya",
-            "Drenajni kuzatish uchun mo'ljallangan",
-            0.6,
-            true,
-            CardModel.info,
-          );
-          NavigatorService.to.pushNamed(
-            ProjectDetailsPage.routName,
-            arguments: model,
-          );
-        },
+    return GridView.count(
+      shrinkWrap: true,
+      crossAxisCount: 2,
+      physics: ClampingScrollPhysics(),
+      childAspectRatio: 160 / 267,
+      padding: EdgeInsets.all(0),
+      reverse: false,
+      crossAxisSpacing: 8,
+      mainAxisSpacing: 6,
+      children: List.generate(
+        list.length,
+        (index) => CharityKraufanding(
+          cardModel: list[index],
+        ),
       ),
-      itemCount: list.length,
     );
   }
 }

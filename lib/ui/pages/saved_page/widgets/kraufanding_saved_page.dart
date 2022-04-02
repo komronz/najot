@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/model/card_model.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
-import '../../../../data/model/card_model.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
 import '../../home_page/widget/button_card_widget.dart';
-import '../project_details/project_details_page.dart';
+import '../../kraudfanding_page_main/project_details/project_details_page.dart';
 
-class KraudfandingMiniCardWidget extends StatelessWidget {
-  KraudfandingMiniCardWidget(
+class KraudfandingSavedPage extends StatelessWidget {
+  KraudfandingSavedPage(
       {required this.cardModel, required this.visible, Key? key})
       : super(key: key);
   final CardModel cardModel;
@@ -26,7 +26,7 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
     return GestureDetector(
       child: Container(
         height: 267.w,
-        width: 162.w,
+        width: 160.w,
         child: Stack(
           children: [
             Card(
@@ -53,17 +53,13 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
                             Center(child: CircularProgressIndicator()),
                         fit: BoxFit.cover,
                       ),
-                      // child: Image.asset(
-                      //   cardModel.image,
-                      //   fit: BoxFit.cover,
-                      //   width: MediaQuery.of(context).size.width,
-                      // ),
+
                     ),
                     flex: 1,
                   ),
                   Expanded(
                     child: Container(
-                      margin: EdgeInsets.only(left: 12, top: 12, right: 5),
+                      margin: EdgeInsets.only(left: 10, top: 12, right: 5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -110,9 +106,7 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
               ),
             ),
             Align(
-              child: SvgPicture.asset(cardModel.isFavorite!
-                  ? AppImageUtils.LIKE
-                  : AppImageUtils.UNLIKE),
+              child: FavoriteButton(isFavorite: cardModel.isFavorite!,),
               alignment: Alignment.topRight,
             ).paddingAll(12.w),
             Visibility(
@@ -134,8 +128,45 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
         ),
       ),
       onTap: () {
-        NavigatorService.to.pushNamed(ProjectDetailsPage.routName,arguments: cardModel);
+        // NavigatorService.to.pushNamed(ProjectDetailsPage.routeName,arguments: cardModel);
       },
+    );
+  }
+}
+class FavoriteButton extends StatelessWidget {
+  final bool isFavorite;
+
+  const FavoriteButton({
+    this.isFavorite = false,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return isFavorite
+        ? Container(
+      width: 24.w,
+      height: 24.w,
+      decoration: BoxDecoration(
+        color: AppColorUtils.PURPLE,
+        borderRadius: BorderRadius.circular(2),
+      ),
+      child: AppWidgets.imageSvg(
+        path: AppImageUtils.UNLIKE,
+        fit: BoxFit.none,
+      ),
+    )
+        : Container(
+      width: 24.w,
+      height: 24.w,
+      decoration: BoxDecoration(
+        color: AppColorUtils.IC_GREEN,
+        borderRadius: BorderRadius.circular(2),
+      ),
+      child: AppWidgets.imageSvg(
+        path: AppImageUtils.IC_FAVORITE_ADD,
+        fit: BoxFit.none,
+      ),
     );
   }
 }

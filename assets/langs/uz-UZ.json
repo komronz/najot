@@ -29,6 +29,7 @@
     "no_messages_found_yet": "Hozircha hech qanday xabar topilmadi",
     "send_message": "Xabar Yuborish",
     "photo_library":"Foto Kutubxona",
+    "saved": "Saqlanganlar",
     "camera":"Kamera",
     "str_registration": "Ro'yxatdan o'tish",
     "author_answer": "Muallif javobi",
@@ -41,5 +42,11 @@
     "comments": "Izohlar",
     "writing_comment": "Izoh yozish",
     "write_your_comment": "Izohingizni yozing",
-    "comment_title": "Izoh sarlavhasi"
+    "comment_title": "Izoh sarlavhasi",
+    "volunteering": "Voluntorlik",
+    "waiting_for_me": "Meni kutayotganlar",
+    "item_charity": "Buyumlar xayriyasi",
+    "add_to_note": "Eslatmaga qo'shish",
+    "exit": "Chiqish",
+    "jump_to_note": "Eslatmaga utish"
 }

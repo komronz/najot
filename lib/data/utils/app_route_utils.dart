@@ -5,6 +5,7 @@ import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/charity_model.dart';
+import 'package:najot/ui/pages/%20my_volunteering_page/my_volunteering_page.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/pages/charity_full_page/charity_full_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
@@ -24,7 +25,6 @@ import '../../ui/pages/my_profil_page/my_profile_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/number_update_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/user_degree_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/user_update_page.dart';
-import '../../ui/pages/sms_with_operator_page/sms_with_operator_page.dart';
 import '../model/card_model.dart';
 import '../model/charity_model.dart';
 
@@ -73,7 +73,7 @@ class AppRouteUtils {
             model: settings.arguments as CharityModel,
           ),
         );
-      case ProjectDetailsPage.routeName:
+      case ProjectDetailsPage.routName:
         return MaterialPageRoute(
           builder: (context) => ProjectDetailsPage(
             cardModel: settings.arguments as CardModel,
@@ -107,17 +107,21 @@ class AppRouteUtils {
         return MaterialPageRoute(
           builder: (context) => NumberUpdatePage(),
         );
-          case UserDegreePage.routeName:
+      case UserDegreePage.routeName:
         return MaterialPageRoute(
           builder: (context) => UserDegreePage(),
         );
-      case SmsWithOperatorPage.routeName:
+      case VolunteerPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => SmsWithOperatorPage(),
+          builder: (context) => VolunteerPage(),
         );
       case ImgView.routeName:
         return MaterialPageRoute(
           builder: (context) => ImgView(imgPath: settings.arguments as String),
+        );
+      case MyVolunteeringPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => MyVolunteeringPage(),
         );
     }
   }

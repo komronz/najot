@@ -23,9 +23,9 @@ import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 
 class ProjectDetailsPage extends StatefulWidget {
-  ProjectDetailsPage({required this.cardModel});
+  static const String routName = '/projectDetailsPage';
 
-  static const String routeName = "/projectDetailsPage";
+  ProjectDetailsPage({required this.cardModel});
 
   CardModel cardModel;
 
@@ -99,7 +99,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
                                 Radius.circular(12),
                               ),
                               child: CachedNetworkImage(
-                                imageUrl: widget.cardModel.image,
+                                imageUrl: widget.cardModel.image!,
                                 fit: BoxFit.cover,
                                 width: MediaQuery.of(context).size.width,
                                 placeholder: (context, url) => Center(
@@ -207,30 +207,10 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
                         fontWeight: FontWeight.w600,
                       ),
                       tabs: [
-                        Text(
-                          LocaleKeys.more.tr(),
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                          ),
-                        ),
-                        Text(
-                          LocaleKeys.news.tr(),
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                          ),
-                        ),
-                        Text(
-                          LocaleKeys.questions_asked.tr(),
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                          ),
-                        ),
-                        Text(
-                          LocaleKeys.comments.tr(),
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                          ),
-                        ),
+                        Text("Batafsil"),
+                        Text("Yangiliklar'"),
+                        Text("Berilgan savollar "),
+                        Text("Izohlar "),
                       ],
                       isScrollable: true,
                       indicatorWeight: 2,
@@ -275,7 +255,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
                           child: Ink(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: widget.cardModel.isFavorite
+                              color: widget.cardModel.isFavorite!
                                   ? AppColorUtils.IC_GREEN
                                   : AppColorUtils.PURPLE,
                             ),
@@ -286,7 +266,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
                                 height: 48.w,
                                 width: 48.w,
                                 child: SvgPicture.asset(
-                                  widget.cardModel.isFavorite
+                                  widget.cardModel.isFavorite!
                                       ? AppImageUtils.LIKE_ICON
                                       : AppImageUtils.UNLIKE_ICON,
                                 ).paddingAll(12.w),
@@ -332,7 +312,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
                       shape: BoxShape.circle,
                       image: DecorationImage(
                           image: NetworkImage(
-                            widget.cardModel.image,
+                            widget.cardModel.image!,
                           ),
                           fit: BoxFit.cover),
                     ),
@@ -360,7 +340,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
                 ],
               ),
               AppWidgets.text(
-                text: widget.cardModel.infoModel[0].text,
+                text: widget.cardModel.infoModel![0].text!,
                 fontWeight: FontWeight.w400,
                 fontSize: 14.sp,
                 color: AppColorUtils.TEXT_GREY2,

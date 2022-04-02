@@ -20,7 +20,7 @@ class CharityPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var model = CharityModel(
+    var   model = CharityModel(
       title: "Anjelani operasiyasiga pul kerak!Anjelani operasiyasiga pul kerak!Anjelani operasiyasiga pul kerak!",
       applied: 100,
       author: "Abdumalik Sapoqulov Abdumalik SapoqulovAbdumalik Sapoqulov",
