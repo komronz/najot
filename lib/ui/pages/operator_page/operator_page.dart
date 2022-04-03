@@ -140,7 +140,7 @@ class OperatorPage extends StatelessWidget {
                             focusedBorder: DecorationConst.INPUT_BORDER,
                             enabledBorder: DecorationConst.INPUT_BORDER,
                             contentPadding: EdgeInsets.all(14),
-                            hintText: "Xabar yozish",
+                            hintText: "Xabar yuborish",
                             hintStyle: GoogleFonts.inter(
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w500,
