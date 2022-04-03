@@ -12,9 +12,9 @@ import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
 
-class VolunteeringAddingSuccess extends StatelessWidget {
+class ItemAddingSuccess extends StatelessWidget {
 
-  VolunteeringAddingSuccess(
+  ItemAddingSuccess(
       {required this.model, required this.selectFunction, Key? key})
       : super(key: key);
   final Function selectFunction;

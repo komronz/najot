@@ -14,6 +14,7 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import '../../widgets/app_widgets.dart';
 import '../home_page/home_page.dart';
 import 'my_volunteering_widget/item_charity_widget.dart';
+import 'my_volunteering_widget/my_volunteering_drawer_body.dart';
 import 'my_volunteering_widget/waiting_for_widget.dart';
 
 class MyVolunteeringPage extends StatelessWidget {
@@ -27,37 +28,40 @@ class MyVolunteeringPage extends StatelessWidget {
       create: (context) => MyVolunteeringCubit(),
       child: BlocBuilder<MyVolunteeringCubit, MyVolunteeringState>(
         builder: (context, state) => Scaffold(
+          drawer: MyVolunteeringDrawerBody(),
           appBar: AppBar(
             automaticallyImplyLeading: false,
             backgroundColor: Colors.transparent,
             elevation: 0,
             titleSpacing: 0,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  child: SvgPicture.asset(
-                    AppImageUtils.MENU,
+            title: Builder(
+              builder: (context) => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                    child: SvgPicture.asset(
+                      AppImageUtils.MENU,
+                      height: 35.w,
+                      width: 35.w,
+                    ),
+                    onTap: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                  ),
+                  AppWidgets.textLocale(
+                    text: LocaleKeys.volunteering,
+                    fontSize: 26.sp,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  SvgPicture.asset(
+                    AppImageUtils.NOTIFICATION,
                     height: 35.w,
                     width: 35.w,
-                  ),
-                  onTap: () {
-                    HomePage.globalKey.currentState!.openDrawer();
-                  },
-                ),
-                AppWidgets.textLocale(
-                  text: LocaleKeys.volunteering,
-                  fontSize: 26.sp,
-                  fontWeight: FontWeight.w600,
-                ),
-                SvgPicture.asset(
-                  AppImageUtils.NOTIFICATION,
-                  height: 35.w,
-                  width: 35.w,
-                  fit: BoxFit.fill,
-                )
-              ],
-            ).paddingSymmetric(horizontal: 20),
+                    fit: BoxFit.fill,
+                  )
+                ],
+              ).paddingSymmetric(horizontal: 20),
+            ),
           ),
           body: _buildBody(context, state),
         ),

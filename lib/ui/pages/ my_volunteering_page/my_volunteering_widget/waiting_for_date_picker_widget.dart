@@ -8,7 +8,8 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/%20my_volunteering_page/my_volunteering_widget/volunteering_adding_success.dart';
+import 'package:najot/ui/pages/%20my_volunteering_page/my_volunteering_widget/item_adding_success.dart';
+import 'package:najot/ui/pages/%20my_volunteering_page/my_volunteering_widget/waiting_for_adding_success.dart';
 
 import '../../../../data/custom_time_picker/date_picker/date_picker_theme.dart';
 import '../../../../data/custom_time_picker/date_picker/i18n/date_picker_i18n.dart';
@@ -203,7 +204,7 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                     onTap: () async {
                       await showDialog(
                         context: context,
-                        builder: (context) => VolunteeringAddingSuccess(
+                        builder: (context) => WaitingForAddingSuccess(
                           selectFunction: (dateTime) {
                             // print(dateTime.toUtc().toString());
                             // bloc.add(VolunteerBirthDateSelected(dateTime));
