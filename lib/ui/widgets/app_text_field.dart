@@ -118,7 +118,7 @@ class _AppTextFieldState extends State<AppTextField> {
               hintText: widget.hintText,
               hintStyle: GoogleFonts.inter(
                 fontSize: 16.sp,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w400,
                 color: AppColorUtils.GRAY_4,
               ),
               suffixIcon: widget.isPassword
@@ -145,6 +145,6 @@ class _AppTextFieldState extends State<AppTextField> {
           ),
         )
       ],
-    ).paddingSymmetric(horizontal: 20);
+    );
   }
 }

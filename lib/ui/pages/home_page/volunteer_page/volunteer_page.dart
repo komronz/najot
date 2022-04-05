@@ -58,7 +58,7 @@ class VolunteerPage extends StatelessWidget {
                           (index) => Container(
                             margin: EdgeInsets.only(left: 10.w),
                             child: NewVolunteerCard(
-                              sliderModel: list[index],
+                              cardModel: list[index],
                             ),
                           ),
                         ),
@@ -85,7 +85,7 @@ class VolunteerPage extends StatelessWidget {
                       children: List.generate(
                         list.length,
                         (index) => NewVolunteerCard(
-                          sliderModel: list[index],
+                          cardModel: list[index],
                         ),
                       ),
                     ),

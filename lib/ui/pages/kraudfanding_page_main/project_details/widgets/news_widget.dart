@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
@@ -13,10 +14,10 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 class NewsWidget extends StatelessWidget {
   const NewsWidget({
     Key? key,
-    required this.widget,
+    required this.cardModel,
   }) : super(key: key);
 
-  final ProjectDetailsPage widget;
+  final CardModel cardModel;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,7 @@ class NewsWidget extends StatelessWidget {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                                image: NetworkImage(widget.cardModel.image),
+                                image: NetworkImage(cardModel.image),
                                 fit: BoxFit.cover),
                           ),
                         ),
@@ -81,7 +82,7 @@ class NewsWidget extends StatelessWidget {
                   ],
                 ),
                 AppWidgets.text(
-                        text: widget.cardModel.infoModel[0].title,
+                        text: cardModel.infoModel[0].title,
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w600,
                         color: AppColorUtils.BLACK)
@@ -91,7 +92,7 @@ class NewsWidget extends StatelessWidget {
                 ),
                 AppWidgets.text(
                     height: 1.5,
-                    text: widget.cardModel.infoModel[0].text,
+                    text: cardModel.infoModel[0].text,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.TEXT_GREY2,
@@ -106,7 +107,7 @@ class NewsWidget extends StatelessWidget {
                       Radius.circular(12),
                     ),
                     child: CachedNetworkImage(
-                      imageUrl: widget.cardModel.image,
+                      imageUrl: cardModel.image,
                       fit: BoxFit.cover,
                       width: MediaQuery.of(context).size.width,
                       placeholder: (context, url) => Center(

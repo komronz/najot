@@ -52,5 +52,18 @@
     "summa": "Summa: ",
     "project_author": "Loyiha muallifi",
     "ask_question": "Savol berish",
+    "author_write_question": "Muallifga savol yozish",
+    "title_question": "Savol sarlavhasi",
+    "write_question": "Savol yozing",
+    "products": "Mahsulotlar",
+    "buy_use_product": "Sotib olingan mahsulotlar summasi shu loyiha rivojiga ishlatilinadi.",
+    "toSum": "so'mga",
+    "approximate_branch": "Tahminiy yetkazib berish",
+    "bought": "Sotib olganlar",
+    "project_name": "Loyiha nomi",
+    "about_product": "Mahsulot haqida qisqa",
+    "prize_amount": "Mukofot summasi",
+    "date_implementation": "Amalga oshirish sanasi",
+    "buy_product": "Mahsulot sotib olish",
     "exit": "Chiqish"
 }

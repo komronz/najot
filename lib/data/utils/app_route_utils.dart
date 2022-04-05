@@ -5,6 +5,7 @@ import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/charity_model.dart';
+import 'package:najot/data/model/product_model.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/pages/charity_full_page/charity_full_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
@@ -12,6 +13,7 @@ import 'package:najot/ui/pages/counter_page/counter_page.dart';
 import 'package:najot/ui/pages/home_page/about_announcement_page/about_announcement_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/home_page/volunteer_page/volunteer_page.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/product_datail_page/product_detail_page.dart';
 import 'package:najot/ui/pages/loading_page/loading_page.dart';
 import 'package:najot/ui/pages/login_page/login_page.dart';
 import 'package:najot/ui/pages/reg_page/reg_page.dart';
@@ -77,6 +79,12 @@ class AppRouteUtils {
         return MaterialPageRoute(
           builder: (context) => ProjectDetailsPage(
             cardModel: settings.arguments as CardModel,
+          ),
+        );
+      case ProductDetailPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => ProductDetailPage(
+            productModel: settings.arguments as ProductModel,
           ),
         );
       case KraudfandingPage.routeName:

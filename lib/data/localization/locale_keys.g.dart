@@ -64,6 +64,19 @@ abstract class  LocaleKeys {
   static const summa = 'summa';
   static const project_author = 'project_author';
   static const ask_question = 'ask_question';
+  static const author_write_question = 'author_write_question';
+  static const title_question = 'title_question';
+  static const write_question = 'write_question';
+  static const products = 'products';
+  static const buy_use_product = 'buy_use_product';
+  static const toSum = 'toSum';
+  static const approximate_branch = 'approximate_branch';
+  static const bought = 'bought';
+  static const project_name = 'project_name';
+  static const about_product = 'about_product';
+  static const prize_amount = 'prize_amount';
+  static const date_implementation = 'date_implementation';
+  static const buy_product = 'buy_product';
   static const exit = 'exit';
 
 }

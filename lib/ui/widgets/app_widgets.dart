@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
@@ -88,7 +89,113 @@ class AppWidgets {
       ),
     );
   }
+  static Widget favouriteButton({
+  required bool select,
+   required double height,
+   required double width,
+    required VoidCallback onTap
+}){
+    return Material(
+      borderRadius: BorderRadius.circular(10),
+    child: Ink(
+    decoration: BoxDecoration(
+    borderRadius:
+    BorderRadius.circular(10),
+    color: select
+    ? AppColorUtils.IC_GREEN
+        : AppColorUtils.PURPLE,
+    ),
+    child: InkWell(
+    borderRadius:
+    BorderRadius.circular(10),
+    onTap: onTap,
+    child: Container(
+    height: height,
+    width: width,
+    child: SvgPicture.asset(
+    select
+    ? AppImageUtils.LIKE_ICON
+    : AppImageUtils.UNLIKE_ICON,
+).paddingAll(10.w),
+),
+),
+),
+);
+}
+  static Widget circleImages({
+  required String image,
+    required int count
 
+}){
+    return Row(
+      children: [
+        Stack(
+          children: [
+            Container(
+              height: 25.w,
+              width: 25.w,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage(
+                      AppImageUtils
+                          .DEF_PERSON),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Container(
+              margin:
+              EdgeInsets.only(left: 8.w),
+              height: 25.w,
+              width: 25.w,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: NetworkImage(image),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Container(
+              margin:
+              EdgeInsets.only(left: 16.w),
+              height: 25.w,
+              width: 25.w,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage(
+                      AppImageUtils
+                          .DEF_PERSON),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Container(
+              margin:
+              EdgeInsets.only(left: 24.w),
+              height: 25.w,
+              width: 25.w,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: NetworkImage(image),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ],
+        ),
+        AppWidgets.text(
+          text: "+${count}",
+          color: AppColorUtils.TEXT_GREEN2,
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w500,
+        ).paddingOnly(left: 3),
+      ],
+    ).paddingOnly(top: 3);
+  }
   static Widget starTextWidget({
     required String text,
     Color? color = AppColorUtils.DARK_6,
@@ -104,8 +211,11 @@ class AppWidgets {
           isCenter ? MainAxisAlignment.center : MainAxisAlignment.start,
       children: [
         hasStar
-            ? textLocale(
-                text: '*', fontSize: fontSize, color: AppColorUtils.RED)
+            ? SizedBox(
+              child: textLocale(
+                  text: '*', fontSize: fontSize, color: AppColorUtils.RED,
+        ),
+            )
             : SizedBox(),
         textLocale(
           text: text,

@@ -1,6 +1,22 @@
 part of 'kraudfanding_detail_cubit.dart';
 
 @immutable
-abstract class KraudfandingDetailState {}
+ class KraudfandingDetailState extends Equatable {
 
-class KraudfandingDetailInitial extends KraudfandingDetailState {}
+  KraudfandingDetailState(this.tabChange);
+
+  final int tabChange;
+  @override
+  // TODO: implement props
+  List<Object?> get props => [tabChange];
+
+
+  KraudfandingDetailState copyWith({
+    int? tabChange
+
+  }) {
+    return KraudfandingDetailState(tabChange ?? this.tabChange);
+  }
+}
+
+

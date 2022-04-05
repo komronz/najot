@@ -62,5 +62,18 @@
     "summa": "Сумма: ",
     "project_author": "Автор проекта",
     "ask_question": "Задать вопрос",
+    "author_write_question": "Напишите вопрос автору",
+    "title_question": "Название вопроса",
+    "write_question": "Написать вопрос",
+    "products": "Продукты",
+    "buy_use_product": "Деньги от закупленной продукции пойдут на развитие этого проекта.",
+    "toSum": "сумма",
+    "approximate_branch": "Ориентировочная доставка",
+    "bought": "Покупатели",
+    "project_name": "Название проекта",
+    "about_product": "Коротко о продукте",
+    "prize_amount": "Сумма приза",
+    "date_implementation": "Дата реализации",
+    "buy_product": "Покупка продукта",
     "exit": "Выход"
 }

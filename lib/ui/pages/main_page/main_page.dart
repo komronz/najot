@@ -123,7 +123,7 @@ class MainPage extends StatelessWidget {
                                 height: 10.h,
                               ),
                               SizedBox(
-                                height: 300.h,
+                                height: 300.w,
                                 child: SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
@@ -150,7 +150,7 @@ class MainPage extends StatelessWidget {
                                 top: 20.h,
                               ),
                               SizedBox(
-                                height: 300.h,
+                                height: 300.w,
                                 child: SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
@@ -174,7 +174,7 @@ class MainPage extends StatelessWidget {
                               ).paddingOnly(
                                   left: 20.w, top: 10.h, bottom: 10.h),
                               SizedBox(
-                                height: 300.h,
+                                height: 300.w,
                                 child: SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
                                   child: Row(

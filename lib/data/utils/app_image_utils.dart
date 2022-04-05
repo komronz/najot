@@ -11,6 +11,7 @@ class AppImageUtils {
    static const String USER = "assets/app_icons/user.svg";
    static const String USERADD = "assets/app_icons/user_add.svg";
    static const String QUESTION = "assets/app_icons/question.svg";
+   static const String DATE = "assets/app_icons/date.svg";
    static const String EDIT = "assets/app_icons/edit.svg";
    static const String HANDS = "assets/app_icons/hends.svg";
    static const String NEWS = "assets/app_icons/news.svg";
@@ -54,6 +55,7 @@ class AppImageUtils {
   static const String FAQ_IMG = "assets/images/faq_img.svg";
   static const String IC_FAQ_OPEN = "assets/app_icons/faq_open_icon.svg";
   static const String IMG_RULES = "assets/images/rules.svg";
+  static const String SUCCESS = "assets/images/success.svg";
   static const String IMG_ABOUT = "assets/images/img_about.png";
   static const String IC_LOCATION = "assets/app_icons/ic_location.svg";
   static const String IC_PHONE = "assets/app_icons/ic_phone.svg";
