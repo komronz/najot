@@ -5,7 +5,7 @@ import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/charity_model.dart';
-import 'package:najot/data/model/product_model.dart';
+import 'package:najot/ui/pages/%20my_volunteering_page/my_volunteering_page.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/pages/charity_full_page/charity_full_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
@@ -19,6 +19,7 @@ import 'package:najot/ui/pages/login_page/login_page.dart';
 import 'package:najot/ui/pages/reg_page/reg_page.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/img_view.dart';
 import 'package:najot/ui/pages/verification_page/verification_page.dart';
+import '../../ui/pages/ my_volunteering_page/my_volunteering_widget/adding_project_page.dart';
 import '../../ui/pages/charity_full_page/charity_full_page.dart';
 import '../../ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
 import '../../ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
@@ -115,17 +116,25 @@ class AppRouteUtils {
         return MaterialPageRoute(
           builder: (context) => NumberUpdatePage(),
         );
-          case UserDegreePage.routeName:
+      case UserDegreePage.routeName:
         return MaterialPageRoute(
           builder: (context) => UserDegreePage(),
         );
-      case SmsWithOperatorPage.routeName:
+      case VolunteerPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => SmsWithOperatorPage(),
+          builder: (context) => VolunteerPage(),
         );
       case ImgView.routeName:
         return MaterialPageRoute(
           builder: (context) => ImgView(imgPath: settings.arguments as String),
+        );
+      case MyVolunteeringPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => MyVolunteeringPage(),
+        );
+      case AddingProjectPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => AddingProjectPage(),
         );
     }
   }

@@ -29,6 +29,7 @@
     "no_messages_found_yet": "Hozircha hech qanday xabar topilmadi",
     "send_message": "Xabar Yuborish",
     "photo_library":"Foto Kutubxona",
+    "saved": "Saqlanganlar",
     "camera":"Kamera",
     "str_registration": "Ro'yxatdan o'tish",
     "author_answer": "Muallif javobi",
@@ -65,5 +66,10 @@
     "prize_amount": "Mukofot summasi",
     "date_implementation": "Amalga oshirish sanasi",
     "buy_product": "Mahsulot sotib olish",
-    "exit": "Chiqish"
+    "exit": "Chiqish",
+    "volunteering": "Voluntorlik",
+    "waiting_for_me": "Meni kutayotganlar",
+    "item_charity": "Buyumlar xayriyasi",
+    "add_to_note": "Eslatmaga qo'shish",
+    "jump_to_note": "Eslatmaga utish"
 }

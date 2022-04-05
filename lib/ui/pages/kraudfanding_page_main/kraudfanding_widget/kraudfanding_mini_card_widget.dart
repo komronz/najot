@@ -23,19 +23,13 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 267.w,
-      width: 162.w,
-      child: Stack(
-        children: [
-          GestureDetector(
-            onTap: () {
-              NavigatorService.to.pushNamed(
-                ProjectDetailsPage.routeName,
-                arguments: cardModel,
-              );
-            },
-            child: Card(
+    return GestureDetector(
+      child: Container(
+        height: 267.w,
+        width: 162.w,
+        child: Stack(
+          children: [
+            Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
@@ -51,7 +45,7 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
                       ),
                       child: CachedNetworkImage(
                         width: double.infinity,
-                        imageUrl: cardModel.image,
+                        imageUrl: cardModel.image!,
                         errorWidget: (context, url, error) => Image.asset(
                           AppImageUtils.Splash2,
                         ),
@@ -74,7 +68,7 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           AppWidgets.text(
-                            text: cardModel.title,
+                            text: cardModel.title!,
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w500,
                             maxLines: 2,
@@ -115,33 +109,33 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-          Align(
-            child: InkWell(
-              onTap: () {},
-              child: SvgPicture.asset(cardModel.isFavorite
+            Align(
+              child: SvgPicture.asset(cardModel.isFavorite!
                   ? AppImageUtils.LIKE
                   : AppImageUtils.UNLIKE),
-            ),
-            alignment: Alignment.topRight,
-          ).paddingAll(12.w),
-          Visibility(
-            visible: visible,
-            child: ButtonCard(
-              onPress: () {},
-              text: "Texnologiya",
-              visibleIcon: false,
-              borderRadius: 20,
-              height: 24.h,
-              width: 77.w,
-              textColor: AppColorUtils.GREEN_TEXT,
-              textSize: 10.sp,
-              fontWeight: FontWeight.w400,
-              color: Colors.white54,
-            ).paddingAll(10.w),
-          )
-        ],
+              alignment: Alignment.topRight,
+            ).paddingAll(12.w),
+            Visibility(
+              visible: visible,
+              child: ButtonCard(
+                onPress: () {},
+                text: "Texnologiya",
+                visibleIcon: false,
+                borderRadius: 20,
+                height: 24.h,
+                width: 77.w,
+                textColor: AppColorUtils.GREEN_TEXT,
+                textSize: 10.sp,
+                fontWeight: FontWeight.w400,
+                color: Colors.white54,
+              ).paddingAll(10.w),
+            )
+          ],
+        ),
       ),
+      onTap: () {
+        NavigatorService.to.pushNamed(ProjectDetailsPage.routName,arguments: cardModel);
+      },
     );
   }
 }

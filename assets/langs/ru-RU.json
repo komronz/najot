@@ -50,8 +50,6 @@
     "send_message": "Отправить сообщение",
     "photo_library": "Фото библиотека",
     "camera": "Камера",
-    "write_your_comment": "Напишите свой комментарий",
-    "comment_title": "Название комментария",
     "enter_amount": "Введите сумму",
     "send_payment1": "Сумма достается автору",
     "send_payment2": "платформа предоставляет",
@@ -75,5 +73,13 @@
     "prize_amount": "Сумма приза",
     "date_implementation": "Дата реализации",
     "buy_product": "Покупка продукта",
-    "exit": "Выход"
+    "write_your_comment": "IНапишите свой комментарий",
+    "comment_title": "Название комментария",
+    "saved": "Сохранено",
+    "volunteering": "Волонтерство",
+    "waiting_for_me": "Kто ждет меня",
+    "item_charity": "Предмет Благотворительность",
+    "add_to_note": "Добавить в заметку",
+    "exit": "Выход",
+    "jump_to_note": "Перейти к сведению"
 }

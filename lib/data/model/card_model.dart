@@ -1,10 +1,11 @@
 class CardModel {
-  String image;
-  String name;
-  String title;
-  double progres;
-  bool isFavorite;
-  List<InfoModel> infoModel;
+  String? type;
+  String? image;
+  String? name;
+  String? title;
+  double? progres;
+  bool? isFavorite;
+  List<InfoModel>? infoModel;
 
   CardModel(
     this.image,
@@ -14,6 +15,22 @@ class CardModel {
     this.isFavorite,
     this.infoModel,
   );
+  CardModel.kraufanding(
+      this.type,
+      this.image,
+      this.name,
+      this.title,
+      this.progres,
+      this.isFavorite,
+      );
+  CardModel.charity(
+      this.type,
+      this.image,
+      this.title,
+      this.progres,
+      this.isFavorite,
+      );
+
 
   static final List<InfoModel> info = [
     InfoModel(
@@ -78,6 +95,6 @@ class CardModel {
 class InfoModel {
   InfoModel(this.title, this.text);
 
-  String title;
-  String text;
+  String? title;
+  String? text;
 }

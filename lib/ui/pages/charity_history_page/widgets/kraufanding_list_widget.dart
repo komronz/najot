@@ -53,7 +53,7 @@ class KraufandingListWidget extends StatelessWidget {
             CardModel.info,
           );
           NavigatorService.to.pushNamed(
-            ProjectDetailsPage.routeName,
+            ProjectDetailsPage.routName,
             arguments: model,
           );
         },

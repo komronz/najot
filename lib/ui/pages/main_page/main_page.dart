@@ -17,7 +17,6 @@ import 'package:najot/ui/pages/home_page/widget/kraudfanding_card_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/volunteer_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-
 class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);
   static const String routeName = "/homePage";
@@ -41,12 +40,8 @@ class MainPage extends StatelessWidget {
                     },
                     visibleIcon: true,
                     onTapIcon: (){
-
                     },
                     icon:AppImageUtils.NOTIFICATION,
-
-
-
                   ),
                   Expanded(
                     child: SingleChildScrollView(

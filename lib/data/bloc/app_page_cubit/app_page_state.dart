@@ -25,4 +25,5 @@ enum AppPageType {
   PROFILE,
   VOLUNTEER,
   OPERATOR,
+  SAVED
 }

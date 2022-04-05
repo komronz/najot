@@ -60,6 +60,7 @@ class AppImageUtils {
   static const String IC_LOCATION = "assets/app_icons/ic_location.svg";
   static const String IC_PHONE = "assets/app_icons/ic_phone.svg";
   static const String DELETE = "assets/app_icons/delete_icon.svg";
+  static const String BIG_HEART = "assets/app_icons/big_heart.svg";
   static const String MESSAGE = "assets/app_icons/message_rounded.svg";
   static const String IMG_VOLUNTEER = "assets/images/img_voluteer.png";
   static const String IC_QUESTION = "assets/app_icons/ic_question.svg";
@@ -74,6 +75,12 @@ class AppImageUtils {
   static const String IC_ORDERS_SUCCESS = "assets/app_icons/ic_success_round.svg";
   static const String IC_OTHER_FILE = "assets/app_icons/ic_other_file.svg";
   static const String IC_SMS_EMPTY = "assets/app_icons/ic_sms_empty.svg";
+  static const String CALENDAR_RED = "assets/app_icons/calendar_red.svg";
   static const String IC_OPERATOR_DELETE = "assets/images/icons/ic_operator_delete.svg";
-
+  static const String NOTIFICATION_GREY = "assets/app_icons/notification_grey.svg";
+  static const String CLOCK = "assets/app_icons/clock.svg";
+  static const String ADDING_PROJECT = "assets/app_icons/adding_project.svg";
+  static const String ADDING = "assets/app_icons/plus.svg";
+  static const String VOLUNTEER = "assets/app_icons/volunteer.svg";
+  static const String PROJECT = "assets/app_icons/project.svg";
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,13 +6,12 @@ import 'package:najot/data/bloc/orders_cubit/orders_cubit.dart';
 import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/kraufanding_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/charity_history_page/widgets/date_widget.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+
+import 'widgets/order_list_item_widget.dart';
 
 class OrdersPage extends StatelessWidget {
   const OrdersPage({Key? key}) : super(key: key);
@@ -26,7 +24,7 @@ class OrdersPage extends StatelessWidget {
         builder: (context, state) => Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            backgroundColor: Colors.transparent,
+            backgroundColor: AppColorUtils.BACKGROUND,
             elevation: 0,
             titleSpacing: 0,
             title: Row(
@@ -93,109 +91,18 @@ class OrdersPage extends StatelessWidget {
       ).paddingOnly(top: 70.w);
     }
     return ListView.builder(
-      itemBuilder: (context, index) => OrdersItemsWidget(
-        model: state.list[index],
-      ),
+      itemBuilder: (context, index) {
+        if (index == state.list.length-1) {
+          return OrdersItemsWidget(
+            model: state.list[index],
+            isLast: true,
+          );
+        }
+        return OrdersItemsWidget(
+          model: state.list[index],
+        );
+      },
       itemCount: state.list.length,
     );
-  }
-}
-
-class OrdersItemsWidget extends StatelessWidget {
-  final KraufandingModel model;
-
-  const OrdersItemsWidget({
-    required this.model,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: context.width,
-      decoration: BoxDecoration(
-        color: AppColorUtils.ITEM_ORDERS_CARD,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          color: AppColorUtils.ITEM_ORDERS_BORDER,
-          width: 1,
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppWidgets.textLocale(
-            text: "Loyiha nomi",
-            fontSize: 10.sp,
-            fontWeight: FontWeight.w400,
-            color: AppColorUtils.ITEM_ORDERS_TEXT2,
-          ).paddingOnly(bottom: 3.w),
-          AppWidgets.text(
-            text: model.title!,
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w500,
-            color: AppColorUtils.DARK2,
-            maxLines: 2,
-          ),
-          AppWidgets.textLocale(
-            text: "Mahsulot haqida qisqa",
-            fontSize: 10.sp,
-            fontWeight: FontWeight.w400,
-            color: AppColorUtils.ITEM_ORDERS_TEXT2,
-          ).paddingOnly(top: 12.w, bottom: 3),
-          AppWidgets.text(
-            text:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
-            fontSize: 12.sp,
-            fontWeight: FontWeight.w400,
-            height: 1.3,
-            color: AppColorUtils.DARK2,
-            maxLines: 3,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              AppWidgets.starTextWidget(
-                text: "Taxminiy yetkazib berish",
-                fontSize: 10.sp,
-                fontWeight: FontWeight.w400,
-                color: AppColorUtils.ITEM_ORDERS_TEXT2,
-              ),
-              AppWidgets.textLocale(
-                text: "Mahsulot summasi",
-                fontSize: 10.sp,
-                fontWeight: FontWeight.w400,
-                color: AppColorUtils.ITEM_ORDERS_TEXT2,
-              )
-            ],
-          ).paddingOnly(top: 12.w, bottom: 3.w),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              DateWidget(date: model.createdDate!),
-              AppWidgets.textLocale(
-                text: LocaleKeys.sum,
-                args: [model.totalSum!],
-                color: AppColorUtils.KRAUDFANDING,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w500,
-              ),
-            ],
-          ),
-          AppWidgets.appButton(
-            title: "Qabul qildim",
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w500,
-            borderRadius: 10,
-            onTap: () {},
-            color: AppColorUtils.ITEM_ORDERS_BUTTON,
-            height: 38.w,
-            width: 145.w,
-            icon: AppWidgets.imageSvg(path: AppImageUtils.IC_ORDERS_SUCCESS)
-                .paddingOnly(right: 5),
-          ).paddingOnly(top: 15.w),
-        ],
-      ).paddingAll(12),
-    ).paddingSymmetric(horizontal: 20).paddingOnly(bottom: 18);
   }
 }
