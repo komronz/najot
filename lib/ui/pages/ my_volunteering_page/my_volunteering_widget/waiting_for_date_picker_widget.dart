@@ -202,6 +202,7 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                 children: [
                   AppWidgets.appButton(
                     onTap: () async {
+                      NavigatorService.to.pop();
                       await showDialog(
                         context: context,
                         builder: (context) => WaitingForAddingSuccess(

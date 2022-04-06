@@ -18,6 +18,7 @@ import '../../../../data/model/volunteering_model.dart';
 import '../../../widgets/app_widgets.dart';
 
 class ItemCharityDatePickerWidget extends StatelessWidget {
+
   ItemCharityDatePickerWidget({
     required this.selectFunction,
     required this.model,
@@ -201,6 +202,7 @@ class ItemCharityDatePickerWidget extends StatelessWidget {
                 children: [
                   AppWidgets.appButton(
                     onTap: () async {
+                      NavigatorService.to.pop();
                       await showDialog(
                         context: context,
                         builder: (context) => ItemAddingSuccess(

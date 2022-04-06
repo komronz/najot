@@ -117,7 +117,7 @@ class MyVolunteeringPage extends StatelessWidget {
                     reverse: false,
                     children: List.generate(
                       state.cardList.length,
-                      (index) => ItemCharityWidget(
+                      (index) => WaitingForWidget(
                         model: state.cardList[index],
                       ),
                     ),
@@ -130,7 +130,7 @@ class MyVolunteeringPage extends StatelessWidget {
                     reverse: false,
                     children: List.generate(
                       state.cardList.length,
-                      (index) => WaitingForWidget(
+                      (index) => ItemCharityWidget(
                         model: state.cardList[index],
                       ),
                     ),

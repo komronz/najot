@@ -43,7 +43,7 @@ class ItemAddingSuccess extends StatelessWidget {
               ).paddingOnly(top: 24.h, bottom: 14.h),
               AppWidgets.textLocale(
                 textAlign: TextAlign.center,
-                text: "Eslatma //muvaffaqiyatli// o'zgartirildi",
+                text: "Eslatma //muvaffaqiyatli// qo'shildi",
                 richText: true,
                 othersMarkers: [
                   MarkerText(
@@ -111,7 +111,7 @@ class ItemAddingSuccess extends StatelessWidget {
                     color: AppColorUtils.LIGHT_GRAY,
                     textColor: AppColorUtils.BLACK,
                     onTap: () {
-                      NavigatorService.to.pushNamedAndRemoveUntil(MyVolunteeringPage.routeName);
+                      NavigatorService.to.pop();
 
                     },
                     title: LocaleKeys.exit,

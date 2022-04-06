@@ -61,5 +61,6 @@ abstract class  LocaleKeys {
   static const add_to_note = 'add_to_note';
   static const exit = 'exit';
   static const jump_to_note = 'jump_to_note';
+  static const send = 'send';
 
 }
