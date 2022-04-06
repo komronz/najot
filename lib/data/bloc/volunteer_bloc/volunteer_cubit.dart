@@ -12,7 +12,7 @@ class VolunteerCubit extends Cubit<VolunteerState> {
 
     list.forEach((element) {
       if (cardModel.title == element.title) {
-        element.isFavorite = !cardModel.isFavorite;
+        element.isFavorite = !cardModel.isFavorite!;
       }
     });
     emit(state.copyWith(list: list));

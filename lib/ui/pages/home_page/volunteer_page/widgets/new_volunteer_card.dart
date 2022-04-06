@@ -7,11 +7,10 @@ import 'package:najot/data/bloc/volunteer_bloc/volunteer_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
-import 'package:najot/data/model/slider_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/home_page/about_announcement_page/about_announcement_page.dart';
+import 'package:najot/ui/pages/home_page/volunteer_page/project_detail_volunteer_page/project_detail_volunteer_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class NewVolunteerCard extends StatelessWidget {
@@ -27,9 +26,11 @@ class NewVolunteerCard extends StatelessWidget {
       child: Stack(
         children: [
           GestureDetector(
-            onTap: (){
-              NavigatorService.to
-                  .pushNamed(AboutAnnouncementPage.routeName);
+            onTap: () {
+              NavigatorService.to.pushNamed(
+                ProjectDetailVolunteerPage.routeName,
+                arguments: cardModel,
+              );
             },
             child: Card(
               shape: RoundedRectangleBorder(
@@ -47,7 +48,7 @@ class NewVolunteerCard extends StatelessWidget {
                       ),
                       child: CachedNetworkImage(
                         width: double.infinity,
-                        imageUrl: cardModel.image,
+                        imageUrl: cardModel.image!,
                         errorWidget: (context, url, error) => Image.asset(
                           AppImageUtils.Splash2,
                         ),
@@ -55,11 +56,6 @@ class NewVolunteerCard extends StatelessWidget {
                             Center(child: CircularProgressIndicator()),
                         fit: BoxFit.cover,
                       ),
-                      // child: Image.asset(
-                      //   cardModel.image,
-                      //   fit: BoxFit.fill,
-                      //   width: MediaQuery.of(context).size.width,
-                      // ),
                     ),
                     flex: 1,
                   ),
@@ -106,15 +102,16 @@ class NewVolunteerCard extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              context.read<VolunteerCubit>()
-                  .changeLike(cardModel: cardModel);
+              context.read<VolunteerCubit>().changeLike(cardModel: cardModel);
             },
             child: Align(
               child: Container(
                 width: 24.w,
                 height: 24.w,
                 child: SvgPicture.asset(
-                  cardModel.isFavorite ? AppImageUtils.UNLIKE : AppImageUtils.LIKE,
+                  cardModel.isFavorite!
+                      ? AppImageUtils.UNLIKE
+                      : AppImageUtils.LIKE,
                 ),
               ),
               alignment: Alignment.topRight,

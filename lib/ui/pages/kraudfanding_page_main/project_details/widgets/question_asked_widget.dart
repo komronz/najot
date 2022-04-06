@@ -42,7 +42,7 @@ class QuestionsAskedWidget extends StatelessWidget {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                             image: NetworkImage(
-                              cardModel.image,
+                              cardModel.image!,
                             ),
                             fit: BoxFit.cover),
                       ),
@@ -71,7 +71,7 @@ class QuestionsAskedWidget extends StatelessWidget {
                   ],
                 ),
                 AppWidgets.text(
-                  text: cardModel.infoModel[0].text,
+                  text: cardModel.infoModel![0].text!,
                   fontWeight: FontWeight.w400,
                   fontSize: 14.sp,
                   color: AppColorUtils.TEXT_GREY2,
@@ -89,7 +89,7 @@ class QuestionsAskedWidget extends StatelessWidget {
                   color: AppColorUtils.TEXT_GREEN2,
                 ).paddingSymmetric(vertical: 8.w),
                 AppWidgets.text(
-                  text: cardModel.infoModel[0].text,
+                  text: cardModel.infoModel![0].text!,
                   fontWeight: FontWeight.w400,
                   fontSize: 14.sp,
                   color: AppColorUtils.TEXT_GREY2,

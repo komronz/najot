@@ -282,10 +282,10 @@ class AppWidgets {
       bool visibleIcon = false,
       String icon = ""}) {
     return Container(
-      height: 80.h,
+      height: 80.w,
       padding: EdgeInsets.only(
-        left: 20,
-        right: 20,
+        left: 20.w,
+        right: 20.w,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

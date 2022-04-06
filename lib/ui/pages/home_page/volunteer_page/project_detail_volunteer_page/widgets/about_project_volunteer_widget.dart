@@ -20,14 +20,14 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/qu
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-class AboutProjectWidget extends StatefulWidget {
-   AboutProjectWidget({required this.cardModel}) ;
+class AboutProjectVolunteerWidget extends StatefulWidget {
+   AboutProjectVolunteerWidget({required this.cardModel}) ;
     final CardModel cardModel;
   @override
-  _AboutProjectWidgetState createState() => _AboutProjectWidgetState();
+  _AboutProjectVolunteerWidgetState createState() => _AboutProjectVolunteerWidgetState();
 }
 
-class _AboutProjectWidgetState extends State<AboutProjectWidget>
+class _AboutProjectVolunteerWidgetState extends State<AboutProjectVolunteerWidget>
     with TickerProviderStateMixin{
   late TabController _tabController;
   @override

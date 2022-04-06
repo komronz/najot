@@ -33,6 +33,7 @@ class MainPage extends StatelessWidget {
               color: AppColorUtils.BACKGROUND,
               child: Column(
                 children: [
+                  SizedBox(height: 20.w,),
                   AppWidgets.appBarMenu(
                     title: "Asosiy",
                     onTapMenu: () {

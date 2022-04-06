@@ -5,13 +5,14 @@ import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/charity_model.dart';
+import 'package:najot/data/model/product_model.dart';
 import 'package:najot/ui/pages/%20my_volunteering_page/my_volunteering_page.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/pages/charity_full_page/charity_full_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
 import 'package:najot/ui/pages/counter_page/counter_page.dart';
-import 'package:najot/ui/pages/home_page/about_announcement_page/about_announcement_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
+import 'package:najot/ui/pages/home_page/volunteer_page/project_detail_volunteer_page/project_detail_volunteer_page.dart';
 import 'package:najot/ui/pages/home_page/volunteer_page/volunteer_page.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/product_datail_page/product_detail_page.dart';
 import 'package:najot/ui/pages/loading_page/loading_page.dart';
@@ -27,7 +28,6 @@ import '../../ui/pages/my_profil_page/my_profile_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/number_update_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/user_degree_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/user_update_page.dart';
-import '../../ui/pages/sms_with_operator_page/sms_with_operator_page.dart';
 import '../model/card_model.dart';
 import '../model/charity_model.dart';
 
@@ -92,9 +92,11 @@ class AppRouteUtils {
         return MaterialPageRoute(
           builder: (context) => KraudfandingPage(),
         );
-      case AboutAnnouncementPage.routeName:
+      case ProjectDetailVolunteerPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => AboutAnnouncementPage(),
+          builder: (context) => ProjectDetailVolunteerPage(
+            cardModel: settings.arguments as CardModel,
+          ),
         );
       case VolunteerPage.routeName:
         return MaterialPageRoute(

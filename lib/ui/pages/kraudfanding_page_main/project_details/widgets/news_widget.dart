@@ -46,7 +46,7 @@ class NewsWidget extends StatelessWidget {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                                image: NetworkImage(cardModel.image),
+                                image: NetworkImage(cardModel.image!),
                                 fit: BoxFit.cover),
                           ),
                         ),
@@ -82,7 +82,7 @@ class NewsWidget extends StatelessWidget {
                   ],
                 ),
                 AppWidgets.text(
-                        text: cardModel.infoModel[0].title,
+                        text: cardModel.infoModel![0].title!,
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w600,
                         color: AppColorUtils.BLACK)
@@ -92,7 +92,7 @@ class NewsWidget extends StatelessWidget {
                 ),
                 AppWidgets.text(
                     height: 1.5,
-                    text: cardModel.infoModel[0].text,
+                    text: cardModel.infoModel![0].text!,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.TEXT_GREY2,
@@ -107,7 +107,7 @@ class NewsWidget extends StatelessWidget {
                       Radius.circular(12),
                     ),
                     child: CachedNetworkImage(
-                      imageUrl: cardModel.image,
+                      imageUrl: cardModel.image!,
                       fit: BoxFit.cover,
                       width: MediaQuery.of(context).size.width,
                       placeholder: (context, url) => Center(

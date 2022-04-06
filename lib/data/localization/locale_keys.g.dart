@@ -83,7 +83,6 @@ abstract class  LocaleKeys {
   static const waiting_for_me = 'waiting_for_me';
   static const item_charity = 'item_charity';
   static const add_to_note = 'add_to_note';
-  static const exit = 'exit';
   static const jump_to_note = 'jump_to_note';
 
 }

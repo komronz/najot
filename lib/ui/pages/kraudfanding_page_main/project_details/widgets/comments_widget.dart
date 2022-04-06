@@ -55,7 +55,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                       image: DecorationImage(
                           image: NetworkImage(
                             widget.cardModel
-                                .image,
+                                .image!,
                           ),
                           fit: BoxFit.cover),
                     ),
@@ -92,7 +92,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
               ),
               AppWidgets.text(
                 text: widget.cardModel
-                    .infoModel[0].text,
+                    .infoModel![0].text!,
                 fontWeight: FontWeight.w400,
                 fontSize: 14.sp,
                 color:

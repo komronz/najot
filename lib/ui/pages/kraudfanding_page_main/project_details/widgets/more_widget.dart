@@ -20,10 +20,10 @@ class MoreWidget extends StatelessWidget {
       children: [
         Column(
           children: List.generate(
-            cardModel.infoModel.length,
+            cardModel.infoModel!.length,
             (index) => listDetail(
-              cardModel.infoModel[index].title,
-              cardModel.infoModel[index].text,
+              cardModel.infoModel![index].title!,
+              cardModel.infoModel![index].text!,
             ).paddingSymmetric(horizontal: 20.w),
           ),
         ),
@@ -38,7 +38,7 @@ class MoreWidget extends StatelessWidget {
               Radius.circular(12),
             ),
             child: CachedNetworkImage(
-              imageUrl: cardModel.image,
+              imageUrl: cardModel.image!,
               fit: BoxFit.cover,
               width: MediaQuery.of(context).size.width,
               placeholder: (context, url) => Center(

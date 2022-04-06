@@ -134,7 +134,7 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
         ),
       ),
       onTap: () {
-        NavigatorService.to.pushNamed(ProjectDetailsPage.routName,arguments: cardModel);
+        NavigatorService.to.pushNamed(ProjectDetailsPage.routeName,arguments: cardModel);
       },
     );
   }
