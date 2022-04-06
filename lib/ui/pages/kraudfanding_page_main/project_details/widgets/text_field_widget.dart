@@ -95,7 +95,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
               hintText: widget.hintText,
               hintStyle: GoogleFonts.inter(
                 fontSize: 16.sp,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w400,
                 color: AppColorUtils.GRAY_4,
               ),
               suffixIcon: widget.isPassword

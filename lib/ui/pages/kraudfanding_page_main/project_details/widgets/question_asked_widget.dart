@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
@@ -11,10 +12,10 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 class QuestionsAskedWidget extends StatelessWidget {
   const QuestionsAskedWidget({
     Key? key,
-    required this.widget,
+    required this.cardModel,
   }) : super(key: key);
 
-  final ProjectDetailsPage widget;
+  final CardModel cardModel;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class QuestionsAskedWidget extends StatelessWidget {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                             image: NetworkImage(
-                              widget.cardModel.image!,
+                              cardModel.image!,
                             ),
                             fit: BoxFit.cover),
                       ),
@@ -55,7 +56,8 @@ class QuestionsAskedWidget extends StatelessWidget {
                               color: AppColorUtils.TEXT_GREEN2,
                               fontWeight: FontWeight.w600,
                               fontSize: 14.sp,
-                              maxLines: 2),
+                              maxLines: 2,
+                          ),
                           width: 220.w,
                         ),
                         AppWidgets.textLocale(
@@ -69,7 +71,7 @@ class QuestionsAskedWidget extends StatelessWidget {
                   ],
                 ),
                 AppWidgets.text(
-                  text: widget.cardModel.infoModel![0].text!,
+                  text: cardModel.infoModel![0].text!,
                   fontWeight: FontWeight.w400,
                   fontSize: 14.sp,
                   color: AppColorUtils.TEXT_GREY2,
@@ -87,7 +89,7 @@ class QuestionsAskedWidget extends StatelessWidget {
                   color: AppColorUtils.TEXT_GREEN2,
                 ).paddingSymmetric(vertical: 8.w),
                 AppWidgets.text(
-                  text: widget.cardModel.infoModel![0].text!,
+                  text: cardModel.infoModel![0].text!,
                   fontWeight: FontWeight.w400,
                   fontSize: 14.sp,
                   color: AppColorUtils.TEXT_GREY2,

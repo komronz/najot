@@ -1,29 +1,27 @@
-import 'package:easy_localization/src/public_ext.dart';
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/text_field_widget.dart';
-import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-class SupportProjectDialog extends StatelessWidget {
-  const SupportProjectDialog({
-    Key? key,
-  }) : super(key: key);
+class PaymentHistoryDialog extends StatelessWidget {
+  const PaymentHistoryDialog({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      insetPadding: EdgeInsets.symmetric(horizontal: 20.w),
+      insetPadding:
+      EdgeInsets.symmetric(horizontal: 20.w),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
       elevation: 0,
       child: Container(
-        height: 340.w,
+        height: 260.w,
         padding: EdgeInsets.all(20.w),
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
@@ -31,52 +29,44 @@ class SupportProjectDialog extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment:
+          CrossAxisAlignment.center,
           children: [
             AppWidgets.textLocale(
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
               fontSize: 20.sp,
               color: AppColorUtils.DARK2,
               textAlign: TextAlign.center,
-              text: LocaleKeys.project_implementation,
+              text: LocaleKeys.payment_history,
             ),
             AppWidgets.textLocale(
-              fontWeight: FontWeight.w400,
+              fontWeight: FontWeight.w500,
               fontSize: 16.sp,
               color: AppColorUtils.DARK_6,
               textAlign: TextAlign.center,
-              text: LocaleKeys.enter_amount,
-            ).paddingSymmetric(vertical: 10.w),
-            TextFieldWidget(
-              hintText: "500 000 so'm",
-              onChanged: (v) {},
-              title: '',
+              text: LocaleKeys.was_implementation,
+            ).paddingOnly(top: 15.w,bottom: 5.w,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AppWidgets.textLocale(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18.sp,
+                  color: AppColorUtils.DARK2,
+                  textAlign: TextAlign.center,
+                  text: LocaleKeys.summa,
+                ),
+                AppWidgets.textLocale(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18.sp,
+                  color: AppColorUtils.PERCENT_COLOR,
+                  textAlign: TextAlign.center,
+                  text: "100 000 so'm",
+                ),
+              ],
             ),
-            RichText(
-                text: TextSpan(children: [
-              TextSpan(
-                text: "*",
-                style: TextStyle(color: AppColorUtils.RED),
-              ),
-              TextSpan(
-                text: LocaleKeys.send_payment1.tr(),
-                style: TextStyle(
-                  color: AppColorUtils.DARK3,
-                ),
-              ),
-              TextSpan(
-                text: " Najot.uz ",
-                style: TextStyle(
-                  color: AppColorUtils.BORDER_COLOR,
-                ),
-              ),
-              TextSpan(
-                text: LocaleKeys.send_payment2.tr(),
-                style: TextStyle(
-                  color: AppColorUtils.DARK3,
-                ),
-              )
-            ])).paddingSymmetric(vertical: 12.w),
+            SizedBox(height: 10.w,),
+
             ButtonCard(
               onPress: () {},
               text: LocaleKeys.switch_amount,
@@ -88,9 +78,7 @@ class SupportProjectDialog extends StatelessWidget {
               textColor: AppColorUtils.WHITE,
               borderRadius: 10,
             ),
-            SizedBox(
-              height: 12.w,
-            ),
+            SizedBox(height: 12.w,),
             ButtonCard(
               onPress: () {
                 Navigator.pop(context);

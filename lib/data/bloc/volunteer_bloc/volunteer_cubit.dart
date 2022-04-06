@@ -1,17 +1,18 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/slider_model.dart';
 
 part 'volunteer_state.dart';
 class VolunteerCubit extends Cubit<VolunteerState> {
-  VolunteerCubit() : super(VolunteerState(list: SliderModel.list));
+  VolunteerCubit() : super(VolunteerState(list: CardModel.list));
 
-  Future changeLike({required SliderModel sliderModel}) async {
-    var list = await SliderModel.list;
+  Future changeLike({required CardModel cardModel}) async {
+    var list = await CardModel.list;
 
     list.forEach((element) {
-      if (sliderModel.title == element.title) {
-        element.like = !sliderModel.like;
+      if (cardModel.title == element.title) {
+        element.isFavorite = !cardModel.isFavorite!;
       }
     });
     emit(state.copyWith(list: list));

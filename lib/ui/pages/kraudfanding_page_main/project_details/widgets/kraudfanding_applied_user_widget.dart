@@ -1,7 +1,3 @@
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -29,54 +25,9 @@ class KraudfandingAppliedUserWidgets extends StatelessWidget {
           fontSize: 10.sp,
           fontWeight: FontWeight.w400,
         ),
-        Row(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  height: 30.w,
-                  width: 30.w,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage(AppImageUtils.DEF_PERSON),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 10),
-                  height: 30.w,
-                  width: 30.w,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage(AppImageUtils.DEF_PERSON),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 20),
-                  height: 30.w,
-                  width: 30.w,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: NetworkImage(model.image!),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            AppWidgets.text(
-              text: "+${100}",
-              color: AppColorUtils.TEXT_GREEN2,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-            ).paddingOnly(left: 3),
-          ],
+        AppWidgets.circleImages(
+          image: model.image!,
+          count: 100,
         ).paddingOnly(top: 3)
       ],
     );
