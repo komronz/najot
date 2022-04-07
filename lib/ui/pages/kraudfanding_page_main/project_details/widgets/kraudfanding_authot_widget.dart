@@ -13,9 +13,11 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 
 class KraudfandingAuthorWidget extends StatelessWidget {
   final CardModel model;
+  final VoidCallback onTap;
 
   const KraudfandingAuthorWidget({
     required this.model,
+    required this.onTap,
     Key? key,
   }) : super(key: key);
 
@@ -60,14 +62,7 @@ class KraudfandingAuthorWidget extends StatelessWidget {
           ],
         ),
         ButtonCard(
-          onPress: () {
-            showDialog(
-              context: context,
-              builder: (context) {
-                return CommentToAuthorDialog();
-              },
-            );
-          },
+          onPress: onTap,
           text: LocaleKeys.ask_question,
           width: 100.w,
           height: 35.w,

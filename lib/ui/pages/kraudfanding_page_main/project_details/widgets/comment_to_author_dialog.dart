@@ -1,3 +1,4 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -39,7 +40,7 @@ class CommentToAuthorDialog extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
                 AppTextField(
-                  hintText: LocaleKeys.title_question,
+                  hintText: LocaleKeys.title_question.tr(),
                   onChanged: (v) {},
                   title: "",
                   hasTitle: false,
@@ -50,7 +51,7 @@ class CommentToAuthorDialog extends StatelessWidget {
                 AppTextField(
                   isMultiLine: true,
                   height: 170.w,
-                  hintText: LocaleKeys.write_question,
+                  hintText: LocaleKeys.write_question.tr(),
                   onChanged: (v) {},
                   title: "",
                   hasTitle: false,
@@ -67,7 +68,7 @@ class CommentToAuthorDialog extends StatelessWidget {
                     );
 
                   },
-                  text: LocaleKeys.switch_amount,
+                  text: LocaleKeys.send,
                   textSize: 16.sp,
                   fontWeight: FontWeight.w500,
                   height: 50.w,

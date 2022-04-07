@@ -52,11 +52,8 @@ abstract class  LocaleKeys {
   static const send_message = 'send_message';
   static const photo_library = 'photo_library';
   static const camera = 'camera';
-  static const write_your_comment = 'write_your_comment';
-  static const comment_title = 'comment_title';
   static const enter_amount = 'enter_amount';
   static const send_payment1 = 'send_payment1';
-  static const send_payment2 = 'send_payment2';
   static const switch_amount = 'switch_amount';
   static const about_project = 'about_project';
   static const payment_history = 'payment_history';
@@ -77,12 +74,18 @@ abstract class  LocaleKeys {
   static const prize_amount = 'prize_amount';
   static const date_implementation = 'date_implementation';
   static const buy_product = 'buy_product';
-  static const exit = 'exit';
+  static const write_your_comment = 'write_your_comment';
+  static const comment_title = 'comment_title';
   static const saved = 'saved';
   static const volunteering = 'volunteering';
   static const waiting_for_me = 'waiting_for_me';
   static const item_charity = 'item_charity';
   static const add_to_note = 'add_to_note';
+  static const exit = 'exit';
+  static const donate = 'donate';
+  static const send = 'send';
+  static const som = 'som';
+  static const person_applied = 'person_applied';
   static const jump_to_note = 'jump_to_note';
 
 }

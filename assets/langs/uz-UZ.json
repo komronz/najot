@@ -44,8 +44,7 @@
     "write_your_comment": "Izohingizni yozing",
     "comment_title": "Izoh sarlavhasi",
     "enter_amount": "Summani Kiriting",
-    "send_payment1": "Summa muallifga borib tushishini",
-    "send_payment2": "platformasi ta'minlaydi",
+    "send_payment1": "&*&Summa muallifga borib tushishini //Najot.uz// platformasi #ta'minlaydi.#",
     "switch_amount": "To'lov tizimiga o'tish",
     "about_project": "Loyiha haqida",
     "payment_history": "To'lov tarixi",
@@ -71,5 +70,9 @@
     "waiting_for_me": "Meni kutayotganlar",
     "item_charity": "Buyumlar xayriyasi",
     "add_to_note": "Eslatmaga qo'shish",
+    "donate": "Ehson qilish",
+    "send": "Yuborish",
+    "som": "so'm",
+    "person_applied": "Odam qo'lladi",
     "jump_to_note": "Eslatmaga utish"
 }

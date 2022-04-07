@@ -5,9 +5,11 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/MixTextWidget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/text_field_widget.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+import 'package:super_rich_text/super_rich_text.dart';
 
 class SupportProjectDialog extends StatelessWidget {
   const SupportProjectDialog({
@@ -48,35 +50,11 @@ class SupportProjectDialog extends StatelessWidget {
               text: LocaleKeys.enter_amount,
             ).paddingSymmetric(vertical: 10.w),
             TextFieldWidget(
-              hintText: "500 000 so'm",
+              hintText: "500 000 ${LocaleKeys.som.tr()}",
               onChanged: (v) {},
               title: '',
             ),
-            RichText(
-                text: TextSpan(children: [
-              TextSpan(
-                text: "*",
-                style: TextStyle(color: AppColorUtils.RED),
-              ),
-              TextSpan(
-                text: LocaleKeys.send_payment1.tr(),
-                style: TextStyle(
-                  color: AppColorUtils.DARK3,
-                ),
-              ),
-              TextSpan(
-                text: " Najot.uz ",
-                style: TextStyle(
-                  color: AppColorUtils.BORDER_COLOR,
-                ),
-              ),
-              TextSpan(
-                text: LocaleKeys.send_payment2.tr(),
-                style: TextStyle(
-                  color: AppColorUtils.DARK3,
-                ),
-              )
-            ])).paddingSymmetric(vertical: 12.w),
+          MixTextWidget().paddingSymmetric(vertical: 12.w),
             ButtonCard(
               onPress: () {},
               text: LocaleKeys.switch_amount,

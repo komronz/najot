@@ -51,6 +51,7 @@ class KraufandingListWidget extends StatelessWidget {
             0.6,
             true,
             CardModel.info,
+            "22.08.2022"
           );
           NavigatorService.to.pushNamed(
             ProjectDetailsPage.routeName,
