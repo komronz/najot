@@ -83,4 +83,7 @@ class AppImageUtils {
   static const String ADDING = "assets/app_icons/plus.svg";
   static const String VOLUNTEER = "assets/app_icons/volunteer.svg";
   static const String PROJECT = "assets/app_icons/project.svg";
+  static const String USERS = "assets/app_icons/users.svg";
+  static const String TRASH_RED = "assets/app_icons/trash_red.svg";
+  static const String EDIT_GREEN = "assets/app_icons/edit_green.svg";
 }

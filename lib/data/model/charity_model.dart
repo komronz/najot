@@ -12,6 +12,8 @@ class CharityModel {
   String? typeOfHelp;
   String? volunteerName;
   String? typeOfCharity;
+  List<InfoModel>? infoModel;
+
 
   CharityModel({
     this.title,
@@ -26,7 +28,8 @@ class CharityModel {
     this.collectedDate,
     this.typeOfHelp,
     this.volunteerName,
-    this.typeOfCharity
+    this.typeOfCharity,
+    this.infoModel
   });
   static final List<CharityModel> list = [
     CharityModel(
@@ -42,7 +45,8 @@ class CharityModel {
       collectedDate: "28.08.2022",
       typeOfHelp: "Oyoq kiyimi",
       volunteerName: "Abdulloh",
-      typeOfCharity: "item"
+      typeOfCharity: "item",
+      infoModel: info
     ),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
@@ -57,7 +61,8 @@ class CharityModel {
         collectedDate: "28.08.2022",
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
-        typeOfCharity: "item"
+        typeOfCharity: "item",
+        infoModel: info
     ),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
@@ -72,8 +77,8 @@ class CharityModel {
         collectedDate: "28.08.2022",
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: null,
-        typeOfCharity: "cash"
-
+        typeOfCharity: "cash",
+        infoModel: info
     ),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
@@ -88,8 +93,41 @@ class CharityModel {
         collectedDate: "28.08.2022",
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
-        typeOfCharity: "cash"
+        typeOfCharity: "cash",
+        infoModel: info
     ),
-
   ];
+
+  static final List<InfoModel> info = [
+    InfoModel(
+        "Lorem",
+        "Lorem Ipsum is simply dummy text of the printing and "
+            "typesetting industry. Lorem Ipsum has been the industry's standard dummy "
+            "text ever since the 1500s, when an unknown printer took a galley of type "
+            "and scrambled it to make a type specimen book"),
+    InfoModel(
+        "Lorem",
+        "Lorem Ipsum is simply dummy text of the printing and "
+            "typesetting industry. Lorem Ipsum has been the industry's standard dummy "
+            "text ever since the 1500s, when an unknown printer took a galley of type "
+            "and scrambled it to make a type specimen book"),
+    InfoModel(
+        "Lorem",
+        "Lorem Ipsum is simply dummy text of the printing and "
+            "typesetting industry. Lorem Ipsum has been the industry's standard dummy "
+            "text ever since the 1500s, when an unknown printer took a galley of type "
+            "and scrambled it to make a type specimen book"),
+    InfoModel(
+        "Lorem",
+        "Lorem Ipsum is simply dummy text of the printing and "
+            "typesetting industry. Lorem Ipsum has been the industry's standard dummy "
+            "text ever since the 1500s, when an unknown printer took a galley of type "
+            "and scrambled it to make a type specimen book")
+  ];
+}
+class InfoModel {
+  InfoModel(this.title, this.text);
+
+  String? title;
+  String? text;
 }

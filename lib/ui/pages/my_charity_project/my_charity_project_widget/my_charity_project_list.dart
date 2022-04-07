@@ -13,7 +13,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../charity_history_page/widgets/charity_list_widget.dart';
 import 'charity_cash_widget.dart';
-import 'my_charity_project_type_of_page.dart';
+import '../my_charity_project_type_of_page.dart';
 
 class MyCharityProjectList extends StatelessWidget {
   final List<CharityModel> list;

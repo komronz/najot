@@ -12,7 +12,6 @@ import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/pages/charity_full_page/charity_full_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
 import 'package:najot/ui/pages/counter_page/counter_page.dart';
-import 'package:najot/ui/pages/home_page/about_announcement_page/about_announcement_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/home_page/volunteer_page/project_detail_volunteer_page/project_detail_volunteer_page.dart';
 import 'package:najot/ui/pages/home_page/volunteer_page/volunteer_page.dart';
@@ -149,9 +148,9 @@ class AppRouteUtils {
         return MaterialPageRoute(
           builder: (context) => MyCharityProjectPage(),
         );
-      case MyCharityProjectFullPage.routName:
+      case MyCharityProjectFullPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => MyCharityProjectFullPage(model: settings.arguments as CharityModel),
+          builder: (context) => MyCharityProjectFullPage(cardModel: settings.arguments as CharityModel,),
         );
 
     }
