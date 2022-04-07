@@ -46,7 +46,6 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
   }
 
   _handleTabSelection() {
-
     if (_controller.indexIsChanging) {
       setState(() {});
     }
@@ -79,12 +78,16 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
                         topLeft: Radius.circular(11),
                       ),
                     ),
-                    child: TabBarWidget(_controller),
+                    child: TabBarWidget(
+                      _controller,
+                      LocaleKeys.about_project.tr(),
+                      LocaleKeys.products.tr(),
+                    ),
                   ),
                   Container(
                     child: [
-                     AboutProjectWidget(cardModel: widget.cardModel),
-                      ProductsWidget()
+                      AboutProjectWidget(cardModel: widget.cardModel),
+                      ProductsWidget(cardModel: widget.cardModel,)
                     ][_controller.index],
                   )
                 ],

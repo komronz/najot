@@ -2,6 +2,7 @@ class CardModel {
   String? type;
   String? image;
   String? name;
+  String? date;
   String? title;
   double? progres;
   bool? isFavorite;
@@ -14,6 +15,7 @@ class CardModel {
     this.progres,
     this.isFavorite,
     this.infoModel,
+      this.date,
   );
   CardModel.kraufanding(
       this.type,
@@ -22,6 +24,7 @@ class CardModel {
       this.title,
       this.progres,
       this.isFavorite,
+      this.date
       );
   CardModel.charity(
       this.type,
@@ -29,6 +32,7 @@ class CardModel {
       this.title,
       this.progres,
       this.isFavorite,
+      this.date
       );
 
 
@@ -66,28 +70,28 @@ class CardModel {
         "Drenajni kuzatish uchun mo'ljallangan",
         0.6,
         true,
-        info),
+        info,"22.08.2022"),
     CardModel(
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         "Texnalogiya",
         "Drenajni kuzatish uchun mo'ljallangan",
         0.6,
         false,
-        info),
+        info,"22.08.2022"),
     CardModel(
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         "Texnalogiya",
         "Drenajni kuzatish uchun mo'ljallangan",
         0.6,
         true,
-        info),
+        info,"22.08.2022"),
     CardModel(
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         "Texnalogiya",
         "Drenajni kuzatish uchun mo'ljallangan",
         0.6,
         true,
-        info),
+        info,"22.08.2022"),
     // CardModel("assets/images/rasm.jpg", "Texnalogiya", "Drenajni kuzatish uchun mo'ljallangan", 0.6, false),
   ];
 }

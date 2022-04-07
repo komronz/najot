@@ -10,6 +10,7 @@ class CharitySavedService {
         "Drenajni kuzatish uchun mo'ljallangan",
         0.6,
         true,
+      "22.08.2022"
     );
     var list = [
       model,
@@ -25,7 +26,8 @@ class CharitySavedService {
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         "Drenajni kuzatish uchun mo'ljallangan",
         0.6,
-        true);
+        true,
+        "22.08.2022");
     var list = [
       model,
       model,

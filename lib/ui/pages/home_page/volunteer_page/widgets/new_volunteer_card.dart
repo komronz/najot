@@ -10,7 +10,7 @@ import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/home_page/volunteer_page/project_detail_volunteer_page/project_detail_volunteer_page.dart';
+import 'package:najot/ui/pages/home_page/volunteer_page/volunteer_detail_page/volunteer_detail_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class NewVolunteerCard extends StatelessWidget {
@@ -28,7 +28,7 @@ class NewVolunteerCard extends StatelessWidget {
           GestureDetector(
             onTap: () {
               NavigatorService.to.pushNamed(
-                ProjectDetailVolunteerPage.routeName,
+                VolunteerDetailPage.routeName,
                 arguments: cardModel,
               );
             },

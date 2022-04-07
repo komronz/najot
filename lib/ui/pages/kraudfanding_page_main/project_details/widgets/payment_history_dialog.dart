@@ -43,7 +43,7 @@ class PaymentHistoryDialog extends StatelessWidget {
               fontWeight: FontWeight.w500,
               fontSize: 16.sp,
               color: AppColorUtils.DARK_6,
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.start,
               text: LocaleKeys.was_implementation,
             ).paddingOnly(top: 15.w,bottom: 5.w,),
             Row(

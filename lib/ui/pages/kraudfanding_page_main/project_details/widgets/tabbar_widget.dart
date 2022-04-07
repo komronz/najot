@@ -10,9 +10,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 class TabBarWidget extends StatelessWidget {
-  TabBarWidget(this._controller);
+  TabBarWidget(this._controller,this.title1,this.title2,);
  static int index = 0;
   TabController _controller;
+  String title1;
+  String title2;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +61,7 @@ class TabBarWidget extends StatelessWidget {
                 tabs: [
                   Tab(
                     child: Text(
-                      LocaleKeys.about_project.tr(),
+                      title1,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 14.sp,
@@ -68,7 +70,7 @@ class TabBarWidget extends StatelessWidget {
                   ),
                   Tab(
                     child: Text(
-                      LocaleKeys.products.tr(),
+                     title2,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 14.sp,

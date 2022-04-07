@@ -9,6 +9,7 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+import 'package:super_rich_text/super_rich_text.dart';
 
 class SuccessSendQuestion extends StatelessWidget {
   const SuccessSendQuestion({Key? key}) : super(key: key);
@@ -41,7 +42,13 @@ class SuccessSendQuestion extends StatelessWidget {
               fontSize: 18.sp,
               color: AppColorUtils.DARK2,
               textAlign: TextAlign.center,
-              text: "Savolingiz muvafaqiyatli yuborildi",
+              text: "Savolingiz //muvaffaqiyatli// yuborildi",
+              richText: true,
+              othersMarkers: [
+                MarkerText(marker: "//", style: TextStyle(
+                  color: AppColorUtils.GREEN_TEXT
+                ),)
+              ],
               maxLines: 2
             ),
             AppWidgets.textLocale(

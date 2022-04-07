@@ -9,6 +9,7 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comment_to_author_dialog.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comments_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_applied_user_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
@@ -129,8 +130,16 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                 maxLines: 2,
               ).paddingSymmetric(horizontal: 20.w),
               KraudfandingAuthorWidget(
-                  model: widget.cardModel)
-                  .paddingOnly(top: 15.w),
+                  model: widget.cardModel,
+              onTap: (){
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return CommentToAuthorDialog();
+                  },
+                );
+              },
+              ).paddingOnly(top: 15.w),
               SizedBox(height: 12.w),
               KraudfandingPriceWidget(
                   model: widget.cardModel),
