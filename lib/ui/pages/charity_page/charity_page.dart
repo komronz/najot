@@ -23,32 +23,33 @@ class CharityPage extends StatefulWidget {
 }
 
 class _CharityPageState extends State<CharityPage>
-  with SingleTickerProviderStateMixin{
-
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
   void dispose() {
-  _tabController.dispose();
-  super.dispose();
+    _tabController.dispose();
+    super.dispose();
   }
 
   @override
   void initState() {
-  _tabController = TabController(length: 3, vsync: this);
-  _tabController.addListener(_handleTabSelection);
-  super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+    _tabController.addListener(_handleTabSelection);
+    super.initState();
   }
 
-  _handleTabSelection() {
-  if (_tabController.indexIsChanging) {
-  setState(() {});
+  void _handleTabSelection() {
+    if (_tabController.indexIsChanging) {
+      setState(() {});
+    }
   }
-  }
+
   @override
   Widget build(BuildContext context) {
-    var   model = CharityModel(
-      title: "Anjelani operasiyasiga pul kerak!Anjelani operasiyasiga pul kerak!Anjelani operasiyasiga pul kerak!",
+    var model = CharityModel(
+      title:
+          "Anjelani operasiyasiga pul kerak!Anjelani operasiyasiga pul kerak!Anjelani operasiyasiga pul kerak!",
       applied: 100,
       author: "Abdumalik Sapoqulov Abdumalik SapoqulovAbdumalik Sapoqulov",
       createdDate: '13.03.2022',
@@ -148,7 +149,6 @@ class _CharityPageState extends State<CharityPage>
               ),
             ),
             DefaultTabController(
-
               initialIndex: 0,
               length: 3,
               child: Container(
@@ -210,7 +210,7 @@ class _CharityPageState extends State<CharityPage>
                           mainAxisSpacing: 6,
                           children: List.generate(
                             4,
-                                (index) => CharityItemWidget(
+                            (index) => CharityItemWidget(
                               onTap: () {},
                               model: model,
                             ),
@@ -227,7 +227,7 @@ class _CharityPageState extends State<CharityPage>
                           mainAxisSpacing: 6,
                           children: List.generate(
                             3,
-                                (index) => CharityItemWidget(
+                            (index) => CharityItemWidget(
                               onTap: () {},
                               model: model,
                             ),
@@ -244,7 +244,7 @@ class _CharityPageState extends State<CharityPage>
                           mainAxisSpacing: 6,
                           children: List.generate(
                             5,
-                                (index) => CharityItemWidget(
+                            (index) => CharityItemWidget(
                               onTap: () {},
                               model: model,
                             ),

@@ -36,14 +36,14 @@ class CharityFullPage extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              width: context.width,
+              width: 1.sw,
               decoration: DecorationConst.DEC_WITH_SHADOW,
               child: Column(
                 children: [
                   Stack(
                     children: [
                       SizedBox(
-                        width: context.width,
+                        width: 1.sw,
                         height: 308.w,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(11),

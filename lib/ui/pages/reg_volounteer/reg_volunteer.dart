@@ -152,7 +152,7 @@ class _RegVolunteerState extends State<RegVolunteer>
           Stack(
             children: [
               Container(
-                width: context.width,
+                width: 1.sw,
                 height: 280.w,
                 decoration: BoxDecoration(
                   color: Colors.white,
