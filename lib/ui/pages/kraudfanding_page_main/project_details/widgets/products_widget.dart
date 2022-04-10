@@ -47,7 +47,7 @@ class ProductsWidget extends StatelessWidget {
           SingleChildScrollView(
             child: Column(
               children: List.generate(
-                cardModel.infoModel!.length,
+                cardModel.productModel!.length,
                     (index) => Container(
                   padding: EdgeInsets.all(18.w),
                   decoration: BoxDecoration(
@@ -83,7 +83,7 @@ class ProductsWidget extends StatelessWidget {
                         height: 10.w,
                       ),
                       AppWidgets.text(
-                        text: cardModel.infoModel![index].text!,
+                        text: cardModel.productModel![index]!.title!,
                         maxLines: 10,
                         color: AppColorUtils.DARK3,
                         fontSize: 14,
@@ -118,9 +118,8 @@ class ProductsWidget extends StatelessWidget {
                             fontSize: 16.sp,
                           ).paddingOnly(left: 6.w),
                           AppWidgets.circleImages(
-                            image:
-                            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
-                            count: 100,
+                            image: cardModel.productModel![index]!.imgUrl!,
+                           count: 100,
                           )
                         ],
                       ),
@@ -133,7 +132,7 @@ class ProductsWidget extends StatelessWidget {
                         onPress: () {
                           NavigatorService.to.pushNamed(
                               ProductDetailPage.routeName,
-                              arguments: cardModel.infoModel![index]);
+                              arguments: cardModel.productModel![index]);
                         },
                         text: "Sotib olish",
                         color: AppColorUtils.PERCENT_COLOR,

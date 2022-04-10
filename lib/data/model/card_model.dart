@@ -1,3 +1,6 @@
+import 'package:najot/data/model/product_model.dart';
+import 'package:najot/data/services/products_service.dart';
+
 class CardModel {
   String? type;
   String? image;
@@ -6,6 +9,7 @@ class CardModel {
   String? title;
   double? progres;
   bool? isFavorite;
+  List<ProductModel?>? productModel;
   List<InfoModel>? infoModel;
 
   CardModel(
@@ -15,26 +19,28 @@ class CardModel {
     this.progres,
     this.isFavorite,
     this.infoModel,
-      this.date,
+    this.date,
+    this.productModel,
   );
-  CardModel.kraufanding(
-      this.type,
-      this.image,
-      this.name,
-      this.title,
-      this.progres,
-      this.isFavorite,
-      this.date
-      );
-  CardModel.charity(
-      this.type,
-      this.image,
-      this.title,
-      this.progres,
-      this.isFavorite,
-      this.date
-      );
 
+  CardModel.kraufanding(
+    this.type,
+    this.image,
+    this.name,
+    this.title,
+    this.progres,
+    this.isFavorite,
+    this.date,
+  );
+
+  CardModel.charity(
+    this.type,
+    this.image,
+    this.title,
+    this.progres,
+    this.isFavorite,
+    this.date,
+  );
 
   static final List<InfoModel> info = [
     InfoModel(
@@ -65,33 +71,45 @@ class CardModel {
 
   static final List<CardModel> list = [
     CardModel(
-        "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
-        "Texnalogiya",
-        "Drenajni kuzatish uchun mo'ljallangan",
-        0.6,
-        true,
-        info,"22.08.2022"),
+      "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+      "Texnalogiya",
+      "Drenajni kuzatish uchun mo'ljallangan",
+      0.6,
+      true,
+      info,
+      "22.08.2022",
+      ProductsService().getProducts(),
+    ),
     CardModel(
-        "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
-        "Texnalogiya",
-        "Drenajni kuzatish uchun mo'ljallangan",
-        0.6,
-        false,
-        info,"22.08.2022"),
+      "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+      "Texnalogiya",
+      "Drenajni kuzatish uchun mo'ljallangan",
+      0.6,
+      false,
+      info,
+      "22.08.2022",
+      ProductsService().getProducts(),
+    ),
     CardModel(
-        "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
-        "Texnalogiya",
-        "Drenajni kuzatish uchun mo'ljallangan",
-        0.6,
-        true,
-        info,"22.08.2022"),
+      "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+      "Texnalogiya",
+      "Drenajni kuzatish uchun mo'ljallangan",
+      0.6,
+      true,
+      info,
+      "22.08.2022",
+      ProductsService().getProducts(),
+    ),
     CardModel(
-        "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
-        "Texnalogiya",
-        "Drenajni kuzatish uchun mo'ljallangan",
-        0.6,
-        true,
-        info,"22.08.2022"),
+      "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+      "Texnalogiya",
+      "Drenajni kuzatish uchun mo'ljallangan",
+      0.6,
+      true,
+      info,
+      "22.08.2022",
+      ProductsService().getProducts(),
+    ),
     // CardModel("assets/images/rasm.jpg", "Texnalogiya", "Drenajni kuzatish uchun mo'ljallangan", 0.6, false),
   ];
 }

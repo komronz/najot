@@ -14,14 +14,42 @@ import 'package:najot/ui/widgets/app_search_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-class CharityPage extends StatelessWidget {
+class CharityPage extends StatefulWidget {
   const CharityPage({Key? key}) : super(key: key);
   static const String routeName = '/routeName';
 
   @override
+  State<CharityPage> createState() => _CharityPageState();
+}
+
+class _CharityPageState extends State<CharityPage>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    _tabController = TabController(length: 3, vsync: this);
+    _tabController.addListener(_handleTabSelection);
+    super.initState();
+  }
+
+  void _handleTabSelection() {
+    if (_tabController.indexIsChanging) {
+      setState(() {});
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var   model = CharityModel(
-      title: "Anjelani operasiyasiga pul kerak!Anjelani operasiyasiga pul kerak!Anjelani operasiyasiga pul kerak!",
+    var model = CharityModel(
+      title:
+          "Anjelani operasiyasiga pul kerak!Anjelani operasiyasiga pul kerak!Anjelani operasiyasiga pul kerak!",
       applied: 100,
       author: "Abdumalik Sapoqulov Abdumalik SapoqulovAbdumalik Sapoqulov",
       createdDate: '13.03.2022',
@@ -144,6 +172,7 @@ class CharityPage extends StatelessWidget {
                       fontSize: 18.sp,
                     ).paddingOnly(left: 24, top: 18),
                     TabBar(
+                      controller: _tabController,
                       enableFeedback: true,
                       labelColor: AppColorUtils.GREEN_APP,
                       unselectedLabelColor: AppColorUtils.DARK_6,
@@ -168,61 +197,60 @@ class CharityPage extends StatelessWidget {
                       indicatorPadding: EdgeInsets.only(right: 10, left: 10),
                       labelPadding: EdgeInsets.only(right: 10, left: 10),
                     ).paddingOnly(left: 15, top: 8),
-                    SizedBox(
-                      height: 1000,
-                      child: TabBarView(
-                        children: [
-                          GridView.count(
-                            shrinkWrap: true,
-                            crossAxisCount: 2,
-                            physics: ClampingScrollPhysics(),
-                            childAspectRatio: 160 / 267,
-                            padding: EdgeInsets.all(0),
-                            reverse: false,
-                            crossAxisSpacing: 8,
-                            mainAxisSpacing: 6,
-                            children: List.generate(
-                              4,
-                              (index) => CharityItemWidget(
-                                onTap: () {},
-                                model: model,
-                              ),
+                    Container(
+                      child: [
+                        GridView.count(
+                          shrinkWrap: true,
+                          crossAxisCount: 2,
+                          physics: ClampingScrollPhysics(),
+                          childAspectRatio: 160 / 267,
+                          padding: EdgeInsets.all(0),
+                          reverse: false,
+                          crossAxisSpacing: 8,
+                          mainAxisSpacing: 6,
+                          children: List.generate(
+                            4,
+                            (index) => CharityItemWidget(
+                              onTap: () {},
+                              model: model,
                             ),
                           ),
-                          GridView.count(
-                            shrinkWrap: true,
-                            crossAxisCount: 2,
-                            physics: ClampingScrollPhysics(),
-                            childAspectRatio: 160 / 267,
-                            padding: EdgeInsets.all(0),
-                            reverse: false,
-                            crossAxisSpacing: 8,
-                            mainAxisSpacing: 6,
-                            children: List.generate(
-                              3,
-                              (index) => CharityItemWidget(
-                                onTap: () {},
-                                model: model,
-                              ),
+                        ),
+                        GridView.count(
+                          shrinkWrap: true,
+                          crossAxisCount: 2,
+                          physics: ClampingScrollPhysics(),
+                          childAspectRatio: 160 / 267,
+                          padding: EdgeInsets.all(0),
+                          reverse: false,
+                          crossAxisSpacing: 8,
+                          mainAxisSpacing: 6,
+                          children: List.generate(
+                            3,
+                            (index) => CharityItemWidget(
+                              onTap: () {},
+                              model: model,
                             ),
                           ),
-                          GridView.count(
-                            shrinkWrap: true,
-                            crossAxisCount: 2,
-                            physics: ClampingScrollPhysics(),
-                            childAspectRatio: 160 / 267,
-                            padding: EdgeInsets.all(0),
-                            reverse: false,
-                            children: List.generate(
-                              5,
-                              (index) => CharityItemWidget(
-                                onTap: () {},
-                                model: model,
-                              ),
+                        ),
+                        GridView.count(
+                          shrinkWrap: true,
+                          crossAxisCount: 2,
+                          physics: ClampingScrollPhysics(),
+                          childAspectRatio: 160 / 267,
+                          padding: EdgeInsets.all(0),
+                          reverse: false,
+                          crossAxisSpacing: 8,
+                          mainAxisSpacing: 6,
+                          children: List.generate(
+                            5,
+                            (index) => CharityItemWidget(
+                              onTap: () {},
+                              model: model,
                             ),
                           ),
-                        ],
-                      ).paddingSymmetric(horizontal: 10),
+                        ),
+                      ][_tabController.index],
                     )
                   ],
                 ),

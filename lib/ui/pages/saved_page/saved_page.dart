@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/bloc/saved_page_cubit/saved_page_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/pages/saved_page/widgets/charity_list_widget.dart';
 import 'package:najot/ui/pages/saved_page/widgets/kraufanding_list_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 

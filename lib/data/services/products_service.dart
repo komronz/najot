@@ -4,7 +4,7 @@ import 'package:najot/data/model/product_model.dart';
 
 class ProductsService{
 
-  Future<List<ProductModel>?>? getProducts() async{
+  List<ProductModel> getProducts() {
     ProductModel productModel= ProductModel(
         applied: 100,
         author: "Eshonov Fakhriyor",
