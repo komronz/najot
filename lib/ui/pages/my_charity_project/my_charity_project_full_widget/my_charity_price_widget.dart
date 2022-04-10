@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/context_extension.dart';
@@ -27,20 +28,20 @@ class MyCharityPriceWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppWidgets.starTextWidget(text: "Lozim bo'lgan summa"),
+                AppWidgets.starTextWidget(text: LocaleKeys.amount_needed.tr(),),
                 AppWidgets.text(
                   text: model.totalSum!,
                   color: Color(0xFF043F3B),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
-                ).paddingOnly(top: 3.w),
+                ).paddingOnly(top: 5.w),
               ],
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 AppWidgets.textLocale(
-                  text: "E'lon berigan kun",
+                  text: LocaleKeys.date_of_announcement,
                   fontWeight: FontWeight.w400,
                   fontSize: 10.sp,
                   color: AppColorUtils.DARK_6,
@@ -50,7 +51,7 @@ class MyCharityPriceWidget extends StatelessWidget {
                   color: Color(0xFF043F3B),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
-                ).paddingOnly(top: 3.w),
+                ).paddingOnly(top: 5.w),
               ],
             )
           ],
@@ -64,13 +65,13 @@ class MyCharityPriceWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppWidgets.textLocale(
-                    text: "To'plandi",
+                    text: LocaleKeys.collected,
                     color: AppColorUtils.DARK_6,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
                   ),
                   AppWidgets.textLocale(
-                    text: "Bajarildi",
+                    text: LocaleKeys.done,
                     color: AppColorUtils.DARK_6,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,

@@ -1,22 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/data/bloc/kraudfanding_detail_cubit/kraudfanding_detail_cubit.dart';
-import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/charity_model.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/about_project_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/products_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/tabbar_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
-import 'package:najot/ui/widgets/app_widgets.dart';
 
-import '../../../../data/services/navigator_service.dart';
-import '../../../../data/utils/app_color_utils.dart';
-import '../../../data/bloc/my_project_charity_cubit/my_project_charity_cubit.dart';
-import 'my_charity_project_full_widget/about_my_charity_project_widget.dart';
+import '../../../../../data/services/navigator_service.dart';
+import '../../../../../data/utils/app_color_utils.dart';
+import '../../../../data/bloc/my_project_charity_cubit/my_project_charity_cubit.dart';
+import 'about_my_charity_project_widget.dart';
 
 class MyCharityProjectFullPage extends StatefulWidget {
   MyCharityProjectFullPage({required this.cardModel});
@@ -75,8 +67,7 @@ class _MyCharityProjectFullPageState extends State<MyCharityProjectFullPage>
                     child: [
                       AboutMyCharityProjectWidget(model: widget.cardModel),
                     ][_controller.index],
-                  )
-
+                  ),
             );
           },
         ),

@@ -68,7 +68,7 @@ class _MyCharityCommentsWidgetState extends State<MyCharityCommentsWidget> {
                       SizedBox(
                         child:
                         AppWidgets.text(
-                          text: "Zo'r loyiha",
+                          text: LocaleKeys.great_project,
                           color: AppColorUtils
                               .TEXT_GREEN2,
                           fontWeight:

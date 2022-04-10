@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,13 +6,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/my_charity_project/my_charity_project_cubit.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/ui/pages/home_page/widget/volunteer_card_widget.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 
 import '../../../data/config/const/decoration_const.dart';
 import '../../../data/utils/app_color_utils.dart';
 import '../../../data/utils/app_image_utils.dart';
 import '../../widgets/app_widgets.dart';
-import '../charity_history_page/widgets/charity_list_widget.dart';
 import '../charity_history_page/widgets/kraufanding_list_widget.dart';
 import 'my_charity_project_widget/my_charity_project_list.dart';
 
@@ -23,8 +23,8 @@ class MyCharityProjectPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context)=>MyCharityProjectCubit(),
-      child: BlocBuilder<MyCharityProjectCubit,MyCharityProjectState>(
+      create: (context) => MyCharityProjectCubit(),
+      child: BlocBuilder<MyCharityProjectCubit, MyCharityProjectState>(
         builder: (context, state) => Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
@@ -40,14 +40,15 @@ class MyCharityProjectPage extends StatelessWidget {
                     height: 35.w,
                     width: 35.w,
                   ),
-                  onTap: () {
-
-                  },
+                  onTap: () {},
                 ),
-                AppWidgets.textLocale(
-                  text: "Loyiha va e'lonlar",
-                  fontSize: 25.sp,
-                  fontWeight: FontWeight.w600,
+                Expanded(
+                  child: AppWidgets.textLocale(
+                    text: LocaleKeys.projects_and_ads,
+                    fontSize: 25.sp,
+                    fontWeight: FontWeight.w600,
+                    textAlign: TextAlign.center
+                  ),
                 ),
                 SvgPicture.asset(
                   AppImageUtils.NOTIFICATION,
@@ -60,13 +61,14 @@ class MyCharityProjectPage extends StatelessWidget {
           ),
           body: _buildBody(context, state),
         ),
-        ),
-      );
+      ),
+    );
   }
+
   Widget _buildBody(
-      BuildContext context,
-      MyCharityProjectState state,
-      ) {
+    BuildContext context,
+    MyCharityProjectState state,
+  ) {
     if (state.isLoading) {
       return Center(
         child: CircularProgressIndicator(),
@@ -102,9 +104,9 @@ class MyCharityProjectPage extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
               tabs: [
-                Text("Kraufanding"),
-                Text("Volontorlik"),
-                Text("Xayriya"),
+                Text(LocaleKeys.crowdfunding.tr()),
+                Text(LocaleKeys.volunteering.tr()),
+                Text(LocaleKeys.charity.tr()),
               ],
               isScrollable: true,
               indicatorWeight: 1.5,
@@ -113,8 +115,11 @@ class MyCharityProjectPage extends StatelessWidget {
               // padding: EdgeInsets.only(right: 10),
               // indicatorPadding: EdgeInsets.only(right: 10, left: 10),
               // labelPadding: EdgeInsets.only(right: 10, left: 10),
-            ).paddingOnly(left: 15, top: 10, bottom: 10,),
-
+            ).paddingOnly(
+              left: 15,
+              top: 10,
+              bottom: 10,
+            ),
             Expanded(
               child: TabBarView(
                 children: [

@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/charity_model.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
@@ -78,7 +80,7 @@ class CharityItemProjectWidget extends StatelessWidget {
                     maxLines: 2,
                   ),
                   AppWidgets.textLocale(
-                    text: "Yordam turi",
+                    text: LocaleKeys.support_type,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
                     color: AppColorUtils.DARK_6,
@@ -90,7 +92,7 @@ class CharityItemProjectWidget extends StatelessWidget {
                     color: AppColorUtils.GREEN_TEXT,
                   ).paddingOnly(top: 3.w, bottom: 11.h),
                   AppWidgets.starTextWidget(
-                    text: "Volontyor",
+                    text: LocaleKeys.volunteering.tr(),
                     fontSize: 10.sp,
                   ).paddingOnly(
                     bottom: 3.h,
@@ -108,7 +110,7 @@ class CharityItemProjectWidget extends StatelessWidget {
                         ),
                       ).paddingOnly(right: 5),
                       AppWidgets.textLocale(
-                        text: "Kutilmoqda",
+                        text: LocaleKeys.expected,
                         fontSize: 12.sp,
                         color: Color(0xFFE8B811),
                         fontWeight: FontWeight.w600,

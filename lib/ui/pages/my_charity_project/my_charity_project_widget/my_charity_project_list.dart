@@ -1,19 +1,13 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/charity_model.dart';
-import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/charity_full_page/charity_full_page.dart';
-import 'package:najot/ui/pages/charity_history_page/widgets/charity_list_item_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 
-import '../../charity_history_page/widgets/charity_list_widget.dart';
-import 'charity_cash_widget.dart';
-import '../my_charity_project_type_of_page.dart';
+import 'my_charity_project_type_of_page.dart';
 
 class MyCharityProjectList extends StatelessWidget {
   final List<CharityModel> list;
@@ -35,13 +29,13 @@ class MyCharityProjectList extends StatelessWidget {
             fit: BoxFit.none,
           ).paddingOnly(top: 80.w),
           AppWidgets.textLocale(
-            text: "Hozircha hech narsa topilmadi",
+            text: LocaleKeys.nothing_found_yet,
             fontSize: 18.sp,
             fontWeight: FontWeight.w600,
             maxLines: 2,
             textAlign: TextAlign.center,
             color: AppColorUtils.GRAY_4,
-          ).paddingOnly(top: 20, right: 50,left: 50),
+          ).paddingOnly(top: 20.w, right: 50.w,left: 50.w,),
         ],
       );
     }

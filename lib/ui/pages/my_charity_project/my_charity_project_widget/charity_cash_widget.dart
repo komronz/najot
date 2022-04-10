@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -26,7 +27,7 @@ class CharityCashWidget extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(right: 10),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColorUtils.WHITE,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
@@ -47,8 +48,9 @@ class CharityCashWidget extends StatelessWidget {
                     children: [
                       Expanded(
                         child: ClipRRect(
-                          borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(12),),
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(12),
+                          ),
                           child: CachedNetworkImage(
                             placeholder: (context, url) => Center(
                               child: CircularProgressIndicator(),
@@ -62,7 +64,6 @@ class CharityCashWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-
                 ],
               ),
               flex: 1,
@@ -84,7 +85,9 @@ class CharityCashWidget extends StatelessWidget {
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColorUtils.DARK_6,
-                      ).paddingOnly(right: 5.w,),
+                      ).paddingOnly(
+                        right: 5.w,
+                      ),
                       AppWidgets.text(
                         fontSize: 12.h,
                         text: "${model.percent.toString().split(".").first}%",
@@ -92,7 +95,9 @@ class CharityCashWidget extends StatelessWidget {
                         color: AppColorUtils.BLUE_PERCENT,
                       ),
                     ],
-                  ).paddingOnly(top: 12.w,),
+                  ).paddingOnly(
+                    top: 12.w,
+                  ),
                   LinearPercentIndicator(
                     animation: true,
                     padding: EdgeInsets.all(0),
@@ -101,13 +106,18 @@ class CharityCashWidget extends StatelessWidget {
                     percent: model.percent! / 100,
                     progressColor: AppColorUtils.PERCENT_COLOR,
                     backgroundColor: AppColorUtils.PERCENT_COLOR2,
-                  ).paddingOnly(top: 8.w, bottom: 10.h,),
+                  ).paddingOnly(
+                    top: 8.w,
+                    bottom: 10.h,
+                  ),
                   Expanded(
                     child: AppWidgets.starTextWidget(
-                        text: "Sanagacha to'planishi kerak",
+                      text: LocaleKeys.must_be_collected_by_date.tr(),
                       fontSize: 9.sp,
                       hasStar: true,
-                    ).paddingOnly(bottom: 7.h,),
+                    ).paddingOnly(
+                      bottom: 7.h,
+                    ),
                   ),
                   Row(
                     children: [
@@ -117,15 +127,13 @@ class CharityCashWidget extends StatelessWidget {
                         height: 11.w,
                       ).paddingOnly(right: 2),
                       AppWidgets.textLocale(
-                        text:": ${model.collectedDate!}" ,
+                        text: ": ${model.collectedDate!}",
                         color: AppColorUtils.BLUE_TEXT,
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w500,
                       ),
                     ],
                   ),
-
-
                 ],
               ).paddingSymmetric(vertical: 14, horizontal: 12),
               flex: 1,
@@ -137,4 +145,3 @@ class CharityCashWidget extends StatelessWidget {
     );
   }
 }
-

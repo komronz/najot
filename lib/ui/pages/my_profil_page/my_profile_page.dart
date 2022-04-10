@@ -99,7 +99,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                               Container(
                                 margin: EdgeInsets.only(left: 5),
                                 child: AppWidgets.textLocale(
-                                    text: LocaleKeys.Normal_user,
+                                    text: LocaleKeys.normal_user,
                                     color: Color(0xFF0344A7),
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.w600),

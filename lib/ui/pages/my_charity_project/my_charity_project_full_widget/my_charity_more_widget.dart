@@ -2,9 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/model/card_model.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/project_details_widgets.dart';
 import 'package:najot/ui/pages/my_charity_project/my_charity_project_full_widget/my_charity_project_details_widgets.dart';
 
 import '../../../../data/model/charity_model.dart';
