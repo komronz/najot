@@ -7,12 +7,9 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/ui/pages/home_page/volunteer_page/volunteer_detail_page/widgets/volunteer_donate_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/about_project_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/products_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/tabbar_widget.dart';
+import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_donate_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
-import 'package:najot/ui/widgets/app_widgets.dart';
 
 import 'widgets/about_project_volunteer_widget.dart';
 
