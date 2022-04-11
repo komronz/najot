@@ -17,6 +17,7 @@ class CharityHistoryCubit extends Cubit<CharityHistoryState> {
       var charityList = await service.getCharityList();
 
       ///TODO cardmodelni kraufanding modelga o'zgartirish
+      /// TODO: WARNING: crowdFounding
       var kraufandingList = await service.getKraufandingList();
 
       emit(

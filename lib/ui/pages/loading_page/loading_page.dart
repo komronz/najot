@@ -32,7 +32,7 @@ class LoadingPage extends StatelessWidget {
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w600,
                   color: AppColors.BLACK,
-                ).paddingOnly(top: 14.h),
+                ).paddingOnly(top: 14.w),
               ],
             ),
           ),
