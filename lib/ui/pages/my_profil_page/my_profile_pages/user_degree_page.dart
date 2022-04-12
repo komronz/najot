@@ -110,7 +110,7 @@ class UserDegreePage extends StatelessWidget {
                                 children: [
                                   Container(
                                     padding: EdgeInsets.all(1),
-                                    height: 14.h,
+                                    height: 14.w,
                                     width: 14.w,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),

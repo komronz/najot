@@ -1,6 +1,6 @@
 part of 'my_charity_project_cubit.dart';
 
-class MyCharityProjectState extends Equatable {
+class MyProjectAndAnnouncementsPagesState extends Equatable {
   final List<CharityModel> charityList;
   final List<KraufandingModel> kraufandingList;
   final List<VolunteeringModel> volunteeringList;
@@ -8,7 +8,7 @@ class MyCharityProjectState extends Equatable {
   final bool hasConnection;
   final bool isLoading;
 
-  MyCharityProjectState({
+  MyProjectAndAnnouncementsPagesState({
     this.charityList = const [],
     this.kraufandingList = const [],
     this.volunteeringList = const [],
@@ -17,7 +17,7 @@ class MyCharityProjectState extends Equatable {
     this.isLoading = false
   });
 
-  MyCharityProjectState copyWith({
+  MyProjectAndAnnouncementsPagesState copyWith({
     List<CharityModel>? charityList,
     List<KraufandingModel>? kraufandingList,
     List<VolunteeringModel>? volunteeringList,
@@ -25,7 +25,7 @@ class MyCharityProjectState extends Equatable {
     bool? hasConnection,
     bool? isLoading,
   }) {
-    return MyCharityProjectState(
+    return MyProjectAndAnnouncementsPagesState(
       charityList: charityList ?? this.charityList,
       kraufandingList: kraufandingList ?? this.kraufandingList,
       volunteeringList: volunteeringList ?? this.volunteeringList,

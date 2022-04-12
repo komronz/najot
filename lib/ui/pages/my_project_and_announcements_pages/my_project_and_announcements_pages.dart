@@ -7,6 +7,7 @@ import 'package:najot/data/bloc/my_charity_project/my_charity_project_cubit.dart
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/my_volunteering_project_page.dart';
 
 import '../../../data/config/const/decoration_const.dart';
 import '../../../data/utils/app_color_utils.dart';
@@ -15,16 +16,16 @@ import '../../widgets/app_widgets.dart';
 import '../charity_history_page/widgets/kraufanding_list_widget.dart';
 import 'my_charity_project_widget/my_charity_project_list.dart';
 
-class MyCharityProjectPage extends StatelessWidget {
-  static const String routeName = '/myCharityProjectPage';
+class MyProjectAndAnnouncementsPages extends StatelessWidget {
+  static const String routeName = '/myProjectAndAnnouncementsPages';
 
-  const MyCharityProjectPage({Key? key}) : super(key: key);
+  const MyProjectAndAnnouncementsPages({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MyCharityProjectCubit(),
-      child: BlocBuilder<MyCharityProjectCubit, MyCharityProjectState>(
+      create: (context) => MyProjectAndAnnouncementsPagesCubit(),
+      child: BlocBuilder<MyProjectAndAnnouncementsPagesCubit, MyProjectAndAnnouncementsPagesState>(
         builder: (context, state) => Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
@@ -67,7 +68,7 @@ class MyCharityProjectPage extends StatelessWidget {
 
   Widget _buildBody(
     BuildContext context,
-    MyCharityProjectState state,
+      MyProjectAndAnnouncementsPagesState state,
   ) {
     if (state.isLoading) {
       return Center(
@@ -124,7 +125,7 @@ class MyCharityProjectPage extends StatelessWidget {
               child: TabBarView(
                 children: [
                   KraufandingListWidget(list: []),
-                  KraufandingListWidget(list: []),
+                  MyVolunteeringProjectPage(list: state.volunteeringList),
                   MyCharityProjectList(list: state.charityList)
                 ],
               ),

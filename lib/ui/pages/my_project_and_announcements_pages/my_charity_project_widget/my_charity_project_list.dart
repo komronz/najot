@@ -11,6 +11,7 @@ import 'my_charity_project_type_of_page.dart';
 
 class MyCharityProjectList extends StatelessWidget {
   final List<CharityModel> list;
+
   const MyCharityProjectList({
     required this.list,
     Key? key,
@@ -35,7 +36,11 @@ class MyCharityProjectList extends StatelessWidget {
             maxLines: 2,
             textAlign: TextAlign.center,
             color: AppColorUtils.GRAY_4,
-          ).paddingOnly(top: 20.w, right: 50.w,left: 50.w,),
+          ).paddingOnly(
+            top: 20.w,
+            right: 80.w,
+            left: 80.w,
+          ),
         ],
       );
     }
@@ -43,24 +48,25 @@ class MyCharityProjectList extends StatelessWidget {
       child: Column(
         children: [
           GridView.count(
-          shrinkWrap: true,
-          crossAxisCount: 2,
-          physics: ClampingScrollPhysics(),
-          childAspectRatio: 168 / 298,
-          padding: EdgeInsets.all(0),
-          reverse: false,
-          children: List.generate(
-            list.length,
-                (index) => MyCharityProjectTypeOfPage(
-                  charityModel: list[index],
+            shrinkWrap: true,
+            crossAxisCount: 2,
+            physics: ClampingScrollPhysics(),
+            childAspectRatio: 168 / 298,
+            padding: EdgeInsets.all(0),
+            reverse: false,
+            children: List.generate(
+              list.length,
+              (index) => MyCharityProjectTypeOfPage(
+                charityModel: list[index],
+              ),
             ),
           ),
-        ),
-
         ],
-      ).paddingOnly(left: 20,top: 10,right: 10,),
+      ).paddingOnly(
+        left: 20,
+        top: 10,
+        right: 10,
+      ),
     );
-
   }
 }
-

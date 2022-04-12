@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../../data/utils/app_image_utils.dart';
 
@@ -19,7 +21,7 @@ class blueCheckWidgets extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.all(1),
-            height: 14.h,
+            height: 14.w,
             width: 14.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
@@ -32,15 +34,16 @@ class blueCheckWidgets extends StatelessWidget {
             child: SvgPicture.asset(
               AppImageUtils.CHECK_SMALL,
             ),
-          ),
-          SizedBox(width: 8),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 14.sp,
-              color: Color(0xFF6D6E71),
-              fontWeight: FontWeight.w500,
-            ),
+          ).paddingOnly(top: 5.w),
+          SizedBox(width: 8.w),
+          Expanded(
+            child: AppWidgets.textLocale(
+                fontSize: 14.sp,
+                color: Color(0xFF6D6E71),
+                fontWeight: FontWeight.w500,
+              text: title,
+              maxLines: 2,
+              ),
           ),
         ],
       ),
@@ -56,14 +59,13 @@ class greenCheckWidgets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 37.h,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
             padding: EdgeInsets.all(1),
-            height: 14.h,
+            height: 14.w,
             width: 14.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
@@ -77,19 +79,20 @@ class greenCheckWidgets extends StatelessWidget {
               AppImageUtils.CHECK_SMALL,
               color: Color(0xFF038D69),
             ),
-          ),
+          ).paddingOnly(top: 5.w),
           SizedBox(width: 8),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 14.sp,
-              color: Color(0xFF6D6E71),
-              fontWeight: FontWeight.w500,
-            ),
+          Expanded(
+            child: AppWidgets.textLocale(
+                fontSize: 14.sp,
+                color: Color(0xFF6D6E71),
+                fontWeight: FontWeight.w500,
+              text: title,
+              maxLines: 2,
+              ),
           ),
         ],
       ),
-    );
+    ).paddingOnly(top: 5.w);
   }
 }
 

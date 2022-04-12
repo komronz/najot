@@ -9,16 +9,16 @@ import '../../model/kraufanding_model.dart';
 
 part 'my_charity_project_state.dart';
 
-class MyCharityProjectCubit extends Cubit<MyCharityProjectState> {
-  static MyCharityProjectCubit get to => GetIt.I<MyCharityProjectCubit>();
+class MyProjectAndAnnouncementsPagesCubit extends Cubit<MyProjectAndAnnouncementsPagesState> {
+  static MyProjectAndAnnouncementsPagesCubit get to => GetIt.I<MyProjectAndAnnouncementsPagesCubit>();
 
   static Future init() async {
     GetIt.instance
-      ..registerSingleton<MyCharityProjectCubit>(MyCharityProjectCubit());
+      ..registerSingleton<MyProjectAndAnnouncementsPagesCubit>(MyProjectAndAnnouncementsPagesCubit());
   }
 
-  MyCharityProjectCubit()
-      : super(MyCharityProjectState(
+  MyProjectAndAnnouncementsPagesCubit()
+      : super(MyProjectAndAnnouncementsPagesState(
             volunteeringList: VolunteeringModel.list,
             charityList: CharityModel.list,
             kraufandingList: KraufandingModel.list));

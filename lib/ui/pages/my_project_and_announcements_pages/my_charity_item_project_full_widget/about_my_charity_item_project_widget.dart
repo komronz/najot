@@ -3,40 +3,38 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/my_charity_project/my_charity_project_full_widget/my_charity_support_list_page.dart';
-
 import '../../../../data/bloc/my_charity_support_list_cubit/my_charity_support_list_cubit.dart';
 import '../../../../data/config/const/decoration_const.dart';
+import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/model/charity_model.dart';
-import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
+import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
-import 'my_charity_applied_user_widget.dart';
-import 'my_charity_comments_widget.dart';
-import 'my_charity_delete_project_dialog.dart';
-import 'my_charity_edit_project_dialog.dart';
-import 'my_charity_more_widget.dart';
-import 'my_charity_news_widget.dart';
-import 'my_charity_price_widget.dart';
-import 'my_charity_question_asked_widget.dart';
+import '../my_charity_project_full_widget/my_charity_applied_user_widget.dart';
+import '../my_charity_project_full_widget/my_charity_comments_widget.dart';
+import '../my_charity_project_full_widget/my_charity_more_widget.dart';
+import '../my_charity_project_full_widget/my_charity_news_widget.dart';
+import '../my_charity_project_full_widget/my_charity_price_widget.dart';
+import '../my_charity_project_full_widget/my_charity_question_asked_widget.dart';
+import 'my_charity_item_author_widget.dart';
+import 'my_charity_item_price_widget.dart';
 
-class AboutMyCharityProjectWidget extends StatefulWidget {
-  const AboutMyCharityProjectWidget({required this.model});
+class AboutMyCharityItemProjectWidget extends StatefulWidget {
+  const AboutMyCharityItemProjectWidget({required this.model});
 
   final CharityModel model;
 
   @override
-  _AboutMyCharityProjectWidgetState createState() =>
-      _AboutMyCharityProjectWidgetState();
+  _AboutMyCharityItemProjectWidgetState createState() =>
+      _AboutMyCharityItemProjectWidgetState();
 }
 
-class _AboutMyCharityProjectWidgetState
-    extends State<AboutMyCharityProjectWidget> with TickerProviderStateMixin {
+class _AboutMyCharityItemProjectWidgetState
+    extends State<AboutMyCharityItemProjectWidget>
+    with TickerProviderStateMixin {
   late TabController _tabController;
   MyCharitySupportListCubit cubit = MyCharitySupportListCubit();
 
@@ -88,55 +86,39 @@ class _AboutMyCharityProjectWidgetState
                               errorWidget: (context, url, error) =>
                                   Icon(Icons.error),
                             ),
-                          ).paddingSymmetric(horizontal: 20, vertical: 20),
+                          ).paddingSymmetric(vertical: 20.w),
                         ),
                         Align(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              AppWidgets.appButton(
-                                color: AppColorUtils.BLUE,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                width: 128.w,
-                                height: 36.w,
-                                textColor: AppColorUtils.WHITE,
-                                title: LocaleKeys.used,
-                                borderRadius: 12,
-                                onTap: () {
-                                  NavigatorService.to.pushReplacementNamed(
-                                      MyCharitySupportListPage.routeName,
-                                      arguments: state.cardList);
-                                },
-                                icon: SvgPicture.asset(AppImageUtils.USERS),
-                              ).paddingOnly(right: 17.w),
                               InkWell(
                                 child:
                                     SvgPicture.asset(AppImageUtils.TRASH_RED),
-                                onTap: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return MyCharityDeleteProjectDialog();
-                                    },
-                                  );
-                                },
+                                // onTap: () {
+                                //   showDialog(
+                                //     context: context,
+                                //     builder: (context) {
+                                //       return MyCharityDeleteProjectDialog();
+                                //     },
+                                //   );
+                                // },
                               ).paddingOnly(right: 12.w),
                               InkWell(
                                 child:
                                     SvgPicture.asset(AppImageUtils.EDIT_GREEN),
-                                onTap: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return MyCharityEditProjectDialog();
-                                    },
-                                  );
-                                },
+                                // onTap: () {
+                                //   showDialog(
+                                //     context: context,
+                                //     builder: (context) {
+                                //       return MyCharityEditProjectDialog();
+                                //     },
+                                //   );
+                                // },
                               ),
                             ],
                           ),
-                        ).paddingOnly(top: 35.h, right: 35.w),
+                        ).paddingOnly(top: 35.h, right: 15.w),
                         // Positioned(
                         //   bottom: 260.h,
                         //   right: 35.w,
@@ -178,49 +160,53 @@ class _AboutMyCharityProjectWidgetState
                       fontSize: 20.sp,
                       color: AppColorUtils.DARK2,
                       maxLines: 10,
-                    ).paddingSymmetric(horizontal: 20),
-                    MyCharityPriceWidget(model: widget.model)
-                        .paddingOnly(top: 18.w),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        MyCharityAppliedUserWidget(model: widget.model),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            AppWidgets.starTextWidget(
-                              text: LocaleKeys.must_be_collected_by_date,
-                            ),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.calendar_today_outlined,
-                                  color: AppColorUtils.BLUE_PERCENT,
-                                  size: 14.sp,
-                                ),
-                                AppWidgets.text(
-                                  text: "25.02.2022",
-                                  color: AppColorUtils.BLUE_PERCENT,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14.sp,
-                                ).paddingOnly(left: 6.w),
-                              ],
-                            ).paddingOnly(top: 3.w)
-                          ],
-                        ).paddingOnly(left: 30.w)
-                      ],
-                    ).paddingSymmetric(
-                      horizontal: 20.w,
-                      vertical: 18.w,
-                    )
+                    ),
+                    MyCharityItemPriceWidget(model: widget.model).paddingOnly(
+                      top: 18.w,
+                      bottom: 12.w,
+                    ),
+                    widget.model.volunteerName == null
+                        ? Column(
+                            children: [
+                              AppWidgets.starTextWidget(
+                                text: LocaleKeys.volunteer.tr(),
+                                fontSize: 12.sp,
+                              ).paddingOnly(
+                                bottom: 3.h,
+                              ),
+                              Row(
+                                children: [
+                                  Container(
+                                    width: 14.w,
+                                    height: 14.w,
+                                    child: CircularProgressIndicator(
+                                      color: Color(0xFFE8B811),
+                                      backgroundColor: AppColorUtils.WHITE,
+                                      strokeWidth: 2,
+                                    ),
+                                  ).paddingOnly(right: 5,),
+                                  AppWidgets.textLocale(
+                                    text: LocaleKeys.expected,
+                                    fontSize: 14.sp,
+                                    color: Color(0xFFE8B811),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ],
+                              ).paddingOnly(bottom: 12.w,),
+                            ],
+                          )
+                        : MyCharityItemAuthorWidget(
+                            onTap: () {},
+                            model: widget.model,
+                          ).paddingOnly(bottom: 18.w,),
                   ],
-                ),
+                ).paddingSymmetric(horizontal: 20.w,),
               ),
               SizedBox(
                 height: 24.w,
               ),
               Container(
-                padding: EdgeInsets.symmetric(vertical: 20.w),
+                padding: EdgeInsets.symmetric(vertical: 20.w,),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(11.0)),

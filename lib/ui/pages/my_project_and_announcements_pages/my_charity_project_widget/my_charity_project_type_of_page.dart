@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
+import 'package:najot/data/utils/app_color_utils.dart';
 
 import '../my_charity_item_project_full_widget/my_charity_item_full_page.dart';
 import '../my_charity_project_full_widget/my_charity_project_full_page.dart';
@@ -16,6 +17,7 @@ class MyCharityProjectTypeOfPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColorUtils.WHITE,
       body: charityModel.typeOfCharity == "cash"
           ? CharityCashWidget(
               model: charityModel,

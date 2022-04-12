@@ -89,4 +89,5 @@ class AppImageUtils {
   static const String TRASH = "assets/app_icons/trash.svg";
   static const String EDIT_DEMO = "assets/app_icons/edit_demo.svg";
   static const String CHARITY_HAND = "assets/app_icons/charity_hand.svg";
+  static const String VOLUNTEER_HANDS = "assets/app_icons/volunteer_hands.svg";
 }

@@ -109,5 +109,4 @@ abstract class  LocaleKeys {
   static const item_type = 'item_type';
   static const address = 'address';
 
-
 }
