@@ -98,13 +98,10 @@ abstract class  LocaleKeys {
   static const we_help = 'we_help';
   static const advertising = 'advertising';
   static const item_type = 'item_type';
-  static const charity = 'charity';
-  static const normal_user = 'normal_user';
   static const charity_history = 'charity_history';
   static const my_products = 'my_products';
   static const project_rules = 'project_rules';
   static const about_us = 'about_us';
-  static const jump_to_note = 'jump_to_note';
   static const projects_and_ads = 'projects_and_ads';
   static const nothing_found_yet = 'nothing_found_yet';
   static const must_be_collected_by_date = 'must_be_collected_by_date';
@@ -112,7 +109,6 @@ abstract class  LocaleKeys {
   static const expected = 'expected';
   static const date = 'date';
   static const total = 'total';
-  static const thank_you = 'thank_you';
   static const thank_you_for_your_inquiry_moderators_will_contact_you_soon = 'thank_you_for_your_inquiry_moderators_will_contact_you_soon';
   static const date_of_announcement = 'date_of_announcement';
   static const amount_needed = 'amount_needed';
@@ -133,7 +129,5 @@ abstract class  LocaleKeys {
   static const about_the_ad = 'about_the_ad';
   static const date_of_completion = 'date_of_completion';
   static const day_of_the_announcement = 'day_of_the_announcement';
-  static const item_type = 'item_type';
-  static const address = 'address';
 
 }

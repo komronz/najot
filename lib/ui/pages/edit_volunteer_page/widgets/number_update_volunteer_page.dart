@@ -24,10 +24,10 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
   User? user = HiveService.to.getUser();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext con) {
     return WillPopScope(
       onWillPop: (){
-        context.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
+        con.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
         return Future(()=>false);
       },
       child: BlocProvider(
@@ -50,7 +50,7 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                 },
                 visibleIcon: true,
                 onTapIcon: () {
-                  context.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
+                  con.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
                 },
                 icon: AppImageUtils.REMOVE,
               ),
@@ -154,6 +154,7 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                           )
                                         : NumberUpdating(
                                             state: state,
+                                      con: con,
                                           ),
                                   ),
                                 ],
