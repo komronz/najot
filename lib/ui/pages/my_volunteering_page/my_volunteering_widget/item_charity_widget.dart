@@ -60,7 +60,7 @@ class ItemCharityWidget extends StatelessWidget {
             left: 6,
           ),
           AppWidgets.starTextWidget(
-                  text: "Yordam turi",
+                  text: "Buyum turi",
                   fontSize: 10.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColorUtils.GRAY_4)
@@ -88,31 +88,37 @@ class ItemCharityWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppWidgets.textLocale(
-                              text: "Manzil",
-                              fontSize: 10.sp,
-                              fontWeight: FontWeight.w400,
-                              color: AppColorUtils.GRAY_4)
-                          .paddingOnly(bottom: 4),
+                        text: "Manzil",
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w400,
+                        color: AppColorUtils.GRAY_4,
+                      ).paddingOnly(bottom: 4),
                       AppWidgets.textLocale(
                         text: model.address!,
                         color: AppColorUtils.BLUE_TEXT,
-                        fontSize: 13.sp,
+                        fontSize: 12.sp,
                         fontWeight: FontWeight.w500,
                         maxLines: 2,
                       ),
-                    ]),
+                    ],
+                ),
               ),
               Expanded(
                 flex: 1,
                 child: Column(
                   children: [
-                    AppWidgets.starTextWidget(
-                            text: "Bajariladigan sana",
-                            fontSize: 9.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColorUtils.GRAY_4)
-                        .paddingOnly(
-                      bottom: 4,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        AppWidgets.starTextWidget(
+                                text: "Bajariladigan sana",
+                                fontSize: 9.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColorUtils.GRAY_4)
+                            .paddingOnly(
+                          bottom: 4,
+                        ),
+                      ],
                     ),
                     InkWell(
                       onTap: () async {
@@ -128,11 +134,12 @@ class ItemCharityWidget extends StatelessWidget {
                         );
                       },
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           AppWidgets.imageSvg(
-                                  path: AppImageUtils.CALENDAR_RED,
-                                  height: 12.sp)
-                              .paddingOnly(right: 5),
+                            path: AppImageUtils.CALENDAR_RED,
+                            height: 12.sp,
+                          ).paddingOnly(right: 5),
                           AppWidgets.textLocale(
                             text: model.completedDate!,
                             color: AppColorUtils.RED,
@@ -203,7 +210,10 @@ class ItemCharityWidget extends StatelessWidget {
                           ),
                         ).paddingOnly(right: 6)
                       : SizedBox(),
-                  AppWidgets.imageSvg(path: AppImageUtils.NOTIFICATION_GREY),
+                  model.isDone!
+                      ? AppWidgets.imageSvg(
+                          path: AppImageUtils.NOTIFICATION_GREY)
+                      : AppWidgets.imageSvg(path: AppImageUtils.NOTIFICATION),
                 ],
               ),
             ],

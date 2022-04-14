@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/custom_time_picker/flutter_time_picker_spinner.dart';
@@ -8,9 +7,7 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/%20my_volunteering_page/my_volunteering_widget/item_adding_success.dart';
-import 'package:najot/ui/pages/%20my_volunteering_page/my_volunteering_widget/waiting_for_adding_success.dart';
-
+import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/item_adding_success.dart';
 import '../../../../data/custom_time_picker/date_picker/date_picker_theme.dart';
 import '../../../../data/custom_time_picker/date_picker/i18n/date_picker_i18n.dart';
 import '../../../../data/custom_time_picker/date_picker/widget/date_picker_widget.dart';
@@ -18,8 +15,9 @@ import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/model/volunteering_model.dart';
 import '../../../widgets/app_widgets.dart';
 
-class WaitingForDatePickerWidget extends StatelessWidget {
-  WaitingForDatePickerWidget({
+class ItemCharityDatePickerWidget extends StatelessWidget {
+
+  ItemCharityDatePickerWidget({
     required this.selectFunction,
     required this.model,
     Key? key,
@@ -185,7 +183,7 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                           ),
                           dividerColor: AppColorUtils.DIVIDER_COLOR,
                         ),
-                      ),
+                    ),
                     ),
 
                   ],
@@ -202,9 +200,10 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                 children: [
                   AppWidgets.appButton(
                     onTap: () async {
+                      NavigatorService.to.pop();
                       await showDialog(
                         context: context,
-                        builder: (context) => WaitingForAddingSuccess(
+                        builder: (context) => ItemAddingSuccess(
                           selectFunction: (dateTime) {
                             // print(dateTime.toUtc().toString());
                             // bloc.add(VolunteerBirthDateSelected(dateTime));

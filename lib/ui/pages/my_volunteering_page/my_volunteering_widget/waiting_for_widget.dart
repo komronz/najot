@@ -1,11 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/%20my_volunteering_page/my_volunteering_widget/waiting_for_date_picker_widget.dart';
+import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/waiting_for_date_picker_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../../data/model/volunteering_model.dart';
 
@@ -59,10 +60,10 @@ class WaitingForWidget extends StatelessWidget {
             left: 6,
           ),
           AppWidgets.starTextWidget(
-              text: "Yordam turi",
-              fontSize: 10.sp,
-              fontWeight: FontWeight.w400,
-              color: AppColorUtils.GRAY_4)
+                  text: "Yordam turi",
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColorUtils.GRAY_4)
               .paddingOnly(
             bottom: 4,
             right: 6,
@@ -87,15 +88,15 @@ class WaitingForWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppWidgets.textLocale(
-                          text: "Manzil",
-                          fontSize: 10.sp,
-                          fontWeight: FontWeight.w400,
-                          color: AppColorUtils.GRAY_4)
-                          .paddingOnly(bottom: 4),
+                        text: "Manzil",
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w400,
+                        color: AppColorUtils.GRAY_4,
+                      ).paddingOnly(bottom: 4),
                       AppWidgets.textLocale(
                         text: model.address!,
                         color: AppColorUtils.BLUE_TEXT,
-                        fontSize: 13.sp,
+                        fontSize: 12.sp,
                         fontWeight: FontWeight.w500,
                         maxLines: 2,
                       ),
@@ -105,13 +106,18 @@ class WaitingForWidget extends StatelessWidget {
                 flex: 1,
                 child: Column(
                   children: [
-                    AppWidgets.starTextWidget(
-                        text: "Bajariladigan sana",
-                        fontSize: 9.sp,
-                        fontWeight: FontWeight.w400,
-                        color: AppColorUtils.GRAY_4)
-                        .paddingOnly(
-                      bottom: 4,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        AppWidgets.starTextWidget(
+                                text: "Bajariladigan sana",
+                                fontSize: 9.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColorUtils.GRAY_4)
+                            .paddingOnly(
+                          bottom: 4,
+                        ),
+                      ],
                     ),
                     InkWell(
                       onTap: () async {
@@ -127,11 +133,12 @@ class WaitingForWidget extends StatelessWidget {
                         );
                       },
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           AppWidgets.imageSvg(
-                              path: AppImageUtils.CALENDAR_RED,
-                              height: 12.sp)
-                              .paddingOnly(right: 5),
+                            path: AppImageUtils.CALENDAR_RED,
+                            height: 12.sp,
+                          ).paddingOnly(right: 5),
                           AppWidgets.textLocale(
                             text: model.completedDate!,
                             color: AppColorUtils.RED,
@@ -151,10 +158,10 @@ class WaitingForWidget extends StatelessWidget {
             left: 6,
           ),
           AppWidgets.starTextWidget(
-              text: "Telefon raqam",
-              fontSize: 10.sp,
-              fontWeight: FontWeight.w400,
-              color: AppColorUtils.GRAY_4)
+                  text: "Telefon raqam",
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColorUtils.GRAY_4)
               .paddingOnly(
             bottom: 4,
             right: 6,
@@ -189,20 +196,23 @@ class WaitingForWidget extends StatelessWidget {
                 children: [
                   model.isDone!
                       ? Container(
-                    padding: EdgeInsets.all(2),
-                    height: 14.w,
-                    width: 14.w,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Color(0xFFE8FEF2),
-                    ),
-                    child: SvgPicture.asset(
-                      AppImageUtils.CHECK_SMALL,
-                      color: Color(0xFF038D69),
-                    ),
-                  ).paddingOnly(right: 6)
+                          padding: EdgeInsets.all(2),
+                          height: 14.w,
+                          width: 14.w,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Color(0xFFE8FEF2),
+                          ),
+                          child: SvgPicture.asset(
+                            AppImageUtils.CHECK_SMALL,
+                            color: Color(0xFF038D69),
+                          ),
+                        ).paddingOnly(right: 6)
                       : SizedBox(),
-                  AppWidgets.imageSvg(path: AppImageUtils.NOTIFICATION_GREY),
+                  model.isDone!
+                      ? AppWidgets.imageSvg(
+                          path: AppImageUtils.NOTIFICATION_GREY)
+                      : AppWidgets.imageSvg(path: AppImageUtils.NOTIFICATION),
                 ],
               ),
             ],

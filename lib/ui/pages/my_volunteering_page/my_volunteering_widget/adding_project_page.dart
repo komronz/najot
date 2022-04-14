@@ -7,7 +7,7 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/%20my_volunteering_page/my_volunteering_page.dart';
+import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_page.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -99,7 +99,8 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
               style: TextStyle(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
-                  color: AppColorUtils.DARK_4),
+                  color: AppColorUtils.DARK_4,
+              ),
             ).paddingOnly(
               right: 20,
               left: 20,
@@ -114,7 +115,8 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
               style: TextStyle(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
-                  color: AppColorUtils.DARK_4),
+                  color: AppColorUtils.DARK_4,
+              ),
             ).paddingOnly(
               right: 20,
               left: 20,
@@ -127,13 +129,13 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
               isFill: true,
               isMultiLine: true,
               height: 145.w,
-              hintText: "Qisqa malumot yozing yozing",
+              hintText: "Qisqa malumot yozing",
               onChanged: (v) {},
               textInputType: TextInputType.multiline,
               title: "Loyiha haqida qisqa ma'lumot",
             ),
             AppWidgets.appButton(
-              title: "Yuborish",
+              title: LocaleKeys.send,
               onTap: () {
                 NavigatorService.to.pushReplacementNamed(MyVolunteeringPage.routeName);
               },

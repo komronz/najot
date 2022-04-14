@@ -38,15 +38,17 @@ class _MyProfilePageState extends State<MyProfilePage> {
             children: [
               Container(
                 color: Color(0xFFF6FCFA),
-                child: AppWidgets.appBarMenu(
-                  title: LocaleKeys.my_profile,
-                  onTapMenu: () {},
-                  visibleIcon: true,
-                  onTapIcon: () {
-                    NavigatorService.to.pushNamed(UserUpdatePage.routeName,
-                        arguments: context.read<MyProfileUpdateBloc>());
-                  },
-                  icon: AppImageUtils.EDIT,
+                child: Expanded(
+                  child: AppWidgets.appBarMenu(
+                    title: LocaleKeys.my_profile,
+                    onTapMenu: () {},
+                    visibleIcon: true,
+                    onTapIcon: () {
+                      NavigatorService.to.pushNamed(UserUpdatePage.routeName,
+                          arguments: context.read<MyProfileUpdateBloc>());
+                    },
+                    icon: AppImageUtils.EDIT,
+                  ),
                 ),
               ).paddingOnly(top: 10),
               Expanded(
@@ -99,7 +101,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                               Container(
                                 margin: EdgeInsets.only(left: 5),
                                 child: AppWidgets.textLocale(
-                                    text: LocaleKeys.Normal_user,
+                                    text: LocaleKeys.normal_user,
                                     color: Color(0xFF0344A7),
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.w600),
@@ -156,29 +158,31 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                    width: 283.w,
-                                    padding: EdgeInsets.only(left: 18),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                      color: Color(0xFFEDFCF9),
-                                      border: Border.all(
-                                        width: 1,
-                                        color: Color(0xFFCEE1DD),
+                                  Expanded(
+                                    child: Container(
+                                      width: 283.w,
+                                      padding: EdgeInsets.only(left: 18),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        color: Color(0xFFEDFCF9),
+                                        border: Border.all(
+                                          width: 1,
+                                          color: Color(0xFFCEE1DD),
+                                        ),
                                       ),
-                                    ),
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        enabled: false,
-                                        hintText: context
-                                            .read<MyProfileUpdateBloc>()
-                                            .state
-                                            .phoneNumber,
-                                        border: InputBorder.none,
-                                        hintStyle: TextStyle(
-                                          color: Color(0xFFBCBEC0),
-                                          fontSize: 15.sp,
-                                          fontWeight: FontWeight.w500,
+                                      child: TextField(
+                                        decoration: InputDecoration(
+                                          enabled: false,
+                                          hintText: context
+                                              .read<MyProfileUpdateBloc>()
+                                              .state
+                                              .phoneNumber,
+                                          border: InputBorder.none,
+                                          hintStyle: TextStyle(
+                                            color: Color(0xFFBCBEC0),
+                                            fontSize: 15.sp,
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -195,7 +199,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                       child: AppWidgets.imageSvg(
                                         path: AppImageUtils.EDIT,
                                       ),
-                                    ),
+                                    ).paddingOnly(left: 10.w),
                                   ),
                                 ],
                               ),

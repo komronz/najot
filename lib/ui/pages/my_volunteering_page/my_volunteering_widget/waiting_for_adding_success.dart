@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/styles/app_colors.dart';
-import 'package:najot/ui/pages/%20my_volunteering_page/my_volunteering_page.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
 import '../../../../data/model/volunteering_model.dart';
@@ -12,9 +11,9 @@ import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
 
-class ItemAddingSuccess extends StatelessWidget {
+class WaitingForAddingSuccess extends StatelessWidget {
 
-  ItemAddingSuccess(
+  WaitingForAddingSuccess(
       {required this.model, required this.selectFunction, Key? key})
       : super(key: key);
   final Function selectFunction;
@@ -43,7 +42,7 @@ class ItemAddingSuccess extends StatelessWidget {
               ).paddingOnly(top: 24.h, bottom: 14.h),
               AppWidgets.textLocale(
                 textAlign: TextAlign.center,
-                text: "Eslatma //muvaffaqiyatli// o'zgartirildi",
+                text: "Eslatma //muvaffaqiyatli// qo'shildi",
                 richText: true,
                 othersMarkers: [
                   MarkerText(
@@ -111,7 +110,7 @@ class ItemAddingSuccess extends StatelessWidget {
                     color: AppColorUtils.LIGHT_GRAY,
                     textColor: AppColorUtils.BLACK,
                     onTap: () {
-                      NavigatorService.to.pushNamedAndRemoveUntil(MyVolunteeringPage.routeName);
+                      NavigatorService.to.pop();
 
                     },
                     title: LocaleKeys.exit,

@@ -87,4 +87,11 @@ class AppImageUtils {
   static const String VOLUNTEER = "assets/app_icons/volunteer.svg";
   static const String PLUS = "assets/app_icons/plus.svg";
   static const String PROJECT = "assets/app_icons/project.svg";
+  static const String USERS = "assets/app_icons/users.svg";
+  static const String TRASH_RED = "assets/app_icons/trash_red.svg";
+  static const String EDIT_GREEN = "assets/app_icons/edit_green.svg";
+  static const String TRASH = "assets/app_icons/trash.svg";
+  static const String EDIT_DEMO = "assets/app_icons/edit_demo.svg";
+  static const String CHARITY_HAND = "assets/app_icons/charity_hand.svg";
+  static const String VOLUNTEER_HANDS = "assets/app_icons/volunteer_hands.svg";
 }
