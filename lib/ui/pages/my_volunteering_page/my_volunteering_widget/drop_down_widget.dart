@@ -93,7 +93,7 @@ class _DropDownWidgetState extends State<DropDownWidget> {
         scrollbarAlwaysShow: false,
         offset: const Offset(0, 0),
       ),
-    ).paddingSymmetric(horizontal: 20);
+    );
 
   }
 }

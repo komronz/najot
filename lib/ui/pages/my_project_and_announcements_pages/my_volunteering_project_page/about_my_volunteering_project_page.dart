@@ -25,20 +25,20 @@ import 'my_volunteering_comments_widget.dart';
 import 'my_volunteering_news_widget.dart';
 import 'my_volunteering_question_asked_widget.dart';
 
-class AboutMyCharityItemProjectWidget extends StatefulWidget {
-  static const String routeName = '/aboutMyCharityItemProjectWidget';
+class AboutMyVolunteeringItemProjectWidget extends StatefulWidget {
+  static const String routeName = '/aboutMyVolunteeringItemProjectWidget';
 
-  const AboutMyCharityItemProjectWidget({required this.model});
+  const AboutMyVolunteeringItemProjectWidget({required this.model});
 
   final VolunteeringModel model;
 
   @override
-  _AboutMyCharityItemProjectWidgetState createState() =>
-      _AboutMyCharityItemProjectWidgetState();
+  _AboutMyVolunteeringItemProjectWidgetState createState() =>
+      _AboutMyVolunteeringItemProjectWidgetState();
 }
 
-class _AboutMyCharityItemProjectWidgetState
-    extends State<AboutMyCharityItemProjectWidget>
+class _AboutMyVolunteeringItemProjectWidgetState
+    extends State<AboutMyVolunteeringItemProjectWidget>
     with TickerProviderStateMixin {
   late TabController _tabController;
 
@@ -60,6 +60,7 @@ class _AboutMyCharityItemProjectWidgetState
       setState(() {});
     }
   }
+  bool selected=true;
 
   @override
   Widget build(BuildContext context) {
@@ -221,6 +222,13 @@ class _AboutMyCharityItemProjectWidgetState
                     child: Column(
                       children: [
                         TabBar(
+                          onTap: (v){
+                            if(v==2){
+                              selected=false;
+                            }else{
+                              selected=true;
+                            }
+                          },
                           controller: _tabController,
                           enableFeedback: true,
                           labelColor: AppColorUtils.GREEN_APP,
@@ -254,15 +262,17 @@ class _AboutMyCharityItemProjectWidgetState
                                     fontSize: 14.sp,
                                   ),
                                 ),
-                                true
-                                    ? Container(
-                                  width: 7.w,
-                                  height: 7.w,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(50),
-                                      color: Colors.red),
-                                ).paddingOnly(left: 3.w, top: 2.w)
-                                    : SizedBox(),
+
+                                Visibility(
+                                  visible: selected,
+                                  child: Container(
+                                    width: 7.w,
+                                    height: 7.w,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(50),
+                                        color: Colors.red),
+                                  ).paddingOnly(left: 3.w, top: 2.w),
+                                )
                               ],
                             ),
                             Text(

@@ -6,7 +6,7 @@
 // import 'package:najot/data/utils/app_color_utils.dart';
 // import 'package:najot/data/utils/app_image_utils.dart';
 // import 'package:najot/ui/pages/charity_full_page/charity_full_page.dart';
-// import 'package:najot/ui/pages/charity_history_page/widgets/charity_list_item_widget.dart';
+// import 'package:najot/ui/pages/charity_history_page/widgets/volunteering_charity_list_item_widget.dart';
 // import 'package:najot/ui/pages/charity_page/charity_page.dart';
 // import 'package:najot/ui/pages/saved_page/widgets/charity_saved_page.dart';
 // import 'package:najot/ui/widgets/app_widgets.dart';

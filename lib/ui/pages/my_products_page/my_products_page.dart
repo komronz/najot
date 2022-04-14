@@ -2,27 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:najot/data/bloc/my_products_cubit/my_products_cubit.dart';
 import 'package:najot/data/bloc/orders_cubit/orders_cubit.dart';
 import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
+import 'package:najot/ui/pages/my_products_page/widgets/my_products_items_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-import '../../../data/bloc/orders_cubit/orders_state.dart';
-import '../../../data/localization/locale_keys.g.dart';
-import 'widgets/order_list_item_widget.dart';
+import '../../../data/bloc/my_products_cubit/my_products_state.dart';
 
-class OrdersPage extends StatelessWidget {
-  const OrdersPage({Key? key}) : super(key: key);
+class MyProductsPage extends StatelessWidget {
+  static const String routeName = "/myProductsPage";
+
+  const MyProductsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => OrdersCubit()..load(),
-      child: BlocBuilder<OrdersCubit, OrdersState>(
+      create: (context) => MyProductsCubit()..load(),
+      child: BlocBuilder<MyProductsCubit, MyProductsState>(
         builder: (context, state) => Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
@@ -39,7 +42,7 @@ class OrdersPage extends StatelessWidget {
                     width: 35.w,
                   ),
                   onTap: () {
-                    HomePage.globalKey.currentState!.openDrawer();
+                    // HomePage.globalKey.currentState!.openDrawer();
                   },
                 ),
                 AppWidgets.textLocale(
@@ -62,7 +65,7 @@ class OrdersPage extends StatelessWidget {
     );
   }
 
-  Widget _buildBody(OrdersState state, BuildContext context) {
+  Widget _buildBody(MyProductsState state, BuildContext context) {
     if (state.isLoading) {
       return Center(child: CircularProgressIndicator());
     } else if (state.hasError) {
@@ -78,7 +81,7 @@ class OrdersPage extends StatelessWidget {
     );
   }
 
-  Widget buildList(OrdersState state) {
+  Widget buildList(MyProductsState state) {
     if (state.list.isEmpty) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -86,6 +89,8 @@ class OrdersPage extends StatelessWidget {
           AppWidgets.imageSvg(path: AppImageUtils.IMG_ORDERS_EMPTY),
           AppWidgets.textLocale(
             text: LocaleKeys.you_have_not_purchased_the_product_yet,
+            maxLines: 2,
+            textAlign: TextAlign.center,
             fontWeight: FontWeight.w600,
             color: AppColorUtils.GRAY_4,
           ).paddingOnly(top: 16.w),
@@ -99,12 +104,12 @@ class OrdersPage extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (context, index) {
         if (index == state.list.length - 1) {
-          return OrdersItemsWidget(
+          return MyProductsItemsWidget(
             model: state.list[index],
             isLast: true,
           );
         }
-        return OrdersItemsWidget(
+        return MyProductsItemsWidget(
           model: state.list[index],
         );
       },

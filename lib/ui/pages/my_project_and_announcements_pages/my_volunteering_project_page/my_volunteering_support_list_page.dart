@@ -176,7 +176,8 @@ class MyVolunteeringSupportListPage extends StatelessWidget {
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w600,
                                 color: AppColorUtils.GREEN_TEXT,
-                                args: ["10 000 000"]),
+                                args: ["10 000 000"],
+                            ),
                           ],
                         ),
                       ),
@@ -224,16 +225,18 @@ class SupportListWidget extends StatelessWidget {
                           image: NetworkImage(
                             model.imgUrl!,
                           ),
-                          fit: BoxFit.cover),
+                          fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   Expanded(
                     child: AppWidgets.text(
                       text: model.volunteerName!,
-                      fontSize: 14.sp,
+                      fontSize: 13.sp,
                       fontWeight: FontWeight.w500,
                       color: AppColorUtils.DARK2,
-                    ).paddingOnly(left: 5.w),
+                    ).paddingOnly(left: 4.w,
+                    ),
                   ),
                 ],
               ),
@@ -242,7 +245,7 @@ class SupportListWidget extends StatelessWidget {
               flex: 2,
               child: AppWidgets.text(
                   text: model.createdDate!,
-                  fontSize: 14.sp,
+                  fontSize: 13.sp,
                   fontWeight: FontWeight.w500,
                   color: AppColorUtils.DARK6,
                   maxLines: 2,
@@ -253,9 +256,10 @@ class SupportListWidget extends StatelessWidget {
               child: AppWidgets.text(
                   text: "+${'10 000 000'} so'm",
                   color: AppColorUtils.TEXT_GREEN,
-                  fontSize: 14.sp,
+                  fontSize: 13.sp,
                   fontWeight: FontWeight.w500,
-                  textAlign: TextAlign.right),
+                  textAlign: TextAlign.right,
+              ),
             )
           ],
         ),

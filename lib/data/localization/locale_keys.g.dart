@@ -108,5 +108,12 @@ abstract class  LocaleKeys {
   static const day_of_the_announcement = 'day_of_the_announcement';
   static const item_type = 'item_type';
   static const address = 'address';
+  static const my_products = 'my_products';
+  static const you_have_not_purchased_the_product_yet = 'you_have_not_purchased_the_product_yet';
+  static const briefly_about_the_product = 'briefly_about_the_product';
+  static const estimated_delivery = 'estimated_delivery';
+  static const product_amount = 'product_amount';
+  static const i_accepted = 'i_accepted';
+  static const note = 'note';
 
 }

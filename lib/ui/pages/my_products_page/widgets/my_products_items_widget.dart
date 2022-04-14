@@ -5,16 +5,17 @@ import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
+import 'package:najot/data/model/product_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/charity_history_page/widgets/date_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-class OrdersItemsWidget extends StatelessWidget {
-  final KraufandingModel model;
+class MyProductsItemsWidget extends StatelessWidget {
+  final ProductModel model;
   final bool isLast;
 
-  const OrdersItemsWidget({
+  const MyProductsItemsWidget({
     required this.model,
     this.isLast = false,
     Key? key,
@@ -84,7 +85,7 @@ class OrdersItemsWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              DateWidget(date: model.createdDate!),
+              DateWidget(date: model.date!),
               AppWidgets.textLocale(
                 text: LocaleKeys.sum,
                 args: [model.totalSum!],

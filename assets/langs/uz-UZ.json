@@ -106,7 +106,14 @@
   "date_of_completion": "Bajariladigan sana",
   "day_of_the_announcement": "E'lon berigan kun",
   "item_type": "Buyum turi",
-  "address": "Manzil"
+  "address": "Manzil",
+  "my_products": "Mahsulotlarim",
+  "you_have_not_purchased_the_product_yet": "Hozircha mahsulot sotib olmagansiz",
+  "briefly_about_the_product": "Mahsulot haqida qisqa",
+  "estimated_delivery": "Taxminiy yetkazib berish",
+  "product_amount": "Mahsulot summasi",
+  "i_accepted": "Qabul qildim",
+  "note": "Eslatma"
 
 
 }

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/config/const/decoration_const.dart';
@@ -9,11 +10,20 @@ import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
+import 'package:najot/ui/pages/my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_applied_user_widget.dart';
+import 'package:najot/ui/pages/my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_more_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-class CharityFullPage extends StatelessWidget {
+import '../kraudfanding_page_main/project_details/widgets/kraudfanding_applied_user_widget.dart';
+import '../kraudfanding_page_main/project_details/widgets/more_widget.dart';
+import '../kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
+import '../my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_comments_widget.dart';
+import '../my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_news_widget.dart';
+import '../my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_question_asked_widget.dart';
+
+class CharityFullPage extends StatefulWidget {
   final CharityModel model;
 
   const CharityFullPage({
@@ -21,7 +31,32 @@ class CharityFullPage extends StatelessWidget {
     Key? key,
   }) : super(key: key);
   static const String routName = 'charityFullPage';
+  @override
+  _CharityFullPageState createState() => _CharityFullPageState();
+}
 
+class _CharityFullPageState extends State<CharityFullPage>
+    with TickerProviderStateMixin{
+  late TabController _tabController;
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    _tabController = TabController(length: 4, vsync: this);
+    _tabController.addListener(_handleTabSelection);
+    super.initState();
+  }
+
+  _handleTabSelection() {
+    if (_tabController.indexIsChanging) {
+      setState(() {});
+    }
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +83,7 @@ class CharityFullPage extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(11),
                           child: CachedNetworkImage(
-                            imageUrl: model.imgUrl!,
+                            imageUrl: widget.model.imgUrl!,
                             fit: BoxFit.cover,
                             placeholder: (context, url) => Center(
                               child: CircularProgressIndicator(),
@@ -79,18 +114,52 @@ class CharityFullPage extends StatelessWidget {
                     ],
                   ),
                   AppWidgets.text(
-                    text: model.title!,
+                    text: widget.model.title!,
                     fontWeight: FontWeight.w500,
                     fontSize: 20.sp,
                     color: AppColorUtils.DARK2,
                     maxLines: 10,
                   ).paddingSymmetric(horizontal: 20),
-                  CharityAuthorWidget(model: model).paddingOnly(top: 18.w),
-                  CharityPriceWidget(model: model).paddingOnly(top: 18.w),
-
+                  CharityAuthorWidget(model: widget.model).paddingOnly(top: 18.w),
+                  CharityPriceWidget(model: widget.model).paddingOnly(top: 18.w),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      MyCharityAppliedUserWidget(
+                        model: widget.model,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppWidgets.starTextWidget(
+                            text: "Sanagacha to'planishi kerak",
+                          ).paddingOnly(bottom: 5.w,top: 3.w,),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.calendar_today_outlined,
+                                color: AppColorUtils.BLUE_PERCENT,
+                                size: 14.sp,
+                              ),
+                              AppWidgets.text(
+                                text: "25.02.2022",
+                                color: AppColorUtils.BLUE_PERCENT,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14.sp,
+                              ).paddingOnly(left: 6.w),
+                            ],
+                          ).paddingOnly(top: 3.w)
+                        ],
+                      ).paddingOnly(left: 30.w)
+                    ],
+                  ).paddingSymmetric(
+                    horizontal: 20.w,
+                    vertical: 18.w,
+                  )
                 ],
               ),
-            )
+            ),
+
           ],
         ),
       ),

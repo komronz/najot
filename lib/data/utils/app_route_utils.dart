@@ -23,6 +23,7 @@ import 'package:najot/ui/pages/verification_page/verification_page.dart';
 import '../../ui/pages/charity_full_page/charity_full_page.dart';
 import '../../ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
 import '../../ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
+import '../../ui/pages/my_products_page/my_products_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/number_update_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/user_degree_page.dart';
@@ -33,6 +34,8 @@ import '../../ui/pages/my_project_and_announcements_pages/my_charity_project_ful
 import '../../ui/pages/my_project_and_announcements_pages/my_project_and_announcements_pages.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/about_my_volunteering_project_page.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/my_volunteering_support_list_page.dart';
+import '../../ui/pages/notification_page/notification_page.dart';
+import '../../ui/pages/volunteering_charity_history_page/volunteering_charity_history_page.dart';
 import '../model/card_model.dart';
 import '../model/charity_model.dart';
 
@@ -160,13 +163,25 @@ class AppRouteUtils {
         return MaterialPageRoute(
           builder: (context) => MyCharityItemFullPage(cardModel: settings.arguments as CharityModel,),
         );
-      case AboutMyCharityItemProjectWidget.routeName:
+      case AboutMyVolunteeringItemProjectWidget.routeName:
         return MaterialPageRoute(
-          builder: (context) => AboutMyCharityItemProjectWidget(model: settings.arguments as VolunteeringModel,),
+          builder: (context) => AboutMyVolunteeringItemProjectWidget(model: settings.arguments as VolunteeringModel,),
         );
       case MyVolunteeringSupportListPage.routeName:
         return MaterialPageRoute(
           builder: (context) => MyVolunteeringSupportListPage(list : settings.arguments as List<VolunteeringModel>,),
+        );
+      case MyProductsPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => MyProductsPage(),
+        );
+      case NotificationPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => NotificationPage(),
+        );
+      case VolunteeringCharityHistoryPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => VolunteeringCharityHistoryPage(),
         );
 
     }

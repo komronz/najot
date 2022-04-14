@@ -1,27 +1,28 @@
 
 import 'package:equatable/equatable.dart';
-import 'package:najot/data/model/kraufanding_model.dart';
+import 'package:najot/data/model/charity_model.dart';
+import 'package:najot/data/model/product_model.dart';
 
-class OrdersState extends Equatable {
-  final List<KraufandingModel> list;
+class MyProductsState extends Equatable {
+  final List<ProductModel> list;
   final bool hasError;
   final bool hasConnection;
   final bool isLoading;
 
-  OrdersState({
+  MyProductsState({
     this.list = const [],
     this.hasError = false,
     this.hasConnection = true,
     this.isLoading = false,
   });
 
-  OrdersState copyWith({
-    List<KraufandingModel>? list,
+  MyProductsState copyWith({
+    List<ProductModel>? list,
     bool? hasError,
     bool? hasConnection,
     bool? isLoading,
   }) {
-    return OrdersState(
+    return MyProductsState(
       hasError: hasError ?? this.hasError,
       isLoading: isLoading ?? this.isLoading,
       hasConnection: hasConnection ?? this.hasConnection,
