@@ -1,8 +1,10 @@
 
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -24,7 +26,7 @@ class DetailBodyPart1 extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppWidgets.starTextWidget(text: "Bajarilgan sana"),
+                AppWidgets.starTextWidget(text: LocaleKeys.done_date.tr()),
                 SizedBox(
                   height: 3.w,
                 ),
@@ -45,7 +47,7 @@ class DetailBodyPart1 extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 AppWidgets.textLocale(
-                  text: "E'lon berilgan kun",
+                  text: LocaleKeys.announcement_day,
                   fontWeight: FontWeight.w400,
                   fontSize: 10.sp,
                   color: AppColorUtils.DARK_6,
@@ -61,7 +63,7 @@ class DetailBodyPart1 extends StatelessWidget {
           ],
         ).paddingSymmetric(horizontal: 20.w),
         AppWidgets.starTextWidget(
-          text: "Yordam turi",
+          text: LocaleKeys.help_type.tr(),
           fontWeight: FontWeight.w400,
           fontSize: 10.sp,
           color: AppColorUtils.DARK_6,
@@ -74,7 +76,7 @@ class DetailBodyPart1 extends StatelessWidget {
             color: AppColorUtils.GREEN_TEXT)
             .paddingSymmetric(horizontal: 20.w),
         AppWidgets.textLocale(
-          text: "Manzil",
+          text: LocaleKeys.address,
           fontWeight: FontWeight.w400,
           fontSize: 10.sp,
           color: AppColorUtils.DARK_6,

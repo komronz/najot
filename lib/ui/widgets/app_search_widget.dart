@@ -33,6 +33,7 @@ class _AppSearchWidgetState extends State<AppSearchWidget> {
       ),
       height: 50,
       child: TextField(
+        enableSuggestions: true,
         onChanged: widget.onChange,
         decoration: InputDecoration(
           enabledBorder: _border,

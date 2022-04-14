@@ -40,6 +40,9 @@ class AppColorUtils {
   static const Color DARK_BLUE = Color(0xFF363853);
   static const Color BLUE = Color(0xFF3E7AD7);
   static const Color ORANGE = Color(0xFFFEB63D);
+  static const Color BORDER = Color(0xFFCEE1DD);
+  static const Color REG_BACK = Color(0xFFEDFCF9);
+  static const Color REG_TEXT = Color(0xFFA8C5BF);
 
   //
   static const Color GREEN_APP = Color(0xFF0BBF90);
@@ -82,6 +85,7 @@ class AppColorUtils {
   static const Color SMS_BTN3= Color(0xFF055641);
   static const Color GRAY_3= Color(0xFFE6E7E8);
   static const Color DIVIDER_COLOR= Color(0xFFD7E8E3);
+  static const Color ADD_PROJECT_COLOR= Color(0xFFEAF2FF);
 
 
 

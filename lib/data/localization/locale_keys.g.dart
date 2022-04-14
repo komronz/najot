@@ -86,6 +86,32 @@ abstract class  LocaleKeys {
   static const send = 'send';
   static const som = 'som';
   static const person_applied = 'person_applied';
+  static const new_add = 'new_add';
+  static const category = 'category';
+  static const need_summa = 'need_summa';
+  static const announcement_day = 'announcement_day';
+  static const must_collect_date = 'must_collect_date';
+  static const have_idea = 'have_idea';
+  static const we_help_you = 'we_help_you';
+  static const add_project = 'add_project';
+  static const buy = 'buy';
+  static const wait_answer = 'wait_answer';
+  static const thank_you = 'thank_you';
+  static const success_answer = 'success_answer';
+  static const all = 'all';
+  static const done_date = 'done_date';
+  static const address = 'address';
+  static const tobe_volunteer = 'tobe_volunteer';
+  static const we_to_you = 'we_to_you';
+  static const we_help = 'we_help';
+  static const advertising = 'advertising';
+  static const item_type = 'item_type';
+  static const charity = 'charity';
+  static const normal_user = 'normal_user';
+  static const charity_history = 'charity_history';
+  static const my_products = 'my_products';
+  static const project_rules = 'project_rules';
+  static const about_us = 'about_us';
   static const jump_to_note = 'jump_to_note';
 
 }

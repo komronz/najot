@@ -1,7 +1,9 @@
 
 
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
@@ -40,7 +42,7 @@ class KraudfandingBanner extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppWidgets.text(
-                      text: "G'oya bor ammo mablag' yo'qmi?",
+                      text: LocaleKeys.have_idea.tr(),
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
                       maxLines: 2,
@@ -48,7 +50,7 @@ class KraudfandingBanner extends StatelessWidget {
                     ),
                     SizedBox(height: 10.w),
                     AppWidgets.text(
-                      text: "Biz sizga yordam beramiz!",
+                      text: LocaleKeys.we_help_you.tr(),
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w300,
                       maxLines: 1,
@@ -59,7 +61,7 @@ class KraudfandingBanner extends StatelessWidget {
                       onPress: () {},
                       height: 35.w,
                       width: 146.w,
-                      text: "Loyiha qo'shish",
+                      text: LocaleKeys.add_project.tr(),
                       color: AppColorUtils.PERCENT_COLOR,
                       textColor: AppColorUtils.WHITE,
                       textSize: 12.sp,

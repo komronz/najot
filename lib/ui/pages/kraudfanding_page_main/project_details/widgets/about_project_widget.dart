@@ -154,7 +154,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                     CrossAxisAlignment.start,
                     children: [
                       AppWidgets.starTextWidget(
-                        text: "Sanagacha to'planishi kerak",
+                        text: LocaleKeys.must_collect_date.tr(),
                       ),
                       Row(
                         children: [
@@ -170,7 +170,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                             fontSize: 14.sp,
                           ).paddingOnly(left: 6.w),
                         ],
-                      ).paddingOnly(top: 3.w)
+                      ).paddingOnly(top: 10.w)
                     ],
                   ).paddingOnly(left: 30.w)
                 ],

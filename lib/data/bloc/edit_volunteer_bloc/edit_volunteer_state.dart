@@ -1,10 +1,8 @@
-import 'package:equatable/equatable.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:najot/data/utils/app_utils.dart';
+part of 'edit_volunteer_bloc.dart';
 
-import 'my_profil_update_bloc.dart';
 
-class MyProfileUpdateState extends Equatable {
+
+class EditVolunteerState extends Equatable {
   final String name;
   final String sureName;
   final String imageUrl;
@@ -18,8 +16,9 @@ class MyProfileUpdateState extends Equatable {
   final bool hasError;
   final bool nextPage;
   final XFile? userImgPath;
+  final int changePage;
 
-  const MyProfileUpdateState({
+  const EditVolunteerState({
     this.name = '',
     this.sureName = '',
     this.imageUrl = '',
@@ -33,26 +32,28 @@ class MyProfileUpdateState extends Equatable {
     this.nextPage=false,
     this.hasError = false,
     this.userImgPath,
+    this.changePage=1
   });
 
   @override
   List<Object?> get props => [
-        name,
-        sureName,
-        imageUrl,
-        phoneNumber,
-        isMan,
-        isSavedBtn,
-        nameFill,
-        sureNameFill,
-        hasError,
-        userImgPath,
-        phoneNumberFill,
-        nextPage,
-        isVisible
-      ];
+    name,
+    sureName,
+    imageUrl,
+    phoneNumber,
+    isMan,
+    isSavedBtn,
+    nameFill,
+    sureNameFill,
+    hasError,
+    userImgPath,
+    phoneNumberFill,
+    nextPage,
+    isVisible,
+    changePage
+  ];
 
-  MyProfileUpdateState copyWith({
+  EditVolunteerState copyWith({
     String? name,
     String? sureName,
     String? imageUrl,
@@ -67,8 +68,9 @@ class MyProfileUpdateState extends Equatable {
     bool? isVisible,
     bool? nextPage,
     XFile? userImgPath,
+    int? changePage
   }) {
-    return MyProfileUpdateState(
+    return EditVolunteerState(
       name: name ?? this.name,
       sureName: sureName ?? this.sureName,
       imageUrl: imageUrl ?? this.imageUrl,
@@ -82,6 +84,7 @@ class MyProfileUpdateState extends Equatable {
       nextPage: nextPage ?? this.nextPage,
       hasError: hasError ?? this.hasError,
       userImgPath: userImgPath ?? this.userImgPath,
+      changePage: changePage ?? this.changePage,
     );
   }
 }

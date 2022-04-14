@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/kraudfanding_cubit/kraud_fanding_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/KraudfandingBanner.dart';
@@ -69,7 +70,7 @@ class _KraudfandingPageState extends State<KraudfandingPage>
                   ).paddingOnly(left: 20.w, right: 20.w, bottom: 15.w),
                   KraudfandingBanner(),
                   AppWidgets.textLocale(
-                      text: "Yangi Qo'shilganlar",
+                      text: LocaleKeys.new_add,
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
                       color: AppColorUtils.DARK2)
@@ -109,7 +110,7 @@ class _KraudfandingPageState extends State<KraudfandingPage>
                           Container(
                             margin: EdgeInsets.only(left: 20.w,top: 15.w),
                             child: Text(
-                              "Kategoriyalar",
+                              LocaleKeys.category,
                               style: TextStyle(
                                 color: Color(0xFF414042),
                                 fontSize: 18.sp,

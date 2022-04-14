@@ -118,7 +118,7 @@ class _AppTextFieldState extends State<AppDisableTextField> {
               hintStyle: GoogleFonts.inter(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w500,
-                color: AppColorUtils.GRAY_4,
+                color: AppColorUtils.REG_TEXT,
               ),
             ),
             onChanged: (v) => widget.onChanged(v),

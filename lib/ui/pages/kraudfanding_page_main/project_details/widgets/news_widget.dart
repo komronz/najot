@@ -63,29 +63,36 @@ class NewsWidget extends StatelessWidget {
                                 fontSize: 14.sp,
                               ),
                             ),
-                            AppWidgets.textLocale(
-                              text: "Loyiha muallifi",
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w400,
-                              color: AppColorUtils.DARK_6,
-                            ).paddingOnly(top: 5.w),
+
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                AppWidgets.textLocale(
+                                  text: LocaleKeys.project_author,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColorUtils.DARK_6,
+                                ),
+                                SizedBox(width: 80.w,),
+                                AppWidgets.text(
+                                    text: "25.08.2022 18:19",
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColorUtils.BLUE_PERCENT,)
+                              ],
+                            ).paddingOnly(top: 5),
                           ],
                         ).paddingOnly(left: 10),
                       ],
                     ),
-                    AppWidgets.text(
-                            text: "25.08.2022 18:19",
-                            fontSize: 10.sp,
-                            fontWeight: FontWeight.w500,
-                            color: AppColorUtils.BLUE_PERCENT)
-                        .paddingOnly(bottom: 10.w),
+
                   ],
                 ),
                 AppWidgets.text(
                         text: cardModel.infoModel![0].title!,
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w600,
-                        color: AppColorUtils.BLACK)
+                        color: AppColorUtils.BLACK,)
                     .paddingOnly(
                   bottom: 7.w,
                   top: 18.w,
@@ -94,7 +101,7 @@ class NewsWidget extends StatelessWidget {
                     height: 1.5,
                     text: cardModel.infoModel![0].text!,
                     fontSize: 14.sp,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w400,
                     color: AppColorUtils.TEXT_GREY2,
                     maxLines: 40),
                 SizedBox(

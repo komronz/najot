@@ -1,22 +1,19 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/charity_page_cubit/charity_cubit.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/model/charity_model.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/charity_full_page/charity_full_page.dart';
 import 'package:najot/ui/pages/charity_page/widgets/charity_item2_widget.dart';
 import 'package:najot/ui/pages/charity_page/widgets/charity_item_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_search_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class CharityPage extends StatefulWidget {
   const CharityPage({Key? key}) : super(key: key);
@@ -44,7 +41,7 @@ class _CharityPageState extends State<CharityPage>
     super.initState();
   }
 
-  _handleTabSelection() {
+  void _handleTabSelection() {
     if (_tabController.indexIsChanging) {
       setState(() {});
     }
@@ -58,7 +55,7 @@ class _CharityPageState extends State<CharityPage>
         builder: (context, state) {
           return Scaffold(
             appBar: AppBarWithTitle(
-              title: "Xayriya",
+              title: LocaleKeys.charity.tr(),
               onPress: () {
                 NavigatorService.to.pop();
               },
@@ -103,7 +100,7 @@ class _CharityPageState extends State<CharityPage>
                             ),
                             ButtonCard(
                               onPress: () {},
-                              text: "Elon berish",
+                              text: LocaleKeys.advertising.tr(),
                               width: 126.w,
                               height: 30.w,
                               color: AppColorUtils.GREEN_APP,
@@ -121,17 +118,20 @@ class _CharityPageState extends State<CharityPage>
                     ),
                   ).paddingSymmetric(horizontal: 8),
                   AppWidgets.textLocale(
-                    text: "Yangi qo'shilganlar",
+                    text: LocaleKeys.new_add,
                     fontWeight: FontWeight.w600,
                     fontSize: 18,
-                  ).paddingOnly(top: 30.w, left: 20),
+                  ).paddingOnly(
+                    top: 30.w,
+                    left: 20.w,
+                    bottom: 7.w,
+                  ),
                   SizedBox(
                     child: SingleChildScrollView(
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       child: Row(
-                        children: List.generate(
-                            state.list.length, (index) {
+                        children: List.generate(state.list.length, (index) {
                           if (state.list[index].progres != null) {
                             return CharityItemWidget(
                               model: state.list[index],
@@ -141,8 +141,7 @@ class _CharityPageState extends State<CharityPage>
                               model: state.list[index],
                             ).paddingOnly(left: 10.w);
                           }
-                        }
-                        ),
+                        }),
                       ),
                     ),
                   ),
@@ -165,7 +164,7 @@ class _CharityPageState extends State<CharityPage>
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           AppWidgets.textLocale(
-                            text: "Kategoriyalar",
+                            text: LocaleKeys.category,
                             fontWeight: FontWeight.w600,
                             fontSize: 18.sp,
                           ).paddingOnly(left: 24, top: 18),
@@ -210,20 +209,18 @@ class _CharityPageState extends State<CharityPage>
                                 reverse: false,
                                 crossAxisSpacing: 8,
                                 mainAxisSpacing: 6,
-                                children: List.generate(
-                                  state.list.length,
-                                  (index){
-                                    if (state.list[index].progres != null) {
-                                      return CharityItemWidget(
-                                        model: state.list[index],
-                                      ).paddingOnly(left: 10.w);
-                                    } else {
-                                      return CharityItem2Widget(
-                                        model: state.list[index],
-                                      ).paddingOnly(left: 10.w);
-                                    }
+                                children:
+                                    List.generate(state.list.length, (index) {
+                                  if (state.list[index].progres != null) {
+                                    return CharityItemWidget(
+                                      model: state.list[index],
+                                    ).paddingOnly(left: 10.w);
+                                  } else {
+                                    return CharityItem2Widget(
+                                      model: state.list[index],
+                                    ).paddingOnly(left: 10.w);
                                   }
-                                ),
+                                }),
                               ),
                               GridView.count(
                                 shrinkWrap: true,
@@ -234,20 +231,18 @@ class _CharityPageState extends State<CharityPage>
                                 reverse: false,
                                 crossAxisSpacing: 8,
                                 mainAxisSpacing: 6,
-                                children: List.generate(
-                                  state.list.length,
-                                  (index) {
-                                    if (state.list[index].progres != null) {
-                                      return CharityItemWidget(
-                                        model: state.list[index],
-                                      ).paddingOnly(left: 10.w);
-                                    } else {
-                                      return CharityItem2Widget(
-                                        model: state.list[index],
-                                      ).paddingOnly(left: 10.w);
-                                    }
+                                children:
+                                    List.generate(state.list.length, (index) {
+                                  if (state.list[index].progres != null) {
+                                    return CharityItemWidget(
+                                      model: state.list[index],
+                                    ).paddingOnly(left: 10.w);
+                                  } else {
+                                    return CharityItem2Widget(
+                                      model: state.list[index],
+                                    ).paddingOnly(left: 10.w);
                                   }
-                                ),
+                                }),
                               ),
                               GridView.count(
                                 shrinkWrap: true,
@@ -258,20 +253,18 @@ class _CharityPageState extends State<CharityPage>
                                 reverse: false,
                                 crossAxisSpacing: 8,
                                 mainAxisSpacing: 6,
-                                children: List.generate(
-                                  state.list.length,
-                                  (index) {
-                                    if (state.list[index].progres != null) {
-                                      return CharityItemWidget(
-                                        model: state.list[index],
-                                      ).paddingOnly(left: 10.w);
-                                    } else {
-                                      return CharityItem2Widget(
-                                        model: state.list[index],
-                                      ).paddingOnly(left: 10.w);
-                                    }
+                                children:
+                                    List.generate(state.list.length, (index) {
+                                  if (state.list[index].progres != null) {
+                                    return CharityItemWidget(
+                                      model: state.list[index],
+                                    ).paddingOnly(left: 10.w);
+                                  } else {
+                                    return CharityItem2Widget(
+                                      model: state.list[index],
+                                    ).paddingOnly(left: 10.w);
                                   }
-                                ),
+                                }),
                               ),
                             ][_tabController.index],
                           ).paddingSymmetric(horizontal: 15.w),

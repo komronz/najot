@@ -61,7 +61,8 @@ class PaymentHistoryDialog extends StatelessWidget {
                   fontSize: 18.sp,
                   color: AppColorUtils.PERCENT_COLOR,
                   textAlign: TextAlign.center,
-                  text: "100 000 so'm",
+                  text: LocaleKeys.sum,
+                  args: ["1 000"]
                 ),
               ],
             ),

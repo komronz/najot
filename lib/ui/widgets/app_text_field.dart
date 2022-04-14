@@ -60,6 +60,7 @@ class _AppTextFieldState extends State<AppTextField> {
 
   @override
   Widget build(BuildContext context) {
+    // FocusManager.instance.primaryFocus?.unfocus();
     InputBorder _border = widget.hasError
         ? OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),

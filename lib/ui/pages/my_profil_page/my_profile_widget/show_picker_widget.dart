@@ -63,7 +63,7 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
                   AppImageUtils.USERADD,
                   width: 130,
                 ),
-        ).paddingOnly(top: 25, bottom: 24),
+        ).paddingOnly(top: 25, bottom: 4),
       ),
       onTap: () {
         _showPicker(context);

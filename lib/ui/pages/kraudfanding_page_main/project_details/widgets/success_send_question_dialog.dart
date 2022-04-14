@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -42,7 +43,7 @@ class SuccessSendQuestion extends StatelessWidget {
               fontSize: 18.sp,
               color: AppColorUtils.DARK2,
               textAlign: TextAlign.center,
-              text: "Savolingiz //muvaffaqiyatli// yuborildi",
+              text: LocaleKeys.success_answer,
               richText: true,
               othersMarkers: [
                 MarkerText(marker: "//", style: TextStyle(
@@ -56,7 +57,7 @@ class SuccessSendQuestion extends StatelessWidget {
               fontSize: 14.sp,
               color: AppColorUtils.DARK_6,
               textAlign: TextAlign.center,
-              text: "Iltimos muallif javobini kuting!",
+              text: LocaleKeys.wait_answer,
             ).paddingSymmetric(vertical: 10.w),
             // TextFieldWidget(
             //   hintText: "500 000 so'm",
@@ -69,7 +70,7 @@ class SuccessSendQuestion extends StatelessWidget {
               onPress: () {
                 Navigator.pop(context);
               },
-              text: "Xo'p, rahmat",
+              text:LocaleKeys.thank_you.tr(),
               textSize: 16.sp,
               fontWeight: FontWeight.w500,
               height: 50.w,

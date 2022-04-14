@@ -1,18 +1,26 @@
-part of 'my_profil_update_bloc.dart';
+part of 'edit_volunteer_bloc.dart';
 
 @immutable
-abstract class MyProfileUpdateEvent extends Equatable {
-  const MyProfileUpdateEvent();
+abstract class EditVolunteerEvent extends Equatable {
+  const EditVolunteerEvent();
 }
 
-class MyProfileLoad extends MyProfileUpdateEvent {
+class EditProfileChangePage extends EditVolunteerEvent{
+  EditProfileChangePage(this.changePage);
+  final int changePage;
+  @override
+  // TODO: implement props
+  List<Object?> get props =>[changePage];
+}
+
+class MyProfileLoad extends EditVolunteerEvent {
   const MyProfileLoad();
 
   @override
   List<Object?> get props => [];
 }
 
-class ImageChanged extends MyProfileUpdateEvent {
+class ImageChanged extends EditVolunteerEvent {
   final String imageUrl;
 
   const ImageChanged(this.imageUrl);
@@ -21,18 +29,18 @@ class ImageChanged extends MyProfileUpdateEvent {
   List<Object?> get props => [imageUrl];
 }
 
-class FirstNameChanged extends MyProfileUpdateEvent {
+class FirstNameChanged extends EditVolunteerEvent {
   final String name;
 
   const FirstNameChanged(
-    this.name,
-  );
+      this.name,
+      );
 
   @override
   List<Object?> get props => [name];
 }
 
-class PhoneChanged extends MyProfileUpdateEvent {
+class PhoneChanged extends EditVolunteerEvent {
   final String phoneNumber;
 
   const PhoneChanged(
@@ -42,7 +50,7 @@ class PhoneChanged extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [phoneNumber];
 }
-class LastNameChanged extends MyProfileUpdateEvent {
+class LastNameChanged extends EditVolunteerEvent {
   final String sureName;
 
   const LastNameChanged(this.sureName);
@@ -50,7 +58,7 @@ class LastNameChanged extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [sureName];
 }
-class GenderChanged extends MyProfileUpdateEvent {
+class GenderChanged extends EditVolunteerEvent {
   final Gender isMan;
 
   GenderChanged(this.isMan);
@@ -58,7 +66,7 @@ class GenderChanged extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [isMan];
 }
-class PageChanged extends MyProfileUpdateEvent {
+class PageChanged extends EditVolunteerEvent {
   final bool isVisible;
 
   PageChanged(this.isVisible);
@@ -66,7 +74,7 @@ class PageChanged extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [isVisible];
 }
-class PageNext extends MyProfileUpdateEvent {
+class PageNext extends EditVolunteerEvent {
   final bool isNext;
 
   PageNext(this.isNext);
@@ -74,17 +82,17 @@ class PageNext extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [isNext];
 }
-class SaveIn extends MyProfileUpdateEvent {
+class SaveIn extends EditVolunteerEvent {
 
   @override
   List<Object?> get props => [];
 }
-class SendCode extends MyProfileUpdateEvent {
+class SendCode extends EditVolunteerEvent {
 
   @override
   List<Object?> get props => [];
 }
-class ImagePickers extends MyProfileUpdateEvent {
+class ImagePickers extends EditVolunteerEvent {
   @override
   List<Object?> get props => [];
 }

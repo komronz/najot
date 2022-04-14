@@ -140,7 +140,9 @@ class _AboutProjectVolunteerWidgetState
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AppWidgets.starTextWidget(text: "Bajarilgan sana"),
+                      AppWidgets.starTextWidget(
+                        text: LocaleKeys.done_date.tr(),
+                      ),
                       SizedBox(
                         height: 3.w,
                       ),
@@ -161,7 +163,7 @@ class _AboutProjectVolunteerWidgetState
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       AppWidgets.textLocale(
-                        text: "E'lon berilgan kun",
+                        text: LocaleKeys.announcement_day,
                         fontWeight: FontWeight.w400,
                         fontSize: 10.sp,
                         color: AppColorUtils.DARK_6,
@@ -177,7 +179,7 @@ class _AboutProjectVolunteerWidgetState
                 ],
               ).paddingSymmetric(horizontal: 20.w),
               AppWidgets.starTextWidget(
-                text: "Yordam turi",
+                text: LocaleKeys.help_type.tr(),
                 fontWeight: FontWeight.w400,
                 fontSize: 10.sp,
                 color: AppColorUtils.DARK_6,
@@ -190,7 +192,7 @@ class _AboutProjectVolunteerWidgetState
                       color: AppColorUtils.GREEN_TEXT)
                   .paddingSymmetric(horizontal: 20.w),
               AppWidgets.textLocale(
-                text: "Manzil",
+                text: LocaleKeys.address,
                 fontWeight: FontWeight.w400,
                 fontSize: 10.sp,
                 color: AppColorUtils.DARK_6,
@@ -291,7 +293,7 @@ class _AboutProjectVolunteerWidgetState
                 Visibility(
                   visible: true,
                   child: AppWidgets.text(
-                      text: "&*& Iltimos, avval //Volontyor// bo'ling",
+                      text: LocaleKeys.tobe_volunteer.tr(),
                       color: AppColorUtils.DARK_6,
                       fontWeight: FontWeight.w400,
                       fontSize: 12.w,
@@ -329,7 +331,9 @@ class _AboutProjectVolunteerWidgetState
                       text: LocaleKeys.project_implementation,
                       height: 48.w,
                       width: 274.w,
-                      color: true?AppColorUtils.DISABLE_BC: AppColorUtils.PERCENT_COLOR,
+                      color: true
+                          ? AppColorUtils.DISABLE_BC
+                          : AppColorUtils.PERCENT_COLOR,
                       textSize: 16.sp,
                       fontWeight: FontWeight.w600,
                       textColor: AppColorUtils.WHITE,
