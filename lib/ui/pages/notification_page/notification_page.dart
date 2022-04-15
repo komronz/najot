@@ -48,5 +48,6 @@ class NotificationPage extends StatelessWidget {
       },
       itemCount: state.cardList.length,
     );
+
   }
 }

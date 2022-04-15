@@ -35,6 +35,7 @@ import '../../ui/pages/my_project_and_announcements_pages/my_project_and_announc
 import '../../ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/about_my_volunteering_project_page.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/my_volunteering_support_list_page.dart';
 import '../../ui/pages/notification_page/notification_page.dart';
+import '../../ui/pages/notification_page/widget/attension_note.dart';
 import '../../ui/pages/volunteering_charity_history_page/volunteering_charity_history_page.dart';
 import '../model/card_model.dart';
 import '../model/charity_model.dart';
@@ -182,6 +183,10 @@ class AppRouteUtils {
       case VolunteeringCharityHistoryPage.routeName:
         return MaterialPageRoute(
           builder: (context) => VolunteeringCharityHistoryPage(),
+        );
+      case AttentionNote.routeName:
+        return MaterialPageRoute(
+          builder: (context) => AttentionNote(model: settings.arguments as VolunteeringModel,),
         );
 
     }

@@ -19,12 +19,11 @@ import '../../my_volunteering_page/my_volunteering_page.dart';
 import 'notification_success_adding.dart';
 
 class AttentionNote extends StatelessWidget {
+  static const String routeName="/attentionNote";
   AttentionNote({
-    required this.selectFunction,
-    required this.model,
+   required this.model,
     Key? key,
   }) : super(key: key);
-  final Function selectFunction;
   DateTime _date = DateTime.now();
   DateTime _time = DateTime.now();
 

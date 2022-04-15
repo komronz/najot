@@ -4,12 +4,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/volunteering_model.dart';
+import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/notification_page/widget/attension_note.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
+import 'notification_api.dart';
 import 'notification_delete_widget.dart';
 import 'notification_edit.dart';
 
@@ -21,8 +23,22 @@ class MyNoteWidget extends StatefulWidget {
 
    @override
    _MyNoteWidgetState createState() => _MyNoteWidgetState();
+
 }
+
 class _MyNoteWidgetState extends State<MyNoteWidget> {
+  @override
+  void initState() {
+    super.initState();
+    listenNotifications();
+    NotificationApi.init(initScheduled: true);
+
+  }
+  void listenNotifications()=>
+      NotificationApi.onNotification.stream.listen(onClickNotification);
+  void onClickNotification(String? payload)=>
+      NavigatorService.to.pushReplacementNamed(AttentionNote.routeName);
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -68,47 +84,49 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
                   bottom: 3,
                 ),
                 InkWell(
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AttentionNote(
-                          model: widget.model, selectFunction: (){},
-                        );
-                      },
+                  onTap: (){
+                    NotificationApi.showNotification(
+                      title: "Diqqat! Salom, Volontyor! siz yordamga \n borishingiz kerak",
+                      body: "",
+                      payload: "sarah.abs",
+                      scheduledDate: DateTime.now().add(Duration(seconds: 3)),
+
                     );
+
                   },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      AppWidgets.imageSvg(
-                        path: AppImageUtils.CALENDAR_RED,
-                        color: AppColorUtils.BLUE_PERCENT,
-                        height: 15.w,
-                      ).paddingOnly(right: 5),
-                      AppWidgets.textLocale(
-                        text: widget.model.completedDate!,
-                        color: AppColorUtils.BLUE_PERCENT,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
-                      ).paddingOnly(right: 24.w),
-                      AppWidgets.imageSvg(
-                        path: AppImageUtils.CLOCK,
-                        color: AppColorUtils.BLUE_PERCENT,
-                        height: 15.w,
-                      ).paddingOnly(
-                        right: 5.w,
-                        top: 2.w,
-                      ),
-                      AppWidgets.textLocale(
-                        text: "18:00",
-                        color: AppColorUtils.BLUE_PERCENT,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ],
-                  ),
+                    child: Icon(Icons.add)
                 ),
+                // Row(
+                //     mainAxisAlignment: MainAxisAlignment.start,
+                //     children: [
+                //       AppWidgets.imageSvg(
+                //         path: AppImageUtils.CALENDAR_RED,
+                //         color: AppColorUtils.BLUE_PERCENT,
+                //         height: 15.w,
+                //       ).paddingOnly(right: 5),
+                //       AppWidgets.textLocale(
+                //         text: widget.model.completedDate!,
+                //         color: AppColorUtils.BLUE_PERCENT,
+                //         fontSize: 16.sp,
+                //         fontWeight: FontWeight.w600,
+                //       ).paddingOnly(right: 24.w),
+                //       AppWidgets.imageSvg(
+                //         path: AppImageUtils.CLOCK,
+                //         color: AppColorUtils.BLUE_PERCENT,
+                //         height: 15.w,
+                //       ).paddingOnly(
+                //         right: 5.w,
+                //         top: 2.w,
+                //       ),
+                //       AppWidgets.textLocale(
+                //         text: "18:00",
+                //         color: AppColorUtils.BLUE_PERCENT,
+                //         fontSize: 16.sp,
+                //         fontWeight: FontWeight.w600,
+                //       ),
+                //     ],
+                //   ),
+
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

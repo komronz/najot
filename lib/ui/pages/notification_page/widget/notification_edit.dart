@@ -156,7 +156,7 @@ class _NotificationEditState extends State<NotificationEdit> {
                                   time.month,
                                   time.month,
                                   time.day,
-                                  time.hour < 8 ? time.hour + 16 : time.hour,
+                                  time.hour, //< 8 ? time.hour + 16 : time.hour,
                                   time.minute,
                                 );
 
