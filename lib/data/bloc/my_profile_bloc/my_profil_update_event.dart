@@ -88,7 +88,5 @@ class ImagePickers extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [];
 }
-enum Gender{
-  WOMAN, MAN
-}
+
 

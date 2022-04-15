@@ -40,6 +40,7 @@ class CardModel {
     this.progres,
     this.isFavorite,
     this.date,
+      this.infoModel
   );
 
   static final List<InfoModel> info = [

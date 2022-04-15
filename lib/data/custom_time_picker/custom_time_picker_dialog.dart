@@ -13,7 +13,6 @@ class CustomTimePickerDialog extends StatefulWidget {
   CustomTimePickerDialog({
     required this.title,
   });
-
   final String title;
 
   @override

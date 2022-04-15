@@ -1,4 +1,5 @@
-import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
+
+import 'package:najot/data/utils/app_utils.dart';
 
 class User {
   String? firstName;

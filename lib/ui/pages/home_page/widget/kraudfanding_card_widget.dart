@@ -96,11 +96,12 @@ class KraudfandingCardWidget extends StatelessWidget {
                                   SizedBox(
                                     height: 2,
                                   ),
-                                  AppWidgets.text(
-                                      text: "10 000 000 so'm",
+                                  AppWidgets.textLocale(
+                                      text: LocaleKeys.sum,
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w600,
-                                      color: AppColorUtils.GREEN_TEXT)
+                                      color: AppColorUtils.GREEN_TEXT,
+                                  args: ["1 000 000"])
                                 ],
                               ),
                               Column(

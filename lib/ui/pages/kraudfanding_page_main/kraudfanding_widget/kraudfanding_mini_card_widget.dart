@@ -33,7 +33,7 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
-              elevation: 2,
+              elevation: 1,
               color: AppColorUtils.WHITE,
               child: Column(
                 children: [
@@ -110,9 +110,11 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
               ),
             ),
             Align(
-              child: SvgPicture.asset(cardModel.isFavorite!
-                  ? AppImageUtils.LIKE
-                  : AppImageUtils.UNLIKE),
+              child: SvgPicture.asset(
+                cardModel.isFavorite!
+                    ? AppImageUtils.LIKE
+                    : AppImageUtils.UNLIKE,
+              ),
               alignment: Alignment.topRight,
             ).paddingAll(12.w),
             Visibility(
@@ -134,7 +136,10 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
         ),
       ),
       onTap: () {
-        NavigatorService.to.pushNamed(ProjectDetailsPage.routeName,arguments: cardModel);
+        NavigatorService.to.pushNamed(
+          ProjectDetailsPage.routeName,
+          arguments: cardModel,
+        );
       },
     );
   }

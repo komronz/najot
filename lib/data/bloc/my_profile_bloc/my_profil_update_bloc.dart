@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/services/hive_service.dart';
+import 'package:najot/data/utils/app_utils.dart';
 
 import '../../../ui/widgets/app_widgets.dart';
 import '../../model/user.dart';

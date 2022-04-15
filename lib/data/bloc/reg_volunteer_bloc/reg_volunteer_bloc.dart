@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -11,7 +12,11 @@ part 'reg_volunteer_event.dart';
 part 'reg_volunteer_state.dart';
 
 class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
-  final PageController pageController;
+   final PageController pageController;
+  final maskFormatterSerial = MaskTextInputFormatter(mask: 'AA');
+  final maskFormatterPasNumber = MaskTextInputFormatter(mask: '#######');
+  final maskFormatter = MaskTextInputFormatter();
+
 
   RegVolunteerBloc()
       : pageController = PageController(),
@@ -144,6 +149,7 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     emit(
       state.copyWith(
         serial: event.serial,
+        inputFormatter: maskFormatterSerial,
         sendBtnActive: _sendBtnActive(
           event.serial,
           state.serialNumber,
@@ -182,6 +188,7 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     emit(
       state.copyWith(
         serialNumber: event.serialNumber,
+        inputFormatter: maskFormatterPasNumber,
         sendBtnActive: _sendBtnActive(
           state.serial,
           event.serialNumber,

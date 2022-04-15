@@ -134,7 +134,7 @@ class ProductsWidget extends StatelessWidget {
                               ProductDetailPage.routeName,
                               arguments: cardModel.productModel![index]);
                         },
-                        text: "Sotib olish",
+                        text: LocaleKeys.buy.tr(),
                         color: AppColorUtils.PERCENT_COLOR,
                         textColor: AppColorUtils.WHITE,
                         textSize: 16.sp,

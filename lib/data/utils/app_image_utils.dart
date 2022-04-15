@@ -30,7 +30,10 @@ class AppImageUtils {
    static const String ABOUT_US2 = "assets/app_icons/about2.svg";
    static const String MAIN = "assets/app_icons/main.svg";
    static const String HEART = "assets/app_icons/heart.svg";
+   static const String RIGHT_DIRECTION = "assets/app_icons/right_direction.svg";
    static const String HEADPHONE = "assets/app_icons/headphone.svg";
+   static const String PROJECT1 = "assets/app_icons/project1.svg";
+   static const String PROJECT2 = "assets/app_icons/project2.svg";
    static const String LOGOUT1 = "assets/app_icons/logout1.svg";
    static const String LOGOUT2 = "assets/app_icons/logout2.svg";
    static const String UNLIKE1 = "assets/app_icons/unlike.svg";
@@ -82,6 +85,7 @@ class AppImageUtils {
   static const String ADDING_PROJECT = "assets/app_icons/adding_project.svg";
   static const String ADDING = "assets/app_icons/plus.svg";
   static const String VOLUNTEER = "assets/app_icons/volunteer.svg";
+  static const String PLUS = "assets/app_icons/plus.svg";
   static const String PROJECT = "assets/app_icons/project.svg";
   static const String USERS = "assets/app_icons/users.svg";
   static const String TRASH_RED = "assets/app_icons/trash_red.svg";

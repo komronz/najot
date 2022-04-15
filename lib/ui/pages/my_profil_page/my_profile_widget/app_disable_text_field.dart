@@ -99,7 +99,9 @@ class _AppTextFieldState extends State<AppDisableTextField> {
             color: Color(0xFFEDFCF9),
             borderRadius: BorderRadius.circular(12),
           ),
-          child: TextField(
+          child: TextFormField(
+            inputFormatters: widget.inputFormatter !=null? [widget.inputFormatter!]:null,
+
             expands: widget.isMultiLine ? true : false,
             textAlignVertical: TextAlignVertical.top,
             maxLines: widget.isMultiLine ? null : 1,
@@ -118,7 +120,7 @@ class _AppTextFieldState extends State<AppDisableTextField> {
               hintStyle: GoogleFonts.inter(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w500,
-                color: AppColorUtils.GRAY_4,
+                color: AppColorUtils.REG_TEXT,
               ),
             ),
             onChanged: (v) => widget.onChanged(v),

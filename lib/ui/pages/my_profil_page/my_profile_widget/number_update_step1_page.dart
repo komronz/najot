@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/ui/pages/edit_volunteer_page/edit_volunteer_page.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_page.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_pages/number_update_page.dart';
 import '../../../../data/localization/locale_keys.g.dart';
@@ -59,10 +60,10 @@ class NumberUpdateStep1 extends StatelessWidget {
                         ),
                       ),
               ),
-              SizedBox(height: 16.h),
+              SizedBox(height: 16.w),
               InkWell(
                 onTap: () {
-                  NavigatorService.to.pushNamed(MyProfilePage.routeName);
+                  NavigatorService.to.pushNamed(EditVolunteerPage.routeName);
                 },
                 child: Container(
                   width: double.infinity,
@@ -79,7 +80,7 @@ class NumberUpdateStep1 extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-              ).paddingOnly(bottom: 18.h),
+              ).paddingOnly(bottom: 18.w),
               state.nextPage
                   ? SizedBox()
                   : InkWell(

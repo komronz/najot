@@ -43,4 +43,46 @@ class DecorationConst {
       color: AppColorUtils.BORDER_COLOR,
     ),
   );
+  InputDecoration inputDecoration(
+      {
+        Widget? prefixIcon,
+        Widget? suffixIcon}) =>
+      InputDecoration(
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
+          labelStyle: TextStyle(color: Color(0xFF9E9292)),
+          isDense: true,
+          contentPadding: EdgeInsets.fromLTRB(27, 16, 0, 16),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(10),
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: AppColorUtils.BORDER_COLOR,
+              width: 2,
+            ),
+            borderRadius: BorderRadius.all(
+              Radius.circular(10),
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: AppColorUtils.BORDER_COLOR,
+              width: 2,
+            ),
+            borderRadius: BorderRadius.all(
+              Radius.circular(10),
+            ),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: AppColorUtils.RED,
+              width: 1,
+            ),
+            borderRadius: BorderRadius.all(
+              Radius.circular(10),
+            ),
+          ));
 }

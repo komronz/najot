@@ -65,7 +65,7 @@ class QuestionsAskedWidget extends StatelessWidget {
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w400,
                           color: AppColorUtils.DARK_6,
-                        ).paddingOnly(top: 5.w),
+                        ).paddingOnly(top: 2.w),
                       ],
                     ).paddingOnly(left: 10),
                   ],

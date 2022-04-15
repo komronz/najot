@@ -1,17 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
+import 'package:najot/data/bloc/edit_volunteer_bloc/edit_volunteer_bloc.dart';
 import 'package:najot/data/model/card_model.dart';
-import 'package:najot/data/model/charity_model.dart';
+import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/model/product_model.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
-import 'package:najot/ui/pages/charity_full_page/charity_full_page.dart';
+import 'package:najot/ui/pages/charity_page/charity_full_page/charity_full_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
 import 'package:najot/ui/pages/counter_page/counter_page.dart';
+import 'package:najot/ui/pages/edit_volunteer_page/edit_volunteer_page.dart';
+import 'package:najot/ui/pages/edit_volunteer_page/widgets/number_update_volunteer_page.dart';
+import 'package:najot/ui/pages/edit_volunteer_page/widgets/user_update_volunteer_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/pages/home_page/volunteer_page/volunteer_detail_page/volunteer_detail_page.dart';
-import 'package:najot/ui/pages/home_page/volunteer_page/volunteer_page.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/product_datail_page/product_detail_page.dart';
 import 'package:najot/ui/pages/loading_page/loading_page.dart';
 import 'package:najot/ui/pages/login_page/login_page.dart';
@@ -20,7 +21,8 @@ import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/addin
 import 'package:najot/ui/pages/reg_page/reg_page.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/img_view.dart';
 import 'package:najot/ui/pages/verification_page/verification_page.dart';
-import '../../ui/pages/charity_full_page/charity_full_page.dart';
+import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/volunteer_detail_page.dart';
+import 'package:najot/ui/pages/volunteer_page/volunteer_page.dart';
 import '../../ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
 import '../../ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
 import '../../ui/pages/my_products_page/my_products_page.dart';
@@ -82,7 +84,7 @@ class AppRouteUtils {
       case CharityFullPage.routName:
         return MaterialPageRoute(
           builder: (context) => CharityFullPage(
-            model: settings.arguments as CharityModel,
+            cardModel: settings.arguments as CardModel,
           ),
         );
       case ProjectDetailsPage.routeName:
@@ -124,9 +126,21 @@ class AppRouteUtils {
           builder: (context) =>
               UserUpdatePage(bloc: settings.arguments as MyProfileUpdateBloc),
         );
+      case UserUpdateVolunteerPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => UserUpdateVolunteerPage(),
+        );
       case NumberUpdatePage.routeName:
         return MaterialPageRoute(
           builder: (context) => NumberUpdatePage(),
+        );
+      case EditVolunteerPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => EditVolunteerPage(),
+        );
+      case NumberUpdateVolunteerPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => NumberUpdateVolunteerPage(),
         );
       case UserDegreePage.routeName:
         return MaterialPageRoute(

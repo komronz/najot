@@ -88,44 +88,46 @@ class AppWidgets {
       ),
     );
   }
+
   static Widget favouriteButton({
-  required bool select,
-   required double height,
-   required double width,
+    required bool select,
+    required double height,
+    required double width,
     required VoidCallback onTap
-}){
+  }) {
     return Material(
       borderRadius: BorderRadius.circular(10),
-    child: Ink(
-    decoration: BoxDecoration(
-    borderRadius:
-    BorderRadius.circular(10),
-    color: select
-    ? AppColorUtils.IC_GREEN
-        : AppColorUtils.PURPLE,
-    ),
-    child: InkWell(
-    borderRadius:
-    BorderRadius.circular(10),
-    onTap: onTap,
-    child: Container(
-    height: height,
-    width: width,
-    child: SvgPicture.asset(
-    select
-    ? AppImageUtils.LIKE_ICON
-    : AppImageUtils.UNLIKE_ICON,
-).paddingAll(10.w),
-),
-),
-),
-);
-}
+      child: Ink(
+        decoration: BoxDecoration(
+          borderRadius:
+          BorderRadius.circular(10),
+          color: select
+              ? AppColorUtils.IC_GREEN
+              : AppColorUtils.PURPLE,
+        ),
+        child: InkWell(
+          borderRadius:
+          BorderRadius.circular(10),
+          onTap: onTap,
+          child: Container(
+            height: height,
+            width: width,
+            child: SvgPicture.asset(
+              select
+                  ? AppImageUtils.LIKE_ICON
+                  : AppImageUtils.UNLIKE_ICON,
+            ).paddingAll(10.w),
+          ),
+        ),
+      ),
+    );
+  }
+
   static Widget circleImages({
-  required String image,
+    required String image,
     required int count
 
-}){
+  }) {
     return Row(
       children: [
         Stack(
@@ -195,6 +197,7 @@ class AppWidgets {
       ],
     ).paddingOnly(top: 3);
   }
+
   static Widget starTextWidget({
     required String text,
     Color? color = AppColorUtils.DARK_6,
@@ -207,14 +210,14 @@ class AppWidgets {
   }) {
     return Row(
       mainAxisAlignment:
-          isCenter ? MainAxisAlignment.center : MainAxisAlignment.start,
+      isCenter ? MainAxisAlignment.center : MainAxisAlignment.start,
       children: [
         hasStar
             ? SizedBox(
-              child: textLocale(
-                  text: '*', fontSize: fontSize, color: AppColorUtils.RED,
-        ),
-            )
+          child: textLocale(
+            text: '*', fontSize: fontSize, color: AppColorUtils.RED,
+          ),
+        )
             : SizedBox(),
         textLocale(
           text: text,
@@ -235,7 +238,7 @@ class AppWidgets {
     double? height,
     Color color = AppColorUtils.GREEN_APP,
     Color textColor = AppColorUtils.WHITE,
-    double fontSize =  16.0,
+    double fontSize = 16.0,
     FontWeight fontWeight = FontWeight.w600,
     double borderRadius = 12.0,
     Widget icon = const SizedBox(),
@@ -273,13 +276,12 @@ class AppWidgets {
     );
   }
 
-  static Widget appBarMenu(
-      {required String title,
-      required VoidCallback onTapMenu,
-      VoidCallback? onTapIcon,
-      Color? textColor = AppColorUtils.BLACK,
-      bool visibleIcon = false,
-      String icon = ""}) {
+  static Widget appBarMenu({required String title,
+    required VoidCallback onTapMenu,
+    VoidCallback? onTapIcon,
+    Color? textColor = AppColorUtils.BLACK,
+    bool visibleIcon = false,
+    String icon = ""}) {
     return Container(
       height: 80.w,
       padding: EdgeInsets.only(
@@ -298,21 +300,21 @@ class AppWidgets {
           ),
           AppWidgets.textLocale(
             text: title,
-            fontSize: 26.sp,
+            fontSize: 24.sp,
             fontWeight: FontWeight.w600,
           ),
           visibleIcon
               ? InkWell(
-                  child: Container(
-                    height: 35.w,
-                    width: 35.w,
-                    child: SvgPicture.asset(icon),
-                  ),
-                  onTap: onTapIcon,
-                )
+            child: Container(
+              height: 35.w,
+              width: 35.w,
+              child: SvgPicture.asset(icon),
+            ),
+            onTap: onTapIcon,
+          )
               : SizedBox(
-                  width: 20,
-                )
+            width: 20,
+          )
         ],
       ),
     );
@@ -394,6 +396,7 @@ class AppWidgets {
     required String iconSelect,
     required String text,
     required VoidCallback onTap,
+    bool direction = false,
     bool isActive = false,
     double fontSize = 15,
     EdgeInsets padding = const EdgeInsets.all(10),
@@ -406,19 +409,29 @@ class AppWidgets {
       child: Padding(
         padding: padding,
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SvgPicture.asset(
-              iconSelected,
+            Row(
+              children: [
+                SvgPicture.asset(
+                  iconSelected,
+                ),
+                SizedBox(
+                  width: 8.w,
+                ),
+                textLocale(
+                  text: text,
+                  fontWeight: fontWeight,
+                  fontSize: fontSize,
+                  color: color,
+                )
+              ],
             ),
-            SizedBox(
-              width: 8.w,
-            ),
-            textLocale(
-              text: text,
-              fontWeight: fontWeight,
-              fontSize: fontSize,
-              color: color,
+            direction == true
+            ?SvgPicture.asset(
+              AppImageUtils.RIGHT_DIRECTION,
             )
+            :SizedBox()
           ],
         ),
       ),

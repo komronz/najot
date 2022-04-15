@@ -1,13 +1,18 @@
 import 'dart:io';
 
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/edit_volunteer_page/edit_volunteer_page.dart';
+import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -73,7 +78,7 @@ class DrawerBody extends StatelessWidget {
                                         horizontal: 5.w,
                                       ),
                                       child: AppWidgets.text(
-                                          text: "Oddiy foydalanuvchi",
+                                          text: LocaleKeys.normal_user.tr(),
                                           color: AppColorUtils.BLUE_PERCENT,
                                           fontSize: 12.sp,
                                           fontWeight: FontWeight.w500),
@@ -125,7 +130,7 @@ class DrawerBody extends StatelessWidget {
                             );
                         Navigator.pop(context);
                       },
-                      text: "Volontyor bo'lish",
+                      text: "Volontyor bo'ling",
                       width: 226.w,
                       height: 44.h,
                       color: AppColorUtils.GREEN_ACCENT1,
@@ -140,7 +145,7 @@ class DrawerBody extends StatelessWidget {
                     iconSelect: AppImageUtils.MAIN,
                     icon: AppImageUtils.MAIN2,
                     isActive: pageType == AppPageType.MAIN,
-                    text: "Asosiy",
+                    text: LocaleKeys.main.tr(),
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,
@@ -157,40 +162,24 @@ class DrawerBody extends StatelessWidget {
                     isActive: pageType == AppPageType.CHARITY,
                     icon: AppImageUtils.HISTORY,
                     iconSelect: AppImageUtils.HISTORY2,
-                    text: "Xayriya tarixi",
+                    text: "Xizmatlarim",
                     fontSize: 16.sp,
+                    direction: true,
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,
                       vertical: 14,
                     ),
                     onTap: () {
-                      context.read<AppPageCubit>().changePage(
-                            pageType: AppPageType.CHARITY,
-                          );
-                      Navigator.pop(context);
+                      context.read<AppPageCubit>().changeMenu(2);
+                      print("111");
                     },
                   ),
-                  AppWidgets.rowIconText(
-                    icon: AppImageUtils.PRODUCTS,
-                    iconSelect: AppImageUtils.PRODUCTS2,
-                    text: "Mahsulotlarim",
-                    fontSize: 16.sp,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 18.w,
-                      vertical: 14,
-                    ),
-                    onTap: () {
-                      context.read<AppPageCubit>().changePage(
-                            pageType: AppPageType.ORDERS,
-                          );
-                      Navigator.pop(context);
-                    },
-                  ),
+
                   AppWidgets.rowIconText(
                     isActive: pageType == AppPageType.RULES,
                     icon: AppImageUtils.RULES,
                     iconSelect: AppImageUtils.RULES2,
-                    text: "Loyiha qoidalari",
+                    text: LocaleKeys.project_rules,
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,
@@ -224,7 +213,7 @@ class DrawerBody extends StatelessWidget {
                     isActive: pageType == AppPageType.ABOUT,
                     icon: AppImageUtils.ABOUT_US,
                     iconSelect: AppImageUtils.ABOUT_US2,
-                    text: "Biz haqimizda",
+                    text: LocaleKeys.about_us.tr(),
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,
@@ -254,7 +243,7 @@ class DrawerBody extends StatelessWidget {
                           .changePage(pageType: AppPageType.SAVED);
                       Navigator.pop(context);
                     },
-                    text: "Saqlanganlar",
+                    text: LocaleKeys.saved,
                     visibleIcon: true,
                     color: AppColorUtils.GREEN_ACCENT2,
                     fontWeight: FontWeight.w500,
@@ -279,7 +268,7 @@ class DrawerBody extends StatelessWidget {
                           );
                       Navigator.pop(context);
                     },
-                    text: "Operatorga yozish",
+                    text: LocaleKeys.write_operator,
                     visibleIcon: true,
                     color: AppColorUtils.BLUE_ACCENT1,
                     fontWeight: FontWeight.w500,
@@ -315,7 +304,7 @@ class DrawerBody extends StatelessWidget {
                             width: 5.w,
                           ),
                           AppWidgets.textLocale(
-                            text: "Chiqish",
+                            text: LocaleKeys.exit,
                             color: AppColorUtils.BLACK,
                             fontSize: 16,
                             fontWeight: FontWeight.w400,

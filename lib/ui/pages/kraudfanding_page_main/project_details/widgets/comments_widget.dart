@@ -77,7 +77,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                         ),
                         width: 220.w,
                       ),
-                      AppWidgets.textLocale(
+                      AppWidgets.text(
                         text:
                         "Eshonov Fakhriyor",
                         fontSize: 12.sp,
