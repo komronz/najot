@@ -95,6 +95,7 @@ class EditView1 extends StatelessWidget {
                 duration: Duration(milliseconds: 500),
                 curve: Curves.easeInOutSine,
               );
+              bloc.pageController.dispose();
             },
             isActive: bloc.state.isActiveNextBtn,
           ).paddingOnly(bottom: 30.w,right: 20.w,top: 117.h,)

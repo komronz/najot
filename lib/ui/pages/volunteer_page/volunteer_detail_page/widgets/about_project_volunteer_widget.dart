@@ -19,6 +19,7 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/pa
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
 class AboutProjectVolunteerWidget extends StatefulWidget {
@@ -321,11 +322,9 @@ class _AboutProjectVolunteerWidgetState
                   children: [
                     ButtonCard(
                       onPress: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return SupportProjectDialog();
-                          },
+                        Fluttertoast.showToast(
+                            msg: "Volontyor bo'ling",
+
                         );
                       },
                       text: LocaleKeys.project_implementation,

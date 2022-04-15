@@ -102,6 +102,7 @@ class _AppTextFieldState extends State<AppTextField> {
             borderRadius: BorderRadius.circular(12),
           ),
           child: TextField(
+            autofocus: true,
             expands: widget.isMultiLine ? true : false,
             textAlignVertical: TextAlignVertical.top,
             maxLines: widget.isMultiLine ? null : 1,

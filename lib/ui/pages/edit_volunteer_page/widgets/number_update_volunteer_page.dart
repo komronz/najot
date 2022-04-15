@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:najot/data/bloc/edit_volunteer_bloc/edit_volunteer_bloc.dart';
+import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/user.dart';
 import 'package:najot/data/services/hive_service.dart';
@@ -22,13 +24,16 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
   NumberUpdateVolunteerPage({Key? key}) : super(key: key);
   bool isVisible = true;
   User? user = HiveService.to.getUser();
+  final maskFormatter = MaskTextInputFormatter(mask: '## ### ## ##');
+  TextEditingController numberController = TextEditingController();
 
   @override
   Widget build(BuildContext con) {
+    Size size = MediaQuery.of(con).size;
     return WillPopScope(
-      onWillPop: (){
+      onWillPop: () {
         con.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
-        return Future(()=>false);
+        return Future(() => false);
       },
       child: BlocProvider(
         create: (BuildContext context) =>
@@ -36,32 +41,30 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
         child: SafeArea(
           child: Scaffold(
             appBar: AppBar(
-            backgroundColor: AppColorUtils.BACKGROUND,
-            titleSpacing: 0,
-            elevation: 0,
-            automaticallyImplyLeading: false,
-            title: Container(
-              color: AppColorUtils.BACKGROUND,
-              child: AppWidgets.appBarMenu(
-                title: LocaleKeys.edit_my_profile,
-                onTapMenu: () {
-
-                  HomePage.globalKey.currentState!.openDrawer();
-                },
-                visibleIcon: true,
-                onTapIcon: () {
-                  con.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
-                },
-                icon: AppImageUtils.REMOVE,
+              backgroundColor: AppColorUtils.BACKGROUND,
+              titleSpacing: 0,
+              elevation: 0,
+              automaticallyImplyLeading: false,
+              title: Container(
+                color: AppColorUtils.BACKGROUND,
+                child: AppWidgets.appBarMenu(
+                  title: LocaleKeys.edit_my_profile,
+                  onTapMenu: () {
+                    HomePage.globalKey.currentState!.openDrawer();
+                  },
+                  visibleIcon: true,
+                  onTapIcon: () {
+                    con.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
+                  },
+                  icon: AppImageUtils.REMOVE,
+                ),
               ),
             ),
-          ),
             backgroundColor: AppColorUtils.WHITE,
             body: BlocBuilder<EditVolunteerBloc, EditVolunteerState>(
                 builder: (context, state) {
               return Column(
                 children: [
-
                   Expanded(
                     child: SingleChildScrollView(
                       child: Container(
@@ -88,27 +91,49 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                   left: 20,
                                   right: 20,
                                 ),
-                                AppTextField(
-                                  isFill: context
-                                      .read<EditVolunteerBloc>()
-                                      .state
-                                      .phoneNumberFill,
-                                  initialText: context
-                                      .read<EditVolunteerBloc>()
-                                      .state
-                                      .phoneNumber,
-                                  hintText: "+998",
+                                AppWidgets.textLocale(
+                                  text: LocaleKeys.new_phone_number,
+                                  color: AppColorUtils.DARK_4,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w400,
+                                ).paddingOnly(
+                                  left: 20.w,
+                                  bottom: 8.w,
+                                ),
+                                TextFormField(
+                                  style: TextStyle(color: Colors.black),
+                                  inputFormatters: [maskFormatter],
+                                  controller: numberController,
                                   onChanged: (v) {
                                     context
                                         .read<EditVolunteerBloc>()
                                         .add(PhoneChanged(v));
                                   },
-                                  title: LocaleKeys.new_phone_number,
+                                  keyboardType: TextInputType.number,
+                                  validator: (value) {
+                                    // return AppValidator.validateNumber(
+                                    //     value!);
+                                  },
+                                  decoration: DecorationConst().inputDecoration(
+                                    prefixIcon: Container(
+                                      padding: EdgeInsets.only(left: 10),
+                                      width: size.width * 0.2,
+                                      child: Center(
+                                        child: AppWidgets.text(
+                                          text: "(+998)",
+                                          fontSize: 16,
+                                          color: AppColorUtils.DARK_6,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  cursorColor: Colors.black,
                                 ).paddingOnly(
                                   bottom: 23.w,
                                   left: 20.w,
                                   right: 20.w,
                                 ),
+
                               ],
                             ),
                             Container(
@@ -154,7 +179,7 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                           )
                                         : NumberUpdating(
                                             state: state,
-                                      con: con,
+                                            con: con,
                                           ),
                                   ),
                                 ],

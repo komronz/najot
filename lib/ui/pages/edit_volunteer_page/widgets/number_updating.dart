@@ -71,6 +71,8 @@ class NumberUpdating extends StatelessWidget {
             color: AppColorUtils.PERCENT_COLOR,
             onPress: () {
               con.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
+              con.read<EditVolunteerBloc>().add(MyProfileLoad()
+              );
 
             },
             text: LocaleKeys.confirmation,

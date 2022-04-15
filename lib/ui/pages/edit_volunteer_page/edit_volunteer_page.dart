@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/app.dart';
 import 'package:najot/data/bloc/edit_volunteer_bloc/edit_volunteer_bloc.dart';
+import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
@@ -25,6 +26,7 @@ class EditVolunteerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
         create: (context) => EditVolunteerBloc()..add(MyProfileLoad()),
     child:  BlocConsumer<EditVolunteerBloc, EditVolunteerState>(
@@ -47,6 +49,7 @@ class EditVolunteerPage extends StatelessWidget {
                      visibleIcon: true,
                      onTapIcon: () {
                        context.read<EditVolunteerBloc>().add(EditProfileChangePage(2));
+
                      },
                      icon: AppImageUtils.EDIT,
                    ),
@@ -138,7 +141,7 @@ class EditVolunteerPage extends StatelessWidget {
                                          child: TextField(
                                            decoration: InputDecoration(
                                              enabled: false,
-                                             hintText: "998915602098",
+                                             hintText: state.phoneNumber,
                                              border: InputBorder.none,
                                              hintStyle: TextStyle(
                                                color: AppColorUtils.REG_TEXT,

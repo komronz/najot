@@ -35,6 +35,7 @@ class UserUpdateVolunteerPage extends StatelessWidget {
       onWillPop: () {
         context.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
         return Future(()=>false);
+
       },
       child: GestureDetector(
         onTap: (){
@@ -57,7 +58,6 @@ class UserUpdateVolunteerPage extends StatelessWidget {
                     child: AppWidgets.appBarMenu(
                       title: LocaleKeys.edit_my_profile,
                       onTapMenu: () {
-
                         HomePage.globalKey.currentState!.openDrawer();
                       },
                       visibleIcon: true,

@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/edit_volunteer_page/widgets/EditShowSuccess.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/app_date_picker.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/img_upload_widget.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/img_view.dart';
@@ -17,7 +19,9 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:provider/src/provider.dart';
 
 class EditView2 extends StatelessWidget {
-  const EditView2({Key? key}) : super(key: key);
+  EditView2({Key? key}) : super(key: key);
+  final maskFormatter = MaskTextInputFormatter(mask: 'AA');
+  final maskFormatter1 = MaskTextInputFormatter();
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +36,7 @@ class EditView2 extends StatelessWidget {
                 children: [
                   Expanded(
                     child: AppTextField(
+                      inputFormatter: bloc.state.inputFormatter,
                       title: "Passport seriyasi",
                       textInputType: TextInputType.name,
                       onChanged: (v) {
@@ -44,6 +49,7 @@ class EditView2 extends StatelessWidget {
                   ),
                   Expanded(
                     child: AppTextField(
+                      inputFormatter: bloc.state.inputFormatter,
                       title: "Passport raqami",
                       textInputType: TextInputType.number,
                       onChanged: (v) {
@@ -176,11 +182,10 @@ class EditView2 extends StatelessWidget {
                       duration: Duration(milliseconds: 800),
                     );
                     await showDialog(
-                      context: context,
-                      builder: (ctx) => VolunteerSuccessWidget(
-                        bloc: context.read<RegVolunteerBloc>(),
-                      ),
-                    );
+                        context: context,
+                        builder: (ctx) => EditShowSuccess(
+                              bloc: context.read<RegVolunteerBloc>(),
+                            ));
                   }
                 : () {
                     AppWidgets.showText(
