@@ -200,7 +200,7 @@ class AppRouteUtils {
         );
       case AttentionNote.routeName:
         return MaterialPageRoute(
-          builder: (context) => AttentionNote(model: settings.arguments as VolunteeringModel,),
+          builder: (context) => AttentionNote(),
         );
 
     }

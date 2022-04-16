@@ -21,13 +21,13 @@ import 'notification_success_adding.dart';
 class AttentionNote extends StatelessWidget {
   static const String routeName="/attentionNote";
   AttentionNote({
-   required this.model,
+   // required this.model,
     Key? key,
   }) : super(key: key);
   DateTime _date = DateTime.now();
   DateTime _time = DateTime.now();
 
-  VolunteeringModel model;
+  // VolunteeringModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +97,7 @@ class AttentionNote extends StatelessWidget {
                             height: 16,
                           ).paddingOnly(right: 5.w),
                           AppWidgets.textLocale(
-                            text: model.completedDate!,
+                            text:" model.completedDate!",
                             color: AppColorUtils.BLUE_PERCENT,
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
@@ -111,7 +111,7 @@ class AttentionNote extends StatelessWidget {
                         color: AppColorUtils.DARK_6,
                       ).paddingOnly(bottom: 3.w),
                       AppWidgets.textLocale(
-                        text: model.address!,
+                        text: "model.address!",
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
                         color: AppColorUtils.BLUE_TEXT,
@@ -124,7 +124,7 @@ class AttentionNote extends StatelessWidget {
                         color: AppColorUtils.DARK_6,
                       ),
                       AppWidgets.textLocale(
-                        text: model.typeVolunteering!,
+                        text: "model.typeVolunteering!",
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
                         color: AppColorUtils.KRAUDFANDING,

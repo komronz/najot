@@ -1,8 +1,12 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_native_timezone/flutter_native_timezone.dart';
+import 'package:najot/data/model/volunteering_model.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
 
 class NotificationApi{
+  static VolunteeringModel? volunteeringModel;
   static final _notifications = FlutterLocalNotificationsPlugin();
   static final onNotification = BehaviorSubject<String?>();
 
@@ -27,36 +31,48 @@ class NotificationApi{
       setting,
       onSelectNotification: (payload) async {
         onNotification.add(payload);
-
       }
-
     );
+    if(initScheduled){
+      tz.initializeTimeZones();
+      final locationName=await FlutterNativeTimezone.getLocalTimezone();
+      tz.setLocalLocation(tz.getLocation(locationName));
+
+    }
 
   }
 
   static Future showNotification({
-    required DateTime scheduledDate,
+    // required DateTime scheduledDate,
     int id=0,
     String? title,
     String? body,
     String? payload,
-}) async => _notifications.zonedSchedule(
+}) async => _notifications.show(
       id,
       title,
       body,
-      _scheduleDaily(Time(8)),
+      // _scheduleWeekly(Time(20, 02, 00), days: [DateTime.monday,DateTime.friday]),
       await _notificationDetails(),
     payload: payload,
-    androidAllowWhileIdle: true,
-    uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
-    matchDateTimeComponents: DateTimeComponents.time
+    // androidAllowWhileIdle: true,
+    // uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+    // matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime
   );
   static tz.TZDateTime _scheduleDaily(Time time){
     final now =tz.TZDateTime.now(tz.local);
-    final scheduleDate=tz.TZDateTime(tz.local, now.year, now.month, now.day,
+    final scheduledDate=tz.TZDateTime(tz.local, now.year, now.month, now.day,
         time.hour, time.minute, time.second);
-    return scheduleDate.isBefore(now) ? scheduleDate.add(Duration(days: 1)): scheduleDate;
-
-
+    return scheduledDate;
+        // .isBefore(now) ? scheduledDate.add(Duration(days: 1)): scheduledDate;
   }
+  static tz.TZDateTime _scheduleWeekly(Time time,{required List<int> days}){
+    tz.TZDateTime scheduledDate=_scheduleDaily(time);
+    while(!days.contains(scheduledDate.weekday)){
+      scheduledDate=scheduledDate.add(Duration(days: 1));
+
+    }
+    return scheduledDate;
+    }
+
 }
