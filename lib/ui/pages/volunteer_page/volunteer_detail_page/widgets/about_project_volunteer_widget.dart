@@ -3,9 +3,11 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:najot/data/bloc/volonteer_detail_cubit/volonteer_detail_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
@@ -18,14 +20,19 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/ne
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/payment_history_dialog.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
+import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_help_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
 class AboutProjectVolunteerWidget extends StatefulWidget {
-  AboutProjectVolunteerWidget({required this.cardModel});
+  AboutProjectVolunteerWidget({
+    required this.cardModel,
+    required this.state,
+  });
 
   final CardModel cardModel;
+  final VolunteerDetailState state;
 
   @override
   _AboutProjectVolunteerWidgetState createState() =>
@@ -291,29 +298,27 @@ class _AboutProjectVolunteerWidgetState
                 SizedBox(
                   height: 10.w,
                 ),
-                Visibility(
-                  visible: true,
-                  child: AppWidgets.text(
-                      text: LocaleKeys.tobe_volunteer.tr(),
-                      color: AppColorUtils.DARK_6,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12.w,
-                      richText: true,
-                      othersMarkers: [
-                        MarkerText(
-                          marker: "&",
-                          style: TextStyle(
-                            color: AppColorUtils.RED,
-                          ),
+                widget.state.tobeVolunteer? SizedBox()
+                : AppWidgets.text(
+                    text: LocaleKeys.tobe_volunteer.tr(),
+                    color: AppColorUtils.DARK_6,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 12.w,
+                    richText: true,
+                    othersMarkers: [
+                      MarkerText(
+                        marker: "&",
+                        style: TextStyle(
+                          color: AppColorUtils.RED,
                         ),
-                        MarkerText(
-                          marker: "//",
-                          style: TextStyle(
-                            color: AppColorUtils.BLACK,
-                          ),
-                        )
-                      ]),
-                ).paddingSymmetric(
+                      ),
+                      MarkerText(
+                        marker: "//",
+                        style: TextStyle(
+                          color: AppColorUtils.BLACK,
+                        ),
+                      )
+                    ]).paddingSymmetric(
                   horizontal: 20.w,
                   vertical: 10.w,
                 ),
@@ -322,17 +327,25 @@ class _AboutProjectVolunteerWidgetState
                   children: [
                     ButtonCard(
                       onPress: () {
-                        Fluttertoast.showToast(
+                        if(widget.state.tobeVolunteer==true){
+                          NavigatorService.to.pushNamed(
+                            VolunteerHelpWidget.routeName,
+                            arguments: widget.cardModel,
+                          );
+                        }else{
+                          Fluttertoast.showToast(
                             msg: "Volontyor bo'ling",
+                          );
+                        }
 
-                        );
+
                       },
-                      text: LocaleKeys.project_implementation,
+                      text: "Yordam berish",
                       height: 48.w,
                       width: 274.w,
-                      color: true
-                          ? AppColorUtils.DISABLE_BC
-                          : AppColorUtils.PERCENT_COLOR,
+                      color: widget.state.tobeVolunteer
+                          ? AppColorUtils.PERCENT_COLOR
+                          : AppColorUtils.DISABLE_BC,
                       textSize: 16.sp,
                       fontWeight: FontWeight.w600,
                       textColor: AppColorUtils.WHITE,

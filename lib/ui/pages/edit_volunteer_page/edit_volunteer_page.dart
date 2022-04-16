@@ -57,7 +57,7 @@ class EditVolunteerPage extends StatelessWidget {
                ),
                body: SingleChildScrollView(
                  child: Container(
-                   padding: EdgeInsets.only(left: 19, right: 20),
+                   padding: EdgeInsets.only(left: 19, right: 20,),
                    decoration: BoxDecoration(
                      borderRadius: BorderRadius.circular(5),
                      color: AppColorUtils.WHITE,

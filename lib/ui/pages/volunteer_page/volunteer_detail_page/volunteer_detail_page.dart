@@ -52,6 +52,7 @@ class _AboutAnnouncementPageState extends State<VolunteerDetailPage>
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => cubit,
+
       child: Scaffold(
         backgroundColor: AppColorUtils.BACKGROUND,
         appBar: AppBarWithTitle(
@@ -60,7 +61,7 @@ class _AboutAnnouncementPageState extends State<VolunteerDetailPage>
             NavigatorService.to.pop();
           },
         ),
-        body: BlocBuilder<VolonteerDetailCubit, VolonteerDetailState>(
+        body: BlocBuilder<VolonteerDetailCubit, VolunteerDetailState>(
           builder: (context, state) {
             return SingleChildScrollView(
               physics: BouncingScrollPhysics(),
@@ -75,16 +76,18 @@ class _AboutAnnouncementPageState extends State<VolunteerDetailPage>
                         topLeft: Radius.circular(11),
                       ),
                     ),
-                    child: TabBarWidget(
-                      _controller,
-                      LocaleKeys.about_project.tr(),
-                      LocaleKeys.donate.tr()
-                    ),
+                    child: TabBarWidget(_controller,
+                        LocaleKeys.about_project.tr(), LocaleKeys.donate.tr()),
                   ),
                   Container(
                     child: [
-                      AboutProjectVolunteerWidget(cardModel: widget.cardModel),
-                      VolunteerDonateWidget(cardModel: widget.cardModel,)
+                      AboutProjectVolunteerWidget(
+                        cardModel: widget.cardModel,
+                        state: state,
+                      ),
+                      VolunteerDonateWidget(
+                        cardModel: widget.cardModel,
+                      )
                     ][_controller.index],
                   )
                 ],
