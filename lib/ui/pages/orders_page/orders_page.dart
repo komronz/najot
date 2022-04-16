@@ -11,6 +11,8 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../../data/bloc/orders_cubit/orders_state.dart';
+import '../../../data/localization/locale_keys.g.dart';
 import 'widgets/order_list_item_widget.dart';
 
 class OrdersPage extends StatelessWidget {
@@ -41,7 +43,7 @@ class OrdersPage extends StatelessWidget {
                   },
                 ),
                 AppWidgets.textLocale(
-                  text: "Mahsulotlarim",
+                  text: LocaleKeys.my_products,
                   fontSize: 26.sp,
                   fontWeight: FontWeight.w600,
                 ),
@@ -83,16 +85,20 @@ class OrdersPage extends StatelessWidget {
         children: [
           AppWidgets.imageSvg(path: AppImageUtils.IMG_ORDERS_EMPTY),
           AppWidgets.textLocale(
-            text: "Hozircha mahsulot sotib olmagansiz",
+            text: LocaleKeys.you_have_not_purchased_the_product_yet,
             fontWeight: FontWeight.w600,
             color: AppColorUtils.GRAY_4,
           ).paddingOnly(top: 16.w),
         ],
-      ).paddingOnly(top: 70.w);
+      ).paddingOnly(
+        top: 70.w,
+        right: 60.w,
+        left: 60.w,
+      );
     }
     return ListView.builder(
       itemBuilder: (context, index) {
-        if (index == state.list.length-1) {
+        if (index == state.list.length - 1) {
           return OrdersItemsWidget(
             model: state.list[index],
             isLast: true,

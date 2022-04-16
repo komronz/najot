@@ -56,6 +56,7 @@ class _AboutMyCharityItemProjectWidgetState
       setState(() {});
     }
   }
+  bool selected=true;
 
   @override
   Widget build(BuildContext context) {
@@ -216,6 +217,13 @@ class _AboutMyCharityItemProjectWidgetState
                   child: Column(
                     children: [
                       TabBar(
+                        onTap: (v){
+                          if(v==2){
+                            selected=false;
+                          }else{
+                            selected=true;
+                          }
+                        },
                         controller: _tabController,
                         enableFeedback: true,
                         labelColor: AppColorUtils.GREEN_APP,
@@ -249,16 +257,17 @@ class _AboutMyCharityItemProjectWidgetState
                                   fontSize: 14.sp,
                                 ),
                               ),
-                              true
-                                  ? Container(
-                                      width: 7.w,
-                                      height: 7.w,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(50),
-                                          color: Colors.red),
-                                    ).paddingOnly(left: 3.w, top: 2.w)
-                                  : SizedBox(),
+                               Visibility(
+                                 visible: selected,
+                                 child: Container(
+                                        width: 7.w,
+                                        height: 7.w,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            color: Colors.red),
+                                      ).paddingOnly(left: 3.w, top: 2.w),
+                               )
                             ],
                           ),
                           Text(
@@ -273,9 +282,9 @@ class _AboutMyCharityItemProjectWidgetState
                         indicatorColor: AppColorUtils.GREEN_APP,
                         indicatorSize: TabBarIndicatorSize.tab,
                         padding: EdgeInsets.only(right: 10),
-                        indicatorPadding: EdgeInsets.only(right: 10, left: 10),
-                        labelPadding: EdgeInsets.only(right: 10, left: 10),
-                      ).paddingOnly(left: 15.w, top: 8.w),
+                        indicatorPadding: EdgeInsets.only(right: 10, left: 10,),
+                        labelPadding: EdgeInsets.only(right: 10, left: 10,),
+                      ).paddingOnly(left: 15.w, top: 8.w,),
                       Container(
                         child: [
                           MyCharityMoreWidget(

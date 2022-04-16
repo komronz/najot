@@ -1,0 +1,176 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/custom_time_picker/flutter_time_picker_spinner.dart';
+import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/services/navigator_service.dart';
+import 'package:najot/data/styles/app_colors.dart';
+import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/waiting_for_adding_success.dart';
+import 'package:super_rich_text/super_rich_text.dart';
+import '../../../../data/custom_time_picker/date_picker/date_picker_theme.dart';
+import '../../../../data/custom_time_picker/date_picker/i18n/date_picker_i18n.dart';
+import '../../../../data/custom_time_picker/date_picker/widget/date_picker_widget.dart';
+import '../../../../data/localization/locale_keys.g.dart';
+import '../../../../data/model/volunteering_model.dart';
+import '../../../widgets/app_widgets.dart';
+import '../../my_volunteering_page/my_volunteering_page.dart';
+import 'notification_success_adding.dart';
+
+class AttentionNote extends StatelessWidget {
+  static const String routeName="/attentionNote";
+  AttentionNote({
+   required this.model,
+    Key? key,
+  }) : super(key: key);
+  DateTime _date = DateTime.now();
+  DateTime _time = DateTime.now();
+
+  VolunteeringModel model;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Material(
+        color: Colors.transparent,
+        child: Container(
+          margin: EdgeInsets.all(20.0),
+          decoration: ShapeDecoration(
+            color: AppColors.WHITE,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    AppWidgets.imageSvg(
+                      path: AppImageUtils.NOTIFICATION_GREY,
+                      color: AppColorUtils.KRAUDFANDING,
+                    ).paddingOnly(right: 5.w, top: 15.w,),
+                    AppWidgets.textLocale(
+                      text: "Diqqat eslatma!",
+                      fontSize: 20.sp,
+                      color: AppColorUtils.DARK2,
+                      fontWeight: FontWeight.w600,
+                    ).paddingOnly(
+                      top: 20.w,
+                    ),
+                  ],
+                ).paddingSymmetric(horizontal: 24.w),
+                AppWidgets.textLocale(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16.sp,
+                    color: AppColorUtils.DARK2,
+                    maxLines: 2,
+                    text: "Salom //Volontyor!//\nsiz yordamga borishingiz kerak!",
+                    richText: true,
+                    othersMarkers: [
+                      MarkerText(marker: "//", style: TextStyle(
+                          color: AppColorUtils.KRAUDFANDING
+                      ),),
+                    ],
+                ).paddingOnly(top: 5.w, right: 24.w, left: 24.w, bottom: 11.w,),
+                Container(
+                  width: double.infinity,
+                  color: Color(0xFFF5F9FF),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AppWidgets.textLocale(
+                        text: "Sana",
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w400,
+                        color: AppColorUtils.DARK_6,
+                      ).paddingOnly(bottom: 3.w),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          AppWidgets.imageSvg(
+                            path: AppImageUtils.CALENDAR_RED,
+                            color: AppColorUtils.BLUE_PERCENT,
+                            height: 16,
+                          ).paddingOnly(right: 5.w),
+                          AppWidgets.textLocale(
+                            text: model.completedDate!,
+                            color: AppColorUtils.BLUE_PERCENT,
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ],
+                      ),
+                      AppWidgets.textLocale(
+                        text: "Manzil",
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w400,
+                        color: AppColorUtils.DARK_6,
+                      ).paddingOnly(bottom: 3.w),
+                      AppWidgets.textLocale(
+                        text: model.address!,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                        color: AppColorUtils.BLUE_TEXT,
+                        maxLines: 2,
+                      ).paddingOnly(bottom: 18.w),
+                      AppWidgets.starTextWidget(
+                          text: "Yordam turi",
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w400,
+                        color: AppColorUtils.DARK_6,
+                      ),
+                      AppWidgets.textLocale(
+                        text: model.typeVolunteering!,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                        color: AppColorUtils.KRAUDFANDING,
+                        maxLines: 2,
+                      ).paddingOnly(bottom: 18.w),
+                    ],
+                  ).paddingOnly(
+                    top: 10.w,
+                    right: 24.w,
+                    left: 24.w,
+                  ),
+                ).paddingOnly(
+                  bottom: 18.w,
+                ),
+
+                Column(
+                  children: [
+                    AppWidgets.appButton(
+                      onTap: () {
+                        NavigatorService.to.pushReplacementNamed(MyVolunteeringPage.routeName);
+                      },
+                      title: "Volontyorlik faoliyatim",
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    SizedBox(height: 12.h),
+                    AppWidgets.appButton(
+                      color: AppColorUtils.SMS_BTN2,
+                      textColor: AppColorUtils.KRAUDFANDING,
+                      onTap: () {
+                        NavigatorService.to.pop();
+                      },
+                      title: "Eslatmalar",
+                      fontSize: 16.sp,
+                    ),
+                  ],
+                ).paddingOnly(
+                  left: 25,
+                  right: 25,
+                  bottom: 28,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

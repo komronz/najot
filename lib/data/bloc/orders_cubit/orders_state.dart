@@ -1,4 +1,6 @@
-part of 'orders_cubit.dart';
+
+import 'package:equatable/equatable.dart';
+import 'package:najot/data/model/kraufanding_model.dart';
 
 class OrdersState extends Equatable {
   final List<KraufandingModel> list;

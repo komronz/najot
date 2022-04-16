@@ -12,6 +12,8 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../my_products_page/my_products_page.dart';
+import '../../volunteering_charity_history_page/volunteering_charity_history_page.dart';
 import '../my_volunteering_page.dart';
 import 'adding_project_page.dart';
 
@@ -79,10 +81,10 @@ class MyVolunteeringDrawerBody extends StatelessWidget {
                   vertical: 14,
                 ),
                 onTap: () {
-                  context
-                      .read<AppPageCubit>()
-                      .changePage(pageType: AppPageType.MAIN);
-                  Navigator.pop(context);
+                  // context
+                  //     .read<AppPageCubit>()
+                  //     .changePage(pageType: AppPageType.MAIN);
+                  // Navigator.pop(context);
                 },
               ),
               AppWidgets.rowIconText(
@@ -114,6 +116,7 @@ class MyVolunteeringDrawerBody extends StatelessWidget {
                   vertical: 14,
                 ),
                 onTap: () {
+                  NavigatorService.to.pushReplacementNamed(VolunteeringCharityHistoryPage.routeName);
                   // context.read<AppPageCubit>().changePage(
                   //   pageType: AppPageType.ORDERS,
                   // );
@@ -123,13 +126,14 @@ class MyVolunteeringDrawerBody extends StatelessWidget {
               AppWidgets.rowIconText(
                 icon: AppImageUtils.PRODUCTS,
                 iconSelect: AppImageUtils.PRODUCTS2,
-                text: "Mukofotlarim",
+                text: "Mahsulotlarim",
                 fontSize: 16.sp,
                 padding: EdgeInsets.symmetric(
                   horizontal: 18.w,
                   vertical: 14,
                 ),
                 onTap: () {
+                  NavigatorService.to.pushReplacementNamed(MyProductsPage.routeName);
                   // context.read<AppPageCubit>().changePage(
                   //   pageType: AppPageType.ORDERS,
                   // );

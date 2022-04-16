@@ -46,6 +46,9 @@ dependencies:
   keyboard_attachable: ^2.1.0
   flutter_picker: ^2.0.3
   dropdown_button2: ^1.2.3
+  flutter_local_notifications: ^9.4.0
+  rxdart: ^0.27.3
+  flutter_native_timezone: ^2.0.0
 
 
 dev_dependencies:

@@ -8,10 +8,12 @@ import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 
 import '../../widgets/app_widgets.dart';
+import '../notification_page/notification_page.dart';
 import 'my_volunteering_widget/item_charity_widget.dart';
 import 'my_volunteering_widget/my_volunteering_drawer_body.dart';
 import 'my_volunteering_widget/waiting_for_widget.dart';
@@ -52,12 +54,17 @@ class MyVolunteeringPage extends StatelessWidget {
                     fontSize: 26.sp,
                     fontWeight: FontWeight.w600,
                   ),
-                  SvgPicture.asset(
-                    AppImageUtils.NOTIFICATION,
-                    height: 35.w,
-                    width: 35.w,
-                    fit: BoxFit.fill,
-                  )
+                  InkWell(
+                    child: SvgPicture.asset(
+                      AppImageUtils.NOTIFICATION,
+                      height: 35.w,
+                      width: 35.w,
+                      fit: BoxFit.fill,
+                    ),
+                    onTap: (){
+                      NavigatorService.to.pushNamed(NotificationPage.routeName);
+                    },
+                  ),
                 ],
               ).paddingSymmetric(horizontal: 20),
             ),

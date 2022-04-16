@@ -1,0 +1,212 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:najot/data/extensions/context_extension.dart';
+import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/model/volunteering_model.dart';
+import 'package:najot/data/services/navigator_service.dart';
+import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/notification_page/widget/attension_note.dart';
+
+import '../../../../data/localization/locale_keys.g.dart';
+import '../../../../data/utils/app_color_utils.dart';
+import '../../../widgets/app_widgets.dart';
+import 'notification_api.dart';
+import 'notification_delete_widget.dart';
+import 'notification_edit.dart';
+
+class MyNoteWidget extends StatefulWidget {
+   MyNoteWidget({required this.model, Key? key, this.isLast = false,})
+      : super(key: key);
+  final VolunteeringModel model;
+  bool isLast;
+
+   @override
+   _MyNoteWidgetState createState() => _MyNoteWidgetState();
+
+}
+
+class _MyNoteWidgetState extends State<MyNoteWidget> {
+  @override
+  void initState() {
+    super.initState();
+    listenNotifications();
+    NotificationApi.init(initScheduled: true);
+
+  }
+  void listenNotifications()=>
+      NotificationApi.onNotification.stream.listen(onClickNotification);
+  void onClickNotification(String? payload)=>
+      NavigatorService.to.pushReplacementNamed(AttentionNote.routeName);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      child: Container(
+        width: context.width,
+        decoration: BoxDecoration(
+          color: widget.isLast ? AppColorUtils.ITEM_ORDERS_CARD : AppColorUtils.WHITE,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: AppColorUtils.ITEM_ORDERS_BORDER,
+            width: 1,
+          ),
+        ),
+        child: Stack(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AppWidgets.textLocale(
+                  text: LocaleKeys.project_name,
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColorUtils.ITEM_ORDERS_TEXT2,
+                ).paddingOnly(bottom: 3.w),
+                Container(
+                  width: 260.w,
+                  child: AppWidgets.text(
+                    text: widget.model.title!,
+                    height: 1.3,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                    color: AppColorUtils.DARK2,
+                    maxLines: 2,
+                  ),
+                ),
+                AppWidgets.textLocale(
+                  text: "Eslatma vaqti",
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColorUtils.ITEM_ORDERS_TEXT2,
+                ).paddingOnly(
+                  top: 12.w,
+                  bottom: 3,
+                ),
+                InkWell(
+                  onTap: (){
+                    NotificationApi.showNotification(
+                      title: "Diqqat! Salom, Volontyor! siz yordamga \n borishingiz kerak",
+                      body: "",
+                      payload: "sarah.abs",
+                      scheduledDate: DateTime.now().add(Duration(seconds: 3)),
+
+                    );
+
+                  },
+                    child: Icon(Icons.add)
+                ),
+                // Row(
+                //     mainAxisAlignment: MainAxisAlignment.start,
+                //     children: [
+                //       AppWidgets.imageSvg(
+                //         path: AppImageUtils.CALENDAR_RED,
+                //         color: AppColorUtils.BLUE_PERCENT,
+                //         height: 15.w,
+                //       ).paddingOnly(right: 5),
+                //       AppWidgets.textLocale(
+                //         text: widget.model.completedDate!,
+                //         color: AppColorUtils.BLUE_PERCENT,
+                //         fontSize: 16.sp,
+                //         fontWeight: FontWeight.w600,
+                //       ).paddingOnly(right: 24.w),
+                //       AppWidgets.imageSvg(
+                //         path: AppImageUtils.CLOCK,
+                //         color: AppColorUtils.BLUE_PERCENT,
+                //         height: 15.w,
+                //       ).paddingOnly(
+                //         right: 5.w,
+                //         top: 2.w,
+                //       ),
+                //       AppWidgets.textLocale(
+                //         text: "18:00",
+                //         color: AppColorUtils.BLUE_PERCENT,
+                //         fontSize: 16.sp,
+                //         fontWeight: FontWeight.w600,
+                //       ),
+                //     ],
+                //   ),
+
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AppWidgets.starTextWidget(
+                      text: "Bajariladigan sana",
+                      fontSize: 10.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColorUtils.ITEM_ORDERS_TEXT2,
+                    ).paddingOnly(bottom: 4.w),
+                    Row(
+                      children: [
+                        AppWidgets.imageSvg(
+                          path: AppImageUtils.CALENDAR_RED,
+                          color: Color(0xFF5E646D),
+                          height: 12.w,
+                        ).paddingOnly(right: 5),
+                        AppWidgets.textLocale(
+                          text: widget.model.completedDate!,
+                          color: AppColorUtils.KRAUDFANDING,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                        ).paddingOnly(right: 24.w),
+                      ],
+                    ),
+                  ],
+                ).paddingOnly(
+                  top: 12.w,
+                  bottom: 3.w,
+                ),
+              ],
+            ).paddingAll(12),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                    child: SvgPicture.asset(
+                      AppImageUtils.EDIT_DEMO,
+                      color: AppColorUtils.KRAUDFANDING,
+                    ),
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return NotificationEdit(
+                            selectFunction: (dateTime) {},
+                            model: widget.model,
+                          );
+                        },
+                      );
+                    },
+                  ).paddingOnly(top: 15.w, right: 15.w,),
+                  InkWell(
+                    child: SvgPicture.asset(
+                      AppImageUtils.TRASH,
+                      color: AppColorUtils.RED,
+                    ),
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return NotificationDeleteWidget();
+                        },
+                      );
+                    },
+                  ).paddingOnly(top: 120.w, right: 15.w,),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ).paddingSymmetric(horizontal: 20).paddingOnly(top: 12.w),
+      onTap: (){
+        setState(() {
+          widget.isLast=false;
+        });
+      },
+    );
+  }
+
+
+}

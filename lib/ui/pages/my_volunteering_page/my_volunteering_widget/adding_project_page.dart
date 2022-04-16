@@ -102,8 +102,6 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                   color: AppColorUtils.DARK_4,
               ),
             ).paddingOnly(
-              right: 20,
-              left: 20,
               bottom: 10,
               top: 24,
             ),
@@ -118,8 +116,6 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                   color: AppColorUtils.DARK_4,
               ),
             ).paddingOnly(
-              right: 20,
-              left: 20,
               bottom: 10,
             ),
             DropDownWidget(items: projectType).paddingOnly(
@@ -142,11 +138,10 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
               textColor: Colors.white,
               color: AppColorUtils.PERCENT_COLOR,
             ).paddingSymmetric(
-              horizontal: 20,
               vertical: 18,
             ),
           ],
-        ),
+        ).paddingSymmetric(horizontal: 20.w),
       ),
     );
   }

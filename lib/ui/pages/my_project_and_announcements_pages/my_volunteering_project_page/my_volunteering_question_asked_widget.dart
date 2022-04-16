@@ -44,8 +44,8 @@ class MyVolunteeringQuestionsAskedWidget extends StatelessWidget {
                       Row(
                         children: [
                           Container(
-                            height: 50.w,
-                            width: 50.w,
+                            height: 51.w,
+                            width: 51.w,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
@@ -65,15 +65,15 @@ class MyVolunteeringQuestionsAskedWidget extends StatelessWidget {
                                     fontWeight: FontWeight.w600,
                                     fontSize: 14.sp,
                                     maxLines: 2,
-                                ),
-                                width: 220.w,
+                                ).paddingOnly(top: 5.w),
+                                width: 240.w,
                               ),
                               AppWidgets.textLocale(
                                 text: "Eshonov Fakhriyor",
                                 fontSize: 12.sp,
                                 fontWeight: FontWeight.w400,
                                 color: AppColorUtils.DARK_6,
-                              ).paddingOnly(top: 5.w),
+                              ).paddingOnly(top: 3.w),
                             ],
                           ).paddingOnly(left: 10),
                         ],

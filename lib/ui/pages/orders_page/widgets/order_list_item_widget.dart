@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/context_extension.dart';
@@ -22,7 +23,7 @@ class OrdersItemsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: isLast?EdgeInsets.only(bottom: 18.w):null,
+      margin: isLast ? EdgeInsets.only(bottom: 18.w) : null,
       width: context.width,
       decoration: BoxDecoration(
         color: AppColorUtils.ITEM_ORDERS_CARD,
@@ -36,7 +37,7 @@ class OrdersItemsWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppWidgets.textLocale(
-            text: "Loyiha nomi",
+            text: LocaleKeys.project_name,
             fontSize: 10.sp,
             fontWeight: FontWeight.w400,
             color: AppColorUtils.ITEM_ORDERS_TEXT2,
@@ -49,7 +50,7 @@ class OrdersItemsWidget extends StatelessWidget {
             maxLines: 2,
           ),
           AppWidgets.textLocale(
-            text: "Mahsulot haqida qisqa",
+            text: LocaleKeys.briefly_about_the_product,
             fontSize: 10.sp,
             fontWeight: FontWeight.w400,
             color: AppColorUtils.ITEM_ORDERS_TEXT2,
@@ -67,13 +68,13 @@ class OrdersItemsWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               AppWidgets.starTextWidget(
-                text: "Taxminiy yetkazib berish",
+                text: LocaleKeys.estimated_delivery.tr(),
                 fontSize: 10.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColorUtils.ITEM_ORDERS_TEXT2,
               ),
               AppWidgets.textLocale(
-                text: "Mahsulot summasi",
+                text: LocaleKeys.product_amount,
                 fontSize: 10.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColorUtils.ITEM_ORDERS_TEXT2,
@@ -94,7 +95,7 @@ class OrdersItemsWidget extends StatelessWidget {
             ],
           ),
           AppWidgets.appButton(
-            title: "Qabul qildim",
+            title: LocaleKeys.i_accepted.tr(),
             fontSize: 14.sp,
             fontWeight: FontWeight.w500,
             borderRadius: 10,

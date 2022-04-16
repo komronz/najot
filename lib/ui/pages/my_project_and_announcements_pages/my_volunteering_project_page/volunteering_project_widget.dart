@@ -158,7 +158,7 @@ class VolunteeringProjectWidget extends StatelessWidget {
       ),
       onTap: (){
         NavigatorService.to.pushNamed(
-            AboutMyCharityItemProjectWidget.routeName,
+          AboutMyVolunteeringItemProjectWidget.routeName,
             arguments: model,
         );
       },
