@@ -35,164 +35,169 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
         con.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
         return Future(() => false);
       },
-      child: BlocProvider(
-        create: (BuildContext context) =>
-            EditVolunteerBloc()..add(MyProfileLoad()),
-        child: SafeArea(
-          child: Scaffold(
-            appBar: AppBar(
-              backgroundColor: AppColorUtils.BACKGROUND,
-              titleSpacing: 0,
-              elevation: 0,
-              automaticallyImplyLeading: false,
-              title: Container(
-                color: AppColorUtils.BACKGROUND,
-                child: AppWidgets.appBarMenu(
-                  title: LocaleKeys.edit_my_profile,
-                  onTapMenu: () {
-                    HomePage.globalKey.currentState!.openDrawer();
-                  },
-                  visibleIcon: true,
-                  onTapIcon: () {
-                    con.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
-                  },
-                  icon: AppImageUtils.REMOVE,
+      child: GestureDetector(
+        onTap: (){
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        child: BlocProvider(
+          create: (BuildContext context) =>
+              EditVolunteerBloc()..add(MyProfileLoad()),
+          child: SafeArea(
+            child: Scaffold(
+              appBar: AppBar(
+                backgroundColor: AppColorUtils.BACKGROUND,
+                titleSpacing: 0,
+                elevation: 0,
+                automaticallyImplyLeading: false,
+                title: Container(
+                  color: AppColorUtils.BACKGROUND,
+                  child: AppWidgets.appBarMenu(
+                    title: LocaleKeys.edit_my_profile,
+                    onTapMenu: () {
+                      HomePage.globalKey.currentState!.openDrawer();
+                    },
+                    visibleIcon: true,
+                    onTapIcon: () {
+                      con.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
+                    },
+                    icon: AppImageUtils.REMOVE,
+                  ),
                 ),
               ),
-            ),
-            backgroundColor: AppColorUtils.WHITE,
-            body: BlocBuilder<EditVolunteerBloc, EditVolunteerState>(
-                builder: (context, state) {
-              return Column(
-                children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Container(
-                        width: 375.w,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: AppColorUtils.WHITE,
-                        ),
-                        child: Column(
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                AppDisableTextField(
-                                  isFill: false,
-                                  hintText: user == null
-                                      ? user.toString()
-                                      : user!.phone.toString(),
-                                  onChanged: (v) {},
-                                  title: LocaleKeys.phone_number,
-                                ).paddingOnly(
-                                  bottom: 23.w,
-                                  top: 20.w,
-                                  left: 20,
-                                  right: 20,
-                                ),
-                                AppWidgets.textLocale(
-                                  text: LocaleKeys.new_phone_number,
-                                  color: AppColorUtils.DARK_4,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w400,
-                                ).paddingOnly(
-                                  left: 20.w,
-                                  bottom: 8.w,
-                                ),
-                                TextFormField(
-                                  style: TextStyle(color: Colors.black),
-                                  inputFormatters: [maskFormatter],
-                                  controller: numberController,
-                                  onChanged: (v) {
-                                    context
-                                        .read<EditVolunteerBloc>()
-                                        .add(PhoneChanged(v));
-                                  },
-                                  keyboardType: TextInputType.number,
-                                  validator: (value) {
-                                    // return AppValidator.validateNumber(
-                                    //     value!);
-                                  },
-                                  decoration: DecorationConst().inputDecoration(
-                                    prefixIcon: Container(
-                                      padding: EdgeInsets.only(left: 10),
-                                      width: size.width * 0.2,
-                                      child: Center(
-                                        child: AppWidgets.text(
-                                          text: "(+998)",
-                                          fontSize: 16,
-                                          color: AppColorUtils.DARK_6,
+              backgroundColor: AppColorUtils.WHITE,
+              body: BlocBuilder<EditVolunteerBloc, EditVolunteerState>(
+                  builder: (context, state) {
+                return Column(
+                  children: [
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Container(
+                          width: 375.w,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: AppColorUtils.WHITE,
+                          ),
+                          child: Column(
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  AppDisableTextField(
+                                    isFill: false,
+                                    hintText: user == null
+                                        ? user.toString()
+                                        : user!.phone.toString(),
+                                    onChanged: (v) {},
+                                    title: LocaleKeys.phone_number,
+                                  ).paddingOnly(
+                                    bottom: 23.w,
+                                    top: 20.w,
+                                    left: 20,
+                                    right: 20,
+                                  ),
+                                  AppWidgets.textLocale(
+                                    text: LocaleKeys.new_phone_number,
+                                    color: AppColorUtils.DARK_4,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ).paddingOnly(
+                                    left: 20.w,
+                                    bottom: 8.w,
+                                  ),
+                                  TextFormField(
+                                    style: TextStyle(color: Colors.black),
+                                    inputFormatters: [maskFormatter],
+                                    controller: numberController,
+                                    onChanged: (v) {
+                                      context
+                                          .read<EditVolunteerBloc>()
+                                          .add(PhoneChanged(v));
+                                    },
+                                    keyboardType: TextInputType.number,
+                                    validator: (value) {
+                                      // return AppValidator.validateNumber(
+                                      //     value!);
+                                    },
+                                    decoration: DecorationConst().inputDecoration(
+                                      prefixIcon: Container(
+                                        padding: EdgeInsets.only(left: 10),
+                                        width: size.width * 0.2,
+                                        child: Center(
+                                          child: AppWidgets.text(
+                                            text: "(+998)",
+                                            fontSize: 16,
+                                            color: AppColorUtils.DARK_6,
+                                          ),
                                         ),
                                       ),
                                     ),
+                                    cursorColor: Colors.black,
+                                  ).paddingOnly(
+                                    bottom: 23.w,
+                                    left: 20.w,
+                                    right: 20.w,
                                   ),
-                                  cursorColor: Colors.black,
-                                ).paddingOnly(
-                                  bottom: 23.w,
-                                  left: 20.w,
-                                  right: 20.w,
-                                ),
 
-                              ],
-                            ),
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20),
-                              width: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(height: 8.w),
-                                  InkWell(
-                                    onTap: () {
-                                      context
-                                          .read<EditVolunteerBloc>()
-                                          .add(SendCode());
-                                    },
-                                    child: context
-                                            .read<EditVolunteerBloc>()
-                                            .state
-                                            .isVisible
-                                        ? Visibility(
-                                            visible: context
-                                                .read<EditVolunteerBloc>()
-                                                .state
-                                                .isVisible,
-                                            child: Container(
-                                              padding: EdgeInsets.only(
-                                                  top: 10,
-                                                  bottom: 13,
-                                                  right: 10,
-                                                  left: 10),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
-                                                color: Color(0xFF1F6ADE),
-                                              ),
-                                              child: AppWidgets.textLocale(
-                                                  text: LocaleKeys.send_code,
-                                                  textAlign: TextAlign.center,
-                                                  color: Color(0xFFFFFFFF),
-                                                  fontSize: 15.sp,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                          )
-                                        : NumberUpdating(
-                                            state: state,
-                                            con: con,
-                                          ),
-                                  ),
                                 ],
                               ),
-                            ),
-                          ],
+                              Container(
+                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                width: double.infinity,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(height: 8.w),
+                                    InkWell(
+                                      onTap: () {
+                                        context
+                                            .read<EditVolunteerBloc>()
+                                            .add(SendCode());
+                                      },
+                                      child: context
+                                              .read<EditVolunteerBloc>()
+                                              .state
+                                              .isVisible
+                                          ? Visibility(
+                                              visible: context
+                                                  .read<EditVolunteerBloc>()
+                                                  .state
+                                                  .isVisible,
+                                              child: Container(
+                                                padding: EdgeInsets.only(
+                                                    top: 10,
+                                                    bottom: 13,
+                                                    right: 10,
+                                                    left: 10),
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                  color: Color(0xFF1F6ADE),
+                                                ),
+                                                child: AppWidgets.textLocale(
+                                                    text: LocaleKeys.send_code,
+                                                    textAlign: TextAlign.center,
+                                                    color: Color(0xFFFFFFFF),
+                                                    fontSize: 15.sp,
+                                                    fontWeight: FontWeight.w600),
+                                              ),
+                                            )
+                                          : NumberUpdating(
+                                              state: state,
+                                              con: con,
+                                            ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              );
-            }),
+                  ],
+                );
+              }),
+            ),
           ),
         ),
       ),

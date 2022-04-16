@@ -144,7 +144,7 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
   }
 
   int _getHourCount() {
-    return widget.is24HourMode ? 16 : 12;
+    return widget.is24HourMode ? 24 : 12;
   }
 
   int _getMinuteCount() {
@@ -358,11 +358,11 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
       },
       child: ListView.builder(
         itemBuilder: (context, index) {
-          int count = 8 + index;
+          int count =  index;
           String text = '';
           if (isLoop(max)) {
             if (hour == true) {
-              text = ((count % max) * interval + 8).toString();
+              text = ((count % max) * interval ).toString();
             } else {
               text = ((index % max) * interval).toString();
             }

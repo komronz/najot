@@ -51,6 +51,7 @@ class AppColorUtils {
   static const Color DARK_4 = Color(0xFF6D6E71);
   static const Color DARK_6 = Color(0xFF939598);
   static const Color GRAY_4 = Color(0xFFBCBEC0);
+  static const Color DARK_1 = Color(0xFF231F20);
   static const Color TEXT_GREEN = Color(0xFF048D6A);
   static const Color TEXT_GREEN2 = Color(0xFF043F3B);
   static const Color TEXT_BLUE = Color(0xFF0344A7);
