@@ -32,7 +32,7 @@ class VolunteeringItemWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppWidgets.textLocale(
-                    text: "E'lon nomi",
+                    text: LocaleKeys.about_the_ad,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
                     maxLines: 10,

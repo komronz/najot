@@ -15,11 +15,11 @@ class VolunteeringCharityHistoryCubit extends Cubit<VolunteeringCharityHistorySt
     emit(state.copyWith(isLoading: true));
     await Future.delayed(Duration(seconds: 4));
     try {
-      var charityList = await service.getCharityList();
 
       ///TODO cardmodelni kraufanding modelga o'zgartirish
       /// TODO: WARNING: crowdFounding
       var kraufandingList = await service.getKraufandingList();
+      var charityList = await service.getCharityList();
       var itemsCharity = await service.getItemsList();
 
       emit(

@@ -135,5 +135,10 @@ abstract class  LocaleKeys {
   static const product_amount = 'product_amount';
   static const i_accepted = 'i_accepted';
   static const note = 'note';
+  static const charity_amount = 'charity_amount';
+  static const my_volunteering = 'my_volunteering';
+  static const notes = 'notes';
+  static const note_time = 'note_time';
+  static const ad_name = 'ad_name';
 
 }

@@ -112,7 +112,18 @@
   "estimated_delivery": "Taxminiy yetkazib berish",
   "product_amount": "Mahsulot summasi",
   "i_accepted": "Qabul qildim",
-  "note": "Eslatma"
+  "note": "Eslatma",
+  "advertising": "E'lon",
+  "charity_amount":"Loyiha summasi",
+  "my_volunteering": "Volontyorlik faoliyatim",
+  "notes": "Eslatmalar",
+  "note_time": "Eslatma vaqti",
+  "charity_history":"Xayriyalar tarixi",
+  "need_summa":"Lozim bo'lgan summa",
+  "announcement_day": "E'lon berilgan kun",
+  "must_collect_date": "Sanagacha to'planishi kerak",
+  "ad_name": "E'lon nomi",
+  "thank_you": "Xop, rahmat"
 
 
 }

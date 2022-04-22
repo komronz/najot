@@ -1,8 +1,8 @@
 part of 'volunteering_charity_history_cubit.dart';
 
 class VolunteeringCharityHistoryState extends Equatable {
-  final List<CharityModel> charityList;
   final List<KraufandingModel> kraufandingList;
+  final List<CharityModel> charityList;
   final List<CharityModel> itemsCharity;
   final bool hasError;
   final bool hasConnection;
@@ -18,16 +18,16 @@ class VolunteeringCharityHistoryState extends Equatable {
   });
 
   VolunteeringCharityHistoryState copyWith({
-    List<CharityModel>? charityList,
     List<KraufandingModel>? kraufandingList,
+    List<CharityModel>? charityList,
     List<CharityModel>? itemsCharity,
     bool? hasError,
     bool? hasConnection,
     bool? isLoading,
   }) {
     return VolunteeringCharityHistoryState(
-      charityList: charityList ?? this.charityList,
       kraufandingList: kraufandingList ?? this.kraufandingList,
+      charityList: charityList ?? this.charityList,
       itemsCharity: itemsCharity ?? this.itemsCharity,
       hasConnection: hasConnection ?? this.hasConnection,
       hasError: hasError ?? this.hasError,
@@ -37,8 +37,8 @@ class VolunteeringCharityHistoryState extends Equatable {
 
   @override
   List<Object?> get props => [
-    charityList,
     kraufandingList,
+    charityList,
     itemsCharity,
     hasConnection,
     hasConnection,

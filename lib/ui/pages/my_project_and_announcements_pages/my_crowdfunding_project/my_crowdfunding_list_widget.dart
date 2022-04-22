@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
-import 'package:najot/data/services/navigator_service.dart';
-import 'package:najot/data/services/products_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/charity_history_page/widgets/kraufanding_item_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-class KraufandingListWidget extends StatelessWidget {
+import 'my_crowdfunding_card_widget.dart';
+
+class MyCrowdfundingListWidget extends StatelessWidget {
   final List<KraufandingModel> list;
 
-  const KraufandingListWidget({
+  const MyCrowdfundingListWidget({
     required this.list,
     Key? key,
   }) : super(key: key);
@@ -46,28 +43,30 @@ class KraufandingListWidget extends StatelessWidget {
         ],
       );
     }
-    return ListView.builder(
-      physics: BouncingScrollPhysics(),
-      itemBuilder: (context, index) => KraufandingItemWidget(
-        model: list[index],
-        onTap: () {
-          var model = CardModel(
-            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
-            "Texnalogiya",
-            "Drenajni kuzatish uchun mo'ljallangan",
-            0.6,
-            true,
-            CardModel.info,
-            "22.08.2022",
-              ProductsService().getProducts()
-          );
-          NavigatorService.to.pushNamed(
-            ProjectDetailsPage.routeName,
-            arguments: model,
-          );
-        },
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          GridView.count(
+            shrinkWrap: true,
+            crossAxisCount: 2,
+            physics: ClampingScrollPhysics(),
+            childAspectRatio: 168 / 298,
+            padding: EdgeInsets.all(0),
+            reverse: false,
+            children: List.generate(
+              list.length,
+                  (index) => MyCrowdfundingList(
+                    cardModel: list[index], visible: true,
+              ),
+            ),
+          ),
+        ],
+      ).paddingOnly(
+        left: 20,
+        top: 10,
+        right: 10,
+
       ),
-      itemCount: list.length,
     );
   }
 }

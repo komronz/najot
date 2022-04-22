@@ -7,17 +7,16 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import '../../../../data/bloc/my_charity_support_list_cubit/my_charity_support_list_cubit.dart';
+import '../../../../data/bloc/my_charity_support_list_cubit/my_charity_support_list_state.dart';
 import '../../../../data/config/const/decoration_const.dart';
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/model/charity_model.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
-import '../my_charity_project_full_widget/my_charity_applied_user_widget.dart';
 import '../my_charity_project_full_widget/my_charity_comments_widget.dart';
 import '../my_charity_project_full_widget/my_charity_more_widget.dart';
 import '../my_charity_project_full_widget/my_charity_news_widget.dart';
-import '../my_charity_project_full_widget/my_charity_price_widget.dart';
 import '../my_charity_project_full_widget/my_charity_question_asked_widget.dart';
 import 'my_charity_item_author_widget.dart';
 import 'my_charity_item_price_widget.dart';
@@ -120,39 +119,7 @@ class _AboutMyCharityItemProjectWidgetState
                             ],
                           ),
                         ).paddingOnly(top: 35.h, right: 15.w),
-                        // Positioned(
-                        //   bottom: 260.h,
-                        //   right: 35.w,
-                        //   child: Row(
-                        //     children: [
-                        //       AppWidgets.appButton(
-                        //         color: AppColorUtils.BLUE,
-                        //           fontSize: 12,
-                        //           fontWeight: FontWeight.w600,
-                        //           width: 128.w,
-                        //           height: 36.w,
-                        //           textColor: AppColorUtils.WHITE,
-                        //           title: "Qo'llaganlar",
-                        //           borderRadius: 12,
-                        //           onTap: (){},
-                        //         icon: SvgPicture.asset(AppImageUtils.USERS),
-                        //       ).paddingOnly(right: 17.w),
-                        //       SvgPicture.asset(AppImageUtils.TRASH_RED).paddingOnly(right: 12.w),
-                        //       SvgPicture.asset(AppImageUtils.EDIT_GREEN),
-                        //       // Container(
-                        //       //   height: 35.w,
-                        //       //   width: 60.w,
-                        //       //   decoration: BoxDecoration(
-                        //       //     color: AppColorUtils.BLUE,
-                        //       //     borderRadius: BorderRadius.horizontal(
-                        //       //       left: Radius.circular(12),
-                        //       //     ),
-                        //       //   ),
-                        //       //   child: SvgPicture.asset(AppImageUtils.EDIT_GREEN),
-                        //       // ),
-                        //     ],
-                        //   ),
-                        // ),
+
                       ],
                     ),
                     AppWidgets.text(
@@ -294,7 +261,7 @@ class _AboutMyCharityItemProjectWidgetState
                             cardModel: widget.model,
                           ).paddingAll(20.w),
                           MyCharityQuestionsAskedWidget(
-                            cardModel: widget.model,
+                            cardModel: widget.model, cubit: cubit,
                           ).paddingAll(20.w),
                           MyCharityCommentsWidget(
                             cardModel: widget.model,

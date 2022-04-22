@@ -4,26 +4,27 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/volunteering_model.dart';
-import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/notification_page/widget/attension_note.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
-import 'notification_api.dart';
 import 'notification_delete_widget.dart';
 import 'notification_edit.dart';
 
 class MyNoteWidget extends StatefulWidget {
-   MyNoteWidget({required this.model, Key? key, this.isLast = false,})
-      : super(key: key);
+  MyNoteWidget({
+    required this.model,
+    required this.onTap,
+    Key? key,
+    this.isLast = false,
+  }) : super(key: key);
   final VolunteeringModel model;
+  final VoidCallback onTap;
   bool isLast;
 
-   @override
-   _MyNoteWidgetState createState() => _MyNoteWidgetState();
-
+  @override
+  _MyNoteWidgetState createState() => _MyNoteWidgetState();
 }
 
 class _MyNoteWidgetState extends State<MyNoteWidget> {
@@ -31,20 +32,10 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
   void initState() {
     super.initState();
     // NotificationApi.init(initScheduled: true);
-    NotificationApi.init();
-    listenNotifications();
-
+    // NotificationApi.init();
+    // listenNotifications();
   }
-  void listenNotifications()=>
-      NotificationApi.onNotification.stream.listen(onClickNotification);
-  void onClickNotification(String? payload)=>
-      // showDialog(
-      //   context: context,
-      //   builder: (context) {
-      //     return AttentionNote();
-      //   },
-      // );
-      NavigatorService.to.pushNamed(AttentionNote.routeName, arguments: payload);
+
 
 
   @override
@@ -53,7 +44,9 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
       child: Container(
         width: context.width,
         decoration: BoxDecoration(
-          color: widget.isLast ? AppColorUtils.ITEM_ORDERS_CARD : AppColorUtils.WHITE,
+          color: widget.isLast
+              ? AppColorUtils.ITEM_ORDERS_CARD
+              : AppColorUtils.WHITE,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: AppColorUtils.ITEM_ORDERS_BORDER,
@@ -83,7 +76,7 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
                   ),
                 ),
                 AppWidgets.textLocale(
-                  text: "Eslatma vaqti",
+                  text: LocaleKeys.note_time,
                   fontSize: 10.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColorUtils.ITEM_ORDERS_TEXT2,
@@ -91,54 +84,42 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
                   top: 12.w,
                   bottom: 3,
                 ),
-                  InkWell(
-                    child: Icon(Icons.add),
-                    onTap: (){
-                      NotificationApi.showNotification(
-                          title: "Diqqat! Salom, Volontyor! siz yordamga \n borishingiz kerak",
-                          body: "",
-                          payload: "sarah.abs",
-                      );
-                    }
-                  ),
-
-
-                  //                 Row(
-                  //   mainAxisAlignment: MainAxisAlignment.start,
-                  //   children: [
-                  //     AppWidgets.imageSvg(
-                  //       path: AppImageUtils.CALENDAR_RED,
-                  //       color: AppColorUtils.BLUE_PERCENT,
-                  //       height: 15.w,
-                  //     ).paddingOnly(right: 5),
-                  //     AppWidgets.textLocale(
-                  //       text: widget.model.completedDate!,
-                  //       color: AppColorUtils.BLUE_PERCENT,
-                  //       fontSize: 16.sp,
-                  //       fontWeight: FontWeight.w600,
-                  //     ).paddingOnly(right: 24.w),
-                  //     AppWidgets.imageSvg(
-                  //       path: AppImageUtils.CLOCK,
-                  //       color: AppColorUtils.BLUE_PERCENT,
-                  //       height: 15.w,
-                  //     ).paddingOnly(
-                  //       right: 5.w,
-                  //       top: 2.w,
-                  //     ),
-                  //     AppWidgets.textLocale(
-                  //       text: "18:00",
-                  //       color: AppColorUtils.BLUE_PERCENT,
-                  //       fontSize: 16.sp,
-                  //       fontWeight: FontWeight.w600,
-                  //     ),
-                  //   ],
-                  // ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    AppWidgets.imageSvg(
+                      path: AppImageUtils.CALENDAR_RED,
+                      color: AppColorUtils.BLUE_PERCENT,
+                      height: 15.w,
+                    ).paddingOnly(right: 5),
+                    AppWidgets.textLocale(
+                      text: widget.model.completedDate!,
+                      color: AppColorUtils.BLUE_PERCENT,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w600,
+                    ).paddingOnly(right: 24.w),
+                    AppWidgets.imageSvg(
+                      path: AppImageUtils.CLOCK,
+                      color: AppColorUtils.BLUE_PERCENT,
+                      height: 15.w,
+                    ).paddingOnly(
+                      right: 5.w,
+                      top: 2.w,
+                    ),
+                    AppWidgets.textLocale(
+                      text: "18:00",
+                      color: AppColorUtils.BLUE_PERCENT,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ],
+                ),
 
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     AppWidgets.starTextWidget(
-                      text: "Bajariladigan sana",
+                      text: LocaleKeys.date_of_completion,
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w400,
                       color: AppColorUtils.ITEM_ORDERS_TEXT2,
@@ -186,7 +167,10 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
                         },
                       );
                     },
-                  ).paddingOnly(top: 15.w, right: 15.w,),
+                  ).paddingOnly(
+                    top: 15.w,
+                    right: 15.w,
+                  ),
                   InkWell(
                     child: SvgPicture.asset(
                       AppImageUtils.TRASH,
@@ -200,20 +184,25 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
                         },
                       );
                     },
-                  ).paddingOnly(top: 120.w, right: 15.w,),
+                  ).paddingOnly(
+                    top: 120.w,
+                    right: 15.w,
+                  ),
                 ],
               ),
             ),
           ],
         ),
       ).paddingSymmetric(horizontal: 20).paddingOnly(top: 12.w),
-      onTap: (){
-        setState(() {
-          widget.isLast=false;
-        });
-      },
+      onTap:widget.onTap,
+      //     (){
+      //   widget.onTap;
+      //   setState(() {
+      //     widget.isLast = false;
+      //   });
+      // }
+
+
     );
   }
-
-
 }

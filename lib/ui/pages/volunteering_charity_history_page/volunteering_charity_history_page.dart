@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,7 @@ import 'package:najot/data/bloc/charity_history_cubit/charity_history_cubit.dart
 import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
@@ -46,7 +48,7 @@ class VolunteeringCharityHistoryPage extends StatelessWidget {
                   },
                 ),
                 AppWidgets.textLocale(
-                  text: "Xayriyalar tarixi",
+                  text: LocaleKeys.charity_history,
                   fontSize: 26.sp,
                   fontWeight: FontWeight.w600,
                 ),
@@ -102,9 +104,9 @@ class VolunteeringCharityHistoryPage extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
               tabs: [
-                Text("Kraufanding"),
-                Text("Xayriya"),
-                Text("Buyumlar xayriyasi"),
+                Text(LocaleKeys.crowdfunding.tr()),
+                Text(LocaleKeys.charity.tr()),
+                Text(LocaleKeys.item_charity.tr()),
               ],
               isScrollable: true,
               indicatorWeight: 1.5,

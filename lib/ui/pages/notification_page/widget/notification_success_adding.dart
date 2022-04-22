@@ -42,7 +42,7 @@ class NotificationSuccessAdding extends StatelessWidget {
               ).paddingOnly(top: 24.h, bottom: 14.h),
               AppWidgets.textLocale(
                 textAlign: TextAlign.center,
-                text: "Eslatma //muvaffaqiyatli// qo'shildi",
+                text: "Eslatma //muvaffaqiyatli// o'zgartirildi",
                 richText: true,
                 othersMarkers: [
                   MarkerText(

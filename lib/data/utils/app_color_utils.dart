@@ -87,6 +87,10 @@ class AppColorUtils {
   static const Color GRAY_3= Color(0xFFE6E7E8);
   static const Color DIVIDER_COLOR= Color(0xFFD7E8E3);
   static const Color ADD_PROJECT_COLOR= Color(0xFFEAF2FF);
+  static const Color TEXT_8= Color(0xFF384643);
+  static const Color GREEN_ACCENT8= Color(0xFFEAF9EC);
+  static const Color GREEN_TEXT_1= Color(0xFF064A0D);
+
 
 
 

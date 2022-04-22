@@ -1,31 +1,28 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/data/custom_time_picker/flutter_time_picker_spinner.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/waiting_for_adding_success.dart';
 import 'package:super_rich_text/super_rich_text.dart';
-import '../../../../data/custom_time_picker/date_picker/date_picker_theme.dart';
-import '../../../../data/custom_time_picker/date_picker/i18n/date_picker_i18n.dart';
-import '../../../../data/custom_time_picker/date_picker/widget/date_picker_widget.dart';
-import '../../../../data/localization/locale_keys.g.dart';
+
 import '../../../../data/model/volunteering_model.dart';
 import '../../../widgets/app_widgets.dart';
 import '../../my_volunteering_page/my_volunteering_page.dart';
-import 'notification_success_adding.dart';
 
 class AttentionNote extends StatelessWidget {
   static const String routeName="/attentionNote";
   AttentionNote({
-   // required this.model,
-    Key? key,
+   required this.model,
+    Key? key
   }) : super(key: key);
   DateTime _date = DateTime.now();
   DateTime _time = DateTime.now();
+  final VolunteeringModel model;
+
 
   // VolunteeringModel model;
 
@@ -97,7 +94,7 @@ class AttentionNote extends StatelessWidget {
                             height: 16,
                           ).paddingOnly(right: 5.w),
                           AppWidgets.textLocale(
-                            text:" model.completedDate!",
+                            text: model.completedDate!,
                             color: AppColorUtils.BLUE_PERCENT,
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
@@ -105,26 +102,26 @@ class AttentionNote extends StatelessWidget {
                         ],
                       ),
                       AppWidgets.textLocale(
-                        text: "Manzil",
+                        text: LocaleKeys.address,
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColorUtils.DARK_6,
                       ).paddingOnly(bottom: 3.w),
                       AppWidgets.textLocale(
-                        text: "model.address!",
+                        text: model.address!,
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
                         color: AppColorUtils.BLUE_TEXT,
                         maxLines: 2,
                       ).paddingOnly(bottom: 18.w),
                       AppWidgets.starTextWidget(
-                          text: "Yordam turi",
+                          text: LocaleKeys.help_type,
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColorUtils.DARK_6,
                       ),
                       AppWidgets.textLocale(
-                        text: "model.typeVolunteering!",
+                        text: model.typeVolunteering!,
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
                         color: AppColorUtils.KRAUDFANDING,
@@ -146,7 +143,7 @@ class AttentionNote extends StatelessWidget {
                       onTap: () {
                         NavigatorService.to.pushReplacementNamed(MyVolunteeringPage.routeName);
                       },
-                      title: "Volontyorlik faoliyatim",
+                      title: LocaleKeys.my_volunteering.tr(),
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
                     ),
@@ -157,7 +154,7 @@ class AttentionNote extends StatelessWidget {
                       onTap: () {
                         NavigatorService.to.pop();
                       },
-                      title: "Eslatmalar",
+                      title: LocaleKeys.notes.tr(),
                       fontSize: 16.sp,
                     ),
                   ],

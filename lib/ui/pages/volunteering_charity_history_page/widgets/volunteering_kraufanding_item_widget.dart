@@ -32,7 +32,7 @@ class VolunteeringKraufandingItemWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppWidgets.textLocale(
-                    text: 'Loyiha nomi',
+                    text: LocaleKeys.project_name,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
                     maxLines: 10,
@@ -51,7 +51,7 @@ class VolunteeringKraufandingItemWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     AppWidgets.textLocale(
-                      text: "Xayriya summasi",
+                      text: LocaleKeys.charity_amount,
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w400,
                       maxLines: 10,
