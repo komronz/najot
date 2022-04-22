@@ -127,11 +127,12 @@
     "day_of_the_announcement": "День объявления",
     "item_type": "Тип объекта",
     "address": "Адрес",
-    "my_products": "Мои продукты",
     "you_have_not_purchased_the_product_yet": "Вы еще не приобрели товар",
     "briefly_about_the_product": "Коротко о продукте",
     "estimated_delivery": "Ориентировочная доставка",
     "product_amount": "Количество продукта",
     "i_accepted": "Я принял",
     "note": "Примечание"
+
+
 }

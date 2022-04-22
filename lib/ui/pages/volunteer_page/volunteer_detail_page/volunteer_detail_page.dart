@@ -84,6 +84,7 @@ class _AboutAnnouncementPageState extends State<VolunteerDetailPage>
                       AboutProjectVolunteerWidget(
                         cardModel: widget.cardModel,
                         state: state,
+                        cubit: cubit,
                       ),
                       VolunteerDonateWidget(
                         cardModel: widget.cardModel,

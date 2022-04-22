@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:najot/data/bloc/charity_page_cubit/charity_cubit.dart';
 import 'package:najot/data/bloc/volonteer_detail_cubit/volonteer_detail_cubit.dart';
 import 'package:najot/data/custom_time_picker/custom_time_picker_dialog.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -12,29 +13,30 @@ import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/charity_page/widgets/time_picker_charity.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/time_picker_volunteer.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-class VolunteerHelpModel {
+class CharityHelpModel {
   CardModel cardModel;
 
-  VolonteerDetailCubit cubit;
+  CharityCubit cubit;
 
-  VolunteerHelpModel({
+  CharityHelpModel({
     required this.cardModel,
     required this.cubit,
   });
 }
 
-class VolunteerHelpWidget extends StatelessWidget {
-  static const String routeName = '/volunteerHelpWidget';
+class CharityHelpWidget extends StatelessWidget {
+  static const String routeName = '/charityHelpWidget';
 
-  VolunteerHelpWidget({required this.volunteerHelpModel});
+  CharityHelpWidget({required this.helpModel});
 
-  VolunteerHelpModel volunteerHelpModel;
+  CharityHelpModel helpModel;
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +48,8 @@ class VolunteerHelpWidget extends StatelessWidget {
             NavigatorService.to.pop();
           },
         ),
-        body: BlocBuilder<VolonteerDetailCubit, VolunteerDetailState>(
-          bloc: volunteerHelpModel.cubit,
+        body: BlocBuilder<CharityCubit, CharityState>(
+          bloc: helpModel.cubit,
           builder: (context, state) {
             return SingleChildScrollView(
               child: Column(
@@ -66,7 +68,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                             Radius.circular(12),
                           ),
                           child: CachedNetworkImage(
-                            imageUrl: volunteerHelpModel.cardModel.image!,
+                            imageUrl: helpModel.cardModel.image!,
                             fit: BoxFit.cover,
                             width: MediaQuery.of(context).size.width,
                             placeholder: (context, url) => Center(
@@ -104,7 +106,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                              image: NetworkImage(volunteerHelpModel.cardModel.image!),
+                              image: NetworkImage(helpModel.cardModel.image!),
                               fit: BoxFit.cover),
                         ),
                       ).paddingOnly(
@@ -148,7 +150,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                         children: [
                           SvgPicture.asset(AppImageUtils.DATE),
                           AppWidgets.text(
-                            text: volunteerHelpModel.cardModel.date!,
+                            text: helpModel.cardModel.date!,
                             color: AppColorUtils.BLUE_PERCENT,
                             fontWeight: FontWeight.w600,
                             fontSize: 16.sp,
@@ -192,9 +194,9 @@ class VolunteerHelpWidget extends StatelessWidget {
                       if (state.checkBox) {
                         showDialog(
                             context: context,
-                            builder: (ctx) => TimePikerVolunteer(
-                                  model: volunteerHelpModel.cardModel,
-                                  cubit: volunteerHelpModel.cubit,
+                            builder: (ctx) => TimePikerCharity(
+                                  model: helpModel.cardModel,
+                                  cubit: helpModel.cubit,
                                   con: context,
                                 ));
                       }
@@ -218,7 +220,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                       Checkbox(
                         value: state.checkBox,
                         onChanged: (v) {
-                          volunteerHelpModel.cubit.onTapCheckBox(v!);
+                          helpModel.cubit.onTapCheckBox(v!);
                         },
                       ).paddingOnly(left: 8.w),
                       AppWidgets.textLocale(
@@ -236,7 +238,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                           fontSize: 12.sp,
                           maxLines: 2)
                       .paddingSymmetric(horizontal: 20.w),
-                  SizedBox(height: 20.w,)
+                  SizedBox(height : 20.w)
                 ],
               ),
             );

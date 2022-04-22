@@ -89,7 +89,7 @@ class KraudfandingPriceWidget extends StatelessWidget {
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.GREEN_TEXT,
-                    args: ["1000 000"],
+                    args: ["1 000 000"],
                   ),
                   AppWidgets.text(
                     text: "${"60"} %",

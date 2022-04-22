@@ -17,9 +17,9 @@ import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class DrawerBody extends StatelessWidget {
-  const  DrawerBody({
-    Key? key,
-  }) : super(key: key);
+  DrawerBody({required this.state});
+
+  AppPageState state;
 
   @override
   Widget build(BuildContext context) {
@@ -62,11 +62,12 @@ class DrawerBody extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                AppWidgets.text(
-                                    text: "Fakhriyor",
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 18.sp,
-                                    color: AppColorUtils.TEXT_COLOR),
+                                AppWidgets.textLocale(
+                                  text: "Fakhriyor",
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18.sp,
+                                  color: AppColorUtils.TEXT_COLOR,
+                                ),
                                 SizedBox(
                                   height: 8.h,
                                 ),
@@ -78,10 +79,13 @@ class DrawerBody extends StatelessWidget {
                                         horizontal: 5.w,
                                       ),
                                       child: AppWidgets.text(
-                                          text: LocaleKeys.normal_user.tr(),
-                                          color: AppColorUtils.BLUE_PERCENT,
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w500),
+                                        text: state.tobeVolunteer
+                                            ? "Volontyor"
+                                            : LocaleKeys.normal_user.tr(),
+                                        color: AppColorUtils.BLUE_PERCENT,
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                     ),
                                     SvgPicture.asset(AppImageUtils.QUESTION),
                                   ],
@@ -104,10 +108,12 @@ class DrawerBody extends StatelessWidget {
                           ),
                         ),
                         onTap: () {
-                          context
-                              .read<AppPageCubit>()
-                              .changePage(pageType: AppPageType.PROFILE);
-                          Navigator.pop(context);
+                          if (state.tobeVolunteer) {
+                            context
+                                .read<AppPageCubit>()
+                                .changePage(pageType: AppPageType.PROFILE);
+                            Navigator.pop(context);
+                          } else {}
                         },
                       )
                     ],
@@ -117,30 +123,29 @@ class DrawerBody extends StatelessWidget {
                     height: 1,
                     thickness: 1,
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: 20.w,
-                      right: 20.w,
-                      left: 20.w,
-                    ),
-                    child: ButtonCard(
-                      onPress: () {
-                        context.read<AppPageCubit>().changePage(
-                              pageType: AppPageType.VOLUNTEER,
-                            );
-                        Navigator.pop(context);
-                      },
-                      text: "Volontyor bo'ling",
-                      width: 226.w,
-                      height: 44.h,
-                      color: AppColorUtils.GREEN_ACCENT1,
-                      fontWeight: FontWeight.w600,
-                      textSize: 16.sp,
-                      textColor: AppColorUtils.KRAUDFANDING,
-                      visibleIcon: true,
-                      addIcon: AppImageUtils.HANDS,
-                    ),
-                  ),
+                  state.tobeVolunteer
+                      ? SizedBox()
+                      : ButtonCard(
+                          onPress: () {
+                            context.read<AppPageCubit>().changePage(
+                                  pageType: AppPageType.VOLUNTEER,
+                                );
+                            Navigator.pop(context);
+                          },
+                          text: "Volontyor bo'ling",
+                          width: 226.w,
+                          height: 44.h,
+                          color: AppColorUtils.GREEN_ACCENT1,
+                          fontWeight: FontWeight.w600,
+                          textSize: 16.sp,
+                          textColor: AppColorUtils.KRAUDFANDING,
+                          visibleIcon: true,
+                          addIcon: AppImageUtils.HANDS,
+                        ).paddingOnly(
+                          top: 20.w,
+                          right: 20.w,
+                          left: 20.w,
+                        ),
                   AppWidgets.rowIconText(
                     iconSelect: AppImageUtils.MAIN,
                     icon: AppImageUtils.MAIN2,
@@ -171,10 +176,25 @@ class DrawerBody extends StatelessWidget {
                     ),
                     onTap: () {
                       context.read<AppPageCubit>().changeMenu(2);
-                      print("111");
                     },
                   ),
-
+                  AppWidgets.rowIconText(
+                    isActive: pageType == AppPageType.ORGANIZATIONS,
+                    icon: AppImageUtils.ORGANIZATION,
+                    iconSelect: AppImageUtils.ORGANIZATION2,
+                    text: "Tashkilotlar",
+                    fontSize: 16.sp,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 18.w,
+                      vertical: 14.w,
+                    ),
+                    onTap: () {
+                      context
+                          .read<AppPageCubit>()
+                          .changePage(pageType: AppPageType.ORGANIZATIONS);
+                      Navigator.pop(context);
+                    },
+                  ),
                   AppWidgets.rowIconText(
                     isActive: pageType == AppPageType.RULES,
                     icon: AppImageUtils.RULES,

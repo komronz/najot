@@ -10,8 +10,15 @@ class VolonteerDetailCubit extends Cubit<VolunteerDetailState> {
 
 
 
+  void loading(){
+    emit(state.copyWith());
+  }
 
   void onTapCheckBox(bool v) {
     emit(state.copyWith(checkBox: v));
+  }
+
+  void onChangeSave(bool v) {
+    emit(state.copyWith(saveHelp: v));
   }
 }

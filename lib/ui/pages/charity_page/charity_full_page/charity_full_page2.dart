@@ -3,41 +3,63 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:najot/data/bloc/charity_page_cubit/charity_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/ui/pages/charity_page/widgets/charity_help_widget.dart';
+import 'package:najot/ui/pages/charity_page/widgets/detail_body_part1.dart';
 import 'package:najot/ui/pages/charity_page/widgets/detail_body_part2.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comment_to_author_dialog.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comments_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_applied_user_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_price_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/more_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/news_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/payment_history_dialog.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/tabbar_widget.dart';
+import 'package:najot/ui/pages/my_profil_page/my_profile_widget/user_degree_widgets.dart';
+import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_help_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+import 'package:super_rich_text/super_rich_text.dart';
 
-class CharityFullPage extends StatefulWidget {
-  CharityFullPage({required this.cardModel});
-
-  static const String routName = 'charityFullPage';
-  static int tabChange = 0;
+class CharityFullModel{
   CardModel cardModel;
 
-  @override
-  State<CharityFullPage> createState() => _CharityFullPageState();
+  CharityCubit cubit;
+
+  CharityFullModel({
+    required this.cardModel,
+    required this.cubit,
+  });
 }
 
-class _CharityFullPageState extends State<CharityFullPage>
+class CharityFullPage2 extends StatefulWidget {
+  CharityFullPage2({
+    required this.helpModel
+  });
+
+  static const String routName = 'charityFullPage2';
+  static int tabChange = 0;
+  CharityFullModel helpModel;
+
+  @override
+  State<CharityFullPage2> createState() => _CharityFullPageState();
+}
+
+class _CharityFullPageState extends State<CharityFullPage2>
     with TickerProviderStateMixin {
   late TabController _controller;
 
-  CharityCubit cubit = CharityCubit();
+
 
   @override
   void dispose() {
@@ -52,7 +74,7 @@ class _CharityFullPageState extends State<CharityFullPage>
     super.initState();
   }
 
-  _handleTabSelection() {
+ void _handleTabSelection() {
     if (_controller.indexIsChanging) {
       setState(() {});
     }
@@ -60,21 +82,20 @@ class _CharityFullPageState extends State<CharityFullPage>
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => cubit,
-      child: Scaffold(
-        backgroundColor: AppColorUtils.BACKGROUND,
-        appBar: AppBarWithTitle(
-          title: LocaleKeys.about_project.tr(),
-          onPress: () {
-            NavigatorService.to.pop();
-          },
-        ),
-        body: BlocBuilder<CharityCubit, CharityState>(
-          builder: (context, state) {
-            return SingleChildScrollView(
+    return Scaffold(
+      backgroundColor: AppColorUtils.BACKGROUND,
+      appBar: AppBarWithTitle(
+        title: LocaleKeys.about_project.tr(),
+        onPress: () {
+          NavigatorService.to.pop();
+        },
+      ),
+      body: BlocBuilder<CharityCubit, CharityState>(
+        bloc: widget.helpModel.cubit,
+        builder: (context, state) {
+          return SingleChildScrollView(
               physics: BouncingScrollPhysics(),
-              child:  Column(
+              child: Column(
                 children: [
                   Container(
                     decoration: BoxDecoration(
@@ -99,10 +120,9 @@ class _CharityFullPageState extends State<CharityFullPage>
                                   Radius.circular(12),
                                 ),
                                 child: CachedNetworkImage(
-                                  imageUrl: widget.cardModel.image!,
+                                  imageUrl: widget.helpModel.cardModel.image!,
                                   fit: BoxFit.cover,
-                                  width:
-                                  MediaQuery.of(context).size.width,
+                                  width: MediaQuery.of(context).size.width,
                                   placeholder: (context, url) => Center(
                                     child: CircularProgressIndicator(),
                                   ),
@@ -128,8 +148,7 @@ class _CharityFullPageState extends State<CharityFullPage>
                                   width: 60.w,
                                   decoration: BoxDecoration(
                                     color: AppColorUtils.BLUE_PERCENT,
-                                    borderRadius:
-                                    BorderRadius.horizontal(
+                                    borderRadius: BorderRadius.horizontal(
                                       left: Radius.circular(12),
                                     ),
                                   ),
@@ -144,15 +163,15 @@ class _CharityFullPageState extends State<CharityFullPage>
                         ),
                         AppWidgets.text(
                           text:
-                          "Drenajni kuzatish uchun mo’jallangan moslama",
+                              "Drenajni kuzatish uchun mo’jallangan moslama",
                           fontSize: 20.sp,
                           color: AppColorUtils.DARK2,
                           fontWeight: FontWeight.w500,
                           maxLines: 2,
                         ).paddingSymmetric(horizontal: 20.w),
                         KraudfandingAuthorWidget(
-                          model: widget.cardModel,
-                          onTap: (){
+                          model: widget.helpModel.cardModel,
+                          onTap: () {
                             showDialog(
                               context: context,
                               builder: (context) {
@@ -162,7 +181,7 @@ class _CharityFullPageState extends State<CharityFullPage>
                           },
                         ).paddingOnly(top: 15.w),
                         SizedBox(height: 12.w),
-                        DetailBodyPart2(cardModel: widget.cardModel)
+                        DetailBodyPart1(cardModel: widget.helpModel.cardModel)
                       ],
                     ),
                   ),
@@ -224,67 +243,132 @@ class _CharityFullPageState extends State<CharityFullPage>
                             indicatorSize: TabBarIndicatorSize.tab,
                             padding: EdgeInsets.only(right: 10),
                             indicatorPadding:
-                            EdgeInsets.only(right: 10, left: 10),
+                                EdgeInsets.only(right: 10, left: 10),
                             labelPadding:
-                            EdgeInsets.only(right: 10, left: 10),
+                                EdgeInsets.only(right: 10, left: 10),
                           ).paddingOnly(left: 15.w, top: 8.w),
                           Container(
                             child: [
                               MoreWidget(
-                                cardModel: widget.cardModel,
+                                cardModel: widget.helpModel.cardModel,
                               ),
                               NewsWidget(
-                                cardModel: widget.cardModel,
+                                cardModel: widget.helpModel.cardModel,
                               ).paddingAll(20.w),
                               QuestionsAskedWidget(
-                                cardModel: widget.cardModel,
+                                cardModel: widget.helpModel.cardModel,
                               ).paddingAll(20.w),
                               CommentsWidget(
-                                cardModel: widget.cardModel,
+                                cardModel: widget.helpModel.cardModel,
                               ).paddingAll(20.w)
                             ][_controller.index],
                           ),
                           SizedBox(
                             height: 10.w,
                           ),
-                          Row(
-                            mainAxisAlignment:
-                            MainAxisAlignment.spaceBetween,
-                            children: [
-                              ButtonCard(
-                                onPress: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return SupportProjectDialog();
-                                    },
-                                  );
-                                },
-                                text: LocaleKeys.project_implementation,
-                                height: 48.w,
-                                width: 274.w,
-                                color: AppColorUtils.PERCENT_COLOR,
-                                textSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                                textColor: AppColorUtils.WHITE,
-                              ),
-                              AppWidgets.favouriteButton(
-                                select: widget.cardModel.isFavorite!,
-                                height: 48.w,
-                                width: 48.w,
-                                onTap: () {},
-                              )
-                            ],
-                          ).paddingSymmetric(horizontal: 20.w),
+                          state.saveHelp
+                              ? Column(
+                                  children: [
+                                    state.tobeVolunteer
+                                        ? SizedBox()
+                                        : AppWidgets.text(
+                                            text: LocaleKeys.tobe_volunteer
+                                                .tr(),
+                                            color: AppColorUtils.DARK_6,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 12.w,
+                                            richText: true,
+                                            othersMarkers: [
+                                                MarkerText(
+                                                  marker: "&",
+                                                  style: TextStyle(
+                                                    color: AppColorUtils.RED,
+                                                  ),
+                                                ),
+                                                MarkerText(
+                                                  marker: "//",
+                                                  style: TextStyle(
+                                                    color:
+                                                        AppColorUtils.BLACK,
+                                                  ),
+                                                )
+                                              ]).paddingSymmetric(
+                                            horizontal: 20.w,
+                                            vertical: 10.w,
+                                          ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        ButtonCard(
+                                          onPress: () {
+                                            print(state.saveHelp);
+                                            if (state.tobeVolunteer == true) {
+                                              NavigatorService.to.pushNamed(
+                                                CharityHelpWidget.routeName,
+                                                arguments: CharityHelpModel(
+                                                  cardModel: widget.helpModel.cardModel,
+                                                  cubit: widget.helpModel.cubit,
+                                                ),
+                                              );
+                                            } else {
+                                              Fluttertoast.showToast(
+                                                msg: "Volontyor bo'ling",
+                                              );
+                                            }
+                                          },
+                                          text: "Yordam berish",
+                                          height: 48.w,
+                                          width: 274.w,
+                                          color: state.tobeVolunteer
+                                              ? AppColorUtils.PERCENT_COLOR
+                                              : AppColorUtils.DISABLE_BC,
+                                          textSize: 16.sp,
+                                          fontWeight: FontWeight.w600,
+                                          textColor: AppColorUtils.WHITE,
+                                        ),
+                                        AppWidgets.favouriteButton(
+                                          select:
+                                              widget.helpModel.cardModel.isFavorite!,
+                                          height: 48.w,
+                                          width: 48.w,
+                                          onTap: () {},
+                                        )
+                                      ],
+                                    ).paddingSymmetric(horizontal: 20.w),
+                                  ],
+                                )
+                              : Column(
+                                  children: [
+                                    ButtonCard(
+                                      onPress: () {},
+                                      text: "Shaxsiy profilga o'tish",
+                                      height: 48.w,
+                                      width: 1.sw,
+                                      color: AppColorUtils.BLUE_BUTTON,
+                                      textSize: 16.sp,
+                                      fontWeight: FontWeight.w600,
+                                      textColor: AppColorUtils.WHITE,
+                                    ).paddingSymmetric(horizontal: 20.w),
+                                    AppWidgets.starTextWidget(
+                                            text:
+                                                "Siz ushbu e'lonni qabul qilgansiz",
+                                            fontSize: 12.sp,
+                                            fontWeight: FontWeight.w500,
+                                            color: AppColorUtils.DARK_6)
+                                        .paddingOnly(
+                                      left: 20.w,
+                                      top: 10.w,
+                                    )
+                                  ],
+                                )
                         ],
                       ),
                     ),
                   ),
                 ],
-              )
-            );
-          },
-        ),
+              ));
+        },
       ),
     );
   }

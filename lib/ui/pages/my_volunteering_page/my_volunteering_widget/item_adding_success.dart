@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/styles/app_colors.dart';
+import 'package:najot/data/utils/date_time_util.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
 import '../../../../data/model/volunteering_model.dart';
@@ -12,14 +15,14 @@ import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
 
 class ItemAddingSuccess extends StatelessWidget {
-
-  ItemAddingSuccess(
-      {required this.model, required this.selectFunction, Key? key})
-      : super(key: key);
-  final Function selectFunction;
-  DateTime dateTime = DateTime.now();
-  TimeOfDay timeOfDay = TimeOfDay.now();
-  VolunteeringModel model;
+  ItemAddingSuccess({
+    required this.dateTime,
+    required this.back,
+    required this.goto,
+  }) ;
+  DateTime dateTime;
+  VoidCallback goto;
+  VoidCallback back;
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +75,7 @@ class ItemAddingSuccess extends StatelessWidget {
                       height: 16,
                     ).paddingOnly(right: 5),
                     AppWidgets.textLocale(
-                      text: model.completedDate!,
+                      text: "${DateTimeUtil.dmy(dateTime, context.locale)}",
                       color: AppColorUtils.TEXT_COLOR,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
@@ -83,7 +86,7 @@ class ItemAddingSuccess extends StatelessWidget {
                       height: 16,
                     ).paddingOnly(right: 5),
                     AppWidgets.textLocale(
-                      text: "18:00",
+                      text: "${DateTimeUtil.hhmm(dateTime, context.locale)}",
                       color: AppColorUtils.TEXT_COLOR,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
@@ -99,9 +102,7 @@ class ItemAddingSuccess extends StatelessWidget {
               Column(
                 children: [
                   AppWidgets.appButton(
-                    onTap: () {
-                      NavigatorService.to.pop();
-                    },
+                    onTap: goto,
                     title: "Eslatmaga utish",
                     fontSize: 16.sp,
                   ),
@@ -109,10 +110,7 @@ class ItemAddingSuccess extends StatelessWidget {
                   AppWidgets.appButton(
                     color: AppColorUtils.LIGHT_GRAY,
                     textColor: AppColorUtils.BLACK,
-                    onTap: () {
-                      NavigatorService.to.pop();
-
-                    },
+                    onTap: back,
                     title: LocaleKeys.exit,
                     fontSize: 16.sp,
                   ),

@@ -1,31 +1,36 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/bloc/charity_page_cubit/charity_cubit.dart';
+import 'package:najot/data/bloc/volonteer_detail_cubit/volonteer_detail_cubit.dart';
+import 'package:najot/data/custom_time_picker/date_picker/date_picker_theme.dart';
+import 'package:najot/data/custom_time_picker/date_picker/i18n/date_picker_i18n.dart';
+import 'package:najot/data/custom_time_picker/date_picker/widget/date_picker_widget.dart';
 import 'package:najot/data/custom_time_picker/flutter_time_picker_spinner.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/item_adding_success.dart';
-import '../../../../data/custom_time_picker/date_picker/date_picker_theme.dart';
-import '../../../../data/custom_time_picker/date_picker/i18n/date_picker_i18n.dart';
-import '../../../../data/custom_time_picker/date_picker/widget/date_picker_widget.dart';
-import '../../../../data/localization/locale_keys.g.dart';
-import '../../../../data/model/volunteering_model.dart';
-import '../../../widgets/app_widgets.dart';
+import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/volunteer_detail_page.dart';
+import 'package:najot/ui/widgets/app_widgets.dart';
+import 'package:provider/src/provider.dart';
 
-class ItemCharityDatePickerWidget extends StatelessWidget {
-  ItemCharityDatePickerWidget({
-    required this.selectFunction,
+class TimePikerCharity extends StatelessWidget {
+  TimePikerCharity({
     required this.model,
-    Key? key,
-  }) : super(key: key);
-  final Function selectFunction;
+    required this.cubit,
+    required this.con
+
+  });
   DateTime _date = DateTime.now();
   DateTime _time = DateTime.now();
-
-  VolunteeringModel model;
+  CardModel model;
+  CharityCubit cubit;
+  BuildContext con;
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +82,7 @@ class ItemCharityDatePickerWidget extends StatelessWidget {
                             height: 16,
                           ).paddingOnly(right: 5),
                           AppWidgets.textLocale(
-                            text: model.completedDate!,
+                            text: model.date!,
                             color: AppColorUtils.BLUE_TEXT,
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w500,
@@ -142,19 +147,13 @@ class ItemCharityDatePickerWidget extends StatelessWidget {
                         spacing: 15.sp,
                         itemHeight: 40,
                         onTimeChange: (time) {
-                          // setState(
-                          //       () {
-                          //     _time = DateTime(
-                          //       time.month,
-                          //       time.month,
-                          //       time.day,
-                          //       time.hour < 8 ? time.hour + 16 : time.hour,
-                          //       time.minute,
-                          //     );
-                          //
-                          //     // print(_time);
-                          //   },
-                          // );
+                          _time = DateTime(
+                            time.month,
+                            time.month,
+                            time.day,
+                            time.hour ,
+                            time.minute,
+                          );
                         },
                       ),
                     ),
@@ -197,16 +196,31 @@ class ItemCharityDatePickerWidget extends StatelessWidget {
                 children: [
                   AppWidgets.appButton(
                     onTap: () async {
+                      var dateTime = DateTime(
+                        _date.year,
+                        _date.month,
+                        _date.day,
+                        _time.hour,
+                        _time.minute,
+                      );
                       NavigatorService.to.pop();
                       await showDialog(
                         context: context,
+                        barrierDismissible: false,
                         builder: (context) => ItemAddingSuccess(
-                          dateTime: _date,
-                          back: () {
+                          dateTime: dateTime,
+                          goto: () {
+                            cubit.onChangeSave(false);
+                            cubit.Load();
+                            Navigator.pop(con);
                             Navigator.pop(context);
                           },
-                          goto: () {
+                          back: () {
+                            cubit.onChangeSave(false);
+                            cubit.Load();
+                            Navigator.pop(con);
                             Navigator.pop(context);
+
                           },
                         ),
                       );

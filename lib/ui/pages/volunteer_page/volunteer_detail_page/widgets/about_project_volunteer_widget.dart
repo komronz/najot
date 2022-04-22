@@ -29,10 +29,12 @@ class AboutProjectVolunteerWidget extends StatefulWidget {
   AboutProjectVolunteerWidget({
     required this.cardModel,
     required this.state,
+    required this.cubit,
   });
 
   final CardModel cardModel;
   final VolunteerDetailState state;
+  final VolonteerDetailCubit cubit;
 
   @override
   _AboutProjectVolunteerWidgetState createState() =>
@@ -298,66 +300,96 @@ class _AboutProjectVolunteerWidgetState
                 SizedBox(
                   height: 10.w,
                 ),
-                widget.state.tobeVolunteer? SizedBox()
-                : AppWidgets.text(
-                    text: LocaleKeys.tobe_volunteer.tr(),
-                    color: AppColorUtils.DARK_6,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12.w,
-                    richText: true,
-                    othersMarkers: [
-                      MarkerText(
-                        marker: "&",
-                        style: TextStyle(
-                          color: AppColorUtils.RED,
-                        ),
-                      ),
-                      MarkerText(
-                        marker: "//",
-                        style: TextStyle(
-                          color: AppColorUtils.BLACK,
-                        ),
+                widget.state.saveHelp
+                    ? Column(
+                        children: [
+                          widget.state.tobeVolunteer
+                              ? SizedBox()
+                              : AppWidgets.text(
+                                  text: LocaleKeys.tobe_volunteer.tr(),
+                                  color: AppColorUtils.DARK_6,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 12.w,
+                                  richText: true,
+                                  othersMarkers: [
+                                      MarkerText(
+                                        marker: "&",
+                                        style: TextStyle(
+                                          color: AppColorUtils.RED,
+                                        ),
+                                      ),
+                                      MarkerText(
+                                        marker: "//",
+                                        style: TextStyle(
+                                          color: AppColorUtils.BLACK,
+                                        ),
+                                      )
+                                    ]).paddingSymmetric(
+                                  horizontal: 20.w,
+                                  vertical: 10.w,
+                                ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              ButtonCard(
+                                onPress: () {
+                                  if (widget.state.tobeVolunteer == true) {
+                                    NavigatorService.to.pushNamed(
+                                      VolunteerHelpWidget.routeName,
+                                      arguments: VolunteerHelpModel(
+                                        cardModel: widget.cardModel,
+                                        cubit: widget.cubit,
+                                      ),
+                                    );
+                                  } else {
+                                    Fluttertoast.showToast(
+                                      msg: "Volontyor bo'ling",
+                                    );
+                                  }
+                                },
+                                text: "Yordam berish",
+                                height: 48.w,
+                                width: 274.w,
+                                color: widget.state.tobeVolunteer
+                                    ? AppColorUtils.PERCENT_COLOR
+                                    : AppColorUtils.DISABLE_BC,
+                                textSize: 16.sp,
+                                fontWeight: FontWeight.w600,
+                                textColor: AppColorUtils.WHITE,
+                              ),
+                              AppWidgets.favouriteButton(
+                                select: widget.cardModel.isFavorite!,
+                                height: 48.w,
+                                width: 48.w,
+                                onTap: () {},
+                              )
+                            ],
+                          ).paddingSymmetric(horizontal: 20.w),
+                        ],
                       )
-                    ]).paddingSymmetric(
-                  horizontal: 20.w,
-                  vertical: 10.w,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ButtonCard(
-                      onPress: () {
-                        if(widget.state.tobeVolunteer==true){
-                          NavigatorService.to.pushNamed(
-                            VolunteerHelpWidget.routeName,
-                            arguments: widget.cardModel,
-                          );
-                        }else{
-                          Fluttertoast.showToast(
-                            msg: "Volontyor bo'ling",
-                          );
-                        }
-
-
-                      },
-                      text: "Yordam berish",
-                      height: 48.w,
-                      width: 274.w,
-                      color: widget.state.tobeVolunteer
-                          ? AppColorUtils.PERCENT_COLOR
-                          : AppColorUtils.DISABLE_BC,
-                      textSize: 16.sp,
-                      fontWeight: FontWeight.w600,
-                      textColor: AppColorUtils.WHITE,
-                    ),
-                    AppWidgets.favouriteButton(
-                      select: widget.cardModel.isFavorite!,
-                      height: 48.w,
-                      width: 48.w,
-                      onTap: () {},
-                    )
-                  ],
-                ).paddingSymmetric(horizontal: 20.w),
+                    : Column(
+                        children: [
+                          ButtonCard(
+                            onPress: () {},
+                            text: "Shaxsiy profilga o'tish",
+                            height: 48.w,
+                            width: 1.sw,
+                            color: AppColorUtils.BLUE_BUTTON,
+                            textSize: 16.sp,
+                            fontWeight: FontWeight.w600,
+                            textColor: AppColorUtils.WHITE,
+                          ).paddingSymmetric(horizontal: 20.w),
+                          AppWidgets.starTextWidget(
+                                  text: "Siz ushbu e'lonni qabul qilgansiz",
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColorUtils.DARK_6)
+                              .paddingOnly(
+                            left: 20.w,
+                            top: 10.w,
+                          )
+                        ],
+                      )
               ],
             ),
           ),

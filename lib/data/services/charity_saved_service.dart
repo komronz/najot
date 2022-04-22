@@ -29,7 +29,7 @@ class CharitySavedService {
     ];
     return list;
   }
-  Future<List<CardModel>?>? getCharityList() async {
+  List<CardModel> getCharityList()  {
     var model = CardModel.charity(
         "CharitySavedPage",
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
