@@ -24,6 +24,8 @@ import 'package:najot/ui/pages/verification_page/verification_page.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/volunteer_detail_page.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_help_widget.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_page.dart';
+import '../../ui/pages/charity_page/charity_full_page/charity_full_page2.dart';
+import '../../ui/pages/charity_page/widgets/charity_help_widget.dart';
 import '../../ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
 import '../../ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
 import '../../ui/pages/my_products_page/my_products_page.dart';
