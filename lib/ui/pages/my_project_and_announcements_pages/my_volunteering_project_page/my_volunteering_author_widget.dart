@@ -84,7 +84,7 @@ class MyVolunteeringAuthorWidget extends StatelessWidget {
           onPress: onTap,
           iconColor: AppColorUtils.KRAUDFANDING,
           addIcon: AppImageUtils.IC_PHONE,visibleIcon: true,
-          text: "Bog'lanish",
+          text: LocaleKeys.connection.tr(),
           width: 110.w,
           height: 35.w,
           color: AppColorUtils.GREEN_BTN,

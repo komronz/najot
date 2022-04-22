@@ -67,7 +67,7 @@ class _AboutMyVolunteeringItemProjectWidgetState
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context)=>MyVolunteeringProjectCubit(),
+        create: (context)=>cubit,
       child: BlocBuilder<MyVolunteeringProjectCubit, MyVolunteeringProjectState>(
         builder: (context, state) => Scaffold(
           appBar:  AppBarWithTitle(
@@ -421,7 +421,7 @@ class _AboutMyVolunteeringItemProjectWidgetState
                                   color: AppColorUtils.BLACK_12,
                                 ),
                                 AppWidgets.text(
-                                  text: "Sizning javobingiz",
+                                  text: LocaleKeys.your_answer.tr(),
                                   color: AppColorUtils.TEXT_GREEN2,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14.sp,

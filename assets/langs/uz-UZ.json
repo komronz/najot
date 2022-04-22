@@ -123,7 +123,25 @@
   "announcement_day": "E'lon berilgan kun",
   "must_collect_date": "Sanagacha to'planishi kerak",
   "ad_name": "E'lon nomi",
-  "thank_you": "Xop, rahmat"
-
+  "thank_you": "Xop, rahmat",
+  "your_answer": "Sizning javobingiz",
+  "new_add": "Yangi qo'shimchalar",
+  "category": "Kategoriyalar",
+  "have_idea": "Fikringiz bor, lekin pul yo'qmi?",
+  "we_help_you": "Biz sizga yordam beramiz!",
+  "add_project": "Loyiha qo'shish",
+  "buy": "Sotib olish",
+  "wait_answer": "Iltimos, muallifning javobini kuting!",
+  "success_answer": "Savolingiz // muvaffaqiyatli // topshirildi",
+  "all": "Hammasi",
+  "done_date": "Bajarilgan sana",
+  "tobe_volunteer": "& * & Iltimos // \"ko'ngilli bo'l\" // birinchi navbatda",
+  "we_to_you": "Biz sizga ishonchimiz komil",
+  "we_help": "Yordam beramiz",
+  "project_rules": "Loyiha qoidalari",
+  "about_us": "Biz haqimizda",
+  "write_your_answer": "Javobingizni yozing",
+  "write_an_answer": "Javob yozish",
+  "answered": "Javob berilganlar"
 
 }

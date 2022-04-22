@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -61,7 +62,7 @@ class _MyVolunteeringQuestionListState extends State<MyVolunteeringQuestionList>
                     children: [
                       SizedBox(
                         child: AppWidgets.text(
-                          text: "Insoniyat aynan qanday foyda beradi",
+                          text: "Insoniyatiga aynan qanday foyda beradi",
                           color: AppColorUtils.TEXT_GREEN2,
                           fontWeight: FontWeight.w600,
                           fontSize: 14.sp,
@@ -98,7 +99,7 @@ class _MyVolunteeringQuestionListState extends State<MyVolunteeringQuestionList>
                           color: AppColorUtils.BLACK_12,
                         ),
                         AppWidgets.textLocale(
-                          text: "Sizning javobingiz",
+                          text: LocaleKeys.your_answer,
                           fontSize: 14.sp,
                           color: AppColorUtils.TEXT_GREEN2,
                           fontWeight: FontWeight.w600,
@@ -107,7 +108,7 @@ class _MyVolunteeringQuestionListState extends State<MyVolunteeringQuestionList>
                           top: 7.w,
                         ),
                         AppTextField(
-                          hintText: "Javobingizni yozing",
+                          hintText: LocaleKeys.write_your_answer.tr(),
                           onChanged: (v) {},
                           title: "",
                           hasTitle: false,
@@ -149,7 +150,7 @@ class _MyVolunteeringQuestionListState extends State<MyVolunteeringQuestionList>
                       });
                     },
                     child: AppWidgets.textLocale(
-                      text: "Javob yozish",
+                      text: LocaleKeys.write_an_answer,
                       color: Color(0xFF024739),
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w500,

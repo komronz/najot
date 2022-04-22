@@ -69,7 +69,7 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MyCrowdfundingSupportCubit(),
+      create: (context)=>cubit,
       child: BlocBuilder<MyCrowdfundingSupportCubit, MyCrowdfundingSupportState>(
         builder: (context, state) {
           return Scaffold(

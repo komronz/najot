@@ -64,7 +64,7 @@ class _AboutMyCharityProjectWidgetState
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MyCharitySupportListCubit(),
+      create: (context)=>cubit,
       child: BlocBuilder<MyCharitySupportListCubit, MyCharitySupportListState>(
         builder: (context, state) {
           return Column(

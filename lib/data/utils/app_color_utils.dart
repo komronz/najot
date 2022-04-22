@@ -40,6 +40,7 @@ class AppColorUtils {
   static const Color DARK_BLUE = Color(0xFF363853);
   static const Color BLUE = Color(0xFF3E7AD7);
   static const Color ORANGE = Color(0xFFFEB63D);
+  static const Color ORANGE_1 = Color(0xFFE8B811);
   static const Color BORDER = Color(0xFFCEE1DD);
   static const Color REG_BACK = Color(0xFFEDFCF9);
   static const Color REG_TEXT = Color(0xFFA8C5BF);
@@ -90,6 +91,7 @@ class AppColorUtils {
   static const Color TEXT_8= Color(0xFF384643);
   static const Color GREEN_ACCENT8= Color(0xFFEAF9EC);
   static const Color GREEN_TEXT_1= Color(0xFF064A0D);
+  static const Color GREEN_TEXT_10= Color(0xFF038D69);
 
 
 

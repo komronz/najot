@@ -173,7 +173,8 @@ class _AboutMyCharityItemProjectWidgetState
               SizedBox(
                 height: 24.w,
               ),
-              Container(
+              state.widgetChange==false
+              ?Container(
                 padding: EdgeInsets.symmetric(vertical: 20.w,),
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -303,7 +304,156 @@ class _AboutMyCharityItemProjectWidgetState
                     ],
                   ),
                 ),
+              )
+              :Container(
+                color: AppColorUtils.WHITE,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    InkWell(
+                      child: Container(
+                        width: 31.w,
+                        height: 34.w,
+                        decoration: BoxDecoration(
+                          color: AppColorUtils.BACK_BUTTON,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Icon(
+                          Icons.arrow_back_ios_rounded,
+                          color: AppColorUtils.IC_GREEN2,
+                          size: 20.w,
+                        ),
+                      ),
+                      onTap: (){
+                        cubit.widgetChange(false);
+                      },
+                    ).paddingOnly(
+                      left: 20.w,
+                      top: 18.w,
+                      bottom: 18.w,
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 20.w),
+                      padding: EdgeInsets.only(
+                        top: 12.w,
+                        left: 12.w,
+                        right: 12.w,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: AppColorUtils.GREEN_ACCENT4,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          true
+                              ? Column(
+                            crossAxisAlignment:
+                            CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    height: 50.w,
+                                    width: 50.w,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                          image: NetworkImage(
+                                            widget.model.imgUrl!,
+                                          ),
+                                          fit: BoxFit.cover),
+                                    ),
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        child: AppWidgets.text(
+                                          text:
+                                          "Insoniyat aynan qanday foyda beradi",
+                                          color: AppColorUtils
+                                              .TEXT_GREEN2,
+                                          fontWeight:
+                                          FontWeight.w600,
+                                          fontSize: 14.sp,
+                                          maxLines: 2,
+                                        ).paddingOnly(top: 5.w),
+                                        width: 240.w,
+                                      ),
+                                      AppWidgets.textLocale(
+                                        text: "Eshonov Fakhriyor",
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w400,
+                                        color: AppColorUtils.DARK_6,
+                                      ).paddingOnly(top: 3.w),
+                                    ],
+                                  ).paddingOnly(left: 10),
+                                ],
+                              ),
+                              AppWidgets.text(
+                                text: widget
+                                    .model.infoModel![0].text!,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14.sp,
+                                color: AppColorUtils.TEXT_GREY2,
+                                maxLines: 100,
+                                height: 1.5,
+                              ).paddingSymmetric(vertical: 15.w),
+                              Divider(
+                                thickness: 1,
+                                color: AppColorUtils.BLACK_12,
+                              ),
+                              AppWidgets.text(
+                                text: "Sizning javobingiz",
+                                color: AppColorUtils.TEXT_GREEN2,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14.sp,
+                              ).paddingOnly(top: 20.w),
+                              AppWidgets.text(
+                                text: widget
+                                    .model.infoModel![0].text!,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14.sp,
+                                color: AppColorUtils.TEXT_GREY2,
+                                maxLines: 100,
+                                height: 1.5,
+                              ).paddingSymmetric(vertical: 15.w),
+                            ],
+                          )
+                              : Container(
+                            child: Center(
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 30.w,
+                                  ),
+                                  SvgPicture.asset(AppImageUtils
+                                      .EMPTY_QUESTIONS),
+                                  SizedBox(
+                                    width: 200.sp,
+                                    child: AppWidgets.textLocale(
+                                      textAlign: TextAlign.center,
+                                      text: LocaleKeys
+                                          .questions_empty,
+                                      color: AppColorUtils.DARK_4,
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w600,
+                                      maxLines: 2,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
+
             ],
           );
         },
