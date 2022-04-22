@@ -14,7 +14,6 @@ abstract class  LocaleKeys {
   static const sum = 'sum';
   static const my_profile = 'my_profile';
   static const degree = 'degree';
-  static const normal_user = 'normal_user';
   static const author_answer = 'author_answer';
   static const project_implementation = 'project_implementation';
   static const news_empty = 'news_empty';
@@ -92,12 +91,11 @@ abstract class  LocaleKeys {
   static const success_answer = 'success_answer';
   static const all = 'all';
   static const done_date = 'done_date';
-  static const address = 'address';
   static const tobe_volunteer = 'tobe_volunteer';
   static const we_to_you = 'we_to_you';
   static const we_help = 'we_help';
   static const advertising = 'advertising';
-  static const item_type = 'item_type';
+  static const normal_user = 'normal_user';
   static const charity_history = 'charity_history';
   static const my_products = 'my_products';
   static const project_rules = 'project_rules';
@@ -129,6 +127,8 @@ abstract class  LocaleKeys {
   static const about_the_ad = 'about_the_ad';
   static const date_of_completion = 'date_of_completion';
   static const day_of_the_announcement = 'day_of_the_announcement';
+  static const item_type = 'item_type';
+  static const address = 'address';
   static const you_have_not_purchased_the_product_yet = 'you_have_not_purchased_the_product_yet';
   static const briefly_about_the_product = 'briefly_about_the_product';
   static const estimated_delivery = 'estimated_delivery';

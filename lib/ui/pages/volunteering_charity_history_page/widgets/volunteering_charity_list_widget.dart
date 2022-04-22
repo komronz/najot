@@ -14,6 +14,8 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../../data/services/products_service.dart';
 
+import '../../charity_page/charity_full_page/charity_full_page.dart';
+
 class VolunteeringCharityListWidget extends StatelessWidget {
   final List<CharityModel> list;
 

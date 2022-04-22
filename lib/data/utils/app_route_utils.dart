@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
+import 'package:najot/data/bloc/edit_volunteer_bloc/edit_volunteer_bloc.dart';
 import 'package:najot/data/model/card_model.dart';
-import 'package:najot/data/model/kraufanding_model.dart';
+import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/model/product_model.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
@@ -24,7 +24,6 @@ import 'package:najot/ui/pages/verification_page/verification_page.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/volunteer_detail_page.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_help_widget.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_page.dart';
-
 import '../../ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
 import '../../ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
 import '../../ui/pages/my_products_page/my_products_page.dart';
@@ -42,6 +41,9 @@ import '../../ui/pages/my_project_and_announcements_pages/my_volunteering_projec
 import '../../ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/my_volunteering_support_list_page.dart';
 import '../../ui/pages/notification_page/notification_page.dart';
 import '../../ui/pages/notification_page/widget/attension_note.dart';
+import '../../ui/pages/organization_page/organization_item_detail_page/organization_charity_item_widget.dart';
+import '../../ui/pages/organization_page/organization_item_detail_page/organization_help_widget.dart';
+import '../../ui/pages/organization_page/organization_item_detail_page/organization_item_detail_page.dart';
 import '../../ui/pages/volunteering_charity_history_page/volunteering_charity_history_page.dart';
 import '../../ui/pages/volunteering_charity_history_page/widgets/volunteering_charity_full_page.dart';
 import '../model/card_model.dart';
@@ -92,16 +94,46 @@ class AppRouteUtils {
             cardModel: settings.arguments as CardModel,
           ),
         );
+      case CharityFullPage2.routName:
+        return MaterialPageRoute(
+          builder: (context) => CharityFullPage2(
+            helpModel: settings.arguments as CharityFullModel,
+          ),
+        );
+      case CharityHelpWidget.routeName:
+        return MaterialPageRoute(
+          builder: (context) => CharityHelpWidget(
+            helpModel: settings.arguments as CharityHelpModel,
+          ),
+        );
       case ProjectDetailsPage.routeName:
         return MaterialPageRoute(
           builder: (context) => ProjectDetailsPage(
             cardModel: settings.arguments as CardModel,
           ),
         );
+      case OrganizationItemDetailPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => OrganizationItemDetailPage(
+            model: settings.arguments as OrganizationItemDetailPageModel,
+          ),
+        );
+      case OrganizationCharityItemWidget.routName:
+        return MaterialPageRoute(
+          builder: (context) => OrganizationCharityItemWidget(
+            helpModel: settings.arguments as OrganizationCharityItemModel,
+          ),
+        );
       case ProductDetailPage.routeName:
         return MaterialPageRoute(
           builder: (context) => ProductDetailPage(
             productModel: settings.arguments as ProductModel,
+          ),
+        );
+      case OrganizationHelpWidget.routeName:
+        return MaterialPageRoute(
+          builder: (context) => OrganizationHelpWidget(
+            helpModel: settings.arguments as OrganizationHelpModel,
           ),
         );
       case KraudfandingPage.routeName:
@@ -173,27 +205,39 @@ class AppRouteUtils {
         );
       case VolunteerHelpWidget.routeName:
         return MaterialPageRoute(
-          builder: (context) => VolunteerHelpWidget(cardModel: settings.arguments as CardModel,),
+          builder: (context) => VolunteerHelpWidget(
+            cardModel: settings.arguments as CardModel,
+          ),
         );
       case MyCharityProjectFullPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => MyCharityProjectFullPage(cardModel: settings.arguments as CharityModel,),
+          builder: (context) => MyCharityProjectFullPage(
+            cardModel: settings.arguments as CharityModel,
+          ),
         );
       case MyCharitySupportListPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => MyCharitySupportListPage(list : settings.arguments as List<CharityModel>,),
+          builder: (context) => MyCharitySupportListPage(
+            list: settings.arguments as List<CharityModel>,
+          ),
         );
       case MyCharityItemFullPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => MyCharityItemFullPage(cardModel: settings.arguments as CharityModel,),
+          builder: (context) => MyCharityItemFullPage(
+            cardModel: settings.arguments as CharityModel,
+          ),
         );
       case AboutMyVolunteeringItemProjectWidget.routeName:
         return MaterialPageRoute(
-          builder: (context) => AboutMyVolunteeringItemProjectWidget(model: settings.arguments as VolunteeringModel,),
+          builder: (context) => AboutMyVolunteeringItemProjectWidget(
+            model: settings.arguments as VolunteeringModel,
+          ),
         );
       case MyVolunteeringSupportListPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => MyVolunteeringSupportListPage(list : settings.arguments as List<VolunteeringModel>,),
+          builder: (context) => MyVolunteeringSupportListPage(
+            list: settings.arguments as List<VolunteeringModel>,
+          ),
         );
       case MyProductsPage.routeName:
         return MaterialPageRoute(
@@ -209,19 +253,9 @@ class AppRouteUtils {
         );
       case AttentionNote.routeName:
         return MaterialPageRoute(
-          builder: (context) => AttentionNote(model: settings.arguments as VolunteeringModel,),
-        );
-      case VolunteeringCharityFullPage.routName:
-        return MaterialPageRoute(
-          builder: (context) => VolunteeringCharityFullPage(model: settings.arguments as CharityModel,),
-        );
-      case MyCrowdfundingAboutWidget.routeName:
-        return MaterialPageRoute(
-          builder: (context) => MyCrowdfundingAboutWidget(model: settings.arguments as KraufandingModel,),
-        );
-      case MyCrowdfundingSupportPage.routeName:
-        return MaterialPageRoute(
-          builder: (context) => MyCrowdfundingSupportPage(list : settings.arguments as List<KraufandingModel>),
+          builder: (context) => AttentionNote(
+            model: settings.arguments as VolunteeringModel,
+          ),
         );
     }
   }

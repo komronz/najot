@@ -11,7 +11,9 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:provider/src/provider.dart';
 
 class DrawerBodySecond extends StatelessWidget {
-  const DrawerBodySecond({Key? key}) : super(key: key);
+   DrawerBodySecond({required this.state}) ;
+
+  AppPageState state;
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +63,7 @@ class DrawerBodySecond extends StatelessWidget {
             left: 20.w,
             right: 20.w,
           ),
+
           AppWidgets.rowIconText(
             isActive: pageType == AppPageType.PROJECT,
             icon: AppImageUtils.PROJECT1,
@@ -77,6 +80,23 @@ class DrawerBodySecond extends StatelessWidget {
               );
             },
           ),
+          state.tobeVolunteer
+          ? AppWidgets.rowIconText(
+            isActive: pageType == AppPageType.VOLUNTEERING,
+            icon: AppImageUtils.TOBE_VOLUNTEER,
+            iconSelect: AppImageUtils.TOBE_VOLUNTEER2,
+            text: "Volontyorlik faoliyatim",
+            fontSize: 16.sp,
+            padding: EdgeInsets.symmetric(
+              horizontal: 18.w,
+              vertical: 14,
+            ),
+            onTap: () {
+              context.read<AppPageCubit>().changePage(
+                pageType: AppPageType.VOLUNTEERING,
+              );
+            },
+          ) : SizedBox(),
           AppWidgets.rowIconText(
             isActive: pageType == AppPageType.CHARITY,
             icon: AppImageUtils.HISTORY,

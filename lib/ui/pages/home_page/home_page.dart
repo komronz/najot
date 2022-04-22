@@ -11,6 +11,7 @@ import 'package:najot/ui/pages/main_page/main_page.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_page.dart';
 import 'package:najot/ui/pages/operator_page/operator_page.dart';
 import 'package:najot/ui/pages/orders_page/orders_page.dart';
+import 'package:najot/ui/pages/organization_page/organization_page.dart';
 import 'package:najot/ui/pages/reg_volounteer/reg_volunteer.dart';
 import 'package:najot/ui/pages/rules_page/rules_page.dart';
 
@@ -32,7 +33,9 @@ class HomePage extends StatelessWidget {
           return Scaffold(
             // backgroundColor: AppColorUtils.BACKGROUND,
             key: globalKey,
-            drawer: state.changeMenu==1 ? DrawerBody() : DrawerBodySecond(),
+            drawer: state.changeMenu==1
+                ? DrawerBody(state: state,)
+                : DrawerBodySecond(state: state),
             body: buildBody(state)
           );
         },
@@ -62,6 +65,10 @@ class HomePage extends StatelessWidget {
         return OrdersPage();
       case AppPageType.SAVED:
         return SavedPage();
+      case AppPageType.ORGANIZATIONS:
+        return OrganizationPage();
+      case AppPageType.VOLUNTEERING:
+        return Container();
       default:
         return Container();
     }

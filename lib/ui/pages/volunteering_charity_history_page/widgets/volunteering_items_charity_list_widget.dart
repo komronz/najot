@@ -6,7 +6,6 @@ import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/charity_full_page/charity_full_page.dart';
 import 'package:najot/ui/pages/charity_history_page/widgets/charity_list_item_widget.dart';
 import 'package:najot/ui/pages/volunteering_charity_history_page/widgets/volunteering_item_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';

@@ -15,10 +15,12 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class CharityItemWidget extends StatelessWidget {
   final CardModel model;
+  final VoidCallback onTap;
 
 
   const CharityItemWidget({
     required this.model,
+    required this.onTap,
 
     Key? key,
   }) : super(key: key);
@@ -113,12 +115,7 @@ class CharityItemWidget extends StatelessWidget {
           ),
         ),
       ),
-      onTap: (){
-        NavigatorService.to.pushNamed(
-          CharityFullPage.routName,
-          arguments: model,
-        );
-      },
+      onTap: onTap
     );
   }
 }

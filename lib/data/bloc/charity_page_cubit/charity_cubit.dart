@@ -7,7 +7,7 @@ import 'package:najot/data/services/charity_saved_service.dart';
 part 'charity_state.dart';
 
 class CharityCubit extends Cubit<CharityState> {
-  CharityCubit() : super(CharityState());
+  CharityCubit() : super(CharityState(checkBox: false));
 
 
 
@@ -23,4 +23,19 @@ class CharityCubit extends Cubit<CharityState> {
     }
 
   }
+
+  void loading(){
+    emit(state.copyWith());
+  }
+
+  void onTapCheckBox(bool v) {
+    emit(state.copyWith(checkBox: v));
+  }
+
+  Future onChangeSave(bool v) async{
+    var list= await CharitySavedService().getCharityList();
+    emit(state.copyWith(saveHelp: v,list:  list));
+  }
+
+
 }

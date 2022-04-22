@@ -15,6 +15,9 @@ import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_search_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import 'charity_full_page/charity_full_page.dart';
+import 'charity_full_page/charity_full_page2.dart';
+
 class CharityPage extends StatefulWidget {
   const CharityPage({Key? key}) : super(key: key);
   static const String routeName = '/routeName';
@@ -135,9 +138,24 @@ class _CharityPageState extends State<CharityPage>
                           if (state.list[index].progres != null) {
                             return CharityItemWidget(
                               model: state.list[index],
+                              onTap: (){
+                                NavigatorService.to.pushNamed(
+                                  CharityFullPage.routName,
+                                  arguments: state.list[index],
+                                );
+                              },
                             ).paddingOnly(left: 10.w);
                           } else {
                             return CharityItem2Widget(
+                              onTap: () {
+                                NavigatorService.to.pushNamed(
+                                  CharityFullPage2.routName,
+                                  arguments: CharityFullModel(
+                                    cardModel: state.list[index],
+                                    cubit: cubit,
+                                  ),
+                                );
+                              },
                               model: state.list[index],
                             ).paddingOnly(left: 10.w);
                           }
@@ -213,12 +231,27 @@ class _CharityPageState extends State<CharityPage>
                                     List.generate(state.list.length, (index) {
                                   if (state.list[index].progres != null) {
                                     return CharityItemWidget(
+                                      onTap: (){
+                                        NavigatorService.to.pushNamed(
+                                          CharityFullPage.routName,
+                                          arguments: state.list[index],
+                                        );
+                                      },
                                       model: state.list[index],
-                                    ).paddingOnly(left: 10.w);
+                                    );
                                   } else {
                                     return CharityItem2Widget(
                                       model: state.list[index],
-                                    ).paddingOnly(left: 10.w);
+                                      onTap: () {
+                                        NavigatorService.to.pushNamed(
+                                          CharityFullPage2.routName,
+                                          arguments: CharityFullModel(
+                                            cardModel: state.list[index],
+                                            cubit: cubit,
+                                          ),
+                                        );
+                                      },
+                                    );
                                   }
                                 }),
                               ),
@@ -235,12 +268,27 @@ class _CharityPageState extends State<CharityPage>
                                     List.generate(state.list.length, (index) {
                                   if (state.list[index].progres != null) {
                                     return CharityItemWidget(
+                                      onTap: (){
+                                        NavigatorService.to.pushNamed(
+                                          CharityFullPage.routName,
+                                          arguments: state.list[index],
+                                        );
+                                      },
                                       model: state.list[index],
-                                    ).paddingOnly(left: 10.w);
+                                    );
                                   } else {
                                     return CharityItem2Widget(
                                       model: state.list[index],
-                                    ).paddingOnly(left: 10.w);
+                                      onTap: () {
+                                        NavigatorService.to.pushNamed(
+                                          CharityFullPage2.routName,
+                                          arguments: CharityFullModel(
+                                            cardModel: state.list[index],
+                                            cubit: cubit,
+                                          ),
+                                        );
+                                      },
+                                    );
                                   }
                                 }),
                               ),
@@ -257,12 +305,27 @@ class _CharityPageState extends State<CharityPage>
                                     List.generate(state.list.length, (index) {
                                   if (state.list[index].progres != null) {
                                     return CharityItemWidget(
+                                      onTap: (){
+                                        NavigatorService.to.pushNamed(
+                                          CharityFullPage.routName,
+                                          arguments: state.list[index],
+                                        );
+                                      },
                                       model: state.list[index],
-                                    ).paddingOnly(left: 10.w);
+                                    );
                                   } else {
                                     return CharityItem2Widget(
                                       model: state.list[index],
-                                    ).paddingOnly(left: 10.w);
+                                      onTap: () {
+                                        NavigatorService.to.pushNamed(
+                                          CharityFullPage2.routName,
+                                          arguments: CharityFullModel(
+                                            cardModel: state.list[index],
+                                            cubit: cubit,
+                                          ),
+                                        );
+                                      },
+                                    );
                                   }
                                 }),
                               ),

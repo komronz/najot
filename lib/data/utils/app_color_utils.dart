@@ -28,6 +28,7 @@ class AppColorUtils {
   static const Color GREEN_ACCENT4 = Color(0xFFF8FEFD);
   static const Color LINE_TEXT_FIELD = Color(0xFF9FC9C0);
   static const Color GREEN_ACCENT5 = Color(0xFFEBF8F4);
+  static const Color BLUE_BUTTON = Color(0xFF1F6ADE);
 
   // static const Color GREY = Colors.grey;
   static const Color BG_GREY = Color(0xffEDEDED);
