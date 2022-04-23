@@ -14,6 +14,9 @@ import 'package:najot/ui/pages/my_profil_page/my_profile_widget/app_disable_text
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/show_picker_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../../data/services/navigator_service.dart';
+import '../my_profil_page/my_profile_pages/user_degree_page.dart';
+
 class EditVolunteerPage extends StatelessWidget {
   const EditVolunteerPage({Key? key}) : super(key: key);
 
@@ -79,7 +82,10 @@ class EditVolunteerPage extends StatelessWidget {
                                  left: 5.w,
                                ),
                                child: InkWell(
-                                 onTap: () {},
+                                 onTap: () {
+                                   NavigatorService.to
+                                       .pushNamed(UserDegreePage.routeName);
+                                 },
                                  child: SvgPicture.asset(
                                    AppImageUtils.FAQ,
                                    color: Color(0xFF007A58),

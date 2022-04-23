@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/extensions/widget_padding_extension.dart';
 
 class IntroPageTwoWidget extends StatelessWidget {
   IntroPageTwoWidget({
@@ -33,20 +34,16 @@ class IntroPageTwoWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              title,
+              style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 32,
+                  fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center,
+            ).paddingOnly(bottom: 10.w),
             Container(
-              width: 230.w,
-              height: 50.h,
-              child: Text(
-                title,
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 32,
-                    fontWeight: FontWeight.w600),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Container(
-              width: 310.w,
+              width: 320.w,
               height: 52.h,
               child: Text(
                 content,
@@ -56,12 +53,10 @@ class IntroPageTwoWidget extends StatelessWidget {
                     fontWeight: FontWeight.w400),
                 textAlign: TextAlign.center,
               ),
-            ),
-            SizedBox(height: 62),
-            Container(
-                width: 364.w, height: 265.21.h, child: Image.asset(image)),
+            ).paddingOnly(bottom: 60.w),
+            Image.asset(image),
           ],
-        ),
+        ).paddingOnly(left: 20.w),
       ],
     );
   }

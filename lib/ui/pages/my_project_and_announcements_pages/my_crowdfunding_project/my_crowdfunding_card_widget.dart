@@ -16,10 +16,12 @@ import 'my_crowdfunding_about_widget.dart';
 
 class MyCrowdfundingList extends StatelessWidget {
   MyCrowdfundingList(
-      {required this.cardModel, required this.visible, Key? key})
+      {required this.cardModel, required this.visible, Key? key, required this.onTap})
       : super(key: key);
   final KraufandingModel cardModel;
   final bool visible;
+  final VoidCallback onTap;
+
 
   @override
   Widget build(BuildContext context) {

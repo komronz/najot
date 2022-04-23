@@ -17,6 +17,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../data/bloc/my_charity_support_list_cubit/my_charity_support_list_cubit.dart';
+import '../../kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
 import '../../my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_comments_widget.dart';
 import '../../my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_news_widget.dart';
 import '../../my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_question_asked_widget.dart';
@@ -231,37 +232,37 @@ class _VolunteeringCharityFullPageState extends State<VolunteeringCharityFullPag
                             ][_tabController.index],
                           ),
                           SizedBox(
-                            height: 10.w,
+                            height: 20.w,
                           ),
-                          // Row(
-                          //   mainAxisAlignment:
-                          //   MainAxisAlignment.spaceBetween,
-                          //   children: [
-                          //     // ButtonCard(
-                          //     //   onPress: () {
-                          //     //     showDialog(
-                          //     //       context: context,
-                          //     //       builder: (context) {
-                          //     //         return SupportProjectDialog();
-                          //     //       },
-                          //     //     );
-                          //     //   },
-                          //     //   text: LocaleKeys.project_implementation,
-                          //     //   height: 48.w,
-                          //     //   width: 274.w,
-                          //     //   color: AppColorUtils.PERCENT_COLOR,
-                          //     //   textSize: 16.sp,
-                          //     //   fontWeight: FontWeight.w600,
-                          //     //   textColor: AppColorUtils.WHITE,
-                          //     // ),
-                          //     // AppWidgets.favouriteButton(
-                          //     //   select: widget.model.isFavorite!,
-                          //     //   height: 48.w,
-                          //     //   width: 48.w,
-                          //     //   onTap: () {},
-                          //     // )
-                          //   ],
-                          // ).paddingSymmetric(horizontal: 20.w),
+                          Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                            children: [
+                              ButtonCard(
+                                onPress: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return SupportProjectDialog();
+                                    },
+                                  );
+                                },
+                                text: LocaleKeys.project_implementation,
+                                height: 48.w,
+                                width: 274.w,
+                                color: AppColorUtils.PERCENT_COLOR,
+                                textSize: 16.sp,
+                                fontWeight: FontWeight.w600,
+                                textColor: AppColorUtils.WHITE,
+                              ),
+                              AppWidgets.favouriteButton(
+                                select: widget.model.isFavorite!,
+                                height: 48.w,
+                                width: 48.w,
+                                onTap: () {},
+                              )
+                            ],
+                          ).paddingSymmetric(horizontal: 20.w),
                         ],
                       ),
                     ),

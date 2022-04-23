@@ -56,7 +56,7 @@ class MyCrowdfundingListWidget extends StatelessWidget {
             children: List.generate(
               list.length,
                   (index) => MyCrowdfundingList(
-                    cardModel: list[index], visible: true,
+                    cardModel: list[index], visible: true, onTap: () {  },
               ),
             ),
           ),

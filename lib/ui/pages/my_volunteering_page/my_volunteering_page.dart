@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,12 +8,12 @@ import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 
 import '../../widgets/app_widgets.dart';
+import '../home_page/home_page.dart';
 import '../notification_page/notification_page.dart';
 import 'my_volunteering_widget/item_charity_widget.dart';
 import 'my_volunteering_widget/my_volunteering_drawer_body.dart';
@@ -32,7 +30,6 @@ class MyVolunteeringPage extends StatelessWidget {
       create: (context) => MyVolunteeringCubit(),
       child: BlocBuilder<MyVolunteeringCubit, MyVolunteeringState>(
         builder: (context, state) => Scaffold(
-          drawer: MyVolunteeringDrawerBody(),
           appBar: AppBar(
             automaticallyImplyLeading: false,
             backgroundColor: Colors.transparent,
@@ -49,7 +46,7 @@ class MyVolunteeringPage extends StatelessWidget {
                       width: 35.w,
                     ),
                     onTap: () {
-                      Scaffold.of(context).openDrawer();
+                      HomePage.globalKey.currentState!.openDrawer();
                     },
                   ),
                   AppWidgets.textLocale(

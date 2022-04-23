@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/intro_page_bloc/intro_cubit.dart';
+import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/ui/pages/intro_page/widgets/intro_page_one_widget.dart';
 import 'package:najot/ui/pages/intro_page/widgets/intro_page_three_widget.dart';
 import 'package:najot/ui/pages/intro_page/widgets/intro_page_two_widget.dart';
@@ -60,6 +61,7 @@ class IntroPage extends StatelessWidget {
                   ),
                 ),
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     if (state.currentIndex == 0) ...[
                       viewOfOnePage(context),

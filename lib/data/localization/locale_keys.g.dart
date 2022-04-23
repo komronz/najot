@@ -144,5 +144,7 @@ abstract class  LocaleKeys {
   static const write_your_answer = 'write_your_answer';
   static const write_an_answer = 'write_an_answer';
   static const answered = 'answered';
+  static const str_registration = 'str_registration';
+  static const skip = 'skip';
 
 }

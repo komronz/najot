@@ -40,5 +40,5 @@ enum AppPageType {
   OPERATOR,
   SAVED,
   PROJECT,
-  VOLUNTEERING
+  VOLUNTEERING,
 }

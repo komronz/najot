@@ -288,7 +288,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                       height: 48.w,
                       width: 48.w,
                       onTap: () {},
-                    )
+                    ),
                   ],
                 ).paddingSymmetric(horizontal: 20.w),
               ],

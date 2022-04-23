@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:najot/data/bloc/edit_volunteer_bloc/edit_volunteer_bloc.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
+import 'package:najot/data/model/kraufanding_model.dart';
 import 'package:najot/data/model/product_model.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
@@ -208,7 +209,7 @@ class AppRouteUtils {
       case VolunteerHelpWidget.routeName:
         return MaterialPageRoute(
           builder: (context) => VolunteerHelpWidget(
-            cardModel: settings.arguments as CardModel,
+            volunteerHelpModel: settings.arguments as VolunteerHelpModel,
           ),
         );
       case MyCharityProjectFullPage.routeName:
@@ -259,6 +260,25 @@ class AppRouteUtils {
             model: settings.arguments as VolunteeringModel,
           ),
         );
+      case MyCrowdfundingAboutWidget.routeName:
+        return MaterialPageRoute(
+          builder: (context) => MyCrowdfundingAboutWidget(
+            model: settings.arguments as KraufandingModel,
+          ),
+        );
+      case VolunteeringCharityFullPage.routName:
+        return MaterialPageRoute(
+          builder: (context) => VolunteeringCharityFullPage(
+            model: settings.arguments as CharityModel,
+          ),
+        );
+      case MyCrowdfundingSupportPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => MyCrowdfundingSupportPage(
+            list: settings.arguments as List<KraufandingModel>,
+          ),
+        );
+
     }
   }
 }
