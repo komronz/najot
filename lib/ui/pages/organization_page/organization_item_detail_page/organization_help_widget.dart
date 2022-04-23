@@ -2,6 +2,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,6 +17,7 @@ import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/pages/organization_page/organization_item_detail_page/time_picker_organization.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+import 'package:flutter_vibrate/flutter_vibrate.dart';
 
 class OrganizationHelpModel {
   CardModel cardModel;
@@ -183,11 +185,12 @@ class OrganizationHelpWidget extends StatelessWidget {
                       text: "Toshkent Shahar, Mirobod tumani*********",
                       fontSize: 14.w,
                       fontWeight: FontWeight.w500,
-                      color: AppColorUtils.TEXT_BLUE2,
+                      color: AppColorUtils.TEXT_BLUE,
                       maxLines: 2)
                       .paddingSymmetric(horizontal: 20.w),
                   ButtonCard(
                     onPress: () {
+                      Vibrate.feedback(FeedbackType.success);
                       if (state.checkBox) {
                         showDialog(
                             context: context,
@@ -195,7 +198,7 @@ class OrganizationHelpWidget extends StatelessWidget {
                               model: helpModel.cardModel,
                               cubit: helpModel.cubit,
                               con: context,
-                            ));
+                            ),);
                       }
                     },
                     text: "Yordam berish",
@@ -215,11 +218,26 @@ class OrganizationHelpWidget extends StatelessWidget {
                   Row(
                     children: [
                       Checkbox(
-                        value: state.checkBox,
                         onChanged: (v) {
                           helpModel.cubit.onTapCheckBox(v!);
+
+                          HapticFeedback.heavyImpact();
+
                         },
+                        value: state.checkBox,
+                        checkColor: AppColorUtils.BORDER_COLOR,
+                        activeColor: Colors.transparent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(2.0),
+                        ),
+                        side: MaterialStateBorderSide.resolveWith(
+                              (states) => BorderSide(
+                            width: 2.0,
+                            color: AppColorUtils.BORDER_COLOR,
+                          ),
+                        ),
                       ).paddingOnly(left: 8.w),
+
                       AppWidgets.textLocale(
                           text: "Men roziman",
                           color: AppColorUtils.DARK_1,
@@ -227,14 +245,14 @@ class OrganizationHelpWidget extends StatelessWidget {
                           fontWeight: FontWeight.w400)
                     ],
                   ),
-                  AppWidgets.starTextWidget(
+                  AppWidgets.textLocale(
                       text:
-                      "Diqqat! yordam berishga rozi bo'lsangiz inson sizni kutadi.",
+                      "*Diqqat! yordam berishga rozi bo'lsangiz inson sizni kutadi.",
                       color: AppColorUtils.RED,
                       fontWeight: FontWeight.w400,
                       fontSize: 12.sp,
-                      maxLines: 2)
-                      .paddingSymmetric(horizontal: 20.w),
+                      maxLines: 2
+                  ).paddingSymmetric(horizontal: 20.w),
                   SizedBox(height : 20.w)
                 ],
               ),

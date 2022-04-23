@@ -70,19 +70,19 @@ class TimePikerVolunteer extends StatelessWidget {
                         isCenter: true,
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
-                        color: AppColorUtils.BLUE_TEXT,
+                        color: AppColorUtils.VOLONTYOR,
                       ).paddingOnly(bottom: 5),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           AppWidgets.imageSvg(
                             path: AppImageUtils.CALENDAR_RED,
-                            color: AppColorUtils.BLUE_TEXT,
+                            color: AppColorUtils.VOLONTYOR,
                             height: 16,
                           ).paddingOnly(right: 5),
                           AppWidgets.textLocale(
                             text: model.date!,
-                            color: AppColorUtils.BLUE_TEXT,
+                            color: AppColorUtils.VOLONTYOR,
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w500,
                           ),
