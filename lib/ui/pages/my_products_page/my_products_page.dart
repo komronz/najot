@@ -15,6 +15,8 @@ import 'package:najot/ui/pages/my_products_page/widgets/my_products_items_widget
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../data/bloc/my_products_cubit/my_products_state.dart';
+import '../../../data/services/navigator_service.dart';
+import '../notification_page/notification_page.dart';
 
 class MyProductsPage extends StatelessWidget {
   static const String routeName = "/myProductsPage";
@@ -42,7 +44,7 @@ class MyProductsPage extends StatelessWidget {
                     width: 35.w,
                   ),
                   onTap: () {
-                    // HomePage.globalKey.currentState!.openDrawer();
+                    HomePage.globalKey.currentState!.openDrawer();
                   },
                 ),
                 AppWidgets.textLocale(
@@ -50,11 +52,16 @@ class MyProductsPage extends StatelessWidget {
                   fontSize: 26.sp,
                   fontWeight: FontWeight.w600,
                 ),
-                SvgPicture.asset(
-                  AppImageUtils.NOTIFICATION,
-                  height: 35.w,
-                  width: 35.w,
-                  fit: BoxFit.fill,
+                InkWell(
+                  onTap: (){
+                    NavigatorService.to.pushNamed(NotificationPage.routeName,);
+                  },
+                  child: SvgPicture.asset(
+                    AppImageUtils.NOTIFICATION,
+                    height: 35.w,
+                    width: 35.w,
+                    fit: BoxFit.fill,
+                  ),
                 )
               ],
             ).paddingSymmetric(horizontal: 20),

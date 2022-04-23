@@ -41,4 +41,5 @@ enum AppPageType {
   SAVED,
   PROJECT,
   VOLUNTEERING,
+  ADD_PROJECT
 }

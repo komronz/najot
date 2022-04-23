@@ -8,6 +8,9 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../../data/services/navigator_service.dart';
+import '../notification_page/notification_page.dart';
+
 class RulesPage extends StatelessWidget {
   const RulesPage({Key? key}) : super(key: key);
 
@@ -38,11 +41,17 @@ class RulesPage extends StatelessWidget {
               fontSize: 26.sp,
               fontWeight: FontWeight.w600,
             ),
-            SvgPicture.asset(
-              AppImageUtils.NOTIFICATION,
-              height: 35.w,
-              width: 35.w,
-              fit: BoxFit.fill,
+
+            InkWell(
+              onTap: (){
+                NavigatorService.to.pushNamed(NotificationPage.routeName,);
+              },
+              child: SvgPicture.asset(
+                AppImageUtils.NOTIFICATION,
+                height: 35.w,
+                width: 35.w,
+                fit: BoxFit.fill,
+              ),
             )
           ],
         ).paddingSymmetric(horizontal: 20),

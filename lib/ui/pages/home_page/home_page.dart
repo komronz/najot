@@ -16,7 +16,10 @@ import 'package:najot/ui/pages/reg_volounteer/reg_volunteer.dart';
 import 'package:najot/ui/pages/rules_page/rules_page.dart';
 
 import '../my_project_and_announcements_pages/my_project_and_announcements_pages.dart';
+import '../my_volunteering_page/my_volunteering_page.dart';
+import '../my_volunteering_page/my_volunteering_widget/adding_project_page.dart';
 import '../saved_page/saved_page.dart';
+import '../volunteering_charity_history_page/volunteering_charity_history_page.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -59,7 +62,7 @@ class HomePage extends StatelessWidget {
       case AppPageType.VOLUNTEER:
         return RegVolunteer();
       case AppPageType.CHARITY:
-        return CharityHistoryPage();
+        return VolunteeringCharityHistoryPage();
       case AppPageType.OPERATOR:
         return OperatorPage();
       case AppPageType.ORDERS:
@@ -71,7 +74,9 @@ class HomePage extends StatelessWidget {
       case AppPageType.PROJECT:
         return MyProjectAndAnnouncementsPages();
       case AppPageType.VOLUNTEERING:
-        return Container();
+        return MyVolunteeringPage();
+      case AppPageType.ADD_PROJECT:
+        return AddingProjectPage();
       default:
         return Container();
     }
