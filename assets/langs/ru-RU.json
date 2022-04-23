@@ -130,9 +130,17 @@
     "you_have_not_purchased_the_product_yet": "Вы еще не приобрели товар",
     "briefly_about_the_product": "Коротко о продукте",
     "estimated_delivery": "Ориентировочная доставка",
-    "product_amount": "Количество продукта",
+    "product_amount": "Сумма продукта",
     "i_accepted": "Я принял",
-    "note": "Примечание"
-
-
+    "note": "Примечание",
+    "charity_amount": "Сумма благотворительности",
+    "my_volunteering": "Мое волонтерство",
+    "notes": "Примечания",
+    "note_time": "Обратите внимание на время",
+    "ad_name": "Название объявления",
+    "your_answer": "Ваш ответ",
+    "write_your_answer": "Напиши свой ответ",
+    "write_an_answer": "Напишите ответ",
+    "answered": "Ответил",
+    "skip": "Пропускать"
 }

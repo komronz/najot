@@ -15,6 +15,7 @@ import 'package:najot/ui/pages/organization_page/organization_page.dart';
 import 'package:najot/ui/pages/reg_volounteer/reg_volunteer.dart';
 import 'package:najot/ui/pages/rules_page/rules_page.dart';
 
+import '../my_project_and_announcements_pages/my_project_and_announcements_pages.dart';
 import '../saved_page/saved_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -67,6 +68,8 @@ class HomePage extends StatelessWidget {
         return SavedPage();
       case AppPageType.ORGANIZATIONS:
         return OrganizationPage();
+      case AppPageType.PROJECT:
+        return MyProjectAndAnnouncementsPages();
       case AppPageType.VOLUNTEERING:
         return Container();
       default:

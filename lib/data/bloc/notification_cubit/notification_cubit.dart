@@ -12,6 +12,6 @@ class NotificationCubit extends Cubit<NotificationState> {
     GetIt.instance..registerSingleton<NotificationCubit>(NotificationCubit());
   }
 
-  NotificationCubit() : super(NotificationState(cardList: VolunteeringModel.list));
+  NotificationCubit() : super(NotificationState( cardList: VolunteeringModel.list));
 
 }

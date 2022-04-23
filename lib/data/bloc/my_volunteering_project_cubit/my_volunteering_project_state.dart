@@ -1,20 +1,25 @@
 part of 'my_volunteering_project_cubit.dart';
 
-@immutable
 class MyVolunteeringProjectState extends Equatable{
-  MyVolunteeringProjectState({required this.cardList});
+  MyVolunteeringProjectState({required this.cardList,required this.widgetChange});
 
   final List<VolunteeringModel> cardList;
+  final bool widgetChange;
+
 
   @override
   // TODO: implement props
-  List<Object?> get props => [cardList];
+  List<Object?> get props => [cardList,widgetChange];
 
 
   MyVolunteeringProjectState copyWith({
-    List<VolunteeringModel>? list
+    List<VolunteeringModel>? list,
+    bool? widgetChange,
 
   }) {
-    return MyVolunteeringProjectState(cardList: list ?? this.cardList);
+    return MyVolunteeringProjectState(
+        cardList: list ?? this.cardList,
+      widgetChange: widgetChange ?? this.widgetChange,
+    );
   }
 }

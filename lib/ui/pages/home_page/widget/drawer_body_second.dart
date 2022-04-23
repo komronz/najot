@@ -4,11 +4,16 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:provider/src/provider.dart';
+
+import '../../my_project_and_announcements_pages/my_project_and_announcements_pages.dart';
+import '../../my_volunteering_page/my_volunteering_page.dart';
+import '../../my_volunteering_page/my_volunteering_widget/adding_project_page.dart';
 
 class DrawerBodySecond extends StatelessWidget {
    DrawerBodySecond({required this.state}) ;
@@ -19,7 +24,7 @@ class DrawerBodySecond extends StatelessWidget {
   Widget build(BuildContext context) {
     AppPageType pageType = context.read<AppPageCubit>().state.pageType;
     return Container(
-      width: 266.w,
+      width: 315.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: AppColorUtils.WHITE,
@@ -49,7 +54,9 @@ class DrawerBodySecond extends StatelessWidget {
           ButtonCard(
             height: 48.w,
             width: MediaQuery.of(context).size.width,
-            onPress: () {},
+            onPress: () {
+              NavigatorService.to.pushReplacementNamed(AddingProjectPage.routeName);
+            },
             visibleIcon: true,
             addIcon: AppImageUtils.PLUS,
             text: "Loyiha qo'shish",
@@ -78,6 +85,7 @@ class DrawerBodySecond extends StatelessWidget {
               context.read<AppPageCubit>().changePage(
                 pageType: AppPageType.PROJECT,
               );
+              NavigatorService.to.pushReplacementNamed(MyProjectAndAnnouncementsPages.routeName);
             },
           ),
           state.tobeVolunteer
@@ -95,6 +103,8 @@ class DrawerBodySecond extends StatelessWidget {
               context.read<AppPageCubit>().changePage(
                 pageType: AppPageType.VOLUNTEERING,
               );
+              NavigatorService.to.pushReplacementNamed(MyVolunteeringPage.routeName);
+
             },
           ) : SizedBox(),
           AppWidgets.rowIconText(

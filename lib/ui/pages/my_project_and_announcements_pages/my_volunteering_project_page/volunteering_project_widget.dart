@@ -110,7 +110,7 @@ class VolunteeringProjectWidget extends StatelessWidget {
                               width: 11.w,
                               height: 11.w,
                               child: CircularProgressIndicator(
-                                color: Color(0xFFE8B811),
+                                color: AppColorUtils.ORANGE_1,
                                 backgroundColor: AppColorUtils.WHITE,
                                 strokeWidth: 2,
                               ),
@@ -118,7 +118,7 @@ class VolunteeringProjectWidget extends StatelessWidget {
                             AppWidgets.textLocale(
                               text: LocaleKeys.expected,
                               fontSize: 12.sp,
-                              color: Color(0xFFE8B811),
+                              color: AppColorUtils.ORANGE_1,
                               fontWeight: FontWeight.w600,
                             ),
                           ],
@@ -131,11 +131,11 @@ class VolunteeringProjectWidget extends StatelessWidget {
                               width: 12.w,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
-                                color: Color(0xFFE8FEF2),
+                                color: AppColorUtils.GREEN_ACCENT1,
                               ),
                               child: SvgPicture.asset(
                                 AppImageUtils.CHECK_SMALL,
-                                color: Color(0xFF038D69),
+                                color: AppColorUtils.GREEN_TEXT_10,
                               ).paddingAll(0.2),
                             ).paddingOnly(right: 5),
                             AppWidgets.textLocale(

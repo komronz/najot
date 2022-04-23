@@ -27,7 +27,7 @@ class MyCharitySupportListPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColorUtils.BACKGROUND,
       appBar: AppBarWithTitle(
-        title: LocaleKeys.about_project.tr(),
+        title: " Loyihani qo’llaganlar",
         onPress: () {
           NavigatorService.to.pop();
         },

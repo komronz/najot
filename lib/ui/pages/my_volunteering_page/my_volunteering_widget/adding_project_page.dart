@@ -1,5 +1,3 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,6 +10,8 @@ import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
+import '../../home_page/home_page.dart';
+import '../../notification_page/notification_page.dart';
 import 'drop_down_widget.dart';
 import 'my_volunteering_drawer_body.dart';
 
@@ -41,7 +41,6 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MyVolunteeringDrawerBody(),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
@@ -52,25 +51,30 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               InkWell(
+                onTap: () {
+                  HomePage.globalKey.currentState!.openDrawer();
+                },
                 child: SvgPicture.asset(
                   AppImageUtils.MENU,
                   height: 35.w,
                   width: 35.w,
                 ),
-                onTap: () {
-                  Scaffold.of(context).openDrawer();
-                },
               ),
               AppWidgets.textLocale(
                 text: LocaleKeys.volunteering,
                 fontSize: 26.sp,
                 fontWeight: FontWeight.w600,
               ),
-              SvgPicture.asset(
-                AppImageUtils.NOTIFICATION,
-                height: 35.w,
-                width: 35.w,
-                fit: BoxFit.fill,
+              InkWell(
+                onTap: (){
+                  NavigatorService.to.pushNamed(NotificationPage.routeName);
+                },
+                child: SvgPicture.asset(
+                  AppImageUtils.NOTIFICATION,
+                  height: 35.w,
+                  width: 35.w,
+                  fit: BoxFit.fill,
+                ),
               )
             ],
           ).paddingSymmetric(horizontal: 20),

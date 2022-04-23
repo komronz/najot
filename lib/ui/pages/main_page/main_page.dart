@@ -15,6 +15,8 @@ import 'package:najot/ui/pages/home_page/widget/volunteer_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+
+import '../notification_page/notification_page.dart';
 class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);
   static const String routeName = "/homePage";
@@ -39,6 +41,8 @@ class MainPage extends StatelessWidget {
                     },
                     visibleIcon: true,
                     onTapIcon: (){
+                      NavigatorService.to.pushNamed(NotificationPage.routeName,);
+
                     },
                     icon:AppImageUtils.NOTIFICATION,
                   ),

@@ -36,7 +36,13 @@ class KraufandingListWidget extends StatelessWidget {
             fontSize: 18.sp,
             fontWeight: FontWeight.w600,
             color: AppColorUtils.GRAY_4,
-          ).paddingOnly(top: 20),
+            textAlign: TextAlign.center,
+            maxLines: 2,
+          ).paddingOnly(
+            top: 20.w,
+            right: 80.w,
+            left: 80.w,
+          ),
         ],
       );
     }

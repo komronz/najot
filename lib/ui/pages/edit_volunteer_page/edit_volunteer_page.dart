@@ -2,22 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:najot/app.dart';
 import 'package:najot/data/bloc/edit_volunteer_bloc/edit_volunteer_bloc.dart';
-import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/widgets/number_update_volunteer_page.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/widgets/user_update_volunteer_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/pages/my_profil_page/my_profile_pages/user_update_page.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/app_disable_text_field.dart';
-import 'package:najot/ui/pages/my_profil_page/my_profile_widget/my_profile_radio_button.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/show_picker_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+
+import '../../../data/services/navigator_service.dart';
+import '../my_profil_page/my_profile_pages/user_degree_page.dart';
 
 class EditVolunteerPage extends StatelessWidget {
   const EditVolunteerPage({Key? key}) : super(key: key);
@@ -84,7 +82,10 @@ class EditVolunteerPage extends StatelessWidget {
                                  left: 5.w,
                                ),
                                child: InkWell(
-                                 onTap: () {},
+                                 onTap: () {
+                                   NavigatorService.to
+                                       .pushNamed(UserDegreePage.routeName);
+                                 },
                                  child: SvgPicture.asset(
                                    AppImageUtils.FAQ,
                                    color: Color(0xFF007A58),

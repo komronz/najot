@@ -20,6 +20,7 @@ class AppTextField extends StatefulWidget {
   final bool isMultiLine;
   final double? height;
   final bool hasTitle;
+  final bool autoFocus;
 
   AppTextField({
     required this.hintText,
@@ -35,6 +36,7 @@ class AppTextField extends StatefulWidget {
     this.hasError = false,
     this.height,
     this.hasTitle = true,
+    this.autoFocus = false,
   });
 
   @override
@@ -102,7 +104,7 @@ class _AppTextFieldState extends State<AppTextField> {
             borderRadius: BorderRadius.circular(12),
           ),
           child: TextField(
-            autofocus: true,
+            autofocus: widget.autoFocus ? true : false,
             expands: widget.isMultiLine ? true : false,
             textAlignVertical: TextAlignVertical.top,
             maxLines: widget.isMultiLine ? null : 1,

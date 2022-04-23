@@ -10,7 +10,6 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
-import '../../../../data/model/charity_model.dart';
 import '../../../widgets/app_bar_with_title.dart';
 
 class MyVolunteeringSupportListPage extends StatelessWidget {
@@ -28,7 +27,7 @@ class MyVolunteeringSupportListPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColorUtils.BACKGROUND,
       appBar: AppBarWithTitle(
-        title: LocaleKeys.about_project.tr(),
+        title: "Loyihani qo’llaganlar",
         onPress: () {
           NavigatorService.to.pop();
         },

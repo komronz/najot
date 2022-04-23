@@ -6,10 +6,12 @@ import 'package:najot/data/bloc/organization_cubit/organization_cubit.dart';
 import 'package:najot/ui/pages/organization_page/widgets/organization_item_widget.dart';
 
 import '../../../data/localization/locale_keys.g.dart';
+import '../../../data/services/navigator_service.dart';
 import '../../../data/utils/app_color_utils.dart';
 import '../../../data/utils/app_image_utils.dart';
 import '../../widgets/app_widgets.dart';
 import '../home_page/home_page.dart';
+import '../notification_page/notification_page.dart';
 
 class OrganizationPage extends StatelessWidget {
   OrganizationPage({Key? key}) : super(key: key);
@@ -34,7 +36,10 @@ class OrganizationPage extends StatelessWidget {
                     HomePage.globalKey.currentState!.openDrawer();
                   },
                   visibleIcon: true,
-                  onTapIcon: () {},
+                  onTapIcon: () {
+                    NavigatorService.to.pushNamed(NotificationPage.routeName,);
+
+                  },
                   icon: AppImageUtils.NOTIFICATION,
                 ),
               ),

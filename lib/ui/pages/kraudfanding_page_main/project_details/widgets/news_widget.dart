@@ -13,8 +13,8 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 
 class NewsWidget extends StatelessWidget {
   const NewsWidget({
-    Key? key,
     required this.cardModel,
+    Key? key,
   }) : super(key: key);
 
   final CardModel cardModel;
@@ -65,15 +65,13 @@ class NewsWidget extends StatelessWidget {
                             ),
 
                             Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 AppWidgets.textLocale(
                                   text: LocaleKeys.project_author,
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w400,
                                   color: AppColorUtils.DARK_6,
-                                ),
-                                SizedBox(width: 80.w,),
+                                ).paddingOnly(right: 65.w),
                                 AppWidgets.text(
                                     text: "25.08.2022 18:19",
                                     fontSize: 10.sp,

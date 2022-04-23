@@ -1,15 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:najot/data/bloc/edit_volunteer_bloc/edit_volunteer_bloc.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
-import 'package:najot/data/model/organization_model.dart';
+import 'package:najot/data/model/kraufanding_model.dart';
 import 'package:najot/data/model/product_model.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_full_page/charity_full_page.dart';
-import 'package:najot/ui/pages/charity_page/charity_full_page/charity_full_page2.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
-import 'package:najot/ui/pages/charity_page/widgets/charity_help_widget.dart';
 import 'package:najot/ui/pages/counter_page/counter_page.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/edit_volunteer_page.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/widgets/number_update_volunteer_page.dart';
@@ -20,13 +19,14 @@ import 'package:najot/ui/pages/loading_page/loading_page.dart';
 import 'package:najot/ui/pages/login_page/login_page.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_page.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/adding_project_page.dart';
-import 'package:najot/ui/pages/organization_page/organization_item_detail_page/organization_item_detail_page.dart';
 import 'package:najot/ui/pages/reg_page/reg_page.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/img_view.dart';
 import 'package:najot/ui/pages/verification_page/verification_page.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/volunteer_detail_page.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_help_widget.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_page.dart';
+import '../../ui/pages/charity_page/charity_full_page/charity_full_page2.dart';
+import '../../ui/pages/charity_page/widgets/charity_help_widget.dart';
 import '../../ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
 import '../../ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
 import '../../ui/pages/my_products_page/my_products_page.dart';
@@ -37,6 +37,8 @@ import '../../ui/pages/my_profil_page/my_profile_pages/user_update_page.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_charity_item_project_full_widget/my_charity_item_full_page.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_project_full_page.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_support_list_page.dart';
+import '../../ui/pages/my_project_and_announcements_pages/my_crowdfunding_project/my_crowdfunding_about_widget.dart';
+import '../../ui/pages/my_project_and_announcements_pages/my_crowdfunding_project/my_crowdfunding_support_page.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_project_and_announcements_pages.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/about_my_volunteering_project_page.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/my_volunteering_support_list_page.dart';
@@ -44,7 +46,9 @@ import '../../ui/pages/notification_page/notification_page.dart';
 import '../../ui/pages/notification_page/widget/attension_note.dart';
 import '../../ui/pages/organization_page/organization_item_detail_page/organization_charity_item_widget.dart';
 import '../../ui/pages/organization_page/organization_item_detail_page/organization_help_widget.dart';
+import '../../ui/pages/organization_page/organization_item_detail_page/organization_item_detail_page.dart';
 import '../../ui/pages/volunteering_charity_history_page/volunteering_charity_history_page.dart';
+import '../../ui/pages/volunteering_charity_history_page/widgets/volunteering_charity_full_page.dart';
 import '../model/card_model.dart';
 import '../model/charity_model.dart';
 
@@ -139,7 +143,6 @@ class AppRouteUtils {
         return MaterialPageRoute(
           builder: (context) => KraudfandingPage(),
         );
-
       case VolunteerDetailPage.routeName:
         return MaterialPageRoute(
           builder: (context) => VolunteerDetailPage(
@@ -207,7 +210,6 @@ class AppRouteUtils {
         return MaterialPageRoute(
           builder: (context) => VolunteerHelpWidget(
             volunteerHelpModel: settings.arguments as VolunteerHelpModel,
-
           ),
         );
       case MyCharityProjectFullPage.routeName:
@@ -258,6 +260,25 @@ class AppRouteUtils {
             model: settings.arguments as VolunteeringModel,
           ),
         );
+      case MyCrowdfundingAboutWidget.routeName:
+        return MaterialPageRoute(
+          builder: (context) => MyCrowdfundingAboutWidget(
+            model: settings.arguments as KraufandingModel,
+          ),
+        );
+      case VolunteeringCharityFullPage.routName:
+        return MaterialPageRoute(
+          builder: (context) => VolunteeringCharityFullPage(
+            model: settings.arguments as CharityModel,
+          ),
+        );
+      case MyCrowdfundingSupportPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => MyCrowdfundingSupportPage(
+            list: settings.arguments as List<KraufandingModel>,
+          ),
+        );
+
     }
   }
 }

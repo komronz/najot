@@ -10,11 +10,14 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/my_volunteering_project_page.dart';
 
 import '../../../data/config/const/decoration_const.dart';
+import '../../../data/services/navigator_service.dart';
 import '../../../data/utils/app_color_utils.dart';
 import '../../../data/utils/app_image_utils.dart';
 import '../../widgets/app_widgets.dart';
-import '../charity_history_page/widgets/kraufanding_list_widget.dart';
+import '../home_page/home_page.dart';
+import '../notification_page/notification_page.dart';
 import 'my_charity_project_widget/my_charity_project_list.dart';
+import 'my_crowdfunding_project/my_crowdfunding_list_widget.dart';
 
 class MyProjectAndAnnouncementsPages extends StatelessWidget {
   static const String routeName = '/myProjectAndAnnouncementsPages';
@@ -41,7 +44,9 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
                     height: 35.w,
                     width: 35.w,
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    HomePage.globalKey.currentState!.openDrawer();
+                  },
                 ),
                 Expanded(
                   child: AppWidgets.textLocale(
@@ -51,11 +56,16 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
                     textAlign: TextAlign.center
                   ),
                 ),
-                SvgPicture.asset(
-                  AppImageUtils.NOTIFICATION,
-                  height: 35.w,
-                  width: 35.w,
-                  fit: BoxFit.fill,
+                InkWell(
+                  onTap: (){
+                    NavigatorService.to.pushNamed(NotificationPage.routeName,);
+                  },
+                  child: SvgPicture.asset(
+                    AppImageUtils.NOTIFICATION,
+                    height: 35.w,
+                    width: 35.w,
+                    fit: BoxFit.fill,
+                  ),
                 )
               ],
             ).paddingSymmetric(horizontal: 20),
@@ -124,7 +134,7 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: [
-                  KraufandingListWidget(list: []),
+                  MyCrowdfundingListWidget(list: state.kraufandingList),
                   MyVolunteeringProjectPage(list: state.volunteeringList),
                   MyCharityProjectList(list: state.charityList)
                 ],

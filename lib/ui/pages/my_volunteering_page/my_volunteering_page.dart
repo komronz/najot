@@ -13,6 +13,7 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 
 import '../../widgets/app_widgets.dart';
+import '../home_page/home_page.dart';
 import '../notification_page/notification_page.dart';
 import 'my_volunteering_widget/item_charity_widget.dart';
 import 'my_volunteering_widget/my_volunteering_drawer_body.dart';
@@ -29,7 +30,6 @@ class MyVolunteeringPage extends StatelessWidget {
       create: (context) => MyVolunteeringCubit(),
       child: BlocBuilder<MyVolunteeringCubit, MyVolunteeringState>(
         builder: (context, state) => Scaffold(
-          drawer: MyVolunteeringDrawerBody(),
           appBar: AppBar(
             automaticallyImplyLeading: false,
             backgroundColor: Colors.transparent,
@@ -46,7 +46,7 @@ class MyVolunteeringPage extends StatelessWidget {
                       width: 35.w,
                     ),
                     onTap: () {
-                      Scaffold.of(context).openDrawer();
+                      HomePage.globalKey.currentState!.openDrawer();
                     },
                   ),
                   AppWidgets.textLocale(
@@ -62,7 +62,7 @@ class MyVolunteeringPage extends StatelessWidget {
                       fit: BoxFit.fill,
                     ),
                     onTap: (){
-                      NavigatorService.to.pushNamed(NotificationPage.routeName);
+                     NavigatorService.to.pushNamed(NotificationPage.routeName,);
                     },
                   ),
                 ],

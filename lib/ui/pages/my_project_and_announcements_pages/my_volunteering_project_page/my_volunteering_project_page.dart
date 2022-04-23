@@ -3,15 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/volunteering_model.dart';
-import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/about_my_volunteering_project_page.dart';
 import 'package:najot/ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/volunteering_project_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-
-
-
 
 class MyVolunteeringProjectPage extends StatelessWidget {
   final List<VolunteeringModel> list;
