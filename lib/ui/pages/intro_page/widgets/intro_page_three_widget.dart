@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/extensions/context_extension.dart';
+import 'package:najot/data/extensions/widget_padding_extension.dart';
+import '../../../../data/utils/app_color_utils.dart';
+import '../../../widgets/app_widgets.dart';
+import 'intro_view_widgets.dart';
 
 class IntroPageThreeWidget extends StatelessWidget {
   IntroPageThreeWidget({
@@ -16,58 +21,30 @@ class IntroPageThreeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned(
-          top: -63,
-          left: -111,
-          child: Container(
-            alignment: Alignment.center,
-            width: 589.w,
-            height: 589.h,
-            decoration: BoxDecoration(
-              color: Color(0xFFEEFFFB),
-              borderRadius: BorderRadius.circular(240),
-            ),
-          ),
-        ),
+        IntroClipPathWidget(height: context.height * 0.63.w),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-                margin: EdgeInsets.only(left: 30),
-                width: 279.67,
-                height: 332,
-                child: Image.asset(image)),
-            SizedBox(height: 115.h),
-            Container(
-              margin: EdgeInsets.only(left: 30),
-              width: 195.w,
-              height: 43.h,
-              child: Text(
-                title,
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 32,
-                    fontWeight: FontWeight.w600),
-                textAlign: TextAlign.center,
-              ),
+            AppWidgets.imageAsset(path: image).paddingOnly(
+              bottom: 85.w,
             ),
-            SizedBox(height: 8.h),
-            Container(
-              margin: EdgeInsets.only(left: 30),
-              width: 310.w,
-              height: 52.h,
-              child: Text(
-                content,
-                style: const TextStyle(
-                    color: Color(0xFF5D7B73),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400),
-                textAlign: TextAlign.center,
-              ),
+            AppWidgets.textLocale(
+              text: title,
+              color: AppColorUtils.GREEN_BLACK,
+              fontSize: 30.sp,
+              fontWeight: FontWeight.w600,
+              textAlign: TextAlign.center,
+            ).paddingOnly(bottom: 8.w),
+            AppWidgets.textLocale(
+              text: content,
+              color: AppColorUtils.GREEN_WHITE,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              fontSize: 15.sp,
+              fontWeight: FontWeight.w400,
             ),
           ],
-        ),
+        ).paddingOnly(top: 100.w),
       ],
     );
   }

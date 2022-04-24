@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/ui/widgets/app_widgets.dart';
+import 'intro_view_widgets.dart';
 
 class IntroPageOneWidget extends StatelessWidget {
   IntroPageOneWidget({
@@ -9,59 +13,38 @@ class IntroPageOneWidget extends StatelessWidget {
     required this.content,
     Key? key,
   }) : super(key: key);
-   String image;
-   String title;
-   String content;
+  String image;
+  String title;
+  String content;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned(
-          top: -84,
-          left: -175,
-          child: Container(
-            alignment: Alignment.center,
-            width: 758.r,
-            height: 758.r,
-            decoration: BoxDecoration(
-              color: Color(0xFFEEFFFB),
-              borderRadius: BorderRadius.circular(370),
+        IntroClipPathWidget(height: context.height * 0.82.w),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            AppWidgets.imageAsset(path: image).paddingOnly(
+              bottom: 60.w,
             ),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.all(40),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(image).paddingOnly(bottom: 65.w),
-              Container(
-                height: 39.w,
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 32,
-                      fontWeight: FontWeight.w600),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              SizedBox(height: 8),
-              Container(
-                height: 50.w,
-                child: Text(
-                  content,
-                  style: const TextStyle(
-                      color: Color(0xFF5D7B73),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400),
-                ),
-              ),
-            ],
-          ),
-        ),
+            AppWidgets.textLocale(
+              text: title,
+              color: AppColorUtils.GREEN_BLACK,
+              fontSize: 30.sp,
+              fontWeight: FontWeight.w600,
+              textAlign: TextAlign.center,
+            ).paddingOnly(bottom: 8.w),
+            AppWidgets.textLocale(
+              text: content,
+              color: AppColorUtils.GREEN_WHITE,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              fontSize: 15.sp,
+              fontWeight: FontWeight.w400,
+            )
+          ],
+        ).paddingOnly(top: 120.w),
       ],
     );
   }
