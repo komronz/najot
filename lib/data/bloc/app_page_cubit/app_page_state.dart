@@ -36,6 +36,7 @@ enum AppPageType {
   FAQ,
   ABOUT,
   PROFILE,
+  USERPROFILE,
   VOLUNTEER,
   OPERATOR,
   SAVED,

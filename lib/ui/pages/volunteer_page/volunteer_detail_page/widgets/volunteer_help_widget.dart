@@ -80,7 +80,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                     ],
                   ),
                   AppWidgets.textLocale(
-                    text: LocaleKeys.address,
+                    text: "E'lon nomi",
                     fontWeight: FontWeight.w400,
                     fontSize: 10.sp,
                     color: AppColorUtils.DARK_6,
@@ -184,7 +184,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                           text: "Toshkent Shahar, Mirobod tumani*********",
                           fontSize: 14.w,
                           fontWeight: FontWeight.w500,
-                          color: AppColorUtils.TEXT_BLUE2,
+                          color: AppColorUtils.TEXT_BLUE,
                           maxLines: 2)
                       .paddingSymmetric(horizontal: 20.w),
                   ButtonCard(
@@ -216,10 +216,21 @@ class VolunteerHelpWidget extends StatelessWidget {
                   Row(
                     children: [
                       Checkbox(
-                        value: state.checkBox,
                         onChanged: (v) {
                           volunteerHelpModel.cubit.onTapCheckBox(v!);
                         },
+                        value: state.checkBox,
+                        checkColor: AppColorUtils.BORDER_COLOR,
+                        activeColor: Colors.transparent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(2.0),
+                        ),
+                        side: MaterialStateBorderSide.resolveWith(
+                              (states) => BorderSide(
+                            width: 2.0,
+                            color: AppColorUtils.BORDER_COLOR,
+                          ),
+                        ),
                       ).paddingOnly(left: 8.w),
                       AppWidgets.textLocale(
                           text: "Men roziman",
@@ -228,14 +239,14 @@ class VolunteerHelpWidget extends StatelessWidget {
                           fontWeight: FontWeight.w400)
                     ],
                   ),
-                  AppWidgets.starTextWidget(
-                          text:
-                              "Diqqat! yordam berishga rozi bo'lsangiz inson sizni kutadi.",
-                          color: AppColorUtils.RED,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12.sp,
-                          maxLines: 2)
-                      .paddingSymmetric(horizontal: 20.w),
+                  AppWidgets.textLocale(
+                      text:
+                      "*Diqqat! yordam berishga rozi bo'lsangiz inson sizni kutadi.",
+                      color: AppColorUtils.RED,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12.sp,
+                      maxLines: 2
+                  ).paddingSymmetric(horizontal: 20.w),
                   SizedBox(height: 20.w,)
                 ],
               ),

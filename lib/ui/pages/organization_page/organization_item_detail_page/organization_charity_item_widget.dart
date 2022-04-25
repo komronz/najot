@@ -264,6 +264,7 @@ class _OrganizationCharityItemWidgetState extends State<OrganizationCharityItemW
                           ),
                           state.saveHelp
                               ? Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               state.tobeVolunteer
                                   ? SizedBox()

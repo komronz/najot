@@ -33,12 +33,13 @@ class HomePage extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context) => cubit,
       child: BlocBuilder<AppPageCubit, AppPageState>(
+        bloc: cubit,
         builder: (context, state) {
           return Scaffold(
             // backgroundColor: AppColorUtils.BACKGROUND,
             key: globalKey,
             drawer: state.changeMenu==1
-                ? DrawerBody(state: state,)
+                ? DrawerBody(state: state,cubit: cubit,)
                 : DrawerBodySecond(state: state),
             body: buildBody(state)
           );
@@ -59,6 +60,8 @@ class HomePage extends StatelessWidget {
         return AboutPage();
       case AppPageType.PROFILE:
         return EditVolunteerPage();
+      case AppPageType.USERPROFILE:
+        return MyProfilePage();
       case AppPageType.VOLUNTEER:
         return RegVolunteer();
       case AppPageType.CHARITY:

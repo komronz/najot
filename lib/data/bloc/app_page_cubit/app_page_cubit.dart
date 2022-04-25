@@ -23,7 +23,7 @@ class AppPageCubit extends Cubit<AppPageState> {
     emit(state.copyWith(changeMenu: v));
   }
 
-  void changeVolunteer(){
-    emit(state.copyWith());
+  void changeVolunteer(bool vol){
+    emit(state.copyWith(tobeVolunteer: vol));
   }
 }

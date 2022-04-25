@@ -4,6 +4,8 @@ import 'package:meta/meta.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/charity_saved_service.dart';
 
+import '../../services/volunteer_service.dart';
+
 part 'charity_state.dart';
 
 class CharityCubit extends Cubit<CharityState> {
@@ -15,7 +17,7 @@ class CharityCubit extends Cubit<CharityState> {
 
     try{
       var list= await CharitySavedService().getCharityList();
-      emit(state.copyWith(list: list));
+      emit(state.copyWith(list: list,tobeVolunteer: Volunteer.tobeVolunteer));
 
     }catch(e){
 
