@@ -51,11 +51,15 @@ class DrawerBodySecond extends StatelessWidget {
             top: 50.w,
             left: 20.w,
           ),
-          ButtonCard(
+          state.tobeVolunteer
+          ? ButtonCard(
             height: 48.w,
             width: MediaQuery.of(context).size.width,
             onPress: () {
-              NavigatorService.to.pushReplacementNamed(AddingProjectPage.routeName);
+              context.read<AppPageCubit>().changePage(
+                pageType: AppPageType.PROJECT,
+              );
+              Navigator.pop(context);
             },
             visibleIcon: true,
             addIcon: AppImageUtils.PLUS,
@@ -69,9 +73,9 @@ class DrawerBodySecond extends StatelessWidget {
             bottom: 24.w,
             left: 20.w,
             right: 20.w,
-          ),
-
-          AppWidgets.rowIconText(
+          ): SizedBox().paddingOnly(bottom: 40.w),
+          state.tobeVolunteer
+          ? AppWidgets.rowIconText(
             isActive: pageType == AppPageType.PROJECT,
             icon: AppImageUtils.PROJECT1,
             iconSelect: AppImageUtils.PROJECT2,
@@ -85,9 +89,9 @@ class DrawerBodySecond extends StatelessWidget {
               context.read<AppPageCubit>().changePage(
                 pageType: AppPageType.PROJECT,
               );
-              NavigatorService.to.pushReplacementNamed(MyProjectAndAnnouncementsPages.routeName);
+              Navigator.pop(context);
             },
-          ),
+          ): SizedBox(),
           state.tobeVolunteer
           ? AppWidgets.rowIconText(
             isActive: pageType == AppPageType.VOLUNTEERING,
@@ -103,7 +107,7 @@ class DrawerBodySecond extends StatelessWidget {
               context.read<AppPageCubit>().changePage(
                 pageType: AppPageType.VOLUNTEERING,
               );
-              NavigatorService.to.pushReplacementNamed(MyVolunteeringPage.routeName);
+              Navigator.pop(context);
 
             },
           ) : SizedBox(),
