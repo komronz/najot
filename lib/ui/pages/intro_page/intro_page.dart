@@ -49,17 +49,13 @@ class IntroPage extends StatelessWidget {
                             "Lorem Ipsum is simply dummy text of the printing and typesetting industry"),
                   ],
                 ),
-                Positioned(
-                  top: 72,
-                  left: 148,
-                  child: Container(
-                    height: 19.h,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: _buildIndicator(state),
-                    ),
+                Container(
+                  height: 19.h,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: _buildIndicator(state),
                   ),
-                ),
+                ).paddingOnly(top: 50.w),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -71,7 +67,7 @@ class IntroPage extends StatelessWidget {
                       viewOfThreePage(context,state),
                     ]
                   ],
-                ),
+                ).paddingOnly(bottom: 35.w, right: 20.w, left: 20.w,),
               ],
             );
           }

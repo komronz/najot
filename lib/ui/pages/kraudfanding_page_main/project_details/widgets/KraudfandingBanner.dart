@@ -9,6 +9,9 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../../../../data/services/navigator_service.dart';
+import '../../../my_volunteering_page/my_volunteering_widget/adding_project_page.dart';
+
 class KraudfandingBanner extends StatelessWidget {
   const KraudfandingBanner({
     Key? key,
@@ -58,7 +61,9 @@ class KraudfandingBanner extends StatelessWidget {
                     ),
                     SizedBox(height: 20.w),
                     ButtonCard(
-                      onPress: () {},
+                      onPress: () {
+                        NavigatorService.to.pushReplacementNamed(AddingProjectPage.routeName);
+                      },
                       height: 35.w,
                       width: 146.w,
                       text: LocaleKeys.add_project.tr(),

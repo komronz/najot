@@ -13,6 +13,8 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../data/bloc/orders_cubit/orders_state.dart';
 import '../../../data/localization/locale_keys.g.dart';
+import '../../../data/services/navigator_service.dart';
+import '../notification_page/notification_page.dart';
 import 'widgets/order_list_item_widget.dart';
 
 class OrdersPage extends StatelessWidget {
@@ -47,11 +49,16 @@ class OrdersPage extends StatelessWidget {
                   fontSize: 26.sp,
                   fontWeight: FontWeight.w600,
                 ),
-                SvgPicture.asset(
-                  AppImageUtils.NOTIFICATION,
-                  height: 35.w,
-                  width: 35.w,
-                  fit: BoxFit.fill,
+                InkWell(
+                  onTap: (){
+                    NavigatorService.to.pushNamed(NotificationPage.routeName,);
+                  },
+                  child: SvgPicture.asset(
+                    AppImageUtils.NOTIFICATION,
+                    height: 35.w,
+                    width: 35.w,
+                    fit: BoxFit.fill,
+                  ),
                 )
               ],
             ).paddingSymmetric(horizontal: 20),

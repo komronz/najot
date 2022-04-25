@@ -17,6 +17,8 @@ import 'package:najot/ui/pages/volunteering_charity_history_page/widgets/volunte
 import 'package:najot/ui/widgets/app_search_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../data/bloc/volunteering_charity_history_cubit/volunteering_charity_history_cubit.dart';
+import '../../../data/services/navigator_service.dart';
+import '../notification_page/notification_page.dart';
 
 class VolunteeringCharityHistoryPage extends StatelessWidget {
   static const String routeName="/volunteeringCharityHistoryPage";
@@ -44,19 +46,27 @@ class VolunteeringCharityHistoryPage extends StatelessWidget {
                     width: 35.w,
                   ),
                   onTap: () {
-                    // HomePage.globalKey.currentState!.openDrawer();
+                    HomePage.globalKey.currentState!.openDrawer();
                   },
                 ),
-                AppWidgets.textLocale(
-                  text: LocaleKeys.charity_history,
-                  fontSize: 26.sp,
-                  fontWeight: FontWeight.w600,
+                Expanded(
+                  child: AppWidgets.textLocale(
+                    text: LocaleKeys.charity_history,
+                    fontSize: 26.sp,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-                SvgPicture.asset(
-                  AppImageUtils.NOTIFICATION,
-                  height: 35.w,
-                  width: 35.w,
-                  fit: BoxFit.fill,
+                InkWell(
+                  onTap: (){
+                    NavigatorService.to.pushNamed(NotificationPage.routeName,);
+
+                  },
+                  child: SvgPicture.asset(
+                    AppImageUtils.NOTIFICATION,
+                    height: 35.w,
+                    width: 35.w,
+                    fit: BoxFit.fill,
+                  ),
                 )
               ],
             ).paddingSymmetric(horizontal: 20),

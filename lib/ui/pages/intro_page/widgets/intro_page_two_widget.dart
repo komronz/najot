@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+
+import '../../../../data/utils/app_color_utils.dart';
+import '../../../widgets/app_widgets.dart';
+import 'intro_view_widgets.dart';
 
 class IntroPageTwoWidget extends StatelessWidget {
   IntroPageTwoWidget({
@@ -17,46 +22,28 @@ class IntroPageTwoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned(
-          top: -84,
-          left: -175,
-          child: Container(
-            alignment: Alignment.center,
-            width: 758.r,
-            height: 758.r,
-            decoration: BoxDecoration(
-              color: Color(0xFFEEFFFB),
-              borderRadius: BorderRadius.circular(370),
-            ),
-          ),
-        ),
+        IntroClipPathWidget(height: context.height * 0.82.w),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              title,
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 32,
-                  fontWeight: FontWeight.w600),
+            AppWidgets.textLocale(
+              text: title,
+              color: AppColorUtils.GREEN_BLACK,
+              fontSize: 30.sp,
+              fontWeight: FontWeight.w600,
               textAlign: TextAlign.center,
-            ).paddingOnly(bottom: 10.w),
-            Container(
-              width: 320.w,
-              height: 52.h,
-              child: Text(
-                content,
-                style: const TextStyle(
-                    color: Color(0xFF5D7B73),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400),
-                textAlign: TextAlign.center,
-              ),
-            ).paddingOnly(bottom: 60.w),
-            Image.asset(image),
+            ).paddingOnly(bottom: 8.w),
+            AppWidgets.textLocale(
+              text: content,
+              color: AppColorUtils.GREEN_WHITE,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              fontSize: 15.sp,
+              fontWeight: FontWeight.w400,
+            ).paddingOnly(bottom: 58.w),
+            AppWidgets.imageAsset(path: image)
           ],
-        ).paddingOnly(left: 20.w),
+        ).paddingOnly(top: 120.w),
       ],
     );
   }
