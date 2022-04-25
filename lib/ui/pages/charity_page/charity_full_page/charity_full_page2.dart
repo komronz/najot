@@ -261,6 +261,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                           ),
                           state.saveHelp
                               ? Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     state.tobeVolunteer
                                         ? SizedBox()

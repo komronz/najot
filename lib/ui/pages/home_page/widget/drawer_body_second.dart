@@ -85,7 +85,7 @@ class DrawerBodySecond extends StatelessWidget {
               context.read<AppPageCubit>().changePage(
                 pageType: AppPageType.PROJECT,
               );
-              NavigatorService.to.pushReplacementNamed(MyProjectAndAnnouncementsPages.routeName);
+              Navigator.pop(context);
             },
           ),
           state.tobeVolunteer
@@ -103,7 +103,6 @@ class DrawerBodySecond extends StatelessWidget {
               context.read<AppPageCubit>().changePage(
                 pageType: AppPageType.VOLUNTEERING,
               );
-              NavigatorService.to.pushReplacementNamed(MyVolunteeringPage.routeName);
 
             },
           ) : SizedBox(),

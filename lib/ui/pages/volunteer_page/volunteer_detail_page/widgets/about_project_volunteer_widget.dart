@@ -302,6 +302,7 @@ class _AboutProjectVolunteerWidgetState
                 ),
                 widget.state.saveHelp
                     ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           widget.state.tobeVolunteer
                               ? SizedBox()

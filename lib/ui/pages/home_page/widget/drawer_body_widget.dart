@@ -15,11 +15,18 @@ import 'package:najot/ui/pages/edit_volunteer_page/edit_volunteer_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+import '../../../../data/services/volunteer_service.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 
 class DrawerBody extends StatelessWidget {
-  DrawerBody({required this.state});
+  DrawerBody({
+    required this.state,
+    required this.cubit,
+  });
 
   AppPageState state;
+  AppPageCubit cubit;
+  bool sv = false;
 
   @override
   Widget build(BuildContext context) {
@@ -113,11 +120,19 @@ class DrawerBody extends StatelessWidget {
                                 .read<AppPageCubit>()
                                 .changePage(pageType: AppPageType.PROFILE);
                             Navigator.pop(context);
-                          } else {}
+                          } else {
+                            context
+                                .read<AppPageCubit>()
+                                .changePage(pageType: AppPageType.USERPROFILE);
+                            Navigator.pop(context);
+                          }
                         },
                       )
+
                     ],
                   ),
+
+
                   Divider(
                     color: AppColorUtils.DIVIDER,
                     height: 1,
@@ -246,12 +261,22 @@ class DrawerBody extends StatelessWidget {
                       Navigator.pop(context);
                     },
                   ),
+                  FlutterSwitch(
+
+                    showOnOff: true,
+                    value: state.tobeVolunteer,
+                    onToggle: (v) {
+                      Volunteer.tobeVolunteer=!Volunteer.tobeVolunteer;
+                      cubit.changeVolunteer(Volunteer.tobeVolunteer);
+                    },
+                  ),
                 ],
               ),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.w),
                   child: ButtonCard(
