@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/verification_page/widgets/pin_put_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -46,7 +48,14 @@ class VerificationPage extends StatelessWidget {
                       fontSize: 16,
                       textAlign: TextAlign.center),
                 ),
-                AppWidgets.appButton(title: "Ro'yhatdan o'tish", onTap: () {}).paddingOnly(top: 100.h),
+                AppWidgets.appButton(
+                    title: "Ro'yhatdan o'tish",
+                    onTap: () {
+                      NavigatorService.to.pushNamed(
+                        HomePage.routeName,
+                        arguments: AppPageType.MAIN,
+                      );
+                    }).paddingOnly(top: 100.h),
                 AppWidgets.appButton(
                   title: "Boshqa raqam kiritish",
                   onTap: () {},
@@ -61,4 +70,3 @@ class VerificationPage extends StatelessWidget {
     );
   }
 }
-
