@@ -52,6 +52,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
             children: [
               InkWell(
                 onTap: () {
+
                   HomePage.globalKey.currentState!.openDrawer();
                 },
                 child: SvgPicture.asset(

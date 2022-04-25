@@ -8,11 +8,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/edit_volunteer_page/edit_volunteer_page.dart';
-import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../../data/services/volunteer_service.dart';
@@ -21,13 +18,10 @@ import 'package:flutter_switch/flutter_switch.dart';
 class DrawerBody extends StatelessWidget {
   DrawerBody({
     required this.state,
-    required this.cubit,
+
   });
 
   AppPageState state;
-  AppPageCubit cubit;
-  bool sv = false;
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -267,7 +261,7 @@ class DrawerBody extends StatelessWidget {
                     value: state.tobeVolunteer,
                     onToggle: (v) {
                       Volunteer.tobeVolunteer=!Volunteer.tobeVolunteer;
-                      cubit.changeVolunteer(Volunteer.tobeVolunteer);
+                      context.read<AppPageCubit>().changeVolunteer(Volunteer.tobeVolunteer);
                     },
                   ),
                 ],

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/bloc/edit_volunteer_bloc/edit_volunteer_bloc.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
@@ -81,7 +82,7 @@ class AppRouteUtils {
         );
       case HomePage.routeName:
         return CupertinoPageRoute(
-          builder: (context) => HomePage(),
+          builder: (context) => HomePage(appPageType: settings.arguments as AppPageType,),
         );
       case CharityPage.routeName:
         return MaterialPageRoute(

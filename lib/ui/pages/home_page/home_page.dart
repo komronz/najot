@@ -22,7 +22,9 @@ import '../saved_page/saved_page.dart';
 import '../volunteering_charity_history_page/volunteering_charity_history_page.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+  HomePage({ required this.appPageType});
+
+  AppPageType appPageType;
   static const String routeName = "/homePage";
   AppPageCubit cubit = AppPageCubit();
 
@@ -31,15 +33,14 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => cubit,
+      create: (BuildContext context) => cubit..load(appPageType),
       child: BlocBuilder<AppPageCubit, AppPageState>(
-        bloc: cubit,
         builder: (context, state) {
           return Scaffold(
             // backgroundColor: AppColorUtils.BACKGROUND,
             key: globalKey,
             drawer: state.changeMenu==1
-                ? DrawerBody(state: state,cubit: cubit,)
+                ? DrawerBody(state: state)
                 : DrawerBodySecond(state: state),
             body: buildBody(state)
           );

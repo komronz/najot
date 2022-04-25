@@ -55,7 +55,10 @@ class DrawerBodySecond extends StatelessWidget {
             height: 48.w,
             width: MediaQuery.of(context).size.width,
             onPress: () {
-              NavigatorService.to.pushReplacementNamed(AddingProjectPage.routeName);
+              context.read<AppPageCubit>().changePage(
+                pageType: AppPageType.ADD_PROJECT,
+              );
+              Navigator.pop(context);
             },
             visibleIcon: true,
             addIcon: AppImageUtils.PLUS,
@@ -85,7 +88,7 @@ class DrawerBodySecond extends StatelessWidget {
               context.read<AppPageCubit>().changePage(
                 pageType: AppPageType.PROJECT,
               );
-              NavigatorService.to.pushReplacementNamed(MyProjectAndAnnouncementsPages.routeName);
+              Navigator.pop(context);
             },
           ),
           state.tobeVolunteer
@@ -103,7 +106,7 @@ class DrawerBodySecond extends StatelessWidget {
               context.read<AppPageCubit>().changePage(
                 pageType: AppPageType.VOLUNTEERING,
               );
-              NavigatorService.to.pushReplacementNamed(MyVolunteeringPage.routeName);
+              Navigator.pop(context);
 
             },
           ) : SizedBox(),
