@@ -57,7 +57,7 @@ class DrawerBodySecond extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             onPress: () {
               context.read<AppPageCubit>().changePage(
-                pageType: AppPageType.PROJECT,
+                pageType: AppPageType.ADD_PROJECT,
               );
               Navigator.pop(context);
             },

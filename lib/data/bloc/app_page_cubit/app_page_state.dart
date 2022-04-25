@@ -6,9 +6,9 @@ class AppPageState extends Equatable {
   final bool tobeVolunteer;
 
   const AppPageState({
-    required this.pageType,
-    required this.changeMenu,
-    required this.tobeVolunteer,
+     this.pageType=AppPageType.MAIN,
+     this.changeMenu=1,
+     this.tobeVolunteer=false,
   });
 
   AppPageState copyWith({
@@ -42,5 +42,6 @@ enum AppPageType {
   SAVED,
   PROJECT,
   VOLUNTEERING,
-  ADD_PROJECT
+  ADD_PROJECT,
+  DEFAULT
 }

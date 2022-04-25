@@ -3,13 +3,16 @@
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/services/root_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../../../data/services/navigator_service.dart';
+import '../../../home_page/home_page.dart';
 import '../../../my_volunteering_page/my_volunteering_widget/adding_project_page.dart';
 
 class KraudfandingBanner extends StatelessWidget {
@@ -62,7 +65,9 @@ class KraudfandingBanner extends StatelessWidget {
                     SizedBox(height: 20.w),
                     ButtonCard(
                       onPress: () {
-                        NavigatorService.to.pushReplacementNamed(AddingProjectPage.routeName);
+                        NavigatorService.to.pushNamedAndRemoveUntil(HomePage.routeName,arguments: AppPageType.ADD_PROJECT);
+
+
                       },
                       height: 35.w,
                       width: 146.w,

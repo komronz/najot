@@ -6,6 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/utils/app_route_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/intro_page/intro_page.dart';
+import 'package:najot/ui/pages/my_project_and_announcements_pages/my_project_and_announcements_pages.dart';
+import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_page.dart';
+import 'package:najot/ui/pages/volunteering_charity_history_page/volunteering_charity_history_page.dart';
 
 import 'data/bloc/language_cubit/language_cubit.dart';
 import 'data/services/navigator_service.dart';
@@ -31,7 +34,7 @@ class App extends StatelessWidget {
           // darkTheme: AppThemes.darkTheme(),
           localizationsDelegates: context.localizationDelegates,
           builder: BotToastInit(),
-          home: HomePage(),
+          home: HomePage(appPageType: AppPageType.MAIN),
           navigatorObservers: [
             BotToastNavigatorObserver(),
           ],
