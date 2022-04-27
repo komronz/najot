@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
@@ -37,7 +39,7 @@ class RulesPage extends StatelessWidget {
               },
             ),
             AppWidgets.textLocale(
-              text: "Loyiha qoidalari",
+              text: LocaleKeys.project_rules,
               fontSize: 26.sp,
               fontWeight: FontWeight.w600,
             ),
@@ -75,8 +77,8 @@ class RulesPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppWidgets.text(
-                      text: "1. Umumiy qoyidalar",
-                      color: Colors.black,
+                      text: LocaleKeys.general_rules.tr(),
+                      color: AppColorUtils.BLACK,
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w600,
                     ).paddingOnly(top: 20),

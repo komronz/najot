@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/app_date_picker.dart';
 import 'package:najot/ui/widgets/app_date_picker_widget.dart';
 import 'package:najot/ui/widgets/app_radio_button.dart';
@@ -24,7 +26,7 @@ class View1 extends StatelessWidget {
             bloc.add(VolunteerFirstNameChanged(v));
           },
           isFill: bloc.state.firstName.isNotEmpty,
-          title: "Ism (pasportda qanday bo'lsa)",
+          title: LocaleKeys.name_as_in_the_passport,
         ).paddingOnly(top: 18),
         AppTextField(
           hintText: "Sapokulov",
@@ -32,16 +34,16 @@ class View1 extends StatelessWidget {
           onChanged: (v) {
             bloc.add(VolunteerLastNameChanged(v));
           },
-          title: "Familiya (pasportda qanday bo'lsa)",
+          title: LocaleKeys.sure_name_as_in_the_passport,
           isFill: bloc.state.lastName.isNotEmpty,
         ).paddingOnly(top: 24),
         AppTextField(
-          hintText: "Manzilni kiriting",
+          hintText: LocaleKeys.enter_the_address.tr(),
           initialText: bloc.state.address,
           onChanged: (v) {
             bloc.add(VolunteerAddressChanged(v));
           },
-          title: "Manzil",
+          title:LocaleKeys.address,
           isFill: bloc.state.address.isNotEmpty,
         ).paddingOnly(top: 24),
         AppRadioButton(
@@ -51,7 +53,7 @@ class View1 extends StatelessWidget {
           },
         ).paddingOnly(top: 20, left: 20),
         AppDatePicker(
-          title: "Tug'ilgan sanangiz",
+          title: LocaleKeys.your_date_of_birth.tr(),
           onTap: () async {
             await showDialog(
               context: context,

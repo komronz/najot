@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/slider_model.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -48,7 +50,7 @@ class SliderItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppWidgets.text(
-                text: "Kraudfanding",
+                text: LocaleKeys.crowdfunding.tr(),
                 color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.w500,

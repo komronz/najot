@@ -57,7 +57,8 @@ class OrdersItemsWidget extends StatelessWidget {
           ).paddingOnly(top: 12.w, bottom: 3),
           AppWidgets.text(
             text:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
             fontSize: 12.sp,
             fontWeight: FontWeight.w400,
             height: 1.3,
@@ -80,7 +81,10 @@ class OrdersItemsWidget extends StatelessWidget {
                 color: AppColorUtils.ITEM_ORDERS_TEXT2,
               )
             ],
-          ).paddingOnly(top: 12.w, bottom: 3.w),
+          ).paddingOnly(
+            top: 12.w,
+            bottom: 3.w,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -108,6 +112,12 @@ class OrdersItemsWidget extends StatelessWidget {
           ).paddingOnly(top: 15.w),
         ],
       ).paddingAll(12),
-    ).paddingSymmetric(horizontal: 20).paddingOnly(top: 18.w);
+    )
+        .paddingSymmetric(
+          horizontal: 20,
+        )
+        .paddingOnly(
+          top: 18.w,
+        );
   }
 }

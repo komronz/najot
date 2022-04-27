@@ -56,11 +56,10 @@ class MyCharityItemPriceWidget extends StatelessWidget {
                 ),
                 AppWidgets.text(
                   text: model.createdDate!,
-                  color: Color(0xFF043F3B),
+                  color: AppColorUtils.TEXT_GREEN2,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ).paddingOnly(top: 5.w),
-
               ],
             )
           ],
@@ -89,14 +88,17 @@ class MyCharityItemPriceWidget extends StatelessWidget {
               maxLines: 2,
               fontWeight: FontWeight.w600,
               fontSize: 14.sp,
-            ).paddingOnly(top: 3.w, right: 60.w, bottom: 12.w,),
-            Divider(thickness: 2,),
-
+            ).paddingOnly(
+              top: 3.w,
+              right: 60.w,
+              bottom: 12.w,
+            ),
+            Divider(
+              thickness: 2,
+            ),
           ],
         ).paddingOnly(top: 12.w),
-
       ],
     );
   }
 }
-

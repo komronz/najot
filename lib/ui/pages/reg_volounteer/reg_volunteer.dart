@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,7 @@ import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
@@ -50,7 +52,7 @@ class _RegVolunteerState extends State<RegVolunteer>
                 },
               ),
               AppWidgets.textLocale(
-                text: "Volontyor  bo'lish",
+                text: LocaleKeys.be_volunteer,
                 fontSize: 26.sp,
                 fontWeight: FontWeight.w600,
               ),
@@ -79,7 +81,7 @@ class _RegVolunteerState extends State<RegVolunteer>
     return Container(
       width: context.width,
       height: context.height,
-      color: Colors.white,
+      color: AppColorUtils.WHITE,
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -106,7 +108,7 @@ class _RegVolunteerState extends State<RegVolunteer>
             ).paddingOnly(top: 18),
             AppWidgets.text(
               text:
-                  "Sizni ma’lumotingiz tekshirilmoqda, iltimos kuting. Agar //48 soat// ichida xabar berilmagan bo’lsa operatorga yozing!",
+                  LocaleKeys.your_information_is_being_verified_please_wait_if_not_reported_within_48_hours_write_to_the_operator.tr(),
               fontSize: 16.sp,
               fontWeight: FontWeight.w500,
               textAlign: TextAlign.center,
@@ -129,7 +131,7 @@ class _RegVolunteerState extends State<RegVolunteer>
               width: context.width,
               height: 45.w,
               onPress: () {},
-              text: "Operatorga yozish",
+              text: LocaleKeys.write_to_the_operator,
               color: AppColorUtils.BLUE_ACCENT1,
               textColor: AppColorUtils.BLUE_TEXT,
               visibleIcon: true,
@@ -171,7 +173,7 @@ class _RegVolunteerState extends State<RegVolunteer>
           ).paddingOnly(top: 18),
           AppWidgets.text(
             text:
-                "Iltimos volontyor bo’lish uchun quyidagi formani to’ldiring.",
+                LocaleKeys.please_fill_out_the_form_below_to_volunteer.tr(),
             fontSize: 16.sp,
             fontWeight: FontWeight.w600,
             color: AppColorUtils.DARK2,
@@ -184,7 +186,7 @@ class _RegVolunteerState extends State<RegVolunteer>
             right: 22,
           ),
           AppWidgets.starTextWidget(
-            text: "amaldagi barcha ma’lumotlaringiz o’zgaradi",
+            text: LocaleKeys.all_your_current_data_will_change,
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             isCenter: true,

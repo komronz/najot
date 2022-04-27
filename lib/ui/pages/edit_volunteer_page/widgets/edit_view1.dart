@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +11,8 @@ import 'package:najot/ui/pages/reg_volounteer/widgets/next_button_widget.dart';
 import 'package:najot/ui/widgets/app_date_picker_widget.dart';
 import 'package:najot/ui/widgets/app_radio_button.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
+
+import '../../../../data/localization/locale_keys.g.dart';
 
 
 class EditView1 extends StatelessWidget {
@@ -33,7 +36,7 @@ class EditView1 extends StatelessWidget {
                   bloc.add(VolunteerFirstNameChanged(v));
                 },
                 isFill: bloc.state.firstName.isNotEmpty,
-                title: "Ism (pasportda qanday bo'lsa)",
+                title: LocaleKeys.name_as_in_the_passport.tr(),
               ).paddingOnly(
                 top: 18.w,
                 left: 20.w,
@@ -45,7 +48,7 @@ class EditView1 extends StatelessWidget {
                 onChanged: (v) {
                   bloc.add(VolunteerLastNameChanged(v));
                 },
-                title: "Familiya (pasportda qanday bo'lsa)",
+                title: LocaleKeys.sure_name_as_in_the_passport.tr(),
                 isFill: bloc.state.lastName.isNotEmpty,
               ).paddingOnly(
                 top: 24.w,
@@ -53,12 +56,12 @@ class EditView1 extends StatelessWidget {
                 right: 20.w,
               ),
               AppTextField(
-                hintText: "Manzilni kiriting",
+                hintText: LocaleKeys.enter_the_address.tr(),
                 initialText: bloc.state.address,
                 onChanged: (v) {
                   bloc.add(VolunteerAddressChanged(v));
                 },
-                title: "Manzil",
+                title: LocaleKeys.address.tr(),
                 isFill: bloc.state.address.isNotEmpty,
               ).paddingOnly(
                 top: 24.w,
@@ -72,7 +75,7 @@ class EditView1 extends StatelessWidget {
                 },
               ).paddingOnly(top: 20.w, left: 20.w),
               AppDatePicker(
-                title: "Tug'ilgan sanangiz",
+                title: LocaleKeys.your_date_of_birth.tr(),
                 onTap: () async {
                   await showDialog(
                     context: context,
@@ -98,7 +101,7 @@ class EditView1 extends StatelessWidget {
               bloc.pageController.dispose();
             },
             isActive: bloc.state.isActiveNextBtn,
-          ).paddingOnly(bottom: 30.w,right: 20.w,top: 117.h,)
+          ).paddingOnly(bottom: 30.w,right: 20.w,top: 117.h,),
         ],
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -141,7 +142,7 @@ class KraudfandingCardWidget extends StatelessWidget {
               visible: visible,
               child: ButtonCard(
                 onPress: () {},
-                text: "Texnologiya",
+                text: LocaleKeys.technology.tr(),
                 visibleIcon: false,
                 borderRadius: 20,
                 height: 24.h,

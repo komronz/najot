@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +26,7 @@ import 'package:super_rich_text/super_rich_text.dart';
 import '../../charity_page/widgets/charity_help_widget.dart';
 import 'organization_help_widget.dart';
 
-class OrganizationCharityItemModel{
+class OrganizationCharityItemModel {
   CardModel cardModel;
 
   OrganizationCubit cubit;
@@ -39,23 +38,20 @@ class OrganizationCharityItemModel{
 }
 
 class OrganizationCharityItemWidget extends StatefulWidget {
-  OrganizationCharityItemWidget({
-    required this.helpModel
-  });
+  OrganizationCharityItemWidget({required this.helpModel});
 
   static const String routName = '/organizationItemDetailPage2';
   static int tabChange = 0;
   OrganizationCharityItemModel helpModel;
 
   @override
-  State<OrganizationCharityItemWidget> createState() => _OrganizationCharityItemWidgetState();
+  State<OrganizationCharityItemWidget> createState() =>
+      _OrganizationCharityItemWidgetState();
 }
 
-class _OrganizationCharityItemWidgetState extends State<OrganizationCharityItemWidget>
-    with TickerProviderStateMixin {
+class _OrganizationCharityItemWidgetState
+    extends State<OrganizationCharityItemWidget> with TickerProviderStateMixin {
   late TabController _controller;
-
-
 
   @override
   void dispose() {
@@ -158,8 +154,7 @@ class _OrganizationCharityItemWidgetState extends State<OrganizationCharityItemW
                           ],
                         ),
                         AppWidgets.text(
-                          text:
-                          "Drenajni kuzatish uchun mo’jallangan moslama",
+                          text: "Drenajni kuzatish uchun mo’jallangan moslama",
                           fontSize: 20.sp,
                           color: AppColorUtils.DARK2,
                           fontWeight: FontWeight.w500,
@@ -238,11 +233,18 @@ class _OrganizationCharityItemWidgetState extends State<OrganizationCharityItemW
                             indicatorColor: AppColorUtils.GREEN_APP,
                             indicatorSize: TabBarIndicatorSize.tab,
                             padding: EdgeInsets.only(right: 10),
-                            indicatorPadding:
-                            EdgeInsets.only(right: 10, left: 10),
-                            labelPadding:
-                            EdgeInsets.only(right: 10, left: 10),
-                          ).paddingOnly(left: 15.w, top: 8.w),
+                            indicatorPadding: EdgeInsets.only(
+                              right: 10,
+                              left: 10,
+                            ),
+                            labelPadding: EdgeInsets.only(
+                              right: 10,
+                              left: 10,
+                            ),
+                          ).paddingOnly(
+                            left: 15.w,
+                            top: 8.w,
+                          ),
                           Container(
                             child: [
                               MoreWidget(
@@ -264,101 +266,101 @@ class _OrganizationCharityItemWidgetState extends State<OrganizationCharityItemW
                           ),
                           state.saveHelp
                               ? Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              state.tobeVolunteer
-                                  ? SizedBox()
-                                  : AppWidgets.text(
-                                  text: LocaleKeys.tobe_volunteer
-                                      .tr(),
-                                  color: AppColorUtils.DARK_6,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 12.w,
-                                  richText: true,
-                                  othersMarkers: [
-                                    MarkerText(
-                                      marker: "&",
-                                      style: TextStyle(
-                                        color: AppColorUtils.RED,
-                                      ),
-                                    ),
-                                    MarkerText(
-                                      marker: "//",
-                                      style: TextStyle(
-                                        color:
-                                        AppColorUtils.BLACK,
-                                      ),
-                                    )
-                                  ]).paddingSymmetric(
-                                horizontal: 20.w,
-                                vertical: 10.w,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ButtonCard(
-                                    onPress: () {
-                                      print(state.saveHelp);
-                                      if (state.tobeVolunteer == true) {
-                                        NavigatorService.to.pushNamed(
-                                          OrganizationHelpWidget.routeName,
-                                          arguments: OrganizationHelpModel(
-                                            cardModel: widget.helpModel.cardModel,
-                                            cubit: widget.helpModel.cubit,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    state.tobeVolunteer
+                                        ? SizedBox()
+                                        : AppWidgets.text(
+                                            text:
+                                                LocaleKeys.tobe_volunteer.tr(),
+                                            color: AppColorUtils.DARK_6,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 12.w,
+                                            richText: true,
+                                            othersMarkers: [
+                                                MarkerText(
+                                                  marker: "&",
+                                                  style: TextStyle(
+                                                    color: AppColorUtils.RED,
+                                                  ),
+                                                ),
+                                                MarkerText(
+                                                  marker: "//",
+                                                  style: TextStyle(
+                                                    color: AppColorUtils.BLACK,
+                                                  ),
+                                                )
+                                              ]).paddingSymmetric(
+                                            horizontal: 20.w,
+                                            vertical: 10.w,
                                           ),
-                                        );
-                                      } else {
-                                        Fluttertoast.showToast(
-                                          msg: "Volontyor bo'ling",
-                                        );
-                                      }
-                                    },
-                                    text: "Yordam berish",
-                                    height: 48.w,
-                                    width: 274.w,
-                                    color: state.tobeVolunteer
-                                        ? AppColorUtils.PERCENT_COLOR
-                                        : AppColorUtils.DISABLE_BC,
-                                    textSize: 16.sp,
-                                    fontWeight: FontWeight.w600,
-                                    textColor: AppColorUtils.WHITE,
-                                  ),
-                                  AppWidgets.favouriteButton(
-                                    select:
-                                    widget.helpModel.cardModel.isFavorite!,
-                                    height: 48.w,
-                                    width: 48.w,
-                                    onTap: () {},
-                                  )
-                                ],
-                              ).paddingSymmetric(horizontal: 20.w),
-                            ],
-                          )
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        ButtonCard(
+                                          onPress: () {
+                                            if (state.tobeVolunteer == true) {
+                                              NavigatorService.to.pushNamed(
+                                                OrganizationHelpWidget
+                                                    .routeName,
+                                                arguments:
+                                                    OrganizationHelpModel(
+                                                  cardModel: widget
+                                                      .helpModel.cardModel,
+                                                  cubit: widget.helpModel.cubit,
+                                                ),
+                                              );
+                                            } else {
+                                              Fluttertoast.showToast(
+                                                msg: LocaleKeys.be_volunteer.tr(),
+                                              );
+                                            }
+                                          },
+                                          text: LocaleKeys.help,
+                                          height: 48.w,
+                                          width: 274.w,
+                                          color: state.tobeVolunteer
+                                              ? AppColorUtils.PERCENT_COLOR
+                                              : AppColorUtils.DISABLE_BC,
+                                          textSize: 16.sp,
+                                          fontWeight: FontWeight.w600,
+                                          textColor: AppColorUtils.WHITE,
+                                        ),
+                                        AppWidgets.favouriteButton(
+                                          select: widget
+                                              .helpModel.cardModel.isFavorite!,
+                                          height: 48.w,
+                                          width: 48.w,
+                                          onTap: () {},
+                                        )
+                                      ],
+                                    ).paddingSymmetric(horizontal: 20.w),
+                                  ],
+                                )
                               : Column(
-                            children: [
-                              ButtonCard(
-                                onPress: () {},
-                                text: "Shaxsiy profilga o'tish",
-                                height: 48.w,
-                                width: 1.sw,
-                                color: AppColorUtils.BLUE_BUTTON,
-                                textSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                                textColor: AppColorUtils.WHITE,
-                              ).paddingSymmetric(horizontal: 20.w),
-                              AppWidgets.starTextWidget(
-                                  text:
-                                  "Siz ushbu e'lonni qabul qilgansiz",
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColorUtils.DARK_6,
-                              ).paddingOnly(
-                                left: 20.w,
-                                top: 10.w,
-                              )
-                            ],
-                          )
+                                  children: [
+                                    ButtonCard(
+                                      onPress: () {},
+                                      text: LocaleKeys.go_to_personal_profile,
+                                      height: 48.w,
+                                      width: 1.sw,
+                                      color: AppColorUtils.BLUE_BUTTON,
+                                      textSize: 16.sp,
+                                      fontWeight: FontWeight.w600,
+                                      textColor: AppColorUtils.WHITE,
+                                    ).paddingSymmetric(horizontal: 20.w),
+                                    AppWidgets.starTextWidget(
+                                      text: LocaleKeys.you_have_accepted_this_ad,
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColorUtils.DARK_6,
+                                    ).paddingOnly(
+                                      left: 20.w,
+                                      top: 10.w,
+                                    )
+                                  ],
+                                )
                         ],
                       ),
                     ),

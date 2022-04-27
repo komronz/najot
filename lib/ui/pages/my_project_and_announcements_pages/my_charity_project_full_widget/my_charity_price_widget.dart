@@ -31,7 +31,7 @@ class MyCharityPriceWidget extends StatelessWidget {
                 AppWidgets.starTextWidget(text: LocaleKeys.amount_needed.tr(),),
                 AppWidgets.text(
                   text: model.totalSum!,
-                  color: Color(0xFF043F3B),
+                  color: AppColorUtils.TEXT_GREEN2,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ).paddingOnly(top: 5.w),
@@ -48,7 +48,7 @@ class MyCharityPriceWidget extends StatelessWidget {
                 ),
                 AppWidgets.text(
                   text: model.createdDate!,
-                  color: Color(0xFF043F3B),
+                  color: AppColorUtils.TEXT_GREEN2,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ).paddingOnly(top: 5.w),
@@ -115,67 +115,3 @@ class MyCharityPriceWidget extends StatelessWidget {
     );
   }
 }
-
-// class CharityAuthorWidget extends StatelessWidget {
-//   final CharityModel model;
-//
-//   const CharityAuthorWidget({
-//     required this.model,
-//     Key? key,
-//   }) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         Row(
-//           children: [
-//             Container(
-//               height: 50.w,
-//               width: 50.w,
-//               decoration: BoxDecoration(
-//                 shape: BoxShape.circle,
-//                 image: DecorationImage(
-//                     image: NetworkImage(model.imgUrl!), fit: BoxFit.cover),
-//               ),
-//             ),
-//             Column(
-//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 AppWidgets.textLocale(
-//                   text: "E'lon muallifi",
-//                   fontSize: 12.sp,
-//                   fontWeight: FontWeight.w400,
-//                   color: AppColorUtils.DARK_6,
-//                 ),
-//                 SizedBox(
-//                   width: 150.w,
-//                   child: AppWidgets.text(
-//                     text: model.author!,
-//                     color: AppColorUtils.TEXT_GREEN2,
-//                     fontWeight: FontWeight.w600,
-//                     fontSize: 14.sp,
-//                   ).paddingOnly(top: 2.w),
-//                 ),
-//               ],
-//             ).paddingOnly(left: 10),
-//           ],
-//         ),
-//         ButtonCard(
-//           onPress: () {},
-//           text: "Savol berish",
-//           width: 100.w,
-//           height: 35.w,
-//           color: AppColorUtils.GREEN_BTN,
-//           textColor: AppColorUtils.GREEN_TEXT,
-//           borderRadius: 10,
-//           textSize: 12.sp,
-//           fontWeight: FontWeight.w600,
-//         ),
-//       ],
-//     ).paddingSymmetric(horizontal: 20);
-//   }
-// }

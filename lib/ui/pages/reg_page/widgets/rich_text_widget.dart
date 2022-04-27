@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 
 class RichTextWidget extends StatelessWidget {
@@ -13,7 +15,7 @@ class RichTextWidget extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.75,
       child: RichText(
         text: TextSpan(
-          text: "Men ",
+          text: LocaleKeys.i_am.tr(),
           style: TextStyle(
             color: AppColorUtils.BLACK,
             fontSize: 14.sp,
@@ -21,14 +23,14 @@ class RichTextWidget extends StatelessWidget {
           ),
           children: [
             TextSpan(
-              text: 'loyiha shartlari',
+              text: LocaleKeys.project_conditions.tr(),
               style: TextStyle(
                 color: AppColorUtils.GREEN_APP,
                 decoration: TextDecoration.underline,
               ),
             ),
             TextSpan(
-              text: " bilan tanishib chiqdim va ularga roziman",
+              text: LocaleKeys.i_met_them_and_i_agree_with_them.tr(),
             )
           ],
         ),

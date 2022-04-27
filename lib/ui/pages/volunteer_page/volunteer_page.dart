@@ -23,7 +23,7 @@ class VolunteerPage extends StatelessWidget {
       create: (BuildContext context) => volunteerCubit,
       child: Scaffold(
         appBar: AppBarWithTitle(
-          title: 'Volontyorlik',
+          title: LocaleKeys.volunteering,
           onPress: () {
             NavigatorService.to.pop();
           },

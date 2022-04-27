@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -52,7 +53,6 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
             children: [
               InkWell(
                 onTap: () {
-
                   HomePage.globalKey.currentState!.openDrawer();
                 },
                 child: SvgPicture.asset(
@@ -92,7 +92,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
             ),
             AppWidgets.textLocale(
               text:
-                  "Iltimos loyiha yoki e’lon qo’yish uchun kichik formani to’ldiring",
+                  LocaleKeys.please_fill_out_small_form_request_or_post_ad,
               maxLines: 2,
               color: AppColorUtils.DARK2,
               fontSize: 16.sp,
@@ -100,7 +100,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
               textAlign: TextAlign.center,
             ).paddingSymmetric(horizontal: 30),
             Text(
-              "Loyiha nomi",
+              LocaleKeys.project_name.tr(),
               style: TextStyle(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
@@ -114,7 +114,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
               bottom: 18,
             ),
             Text(
-              "Loyiha yoki e'lon turi",
+              LocaleKeys.project_or_announcement_type.tr(),
               style: TextStyle(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
@@ -130,10 +130,10 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
               isFill: true,
               isMultiLine: true,
               height: 145.w,
-              hintText: "Qisqa malumot yozing",
+              hintText: LocaleKeys.write_short_card.tr(),
               onChanged: (v) {},
               textInputType: TextInputType.multiline,
-              title: "Loyiha haqida qisqa ma'lumot",
+              title: LocaleKeys.brief_information_about_project,
             ),
             AppWidgets.appButton(
               title: LocaleKeys.send,

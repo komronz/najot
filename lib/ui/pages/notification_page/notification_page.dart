@@ -81,8 +81,8 @@ class _NotificationPageState extends State<NotificationPage> {
                 isRead=false;
               });
               NotificationApi.showNotification(
-                  title:"Diqqat! Salom, Volontyor!",
-                  body: "siz yordamga \n borishingiz kerak",
+                  title:LocaleKeys.attention_hello_volunteer.tr(),
+                  body: LocaleKeys.you_need_to_go_to_for_help.tr(),
                   payload: jsonEncode(state.cardList[index].toJson()),
                   // scheduledDate: DateTime.now().add(Duration(seconds: 10))
               );
@@ -94,8 +94,8 @@ class _NotificationPageState extends State<NotificationPage> {
           model: state.cardList[index],
           onTap: () {
             NotificationApi.showNotification(
-              title:"Diqqat! Salom, Volontyor!",
-              body: "siz yordamga \n borishingiz kerak",
+              title:LocaleKeys.attention_hello_volunteer.tr(),
+              body: LocaleKeys.you_need_to_go_to_for_help.tr(),
               payload: jsonEncode(state.cardList[index].toJson()),
               // scheduledDate: DateTime.now().add(Duration(seconds: 10)),
             );

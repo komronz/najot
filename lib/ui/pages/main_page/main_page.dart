@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/home_cubit/home_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -35,7 +37,7 @@ class MainPage extends StatelessWidget {
                 children: [
                   SizedBox(height: 20.w,),
                   AppWidgets.appBarMenu(
-                    title: "Asosiy",
+                    title: LocaleKeys.main.tr(),
                     onTapMenu: () {
                       HomePage.globalKey.currentState!.openDrawer();
                     },
@@ -59,7 +61,7 @@ class MainPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               AppWidgets.textLocale(
-                                text: "Kategoriyalar",
+                                text: LocaleKeys.category,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 22.sp,
                               ).paddingOnly(left: 20.w),
@@ -71,7 +73,7 @@ class MainPage extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     IconAndName(
-                                      text: 'Kraudfanding',
+                                      text: LocaleKeys.crowdfunding.tr(),
                                       icon: AppImageUtils.KRAUDFANDING,
                                       fontWeight: FontWeight.w600,
                                       fontsize: 14,
@@ -86,7 +88,7 @@ class MainPage extends StatelessWidget {
                                       },
                                     ),
                                     IconAndName(
-                                      text: 'Volontyorlik',
+                                      text: LocaleKeys.volunteering.tr(),
                                       icon: AppImageUtils.VOLONTYOR,
                                       fontWeight: FontWeight.w600,
                                       fontsize: 14,
@@ -99,7 +101,7 @@ class MainPage extends StatelessWidget {
 
                                     ),
                                     IconAndName(
-                                      text: 'Xayriya',
+                                      text: LocaleKeys.charity.tr(),
                                       icon: AppImageUtils.CHARITY,
                                       fontWeight: FontWeight.w600,
                                       fontsize: 14,
@@ -113,7 +115,7 @@ class MainPage extends StatelessWidget {
                                 ),
                               ),
                               AppWidgets.textLocale(
-                                text: "Kraudfanding",
+                                text: LocaleKeys.crowdfunding,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 22.sp,
                               ).paddingOnly(left: 20.w),
@@ -140,7 +142,7 @@ class MainPage extends StatelessWidget {
                                 ),
                               ),
                               AppWidgets.textLocale(
-                                text: "Volontyorlik",
+                                text: LocaleKeys.volunteering,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 22.sp,
                               ).paddingOnly(
@@ -166,7 +168,7 @@ class MainPage extends StatelessWidget {
                                 ),
                               ),
                               AppWidgets.textLocale(
-                                text: "Xayriya",
+                                text: LocaleKeys.charity,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 22.sp,
                               ).paddingOnly(

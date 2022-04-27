@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,14 +31,14 @@ class _MyProfilePageState extends State<MyProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColorUtils.WHITE,
       body: BlocProvider(
         create: (context) => MyProfileUpdateBloc()..add(MyProfileLoad()),
         child: BlocBuilder<MyProfileUpdateBloc, MyProfileUpdateState>(
           builder: (context, state) => Column(
             children: [
               Container(
-                color: Color(0xFFF6FCFA),
+                color: AppColorUtils.BACKGROUND,
                 child: Expanded(
                   child: AppWidgets.appBarMenu(
                     title: LocaleKeys.my_profile,
@@ -120,7 +121,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                     .state
                                     .name,
                                 onChanged: (v) {},
-                                title: LocaleKeys.name,
+                                title: LocaleKeys.name.tr(),
                               ).paddingOnly(bottom: 23.h),
                               AppDisableTextField(
                                 isFill: false,
@@ -129,7 +130,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                     .state
                                     .sureName,
                                 onChanged: (v) {},
-                                title: LocaleKeys.surname,
+                                title: LocaleKeys.surname.tr(),
                               ).paddingOnly(bottom: 23.h),
                               MyProfileRadioButton(
                                 initial: context
@@ -164,10 +165,10 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                       padding: EdgeInsets.only(left: 18),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(12),
-                                        color: Color(0xFFEDFCF9),
+                                        color: AppColorUtils.GREEN_9,
                                         border: Border.all(
                                           width: 1,
-                                          color: Color(0xFFCEE1DD),
+                                          color: AppColorUtils.BORDER,
                                         ),
                                       ),
                                       child: TextField(
@@ -179,7 +180,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                               .phoneNumber,
                                           border: InputBorder.none,
                                           hintStyle: TextStyle(
-                                            color: Color(0xFFBCBEC0),
+                                            color: AppColorUtils.GRAY_4,
                                             fontSize: 15.sp,
                                             fontWeight: FontWeight.w500,
                                           ),

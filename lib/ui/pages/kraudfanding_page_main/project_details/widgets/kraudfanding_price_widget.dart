@@ -51,7 +51,7 @@ class KraudfandingPriceWidget extends StatelessWidget {
                 ),
                 AppWidgets.text(
                   text: "25.08.2022",
-                  color: Color(0xFF043F3B),
+                  color: AppColorUtils.TEXT_GREEN2,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ).paddingOnly(top: 3.w),

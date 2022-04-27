@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,7 +14,6 @@ import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/app_disable_text_field.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/show_picker_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-
 import '../../../data/services/navigator_service.dart';
 import '../my_profil_page/my_profile_pages/user_degree_page.dart';
 
@@ -38,9 +38,9 @@ class EditVolunteerPage extends StatelessWidget {
                  elevation: 0,
                  automaticallyImplyLeading: false,
                  title: Container(
-                   color: Color(0xFFF6FCFA),
+                   color: AppColorUtils.WAIT_COLOR,
                    child: AppWidgets.appBarMenu(
-                     title: LocaleKeys.my_profile,
+                     title: LocaleKeys.my_profile.tr(),
                      onTapMenu: () {
                        HomePage.globalKey.currentState!.openDrawer();
                      },
@@ -72,7 +72,7 @@ class EditVolunteerPage extends StatelessWidget {
                                text: LocaleKeys.degree,
                                textAlign: TextAlign.center,
                                fontSize: 12.sp,
-                               color: Color(0xFFBCBEC0),
+                               color: AppColorUtils.GRAY_4,
                                fontWeight: FontWeight.w400,
                              ),
                              Container(
@@ -88,7 +88,7 @@ class EditVolunteerPage extends StatelessWidget {
                                  },
                                  child: SvgPicture.asset(
                                    AppImageUtils.FAQ,
-                                   color: Color(0xFF007A58),
+                                   color: AppColorUtils.GREEN_1,
                                  ),
                                ),
                              ),
@@ -103,7 +103,7 @@ class EditVolunteerPage extends StatelessWidget {
                              Container(
                                margin: EdgeInsets.only(left: 5),
                                child: AppWidgets.textLocale(
-                                   text: "Volontyor",
+                                   text: LocaleKeys.volunteer,
                                    color: AppColorUtils.TEXT_GREEN,
                                    fontSize: 16.sp,
                                    fontWeight: FontWeight.w600),
@@ -121,7 +121,7 @@ class EditVolunteerPage extends StatelessWidget {
                                  children: [
                                    AppWidgets.textLocale(
                                        text: LocaleKeys.phone_number,
-                                       color: Color(0xFF6D6E71),
+                                       color: AppColorUtils.DARK_4,
                                        fontSize: 13.sp,
                                        fontWeight: FontWeight.w400)
                                        .paddingOnly(bottom: 8.w),
@@ -133,10 +133,10 @@ class EditVolunteerPage extends StatelessWidget {
                                          padding: EdgeInsets.only(left: 18),
                                          decoration: BoxDecoration(
                                            borderRadius: BorderRadius.circular(12),
-                                           color: Color(0xFFEDFCF9),
+                                           color: AppColorUtils.GREEN_9,
                                            border: Border.all(
                                              width: 1,
-                                             color: Color(0xFFCEE1DD),
+                                             color: AppColorUtils.BORDER,
                                            ),
                                          ),
                                          child: TextField(
@@ -172,14 +172,14 @@ class EditVolunteerPage extends StatelessWidget {
                              ),
                              Divider(
                                thickness: 2,
-                               color: Color(0xFFE6EDEC),
+                               color: AppColorUtils.GREEN_8,
                              ).paddingSymmetric(vertical: 24.w),
                              AppDisableTextField(
                                isFill: false,
                                hintText:
                                context.read<EditVolunteerBloc>().state.name,
                                onChanged: (v) {},
-                               title: LocaleKeys.name,
+                               title: LocaleKeys.name.tr(),
                              ).paddingOnly(bottom: 23.w),
                              AppDisableTextField(
                                isFill: false,
@@ -188,7 +188,7 @@ class EditVolunteerPage extends StatelessWidget {
                                    .state
                                    .sureName,
                                onChanged: (v) {},
-                               title: LocaleKeys.surname,
+                               title: LocaleKeys.surname.tr(),
                              ).paddingOnly(bottom: 23.w),
                              AppWidgets.textLocale(
                                text: LocaleKeys.gender,
@@ -259,13 +259,13 @@ class EditVolunteerPage extends StatelessWidget {
                                isFill: false,
                                hintText: "25.08.2022",
                                onChanged: (v) {},
-                               title: "Tug'ilgan sana",
+                               title: LocaleKeys.date_of_birth.tr(),
                              ).paddingOnly(bottom: 23.w),
                              AppDisableTextField(
                                isFill: false,
                                hintText: "Farg'ona shahar, Farg'ona viloyati dsfd",
                                onChanged: (v) {},
-                               title: "Manzil",
+                               title: LocaleKeys.address.tr(),
                              ).paddingOnly(bottom: 23.w),
                            ],
                          ),

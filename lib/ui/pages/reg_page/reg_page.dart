@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/login_bloc/login_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/reg_page/widgets/rich_text_widget.dart';
@@ -30,7 +32,7 @@ class RegPage extends StatelessWidget {
                   onTap: () {
                     NavigatorService.to.pop();
                   },
-                  title: "Shaxsiy ma'lumotlar",
+                  title: LocaleKeys.personal_information,
                 ).paddingOnly(top: 58.h),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -42,7 +44,7 @@ class RegPage extends StatelessWidget {
                       onChanged: (v) {
                         context.read<LoginBloc>().add(LoginFirstNameChanged(v));
                       },
-                      title: "Ism",
+                      title: LocaleKeys.name,
                     ),
                     AppTextField(
                       isFill: context.read<LoginBloc>().state.lastNameFill,
@@ -50,7 +52,7 @@ class RegPage extends StatelessWidget {
                       onChanged: (v) {
                         context.read<LoginBloc>().add(LoginLastNameChanged(v));
                       },
-                      title: "Familiya",
+                      title: LocaleKeys.surname,
                     ).paddingOnly(top: 24),
                     AppTextField(
                       isFill: context.read<LoginBloc>().state.phoneFill,
@@ -59,7 +61,7 @@ class RegPage extends StatelessWidget {
                       onChanged: (v) {
                         context.read<LoginBloc>().add(LoginPhoneChanged(v));
                       },
-                      title: "Telefon raqmi",
+                      title: LocaleKeys.phone_number,
                       textInputType: TextInputType.phone,
                       inputFormatter:
                           context.read<LoginBloc>().phoneNumberFormatter,
@@ -90,7 +92,7 @@ class RegPage extends StatelessWidget {
                       ],
                     ).paddingSymmetric(horizontal: 15, vertical: 24),
                     AppWidgets.appButton(
-                      title: "Keyingisi",
+                      title: LocaleKeys.next,
                       onTap: context.read<LoginBloc>().state.isNextBtnActive
                           ? () {
                               NavigatorService.to
@@ -99,7 +101,7 @@ class RegPage extends StatelessWidget {
                             }
                           : () {
                               AppWidgets.showText(
-                                text: "loyiha shartlariga rozi boling",
+                                text: LocaleKeys.agree_to_the_terms_of_the_project.tr(),
                                 duration: Duration(seconds: 1),
                               );
                             },
@@ -118,7 +120,7 @@ class RegPage extends StatelessWidget {
                                 color: AppColorUtils.RED,
                               ),
                               AppWidgets.text(
-                                text: "avval loyiha shartlariga rozi bo’ling",
+                                text: LocaleKeys.agree_to_the_terms_of_the_project_first.tr(),
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
                                 richText: true,

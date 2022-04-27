@@ -110,7 +110,7 @@ class _MyCharityCommentsWidgetState extends State<MyCharityCommentsWidget> {
         ),
         AppWidgets.textLocale(
           text:
-          LocaleKeys.writing_comment.tr(),
+          LocaleKeys.writing_comment,
           fontSize: 14.sp,
           fontWeight: FontWeight.w600,
           color: AppColorUtils.TEXT_GREEN2,

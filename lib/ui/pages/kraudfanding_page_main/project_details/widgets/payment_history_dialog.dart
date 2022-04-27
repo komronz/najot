@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -70,7 +71,7 @@ class PaymentHistoryDialog extends StatelessWidget {
 
             ButtonCard(
               onPress: () {},
-              text: LocaleKeys.switch_amount,
+              text: LocaleKeys.switch_amount.tr(),
               textSize: 16.sp,
               fontWeight: FontWeight.w500,
               height: 50.w,
@@ -84,7 +85,7 @@ class PaymentHistoryDialog extends StatelessWidget {
               onPress: () {
                 Navigator.pop(context);
               },
-              text: LocaleKeys.exit,
+              text: LocaleKeys.exit.tr(),
               textSize: 16.sp,
               fontWeight: FontWeight.w500,
               height: 50.w,

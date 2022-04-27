@@ -5,7 +5,6 @@ import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
@@ -35,9 +34,6 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
     // NotificationApi.init();
     // listenNotifications();
   }
-
-
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -128,7 +124,7 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
                       children: [
                         AppWidgets.imageSvg(
                           path: AppImageUtils.CALENDAR_RED,
-                          color: Color(0xFF5E646D),
+                          color: AppColorUtils.GREY_BLACK,
                           height: 12.w,
                         ).paddingOnly(right: 5),
                         AppWidgets.textLocale(

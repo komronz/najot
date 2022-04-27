@@ -296,7 +296,6 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                       children: [
                                         ButtonCard(
                                           onPress: () {
-                                            print(state.saveHelp);
                                             if (state.tobeVolunteer == true) {
                                               NavigatorService.to.pushNamed(
                                                 CharityHelpWidget.routeName,
@@ -307,11 +306,11 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                               );
                                             } else {
                                               Fluttertoast.showToast(
-                                                msg: "Volontyor bo'ling",
+                                                msg: LocaleKeys.be_volunteer.tr(),
                                               );
                                             }
                                           },
-                                          text: "Yordam berish",
+                                          text: LocaleKeys.help.tr(),
                                           height: 48.w,
                                           width: 274.w,
                                           color: state.tobeVolunteer
@@ -336,7 +335,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                   children: [
                                     ButtonCard(
                                       onPress: () {},
-                                      text: "Shaxsiy profilga o'tish",
+                                      text: LocaleKeys.go_to_personal_profile.tr(),
                                       height: 48.w,
                                       width: 1.sw,
                                       color: AppColorUtils.BLUE_BUTTON,
@@ -346,7 +345,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                     ).paddingSymmetric(horizontal: 20.w),
                                     AppWidgets.starTextWidget(
                                             text:
-                                                "Siz ushbu e'lonni qabul qilgansiz",
+                                                LocaleKeys.you_have_accepted_this_ad.tr(),
                                             fontSize: 12.sp,
                                             fontWeight: FontWeight.w500,
                                             color: AppColorUtils.DARK_6)

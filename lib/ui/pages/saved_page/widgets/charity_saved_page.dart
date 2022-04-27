@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -20,7 +21,7 @@ class CharitySavedPage extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(left: 5, bottom: 10, right: 5),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColorUtils.WHITE,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
@@ -92,7 +93,7 @@ class CharitySavedPage extends StatelessWidget {
                     backgroundColor: AppColorUtils.PERCENT_COLOR2,
                   ).paddingOnly(top: 12.w),
                   AppWidgets.textLocale(
-                    text: "Bajarildi",
+                    text: LocaleKeys.done,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
                     color: AppColorUtils.DARK_6,

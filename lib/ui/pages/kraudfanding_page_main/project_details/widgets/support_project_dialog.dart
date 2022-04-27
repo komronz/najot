@@ -7,9 +7,7 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/MixTextWidget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/text_field_widget.dart';
-import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-import 'package:super_rich_text/super_rich_text.dart';
 
 class SupportProjectDialog extends StatelessWidget {
   const SupportProjectDialog({
@@ -57,7 +55,7 @@ class SupportProjectDialog extends StatelessWidget {
           MixTextWidget().paddingSymmetric(vertical: 12.w),
             ButtonCard(
               onPress: () {},
-              text: LocaleKeys.switch_amount,
+              text: LocaleKeys.switch_amount.tr(),
               textSize: 16.sp,
               fontWeight: FontWeight.w500,
               height: 50.w,
@@ -73,7 +71,7 @@ class SupportProjectDialog extends StatelessWidget {
               onPress: () {
                 Navigator.pop(context);
               },
-              text: LocaleKeys.exit,
+              text: LocaleKeys.exit.tr(),
               textSize: 16.sp,
               fontWeight: FontWeight.w500,
               height: 50.w,

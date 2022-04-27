@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
-
-import '../../../../data/localization/locale_keys.g.dart';
 
 class NotificationDeleteWidget extends StatelessWidget {
   const NotificationDeleteWidget({Key? key}) : super(key: key);
@@ -37,7 +36,7 @@ class NotificationDeleteWidget extends StatelessWidget {
                 fontWeight: FontWeight.w600,
                 fontSize: 18.sp,
                 color: AppColorUtils.DARK2,
-                text: "Eslatmani //o'chirib// yubormoqchimisiz",
+                text: LocaleKeys.do_you_want_to_delete_the_note,
                 richText: true,
                 textAlign: TextAlign.center,
                 othersMarkers: [
@@ -60,7 +59,7 @@ class NotificationDeleteWidget extends StatelessWidget {
                     //   },
                     // );
                   },
-                  text: "Ortga qaytish",
+                  text: LocaleKeys.go_back,
                   textSize: 16.sp,
                   fontWeight: FontWeight.w500,
                   height: 48.w,
@@ -73,12 +72,12 @@ class NotificationDeleteWidget extends StatelessWidget {
                   onPress: () {
                     Navigator.pop(context);
                   },
-                  text: "Ha",
+                  text: LocaleKeys.yes,
                   textSize: 16.sp,
                   fontWeight: FontWeight.w500,
                   height: 48.w,
                   width: 106.w,
-                  color: Color(0xFFFFF5F5),
+                  color: AppColorUtils.DELETE_BTN,
                   textColor: AppColorUtils.RED,
                   borderRadius: 10,
                 )

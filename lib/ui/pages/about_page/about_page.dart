@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,7 @@ import 'package:najot/data/bloc/applied_bloc/appeal_bloc.dart';
 import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
@@ -44,7 +46,7 @@ class AboutPage extends StatelessWidget {
                   },
                 ),
                 AppWidgets.textLocale(
-                  text: "Biz haqimizda",
+                  text: LocaleKeys.about_us,
                   fontSize: 26.sp,
                   fontWeight: FontWeight.w600,
                 ),
@@ -133,7 +135,7 @@ class AboutPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppWidgets.text(
-                        text: "Biz bilan aloqa",
+                        text: LocaleKeys.contact_us.tr(),
                         fontWeight: FontWeight.w600,
                         fontSize: 22.sp,
                         color: AppColorUtils.DARK2,
@@ -144,7 +146,7 @@ class AboutPage extends StatelessWidget {
                         onChanged: (v) {
                           context.read<AppealBloc>().add(AppealNameChanged(v));
                         },
-                        title: "Ism",
+                        title: LocaleKeys.name.tr(),
                       ).paddingOnly(top: 18),
                       AppTextField(
                         textInputType: TextInputType.phone,
@@ -156,30 +158,30 @@ class AboutPage extends StatelessWidget {
                         onChanged: (v) {
                           context.read<AppealBloc>().add(AppealPhoneChanged(v));
                         },
-                        title: "Telefon raqami",
+                        title: LocaleKeys.phone_number.tr(),
                       ).paddingOnly(top: 18),
                       AppTextField(
                         isFill: context.read<AppealBloc>().state.applyFill,
                         isMultiLine: true,
                         height: 154.w,
-                        hintText: "Murojaatingizni yozing",
+                        hintText: LocaleKeys.write_your_application.tr(),
                         onChanged: (v) {
                           context.read<AppealBloc>().add(AppealTextChanged(v));
                         },
                         textInputType: TextInputType.multiline,
-                        title: "Murojaatingiz",
+                        title: LocaleKeys.your_application.tr(),
                       ).paddingOnly(top: 18),
                       AppWidgets.appButton(
-                        title: "Ro'yxatdan o'tish",
+                        title: LocaleKeys.str_registration.tr(),
                         onTap: () {},
                         textColor: Colors.white,
                         color: context.read<AppealBloc>().state.isNextBtnActive
                             ? AppColorUtils.PERCENT_COLOR
                             : AppColorUtils.GREEN_BTN,
-                      ).paddingSymmetric(horizontal: 20, vertical: 25)
+                      ).paddingSymmetric(horizontal: 20, vertical: 25),
                     ],
                   ),
-                ).paddingOnly(top: 15)
+                ).paddingOnly(top: 15),
               ],
             ),
           ),

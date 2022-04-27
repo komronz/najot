@@ -3,10 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/charity_model.dart';
-import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/charity_history_page/widgets/charity_list_item_widget.dart';
 import 'package:najot/ui/pages/volunteering_charity_history_page/widgets/volunteering_item_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -37,7 +35,11 @@ class VolunteeringItemsCharityList extends StatelessWidget {
             color: AppColorUtils.GRAY_4,
             textAlign: TextAlign.center,
             maxLines: 2,
-          ).paddingOnly(top: 20, left: 50.w, right: 50.w,),
+          ).paddingOnly(
+            top: 20,
+            left: 50.w,
+            right: 50.w,
+          ),
         ],
       );
     }

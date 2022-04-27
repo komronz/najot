@@ -6,6 +6,8 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/verification_page/widgets/pin_put_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../../data/localization/locale_keys.g.dart';
+
 class VerificationPage extends StatelessWidget {
   const VerificationPage({Key? key}) : super(key: key);
   static const String routeName = '/verificationPage';
@@ -24,12 +26,12 @@ class VerificationPage extends StatelessWidget {
               onTap: () {
                 NavigatorService.to.pop();
               },
-              title: "Shaxsiy ma'lumotlar",
+              title: LocaleKeys.personal_information,
             ).paddingOnly(top: 58.h),
             Column(
               children: [
                 AppWidgets.textLocale(
-                  text: "6 raqamli kodni kiriting",
+                  text: LocaleKeys.enter_6_digit_code,
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
                 ),
@@ -40,15 +42,18 @@ class VerificationPage extends StatelessWidget {
                 TextButton(
                   onPressed: () {},
                   child: AppWidgets.textLocale(
-                      text: "Qayta yuborish",
+                      text: LocaleKeys.send_again,
                       color: AppColorUtils.TEXT_BLUE,
                       fontWeight: FontWeight.w600,
                       fontSize: 16,
                       textAlign: TextAlign.center),
                 ),
-                AppWidgets.appButton(title: "Ro'yhatdan o'tish", onTap: () {}).paddingOnly(top: 100.h),
                 AppWidgets.appButton(
-                  title: "Boshqa raqam kiritish",
+                        title: LocaleKeys.str_registration,
+                    onTap: () {},
+                ).paddingOnly(top: 100.h),
+                AppWidgets.appButton(
+                  title: LocaleKeys.enter_another_number,
                   onTap: () {},
                   color: Colors.transparent,
                   textColor: AppColorUtils.TEXT_GREEN,
@@ -61,4 +66,3 @@ class VerificationPage extends StatelessWidget {
     );
   }
 }
-

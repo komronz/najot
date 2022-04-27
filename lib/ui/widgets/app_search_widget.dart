@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -28,7 +30,7 @@ class _AppSearchWidgetState extends State<AppSearchWidget> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xffFDFFFE),
+        color: AppColorUtils.ITEM_ORDERS_CARD,
         borderRadius: BorderRadius.circular(10),
       ),
       height: 50,
@@ -48,7 +50,7 @@ class _AppSearchWidgetState extends State<AppSearchWidget> {
                 width: 14.w,
                 fit: BoxFit.none),
           ),
-          hintText: "Loyiha nomini kiriting",
+          hintText: LocaleKeys.enter_project_name.tr(),
           hintStyle: TextStyle(
             color: AppColorUtils.GRAY_4,
             fontSize: 14.sp,

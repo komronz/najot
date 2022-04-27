@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
@@ -32,7 +33,7 @@ class KraufandingListWidget extends StatelessWidget {
             fit: BoxFit.none,
           ).paddingOnly(top: 80.w),
           AppWidgets.textLocale(
-            text: "Hozircha hech narsa topilmadi",
+            text: LocaleKeys.nothing_found_yet,
             fontSize: 18.sp,
             fontWeight: FontWeight.w600,
             color: AppColorUtils.GRAY_4,

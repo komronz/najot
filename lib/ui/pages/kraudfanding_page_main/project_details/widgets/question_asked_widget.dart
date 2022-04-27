@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -52,7 +53,7 @@ class QuestionsAskedWidget extends StatelessWidget {
                       children: [
                         SizedBox(
                           child: AppWidgets.text(
-                              text: "Insoniyat aynan qanday foyda beradi",
+                              text: LocaleKeys.exactly_how_humanity_benefits.tr(),
                               color: AppColorUtils.TEXT_GREEN2,
                               fontWeight: FontWeight.w600,
                               fontSize: 14.sp,

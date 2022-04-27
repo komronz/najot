@@ -8,21 +8,17 @@ import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:super_rich_text/super_rich_text.dart';
-
 import '../../../../data/model/volunteering_model.dart';
 import '../../../widgets/app_widgets.dart';
 import '../../my_volunteering_page/my_volunteering_page.dart';
 
 class AttentionNote extends StatelessWidget {
-  static const String routeName="/attentionNote";
-  AttentionNote({
-   required this.model,
-    Key? key
-  }) : super(key: key);
+  static const String routeName = "/attentionNote";
+
+  AttentionNote({required this.model, Key? key}) : super(key: key);
   DateTime _date = DateTime.now();
   DateTime _time = DateTime.now();
   final VolunteeringModel model;
-
 
   // VolunteeringModel model;
 
@@ -49,9 +45,12 @@ class AttentionNote extends StatelessWidget {
                     AppWidgets.imageSvg(
                       path: AppImageUtils.NOTIFICATION_GREY,
                       color: AppColorUtils.KRAUDFANDING,
-                    ).paddingOnly(right: 5.w, top: 15.w,),
+                    ).paddingOnly(
+                      right: 5.w,
+                      top: 15.w,
+                    ),
                     AppWidgets.textLocale(
-                      text: "Diqqat eslatma!",
+                      text: LocaleKeys.attention_note,
                       fontSize: 20.sp,
                       color: AppColorUtils.DARK2,
                       fontWeight: FontWeight.w600,
@@ -61,26 +60,32 @@ class AttentionNote extends StatelessWidget {
                   ],
                 ).paddingSymmetric(horizontal: 24.w),
                 AppWidgets.textLocale(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16.sp,
-                    color: AppColorUtils.DARK2,
-                    maxLines: 2,
-                    text: "Salom //Volontyor!//\nsiz yordamga borishingiz kerak!",
-                    richText: true,
-                    othersMarkers: [
-                      MarkerText(marker: "//", style: TextStyle(
-                          color: AppColorUtils.KRAUDFANDING
-                      ),),
-                    ],
-                ).paddingOnly(top: 5.w, right: 24.w, left: 24.w, bottom: 11.w,),
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16.sp,
+                  color: AppColorUtils.DARK2,
+                  maxLines: 2,
+                  text: LocaleKeys.hello_volunteer_you_have_to_go_rescue,
+                  richText: true,
+                  othersMarkers: [
+                    MarkerText(
+                      marker: "//",
+                      style: TextStyle(color: AppColorUtils.KRAUDFANDING),
+                    ),
+                  ],
+                ).paddingOnly(
+                  top: 5.w,
+                  right: 24.w,
+                  left: 24.w,
+                  bottom: 11.w,
+                ),
                 Container(
                   width: double.infinity,
-                  color: Color(0xFFF5F9FF),
+                  color: AppColorUtils.WHITE_GREY,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppWidgets.textLocale(
-                        text: "Sana",
+                        text: LocaleKeys.date,
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColorUtils.DARK_6,
@@ -115,7 +120,7 @@ class AttentionNote extends StatelessWidget {
                         maxLines: 2,
                       ).paddingOnly(bottom: 18.w),
                       AppWidgets.starTextWidget(
-                          text: LocaleKeys.help_type,
+                        text: LocaleKeys.help_type,
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColorUtils.DARK_6,
@@ -136,12 +141,12 @@ class AttentionNote extends StatelessWidget {
                 ).paddingOnly(
                   bottom: 18.w,
                 ),
-
                 Column(
                   children: [
                     AppWidgets.appButton(
                       onTap: () {
-                        NavigatorService.to.pushReplacementNamed(MyVolunteeringPage.routeName);
+                        NavigatorService.to
+                            .pushReplacementNamed(MyVolunteeringPage.routeName);
                       },
                       title: LocaleKeys.my_volunteering.tr(),
                       fontSize: 16.sp,

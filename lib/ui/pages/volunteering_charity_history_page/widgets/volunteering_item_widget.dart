@@ -58,7 +58,7 @@ class VolunteeringItemWidget extends StatelessWidget {
                       color: AppColorUtils.ITEM_CHARITY_TEXT2,
                     ),
                     AppWidgets.textLocale(
-                      text: "Sana",
+                      text: LocaleKeys.date,
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w400,
                       maxLines: 10,

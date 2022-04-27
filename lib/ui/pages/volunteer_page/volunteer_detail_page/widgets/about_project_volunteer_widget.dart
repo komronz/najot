@@ -3,6 +3,7 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:najot/data/bloc/volonteer_detail_cubit/volonteer_detail_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
@@ -12,17 +13,13 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comments_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_applied_user_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_price_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/more_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/news_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/payment_history_dialog.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_help_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
 class AboutProjectVolunteerWidget extends StatefulWidget {
@@ -125,7 +122,7 @@ class _AboutProjectVolunteerWidgetState
                         ),
                         child: Icon(
                           Icons.monetization_on_outlined,
-                          color: Colors.white,
+                          color: AppColorUtils.WHITE,
                         ),
                       ),
                     ),
@@ -151,7 +148,7 @@ class _AboutProjectVolunteerWidgetState
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppWidgets.starTextWidget(
-                        text: LocaleKeys.done_date.tr(),
+                        text: LocaleKeys.done_date,
                       ),
                       SizedBox(
                         height: 3.w,
@@ -227,7 +224,7 @@ class _AboutProjectVolunteerWidgetState
         Container(
           padding: EdgeInsets.symmetric(vertical: 20.w),
           decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(11.0)),
+              color: AppColorUtils.WHITE, borderRadius: BorderRadius.circular(11.0)),
           child: DefaultTabController(
             initialIndex: 0,
             length: 4,
@@ -344,11 +341,11 @@ class _AboutProjectVolunteerWidgetState
                                     );
                                   } else {
                                     Fluttertoast.showToast(
-                                      msg: "Volontyor bo'ling",
+                                      msg: LocaleKeys.be_volunteer.tr(),
                                     );
                                   }
                                 },
-                                text: "Yordam berish",
+                                text: LocaleKeys.help.tr(),
                                 height: 48.w,
                                 width: 274.w,
                                 color: widget.state.tobeVolunteer
@@ -372,7 +369,7 @@ class _AboutProjectVolunteerWidgetState
                         children: [
                           ButtonCard(
                             onPress: () {},
-                            text: "Shaxsiy profilga o'tish",
+                            text: LocaleKeys.go_to_personal_profile,
                             height: 48.w,
                             width: 1.sw,
                             color: AppColorUtils.BLUE_BUTTON,
@@ -381,11 +378,11 @@ class _AboutProjectVolunteerWidgetState
                             textColor: AppColorUtils.WHITE,
                           ).paddingSymmetric(horizontal: 20.w),
                           AppWidgets.starTextWidget(
-                                  text: "Siz ushbu e'lonni qabul qilgansiz",
+                                  text: LocaleKeys.you_have_accepted_this_ad,
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w500,
-                                  color: AppColorUtils.DARK_6)
-                              .paddingOnly(
+                                  color: AppColorUtils.DARK_6,
+                          ).paddingOnly(
                             left: 20.w,
                             top: 10.w,
                           )

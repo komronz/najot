@@ -68,7 +68,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                       SizedBox(
                         child:
                         AppWidgets.text(
-                          text: "Zo'r loyiha",
+                          text: LocaleKeys.great_project.tr(),
                           color: AppColorUtils
                               .TEXT_GREEN2,
                           fontWeight:
@@ -109,8 +109,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
           color: AppColorUtils.BLACK_12,
         ),
         AppWidgets.textLocale(
-          text:
-          LocaleKeys.writing_comment.tr(),
+          text: LocaleKeys.writing_comment,
           fontSize: 14.sp,
           fontWeight: FontWeight.w600,
           color: AppColorUtils.TEXT_GREEN2,

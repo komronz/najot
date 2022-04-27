@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,16 +15,17 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'kraudfanding_widget/kraudfanding_mini_card_widget.dart';
 
 class KraudfandingPage extends StatefulWidget {
-   KraudfandingPage({Key? key}) ;
-   static const String routeName = '/kraudfanding';
+  KraudfandingPage({Key? key});
+
+  static const String routeName = '/kraudfanding';
 
   @override
   State<KraudfandingPage> createState() => _KraudfandingPageState();
 }
 
 class _KraudfandingPageState extends State<KraudfandingPage>
-    with SingleTickerProviderStateMixin{
-  KraudFandingCubit cubit=KraudFandingCubit();
+    with SingleTickerProviderStateMixin {
+  KraudFandingCubit cubit = KraudFandingCubit();
   late TabController _tabController;
 
   @override
@@ -52,7 +54,7 @@ class _KraudfandingPageState extends State<KraudfandingPage>
       child: Scaffold(
         backgroundColor: AppColorUtils.BACKGROUND,
         appBar: AppBarWithTitle(
-          title: 'Kraudfanding',
+          title: LocaleKeys.crowdfunding.tr(),
           onPress: () {
             NavigatorService.to.pop();
           },
@@ -70,10 +72,10 @@ class _KraudfandingPageState extends State<KraudfandingPage>
                   ).paddingOnly(left: 20.w, right: 20.w, bottom: 15.w),
                   KraudfandingBanner(),
                   AppWidgets.textLocale(
-                      text: LocaleKeys.new_add,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: AppColorUtils.DARK2)
+                          text: LocaleKeys.new_add,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: AppColorUtils.DARK2)
                       .paddingOnly(
                     top: 24.w,
                     bottom: 15.w,
@@ -85,7 +87,7 @@ class _KraudfandingPageState extends State<KraudfandingPage>
                     child: Row(
                       children: List.generate(
                         state.cardList.length,
-                            (index) => KraudfandingMiniCardWidget(
+                        (index) => KraudfandingMiniCardWidget(
                           cardModel: state.cardList[index],
                           visible: true,
                         ).paddingOnly(left: 10.w),
@@ -96,65 +98,70 @@ class _KraudfandingPageState extends State<KraudfandingPage>
                     height: 24.0.w,
                   ),
                   DefaultTabController(
-
                     length: 3,
                     child: Container(
-
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: AppColorUtils.WHITE,
                         borderRadius: BorderRadius.circular(11.0),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            margin: EdgeInsets.only(left: 20.w,top: 15.w),
-                            child: Text(
-                              LocaleKeys.category,
-                              style: TextStyle(
-                                color: Color(0xFF414042),
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.w600,),
+                            margin: EdgeInsets.only(
+                              left: 20.w,
+                              top: 15.w,
                             ),
-                          ),
-
-                            TabBar(
-                              controller: _tabController,
-                              enableFeedback: true,
-                              labelColor: AppColorUtils.GREEN_APP,
-                              unselectedLabelColor: AppColorUtils.DARK_6,
-                              unselectedLabelStyle: TextStyle(
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                              labelStyle: TextStyle(
-                                fontSize: 14,
+                            child: Text(
+                              LocaleKeys.category.tr(),
+                              style: TextStyle(
+                                color: AppColorUtils.DARK2,
+                                fontSize: 18.sp,
                                 fontWeight: FontWeight.w600,
                               ),
-                              tabs: [
-                                Text("Barchasi"),
-                                Text("Texnologiya"),
-                                Text("Texnologiya"),
-
+                            ),
+                          ),
+                          TabBar(
+                            controller: _tabController,
+                            enableFeedback: true,
+                            labelColor: AppColorUtils.GREEN_APP,
+                            unselectedLabelColor: AppColorUtils.DARK_6,
+                            unselectedLabelStyle: TextStyle(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            labelStyle: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            tabs: [
+                              Text(LocaleKeys.that_s_all.tr()),
+                              Text(LocaleKeys.technology.tr()),
+                              Text(LocaleKeys.technology.tr()),
                             ],
                             isScrollable: true,
                             indicatorWeight: 2,
                             indicatorColor: AppColorUtils.TEXT_GREEN,
                             indicatorSize: TabBarIndicatorSize.tab,
-                            indicatorPadding:
-                            EdgeInsets.only(right: 10, left: 10),
-                            labelPadding:
-                            EdgeInsets.only(right: 10, left: 10),
-                          ).paddingOnly(left: 10.w, top: 8),
+                            indicatorPadding: EdgeInsets.only(
+                              right: 10,
+                              left: 10,
+                            ),
+                            labelPadding: EdgeInsets.only(
+                              right: 10,
+                              left: 10,
+                            ),
+                          ).paddingOnly(
+                            left: 10.w,
+                            top: 8,
+                          ),
                           SizedBox(
                             height: 24.0.w,
                           ),
                           Container(
-
                             child: [
                               GridView.count(
                                 shrinkWrap: true,
-
                                 crossAxisCount: 2,
                                 primary: false,
                                 physics: NeverScrollableScrollPhysics(),
@@ -165,7 +172,7 @@ class _KraudfandingPageState extends State<KraudfandingPage>
                                 mainAxisSpacing: 6,
                                 children: List.generate(
                                   state.cardList.length,
-                                      (index) => KraudfandingMiniCardWidget(
+                                  (index) => KraudfandingMiniCardWidget(
                                     visible: true,
                                     cardModel: state.cardList[index],
                                   ),
@@ -182,7 +189,7 @@ class _KraudfandingPageState extends State<KraudfandingPage>
                                 mainAxisSpacing: 6,
                                 children: List.generate(
                                   state.cardList.length,
-                                      (index) => KraudfandingMiniCardWidget(
+                                  (index) => KraudfandingMiniCardWidget(
                                     visible: true,
                                     cardModel: state.cardList[index],
                                   ),
@@ -199,7 +206,7 @@ class _KraudfandingPageState extends State<KraudfandingPage>
                                 mainAxisSpacing: 6,
                                 children: List.generate(
                                   state.cardList.length,
-                                      (index) => KraudfandingMiniCardWidget(
+                                  (index) => KraudfandingMiniCardWidget(
                                     visible: true,
                                     cardModel: state.cardList[index],
                                   ),
@@ -220,5 +227,3 @@ class _KraudfandingPageState extends State<KraudfandingPage>
     );
   }
 }
-
-

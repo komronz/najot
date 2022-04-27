@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -63,7 +64,7 @@ class DrawerBodySecond extends StatelessWidget {
             },
             visibleIcon: true,
             addIcon: AppImageUtils.PLUS,
-            text: "Loyiha qo'shish",
+            text: LocaleKeys.add_project.tr(),
             color: AppColorUtils.ADD_PROJECT_COLOR,
             textColor: AppColorUtils.VOLONTYOR,
             fontWeight: FontWeight.w600,
@@ -79,7 +80,7 @@ class DrawerBodySecond extends StatelessWidget {
             isActive: pageType == AppPageType.PROJECT,
             icon: AppImageUtils.PROJECT1,
             iconSelect: AppImageUtils.PROJECT2,
-            text: "Loyiha va e'lonlarim",
+            text: LocaleKeys.projects_and_ads.tr(),
             fontSize: 16.sp,
             padding: EdgeInsets.symmetric(
               horizontal: 18.w,
@@ -97,7 +98,7 @@ class DrawerBodySecond extends StatelessWidget {
             isActive: pageType == AppPageType.VOLUNTEERING,
             icon: AppImageUtils.TOBE_VOLUNTEER,
             iconSelect: AppImageUtils.TOBE_VOLUNTEER2,
-            text: "Volontyorlik faoliyatim",
+            text: LocaleKeys.my_volunteering.tr(),
             fontSize: 16.sp,
             padding: EdgeInsets.symmetric(
               horizontal: 18.w,

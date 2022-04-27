@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/operator_cubit/operator_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -39,7 +41,7 @@ class OperatorClearSmsWidget extends StatelessWidget {
               ).paddingOnly(top: 20),
               AppWidgets.text(
                 textAlign: TextAlign.center,
-                text: "Siz xabarnoma ichini butunlay //tozalamoqchimisiz?// ",
+                text: LocaleKeys.do_you_want_completely_clear_the_inside_of_the_notification.tr(),
                 richText: true,
                 maxLines: 3,
                 height: 1.35,
@@ -73,7 +75,7 @@ class OperatorClearSmsWidget extends StatelessWidget {
                       height: 48.w,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
-                      title: "Ortga qaytish",
+                      title: LocaleKeys.go_back,
                       onTap: () {
                         Navigator.pop(context);
                       },
@@ -91,7 +93,7 @@ class OperatorClearSmsWidget extends StatelessWidget {
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
                       height: 48.w,
-                      title: "Ha",
+                      title: LocaleKeys.yes,
                       onTap: () {
                         cubit.deleteSmsList();
                         Navigator.pop(context);

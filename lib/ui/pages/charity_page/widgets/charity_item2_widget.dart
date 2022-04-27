@@ -1,16 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/data/bloc/charity_page_cubit/charity_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
-import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/ui/pages/charity_page/charity_full_page/charity_full_page.dart';
-import 'package:najot/ui/pages/charity_page/charity_full_page/charity_full_page2.dart';
 import 'package:najot/ui/pages/charity_page/widgets/favorite_button.dart';
-import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_help_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class CharityItem2Widget extends StatelessWidget {

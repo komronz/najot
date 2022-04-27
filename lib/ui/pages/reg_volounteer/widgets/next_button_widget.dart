@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -22,7 +24,7 @@ class NextButtonWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         AppWidgets.text(
-          text: "Keyingisi",
+          text: LocaleKeys.next.tr(),
           fontSize: 16.sp,
           fontWeight: FontWeight.w600,
           color: color,
@@ -31,7 +33,7 @@ class NextButtonWidget extends StatelessWidget {
           onTap: isActive
               ? onTap
               : () {
-                  AppWidgets.showText(text: "maydonlarni to'liq to'ldiring");
+                  AppWidgets.showText(text: LocaleKeys.fill_in_the_fields_completely.tr());
                 },
           child: CircleAvatar(
             radius: 20,

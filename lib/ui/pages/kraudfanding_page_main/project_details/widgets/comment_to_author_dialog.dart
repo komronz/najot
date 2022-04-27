@@ -68,7 +68,7 @@ class CommentToAuthorDialog extends StatelessWidget {
                     );
 
                   },
-                  text: LocaleKeys.send,
+                  text: LocaleKeys.send.tr(),
                   textSize: 16.sp,
                   fontWeight: FontWeight.w500,
                   height: 50.w,
@@ -84,7 +84,7 @@ class CommentToAuthorDialog extends StatelessWidget {
                   onPress: () {
                     Navigator.pop(context);
                   },
-                  text: LocaleKeys.exit,
+                  text: LocaleKeys.exit.tr(),
                   textSize: 16.sp,
                   fontWeight: FontWeight.w500,
                   height: 50.w,

@@ -1,5 +1,3 @@
-
-
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,43 +41,47 @@ class KraudfandingBanner extends StatelessWidget {
           SizedBox(width: 14.w),
           Expanded(
               child: Container(
-                margin: EdgeInsets.only(top: 20.w, bottom: 20.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AppWidgets.text(
-                      text: LocaleKeys.have_idea.tr(),
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w600,
-                      maxLines: 2,
-                      color: AppColorUtils.TEXT_GREY,
-                    ),
-                    SizedBox(height: 10.w),
-                    AppWidgets.text(
-                      text: LocaleKeys.we_help_you.tr(),
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w300,
-                      maxLines: 1,
-                      color: AppColorUtils.TEXT_GREY,
-                    ),
-                    SizedBox(height: 20.w),
-                    ButtonCard(
-                      onPress: () {
-                        NavigatorService.to.pushNamedAndRemoveUntil(HomePage.routeName,arguments: AppPageType.ADD_PROJECT);
-
-
-                      },
-                      height: 35.w,
-                      width: 146.w,
-                      text: LocaleKeys.add_project.tr(),
-                      color: AppColorUtils.PERCENT_COLOR,
-                      textColor: AppColorUtils.WHITE,
-                      textSize: 12.sp,
-                      fontWeight: FontWeight.w600,
-                    )
-                  ],
+            margin: EdgeInsets.only(
+              top: 20.w,
+              bottom: 20.w,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AppWidgets.text(
+                  text: LocaleKeys.have_idea.tr(),
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w600,
+                  maxLines: 2,
+                  color: AppColorUtils.TEXT_GREY,
                 ),
-              )),
+                SizedBox(height: 10.w),
+                AppWidgets.text(
+                  text: LocaleKeys.we_help_you.tr(),
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w300,
+                  maxLines: 1,
+                  color: AppColorUtils.TEXT_GREY,
+                ),
+                SizedBox(height: 20.w),
+                ButtonCard(
+                  onPress: () {
+                    NavigatorService.to.pushNamedAndRemoveUntil(
+                        HomePage.routeName,
+                        arguments: AppPageType.ADD_PROJECT,
+                    );
+                  },
+                  height: 35.w,
+                  width: 146.w,
+                  text: LocaleKeys.add_project.tr(),
+                  color: AppColorUtils.PERCENT_COLOR,
+                  textColor: AppColorUtils.WHITE,
+                  textSize: 12.sp,
+                  fontWeight: FontWeight.w600,
+                )
+              ],
+            ),
+          )),
         ],
       ),
     );

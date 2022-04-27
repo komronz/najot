@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/volonteer_detail_cubit/volonteer_detail_cubit.dart';
-import 'package:najot/data/custom_time_picker/custom_time_picker_dialog.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
@@ -13,7 +12,6 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/time_picker_volunteer.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -41,7 +39,7 @@ class VolunteerHelpWidget extends StatelessWidget {
     return Scaffold(
         backgroundColor: AppColorUtils.BACKGROUND,
         appBar: AppBarWithTitle(
-          title: "Yordam berish",
+          title: LocaleKeys.help,
           onPress: () {
             NavigatorService.to.pop();
           },
@@ -80,7 +78,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                     ],
                   ),
                   AppWidgets.textLocale(
-                    text: "E'lon nomi",
+                    text: LocaleKeys.project_name,
                     fontWeight: FontWeight.w400,
                     fontSize: 10.sp,
                     color: AppColorUtils.DARK_6,
@@ -199,7 +197,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                                 ));
                       }
                     },
-                    text: "Yordam berish",
+                    text: LocaleKeys.help,
                     height: 48.w,
                     width: 1.sw,
                     color: state.checkBox
@@ -233,7 +231,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                         ),
                       ).paddingOnly(left: 8.w),
                       AppWidgets.textLocale(
-                          text: "Men roziman",
+                          text: LocaleKeys.i_agree,
                           color: AppColorUtils.DARK_1,
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w400)
@@ -241,7 +239,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                   ),
                   AppWidgets.textLocale(
                       text:
-                      "*Diqqat! yordam berishga rozi bo'lsangiz inson sizni kutadi.",
+                      LocaleKeys.attention_the_person_is_waiting_for_you_if_you_agree_to_help,
                       color: AppColorUtils.RED,
                       fontWeight: FontWeight.w400,
                       fontSize: 12.sp,

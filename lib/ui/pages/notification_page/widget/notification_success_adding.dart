@@ -42,7 +42,7 @@ class NotificationSuccessAdding extends StatelessWidget {
               ).paddingOnly(top: 24.h, bottom: 14.h),
               AppWidgets.textLocale(
                 textAlign: TextAlign.center,
-                text: "Eslatma //muvaffaqiyatli// o'zgartirildi",
+                text: LocaleKeys.note_successful_changed,
                 richText: true,
                 othersMarkers: [
                   MarkerText(
@@ -61,7 +61,7 @@ class NotificationSuccessAdding extends StatelessWidget {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: Color(0xFFF8FFFD),
+                  color: AppColorUtils.GREEN_LIGHT,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -102,7 +102,7 @@ class NotificationSuccessAdding extends StatelessWidget {
                     onTap: () {
                       NavigatorService.to.pop();
                     },
-                    title: "Eslatmaga utish",
+                    title: LocaleKeys.jump_to_note,
                     fontSize: 16.sp,
                   ),
                   SizedBox(height: 12.h),

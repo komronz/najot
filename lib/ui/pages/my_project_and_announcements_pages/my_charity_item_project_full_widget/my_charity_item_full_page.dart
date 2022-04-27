@@ -54,7 +54,7 @@ class _MyCharityItemFullPageState extends State<MyCharityItemFullPage>
       child: Scaffold(
         backgroundColor: AppColorUtils.BACKGROUND,
         appBar: AppBarWithTitle(
-          title: LocaleKeys.about_the_ad.tr(),
+          title: LocaleKeys.about_the_ad,
           onPress: () {
             NavigatorService.to.pop();
           },

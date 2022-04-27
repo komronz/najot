@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -28,7 +29,7 @@ class LoadingPage extends StatelessWidget {
                   color: AppColors.MAIN,
                 ),
                 AppWidgets.textLocale(
-                  text: "Iltimos kutib turing",
+                  text: LocaleKeys.please_wait,
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w600,
                   color: AppColors.BLACK,

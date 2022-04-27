@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../../data/utils/app_image_utils.dart';
@@ -25,10 +26,10 @@ class blueCheckWidgets extends StatelessWidget {
             width: 14.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
-              color: Color(0xFFFFFFFF),
+              color: AppColorUtils.WHITE,
               border: Border.all(
                 width: 1,
-                color: Color(0xFF0344A7),
+                color: AppColorUtils.TEXT_BLUE,
               ),
             ),
             child: SvgPicture.asset(
@@ -39,7 +40,7 @@ class blueCheckWidgets extends StatelessWidget {
           Expanded(
             child: AppWidgets.textLocale(
                 fontSize: 14.sp,
-                color: Color(0xFF6D6E71),
+                color: AppColorUtils.DARK_4,
                 fontWeight: FontWeight.w500,
               text: title,
               maxLines: 2,
@@ -69,22 +70,22 @@ class greenCheckWidgets extends StatelessWidget {
             width: 14.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
-              color: Color(0xFFFFFFFF),
+              color: AppColorUtils.WHITE,
               border: Border.all(
                 width: 1,
-                color: Color(0xFF038D69),
+                color: AppColorUtils.GREEN_TEXT_10,
               ),
             ),
             child: SvgPicture.asset(
               AppImageUtils.CHECK_SMALL,
-              color: Color(0xFF038D69),
+              color: AppColorUtils.GREEN_TEXT_10,
             ),
           ).paddingOnly(top: 5.w),
           SizedBox(width: 8),
           Expanded(
             child: AppWidgets.textLocale(
                 fontSize: 14.sp,
-                color: Color(0xFF6D6E71),
+                color: AppColorUtils.DARK_4,
                 fontWeight: FontWeight.w500,
               text: title,
               maxLines: 2,

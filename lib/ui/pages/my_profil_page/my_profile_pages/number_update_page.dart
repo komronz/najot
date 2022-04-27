@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,9 +37,9 @@ class NumberUpdatePage extends StatelessWidget {
             return Column(
               children: [
                 Container(
-                  color: Color(0xFFF6FCFA),
+                  color: AppColorUtils.BACKGROUND,
                   child: AppWidgets.appBarMenu(
-                    title: LocaleKeys.edit_my_profile,
+                    title: LocaleKeys.edit_my_profile.tr(),
                     onTapMenu: () {},
                     visibleIcon: true,
                     onTapIcon: () {
@@ -129,9 +130,9 @@ class NumberUpdatePage extends StatelessWidget {
                                             child: AppWidgets.textLocale(
                                                 text: LocaleKeys.send_code,
                                                 textAlign: TextAlign.center,
-                                                color: Color(0xFFFFFFFF),
+                                                color: AppColorUtils.WHITE,
                                                 fontSize: 15.sp,
-                                                fontWeight: FontWeight.w600),
+                                                fontWeight: FontWeight.w600,),
                                           ),
                                         )
                                       : NumberUpdateStep1(),

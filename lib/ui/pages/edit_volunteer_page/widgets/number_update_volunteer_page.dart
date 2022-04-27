@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,9 +11,6 @@ import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/widgets/number_updating.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/app_disable_text_field.dart';
-import 'package:najot/ui/pages/my_profil_page/my_profile_widget/number_update_step1_page.dart';
-import 'package:najot/ui/widgets/app_text_field.dart';
-
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
@@ -52,7 +50,7 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                 title: Container(
                   color: AppColorUtils.BACKGROUND,
                   child: AppWidgets.appBarMenu(
-                    title: LocaleKeys.edit_my_profile,
+                    title: LocaleKeys.edit_my_profile.tr(),
                     onTapMenu: () {
                       HomePage.globalKey.currentState!.openDrawer();
                     },
@@ -88,7 +86,7 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                         ? user.toString()
                                         : user!.phone.toString(),
                                     onChanged: (v) {},
-                                    title: LocaleKeys.phone_number,
+                                    title: LocaleKeys.phone_number.tr(),
                                   ).paddingOnly(
                                     bottom: 23.w,
                                     top: 20.w,
@@ -105,7 +103,7 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                     bottom: 8.w,
                                   ),
                                   TextFormField(
-                                    style: TextStyle(color: Colors.black),
+                                    style: TextStyle(color: AppColorUtils.BLACK),
                                     inputFormatters: [maskFormatter],
                                     controller: numberController,
                                     onChanged: (v) {
@@ -171,12 +169,12 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(12),
-                                                  color: Color(0xFF1F6ADE),
+                                                  color: AppColorUtils.BLUE_BUTTON,
                                                 ),
                                                 child: AppWidgets.textLocale(
                                                     text: LocaleKeys.send_code,
                                                     textAlign: TextAlign.center,
-                                                    color: Color(0xFFFFFFFF),
+                                                    color: AppColorUtils.WHITE,
                                                     fontSize: 15.sp,
                                                     fontWeight: FontWeight.w600),
                                               ),

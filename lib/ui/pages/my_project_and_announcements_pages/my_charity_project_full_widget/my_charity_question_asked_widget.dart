@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -45,7 +46,7 @@ class _MyCharityQuestionsAskedWidgetState
               mainAxisSize: MainAxisSize.min,
               children: [
                 AppWidgets.textLocale(
-                  text: "Javob berilganlar",
+                  text: LocaleKeys.answered,
                   color: AppColorUtils.GREEN_TEXT_1,
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w500,

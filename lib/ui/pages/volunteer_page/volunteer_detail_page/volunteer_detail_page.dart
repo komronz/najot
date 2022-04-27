@@ -52,7 +52,6 @@ class _AboutAnnouncementPageState extends State<VolunteerDetailPage>
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => cubit,
-
       child: Scaffold(
         backgroundColor: AppColorUtils.BACKGROUND,
         appBar: AppBarWithTitle(

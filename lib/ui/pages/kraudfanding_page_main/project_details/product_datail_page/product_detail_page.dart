@@ -32,7 +32,7 @@ class ProductDetailPage extends StatelessWidget {
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColorUtils.WHITE,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(11),
             topLeft: Radius.circular(11),

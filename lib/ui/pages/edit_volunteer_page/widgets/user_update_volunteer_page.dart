@@ -1,24 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/edit_volunteer_bloc/edit_volunteer_bloc.dart';
 import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/utils/app_utils.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/widgets/edit_view1.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/pages/my_profil_page/my_profile_widget/show_picker_widget.dart';
-import 'package:najot/ui/pages/my_profil_page/my_profile_widget/user_update_app_radio_button.dart';
-import 'package:najot/ui/pages/reg_volounteer/widgets/view1.dart';
-import 'package:najot/ui/pages/reg_volounteer/widgets/view2.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../../../../data/localization/locale_keys.g.dart';
-import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
-import '../../../widgets/app_text_field.dart';
 import '../../../widgets/app_widgets.dart';
 import 'edit_view2.dart';
 
@@ -54,7 +45,7 @@ class UserUpdateVolunteerPage extends StatelessWidget {
                   elevation: 0,
                   automaticallyImplyLeading: false,
                   title: Container(
-                    color: Color(0xFFF6FCFA),
+                    color: AppColorUtils.WAIT_COLOR,
                     child: AppWidgets.appBarMenu(
                       title: LocaleKeys.edit_my_profile,
                       onTapMenu: () {

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +8,7 @@ import 'package:najot/data/bloc/operator_cubit/operator_cubit.dart';
 import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/sms_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -61,7 +63,7 @@ class OperatorPage extends StatelessWidget {
                     Expanded(
                       child: AppWidgets.textLocale(
                         textAlign: TextAlign.center,
-                        text: "Operatorga yozish",
+                        text: LocaleKeys.write_to_the_operator,
                         fontSize: 26.sp,
                         fontWeight: FontWeight.w600,
                       ),
@@ -106,7 +108,7 @@ class OperatorPage extends StatelessWidget {
                 ),
                 height: 150.w,
                 decoration: BoxDecoration(
-                  color: Color(0xFFF9FEFC),
+                  color: AppColorUtils.GREEN_BACK,
                   boxShadow: [
                     BoxShadow(
                       color: Color.fromRGBO(11, 191, 144, 0.08),
@@ -132,7 +134,7 @@ class OperatorPage extends StatelessWidget {
                           maxLines: null,
                           enabled: true,
                           style: GoogleFonts.inter(
-                            fontSize: 16,
+                            fontSize: 15.sp,
                           ),
                           decoration: InputDecoration(
                             // border: _border,
@@ -140,7 +142,7 @@ class OperatorPage extends StatelessWidget {
                             focusedBorder: DecorationConst.INPUT_BORDER,
                             enabledBorder: DecorationConst.INPUT_BORDER,
                             contentPadding: EdgeInsets.all(14),
-                            hintText: "Xabar yuborish",
+                            hintText: LocaleKeys.send_message.tr(),
                             hintStyle: GoogleFonts.inter(
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w500,
@@ -224,7 +226,7 @@ class OperatorPage extends StatelessWidget {
             ).paddingOnly(top: 120.w),
             AppWidgets.text(
               textAlign: TextAlign.center,
-              text: "Hozircha hech qanday xabar topilmadi.",
+              text: LocaleKeys.no_messages_found_yet.tr(),
               fontWeight: FontWeight.w600,
               maxLines: 2,
               fontSize: 18.sp,

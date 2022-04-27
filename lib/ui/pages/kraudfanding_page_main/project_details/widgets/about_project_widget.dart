@@ -187,7 +187,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
         Container(
           padding: EdgeInsets.symmetric(vertical: 20.w),
           decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColorUtils.WHITE,
               borderRadius: BorderRadius.circular(11.0)),
           child: DefaultTabController(
             initialIndex: 0,
@@ -275,7 +275,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                           },
                         );
                       },
-                      text: LocaleKeys.project_implementation,
+                      text: LocaleKeys.project_implementation.tr(),
                       height: 48.w,
                       width: 274.w,
                       color: AppColorUtils.PERCENT_COLOR,
