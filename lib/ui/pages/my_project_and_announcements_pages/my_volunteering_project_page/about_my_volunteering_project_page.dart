@@ -57,7 +57,7 @@ class _AboutMyVolunteeringItemProjectWidgetState
     super.initState();
   }
 
-  _handleTabSelection() {
+  void _handleTabSelection() {
     if (_tabController.indexIsChanging) {
       setState(() {});
     }

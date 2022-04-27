@@ -1,10 +1,7 @@
-import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/organization_cubit/organization_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/organization_model.dart';
@@ -13,10 +10,8 @@ import 'package:najot/ui/pages/organization_page/organization_item_detail_page/o
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
-import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
 import '../../charity_page/charity_full_page/charity_full_page.dart';
-import '../../charity_page/charity_full_page/charity_full_page2.dart';
 import '../../charity_page/widgets/charity_item2_widget.dart';
 import '../../charity_page/widgets/charity_item_widget.dart';
 

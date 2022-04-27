@@ -16,7 +16,6 @@ import '../../widgets/app_widgets.dart';
 import '../home_page/home_page.dart';
 import '../notification_page/notification_page.dart';
 import 'my_volunteering_widget/item_charity_widget.dart';
-import 'my_volunteering_widget/my_volunteering_drawer_body.dart';
 import 'my_volunteering_widget/waiting_for_widget.dart';
 
 class MyVolunteeringPage extends StatelessWidget {

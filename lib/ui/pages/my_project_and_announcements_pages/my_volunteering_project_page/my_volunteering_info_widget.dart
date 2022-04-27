@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/volunteering_model.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-
 import '../../../../data/localization/locale_keys.g.dart';
-import '../../../../data/model/charity_model.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
 

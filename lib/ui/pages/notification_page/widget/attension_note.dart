@@ -13,7 +13,6 @@ import 'package:super_rich_text/super_rich_text.dart';
 
 import '../../../../data/model/volunteering_model.dart';
 import '../../../widgets/app_widgets.dart';
-import '../../my_volunteering_page/my_volunteering_page.dart';
 
 class AttentionNote extends StatelessWidget {
   static const String routeName = "/attentionNote";

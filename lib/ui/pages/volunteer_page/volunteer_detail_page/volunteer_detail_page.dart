@@ -42,7 +42,7 @@ class _AboutAnnouncementPageState extends State<VolunteerDetailPage>
     super.initState();
   }
 
-  _handleTabSelection() {
+  void _handleTabSelection() {
     if (_controller.indexIsChanging) {
       setState(() {});
     }

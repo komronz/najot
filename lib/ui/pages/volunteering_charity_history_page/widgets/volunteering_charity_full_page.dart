@@ -52,7 +52,7 @@ class _VolunteeringCharityFullPageState extends State<VolunteeringCharityFullPag
     super.initState();
   }
 
-  _handleTabSelection() {
+  void _handleTabSelection() {
     if (_tabController.indexIsChanging) {
       setState(() {});
     }

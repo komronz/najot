@@ -13,7 +13,6 @@ import '../../../../data/localization/locale_keys.g.dart';
 import '../../home_page/home_page.dart';
 import '../../notification_page/notification_page.dart';
 import 'drop_down_widget.dart';
-import 'my_volunteering_drawer_body.dart';
 
 class AddingProjectPage extends StatefulWidget {
   static const String routeName = '/addingProjectPage';

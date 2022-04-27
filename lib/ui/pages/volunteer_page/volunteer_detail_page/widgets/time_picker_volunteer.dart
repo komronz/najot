@@ -14,9 +14,7 @@ import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/item_adding_success.dart';
-import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/volunteer_detail_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-import 'package:provider/src/provider.dart';
 
 class TimePikerVolunteer extends StatelessWidget {
   TimePikerVolunteer({

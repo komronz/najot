@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
-import 'package:najot/ui/pages/home_page/home_page.dart';
 
 import '../../services/volunteer_service.dart';
 
@@ -17,7 +16,7 @@ class AppPageCubit extends Cubit<AppPageState> {
 
   AppPageCubit() : super(AppPageState());
 
-   load(AppPageType pageType) {
+  void load(AppPageType pageType) {
     emit(state.copyWith(pageType: pageType,
       changeMenu: 1,
       tobeVolunteer: Volunteer.tobeVolunteer,));

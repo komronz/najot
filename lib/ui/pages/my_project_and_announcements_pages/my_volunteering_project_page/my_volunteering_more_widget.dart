@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/ui/pages/my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_project_details_widgets.dart';
 
-import '../../../../data/model/charity_model.dart';
 import '../../../../data/model/volunteering_model.dart';
 
 class MyVolunteeringMoreWidget extends StatelessWidget {

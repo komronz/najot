@@ -8,7 +8,6 @@ import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
-import '../../../../data/localization/locale_keys.g.dart';
 
 class NotificationDeleteWidget extends StatelessWidget {
   const NotificationDeleteWidget({Key? key}) : super(key: key);

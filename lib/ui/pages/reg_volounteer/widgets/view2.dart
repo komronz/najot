@@ -69,7 +69,6 @@ class View2 extends StatelessWidget {
               context: context,
               builder: (context) => AppDatePickerWidget(
                 selectFunction: (dateTime) {
-                  print(dateTime.toUtc().toString());
                   bloc.add(VolunteerGiveDateSelected(dateTime));
                 },
               ),
@@ -111,7 +110,6 @@ class View2 extends StatelessWidget {
                   child: ImgUploadWidget(
                     deleteImg: () {
                       bloc.add(VolunteerPassImgDeleted());
-                      print("deletre");
                     },
                     onTapImg: () {
                       NavigatorService.to.pushNamed(
@@ -132,7 +130,6 @@ class View2 extends StatelessWidget {
                 Expanded(
                   child: ImgUploadWidget(
                     deleteImg: () {
-                      print("deletre");
                       context
                           .read<RegVolunteerBloc>()
                           .add(VolunteerPageImgDeleted(null));

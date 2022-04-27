@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 import 'package:najot/data/model/organization_model.dart';
 
 import '../../services/volunteer_service.dart';

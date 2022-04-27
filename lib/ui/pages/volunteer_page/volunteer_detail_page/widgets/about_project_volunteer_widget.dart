@@ -12,14 +12,11 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comments_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_applied_user_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_price_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/more_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/news_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/payment_history_dialog.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_help_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -58,7 +55,7 @@ class _AboutProjectVolunteerWidgetState
     super.initState();
   }
 
-  _handleTabSelection() {
+  void _handleTabSelection() {
     if (_tabController.indexIsChanging) {
       setState(() {});
     }

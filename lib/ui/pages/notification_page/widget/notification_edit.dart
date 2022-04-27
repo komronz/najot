@@ -7,7 +7,6 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/waiting_for_adding_success.dart';
 import '../../../../data/custom_time_picker/date_picker/date_picker_theme.dart';
 import '../../../../data/custom_time_picker/date_picker/i18n/date_picker_i18n.dart';
 import '../../../../data/custom_time_picker/date_picker/widget/date_picker_widget.dart';

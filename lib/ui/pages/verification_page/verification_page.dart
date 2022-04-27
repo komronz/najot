@@ -55,13 +55,13 @@ class VerificationPage extends StatelessWidget {
                         HomePage.routeName,
                         arguments: AppPageType.MAIN,
                       );
-                    }).paddingOnly(top: 100.h),
+                    }).paddingOnly(top: 100.h,left: 20,right: 20,),
                 AppWidgets.appButton(
                   title: "Boshqa raqam kiritish",
                   onTap: () {},
                   color: Colors.transparent,
                   textColor: AppColorUtils.TEXT_GREEN,
-                ).paddingOnly(top: 10.h),
+                ).paddingOnly(top: 10.h,left: 20,right: 20,),
               ],
             ).paddingOnly(top: 100.h)
           ],

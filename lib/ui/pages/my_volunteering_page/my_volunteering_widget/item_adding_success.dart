@@ -8,8 +8,6 @@ import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/date_time_util.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
-import '../../../../data/model/volunteering_model.dart';
-import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';

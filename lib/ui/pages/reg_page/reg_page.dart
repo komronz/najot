@@ -43,6 +43,9 @@ class RegPage extends StatelessWidget {
                         context.read<LoginBloc>().add(LoginFirstNameChanged(v));
                       },
                       title: "Ism",
+                    ).paddingOnly(
+                      left: 20,
+                      right: 20,
                     ),
                     AppTextField(
                       isFill: context.read<LoginBloc>().state.lastNameFill,
@@ -51,7 +54,11 @@ class RegPage extends StatelessWidget {
                         context.read<LoginBloc>().add(LoginLastNameChanged(v));
                       },
                       title: "Familiya",
-                    ).paddingOnly(top: 24),
+                    ).paddingOnly(
+                      top: 24,
+                      left: 20,
+                      right: 20,
+                    ),
                     AppTextField(
                       isFill: context.read<LoginBloc>().state.phoneFill,
                       hintText: "",
@@ -59,11 +66,15 @@ class RegPage extends StatelessWidget {
                       onChanged: (v) {
                         context.read<LoginBloc>().add(LoginPhoneChanged(v));
                       },
-                      title: "Telefon raqmi",
+                      title: "Telefon raqami",
                       textInputType: TextInputType.phone,
                       inputFormatter:
                           context.read<LoginBloc>().phoneNumberFormatter,
-                    ).paddingOnly(top: 24),
+                    ).paddingOnly(
+                      top: 24,
+                      left: 20,
+                      right: 20,
+                    ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [

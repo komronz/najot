@@ -24,7 +24,6 @@ import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
-import '../../charity_page/widgets/charity_help_widget.dart';
 import 'organization_help_widget.dart';
 
 class OrganizationCharityItemModel{
@@ -299,7 +298,6 @@ class _OrganizationCharityItemWidgetState extends State<OrganizationCharityItemW
                                 children: [
                                   ButtonCard(
                                     onPress: () {
-                                      print(state.saveHelp);
                                       if (state.tobeVolunteer == true) {
                                         NavigatorService.to.pushNamed(
                                           OrganizationHelpWidget.routeName,
