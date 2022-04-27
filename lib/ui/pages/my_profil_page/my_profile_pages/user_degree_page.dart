@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_page.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/user_degree_widgets.dart';
 
@@ -22,7 +24,7 @@ class UserDegreePage extends StatelessWidget {
         body: Column(
           children: [
             Container(
-              color: Color(0xFFF6FCFA),
+              color: AppColorUtils.BACKGROUND,
               padding: EdgeInsets.all(20),
               child: Row(
                 children: [
@@ -36,10 +38,10 @@ class UserDegreePage extends StatelessWidget {
                   ),
                   SizedBox(width: 93.w),
                   AppWidgets.textLocale(
-                    text: "Darajalar",
+                    text: LocaleKeys.degrees,
                     fontSize: 24,
                     fontWeight: FontWeight.w600,
-                    color: Color(0xFF414042),
+                    color: AppColorUtils.DARK2,
                   ),
                 ],
               ),
@@ -57,10 +59,10 @@ class UserDegreePage extends StatelessWidget {
                     children: [
                       Container(
                         child: AppWidgets.textLocale(
-                          text: "Daraja turlari",
+                          text: LocaleKeys.degree_types,
                           fontSize: 22.sp,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFF414042),
+                            color: AppColorUtils.DARK2,
                         ),
                       ).paddingOnly(top: 18.h, bottom: 10.h),
                       Container(
@@ -69,7 +71,7 @@ class UserDegreePage extends StatelessWidget {
                           "and typesetting industry. "
                           "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
                           style: TextStyle(
-                            color: Color(0xFF58595B),
+                            color: AppColorUtils.DARK3,
                             fontWeight: FontWeight.w400,
                             fontSize: 16.sp,
                             height: 1.5,
@@ -84,10 +86,11 @@ class UserDegreePage extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.only(left: 5),
                               child: AppWidgets.textLocale(
-                                  text: "Oddiy foydalanuvchi",
-                                  color: Color(0xFF0344A7),
+                                  text: LocaleKeys.normal_user,
+                                  color: AppColorUtils.BLUE_PERCENT,
                                   fontSize: 16.sp,
-                                  fontWeight: FontWeight.w600),
+                                  fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ],
                         ),
@@ -97,8 +100,8 @@ class UserDegreePage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             AppWidgets.textLocale(
-                              text: "Imkoniyatlari",
-                              color: Color(0xFF58595B),
+                              text: LocaleKeys.opportunities,
+                              color: AppColorUtils.DARK3,
                               fontSize: 13.sp,
                               fontWeight: FontWeight.w600,
                             ),
@@ -114,14 +117,15 @@ class UserDegreePage extends StatelessWidget {
                                     width: 14.w,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
-                                      color: Color(0xFFFFFFFF),
+                                      color: AppColorUtils.WHITE,
                                       border: Border.all(
                                         width: 1,
-                                        color: Color(0xFF0344A7),
+                                        color: AppColorUtils.BLUE_PERCENT,
                                       ),
                                     ),
                                     child: SvgPicture.asset(
-                                        AppImageUtils.CHECK_SMALL),
+                                        AppImageUtils.CHECK_SMALL,
+                                    ),
                                   ).paddingOnly(bottom: 8.h),
                                   SizedBox(width: 8),
                                   Column(
@@ -131,18 +135,18 @@ class UserDegreePage extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Xayriya qilish",
+                                        LocaleKeys.doing_charity.tr(),
                                         style: TextStyle(
                                           fontSize: 14.sp,
-                                          color: Color(0xFF6D6E71),
+                                          color: AppColorUtils.DARK_4,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
                                       Text(
-                                        "(kiyimlarni hayriya qilish bundan mustasno)",
+                                        LocaleKeys.excluding_clothing_donations.tr(),
                                         style: TextStyle(
                                           fontSize: 12.sp,
-                                          color: Color(0xFF6D6E71),
+                                          color: AppColorUtils.DARK_4,
                                           fontWeight: FontWeight.w400,
                                         ),
                                       ),
@@ -151,13 +155,13 @@ class UserDegreePage extends StatelessWidget {
                                 ],
                               ),
                             ).paddingOnly(bottom: 13.h),
-                            blueCheckWidgets(title: "Mukorofot sotib olish")
+                            blueCheckWidgets(title: LocaleKeys.buy_reward.tr(),)
                                 .paddingOnly(bottom: 13.h),
-                            blueCheckWidgets(title: "Loyihalarni qo’llash")
+                            blueCheckWidgets(title: LocaleKeys.apply_for_projects.tr(),)
                                 .paddingOnly(bottom: 13.h),
-                            blueCheckWidgets(title: "Savollar berish")
+                            blueCheckWidgets(title: LocaleKeys.ask_questions.tr(),)
                                 .paddingOnly(bottom: 13.h),
-                            blueCheckWidgets(title: "Izoh qoldirish"),
+                            blueCheckWidgets(title: LocaleKeys.leave_comment.tr(),),
                           ],
                         ),
                       ).paddingOnly(bottom: 18.h),
@@ -169,8 +173,8 @@ class UserDegreePage extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.only(left: 5),
                               child: AppWidgets.textLocale(
-                                text: "Volontyor",
-                                color: Color(0xFF048D6A),
+                                text: LocaleKeys.volunteer.tr(),
+                                color: AppColorUtils.KRAUDFANDING,
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -183,23 +187,31 @@ class UserDegreePage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             AppWidgets.textLocale(
-                              text: "Imkoniyatlari",
-                              color: Color(0xFF58595B),
+                              text: LocaleKeys.opportunities.tr(),
+                              color: AppColorUtils.DARK3,
                               fontSize: 13.sp,
                               fontWeight: FontWeight.w600,
                             ),
                             SizedBox(height: 12.h),
                             greenCheckWidgets(
-                                title:
-                                    "Oddiy foydalanuvchi barcha imkoniyatlari"),
+                              title:
+                                  LocaleKeys.all_options_for_average_user.tr(),
+                            ),
                             greenCheckWidgets(
-                                title:
-                                    "Volontyorlik kategoriyasidan to’liq foydalana olish"),
-                            greenCheckWidgets(title: "Kiyimlar xayriya qilish"),
+                              title: LocaleKeys
+                                  .take_full_advantage_of_volunteer_category
+                                  .tr(),
+                            ),
                             greenCheckWidgets(
-                                title:
-                                    "Loyiha tomonidan ajoyib sovg’alarni qo’lga kiritish"),
-                            greenCheckWidgets(title: "Loyiha qo’shish"),
+                              title: LocaleKeys.clothes_charity.tr(),
+                            ),
+                            greenCheckWidgets(
+                              title: LocaleKeys.receive_great_gifts_from_project
+                                  .tr(),
+                            ),
+                            greenCheckWidgets(
+                              title: LocaleKeys.add_project.tr(),
+                            ),
                           ],
                         ),
                       ),

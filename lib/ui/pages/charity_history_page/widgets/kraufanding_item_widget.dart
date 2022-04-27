@@ -32,7 +32,7 @@ class KraufandingItemWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppWidgets.textLocale(
-                    text: 'Loyiha nomi',
+                    text: LocaleKeys.project_name,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
                     maxLines: 10,
@@ -51,14 +51,14 @@ class KraufandingItemWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     AppWidgets.textLocale(
-                      text: "Xayriya summasi",
+                      text: LocaleKeys.charity_amount,
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w400,
                       maxLines: 10,
                       color: AppColorUtils.ITEM_CHARITY_TEXT2,
                     ),
                     AppWidgets.textLocale(
-                      text: "Sana",
+                      text: LocaleKeys.date,
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w400,
                       maxLines: 10,
@@ -92,7 +92,7 @@ class KraufandingItemWidget extends StatelessWidget {
                   Icons.visibility_outlined,
                   size: 18,
                 ),
-                color: Color(0xFFE5FAF3),
+                color: AppColorUtils.WHITE_GREEN,
               ),
             )
           ],

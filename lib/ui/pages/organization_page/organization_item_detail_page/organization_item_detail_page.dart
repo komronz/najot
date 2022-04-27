@@ -117,7 +117,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
                       ],
                     ).paddingSymmetric(horizontal: 20.w),
                     AppWidgets.textLocale(
-                      text: "Tashkilot haqida",
+                      text: LocaleKeys.about_the_organization,
                       fontWeight: FontWeight.w600,
                       fontSize: 18.sp,
                       color: AppColorUtils.DARK_1,
@@ -135,7 +135,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
                             height: 1.5.w)
                         .paddingSymmetric(horizontal: 20.w),
                     AppWidgets.textLocale(
-                      text: "Tashkilot loyihalari",
+                      text: LocaleKeys.organizational_projects,
                       fontWeight: FontWeight.w600,
                       fontSize: 18.sp,
                       color: AppColorUtils.DARK_1,
@@ -184,6 +184,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
               ),
             ],
           ),
-        ));
+        ),
+    );
   }
 }

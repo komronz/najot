@@ -1,18 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
 import '../../../../data/model/volunteering_model.dart';
 import '../../../widgets/app_widgets.dart';
+import '../../my_volunteering_page/my_volunteering_page.dart';
 
 class AttentionNote extends StatelessWidget {
   static const String routeName = "/attentionNote";
@@ -21,6 +20,7 @@ class AttentionNote extends StatelessWidget {
   DateTime _date = DateTime.now();
   DateTime _time = DateTime.now();
   final VolunteeringModel model;
+
 
   // VolunteeringModel model;
 
@@ -47,12 +47,9 @@ class AttentionNote extends StatelessWidget {
                     AppWidgets.imageSvg(
                       path: AppImageUtils.NOTIFICATION_GREY,
                       color: AppColorUtils.KRAUDFANDING,
-                    ).paddingOnly(
-                      right: 5.w,
-                      top: 15.w,
-                    ),
+                    ).paddingOnly(right: 5.w, top: 15.w,),
                     AppWidgets.textLocale(
-                      text: "Diqqat eslatma!",
+                      text: LocaleKeys.attention_note,
                       fontSize: 20.sp,
                       color: AppColorUtils.DARK2,
                       fontWeight: FontWeight.w600,
@@ -66,7 +63,7 @@ class AttentionNote extends StatelessWidget {
                   fontSize: 16.sp,
                   color: AppColorUtils.DARK2,
                   maxLines: 2,
-                  text: "Salom //Volontyor!//\nsiz yordamga borishingiz kerak!",
+                  text: LocaleKeys.hello_volunteer_you_have_to_go_rescue,
                   richText: true,
                   othersMarkers: [
                     MarkerText(
@@ -82,12 +79,12 @@ class AttentionNote extends StatelessWidget {
                 ),
                 Container(
                   width: double.infinity,
-                  color: Color(0xFFF5F9FF),
+                  color: AppColorUtils.WHITE_GREY,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppWidgets.textLocale(
-                        text: "Sana",
+                        text: LocaleKeys.date,
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColorUtils.DARK_6,
@@ -143,14 +140,13 @@ class AttentionNote extends StatelessWidget {
                 ).paddingOnly(
                   bottom: 18.w,
                 ),
+
                 Column(
                   children: [
                     AppWidgets.appButton(
                       onTap: () {
-                        NavigatorService.to.pushReplacementNamed(
-                          HomePage.routeName,
-                          arguments: AppPageType.VOLUNTEERING,
-                        );
+                        NavigatorService.to
+                            .pushReplacementNamed(MyVolunteeringPage.routeName);
                       },
                       title: LocaleKeys.my_volunteering.tr(),
                       fontSize: 16.sp,

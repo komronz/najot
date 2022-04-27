@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/date_time_util.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -50,7 +51,7 @@ class AppDatePicker extends StatelessWidget {
                         size: 22,
                       ).paddingOnly(left: 20),
                       AppWidgets.text(
-                        text: "Tanlang",
+                        text: LocaleKeys.select.tr(),
                         fontWeight: FontWeight.w500,
                         fontSize: 16.sp,
                         color: AppColorUtils.KRAUDFANDING,

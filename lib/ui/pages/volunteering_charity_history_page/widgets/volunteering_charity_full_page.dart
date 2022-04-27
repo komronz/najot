@@ -108,7 +108,7 @@ class _VolunteeringCharityFullPageState extends State<VolunteeringCharityFullPag
                           ),
                           child: Icon(
                             Icons.monetization_on_outlined,
-                            color: Colors.white,
+                            color: AppColorUtils.WHITE,
                           ),
                         ),
                       )
@@ -160,7 +160,7 @@ class _VolunteeringCharityFullPageState extends State<VolunteeringCharityFullPag
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 20.w),
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: AppColorUtils.WHITE,
                         borderRadius: BorderRadius.circular(11.0)),
                     child: DefaultTabController(
                       initialIndex: 0,
@@ -296,10 +296,10 @@ class CharityPriceWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppWidgets.starTextWidget(text: "Lozim bo'lgan summa"),
+                AppWidgets.starTextWidget(text: LocaleKeys.need_summa),
                 AppWidgets.text(
                   text: model.totalSum!,
-                  color: Color(0xFF043F3B),
+                  color: AppColorUtils.TEXT_GREEN2,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ).paddingOnly(top: 3.w),
@@ -309,14 +309,14 @@ class CharityPriceWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 AppWidgets.textLocale(
-                  text: "E'lon berigan kun",
+                  text: LocaleKeys.announcement_day,
                   fontWeight: FontWeight.w400,
                   fontSize: 10.sp,
                   color: AppColorUtils.DARK_6,
                 ),
                 AppWidgets.text(
                   text: model.createdDate!,
-                  color: Color(0xFF043F3B),
+                  color: AppColorUtils.TEXT_GREEN2,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ).paddingOnly(top: 3.w),
@@ -333,13 +333,13 @@ class CharityPriceWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppWidgets.textLocale(
-                    text: "To'plandi",
+                    text: LocaleKeys.collected,
                     color: AppColorUtils.DARK_6,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
                   ),
                   AppWidgets.textLocale(
-                    text: "Bajarildi",
+                    text: LocaleKeys.done,
                     color: AppColorUtils.DARK_6,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
@@ -414,7 +414,7 @@ class CharityAuthorWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppWidgets.textLocale(
-                  text: "E'lon muallifi",
+                  text: LocaleKeys.project_author,
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColorUtils.DARK_6,
@@ -434,7 +434,7 @@ class CharityAuthorWidget extends StatelessWidget {
         ),
         ButtonCard(
           onPress: () {},
-          text: "Savol berish",
+          text: LocaleKeys.ask_question,
           width: 100.w,
           height: 35.w,
           color: AppColorUtils.GREEN_BTN,

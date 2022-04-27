@@ -35,7 +35,11 @@ class VolunteeringItemsCharityList extends StatelessWidget {
             color: AppColorUtils.GRAY_4,
             textAlign: TextAlign.center,
             maxLines: 2,
-          ).paddingOnly(top: 20, left: 50.w, right: 50.w,),
+          ).paddingOnly(
+            top: 20,
+            left: 50.w,
+            right: 50.w,
+          ),
         ],
       );
     }

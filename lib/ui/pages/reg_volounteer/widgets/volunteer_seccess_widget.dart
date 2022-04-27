@@ -1,10 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
-
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 
@@ -36,7 +37,7 @@ class VolunteerSuccessWidget extends StatelessWidget {
               AppWidgets.text(
                 textAlign: TextAlign.center,
                 text:
-                "Arizangiz uchun rahmat! //Moderatorlar// tez orada siz bilan aloqaga chiqishadi.",
+                LocaleKeys.thank_you_for_your_application_moderators_will_contact_you_shortly.tr(),
                 richText: true,
                 othersMarkers: [
                   MarkerText(
@@ -57,13 +58,13 @@ class VolunteerSuccessWidget extends StatelessWidget {
                 fit: BoxFit.none,
               ).paddingOnly(top: 20),
               AppWidgets.appButton(
-                title: "Xo'p, rahmat",
+                title: LocaleKeys.thank_you,
                 textColor: AppColorUtils.KRAUDFANDING,
                 onTap: () {
                   bloc.add(VolunteerSendBtn());
                   Navigator.pop(context);
                 },
-                color: Color(0xFFECFFFA),
+                color: AppColorUtils.WHITE_GREEN5,
               ).paddingOnly(
                 top: 26,
                 left: 20,

@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -12,7 +13,6 @@ import 'package:najot/ui/pages/reg_volounteer/widgets/app_date_picker.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/img_upload_widget.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/img_view.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/volunteer_pass_info_dialog.dart';
-import 'package:najot/ui/pages/reg_volounteer/widgets/volunteer_seccess_widget.dart';
 import 'package:najot/ui/widgets/app_date_picker_widget.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -37,7 +37,7 @@ class EditView2 extends StatelessWidget {
                   Expanded(
                     child: AppTextField(
                       inputFormatter: bloc.state.inputFormatter,
-                      title: "Passport seriyasi",
+                      title: LocaleKeys.passport_series.tr(),
                       textInputType: TextInputType.name,
                       onChanged: (v) {
                         bloc.add(VolunteerSerialChanged(v));
@@ -50,7 +50,7 @@ class EditView2 extends StatelessWidget {
                   Expanded(
                     child: AppTextField(
                       inputFormatter: bloc.state.inputFormatter,
-                      title: "Passport raqami",
+                      title: LocaleKeys.passport_number.tr(),
                       textInputType: TextInputType.number,
                       onChanged: (v) {
                         bloc.add(VolunteerSerialNumberChanged(v));
@@ -63,13 +63,13 @@ class EditView2 extends StatelessWidget {
                 ],
               ).paddingOnly(top: 15),
               AppTextField(
-                hintText: "Toshkent shahar Yunsobod IIB",
+                hintText: LocaleKeys.tashkent_city_yunsabad.tr(),
                 onChanged: (v) {
                   bloc.add(VolunteerGiveAddressChanged(v));
                 },
                 isFill: bloc.state.givenAddress.isNotEmpty,
                 initialText: bloc.state.givenAddress,
-                title: "Kim tomonidan berilgan",
+                title: LocaleKeys.given_by.tr(),
                 textInputType: TextInputType.name,
               ).paddingOnly(
                 top: 24.w,
@@ -77,13 +77,12 @@ class EditView2 extends StatelessWidget {
                 right: 20.w,
               ),
               AppDatePicker(
-                title: "Qachon berilgan",
+                title: LocaleKeys.when_given.tr(),
                 onTap: () async {
                   await showDialog(
                     context: context,
                     builder: (context) => AppDatePickerWidget(
                       selectFunction: (dateTime) {
-                        print(dateTime.toUtc().toString());
                         bloc.add(VolunteerGiveDateSelected(dateTime));
                       },
                     ),
@@ -99,7 +98,7 @@ class EditView2 extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       AppWidgets.text(
-                        text: "Passport rasmini yuklang",
+                        text: LocaleKeys.upload_passport_photo.tr(),
                         fontWeight: FontWeight.w400,
                         fontSize: 14.sp,
                         color: AppColorUtils.DARK_4,
@@ -125,7 +124,6 @@ class EditView2 extends StatelessWidget {
                         child: ImgUploadWidget(
                           deleteImg: () {
                             bloc.add(VolunteerPassImgDeleted());
-                            print("deletre");
                           },
                           onTapImg: () {
                             NavigatorService.to.pushNamed(
@@ -137,7 +135,7 @@ class EditView2 extends StatelessWidget {
                             bloc.add(VolunteerPassImgUploaded());
                           },
                           img: bloc.state.passportImgPath,
-                          title: " Pasportni ma'lumotlar sahifasi",
+                          title: LocaleKeys.passport_information_page.tr(),
                         ),
                       ),
                       SizedBox(
@@ -146,7 +144,6 @@ class EditView2 extends StatelessWidget {
                       Expanded(
                         child: ImgUploadWidget(
                           deleteImg: () {
-                            print("deletre");
                             context
                                 .read<RegVolunteerBloc>()
                                 .add(VolunteerPageImgDeleted(null));
@@ -157,7 +154,7 @@ class EditView2 extends StatelessWidget {
                               arguments: bloc.state.pageImgPath!.path,
                             );
                           },
-                          title: " Ro’yxatga olinganligiz to’grisidagi sahifa",
+                          title: LocaleKeys.registration_page.tr(),
                           uploadBtn: () {
                             bloc.add(VolunteerPageImgUploaded());
                           },
@@ -174,11 +171,11 @@ class EditView2 extends StatelessWidget {
             ],
           ),
           AppWidgets.appButton(
-            title: "Yuborish",
+            title: LocaleKeys.send.tr(),
             onTap: bloc.state.sendBtnActive
                 ? () async {
                     AppWidgets.showText(
-                      text: "Next page",
+                      text: LocaleKeys.next_page.tr(),
                       duration: Duration(milliseconds: 800),
                     );
                     await showDialog(
@@ -189,7 +186,7 @@ class EditView2 extends StatelessWidget {
                   }
                 : () {
                     AppWidgets.showText(
-                      text: "Bo'sh maydonlarni to'ldiring",
+                      text: LocaleKeys.fill_in_the_blanks.tr(),
                       duration: Duration(milliseconds: 800),
                     );
                   },

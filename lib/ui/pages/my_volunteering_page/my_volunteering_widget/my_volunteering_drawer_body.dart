@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -52,10 +53,10 @@ class MyVolunteeringDrawerBody extends StatelessWidget {
                 onPress: () {
                   NavigatorService.to.pushNamed(AddingProjectPage.routeName);
                 },
-                text: "  Loyiha qo'shish",
+                text: LocaleKeys.add_project,
                 width: double.infinity,
                 height: 44.w,
-                color: Color(0xFFEAF2FF),
+                color: AppColorUtils.ADD_PROJECT_COLOR,
                 fontWeight: FontWeight.w600,
                 textSize: 16.sp,
                 textColor: AppColorUtils.BLUE_TEXT,
@@ -71,7 +72,7 @@ class MyVolunteeringDrawerBody extends StatelessWidget {
                 iconSelect: AppImageUtils.MAIN,
                 icon: AppImageUtils.PROJECT,
                 isActive: false,
-                text: "Loyiha va E'lonlar",
+                text: LocaleKeys.projects_and_ads,
                 fontSize: 16.sp,
                 padding: EdgeInsets.symmetric(
                   horizontal: 18.w,
@@ -88,7 +89,7 @@ class MyVolunteeringDrawerBody extends StatelessWidget {
                 isActive: true,
                 icon: AppImageUtils.HISTORY,
                 iconSelect: AppImageUtils.VOLUNTEER,
-                text: "Volontyorlik faoliyatim",
+                text: LocaleKeys.my_volunteering,
                 fontSize: 16.sp,
                 padding: EdgeInsets.symmetric(
                   horizontal: 18.w,
@@ -106,7 +107,7 @@ class MyVolunteeringDrawerBody extends StatelessWidget {
               AppWidgets.rowIconText(
                 icon: AppImageUtils.HISTORY,
                 iconSelect: AppImageUtils.HISTORY2,
-                text: "Xayriya tarixi",
+                text: LocaleKeys.charity_history,
                 fontSize: 16.sp,
                 padding: EdgeInsets.symmetric(
                   horizontal: 18.w,
@@ -123,7 +124,7 @@ class MyVolunteeringDrawerBody extends StatelessWidget {
               AppWidgets.rowIconText(
                 icon: AppImageUtils.PRODUCTS,
                 iconSelect: AppImageUtils.PRODUCTS2,
-                text: "Mahsulotlarim",
+                text: LocaleKeys.my_products,
                 fontSize: 16.sp,
                 padding: EdgeInsets.symmetric(
                   horizontal: 18.w,

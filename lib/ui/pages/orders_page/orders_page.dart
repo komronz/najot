@@ -10,7 +10,6 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-
 import '../../../data/bloc/orders_cubit/orders_state.dart';
 import '../../../data/localization/locale_keys.g.dart';
 import '../../../data/services/navigator_service.dart';

@@ -98,7 +98,7 @@ class VolunteerCardWidget extends StatelessWidget {
                                   ),
                                   AppWidgets.text(
                                     text: "*",
-                                    color: Colors.red,
+                                    color: AppColorUtils.RED,
                                   )
                                 ],
                               ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -51,7 +52,8 @@ class DrawerBodySecond extends StatelessWidget {
             top: 50.w,
             left: 20.w,
           ),
-          ButtonCard(
+          state.tobeVolunteer
+          ? ButtonCard(
             height: 48.w,
             width: MediaQuery.of(context).size.width,
             onPress: () {
@@ -62,7 +64,7 @@ class DrawerBodySecond extends StatelessWidget {
             },
             visibleIcon: true,
             addIcon: AppImageUtils.PLUS,
-            text: "Loyiha qo'shish",
+            text: LocaleKeys.add_project.tr(),
             color: AppColorUtils.ADD_PROJECT_COLOR,
             textColor: AppColorUtils.VOLONTYOR,
             fontWeight: FontWeight.w600,
@@ -72,13 +74,13 @@ class DrawerBodySecond extends StatelessWidget {
             bottom: 24.w,
             left: 20.w,
             right: 20.w,
-          ),
-
-          AppWidgets.rowIconText(
+          ): SizedBox().paddingOnly(bottom: 40.w),
+          state.tobeVolunteer
+          ? AppWidgets.rowIconText(
             isActive: pageType == AppPageType.PROJECT,
             icon: AppImageUtils.PROJECT1,
             iconSelect: AppImageUtils.PROJECT2,
-            text: "Loyiha va e'lonlarim",
+            text: LocaleKeys.projects_and_ads.tr(),
             fontSize: 16.sp,
             padding: EdgeInsets.symmetric(
               horizontal: 18.w,
@@ -90,13 +92,13 @@ class DrawerBodySecond extends StatelessWidget {
               );
               Navigator.pop(context);
             },
-          ),
+          ): SizedBox(),
           state.tobeVolunteer
           ? AppWidgets.rowIconText(
             isActive: pageType == AppPageType.VOLUNTEERING,
             icon: AppImageUtils.TOBE_VOLUNTEER,
             iconSelect: AppImageUtils.TOBE_VOLUNTEER2,
-            text: "Volontyorlik faoliyatim",
+            text: LocaleKeys.my_volunteering.tr(),
             fontSize: 16.sp,
             padding: EdgeInsets.symmetric(
               horizontal: 18.w,

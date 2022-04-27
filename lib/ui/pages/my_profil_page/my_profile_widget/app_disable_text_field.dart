@@ -61,13 +61,16 @@ class _AppTextFieldState extends State<AppDisableTextField> {
     InputBorder _border = widget.hasError
         ? OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(width: 2, color: AppColorUtils.RED),
+            borderSide: BorderSide(
+              width: 2,
+              color: AppColorUtils.RED,
+            ),
           )
         : OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(
               width: 1,
-              color: Color(0xFFCEE1DD),
+              color: AppColorUtils.BORDER,
             ),
           );
     return Column(
@@ -96,19 +99,19 @@ class _AppTextFieldState extends State<AppDisableTextField> {
         Container(
           height: widget.height,
           decoration: BoxDecoration(
-            color: Color(0xFFEDFCF9),
+            color: AppColorUtils.REG_BACK,
             borderRadius: BorderRadius.circular(12),
           ),
           child: TextFormField(
-            inputFormatters: widget.inputFormatter !=null? [widget.inputFormatter!]:null,
-
+            inputFormatters:
+                widget.inputFormatter != null ? [widget.inputFormatter!] : null,
             expands: widget.isMultiLine ? true : false,
             textAlignVertical: TextAlignVertical.top,
             maxLines: widget.isMultiLine ? null : 1,
             controller: _textEditingController,
             enabled: widget.enabled,
             style: GoogleFonts.inter(
-              fontSize: 16,
+              fontSize: 15.sp,
             ),
             decoration: InputDecoration(
               // border: _border,

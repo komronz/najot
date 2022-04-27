@@ -92,7 +92,7 @@ class VolunteeringCharityListItemWidget extends StatelessWidget {
                   Icons.visibility_outlined,
                   size: 18,
                 ),
-                color: Color(0xFFE5FAF3),
+                color: AppColorUtils.WHITE_GREEN,
               ),
             )
           ],

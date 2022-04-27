@@ -29,7 +29,7 @@ class OrganizationPage extends StatelessWidget {
                 elevation: 0,
                 automaticallyImplyLeading: false,
                 title: AppWidgets.appBarMenu(
-                  title: "Tashkilotlar",
+                  title: LocaleKeys.organizations,
                   onTapMenu: () {
                     HomePage.globalKey.currentState!.openDrawer();
                   },

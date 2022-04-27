@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
@@ -50,13 +49,16 @@ class KraudfandingSavedPage extends StatelessWidget {
                             Center(child: CircularProgressIndicator()),
                         fit: BoxFit.cover,
                       ),
-
                     ),
                     flex: 1,
                   ),
                   Expanded(
                     child: Container(
-                      margin: EdgeInsets.only(left: 10, top: 12, right: 5),
+                      margin: EdgeInsets.only(
+                        left: 10,
+                        top: 12,
+                        right: 5,
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -103,14 +105,16 @@ class KraudfandingSavedPage extends StatelessWidget {
               ),
             ),
             Align(
-              child: FavoriteButton(isFavorite: cardModel.isFavorite!,),
+              child: FavoriteButton(
+                isFavorite: cardModel.isFavorite!,
+              ),
               alignment: Alignment.topRight,
             ).paddingAll(12.w),
             Visibility(
               visible: visible,
               child: ButtonCard(
                 onPress: () {},
-                text: "Texnologiya",
+                text: LocaleKeys.technology,
                 visibleIcon: false,
                 borderRadius: 20,
                 height: 24.h,
@@ -130,6 +134,7 @@ class KraudfandingSavedPage extends StatelessWidget {
     );
   }
 }
+
 class FavoriteButton extends StatelessWidget {
   final bool isFavorite;
 
@@ -142,28 +147,28 @@ class FavoriteButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return isFavorite
         ? Container(
-      width: 24.w,
-      height: 24.w,
-      decoration: BoxDecoration(
-        color: AppColorUtils.PURPLE,
-        borderRadius: BorderRadius.circular(2),
-      ),
-      child: AppWidgets.imageSvg(
-        path: AppImageUtils.UNLIKE,
-        fit: BoxFit.none,
-      ),
-    )
+            width: 24.w,
+            height: 24.w,
+            decoration: BoxDecoration(
+              color: AppColorUtils.PURPLE,
+              borderRadius: BorderRadius.circular(2),
+            ),
+            child: AppWidgets.imageSvg(
+              path: AppImageUtils.UNLIKE,
+              fit: BoxFit.none,
+            ),
+          )
         : Container(
-      width: 24.w,
-      height: 24.w,
-      decoration: BoxDecoration(
-        color: AppColorUtils.IC_GREEN,
-        borderRadius: BorderRadius.circular(2),
-      ),
-      child: AppWidgets.imageSvg(
-        path: AppImageUtils.IC_FAVORITE_ADD,
-        fit: BoxFit.none,
-      ),
-    );
+            width: 24.w,
+            height: 24.w,
+            decoration: BoxDecoration(
+              color: AppColorUtils.IC_GREEN,
+              borderRadius: BorderRadius.circular(2),
+            ),
+            child: AppWidgets.imageSvg(
+              path: AppImageUtils.IC_FAVORITE_ADD,
+              fit: BoxFit.none,
+            ),
+          );
   }
 }

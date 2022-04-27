@@ -42,7 +42,7 @@ class OrganizationHelpWidget extends StatelessWidget {
     return Scaffold(
         backgroundColor: AppColorUtils.BACKGROUND,
         appBar: AppBarWithTitle(
-          title: "Yordam berish",
+          title: LocaleKeys.help,
           onPress: () {
             NavigatorService.to.pop();
           },
@@ -81,7 +81,7 @@ class OrganizationHelpWidget extends StatelessWidget {
                     ],
                   ),
                   AppWidgets.textLocale(
-                    text: "E'lon nomi",
+                    text: LocaleKeys.project_name,
                     fontWeight: FontWeight.w400,
                     fontSize: 12.sp,
                     color: AppColorUtils.DARK_6,
@@ -140,7 +140,7 @@ class OrganizationHelpWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppWidgets.starTextWidget(
-                        text: LocaleKeys.done_date.tr(),
+                        text: LocaleKeys.done_date,
                       ),
                       SizedBox(
                         height: 3.w,
@@ -159,7 +159,7 @@ class OrganizationHelpWidget extends StatelessWidget {
                     ],
                   ).paddingSymmetric(horizontal: 20.w),
                   AppWidgets.starTextWidget(
-                    text: LocaleKeys.help_type.tr(),
+                    text: LocaleKeys.help_type,
                     fontWeight: FontWeight.w400,
                     fontSize: 10.sp,
                     color: AppColorUtils.DARK_6,
@@ -201,7 +201,7 @@ class OrganizationHelpWidget extends StatelessWidget {
                             ),);
                       }
                     },
-                    text: "Yordam berish",
+                    text: LocaleKeys.help,
                     height: 48.w,
                     width: 1.sw,
                     color: state.checkBox
@@ -220,9 +220,7 @@ class OrganizationHelpWidget extends StatelessWidget {
                       Checkbox(
                         onChanged: (v) {
                           helpModel.cubit.onTapCheckBox(v!);
-
                           HapticFeedback.heavyImpact();
-
                         },
                         value: state.checkBox,
                         checkColor: AppColorUtils.BORDER_COLOR,
@@ -239,15 +237,14 @@ class OrganizationHelpWidget extends StatelessWidget {
                       ).paddingOnly(left: 8.w),
 
                       AppWidgets.textLocale(
-                          text: "Men roziman",
+                          text: LocaleKeys.i_agree,
                           color: AppColorUtils.DARK_1,
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w400)
                     ],
                   ),
                   AppWidgets.textLocale(
-                      text:
-                      "*Diqqat! yordam berishga rozi bo'lsangiz inson sizni kutadi.",
+                      text: LocaleKeys.attention_the_person_is_waiting_for_you_if_you_agree_to_help,
                       color: AppColorUtils.RED,
                       fontWeight: FontWeight.w400,
                       fontSize: 12.sp,

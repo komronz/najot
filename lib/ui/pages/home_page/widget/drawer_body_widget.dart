@@ -81,7 +81,7 @@ class DrawerBody extends StatelessWidget {
                                       ),
                                       child: AppWidgets.text(
                                         text: state.tobeVolunteer
-                                            ? "Volontyor"
+                                            ? LocaleKeys.volunteer.tr()
                                             : LocaleKeys.normal_user.tr(),
                                         color: AppColorUtils.BLUE_PERCENT,
                                         fontSize: 12.sp,
@@ -141,7 +141,7 @@ class DrawerBody extends StatelessWidget {
                                 );
                             Navigator.pop(context);
                           },
-                          text: "Volontyor bo'ling",
+                          text: LocaleKeys.be_volunteer.tr(),
                           width: 226.w,
                           height: 44.h,
                           color: AppColorUtils.GREEN_ACCENT1,
@@ -176,7 +176,7 @@ class DrawerBody extends StatelessWidget {
                     isActive: pageType == AppPageType.CHARITY,
                     icon: AppImageUtils.HISTORY,
                     iconSelect: AppImageUtils.HISTORY2,
-                    text: "Xizmatlarim",
+                    text: LocaleKeys.my_services.tr(),
                     fontSize: 16.sp,
                     direction: true,
                     padding: EdgeInsets.symmetric(
@@ -191,7 +191,7 @@ class DrawerBody extends StatelessWidget {
                     isActive: pageType == AppPageType.ORGANIZATIONS,
                     icon: AppImageUtils.ORGANIZATION,
                     iconSelect: AppImageUtils.ORGANIZATION2,
-                    text: "Tashkilotlar",
+                    text: LocaleKeys.organizations.tr(),
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,

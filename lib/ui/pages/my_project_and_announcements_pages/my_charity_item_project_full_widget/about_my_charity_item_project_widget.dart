@@ -55,7 +55,8 @@ class _AboutMyCharityItemProjectWidgetState
       setState(() {});
     }
   }
-  bool selected=true;
+
+  bool selected = true;
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +120,6 @@ class _AboutMyCharityItemProjectWidgetState
                             ],
                           ),
                         ).paddingOnly(top: 35.h, right: 15.w),
-
                       ],
                     ),
                     AppWidgets.text(
@@ -148,312 +148,332 @@ class _AboutMyCharityItemProjectWidgetState
                                     width: 14.w,
                                     height: 14.w,
                                     child: CircularProgressIndicator(
-                                      color: Color(0xFFE8B811),
+                                      color: AppColorUtils.ORANGE_1,
                                       backgroundColor: AppColorUtils.WHITE,
                                       strokeWidth: 2,
                                     ),
-                                  ).paddingOnly(right: 5,),
+                                  ).paddingOnly(
+                                    right: 5,
+                                  ),
                                   AppWidgets.textLocale(
                                     text: LocaleKeys.expected,
                                     fontSize: 14.sp,
-                                    color: Color(0xFFE8B811),
+                                    color: AppColorUtils.ORANGE_1,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ],
-                              ).paddingOnly(bottom: 12.w,),
+                              ).paddingOnly(
+                                bottom: 12.w,
+                              ),
                             ],
                           )
                         : MyCharityItemAuthorWidget(
                             onTap: () {},
                             model: widget.model,
-                          ).paddingOnly(bottom: 18.w,),
+                          ).paddingOnly(
+                            bottom: 18.w,
+                          ),
                   ],
-                ).paddingSymmetric(horizontal: 20.w,),
+                ).paddingSymmetric(
+                  horizontal: 20.w,
+                ),
               ),
               SizedBox(
                 height: 24.w,
               ),
-              state.widgetChange==false
-              ?Container(
-                padding: EdgeInsets.symmetric(vertical: 20.w,),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(11.0)),
-                child: DefaultTabController(
-                  initialIndex: 0,
-                  length: 4,
-                  child: Column(
-                    children: [
-                      TabBar(
-                        onTap: (v){
-                          if(v==2){
-                            selected=false;
-                          }else{
-                            selected=true;
-                          }
-                        },
-                        controller: _tabController,
-                        enableFeedback: true,
-                        labelColor: AppColorUtils.GREEN_APP,
-                        unselectedLabelColor: AppColorUtils.DARK_6,
-                        unselectedLabelStyle: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w400,
-                        ),
-                        labelStyle: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        tabs: [
-                          Text(
-                            LocaleKeys.more.tr(),
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                            ),
-                          ),
-                          Text(
-                            LocaleKeys.news.tr(),
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                LocaleKeys.questions_asked.tr(),
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                ),
+              state.widgetChange == false
+                  ? Container(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 20.w,
+                      ),
+                      decoration: BoxDecoration(
+                          color: AppColorUtils.WHITE,
+                          borderRadius: BorderRadius.circular(11.0)),
+                      child: DefaultTabController(
+                        initialIndex: 0,
+                        length: 4,
+                        child: Column(
+                          children: [
+                            TabBar(
+                              onTap: (v) {
+                                if (v == 2) {
+                                  selected = false;
+                                } else {
+                                  selected = true;
+                                }
+                              },
+                              controller: _tabController,
+                              enableFeedback: true,
+                              labelColor: AppColorUtils.GREEN_APP,
+                              unselectedLabelColor: AppColorUtils.DARK_6,
+                              unselectedLabelStyle: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w400,
                               ),
-                               Visibility(
-                                 visible: selected,
-                                 child: Container(
+                              labelStyle: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              tabs: [
+                                Text(
+                                  LocaleKeys.more.tr(),
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                  ),
+                                ),
+                                Text(
+                                  LocaleKeys.news.tr(),
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      LocaleKeys.questions_asked.tr(),
+                                      style: TextStyle(
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                    Visibility(
+                                      visible: selected,
+                                      child: Container(
                                         width: 7.w,
                                         height: 7.w,
                                         decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(50),
-                                            color: Colors.red),
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          color: AppColorUtils.RED,
+                                        ),
                                       ).paddingOnly(left: 3.w, top: 2.w),
-                               )
-                            ],
-                          ),
-                          Text(
-                            LocaleKeys.comments.tr(),
-                            style: TextStyle(
-                              fontSize: 14.sp,
+                                    )
+                                  ],
+                                ),
+                                Text(
+                                  LocaleKeys.comments.tr(),
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                  ),
+                                ),
+                              ],
+                              isScrollable: true,
+                              indicatorWeight: 2,
+                              indicatorColor: AppColorUtils.GREEN_APP,
+                              indicatorSize: TabBarIndicatorSize.tab,
+                              padding: EdgeInsets.only(right: 10),
+                              indicatorPadding: EdgeInsets.only(
+                                right: 10,
+                                left: 10,
+                              ),
+                              labelPadding: EdgeInsets.only(
+                                right: 10,
+                                left: 10,
+                              ),
+                            ).paddingOnly(
+                              left: 15.w,
+                              top: 8.w,
                             ),
-                          ),
-                        ],
-                        isScrollable: true,
-                        indicatorWeight: 2,
-                        indicatorColor: AppColorUtils.GREEN_APP,
-                        indicatorSize: TabBarIndicatorSize.tab,
-                        padding: EdgeInsets.only(right: 10),
-                        indicatorPadding: EdgeInsets.only(right: 10, left: 10,),
-                        labelPadding: EdgeInsets.only(right: 10, left: 10,),
-                      ).paddingOnly(left: 15.w, top: 8.w,),
-                      Container(
-                        child: [
-                          MyCharityMoreWidget(
-                            cardModel: widget.model,
-                          ),
-                          MyCharityNewsWidget(
-                            cardModel: widget.model,
-                          ).paddingAll(20.w),
-                          MyCharityQuestionsAskedWidget(
-                            cardModel: widget.model, cubit: cubit,
-                          ).paddingAll(20.w),
-                          MyCharityCommentsWidget(
-                            cardModel: widget.model,
-                          ).paddingAll(20.w)
-                        ][_tabController.index],
-                      ),
-                      SizedBox(
-                        height: 10.w,
-                      ),
-                      // Row(
-                      //   mainAxisAlignment:
-                      //   MainAxisAlignment.spaceBetween,
-                      //   children: [
-                      //     // ButtonCard(
-                      //     //   onPress: () {
-                      //     //     showDialog(
-                      //     //       context: context,
-                      //     //       builder: (context) {
-                      //     //         return SupportProjectDialog();
-                      //     //       },
-                      //     //     );
-                      //     //   },
-                      //     //   text: LocaleKeys.project_implementation,
-                      //     //   height: 48.w,
-                      //     //   width: 274.w,
-                      //     //   color: AppColorUtils.PERCENT_COLOR,
-                      //     //   textSize: 16.sp,
-                      //     //   fontWeight: FontWeight.w600,
-                      //     //   textColor: AppColorUtils.WHITE,
-                      //     // ),
-                      //     // AppWidgets.favouriteButton(
-                      //     //   select: widget.model.isFavorite!,
-                      //     //   height: 48.w,
-                      //     //   width: 48.w,
-                      //     //   onTap: () {},
-                      //     // )
-                      //   ],
-                      // ).paddingSymmetric(horizontal: 20.w),
-                    ],
-                  ),
-                ),
-              )
-              :Container(
-                color: AppColorUtils.WHITE,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 31.w,
-                        height: 34.w,
-                        decoration: BoxDecoration(
-                          color: AppColorUtils.BACK_BUTTON,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Icon(
-                          Icons.arrow_back_ios_rounded,
-                          color: AppColorUtils.IC_GREEN2,
-                          size: 20.w,
+                            Container(
+                              child: [
+                                MyCharityMoreWidget(
+                                  cardModel: widget.model,
+                                ),
+                                MyCharityNewsWidget(
+                                  cardModel: widget.model,
+                                ).paddingAll(20.w),
+                                MyCharityQuestionsAskedWidget(
+                                  cardModel: widget.model,
+                                  cubit: cubit,
+                                ).paddingAll(20.w),
+                                MyCharityCommentsWidget(
+                                  cardModel: widget.model,
+                                ).paddingAll(20.w)
+                              ][_tabController.index],
+                            ),
+                            SizedBox(
+                              height: 10.w,
+                            ),
+                            // Row(
+                            //   mainAxisAlignment:
+                            //   MainAxisAlignment.spaceBetween,
+                            //   children: [
+                            //     // ButtonCard(
+                            //     //   onPress: () {
+                            //     //     showDialog(
+                            //     //       context: context,
+                            //     //       builder: (context) {
+                            //     //         return SupportProjectDialog();
+                            //     //       },
+                            //     //     );
+                            //     //   },
+                            //     //   text: LocaleKeys.project_implementation,
+                            //     //   height: 48.w,
+                            //     //   width: 274.w,
+                            //     //   color: AppColorUtils.PERCENT_COLOR,
+                            //     //   textSize: 16.sp,
+                            //     //   fontWeight: FontWeight.w600,
+                            //     //   textColor: AppColorUtils.WHITE,
+                            //     // ),
+                            //     // AppWidgets.favouriteButton(
+                            //     //   select: widget.model.isFavorite!,
+                            //     //   height: 48.w,
+                            //     //   width: 48.w,
+                            //     //   onTap: () {},
+                            //     // )
+                            //   ],
+                            // ).paddingSymmetric(horizontal: 20.w),
+                          ],
                         ),
                       ),
-                      onTap: (){
-                        cubit.widgetChange(false);
-                      },
-                    ).paddingOnly(
-                      left: 20.w,
-                      top: 18.w,
-                      bottom: 18.w,
-                    ),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 20.w),
-                      padding: EdgeInsets.only(
-                        top: 12.w,
-                        left: 12.w,
-                        right: 12.w,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: AppColorUtils.GREEN_ACCENT4,
-                      ),
+                    )
+                  : Container(
+                      color: AppColorUtils.WHITE,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          true
-                              ? Column(
-                            crossAxisAlignment:
-                            CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Container(
-                                    height: 50.w,
-                                    width: 50.w,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      image: DecorationImage(
-                                          image: NetworkImage(
-                                            widget.model.imgUrl!,
+                          InkWell(
+                            child: Container(
+                              width: 31.w,
+                              height: 34.w,
+                              decoration: BoxDecoration(
+                                color: AppColorUtils.BACK_BUTTON,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Icon(
+                                Icons.arrow_back_ios_rounded,
+                                color: AppColorUtils.IC_GREEN2,
+                                size: 20.w,
+                              ),
+                            ),
+                            onTap: () {
+                              cubit.widgetChange(false);
+                            },
+                          ).paddingOnly(
+                            left: 20.w,
+                            top: 18.w,
+                            bottom: 18.w,
+                          ),
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: 20.w),
+                            padding: EdgeInsets.only(
+                              top: 12.w,
+                              left: 12.w,
+                              right: 12.w,
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: AppColorUtils.GREEN_ACCENT4,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                true
+                                    ? Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Container(
+                                                height: 50.w,
+                                                width: 50.w,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  image: DecorationImage(
+                                                      image: NetworkImage(
+                                                        widget.model.imgUrl!,
+                                                      ),
+                                                      fit: BoxFit.cover),
+                                                ),
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  SizedBox(
+                                                    child: AppWidgets.text(
+                                                      text:
+                                                          LocaleKeys.exactly_how_humanity_benefits.tr(),
+                                                      color: AppColorUtils
+                                                          .TEXT_GREEN2,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 14.sp,
+                                                      maxLines: 2,
+                                                    ).paddingOnly(top: 5.w),
+                                                    width: 240.w,
+                                                  ),
+                                                  AppWidgets.textLocale(
+                                                    text: "Eshonov Fakhriyor",
+                                                    fontSize: 12.sp,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: AppColorUtils.DARK_6,
+                                                  ).paddingOnly(top: 3.w),
+                                                ],
+                                              ).paddingOnly(left: 10),
+                                            ],
                                           ),
-                                          fit: BoxFit.cover),
-                                    ),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        child: AppWidgets.text(
-                                          text:
-                                          "Insoniyat aynan qanday foyda beradi",
-                                          color: AppColorUtils
-                                              .TEXT_GREEN2,
-                                          fontWeight:
-                                          FontWeight.w600,
-                                          fontSize: 14.sp,
-                                          maxLines: 2,
-                                        ).paddingOnly(top: 5.w),
-                                        width: 240.w,
+                                          AppWidgets.text(
+                                            text: widget
+                                                .model.infoModel![0].text!,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 14.sp,
+                                            color: AppColorUtils.TEXT_GREY2,
+                                            maxLines: 100,
+                                            height: 1.5,
+                                          ).paddingSymmetric(vertical: 15.w),
+                                          Divider(
+                                            thickness: 1,
+                                            color: AppColorUtils.BLACK_12,
+                                          ),
+                                          AppWidgets.text(
+                                            text: LocaleKeys.your_answer.tr(),
+                                            color: AppColorUtils.TEXT_GREEN2,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 14.sp,
+                                          ).paddingOnly(top: 20.w),
+                                          AppWidgets.text(
+                                            text: widget
+                                                .model.infoModel![0].text!,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 14.sp,
+                                            color: AppColorUtils.TEXT_GREY2,
+                                            maxLines: 100,
+                                            height: 1.5,
+                                          ).paddingSymmetric(vertical: 15.w),
+                                        ],
+                                      )
+                                    : Container(
+                                        child: Center(
+                                          child: Column(
+                                            children: [
+                                              SizedBox(
+                                                height: 30.w,
+                                              ),
+                                              SvgPicture.asset(AppImageUtils
+                                                  .EMPTY_QUESTIONS),
+                                              SizedBox(
+                                                width: 200.sp,
+                                                child: AppWidgets.textLocale(
+                                                  textAlign: TextAlign.center,
+                                                  text: LocaleKeys
+                                                      .questions_empty,
+                                                  color: AppColorUtils.DARK_4,
+                                                  fontSize: 14.sp,
+                                                  fontWeight: FontWeight.w600,
+                                                  maxLines: 2,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
                                       ),
-                                      AppWidgets.textLocale(
-                                        text: "Eshonov Fakhriyor",
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.w400,
-                                        color: AppColorUtils.DARK_6,
-                                      ).paddingOnly(top: 3.w),
-                                    ],
-                                  ).paddingOnly(left: 10),
-                                ],
-                              ),
-                              AppWidgets.text(
-                                text: widget
-                                    .model.infoModel![0].text!,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14.sp,
-                                color: AppColorUtils.TEXT_GREY2,
-                                maxLines: 100,
-                                height: 1.5,
-                              ).paddingSymmetric(vertical: 15.w),
-                              Divider(
-                                thickness: 1,
-                                color: AppColorUtils.BLACK_12,
-                              ),
-                              AppWidgets.text(
-                                text: "Sizning javobingiz",
-                                color: AppColorUtils.TEXT_GREEN2,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14.sp,
-                              ).paddingOnly(top: 20.w),
-                              AppWidgets.text(
-                                text: widget
-                                    .model.infoModel![0].text!,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14.sp,
-                                color: AppColorUtils.TEXT_GREY2,
-                                maxLines: 100,
-                                height: 1.5,
-                              ).paddingSymmetric(vertical: 15.w),
-                            ],
-                          )
-                              : Container(
-                            child: Center(
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 30.w,
-                                  ),
-                                  SvgPicture.asset(AppImageUtils
-                                      .EMPTY_QUESTIONS),
-                                  SizedBox(
-                                    width: 200.sp,
-                                    child: AppWidgets.textLocale(
-                                      textAlign: TextAlign.center,
-                                      text: LocaleKeys
-                                          .questions_empty,
-                                      color: AppColorUtils.DARK_4,
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.w600,
-                                      maxLines: 2,
-                                    ),
-                                  )
-                                ],
-                              ),
+                              ],
                             ),
                           ),
                         ],
                       ),
                     ),
-                  ],
-                ),
-              ),
-
             ],
           );
         },

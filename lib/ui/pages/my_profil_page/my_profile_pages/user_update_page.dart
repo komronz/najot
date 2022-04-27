@@ -1,20 +1,18 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/utils/app_utils.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/show_picker_widget.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/user_update_app_radio_button.dart';
-
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_text_field.dart';
 import '../../../widgets/app_widgets.dart';
-import '../my_profile_page.dart';
+import '../../home_page/home_page.dart';
 
 class UserUpdatePage extends StatefulWidget {
   final MyProfileUpdateBloc bloc;
@@ -38,8 +36,11 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
           Container(
             color: Color(0xFFF6FCFA),
             child: AppWidgets.appBarMenu(
-              title: LocaleKeys.edit_my_profile,
-              onTapMenu: () {},
+              title: LocaleKeys.edit_my_profile.tr(),
+              onTapMenu: () {
+                HomePage.globalKey.currentState!.openDrawer();
+
+              },
               visibleIcon: true,
               onTapIcon: () {
                 Navigator.of(context).pop();
@@ -68,7 +69,7 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                             onChanged: (v) {
                               widget.bloc.add(FirstNameChanged(v));
                             },
-                            title: LocaleKeys.name,
+                            title: LocaleKeys.name.tr(),
                           ).paddingOnly(bottom: 23.h),
                           AppTextField(
                             isFill: widget.bloc.state.sureNameFill,
@@ -76,7 +77,7 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                             onChanged: (v) {
                               widget.bloc.add(LastNameChanged(v));
                             },
-                            title: LocaleKeys.surname,
+                            title: LocaleKeys.surname.tr(),
                           ).paddingOnly(bottom: 24.h),
                           Row(
                             children: [
@@ -105,12 +106,12 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          color: Color(0xFF0BBF90),
+                          color: AppColorUtils.PERCENT_COLOR,
                         ),
                         child: AppWidgets.textLocale(
                           text: LocaleKeys.save,
                           textAlign: TextAlign.center,
-                          color: Color(0xFFFFFFFF),
+                          color: AppColorUtils.WHITE,
                           fontSize: 15.sp,
                           fontWeight: FontWeight.w600,
                         ),

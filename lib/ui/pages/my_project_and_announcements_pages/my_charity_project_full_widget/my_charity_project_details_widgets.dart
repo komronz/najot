@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/utils/app_color_utils.dart';
 
 Widget singleTabDetailCharity(bool type, String text) {
   return GestureDetector(
@@ -8,7 +9,10 @@ Widget singleTabDetailCharity(bool type, String text) {
       decoration: type
           ? BoxDecoration(
               border: Border(
-                bottom: BorderSide(color: Color(0xFF048D6A), width: 1.5),
+                bottom: BorderSide(
+                  color: AppColorUtils.TEXT_GREEN,
+                  width: 1.5,
+                ),
               ),
             )
           : null,
@@ -16,9 +20,10 @@ Widget singleTabDetailCharity(bool type, String text) {
       child: Text(
         text,
         style: TextStyle(
-            fontSize: 14.sp,
-            color: type ? Color(0xFF048D6A) : Color(0xFF939598),
-            fontWeight: type ? FontWeight.w600 : FontWeight.w600),
+          fontSize: 14.sp,
+          color: type ? AppColorUtils.TEXT_GREEN : AppColorUtils.DARK_6,
+          fontWeight: type ? FontWeight.w600 : FontWeight.w600,
+        ),
       ),
     ),
   );
@@ -34,7 +39,7 @@ Widget listDetailCharity(String title, String text) {
           title,
           style: TextStyle(
             fontSize: 17.sp,
-            color: Color(0xFF414042),
+            color: AppColorUtils.DARK2,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -44,11 +49,10 @@ Widget listDetailCharity(String title, String text) {
         child: Text(
           text,
           style: TextStyle(
-            fontSize: 14.sp,
-            color: Color(0xFF58595B),
-            fontWeight: FontWeight.w400,
-            height: 1.5
-          ),
+              fontSize: 14.sp,
+              color: AppColorUtils.DARK3,
+              fontWeight: FontWeight.w400,
+              height: 1.5),
         ),
       ),
     ],

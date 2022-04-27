@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
@@ -40,7 +41,7 @@ class _AppRadioButtonState extends State<AppRadioButton> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AppWidgets.text(
-          text: "Gender",
+          text: LocaleKeys.gender.tr(),
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,
           color: AppColorUtils.DARK_4,

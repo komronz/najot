@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -63,7 +64,11 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
                   ),
                   Expanded(
                     child: Container(
-                      margin: EdgeInsets.only(left: 12, top: 12, right: 5),
+                      margin: EdgeInsets.only(
+                        left: 12,
+                        top: 12,
+                        right: 5,
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -121,11 +126,7 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
               visible: visible,
               child: ButtonCard(
                 onPress: () {},
-                text: "Texnologiya",
-                visibleIcon: false,
-                borderRadius: 20,
-                height: 24.h,
-                width: 77.w,
+                text: LocaleKeys.technology.tr(),
                 textColor: AppColorUtils.GREEN_TEXT,
                 textSize: 10.sp,
                 fontWeight: FontWeight.w400,

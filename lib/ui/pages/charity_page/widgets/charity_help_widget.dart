@@ -5,8 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/charity_page_cubit/charity_cubit.dart';
-import 'package:najot/data/bloc/volonteer_detail_cubit/volonteer_detail_cubit.dart';
-import 'package:najot/data/custom_time_picker/custom_time_picker_dialog.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
@@ -15,8 +13,6 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/charity_page/widgets/time_picker_charity.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
-import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/time_picker_volunteer.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -43,8 +39,7 @@ class CharityHelpWidget extends StatelessWidget {
     return Scaffold(
         backgroundColor: AppColorUtils.BACKGROUND,
         appBar: AppBarWithTitle(
-
-          title: "Buyum xayriya qilish",
+          title: LocaleKeys.donate_items.tr(),
           onPress: () {
             NavigatorService.to.pop();
           },
@@ -83,7 +78,7 @@ class CharityHelpWidget extends StatelessWidget {
                     ],
                   ),
                   AppWidgets.textLocale(
-                    text: "E'lon nomi",
+                    text: LocaleKeys.project_name,
                     fontWeight: FontWeight.w400,
                     fontSize: 10.sp,
                     color: AppColorUtils.DARK_6,
@@ -165,7 +160,11 @@ class CharityHelpWidget extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     fontSize: 10.sp,
                     color: AppColorUtils.DARK_6,
-                  ).paddingOnly(top: 13.w, left: 20.w, bottom: 3.w),
+                  ).paddingOnly(
+                    top: 13.w,
+                    left: 20.w,
+                    bottom: 3.w,
+                  ),
                   AppWidgets.text(
                           text: "Ovqat qilib berish va uyni yig'ishtirish",
                           maxLines: 2,
@@ -202,7 +201,7 @@ class CharityHelpWidget extends StatelessWidget {
                                 ));
                       }
                     },
-                    text: "Xayriya qilish",
+                    text: LocaleKeys.doing_charity.tr(),
                     height: 48.w,
                     width: 1.sw,
                     color: state.checkBox
@@ -229,29 +228,28 @@ class CharityHelpWidget extends StatelessWidget {
                           borderRadius: BorderRadius.circular(2.0),
                         ),
                         side: MaterialStateBorderSide.resolveWith(
-                              (states) => BorderSide(
+                          (states) => BorderSide(
                             width: 2.0,
                             color: AppColorUtils.BORDER_COLOR,
                           ),
                         ),
                       ).paddingOnly(left: 8.w),
-
                       AppWidgets.textLocale(
-                          text: "Men roziman",
+                          text: LocaleKeys.i_agree,
                           color: AppColorUtils.DARK_1,
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w400)
                     ],
                   ),
                   AppWidgets.textLocale(
-                      text:
-                      "*Diqqat! yordam berishga rozi bo'lsangiz inson sizni kutadi.",
-                      color: AppColorUtils.RED,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12.sp,
-                      maxLines: 2
-                  ).paddingSymmetric(horizontal: 20.w),
-                  SizedBox(height : 20.w)
+                          text:
+                              LocaleKeys.attention_the_person_is_waiting_for_you_if_you_agree_to_help,
+                          color: AppColorUtils.RED,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12.sp,
+                          maxLines: 2)
+                      .paddingSymmetric(horizontal: 20.w),
+                  SizedBox(height: 20.w)
                 ],
               ),
             );

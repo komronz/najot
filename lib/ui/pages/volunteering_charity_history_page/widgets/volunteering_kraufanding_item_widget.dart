@@ -25,7 +25,11 @@ class VolunteeringKraufandingItemWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           color: AppColorUtils.ITEM_CHARITY_COLOR,
         ),
-        margin: EdgeInsets.only(bottom: 12, left: 20, right: 20),
+        margin: EdgeInsets.only(
+          bottom: 12,
+          left: 20,
+          right: 20,
+        ),
         child: Stack(
           children: [
             Column(
@@ -58,7 +62,7 @@ class VolunteeringKraufandingItemWidget extends StatelessWidget {
                       color: AppColorUtils.ITEM_CHARITY_TEXT2,
                     ),
                     AppWidgets.textLocale(
-                      text: "Sana",
+                      text: LocaleKeys.date,
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w400,
                       maxLines: 10,

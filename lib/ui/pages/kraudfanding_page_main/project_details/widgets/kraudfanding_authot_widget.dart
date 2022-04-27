@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -63,7 +64,7 @@ class KraudfandingAuthorWidget extends StatelessWidget {
         ),
         ButtonCard(
           onPress: onTap,
-          text: LocaleKeys.ask_question,
+          text: LocaleKeys.ask_question.tr(),
           width: 100.w,
           height: 35.w,
           color: AppColorUtils.GREEN_BTN,

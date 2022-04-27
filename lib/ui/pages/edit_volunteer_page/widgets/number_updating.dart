@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -30,9 +31,9 @@ class NumberUpdating extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              color: Color(0xFFFDFFFF),
+              color: AppColorUtils.WHITE,
               border: Border.all(
-                color: Color(0xFF97C2BA),
+                color: AppColorUtils.GREEN_6,
                 width: 2,
               ),
             ),
@@ -40,7 +41,7 @@ class NumberUpdating extends StatelessWidget {
                 ? AppWidgets.textLocale(
                     text: "1 2 3 4 5 6",
                     textAlign: TextAlign.center,
-                    color: Color(0xFFBCBEC0),
+                    color: AppColorUtils.GRAY_4,
                     fontSize: 15.sp,
                     fontWeight: FontWeight.w600,
                   )
@@ -51,7 +52,7 @@ class NumberUpdating extends StatelessWidget {
                         AppWidgets.textLocale(
                                 text: "1 2 3 4 5 6",
                                 textAlign: TextAlign.center,
-                                color: Color(0xFF0BA42D),
+                                color: AppColorUtils.GREEN_2,
                                 fontSize: 15.sp,
                                 fontWeight: FontWeight.w600)
                             .paddingOnly(right: 10),
@@ -75,7 +76,7 @@ class NumberUpdating extends StatelessWidget {
               );
 
             },
-            text: LocaleKeys.confirmation,
+            text: LocaleKeys.confirmation.tr(),
           ).paddingOnly(bottom: 18.w),
           state.nextPage
               ? SizedBox()
@@ -86,8 +87,8 @@ class NumberUpdating extends StatelessWidget {
                   },
                   child: Container(
                     child: AppWidgets.textLocale(
-                      text: LocaleKeys.send_again,
-                      color: Color(0xFF0B58B2),
+                      text: LocaleKeys.send_again.tr(),
+                      color: AppColorUtils.BlUE_2,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                     ),
@@ -96,6 +97,6 @@ class NumberUpdating extends StatelessWidget {
         ],
       ),
     );
-    ;
+
   }
 }

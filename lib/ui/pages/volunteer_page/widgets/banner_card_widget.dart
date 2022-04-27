@@ -44,7 +44,7 @@ class BannerCard extends StatelessWidget {
                   children: [
                     AppWidgets.text(
                       text: LocaleKeys.we_to_you.tr(),
-                      color: Colors.black,
+                      color: AppColorUtils.BLACK,
                       fontSize: 14,
                       maxLines: 1,
                       fontWeight: FontWeight.w300,

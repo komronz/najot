@@ -55,9 +55,14 @@ class OperatorUserSmsWidget extends StatelessWidget {
           ),
         ),
       ],
-    ).paddingOnly(bottom: 18, top: 18, right: 18);
+    ).paddingOnly(
+      bottom: 18,
+      top: 18,
+      right: 18,
+    );
   }
- static double calculateWidth(String s) {
+
+  static double calculateWidth(String s) {
     if (s.length < 12) {
       return 100.0;
     }
@@ -67,5 +72,3 @@ class OperatorUserSmsWidget extends StatelessWidget {
     return s.length * 8 + 30;
   }
 }
-
-

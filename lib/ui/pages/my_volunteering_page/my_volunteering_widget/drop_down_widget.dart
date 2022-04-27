@@ -1,7 +1,9 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 
 class DropDownWidget extends StatefulWidget {
@@ -20,7 +22,7 @@ class _DropDownWidgetState extends State<DropDownWidget> {
       child: DropdownButton2(
         isExpanded: true,
         hint: Row(
-          children: const [
+          children: [
             Icon(
               Icons.keyboard_arrow_down_outlined,
               size: 35,
@@ -31,7 +33,7 @@ class _DropDownWidgetState extends State<DropDownWidget> {
             ),
             Expanded(
               child: Text(
-                'Tanlang',
+                  LocaleKeys.select.tr(),
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,

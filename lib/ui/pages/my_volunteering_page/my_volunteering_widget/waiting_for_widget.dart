@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/waiting_for_date_picker_widget.dart';
@@ -24,7 +25,7 @@ class WaitingForWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             width: 1,
-            color: Color(0xFFE6E7E8),
+            color: AppColorUtils.GRAY_3,
           )),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +52,7 @@ class WaitingForWidget extends StatelessWidget {
             text: model.title!,
             fontSize: 18.sp,
             fontWeight: FontWeight.w500,
-            color: Color(0xFF414042),
+            color: AppColorUtils.DARK2,
             maxLines: 2,
           ).paddingOnly(
             bottom: 18,
@@ -59,7 +60,7 @@ class WaitingForWidget extends StatelessWidget {
             left: 6,
           ),
           AppWidgets.starTextWidget(
-                  text: "Yordam turi",
+                  text: LocaleKeys.help_type,
                   fontSize: 10.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColorUtils.GRAY_4)
@@ -87,7 +88,7 @@ class WaitingForWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppWidgets.textLocale(
-                        text: "Manzil",
+                        text: LocaleKeys.address,
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColorUtils.GRAY_4,
@@ -109,7 +110,7 @@ class WaitingForWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         AppWidgets.starTextWidget(
-                                text: "Bajariladigan sana",
+                                text: LocaleKeys.executable_date,
                                 fontSize: 9.sp,
                                 fontWeight: FontWeight.w400,
                                 color: AppColorUtils.GRAY_4)
@@ -157,7 +158,7 @@ class WaitingForWidget extends StatelessWidget {
             left: 6,
           ),
           AppWidgets.starTextWidget(
-                  text: "Telefon raqam",
+                  text: LocaleKeys.phone_number,
                   fontSize: 10.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColorUtils.GRAY_4)
@@ -173,7 +174,7 @@ class WaitingForWidget extends StatelessWidget {
                 height: 40.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Color(0xFFEAF2FF),
+                  color: AppColorUtils.ADD_PROJECT_COLOR,
                 ),
                 child: Row(
                   children: [
@@ -200,11 +201,11 @@ class WaitingForWidget extends StatelessWidget {
                           width: 14.w,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
-                            color: Color(0xFFE8FEF2),
+                            color: AppColorUtils.GREEN_ACCENT1,
                           ),
                           child: SvgPicture.asset(
                             AppImageUtils.CHECK_SMALL,
-                            color: Color(0xFF038D69),
+                            color: AppColorUtils.GREEN_TEXT_10,
                           ),
                         ).paddingOnly(right: 6)
                       : SizedBox(),

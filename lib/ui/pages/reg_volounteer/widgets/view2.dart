@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -28,7 +30,7 @@ class View2 extends StatelessWidget {
           children: [
             Expanded(
               child: AppTextField(
-                title: "Passport seriyasi",
+                title: LocaleKeys.passport_series,
                 textInputType: TextInputType.name,
                 onChanged: (v) {
                   bloc.add(VolunteerSerialChanged(v));
@@ -40,7 +42,7 @@ class View2 extends StatelessWidget {
             ),
             Expanded(
               child: AppTextField(
-                title: "Passport raqami",
+                title: LocaleKeys.passport_number,
                 textInputType: TextInputType.number,
                 onChanged: (v) {
                   bloc.add(VolunteerSerialNumberChanged(v));
@@ -53,17 +55,17 @@ class View2 extends StatelessWidget {
           ],
         ).paddingOnly(top: 15),
         AppTextField(
-          hintText: "Toshkent shahar Yunsobod IIB",
+          hintText: LocaleKeys.tashkent_city_yunsabad.tr(),
           onChanged: (v) {
             bloc.add(VolunteerGiveAddressChanged(v));
           },
           isFill: bloc.state.givenAddress.isNotEmpty,
           initialText: bloc.state.givenAddress,
-          title: "Kim tomonidan berilgan",
+          title: LocaleKeys.given_by,
           textInputType: TextInputType.name,
         ).paddingOnly(top: 24),
         AppDatePicker(
-          title: "Qachon berilgan",
+          title: LocaleKeys.when_given,
           onTap: () async {
             await showDialog(
               context: context,
@@ -84,7 +86,7 @@ class View2 extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 AppWidgets.text(
-                  text: "Passport rasmini yuklang",
+                  text: LocaleKeys.upload_passport_photo.tr(),
                   fontWeight: FontWeight.w400,
                   fontSize: 14.sp,
                   color: AppColorUtils.DARK_4,
@@ -121,7 +123,7 @@ class View2 extends StatelessWidget {
                       bloc.add(VolunteerPassImgUploaded());
                     },
                     img: bloc.state.passportImgPath,
-                    title: " Pasportni ma'lumotlar sahifasi",
+                    title: LocaleKeys.passport_information_page.tr(),
                   ),
                 ),
                 SizedBox(
@@ -140,7 +142,7 @@ class View2 extends StatelessWidget {
                         arguments: bloc.state.pageImgPath!.path,
                       );
                     },
-                    title: " Ro’yxatga olinganligiz to’grisidagi sahifa",
+                    title: LocaleKeys.registration_page.tr(),
                     uploadBtn: () {
                       bloc.add(VolunteerPageImgUploaded());
                     },
@@ -150,11 +152,11 @@ class View2 extends StatelessWidget {
               ],
             ),
             AppWidgets.appButton(
-              title: "Yuborish",
+              title: LocaleKeys.send,
               onTap: bloc.state.sendBtnActive
                   ? () async {
                       AppWidgets.showText(
-                        text: "Next page",
+                        text: LocaleKeys.next_page.tr(),
                         duration: Duration(milliseconds: 800),
                       );
                       await showDialog(
@@ -166,7 +168,7 @@ class View2 extends StatelessWidget {
                     }
                   : () {
                       AppWidgets.showText(
-                        text: "Bo'sh maydonlarni to'ldiring",
+                        text: LocaleKeys.fill_in_the_blanks.tr(),
                         duration: Duration(milliseconds: 800),
                       );
                     },

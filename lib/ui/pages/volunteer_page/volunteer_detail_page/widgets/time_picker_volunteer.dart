@@ -58,13 +58,13 @@ class TimePikerVolunteer extends StatelessWidget {
               ),
               Container(
                 width: double.infinity,
-                color: Color(0xFFF5F9FF),
+                color: AppColorUtils.WHITE_GREY,
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       AppWidgets.starTextWidget(
-                        text: "Bajariladigan sana",
+                        text: LocaleKeys.executable_date,
                         isCenter: true,
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
@@ -111,14 +111,14 @@ class TimePikerVolunteer extends StatelessWidget {
                       children: [
                         AppWidgets.imageSvg(
                           path: AppImageUtils.NOTIFICATION_GREY,
-                          color: Color(0xFF415B55),
+                          color: AppColorUtils.GREEN_BLACK2,
                         ).paddingOnly(right: 5),
                         Expanded(
                           child: AppWidgets.textLocale(
-                            text: "Estalma kuni va sanasini tanlang",
+                            text: LocaleKeys.select_the_date_and_time_of_the_event,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w500,
-                            color: Color(0xFF415B55),
+                            color: AppColorUtils.GREEN_BLACK2,
                           ),
                         ),
                       ],
@@ -133,7 +133,7 @@ class TimePikerVolunteer extends StatelessWidget {
                         is24HourMode: true,
                         normalTextStyle: TextStyle(
                           fontSize: 13.sp,
-                          color: Color(0xFF9FB6B0),
+                          color: AppColorUtils.GREEN_10,
                           fontWeight: FontWeight.w400,
                         ),
                         isForce2Digits: true,

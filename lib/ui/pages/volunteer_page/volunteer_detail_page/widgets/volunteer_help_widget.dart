@@ -39,7 +39,7 @@ class VolunteerHelpWidget extends StatelessWidget {
     return Scaffold(
         backgroundColor: AppColorUtils.BACKGROUND,
         appBar: AppBarWithTitle(
-          title: "Yordam berish",
+          title: LocaleKeys.help,
           onPress: () {
             NavigatorService.to.pop();
           },
@@ -78,7 +78,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                     ],
                   ),
                   AppWidgets.textLocale(
-                    text: "E'lon nomi",
+                    text: LocaleKeys.project_name,
                     fontWeight: FontWeight.w400,
                     fontSize: 10.sp,
                     color: AppColorUtils.DARK_6,
@@ -197,7 +197,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                                 ));
                       }
                     },
-                    text: "Yordam berish",
+                    text: LocaleKeys.help,
                     height: 48.w,
                     width: 1.sw,
                     color: state.checkBox
@@ -231,7 +231,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                         ),
                       ).paddingOnly(left: 8.w),
                       AppWidgets.textLocale(
-                          text: "Men roziman",
+                          text: LocaleKeys.i_agree,
                           color: AppColorUtils.DARK_1,
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w400)
@@ -239,7 +239,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                   ),
                   AppWidgets.textLocale(
                       text:
-                      "*Diqqat! yordam berishga rozi bo'lsangiz inson sizni kutadi.",
+                      LocaleKeys.attention_the_person_is_waiting_for_you_if_you_agree_to_help,
                       color: AppColorUtils.RED,
                       fontWeight: FontWeight.w400,
                       fontSize: 12.sp,

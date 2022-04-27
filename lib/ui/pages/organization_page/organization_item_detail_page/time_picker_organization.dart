@@ -64,7 +64,7 @@ class TimePickerOrganization extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       AppWidgets.starTextWidget(
-                        text: "Bajariladigan sana",
+                        text: LocaleKeys.executable_date,
                         isCenter: true,
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
@@ -116,7 +116,7 @@ class TimePickerOrganization extends StatelessWidget {
                         ).paddingOnly(right: 5),
                         Expanded(
                           child: AppWidgets.textLocale(
-                            text: "Estalma kuni va sanasini tanlang",
+                            text: LocaleKeys.select_the_date_and_time_of_the_event,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w500,
                             color: Color(0xFF415B55),

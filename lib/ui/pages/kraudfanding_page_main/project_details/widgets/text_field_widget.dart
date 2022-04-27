@@ -61,11 +61,11 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
     InputBorder _border = widget.hasError
         ? OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide(width: 2, color: AppColorUtils.RED),
+      borderSide: BorderSide(width: 2, color: AppColorUtils.RED,),
     )
         : OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide(width: 2, color: AppColorUtils.BORDER_COLOR),
+      borderSide: BorderSide(width: 2, color: AppColorUtils.BORDER_COLOR,),
     );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

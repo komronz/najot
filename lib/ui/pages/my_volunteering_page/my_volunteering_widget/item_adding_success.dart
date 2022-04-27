@@ -40,10 +40,10 @@ class ItemAddingSuccess extends StatelessWidget {
             children: [
               Container(
                 child: Image.asset('assets/images/success.png'),
-              ).paddingOnly(top: 24.h, bottom: 14.h),
+              ).paddingOnly(top: 24.h, bottom: 14.h,),
               AppWidgets.textLocale(
                 textAlign: TextAlign.center,
-                text: "Eslatma //muvaffaqiyatli// qo'shildi",
+                text: LocaleKeys.note_successful_added,
                 richText: true,
                 othersMarkers: [
                   MarkerText(
@@ -62,7 +62,7 @@ class ItemAddingSuccess extends StatelessWidget {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: Color(0xFFF8FFFD),
+                  color: AppColorUtils.LEFT_MENU_BACK,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -101,7 +101,7 @@ class ItemAddingSuccess extends StatelessWidget {
                 children: [
                   AppWidgets.appButton(
                     onTap: goto,
-                    title: "Eslatmaga utish",
+                    title: LocaleKeys.jump_to_note,
                     fontSize: 16.sp,
                   ),
                   SizedBox(height: 12.h),
