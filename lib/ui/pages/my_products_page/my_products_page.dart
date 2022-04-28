@@ -95,7 +95,7 @@ class MyProductsPage extends StatelessWidget {
         children: [
           AppWidgets.imageSvg(path: AppImageUtils.IMG_ORDERS_EMPTY),
           AppWidgets.textLocale(
-            text: LocaleKeys.you_have_not_purchased_the_product_yet,
+            text: LocaleKeys.not_purchased_product,
             maxLines: 2,
             textAlign: TextAlign.center,
             fontWeight: FontWeight.w600,

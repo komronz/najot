@@ -15,6 +15,7 @@ import 'package:najot/ui/pages/organization_page/organization_page.dart';
 import 'package:najot/ui/pages/reg_volounteer/reg_volunteer.dart';
 import 'package:najot/ui/pages/rules_page/rules_page.dart';
 
+import '../my_products_page/my_products_page.dart';
 import '../my_project_and_announcements_pages/my_project_and_announcements_pages.dart';
 import '../my_volunteering_page/my_volunteering_page.dart';
 import '../my_volunteering_page/my_volunteering_widget/adding_project_page.dart';
@@ -66,11 +67,15 @@ class HomePage extends StatelessWidget {
       case AppPageType.VOLUNTEER:
         return RegVolunteer();
       case AppPageType.CHARITY:
+        return CharityHistoryPage();
+      case AppPageType.CHARITY_VOLUNTEER:
         return VolunteeringCharityHistoryPage();
       case AppPageType.OPERATOR:
         return OperatorPage();
       case AppPageType.ORDERS:
         return OrdersPage();
+      case AppPageType.ORDERS_VOLUNTEER:
+        return MyProductsPage();
       case AppPageType.SAVED:
         return SavedPage();
       case AppPageType.ORGANIZATIONS:

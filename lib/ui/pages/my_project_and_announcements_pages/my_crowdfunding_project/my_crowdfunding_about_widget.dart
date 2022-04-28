@@ -172,7 +172,7 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 AppWidgets.starTextWidget(
-                                  text: LocaleKeys.must_be_collected_by_date,
+                                  text: LocaleKeys.must_collected_date,
                                 ),
                                 Row(
                                   children: [

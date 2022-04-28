@@ -30,7 +30,7 @@ class RichTextWidget extends StatelessWidget {
               ),
             ),
             TextSpan(
-              text: LocaleKeys.i_met_them_and_i_agree_with_them.tr(),
+              text: LocaleKeys.agree_with_them.tr(),
             )
           ],
         ),

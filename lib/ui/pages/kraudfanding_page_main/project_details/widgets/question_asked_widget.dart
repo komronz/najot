@@ -53,7 +53,7 @@ class QuestionsAskedWidget extends StatelessWidget {
                       children: [
                         SizedBox(
                           child: AppWidgets.text(
-                              text: LocaleKeys.exactly_how_humanity_benefits.tr(),
+                              text: LocaleKeys.how_humanity_benefits.tr(),
                               color: AppColorUtils.TEXT_GREEN2,
                               fontWeight: FontWeight.w600,
                               fontSize: 14.sp,

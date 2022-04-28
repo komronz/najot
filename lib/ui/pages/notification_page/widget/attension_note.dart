@@ -9,8 +9,10 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
+import '../../../../data/bloc/app_page_cubit/app_page_cubit.dart';
 import '../../../../data/model/volunteering_model.dart';
 import '../../../widgets/app_widgets.dart';
+import '../../home_page/home_page.dart';
 import '../../my_volunteering_page/my_volunteering_page.dart';
 
 class AttentionNote extends StatelessWidget {
@@ -63,7 +65,7 @@ class AttentionNote extends StatelessWidget {
                   fontSize: 16.sp,
                   color: AppColorUtils.DARK2,
                   maxLines: 2,
-                  text: LocaleKeys.hello_volunteer_you_have_to_go_rescue,
+                  text: LocaleKeys.hello_volunteer_go,
                   richText: true,
                   othersMarkers: [
                     MarkerText(
@@ -145,8 +147,10 @@ class AttentionNote extends StatelessWidget {
                   children: [
                     AppWidgets.appButton(
                       onTap: () {
-                        NavigatorService.to
-                            .pushReplacementNamed(MyVolunteeringPage.routeName);
+                        NavigatorService.to.pushNamedAndRemoveUntil(
+                          HomePage.routeName,
+                          arguments: AppPageType.VOLUNTEERING,
+                        );
                       },
                       title: LocaleKeys.my_volunteering.tr(),
                       fontSize: 16.sp,

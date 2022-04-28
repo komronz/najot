@@ -157,7 +157,7 @@ class _AboutMyCharityProjectWidgetState
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             AppWidgets.starTextWidget(
-                              text: LocaleKeys.must_be_collected_by_date,
+                              text: LocaleKeys.must_collected_date,
                             ),
                             Row(
                               children: [
@@ -362,7 +362,7 @@ class _AboutMyCharityProjectWidgetState
                                       SizedBox(
                                         child: AppWidgets.text(
                                           text:
-                                          LocaleKeys.exactly_how_humanity_benefits.tr(),
+                                          LocaleKeys.how_humanity_benefits.tr(),
                                           color: AppColorUtils
                                               .TEXT_GREEN2,
                                           fontWeight:

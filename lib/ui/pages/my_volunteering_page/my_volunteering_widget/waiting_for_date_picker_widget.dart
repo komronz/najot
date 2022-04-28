@@ -13,6 +13,7 @@ import '../../../../data/custom_time_picker/date_picker/i18n/date_picker_i18n.da
 import '../../../../data/custom_time_picker/date_picker/widget/date_picker_widget.dart';
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/model/volunteering_model.dart';
+import '../../../../data/utils/date_time_util.dart';
 import '../../../widgets/app_widgets.dart';
 
 class WaitingForDatePickerWidget extends StatelessWidget {
@@ -77,7 +78,7 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                             height: 16,
                           ).paddingOnly(right: 5),
                           AppWidgets.textLocale(
-                            text: model.completedDate!,
+                            text: "${DateTimeUtil.dmy(DateTime.now(), context.locale)}",
                             color: AppColorUtils.BLUE_TEXT,
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w500,
@@ -113,7 +114,7 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                         ).paddingOnly(right: 5),
                         Expanded(
                           child: AppWidgets.textLocale(
-                            text: LocaleKeys.select_the_date_and_time_of_the_event,
+                            text: LocaleKeys.select_date_time,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w500,
                             color: AppColorUtils.GREEN_BLACK2,
@@ -199,15 +200,12 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                 children: [
                   AppWidgets.appButton(
                     onTap: () async {
+
                       NavigatorService.to.pop();
                       await showDialog(
                         context: context,
                         builder: (context) => WaitingForAddingSuccess(
-                          selectFunction: (dateTime) {
-                            // print(dateTime.toUtc().toString());
-                            // bloc.add(VolunteerBirthDateSelected(dateTime));
-                          },
-                          model: model,
+                          model: model, dateTime: _date,
                         ),
                       );
                     },

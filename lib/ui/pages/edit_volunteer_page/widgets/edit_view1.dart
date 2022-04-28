@@ -36,7 +36,7 @@ class EditView1 extends StatelessWidget {
                   bloc.add(VolunteerFirstNameChanged(v));
                 },
                 isFill: bloc.state.firstName.isNotEmpty,
-                title: LocaleKeys.name_as_in_the_passport.tr(),
+                title: LocaleKeys.name_passport.tr(),
               ).paddingOnly(
                 top: 18.w,
                 left: 20.w,
@@ -48,7 +48,7 @@ class EditView1 extends StatelessWidget {
                 onChanged: (v) {
                   bloc.add(VolunteerLastNameChanged(v));
                 },
-                title: LocaleKeys.sure_name_as_in_the_passport.tr(),
+                title: LocaleKeys.sure_name_passport.tr(),
                 isFill: bloc.state.lastName.isNotEmpty,
               ).paddingOnly(
                 top: 24.w,

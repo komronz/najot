@@ -345,7 +345,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                     ).paddingSymmetric(horizontal: 20.w),
                                     AppWidgets.starTextWidget(
                                             text:
-                                                LocaleKeys.you_have_accepted_this_ad.tr(),
+                                                LocaleKeys.you_accepted_ad.tr(),
                                             fontSize: 12.sp,
                                             fontWeight: FontWeight.w500,
                                             color: AppColorUtils.DARK_6)

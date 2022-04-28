@@ -13,6 +13,7 @@ import '../../../data/services/navigator_service.dart';
 import '../../../data/utils/app_color_utils.dart';
 import '../../../data/utils/app_image_utils.dart';
 import '../../widgets/app_widgets.dart';
+import '../home_page/home_page.dart';
 import 'my_profile_pages/number_update_page.dart';
 import 'my_profile_pages/user_degree_page.dart';
 import 'my_profile_pages/user_update_page.dart';
@@ -42,7 +43,9 @@ class _MyProfilePageState extends State<MyProfilePage> {
                 child: Expanded(
                   child: AppWidgets.appBarMenu(
                     title: LocaleKeys.my_profile,
-                    onTapMenu: () {},
+                    onTapMenu: () {
+                      HomePage.globalKey.currentState!.openDrawer();
+                    },
                     visibleIcon: true,
                     onTapIcon: () {
                       NavigatorService.to.pushNamed(UserUpdatePage.routeName,

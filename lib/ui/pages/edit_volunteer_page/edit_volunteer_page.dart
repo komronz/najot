@@ -47,7 +47,6 @@ class EditVolunteerPage extends StatelessWidget {
                      visibleIcon: true,
                      onTapIcon: () {
                        context.read<EditVolunteerBloc>().add(EditProfileChangePage(2));
-
                      },
                      icon: AppImageUtils.EDIT,
                    ),
@@ -62,7 +61,6 @@ class EditVolunteerPage extends StatelessWidget {
                    ),
                    child: Column(
                      children: [
-
                        ShowPickerWidget(),
                        Container (
                          child: Row(
@@ -154,7 +152,6 @@ class EditVolunteerPage extends StatelessWidget {
                                        ),
                                        InkWell(
                                          onTap: () {
-
                                            context.read<EditVolunteerBloc>().add(EditProfileChangePage(3));
                                          },
                                          child: Container(

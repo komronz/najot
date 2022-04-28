@@ -113,7 +113,7 @@ class RegPage extends StatelessWidget {
                             }
                           : () {
                               AppWidgets.showText(
-                                text: LocaleKeys.agree_to_the_terms_of_the_project.tr(),
+                                text: LocaleKeys.agree_terms_project.tr(),
                                 duration: Duration(seconds: 1),
                               );
                             },
@@ -132,7 +132,7 @@ class RegPage extends StatelessWidget {
                                 color: AppColorUtils.RED,
                               ),
                               AppWidgets.text(
-                                text: LocaleKeys.agree_to_the_terms_of_the_project_first.tr(),
+                                text: LocaleKeys.agree_project_first.tr(),
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
                                 richText: true,

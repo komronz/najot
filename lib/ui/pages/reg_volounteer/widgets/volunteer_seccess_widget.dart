@@ -24,7 +24,7 @@ class VolunteerSuccessWidget extends StatelessWidget {
         color: Colors.transparent,
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColorUtils.WHITE,
             borderRadius: BorderRadius.circular(10),
           ),
           margin: EdgeInsets.symmetric(horizontal: 20),
@@ -37,7 +37,7 @@ class VolunteerSuccessWidget extends StatelessWidget {
               AppWidgets.text(
                 textAlign: TextAlign.center,
                 text:
-                LocaleKeys.thank_you_for_your_application_moderators_will_contact_you_shortly.tr(),
+                LocaleKeys.moderators_contact_you.tr(),
                 richText: true,
                 othersMarkers: [
                   MarkerText(

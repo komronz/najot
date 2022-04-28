@@ -112,7 +112,7 @@ class CharityCashWidget extends StatelessWidget {
                   ),
                   Expanded(
                     child: AppWidgets.starTextWidget(
-                      text: LocaleKeys.must_be_collected_by_date.tr(),
+                      text: LocaleKeys.must_collected_date.tr(),
                       fontSize: 9.sp,
                       hasStar: true,
                     ).paddingOnly(

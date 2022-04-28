@@ -91,7 +91,7 @@ class OrdersPage extends StatelessWidget {
         children: [
           AppWidgets.imageSvg(path: AppImageUtils.IMG_ORDERS_EMPTY),
           AppWidgets.textLocale(
-            text: LocaleKeys.you_have_not_purchased_the_product_yet,
+            text: LocaleKeys.not_purchased_product,
             fontWeight: FontWeight.w600,
             color: AppColorUtils.GRAY_4,
           ).paddingOnly(top: 16.w),

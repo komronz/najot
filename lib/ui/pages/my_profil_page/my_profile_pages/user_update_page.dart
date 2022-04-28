@@ -39,7 +39,6 @@ class _UserUpdatePageState extends State<UserUpdatePage> {
               title: LocaleKeys.edit_my_profile.tr(),
               onTapMenu: () {
                 HomePage.globalKey.currentState!.openDrawer();
-
               },
               visibleIcon: true,
               onTapIcon: () {

@@ -243,7 +243,7 @@ class CharityHelpWidget extends StatelessWidget {
                   ),
                   AppWidgets.textLocale(
                           text:
-                              LocaleKeys.attention_the_person_is_waiting_for_you_if_you_agree_to_help,
+                              LocaleKeys.attention_agree_help,
                           color: AppColorUtils.RED,
                           fontWeight: FontWeight.w400,
                           fontSize: 12.sp,

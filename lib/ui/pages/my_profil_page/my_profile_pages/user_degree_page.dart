@@ -195,18 +195,18 @@ class UserDegreePage extends StatelessWidget {
                             SizedBox(height: 12.h),
                             greenCheckWidgets(
                               title:
-                                  LocaleKeys.all_options_for_average_user.tr(),
+                                  LocaleKeys.options_average_user.tr(),
                             ),
                             greenCheckWidgets(
                               title: LocaleKeys
-                                  .take_full_advantage_of_volunteer_category
+                                  .use_volunteer_category
                                   .tr(),
                             ),
                             greenCheckWidgets(
                               title: LocaleKeys.clothes_charity.tr(),
                             ),
                             greenCheckWidgets(
-                              title: LocaleKeys.receive_great_gifts_from_project
+                              title: LocaleKeys.receive_gifts_project
                                   .tr(),
                             ),
                             greenCheckWidgets(

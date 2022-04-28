@@ -29,7 +29,7 @@ class VolunteerPassInfoDialog extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppWidgets.textLocale(
-                text: LocaleKeys.instructions_for_uploading_passport_photo,
+                text: LocaleKeys.instructions_uploading_passport,
                 fontSize: 20.sp,
                 fontWeight: FontWeight.w600,
                 maxLines: 2,
@@ -43,7 +43,7 @@ class VolunteerPassInfoDialog extends StatelessWidget {
               ).paddingOnly(top: 18),
               AppWidgets.text(
                 text:
-                LocaleKeys.both_sides_of_the_document_must_be_uploaded.tr(),
+                LocaleKeys.both_sides_uploaded.tr(),
                 fontWeight: FontWeight.w400,
                 fontSize: 14.sp,
                 maxLines: 10,
@@ -51,27 +51,27 @@ class VolunteerPassInfoDialog extends StatelessWidget {
               ).paddingOnly(top: 18),
               AppWidgets.text(
                 text:
-                LocaleKeys.image_of_document_must_be_uploaded_by_its_owner.tr(),
+                LocaleKeys.uploaded_by_owner.tr(),
                 fontWeight: FontWeight.w400,
                 fontSize: 14.sp,
                 maxLines: 10,
                 height: 1.3,
               ).paddingOnly(top: 18),
               AppWidgets.text(
-                text: LocaleKeys.document_must_be_from_republic_of_uzbekistan.tr(),
+                text: LocaleKeys.document_must_uzbekistan.tr(),
                 fontWeight: FontWeight.w400,
                 fontSize: 14.sp,
                 maxLines: 10,
                 height: 1.3,
               ).paddingOnly(top: 18),
               AppWidgets.text(
-                text: LocaleKeys.you_can_also_upload_id_card.tr(),
+                text: LocaleKeys.can_upload_id_card.tr(),
                 fontWeight: FontWeight.w400,
                 fontSize: 14.sp,
                 maxLines: 10,
               ).paddingOnly(top: 18),
               AppWidgets.text(
-                text: LocaleKeys.it_is_not_possible_to_load_driver_license.tr(),
+                text: LocaleKeys.not_load_driver_license.tr(),
                 fontWeight: FontWeight.w400,
                 fontSize: 14.sp,
                 maxLines: 10,
@@ -86,7 +86,7 @@ class VolunteerPassInfoDialog extends StatelessWidget {
                   Expanded(
                     child: AppWidgets.text(
                       text:
-                      LocaleKeys.najot_uz_project_guarantees_that_your_document_will_not_be_released_to_the_public.tr(),
+                      LocaleKeys.project_guarantees_document.tr(),
                       maxLines: 10,
                       fontSize: 14.sp,
                       height: 1.3,

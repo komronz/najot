@@ -8,12 +8,14 @@ import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/widgets/app_search_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../notification_page/notification_page.dart';
 import 'widgets/charity_list_widget.dart';
 import 'widgets/kraufanding_list_widget.dart';
 
@@ -44,16 +46,21 @@ class CharityHistoryPage extends StatelessWidget {
                     HomePage.globalKey.currentState!.openDrawer();
                   },
                 ),
-                AppWidgets.textLocale(
-                  text: LocaleKeys.charity_history,
-                  fontSize: 26.sp,
-                  fontWeight: FontWeight.w600,
+                Expanded(
+                  child: AppWidgets.textLocale(
+                    text: LocaleKeys.charity_history,
+                    fontSize: 25.sp,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-                SvgPicture.asset(
-                  AppImageUtils.NOTIFICATION,
-                  height: 35.w,
-                  width: 35.w,
-                  fit: BoxFit.fill,
+                InkWell(
+                  onTap: ()=> NavigatorService.to.pushNamed(NotificationPage.routeName),
+                  child: SvgPicture.asset(
+                    AppImageUtils.NOTIFICATION,
+                    height: 35.w,
+                    width: 35.w,
+                    fit: BoxFit.fill,
+                  ),
                 )
               ],
             ).paddingSymmetric(horizontal: 20),

@@ -131,7 +131,7 @@ class MyCrowdfundingSupportListWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           AppWidgets.starTextWidget(
-                            text: LocaleKeys.must_be_collected_by_date.tr(),
+                            text: LocaleKeys.must_collected_date.tr(),
                           ),
                           Row(
                             children: [

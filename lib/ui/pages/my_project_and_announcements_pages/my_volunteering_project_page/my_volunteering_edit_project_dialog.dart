@@ -48,7 +48,7 @@ class MyVolunteeringEditProjectDialog extends StatelessWidget {
                   ],
                 ).paddingOnly(bottom: 5),
                 AppWidgets.textLocale(
-                  text: LocaleKeys.contact_us_to_make_changes_to_the_project,
+                  text: LocaleKeys.contact_changes_project,
                   maxLines: 2,
                   color: AppColorUtils.DARK_6,
                   fontWeight: FontWeight.w400,
@@ -58,7 +58,7 @@ class MyVolunteeringEditProjectDialog extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     fontSize: 14.sp,
                     color: AppColorUtils.DARK2,
-                    text: LocaleKeys.what_changes_do_you_want_to_make,
+                    text: LocaleKeys.what_changes_make,
                 ).paddingOnly(bottom: 8.h),
                 AppTextField(
                   isMultiLine: true,

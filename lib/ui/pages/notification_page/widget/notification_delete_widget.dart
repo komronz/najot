@@ -36,7 +36,7 @@ class NotificationDeleteWidget extends StatelessWidget {
                 fontWeight: FontWeight.w600,
                 fontSize: 18.sp,
                 color: AppColorUtils.DARK2,
-                text: LocaleKeys.do_you_want_to_delete_the_note,
+                text: LocaleKeys.want_delete_note,
                 richText: true,
                 textAlign: TextAlign.center,
                 othersMarkers: [

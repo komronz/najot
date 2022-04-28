@@ -100,22 +100,22 @@
     "about_us": "O нас",
     "projects_and_ads": "Проекты и объявления",
     "nothing_found_yet": "Пока ничего не найдено",
-    "must_be_collected_by_date": "Должен быть собран к дате",
+    "must_collected_date": "Должен быть собран к дате",
     "support_type": "Тип поддержки",
     "expected": "Ожидал",
     "date": "Дата",
     "total": "Общее",
-    "thank_you_for_your_inquiry_moderators_will_contact_you_soon": "Спасибо за ваш запрос! // Модераторы // свяжутся с вами в ближайшее время.",
+    "inquiry_moderators_contact": "Спасибо за ваш запрос! // Модераторы // свяжутся с вами в ближайшее время.",
     "date_of_announcement": "Дата объявления",
     "amount_needed": "Необходимая сумма",
     "add_news": "Добавить новость",
     "edit_the_project": "Изменить проект",
-    "contact_us_to_make_changes_to_the_project": "Свяжитесь с нами для внесения изменений в проект",
-    "what_changes_do_you_want_to_make": "Какие изменения вы хотите внести?",
+    "contact_changes_project": "Свяжитесь с нами для внесения изменений в проект",
+    "what_changes_make": "Какие изменения вы хотите внести?",
     "write": "Написать...",
     "delete_the_project": "Удалить проект",
-    "contact_us_to_delete_the_project": "Свяжитесь с нами, чтобы отменить проект",
-    "reason_for_deletion_in_short": "Причина удаления // * // (кратко)",
+    "contact_delete_project": "Свяжитесь с нами, чтобы отменить проект",
+    "reason_deletion_short": "Причина удаления // * // (кратко)",
     "write_the_reason": "Напишите причину",
     "great_project": "Отличный проект",
     "the_man_applied": "Человек использовал",
@@ -127,7 +127,7 @@
     "day_of_the_announcement": "День объявления",
     "item_type": "Тип объекта",
     "address": "Адрес",
-    "you_have_not_purchased_the_product_yet": "Вы еще не приобрели товар",
+    "not_purchased_product": "Вы еще не приобрели товар",
     "briefly_about_the_product": "Коротко о продукте",
     "estimated_delivery": "Ориентировочная доставка",
     "product_amount": "Сумма продукта",
@@ -151,14 +151,14 @@
     "be_volunteer": "Быть волонтером",
     "help": "Помощь",
     "go_to_personal_profile": "Перейти в личный профиль",
-    "you_have_accepted_this_ad": "Вы приняли это объявление",
+    "you_accepted_ad": "Вы приняли это объявление",
     "donate_items": "Пожертвовать предметы",
     "doing_charity": "Заниматься благотворительностью",
     "i_agree": "Я согласен",
-    "attention_the_person_is_waiting_for_you_if_you_agree_to_help": "* Внимание! человек ждет вас, если вы согласитесь помочь.",
-    "select_the_date_and_time_of_the_event": "Выберите дату и время события",
-    "name_as_in_the_passport": "Имя (как в паспорте)",
-    "sure_name_as_in_the_passport": "Фамилия (как в паспорте)",
+    "attention_agree_help": "* Внимание! человек ждет вас, если вы согласитесь помочь.",
+    "select_date_time": "Выберите дату и время события",
+    "name_passport": "Имя (как в паспорте)",
+    "sure_name_passport": "Фамилия (как в паспорте)",
     "enter_the_address": "Введите адрес",
     "your_date_of_birth": "Твоя дата рождения",
     "passport_series": "Паспорт серии",
@@ -171,20 +171,20 @@
     "registration_page": " Страница регистрации",
     "next_page": "Следущая страница",
     "fill_in_the_blanks": "Заполнить бланки",
-    "thank_you_for_your_application_will_confirm_soon":"Спасибо за вашу заявку! // Модераторы // скоро подтвердят",
+    "application_confirm_soon":"Спасибо за вашу заявку! // Модераторы // скоро подтвердят",
     "date_of_birth": "Дата рождения",
     "my_services": "Мои услуги",
     "organizations": "Организации",
     "technology": "Технологии",
     "next": "Следующий",
-    "fill_in_the_fields_completely": "Заполните поля полностью",
-    "exactly_how_humanity_benefits": "Какую пользу приносит человечество",
+    "fill_fields_completely": "Заполните поля полностью",
+    "how_humanity_benefits": "Какую пользу приносит человечество",
     "that_s_all": "Это все",
     "please_wait": "Please wait",
     "sign_in": "Войти",
     "enter": "Войти",
-    "you_are_not_registered_register":"Если вы не зарегистрированы, зарегистрируйтесь!",
-    "information_was_not_found_for_this_phone_number": " По этому номеру телефона информации не найдено. Пожалуйста, попробуйте еще раз.",
+    "you_not_registered":"Если вы не зарегистрированы, зарегистрируйтесь!",
+    "information_not_found": " По этому номеру телефона информации не найдено. Пожалуйста, попробуйте еще раз.",
     "degrees": "Степени",
     "degree_types": "Типы Степени",
     "opportunities": "Возможности",
@@ -193,130 +193,54 @@
     "apply_for_projects": "Подать заявку на проекты",
     "ask_questions": "Задавать вопросы",
     "leave_comment": "Оставить комментарий",
-    "all_options_for_average_user": "Все возможности для обычного пользователя",
-    "take_full_advantage_of_volunteer_category": "Воспользуйтесь всеми преимуществами категории волонтеров",
+    "options_average_user": "Все возможности для обычного пользователя",
+    "use_volunteer_category": "Воспользуйтесь всеми преимуществами категории волонтеров",
     "clothes_charity": "Благотворительность одежды",
-    "receive_great_gifts_from_project": "Получайте отличные подарки от проекта",
-    "please_fill_out_small_form_request_or_post_ad": "Пожалуйста, заполните небольшую форму, чтобы оставить заявку или разместить объявление",
+    "receive_gifts_project": "Получайте отличные подарки от проекта",
+    "fill_out_form": "Пожалуйста, заполните небольшую форму, чтобы оставить заявку или разместить объявление",
     "project_promoters": "Промоутеры проекта",
     "write_short_card": "Напишите короткую карточку",
-    "brief_information_about_project": "Краткая информация о проекте",
+    "brief_information_project": "Краткая информация о проекте",
     "select": "Выбирать",
     "project_or_announcement_type": "Тип проекта или объявления",
     "note_successful_added": "Примечание // успешно // добавлено",
     "attention_note": "Примечание!",
-    "hello_volunteer_you_have_to_go_rescue": "Здравствуй // Волонтер! //\nты должен идти на помощь!",
-    "do_you_want_to_delete_the_note": "Удалить заметку?",
+    "hello_volunteer_go": "Здравствуй // Волонтер! //\nты должен идти на помощь!",
+    "want_delete_note": "Удалить заметку?",
     "go_back": "Вернитесь назад",
     "yes": "Да",
     "note_successful_changed": "Примечание // успешно // изменено",
     "attention_hello_volunteer": "Внимание! Привет, Волонтер!",
-    "you_need_to_go_to_for_help": "вам нужно \n пойти за помощью",
-    "do_you_want_completely_clear_the_inside_of_the_notification": "Вы хотите полностью // очистить внутреннюю часть уведомления? //",
+    "you_go_to_help": "вам нужно \n пойти за помощью",
+    "want_clear_notification": "Вы хотите полностью // очистить внутреннюю часть уведомления? //",
     "write_to_the_operator": "Напишите оператору",
     "about_the_organization": "Об организации",
     "organizational_projects": "Организационные проекты",
     "number_of_projects": "Количество проектов",
     "i_am": "Я",
     "project_conditions": "условия проекта",
-    "i_met_them_and_i_agree_with_them": " Я встречал их и согласен с ними",
+    "agree_with_them": " Я встречал их и согласен с ними",
     "personal_information": "Персональная информация",
-    "agree_to_the_terms_of_the_project":"согласен с условиями проекта",
-    "agree_to_the_terms_of_the_project_first":"сначала согласиться с условиями проекта",
+    "agree_terms_project":"согласен с условиями проекта",
+    "agree_project_first":"сначала согласиться с условиями проекта",
     "uploaded": "Загружено",
-    "instructions_for_uploading_passport_photo": "Инструкция по загрузке фото на паспорт",
+    "instructions_uploading_passport": "Инструкция по загрузке фото на паспорт",
     "document_must_be_clear": "1. Документ должен быть четким",
-    "both_sides_of_the_document_must_be_uploaded": "2. Обе стороны документа должны быть загружены (страница данных и страница зарегистрированного адреса)",
-    "image_of_document_must_be_uploaded_by_its_owner": "3. Изображение документа должно быть загружено его владельцем (проверено модераторами)",
-    "document_must_be_from_republic_of_uzbekistan.": "4. Документ должен быть из Республики Узбекистан.",
-    "you_can_also_upload_id_card": "5. Вы также можете загрузить удостоверение личности",
-    "it_is_not_possible_to_load_driver_license": "6. Невозможно загрузить водительское удостоверение",
-    "najot_uz_project_guarantees_that_your_document_will_not_be_released_to_the_public": "Проект Najot.uz гарантирует, что ваш документ не будет опубликован!",
-    "thank_you_for_your_application_moderators_will_contact_you_shortly": "Спасибо за вашу заявку! // Модераторы // свяжутся с вами в ближайшее время.",
-    "your_information_is_being_verified_please_wait_if_not_reported_within_48_hours_write_to_the_operator": "Ваша информация проверяется, пожалуйста, подождите. Если не сообщили в течение // 48 часов // пишите оператору!",
-    "please_fill_out_the_form_below_to_volunteer": "Пожалуйста, заполните форму ниже, чтобы стать волонтером.",
-    "all_your_current_data_will_change": "все ваши текущие данные изменятся",
+    "both_sides_uploaded": "2. Обе стороны документа должны быть загружены (страница данных и страница зарегистрированного адреса)",
+    "uploaded_by_owner": "3. Изображение документа должно быть загружено его владельцем (проверено модераторами)",
+    "document_must_uzbekistan.": "4. Документ должен быть из Республики Узбекистан.",
+    "can_upload_id_card": "5. Вы также можете загрузить удостоверение личности",
+    "not_load_driver_license": "6. Невозможно загрузить водительское удостоверение",
+    "project_guarantees_document": "Проект Najot.uz гарантирует, что ваш документ не будет опубликован!",
+    "moderators_contact_you": "Спасибо за вашу заявку! // Модераторы // свяжутся с вами в ближайшее время.",
+    "information_write_operator": "Ваша информация проверяется, пожалуйста, подождите. Если не сообщили в течение // 48 часов // пишите оператору!",
+    "fill_out_form_volunteer": "Пожалуйста, заполните форму ниже, чтобы стать волонтером.",
+    "all_data_change": "все ваши текущие данные изменятся",
     "general_rules": "1. Общие правила",
     "enter_6_digit_code": "Введите 6-значный код",
     "enter_another_number": "Введите другой номер",
     "select_date":"Выберите дату",
     "enter_project_name": "Введите название проекта"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
