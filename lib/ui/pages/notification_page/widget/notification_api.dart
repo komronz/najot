@@ -53,7 +53,7 @@ class NotificationApi{
       title,
       body,
       // tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
-      _scheduleDaily(DateTime(08, 06, 00)),
+      _scheduleDaily(Time(08, 06, 00)),
       // days: [DateTime.monday,DateTime.sunday]),
       await _notificationDetails(),
     payload: payload,
@@ -62,7 +62,7 @@ class NotificationApi{
     matchDateTimeComponents: DateTimeComponents.time,
 
   );
-  static tz.TZDateTime _scheduleDaily(DateTime time){
+  static tz.TZDateTime _scheduleDaily(Time time){
     final now =tz.TZDateTime.now(tz.local);
     final scheduledDate=tz.TZDateTime(tz.local, now.year, now.month, now.day,
         time.hour, time.minute, time.second);
