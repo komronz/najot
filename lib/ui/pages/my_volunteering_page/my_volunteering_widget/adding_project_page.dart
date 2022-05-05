@@ -90,8 +90,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
               ).paddingOnly(top: 18.h),
             ),
             AppWidgets.textLocale(
-              text:
-                  LocaleKeys.fill_out_form,
+              text: LocaleKeys.fill_out_form,
               maxLines: 2,
               color: AppColorUtils.DARK2,
               fontSize: 16.sp,

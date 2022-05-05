@@ -51,8 +51,7 @@ class DrawerBodySecond extends StatelessWidget {
             top: 50.w,
             left: 20.w,
           ),
-          state.tobeVolunteer
-          ? ButtonCard(
+           ButtonCard(
             height: 48.w,
             width: MediaQuery.of(context).size.width,
             onPress: () {
@@ -73,9 +72,8 @@ class DrawerBodySecond extends StatelessWidget {
             bottom: 24.w,
             left: 20.w,
             right: 20.w,
-          ): SizedBox().paddingOnly(bottom: 40.w),
-          state.tobeVolunteer
-          ? AppWidgets.rowIconText(
+          ),
+          AppWidgets.rowIconText(
             isActive: pageType == AppPageType.PROJECT,
             icon: AppImageUtils.PROJECT1,
             iconSelect: AppImageUtils.PROJECT2,
@@ -91,7 +89,7 @@ class DrawerBodySecond extends StatelessWidget {
               );
               Navigator.pop(context);
             },
-          ): SizedBox(),
+          ),
           state.tobeVolunteer
           ? AppWidgets.rowIconText(
             isActive: pageType == AppPageType.VOLUNTEERING,

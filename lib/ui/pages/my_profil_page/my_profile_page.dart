@@ -8,6 +8,7 @@ import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/app_disable_text_field.dart';
 
+import '../../../data/bloc/app_page_cubit/app_page_cubit.dart';
 import '../../../data/localization/locale_keys.g.dart';
 import '../../../data/services/navigator_service.dart';
 import '../../../data/utils/app_color_utils.dart';
@@ -27,38 +28,38 @@ class MyProfilePage extends StatefulWidget {
   @override
   _MyProfilePageState createState() => _MyProfilePageState();
 }
-
 class _MyProfilePageState extends State<MyProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColorUtils.WHITE,
-      body: BlocProvider(
-        create: (context) => MyProfileUpdateBloc()..add(MyProfileLoad()),
-        child: BlocBuilder<MyProfileUpdateBloc, MyProfileUpdateState>(
-          builder: (context, state) => Column(
+    return BlocProvider(
+      create: (context) => MyProfileUpdateBloc()..add(MyProfileLoad()),
+      child: BlocBuilder<MyProfileUpdateBloc, MyProfileUpdateState>(
+        builder: (context, state) => Scaffold(
+          body: Column(
             children: [
-              Container(
-                color: AppColorUtils.BACKGROUND,
-                child: Expanded(
-                  child: AppWidgets.appBarMenu(
-                    title: LocaleKeys.my_profile,
-                    onTapMenu: () {
-                      HomePage.globalKey.currentState!.openDrawer();
-                    },
-                    visibleIcon: true,
-                    onTapIcon: () {
-                      NavigatorService.to.pushNamed(UserUpdatePage.routeName,
-                          arguments: context.read<MyProfileUpdateBloc>());
-                    },
-                    icon: AppImageUtils.EDIT,
-                  ),
-                ),
+              AppWidgets.appBarMenu(
+                title: LocaleKeys.my_profile,
+                onTapMenu: () {
+                  HomePage.globalKey.currentState!.openDrawer();
+                },
+                visibleIcon: true,
+                onTapIcon: () {
+                  NavigatorService.to.pushNamed(UserUpdatePage.routeName,
+                      arguments: context.read<MyProfileUpdateBloc>());
+                  // NavigatorService.to.pushNamedAndRemoveUntil(
+                  //   HomePage.routeName,
+                  //   arguments: AppPageType.USER_UPDATE,
+                  // );
+                },
+                icon: AppImageUtils.EDIT,
               ).paddingOnly(top: 10),
               Expanded(
                 child: SingleChildScrollView(
                   child: Container(
-                    padding: EdgeInsets.only(left: 19, right: 20),
+                    padding: EdgeInsets.only(
+                      left: 19,
+                      right: 20,
+                    ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       color: AppColorUtils.WHITE,
@@ -69,7 +70,10 @@ class _MyProfilePageState extends State<MyProfilePage> {
                           width: 107.w,
                           height: 107.h,
                           child: SvgPicture.asset(AppImageUtils.USER),
-                        ).paddingOnly(top: 25.h, bottom: 12.h),
+                        ).paddingOnly(
+                          top: 25.h,
+                          bottom: 12.h,
+                        ),
                         Container(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -78,7 +82,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                 text: LocaleKeys.degree,
                                 textAlign: TextAlign.center,
                                 fontSize: 12.sp,
-                                color: Color(0xFFBCBEC0),
+                                color: AppColorUtils.GRAY_4,
                                 fontWeight: FontWeight.w400,
                               ),
                               Container(
@@ -90,7 +94,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                   },
                                   child: SvgPicture.asset(
                                     AppImageUtils.FAQ,
-                                    color: Color(0xFF007A58),
+                                    color: AppColorUtils.WHITE_GREEN8,
                                   ),
                                 ),
                               ),
@@ -106,7 +110,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                 margin: EdgeInsets.only(left: 5),
                                 child: AppWidgets.textLocale(
                                     text: LocaleKeys.normal_user,
-                                    color: Color(0xFF0344A7),
+                                    color: AppColorUtils.TEXT_BLUE,
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.w600),
                               )
@@ -146,7 +150,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                         ).paddingOnly(bottom: 24.h),
                         Divider(
                           thickness: 2,
-                          color: Color(0xFFE6EDEC),
+                          color: AppColorUtils.GREEN_8,
                         ).paddingOnly(bottom: 24.h),
                         Container(
                           child: Column(
@@ -154,7 +158,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                             children: [
                               AppWidgets.textLocale(
                                       text: LocaleKeys.phone_number,
-                                      color: Color(0xFF6D6E71),
+                                      color: AppColorUtils.DARK_4,
                                       fontSize: 13.sp,
                                       fontWeight: FontWeight.w400)
                                   .paddingOnly(bottom: 8.h),

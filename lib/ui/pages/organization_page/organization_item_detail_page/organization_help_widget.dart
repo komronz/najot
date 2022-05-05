@@ -21,7 +21,6 @@ import 'package:flutter_vibrate/flutter_vibrate.dart';
 
 class OrganizationHelpModel {
   CardModel cardModel;
-
   OrganizationCubit cubit;
 
   OrganizationHelpModel({

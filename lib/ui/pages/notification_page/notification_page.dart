@@ -35,8 +35,6 @@ class _NotificationPageState extends State<NotificationPage> {
       NotificationApi.onNotification.stream.listen(onClickNotification);
 
   void onClickNotification(String? payload) {
-    // NavigatorService.to.pushNamed(AttentionNote.routeName, arguments: payload != null ? VolunteeringModel.fromJson(jsonDecode(payload)) : null,);
-
     showDialog(
       context: context,
       builder: (context) {
@@ -84,7 +82,7 @@ class _NotificationPageState extends State<NotificationPage> {
                   title:LocaleKeys.attention_hello_volunteer.tr(),
                   body: LocaleKeys.you_go_to_help.tr(),
                   payload: jsonEncode(state.cardList[index].toJson()),
-                  // scheduledDate: DateTime.now().add(Duration(seconds: 10))
+                  scheduledDate: DateTime.now().add(Duration(seconds: 10))
               );
             },
           );
@@ -96,7 +94,7 @@ class _NotificationPageState extends State<NotificationPage> {
               title:LocaleKeys.attention_hello_volunteer.tr(),
               body: LocaleKeys.you_go_to_help.tr(),
               payload: jsonEncode(state.cardList[index].toJson()),
-              // scheduledDate: DateTime.now().add(Duration(seconds: 10)),
+              scheduledDate: DateTime.now().add(Duration(seconds: 10)),
             );
           },
         );

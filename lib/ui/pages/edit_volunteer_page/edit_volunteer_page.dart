@@ -24,7 +24,6 @@ class EditVolunteerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider(
         create: (context) => EditVolunteerBloc()..add(MyProfileLoad()),
     child:  BlocConsumer<EditVolunteerBloc, EditVolunteerState>(
@@ -273,7 +272,6 @@ class EditVolunteerPage extends StatelessWidget {
                  ),
                ),
              );
-
            }else if(state.changePage==2){
              return UserUpdateVolunteerPage();
            }else {

@@ -43,7 +43,7 @@ class NotificationApi{
   }
 
   static Future showNotification({
-    // required DateTime scheduledDate,
+    required DateTime scheduledDate,
     int id=0,
     String? title,
     String? body,
@@ -52,8 +52,8 @@ class NotificationApi{
       id,
       title,
       body,
-      tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
-      // _scheduleDaily(Time(5, 01, 30)),
+      // tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
+      _scheduleDaily(DateTime(08, 06, 00)),
       // days: [DateTime.monday,DateTime.sunday]),
       await _notificationDetails(),
     payload: payload,
@@ -62,14 +62,12 @@ class NotificationApi{
     matchDateTimeComponents: DateTimeComponents.time,
 
   );
-  // static tz.TZDateTime _scheduleDaily(Time time){
-  //   final now =tz.TZDateTime.now(tz.local);
-  //   final scheduledDate=tz.TZDateTime(tz.local, now.year, now.month, now.day,
-  //       time.hour, time.minute, time.second);
-  //   return //scheduledDate.isBefore(now) ?
-  //   scheduledDate.add(Duration(minutes: 1),);
-  //   //: scheduledDate;
-  // }
+  static tz.TZDateTime _scheduleDaily(DateTime time){
+    final now =tz.TZDateTime.now(tz.local);
+    final scheduledDate=tz.TZDateTime(tz.local, now.year, now.month, now.day,
+        time.hour, time.minute, time.second);
+    return scheduledDate.isBefore(now) ? scheduledDate.add(Duration(minutes: 1)) : scheduledDate;
+  }
   // static tz.TZDateTime _scheduleWeekly(Time time,{required List<int> days}){
   //   tz.TZDateTime scheduledDate=_scheduleDaily(time);
   //   while(!days.contains(scheduledDate.weekday)){

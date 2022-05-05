@@ -42,7 +42,7 @@ class NumberUpdateStep1 extends StatelessWidget {
                     ? AppWidgets.textLocale(
                         text: "1 2 3 4 5 6",
                         textAlign: TextAlign.center,
-                         color: AppColorUtils.GRAY_4,
+                        color: AppColorUtils.GRAY_4,
                         fontSize: 15.sp,
                         fontWeight: FontWeight.w600,
                       )
@@ -65,7 +65,7 @@ class NumberUpdateStep1 extends StatelessWidget {
               SizedBox(height: 16.w),
               InkWell(
                 onTap: () {
-                  NavigatorService.to.pushNamed(EditVolunteerPage.routeName);
+                  NavigatorService.to.pushNamed(MyProfilePage.routeName);
                 },
                 child: Container(
                   width: double.infinity,
@@ -86,19 +86,19 @@ class NumberUpdateStep1 extends StatelessWidget {
               state.nextPage
                   ? SizedBox()
                   : InkWell(
-                onTap: () {
-                  NavigatorService.to
-                      .pushNamed(NumberUpdatePage.routeName);
-                },
-                child: Container(
-                  child: AppWidgets.textLocale(
-                    text: LocaleKeys.send_again.tr(),
-                    color: AppColorUtils.BlUE_2,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ).paddingOnly(left: 120.w),
-              ),
+                      onTap: () {
+                        NavigatorService.to
+                            .pushNamed(NumberUpdatePage.routeName);
+                      },
+                      child: Container(
+                        child: AppWidgets.textLocale(
+                          text: LocaleKeys.send_again.tr(),
+                          color: AppColorUtils.BlUE_2,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ).paddingOnly(left: 120.w),
+                    ),
             ],
           ),
         );

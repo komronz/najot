@@ -112,7 +112,7 @@ class _MyVolunteeringQuestionListState extends State<MyCharityQuestionList> {
                                 top: 7.w,
                               ),
                               AppTextField(
-                                hintText: LocaleKeys.write_your_answer,
+                                hintText: LocaleKeys.write_your_answer.tr(),
                                 onChanged: (v) {},
                                 title: "",
                                 hasTitle: false,

@@ -4,7 +4,13 @@ part of 'my_profil_update_bloc.dart';
 abstract class MyProfileUpdateEvent extends Equatable {
   const MyProfileUpdateEvent();
 }
-
+class EditProfileChangePage extends MyProfileUpdateEvent{
+  EditProfileChangePage(this.changePage);
+  final int changePage;
+  @override
+  // TODO: implement props
+  List<Object?> get props =>[changePage];
+}
 class MyProfileLoad extends MyProfileUpdateEvent {
   const MyProfileLoad();
 
