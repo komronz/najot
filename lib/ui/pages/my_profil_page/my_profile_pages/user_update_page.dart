@@ -8,6 +8,7 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/utils/app_utils.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/show_picker_widget.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/user_update_app_radio_button.dart';
+import '../../../../data/bloc/app_page_cubit/app_page_cubit.dart';
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
@@ -16,6 +17,15 @@ import '../../../widgets/app_text_field.dart';
 import '../../../widgets/app_widgets.dart';
 import '../../home_page/home_page.dart';
 
+class MyProfileUserUpdatePageModel {
+  final MyProfileUpdateBloc bloc;
+  final AppPageCubit cubit;
+
+  MyProfileUserUpdatePageModel({
+    required this.bloc,
+    required this.cubit,
+  });
+}
 class UserUpdatePage extends StatelessWidget {
   final MyProfileUpdateBloc bloc;
   static const String routeName = "/userUpdatePage";

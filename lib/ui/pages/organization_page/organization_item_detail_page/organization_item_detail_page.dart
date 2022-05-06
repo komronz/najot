@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,13 +23,10 @@ class OrganizationItemDetailPageModel {
     required this.cubit,
   });
 }
-
 class OrganizationItemDetailPage extends StatelessWidget {
   OrganizationItemDetailPage({required this.model});
-
   static const String routeName = "/organizationItemDetailPage";
   OrganizationItemDetailPageModel model;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -19,7 +19,15 @@ import 'my_profile_pages/number_update_page.dart';
 import 'my_profile_pages/user_degree_page.dart';
 import 'my_profile_pages/user_update_page.dart';
 import 'my_profile_widget/my_profile_radio_button.dart';
+class MyProfilePageModel {
+  final MyProfileUpdateBloc bloc;
+  final AppPageCubit cubit;
 
+  MyProfilePageModel({
+    required this.bloc,
+    required this.cubit,
+  });
+}
 class MyProfilePage extends StatefulWidget {
   static const String routeName = "/myProfilePage";
 

@@ -9,6 +9,7 @@ import 'package:najot/data/model/user.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 
+import '../../../../data/bloc/app_page_cubit/app_page_cubit.dart';
 import '../../../../data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
@@ -17,7 +18,15 @@ import '../../../widgets/app_widgets.dart';
 import '../../home_page/home_page.dart';
 import '../my_profile_widget/app_disable_text_field.dart';
 import '../my_profile_widget/number_update_step1_page.dart';
+class MyProfileNumberUpdatePageModel {
+  final MyProfileUpdateBloc bloc;
+  final AppPageCubit cubit;
 
+  MyProfileNumberUpdatePageModel({
+    required this.bloc,
+    required this.cubit,
+  });
+}
 class NumberUpdatePage extends StatelessWidget {
   static const String routeName = "/numberUpdatePage";
 
