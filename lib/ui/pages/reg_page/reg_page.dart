@@ -13,13 +13,15 @@ import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class RegPage extends StatelessWidget {
-  const RegPage({Key? key}) : super(key: key);
+  const RegPage({required this.loginBloc}) ;
   static const String routeName = '/regPage';
+  final LoginBloc loginBloc;
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginBloc, LoginState>(
       listener: (context, state) {},
+      bloc: loginBloc,
       builder: (context, state) {
         return Scaffold(
           backgroundColor: AppColorUtils.BACKGROUND,
@@ -39,40 +41,26 @@ class RegPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppTextField(
-                      isFill: context.read<LoginBloc>().state.firstNameFill,
+                      isFill: loginBloc
+                          .state.firstNameFill,
                       hintText: "(abdumalik)",
                       onChanged: (v) {
-                        context.read<LoginBloc>().add(LoginFirstNameChanged(v));
+                        loginBloc.add(LoginFirstNameChanged(v));
                       },
                       title: LocaleKeys.name,
-
                     ).paddingOnly(
                       left: 20,
                       right: 20,
                     ),
                     AppTextField(
-                      isFill: context.read<LoginBloc>().state.lastNameFill,
+                      isFill: loginBloc
+                          .state.lastNameFill,
                       hintText: "(sapoqulov)",
                       onChanged: (v) {
-                        context.read<LoginBloc>().add(LoginLastNameChanged(v));
+                        loginBloc
+                            .add(LoginLastNameChanged(v));
                       },
                       title: LocaleKeys.surname,
-                    ).paddingOnly(
-                      top: 24,
-                      left: 20,
-                      right: 20,
-                    ),
-                    AppTextField(
-                      isFill: context.read<LoginBloc>().state.phoneFill,
-                      hintText: "",
-                      initialText: "+998",
-                      onChanged: (v) {
-                        context.read<LoginBloc>().add(LoginPhoneChanged(v));
-                      },
-                      title: LocaleKeys.phone_number,
-                      textInputType: TextInputType.phone,
-                      inputFormatter:
-                          context.read<LoginBloc>().phoneNumberFormatter,
                     ).paddingOnly(
                       top: 24,
                       left: 20,
@@ -83,11 +71,10 @@ class RegPage extends StatelessWidget {
                       children: [
                         Checkbox(
                           onChanged: (v) {
-                            context
-                                .read<LoginBloc>()
-                                .add(LoginAgreeChanged(v!));
+                            loginBloc.add(LoginAgreeChanged(v!));
                           },
-                          value: context.read<LoginBloc>().state.agree,
+                          value: loginBloc
+                              .state.agree,
                           checkColor: AppColorUtils.BORDER_COLOR,
                           activeColor: Colors.transparent,
                           shape: RoundedRectangleBorder(
@@ -104,24 +91,33 @@ class RegPage extends StatelessWidget {
                       ],
                     ).paddingSymmetric(horizontal: 15, vertical: 24),
                     AppWidgets.appButton(
-                      title: LocaleKeys.next,
-                      onTap: context.read<LoginBloc>().state.isNextBtnActive
+                      title: LocaleKeys.log_in,
+                      onTap: loginBloc
+                          .state.isNextBtnActive
                           ? () {
-                              NavigatorService.to
-                                  .pushNamed(VerificationPage.routeName);
-                              context.read<LoginBloc>().add(LoginSignIn());
+                              NavigatorService.to.pushNamed(
+                                VerificationPage.routeName,
+                                arguments: loginBloc
+                                ,
+                              );
+                              loginBloc
+                                  .add(LoginSignIn());
                             }
                           : () {
                               AppWidgets.showText(
-                                text: LocaleKeys.agree_to_the_terms_of_the_project.tr(),
+                                text: LocaleKeys
+                                    .agree_to_the_terms_of_the_project
+                                    .tr(),
                                 duration: Duration(seconds: 1),
                               );
                             },
-                      color: context.read<LoginBloc>().state.isNextBtnActive
+                      color: loginBloc
+                          .state.isNextBtnActive
                           ? AppColorUtils.GREEN_APP
                           : AppColorUtils.DISABLE_BC,
                     ).paddingSymmetric(horizontal: 20),
-                    context.read<LoginBloc>().state.agree
+                    loginBloc
+                        .state.agree
                         ? SizedBox()
                         : Row(
                             children: [
@@ -132,7 +128,9 @@ class RegPage extends StatelessWidget {
                                 color: AppColorUtils.RED,
                               ),
                               AppWidgets.text(
-                                text: LocaleKeys.agree_to_the_terms_of_the_project_first.tr(),
+                                text: LocaleKeys
+                                    .agree_to_the_terms_of_the_project_first
+                                    .tr(),
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
                                 richText: true,

@@ -2,27 +2,52 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/bloc/login_bloc/login_bloc.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/login_page/custom_shape.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
+import '../reg_page/reg_page.dart';
+import '../verification_page/verification_page.dart';
+
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  LoginPage({Key? key}) : super(key: key);
   static const String routeName = '/loginPage';
+
+  bool fullNumber = false;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LoginBloc(),
       child: BlocConsumer<LoginBloc, LoginState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state.phone.length == 12) {
+            print("dddddd");
+          }
+          if (state.checkPhoneNumber) {
+            NavigatorService.to.pushNamed(
+              VerificationPage.routeName,
+              arguments: context.read<LoginBloc>(),
+            );
+            context.read<LoginBloc>().add(LoginAuthSuccess(false));
+          }
+          // else{
+          //   NavigatorService.to.pushNamed(
+          //     RegPage.routeName,
+          //     arguments: context.read<LoginBloc>(),
+          //   );
+          //   context.read<LoginBloc>().add(LoginAuthSuccess(false));
+          // }
+        },
         builder: (context, state) => Scaffold(
           body: SingleChildScrollView(
             physics: ClampingScrollPhysics(),
@@ -40,20 +65,12 @@ class LoginPage extends StatelessWidget {
                             NavigatorService.to.pop();
                           },
                           title: LocaleKeys.sign_in,
-                          color: AppColorUtils.GREEN_1,
+                          color: AppColorUtils.GREEN_BACK_SPLASH,
                           textColor: AppColorUtils.WHITE,
                         ),
                       ],
                     ).paddingOnly(top: 40.h),
                   ],
-                ),
-                AppTextField(
-                  isFill: context.read<LoginBloc>().state.firstNameFill,
-                  hintText: "(abdumalik)",
-                  onChanged: (v) {
-                    context.read<LoginBloc>().add(LoginFirstNameChanged(v));
-                  },
-                  title: LocaleKeys.name,
                 ),
                 AppTextField(
                   hasError: context.read<LoginBloc>().state.hasError,
@@ -62,30 +79,29 @@ class LoginPage extends StatelessWidget {
                   onChanged: (v) {
                     context.read<LoginBloc>().add(LoginPhoneChanged(v));
                   },
-                  initialText: "+998",
                   title: LocaleKeys.phone_number,
                   textInputType: TextInputType.number,
                   inputFormatter:
                       context.read<LoginBloc>().phoneNumberFormatter,
-                ).paddingOnly(top: 24),
-                LoginErrorTextWidget(
-                  hasError: context.read<LoginBloc>().state.hasError,
+                  phoneNumberCode: true,
+                ).paddingOnly(
+                  top: 24,
+                  left: 20,
+                  right: 20,
                 ),
+               state.hasError ? AppWidgets.starTextWidget(
+                  text: "Telefon raqamni to'liq kiriting",
+                  color: AppColorUtils.RED
+                ).paddingOnly(left: 20) : SizedBox(),
                 AppWidgets.appButton(
                   title: LocaleKeys.enter,
-                  color: state.signBtnActive
-                      ? AppColorUtils.GREEN_APP
-                      : AppColorUtils.DISABLE_BC,
+                  color: AppColorUtils.GREEN_APP,
                   onTap: () {
-                    context.read<LoginBloc>().add(LoginSignIn());
+                      context.read<LoginBloc>().add(CheckPhoneNumber());
+
+
                   },
                 ).paddingSymmetric(vertical: 24.h, horizontal: 20),
-                LoginRegBtnWidget(
-                  onTap: () {
-                    context.read<LoginBloc>().add(LoginSignUp());
-                  },
-                  hasError: context.read<LoginBloc>().state.hasError,
-                ).paddingSymmetric(horizontal: 20)
               ],
             ),
           ),

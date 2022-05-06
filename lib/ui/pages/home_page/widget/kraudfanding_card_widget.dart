@@ -1,9 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/model/slider_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -13,11 +15,11 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class KraudfandingCardWidget extends StatelessWidget {
   KraudfandingCardWidget({
-    required this.sliderModel,
+    required this.projectModel,
     required this.visible,
   });
 
-  final SliderModel sliderModel;
+  final ProjectModel projectModel;
   final bool visible;
 
   @override
@@ -42,20 +44,15 @@ class KraudfandingCardWidget extends StatelessWidget {
                         topLeft: Radius.circular(12),
                         topRight: Radius.circular(12),
                       ),
-                      // child: CachedNetworkImage(
-                      //   width: double.infinity,
-                      //   imageUrl: productModel.photo!.image!,
-                      //   errorWidget: (context, url, error) => Image.asset(
-                      //     AppImageUtils.APP_LOGO,
-                      //   ),
-                      //   placeholder: (context, url) =>
-                      //       Center(child: CircularProgressIndicator()),
-                      //   fit: BoxFit.cover,
-                      // ),
-                      child: Image.asset(
-                        sliderModel.image,
+                      child: CachedNetworkImage(
+                        width: double.infinity,
+                        imageUrl: projectModel.cover!,
+                        errorWidget: (context, url, error) => Image.asset(
+                          AppImageUtils.KRAUDFANDING,
+                        ),
+                        placeholder: (context, url) =>
+                            Center(child: CircularProgressIndicator()),
                         fit: BoxFit.cover,
-                        width: MediaQuery.of(context).size.width,
                       ),
                     ),
                     flex: 1,
@@ -67,8 +64,7 @@ class KraudfandingCardWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           AppWidgets.text(
-                            text:
-                                "Drenajni kuzatish uchun mo’jallangan moslama...",
+                            text: projectModel.title!,
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
                             maxLines: 2,
@@ -98,11 +94,12 @@ class KraudfandingCardWidget extends StatelessWidget {
                                     height: 2,
                                   ),
                                   AppWidgets.textLocale(
-                                      text: LocaleKeys.sum,
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.w600,
-                                      color: AppColorUtils.GREEN_TEXT,
-                                  args: ["1 000 000"])
+                                    text: LocaleKeys.sum,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColorUtils.GREEN_TEXT,
+                                    args: ["${projectModel.requiredFund}"],
+                                  )
                                 ],
                               ),
                               Column(
@@ -118,10 +115,11 @@ class KraudfandingCardWidget extends StatelessWidget {
                                     height: 2,
                                   ),
                                   AppWidgets.text(
-                                      text: "60%",
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.w600,
-                                      color: AppColorUtils.BLUE_PERCENT)
+                                    text: "60%",
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColorUtils.BLUE_PERCENT,
+                                  )
                                 ],
                               )
                             ],

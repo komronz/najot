@@ -27,7 +27,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => cubit,
+      create: (BuildContext context) => cubit..getModel(),
       child: Scaffold(
         body: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
@@ -53,7 +53,7 @@ class MainPage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CarouselSliderWidget(sliderList: state.sliderList),
+                          CarouselSliderWidget(sliderList: state.slider),
                           SizedBox(
                             height: 20.h,
                           ),
@@ -128,12 +128,12 @@ class MainPage extends StatelessWidget {
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
                                     children: List.generate(
-                                      state.sliderList.length,
+                                      state.crudFunding.length,
                                       (index) => Container(
                                         margin: EdgeInsets.only(left: 10.w),
                                         child: KraudfandingCardWidget(
-                                          sliderModel:
-                                              state.sliderList[index],
+                                          projectModel:
+                                              state.crudFunding[index],
                                           visible: true,
                                         ),
                                       ),
@@ -155,12 +155,12 @@ class MainPage extends StatelessWidget {
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
                                     children: List.generate(
-                                      state.sliderList.length,
+                                      state.volunteer.length,
                                       (index) => Container(
                                         margin: EdgeInsets.only(left: 10.w),
                                         child: VolunteerCardWidget(
-                                          sliderModel:
-                                              state.sliderList[index],
+                                          projectModel:
+                                              state.volunteer[index],
                                         ),
                                       ),
                                     ),
@@ -179,12 +179,12 @@ class MainPage extends StatelessWidget {
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
                                     children: List.generate(
-                                      state.sliderList.length,
+                                      state.charity.length,
                                       (index) => Container(
                                         margin: EdgeInsets.only(left: 10.w),
                                         child: KraudfandingCardWidget(
-                                          sliderModel:
-                                              state.sliderList[index],
+                                          projectModel:
+                                              state.charity[index],
                                           visible: false,
                                         ),
                                       ),

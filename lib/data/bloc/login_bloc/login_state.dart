@@ -11,6 +11,8 @@ class LoginState extends Equatable {
   final bool isNextBtnActive;
   final bool signBtnActive;
   final bool hasError;
+  final bool authSuccess;
+  final bool checkPhoneNumber;
 
   const LoginState({
     this.firstName = '',
@@ -23,6 +25,8 @@ class LoginState extends Equatable {
     this.phoneFill = false,
     this.signBtnActive = false,
     this.hasError = false,
+    this.authSuccess = false,
+    this.checkPhoneNumber = false,
   });
 
   @override
@@ -37,6 +41,8 @@ class LoginState extends Equatable {
         phoneFill,
         signBtnActive,
         hasError,
+    authSuccess,
+    checkPhoneNumber
       ];
 
   LoginState copyWith({
@@ -50,6 +56,9 @@ class LoginState extends Equatable {
     bool? phoneFill,
     bool? signBtnActive,
     bool? hasError,
+    bool? authSuccess,
+    bool? checkPhoneNumber,
+
   }) {
     return LoginState(
       firstName: firstName ?? this.firstName,
@@ -62,6 +71,8 @@ class LoginState extends Equatable {
       phoneFill: phoneFill ?? this.phoneFill,
       signBtnActive: signBtnActive ?? this.signBtnActive,
       hasError: hasError ?? this.hasError,
+      authSuccess: authSuccess ?? this.authSuccess,
+      checkPhoneNumber: checkPhoneNumber ?? this.checkPhoneNumber,
     );
   }
 }

@@ -238,7 +238,7 @@
   "please_fill_out_the_form_below_to_volunteer": "Iltimos volontyor bo’lish uchun quyidagi formani to’ldiring.",
   "all_your_current_data_will_change": "amaldagi barcha ma’lumotlaringiz o’zgaradi",
   "general_rules": "1. Umumiy qoyidalar",
-  "enter_6_digit_code": "6 raqamli kodni kiriting",
+  "enter_6_digit_code": "{} raqamiga yuborilgan 6 raqamli kodni kiriting",
   "enter_another_number": "Boshqa raqam kiritish",
   "select_date":"Sanani tanlang",
   "enter_project_name": "Loyiha nomini kiriting"

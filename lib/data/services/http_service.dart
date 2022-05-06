@@ -1,4 +1,5 @@
 // 🎯 Dart imports:
+import 'dart:convert';
 import 'dart:io';
 
 // 📦 Package imports:
@@ -6,9 +7,8 @@ import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
-// 🌎 Project imports:
-import 'package:najot/data/config/const/api_const.dart';
-import 'package:najot/data/utils/app_logger_util.dart';
+import '../config/const/api_const.dart';
+import '../utils/app_logger_util.dart';
 
 class HttpService {
   Dio? _dio;
@@ -34,28 +34,68 @@ class HttpService {
   Future<Response?> post({
     String? path,
     Map<String, dynamic>? fields,
+    Map<String, dynamic>? headers,
     String? token,
-    dynamic data,
   }) async {
     try {
-      var body;
-      if (fields == null) {
-        body = Map<String, dynamic>();
-      } else {
-        body = fields;
-      }
-      AppLoggerUtil.d("API: ${APIConst.API_URL + path!} $data");
-      if (token == null) {
+      AppLoggerUtil.d("API: ${APIConst.API_URL + path!}");
+      if (token != null) {
         return await _dio!.post(
           APIConst.API_URL + path,
-          data: body,
+          options: Options(
+            headers: {
+              HttpHeaders.contentTypeHeader: "application/json",
+              'Authorization': 'Bearer ${token}',
+            },
+          ),
         );
       } else {
         return await _dio!.post(
           APIConst.API_URL + path,
-          data: data,
+          data: jsonEncode(fields),
           options: Options(
-            headers: {"Authorization": "Token $token"},
+            headers: headers,
+          ),
+        );
+      }
+    } on DioError catch (e) {
+      return e.response;
+    } catch (e) {
+      AppLoggerUtil.e(e.toString());
+      return null;
+    }
+  }
+
+  Future<dynamic> get({
+    String? path,
+    String? url,
+    Map<String, dynamic>? parameters,
+    String? token,
+  }) async {
+    try {
+      if (url == null) {
+        if (parameters == null) {
+          if (token == null) {
+            return await _dio!.get(APIConst.API_URL + path!);
+          } else {
+            return await _dio!.get(
+              APIConst.API_URL + path!,
+              options: Options(
+                headers: {"Authorization": "Bearer $token"},
+              ),
+            );
+          }
+        }
+        return await _dio!.get(
+          APIConst.API_URL + path!,
+          queryParameters: parameters,
+        );
+      } else {
+        if (parameters == null && token == null) return await _dio!.get(url);
+        return await _dio!.get(
+          url,
+          options: Options(
+            headers: {"Authorization": "Bearer $token"},
           ),
         );
       }
@@ -64,36 +104,23 @@ class HttpService {
     }
   }
 
-  Future<dynamic> get(
-      {String? path,
-      String? url,
-      Map<String, dynamic>? parameters,
-      String? token}) async {
+  Future<dynamic> put({
+    String? path,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? fields,
+    String? token,
+  }) async {
     try {
-      if (url == null) {
-        AppLoggerUtil.d(
-            "API: ${APIConst.API_URL + path!}\n Parameters: $parameters");
-        if (parameters == null) {
-          if (token == null) {
-            return await _dio!.get(APIConst.API_URL + path);
-          } else {
-            return await _dio!.get(
-              APIConst.API_URL + path,
-              options: Options(
-                headers: {"Authorization": "Token $token"},
-              ),
-            );
-          }
-        }
-        return await _dio!
-            .get(APIConst.API_URL + path, queryParameters: parameters);
-      } else {
-        AppLoggerUtil.d("API: $url\n Parameters: $parameters");
-        if (parameters == null) return await _dio!.get(url);
-        return await _dio!.get(url, queryParameters: parameters);
-      }
+      return await _dio!.put(path!,
+          options: Options(
+            headers: headers,
+          ),
+          data: jsonEncode(fields));
+    } on DioError catch (e) {
+      return e.response;
     } catch (e) {
-      AppLoggerUtil.e(e.toString());
+      AppLoggerUtil.e("$e");
+      return null;
     }
   }
 }

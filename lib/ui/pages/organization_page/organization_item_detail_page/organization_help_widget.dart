@@ -1,6 +1,5 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +16,6 @@ import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/pages/organization_page/organization_item_detail_page/time_picker_organization.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-import 'package:flutter_vibrate/flutter_vibrate.dart';
 
 class OrganizationHelpModel {
   CardModel cardModel;
@@ -190,7 +188,6 @@ class OrganizationHelpWidget extends StatelessWidget {
                       .paddingSymmetric(horizontal: 20.w),
                   ButtonCard(
                     onPress: () {
-                      Vibrate.feedback(FeedbackType.success);
                       if (state.checkBox) {
                         showDialog(
                             context: context,

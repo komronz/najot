@@ -49,3 +49,28 @@ class LoginAgreeChanged extends LoginEvent {
   @override
   List<Object?> get props => [isAgree];
 }
+class LoginAuthSuccess extends LoginEvent {
+  final bool authSuccess;
+
+  LoginAuthSuccess(this.authSuccess);
+
+  @override
+  List<Object?> get props => [authSuccess];
+}
+
+class CheckPhoneNumber extends LoginEvent {
+@override
+List<Object?> get props => [];
+}
+
+
+
+class CheckPhoneNumberChanged extends LoginEvent {
+  final bool check;
+
+  CheckPhoneNumberChanged(this.check);
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
