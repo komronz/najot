@@ -21,7 +21,6 @@ class KraudfandingCardWidget extends StatelessWidget {
 
   final ProjectModel projectModel;
   final bool visible;
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
