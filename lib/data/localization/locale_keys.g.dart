@@ -242,5 +242,7 @@ abstract class  LocaleKeys {
   static const enter_another_number = 'enter_another_number';
   static const select_date = 'select_date';
   static const enter_project_name = 'enter_project_name';
+  static const successful_send = 'successful_send';
+
 
 }

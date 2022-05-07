@@ -16,6 +16,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../data/services/navigator_service.dart';
 import '../notification_page/notification_page.dart';
+import 'edit_show_success.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({Key? key}) : super(key: key);
@@ -139,7 +140,7 @@ class AboutPage extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         fontSize: 22.sp,
                         color: AppColorUtils.DARK2,
-                      ).paddingOnly(top: 24, left: 20, right: 20),
+                      ).paddingOnly(top: 24),
                       AppTextField(
                         isFill: context.read<AppealBloc>().state.firstNameFill,
                         hintText: "(abdumalik)",
@@ -173,14 +174,19 @@ class AboutPage extends StatelessWidget {
                       ).paddingOnly(top: 18),
                       AppWidgets.appButton(
                         title: LocaleKeys.str_registration.tr(),
-                        onTap: () {},
+                        onTap: ()  async {
+                          await showDialog(
+                              context: context,
+                              builder: (ctx) => EditShowSuccessSend(
+                          ));
+                        },
                         textColor: Colors.white,
                         color: context.read<AppealBloc>().state.isNextBtnActive
                             ? AppColorUtils.PERCENT_COLOR
                             : AppColorUtils.GREEN_BTN,
-                      ).paddingSymmetric(horizontal: 20, vertical: 25),
+                      ).paddingSymmetric(vertical: 25),
                     ],
-                  ),
+                  ).paddingOnly(left: 20, right: 20),
                 ).paddingOnly(top: 15),
               ],
             ),

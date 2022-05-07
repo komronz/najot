@@ -241,8 +241,6 @@
   "enter_6_digit_code": "6 raqamli kodni kiriting",
   "enter_another_number": "Boshqa raqam kiritish",
   "select_date":"Sanani tanlang",
-  "enter_project_name": "Loyiha nomini kiriting"
-
-
-
+  "enter_project_name": "Loyiha nomini kiriting",
+  "successful_send": "//Muvoffaqiyatli yuborildi! //Tez orada Moderatorlar siz bilan aloqaga chiqishadi."
 }
