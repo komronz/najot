@@ -21,6 +21,7 @@ class AppTextField extends StatefulWidget {
   final double? height;
   final bool hasTitle;
   final bool autoFocus;
+  final bool phoneNumberCode;
 
   AppTextField({
     required this.hintText,
@@ -37,6 +38,7 @@ class AppTextField extends StatefulWidget {
     this.height,
     this.hasTitle = true,
     this.autoFocus = false,
+    this.phoneNumberCode = false,
   });
 
   @override
@@ -125,6 +127,18 @@ class _AppTextFieldState extends State<AppTextField> {
                 fontWeight: FontWeight.w400,
                 color: AppColorUtils.GRAY_4,
               ),
+              prefixIcon: widget.phoneNumberCode==true?
+              Container(
+                padding: EdgeInsets.only(left: 10),
+                width: 60.w,
+                child: Center(
+                  child: AppWidgets.text(
+                    text: "+998",
+                    fontSize: 15.sp,
+                    color: AppColorUtils.DARK2,
+                  ),
+                ),
+              ):null,
               suffixIcon: widget.isPassword
                   ? InkWell(
                       onTap: () {

@@ -12,6 +12,7 @@ class AppColorUtils {
   static const Color PERCENT_COLOR = Color(0xFF0BBF90);
   static const Color PERCENT_COLOR2 = Color(0xFFE8FEF9);
   static const Color DARK6 = Color(0xFF939598);
+  static const Color GREEN_BACK_SPLASH = Color(0xFF25D7A8);
   static const Color DARK3 = Color(0xFF58595B);
   static const Color DARK2 = Color(0xFF414042);
   static const Color GREEN_TEXT = Color(0xFF027859);

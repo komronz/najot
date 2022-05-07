@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/login_bloc/login_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -42,31 +41,13 @@ class AuthPage extends StatelessWidget {
               ],
             ),
             AppWidgets.appButton(
-              title: LocaleKeys.str_registration,
-              onTap: () {
-                // NavigatorService.to.pushNamed(RegPage.routeName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => BlocProvider(
-                      create: (context) => LoginBloc(),
-                      child: RegPage(),
-                    ),
-                  ),
-                );
-              },
-            ).paddingSymmetric(horizontal: 20),
-            AppWidgets.appButton(
               title: LocaleKeys.log_in,
               onTap: () {
                 NavigatorService.to.pushNamed(LoginPage.routeName);
+
               },
-              color: Colors.transparent,
-              textColor: AppColorUtils.TEXT_GREEN,
-            ).paddingSymmetric(
-              vertical: 10.h,
-              horizontal: 20,
-            ),
+            ).paddingSymmetric(horizontal: 20),
+
           ],
         ),
       ),

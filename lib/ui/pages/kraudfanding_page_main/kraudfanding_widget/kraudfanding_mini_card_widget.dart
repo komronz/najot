@@ -125,15 +125,14 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
             Visibility(
               visible: visible,
               child: ButtonCard(
-                height: 22.w,
-                width: 77.w,
+                width: 70.w,
                 onPress: () {},
-                text: LocaleKeys.technology,
+                text: LocaleKeys.technology.tr(),
                 textColor: AppColorUtils.GREEN_TEXT,
                 textSize: 10.sp,
                 fontWeight: FontWeight.w400,
                 color: Colors.white54,
-              ).paddingAll(15.w),
+              ).paddingAll(10.w),
             )
           ],
         ),

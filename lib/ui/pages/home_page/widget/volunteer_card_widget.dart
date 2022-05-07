@@ -1,16 +1,18 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/model/slider_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class VolunteerCardWidget extends StatelessWidget {
-  VolunteerCardWidget({required this.sliderModel});
+  VolunteerCardWidget({required this.projectModel});
 
-  final SliderModel sliderModel;
+  final ProjectModel projectModel;
 
   @override
   Widget build(BuildContext context) {
@@ -34,21 +36,17 @@ class VolunteerCardWidget extends StatelessWidget {
                         topLeft: Radius.circular(12),
                         topRight: Radius.circular(12),
                       ),
-                      // child: CachedNetworkImage(
-                      //   width: double.infinity,
-                      //   imageUrl: productModel.photo!.image!,
-                      //   errorWidget: (context, url, error) => Image.asset(
-                      //     AppImageUtils.APP_LOGO,
-                      //   ),
-                      //   placeholder: (context, url) =>
-                      //       Center(child: CircularProgressIndicator()),
-                      //   fit: BoxFit.cover,
-                      // ),
-                      child: Image.asset(
-                        sliderModel.image,
+                      child: CachedNetworkImage(
+                        width: double.infinity,
+                        imageUrl: projectModel.cover!,
+                        errorWidget: (context, url, error) => Image.asset(
+                          AppImageUtils.VOLONTYOR,
+                        ),
+                        placeholder: (context, url) =>
+                            Center(child: CircularProgressIndicator()),
                         fit: BoxFit.cover,
-                        width: MediaQuery.of(context).size.width,
                       ),
+
                     ),
                     flex: 1,
                   ),

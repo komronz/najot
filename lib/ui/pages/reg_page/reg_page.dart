@@ -13,13 +13,15 @@ import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class RegPage extends StatelessWidget {
-  const RegPage({Key? key}) : super(key: key);
+  const RegPage({required this.loginBloc}) ;
   static const String routeName = '/regPage';
+  final LoginBloc loginBloc;
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginBloc, LoginState>(
       listener: (context, state) {},
+      bloc: loginBloc,
       builder: (context, state) {
         return Scaffold(
           backgroundColor: AppColorUtils.BACKGROUND,
@@ -104,12 +106,17 @@ class RegPage extends StatelessWidget {
                       ],
                     ).paddingSymmetric(horizontal: 15, vertical: 24),
                     AppWidgets.appButton(
-                      title: LocaleKeys.next,
-                      onTap: context.read<LoginBloc>().state.isNextBtnActive
+                      title: LocaleKeys.log_in,
+                      onTap: loginBloc
+                          .state.isNextBtnActive
                           ? () {
-                              NavigatorService.to
-                                  .pushNamed(VerificationPage.routeName);
-                              context.read<LoginBloc>().add(LoginSignIn());
+                              NavigatorService.to.pushNamed(
+                                VerificationPage.routeName,
+                                arguments: loginBloc
+                                ,
+                              );
+                              loginBloc
+                                  .add(LoginSignIn());
                             }
                           : () {
                               AppWidgets.showText(
@@ -117,7 +124,8 @@ class RegPage extends StatelessWidget {
                                 duration: Duration(seconds: 1),
                               );
                             },
-                      color: context.read<LoginBloc>().state.isNextBtnActive
+                      color: loginBloc
+                          .state.isNextBtnActive
                           ? AppColorUtils.GREEN_APP
                           : AppColorUtils.DISABLE_BC,
                     ).paddingSymmetric(horizontal: 20),

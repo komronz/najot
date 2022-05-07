@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/bloc/edit_volunteer_bloc/edit_volunteer_bloc.dart';
+import 'package:najot/data/bloc/login_bloc/login_bloc.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
@@ -74,11 +75,11 @@ class AppRouteUtils {
         );
       case RegPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => RegPage(),
+          builder: (context) => RegPage(loginBloc: settings.arguments as LoginBloc,),
         );
       case VerificationPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => VerificationPage(),
+          builder: (context) => VerificationPage(loginBloc: settings.arguments as LoginBloc),
         );
       case HomePage.routeName:
         return CupertinoPageRoute(
