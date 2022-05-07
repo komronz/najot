@@ -13,7 +13,7 @@ class MainService{
 
     try {
       final Response response = await RootService.httpService.get(
-        url: "http://api.najot.thinkland.uz/api/home/",
+        url: "http://api.najot.thinkland.uz/home/",
       );
 
       if (response.statusCode == 200) {
