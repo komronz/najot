@@ -14,17 +14,17 @@ import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
+import '../../home_page/widget/button_card_widget.dart';
 
 class NumberUpdateStep1 extends StatelessWidget {
   static const String routeName = "/numberUpdateStep1Page";
 
-  const NumberUpdateStep1({Key? key}) : super(key: key);
-
+  NumberUpdateStep1({required this.state, required this.con});
+  MyProfileUpdateState state;
+  BuildContext con;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyProfileUpdateBloc, MyProfileUpdateState>(
-      builder: (context, state) {
-        return Container(
+    return Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -63,46 +63,41 @@ class NumberUpdateStep1 extends StatelessWidget {
                       ),
               ),
               SizedBox(height: 16.w),
-              InkWell(
-                onTap: () {
-                  NavigatorService.to.pushNamed(MyProfilePage.routeName);
+              ButtonCard(
+                textSize: 16.sp,
+                fontWeight: FontWeight.w600,
+                textColor: AppColorUtils.WHITE,
+                borderRadius: 12,
+                height: 48.w,
+                width: 1.sw,
+                color: AppColorUtils.PERCENT_COLOR,
+                onPress: () {
+                  con.read<MyProfileUpdateBloc>().add(EditProfileChangePage(1));
+                  con.read<MyProfileUpdateBloc>().add(MyProfileLoad()
+                  );
+
                 },
-                child: Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.only(top: 10, bottom: 13),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: AppColorUtils.PERCENT_COLOR,
-                  ),
-                  child: AppWidgets.textLocale(
-                    text: LocaleKeys.confirmation.tr(),
-                    textAlign: TextAlign.center,
-                    color: AppColorUtils.WHITE,
-                    fontSize: 15.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+                text: LocaleKeys.confirmation.tr(),
               ).paddingOnly(bottom: 18.w),
               state.nextPage
                   ? SizedBox()
                   : InkWell(
-                      onTap: () {
-                        NavigatorService.to
-                            .pushNamed(NumberUpdatePage.routeName);
-                      },
-                      child: Container(
-                        child: AppWidgets.textLocale(
-                          text: LocaleKeys.send_again.tr(),
-                          color: AppColorUtils.BlUE_2,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ).paddingOnly(left: 120.w),
-                    ),
+                onTap: () {
+                  // NavigatorService.to
+                  //     .pushNamed(NumberUpdateVolunteerPage.routeName);
+                },
+                child: Container(
+                  child: AppWidgets.textLocale(
+                    text: LocaleKeys.send_again.tr(),
+                    color: AppColorUtils.BlUE_2,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ).paddingOnly(left: 120.w),
+              ),
             ],
           ),
         );
-      },
-    );
+
   }
 }

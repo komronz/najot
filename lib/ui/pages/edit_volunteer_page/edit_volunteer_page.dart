@@ -25,7 +25,7 @@ class EditVolunteerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => EditVolunteerBloc()..add(MyProfileLoad()),
+    create: (context) => EditVolunteerBloc()..add(MyProfileLoad()),
     child:  BlocConsumer<EditVolunteerBloc, EditVolunteerState>(
       listener: (context, state) {},
       builder: (context, state) {

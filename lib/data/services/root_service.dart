@@ -8,8 +8,6 @@ import 'di_service.dart';
 import 'navigator_service.dart';
 
 class RootService {
-
-
   static final _getIt = GetIt.instance;
 
   static Future init() async {
@@ -25,8 +23,5 @@ class RootService {
     await HiveService.init();
     await HttpService.init();
   }
-
   static HttpService get httpService => _getIt.get<HttpService>();
-
-
 }
