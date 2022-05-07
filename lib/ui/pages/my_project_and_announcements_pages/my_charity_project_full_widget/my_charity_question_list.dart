@@ -65,7 +65,7 @@ class _MyVolunteeringQuestionListState extends State<MyCharityQuestionList> {
                           children: [
                             SizedBox(
                               child: AppWidgets.text(
-                                text: LocaleKeys.exactly_how_humanity_benefits
+                                text: LocaleKeys.how_humanity_benefits
                                     .tr(),
                                 color: AppColorUtils.TEXT_GREEN2,
                                 fontWeight: FontWeight.w600,
@@ -112,7 +112,7 @@ class _MyVolunteeringQuestionListState extends State<MyCharityQuestionList> {
                                 top: 7.w,
                               ),
                               AppTextField(
-                                hintText: LocaleKeys.write_your_answer,
+                                hintText: LocaleKeys.write_your_answer.tr(),
                                 onChanged: (v) {},
                                 title: "",
                                 hasTitle: false,

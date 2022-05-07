@@ -127,7 +127,7 @@ class LoginRegBtnWidget extends StatelessWidget {
         ? Column(
             children: [
               AppWidgets.text(
-                text: LocaleKeys.you_are_not_registered_register.tr(),
+                text: LocaleKeys.you_not_registered.tr(),
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColorUtils.DARK_6,
@@ -175,7 +175,7 @@ class LoginErrorTextWidget extends StatelessWidget {
                     ),
                   ],
                   text: LocaleKeys
-                      .information_was_not_found_for_this_phone_number
+                      .information_not_found
                       .tr(),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,

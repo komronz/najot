@@ -27,7 +27,7 @@ class OperatorClearSmsWidget extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: 24),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            color: Colors.white,
+            color: AppColorUtils.WHITE,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -41,7 +41,7 @@ class OperatorClearSmsWidget extends StatelessWidget {
               ).paddingOnly(top: 20),
               AppWidgets.text(
                 textAlign: TextAlign.center,
-                text: LocaleKeys.do_you_want_completely_clear_the_inside_of_the_notification.tr(),
+                text: LocaleKeys.want_clear_notification.tr(),
                 richText: true,
                 maxLines: 3,
                 height: 1.35,

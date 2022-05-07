@@ -393,7 +393,7 @@ class _AboutMyCharityItemProjectWidgetState
                                                   SizedBox(
                                                     child: AppWidgets.text(
                                                       text:
-                                                          LocaleKeys.exactly_how_humanity_benefits.tr(),
+                                                          LocaleKeys.how_humanity_benefits.tr(),
                                                       color: AppColorUtils
                                                           .TEXT_GREEN2,
                                                       fontWeight:

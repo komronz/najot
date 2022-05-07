@@ -24,7 +24,6 @@ class EditVolunteerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider(
         create: (context) => EditVolunteerBloc()..add(MyProfileLoad()),
     child:  BlocConsumer<EditVolunteerBloc, EditVolunteerState>(
@@ -47,7 +46,6 @@ class EditVolunteerPage extends StatelessWidget {
                      visibleIcon: true,
                      onTapIcon: () {
                        context.read<EditVolunteerBloc>().add(EditProfileChangePage(2));
-
                      },
                      icon: AppImageUtils.EDIT,
                    ),
@@ -62,7 +60,6 @@ class EditVolunteerPage extends StatelessWidget {
                    ),
                    child: Column(
                      children: [
-
                        ShowPickerWidget(),
                        Container (
                          child: Row(
@@ -154,7 +151,6 @@ class EditVolunteerPage extends StatelessWidget {
                                        ),
                                        InkWell(
                                          onTap: () {
-
                                            context.read<EditVolunteerBloc>().add(EditProfileChangePage(3));
                                          },
                                          child: Container(
@@ -276,7 +272,6 @@ class EditVolunteerPage extends StatelessWidget {
                  ),
                ),
              );
-
            }else if(state.changePage==2){
              return UserUpdateVolunteerPage();
            }else {

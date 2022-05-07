@@ -108,7 +108,7 @@ class _RegVolunteerState extends State<RegVolunteer>
             ).paddingOnly(top: 18),
             AppWidgets.text(
               text:
-                  LocaleKeys.your_information_is_being_verified_please_wait_if_not_reported_within_48_hours_write_to_the_operator.tr(),
+                  LocaleKeys.information_write_operator.tr(),
               fontSize: 16.sp,
               fontWeight: FontWeight.w500,
               textAlign: TextAlign.center,
@@ -173,7 +173,7 @@ class _RegVolunteerState extends State<RegVolunteer>
           ).paddingOnly(top: 18),
           AppWidgets.text(
             text:
-                LocaleKeys.please_fill_out_the_form_below_to_volunteer.tr(),
+                LocaleKeys.fill_out_form_volunteer.tr(),
             fontSize: 16.sp,
             fontWeight: FontWeight.w600,
             color: AppColorUtils.DARK2,
@@ -186,7 +186,7 @@ class _RegVolunteerState extends State<RegVolunteer>
             right: 22,
           ),
           AppWidgets.starTextWidget(
-            text: LocaleKeys.all_your_current_data_will_change,
+            text: LocaleKeys.all_data_change,
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             isCenter: true,

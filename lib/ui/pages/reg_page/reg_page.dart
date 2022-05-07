@@ -41,26 +41,40 @@ class RegPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppTextField(
-                      isFill: loginBloc
-                          .state.firstNameFill,
+                      isFill: context.read<LoginBloc>().state.firstNameFill,
                       hintText: "(abdumalik)",
                       onChanged: (v) {
-                        loginBloc.add(LoginFirstNameChanged(v));
+                        context.read<LoginBloc>().add(LoginFirstNameChanged(v));
                       },
                       title: LocaleKeys.name,
+
                     ).paddingOnly(
                       left: 20,
                       right: 20,
                     ),
                     AppTextField(
-                      isFill: loginBloc
-                          .state.lastNameFill,
+                      isFill: context.read<LoginBloc>().state.lastNameFill,
                       hintText: "(sapoqulov)",
                       onChanged: (v) {
-                        loginBloc
-                            .add(LoginLastNameChanged(v));
+                        context.read<LoginBloc>().add(LoginLastNameChanged(v));
                       },
                       title: LocaleKeys.surname,
+                    ).paddingOnly(
+                      top: 24,
+                      left: 20,
+                      right: 20,
+                    ),
+                    AppTextField(
+                      isFill: context.read<LoginBloc>().state.phoneFill,
+                      hintText: "",
+                      initialText: "+998",
+                      onChanged: (v) {
+                        context.read<LoginBloc>().add(LoginPhoneChanged(v));
+                      },
+                      title: LocaleKeys.phone_number,
+                      textInputType: TextInputType.phone,
+                      inputFormatter:
+                          context.read<LoginBloc>().phoneNumberFormatter,
                     ).paddingOnly(
                       top: 24,
                       left: 20,
@@ -71,10 +85,11 @@ class RegPage extends StatelessWidget {
                       children: [
                         Checkbox(
                           onChanged: (v) {
-                            loginBloc.add(LoginAgreeChanged(v!));
+                            context
+                                .read<LoginBloc>()
+                                .add(LoginAgreeChanged(v!));
                           },
-                          value: loginBloc
-                              .state.agree,
+                          value: context.read<LoginBloc>().state.agree,
                           checkColor: AppColorUtils.BORDER_COLOR,
                           activeColor: Colors.transparent,
                           shape: RoundedRectangleBorder(
@@ -105,9 +120,7 @@ class RegPage extends StatelessWidget {
                             }
                           : () {
                               AppWidgets.showText(
-                                text: LocaleKeys
-                                    .agree_to_the_terms_of_the_project
-                                    .tr(),
+                                text: LocaleKeys.agree_terms_project.tr(),
                                 duration: Duration(seconds: 1),
                               );
                             },
@@ -116,8 +129,7 @@ class RegPage extends StatelessWidget {
                           ? AppColorUtils.GREEN_APP
                           : AppColorUtils.DISABLE_BC,
                     ).paddingSymmetric(horizontal: 20),
-                    loginBloc
-                        .state.agree
+                    context.read<LoginBloc>().state.agree
                         ? SizedBox()
                         : Row(
                             children: [
@@ -128,9 +140,7 @@ class RegPage extends StatelessWidget {
                                 color: AppColorUtils.RED,
                               ),
                               AppWidgets.text(
-                                text: LocaleKeys
-                                    .agree_to_the_terms_of_the_project_first
-                                    .tr(),
+                                text: LocaleKeys.agree_project_first.tr(),
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
                                 richText: true,

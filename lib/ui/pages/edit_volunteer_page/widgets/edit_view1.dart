@@ -1,5 +1,3 @@
-
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,13 +12,11 @@ import 'package:najot/ui/widgets/app_text_field.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
 
-
 class EditView1 extends StatelessWidget {
   const EditView1({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     var bloc = context.read<RegVolunteerBloc>();
     return SingleChildScrollView(
       child: Column(
@@ -36,7 +32,7 @@ class EditView1 extends StatelessWidget {
                   bloc.add(VolunteerFirstNameChanged(v));
                 },
                 isFill: bloc.state.firstName.isNotEmpty,
-                title: LocaleKeys.name_as_in_the_passport.tr(),
+                title: LocaleKeys.name_passport.tr(),
               ).paddingOnly(
                 top: 18.w,
                 left: 20.w,
@@ -48,7 +44,7 @@ class EditView1 extends StatelessWidget {
                 onChanged: (v) {
                   bloc.add(VolunteerLastNameChanged(v));
                 },
-                title: LocaleKeys.sure_name_as_in_the_passport.tr(),
+                title: LocaleKeys.sure_name_passport.tr(),
                 isFill: bloc.state.lastName.isNotEmpty,
               ).paddingOnly(
                 top: 24.w,
@@ -89,7 +85,6 @@ class EditView1 extends StatelessWidget {
                 },
                 text: bloc.state.birthDate,
               ),
-
             ],
           ),
           NextButtonWidget(
@@ -101,7 +96,11 @@ class EditView1 extends StatelessWidget {
               bloc.pageController.dispose();
             },
             isActive: bloc.state.isActiveNextBtn,
-          ).paddingOnly(bottom: 30.w,right: 20.w,top: 117.h,),
+          ).paddingOnly(
+            bottom: 30.w,
+            right: 20.w,
+            top: 117.h,
+          ),
         ],
       ),
     );

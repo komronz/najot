@@ -38,7 +38,7 @@ class EditShowSuccess extends StatelessWidget {
               AppWidgets.text(
                 textAlign: TextAlign.center,
                 text:
-                LocaleKeys.thank_you_for_your_application_will_confirm_soon.tr(),
+                LocaleKeys.application_confirm_soon.tr(),
                 richText: true,
                 othersMarkers: [
                   MarkerText(

@@ -108,7 +108,7 @@ class MyCrowdfundingList extends StatelessWidget {
                               backgroundColor: AppColorUtils.PERCENT_COLOR2,
                             ),
                           ).paddingOnly(bottom: 10.w),
-                          AppWidgets.starTextWidget(text: LocaleKeys.must_be_collected_by_date.tr()),
+                          AppWidgets.starTextWidget(text: LocaleKeys.must_collected_date.tr()),
                           Row(
                             children: [
                               Icon(
@@ -135,10 +135,10 @@ class MyCrowdfundingList extends StatelessWidget {
               visible: visible,
               child: ButtonCard(
                 onPress: () {},
-                text: "Texnologiya",
+                text: LocaleKeys.technology,
                 visibleIcon: false,
                 borderRadius: 20,
-                height: 24.h,
+                height: 24.w,
                 width: 77.w,
                 textColor: AppColorUtils.GREEN_TEXT,
                 textSize: 10.sp,

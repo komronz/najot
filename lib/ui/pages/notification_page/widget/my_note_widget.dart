@@ -11,7 +11,7 @@ import '../../../widgets/app_widgets.dart';
 import 'notification_delete_widget.dart';
 import 'notification_edit.dart';
 
-class MyNoteWidget extends StatefulWidget {
+class MyNoteWidget extends StatelessWidget {
   MyNoteWidget({
     required this.model,
     required this.onTap,
@@ -22,25 +22,14 @@ class MyNoteWidget extends StatefulWidget {
   final VoidCallback onTap;
   bool isLast;
 
-  @override
-  _MyNoteWidgetState createState() => _MyNoteWidgetState();
-}
 
-class _MyNoteWidgetState extends State<MyNoteWidget> {
-  @override
-  void initState() {
-    super.initState();
-    // NotificationApi.init(initScheduled: true);
-    // NotificationApi.init();
-    // listenNotifications();
-  }
   @override
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
         width: context.width,
         decoration: BoxDecoration(
-          color: widget.isLast
+          color: isLast
               ? AppColorUtils.ITEM_ORDERS_CARD
               : AppColorUtils.WHITE,
           borderRadius: BorderRadius.circular(10),
@@ -63,7 +52,7 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
                 Container(
                   width: 260.w,
                   child: AppWidgets.text(
-                    text: widget.model.title!,
+                    text: model.title!,
                     height: 1.3,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w500,
@@ -89,7 +78,7 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
                       height: 15.w,
                     ).paddingOnly(right: 5),
                     AppWidgets.textLocale(
-                      text: widget.model.completedDate!,
+                      text: model.completedDate!,
                       color: AppColorUtils.BLUE_PERCENT,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
@@ -128,7 +117,7 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
                           height: 12.w,
                         ).paddingOnly(right: 5),
                         AppWidgets.textLocale(
-                          text: widget.model.completedDate!,
+                          text: model.completedDate!,
                           color: AppColorUtils.KRAUDFANDING,
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
@@ -158,7 +147,7 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
                         builder: (context) {
                           return NotificationEdit(
                             selectFunction: (dateTime) {},
-                            model: widget.model,
+                            model: model,
                           );
                         },
                       );
@@ -190,7 +179,7 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
           ],
         ),
       ).paddingSymmetric(horizontal: 20).paddingOnly(top: 12.w),
-      onTap:widget.onTap,
+      onTap:onTap,
       //     (){
       //   widget.onTap;
       //   setState(() {

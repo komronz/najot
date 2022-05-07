@@ -90,8 +90,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
               ).paddingOnly(top: 18.h),
             ),
             AppWidgets.textLocale(
-              text:
-                  LocaleKeys.please_fill_out_small_form_request_or_post_ad,
+              text: LocaleKeys.fill_out_form,
               maxLines: 2,
               color: AppColorUtils.DARK2,
               fontSize: 16.sp,
@@ -132,7 +131,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
               hintText: LocaleKeys.write_short_card.tr(),
               onChanged: (v) {},
               textInputType: TextInputType.multiline,
-              title: LocaleKeys.brief_information_about_project,
+              title: LocaleKeys.brief_information_project,
             ),
             AppWidgets.appButton(
               title: LocaleKeys.send,

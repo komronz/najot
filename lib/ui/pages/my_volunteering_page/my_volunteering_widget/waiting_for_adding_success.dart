@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -9,15 +10,16 @@ import '../../../../data/model/volunteering_model.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
+import '../../../../data/utils/date_time_util.dart';
 import '../../../widgets/app_widgets.dart';
 
 class WaitingForAddingSuccess extends StatelessWidget {
 
   WaitingForAddingSuccess(
-      {required this.model, required this.selectFunction, Key? key})
+      {required this.model, required this.dateTime, Key? key})
       : super(key: key);
-  final Function selectFunction;
-  DateTime dateTime = DateTime.now();
+  DateTime dateTime;
+  DateTime _dateTime = DateTime.now();
   TimeOfDay timeOfDay = TimeOfDay.now();
   VolunteeringModel model;
 
@@ -72,7 +74,7 @@ class WaitingForAddingSuccess extends StatelessWidget {
                       height: 16,
                     ).paddingOnly(right: 5),
                     AppWidgets.textLocale(
-                      text: model.completedDate!,
+                      text: "${DateTimeUtil.dmy(dateTime, context.locale)}",
                       color: AppColorUtils.TEXT_COLOR,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
@@ -83,7 +85,7 @@ class WaitingForAddingSuccess extends StatelessWidget {
                       height: 16,
                     ).paddingOnly(right: 5),
                     AppWidgets.textLocale(
-                      text: "18:00",
+                      text: "${DateTimeUtil.hhmm(dateTime, context.locale)}",
                       color: AppColorUtils.TEXT_COLOR,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,

@@ -116,7 +116,7 @@ class TimePickerOrganization extends StatelessWidget {
                         ).paddingOnly(right: 5),
                         Expanded(
                           child: AppWidgets.textLocale(
-                            text: LocaleKeys.select_the_date_and_time_of_the_event,
+                            text: LocaleKeys.select_date_time,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w500,
                             color: Color(0xFF415B55),

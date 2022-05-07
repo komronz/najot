@@ -1,7 +1,5 @@
 part of 'edit_volunteer_bloc.dart';
 
-
-
 class EditVolunteerState extends Equatable {
   final String name;
   final String sureName;

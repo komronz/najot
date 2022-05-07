@@ -22,13 +22,10 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/qu
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
-
-import '../../charity_page/widgets/charity_help_widget.dart';
 import 'organization_help_widget.dart';
 
 class OrganizationCharityItemModel {
   CardModel cardModel;
-
   OrganizationCubit cubit;
 
   OrganizationCharityItemModel({
@@ -351,7 +348,7 @@ class _OrganizationCharityItemWidgetState
                                       textColor: AppColorUtils.WHITE,
                                     ).paddingSymmetric(horizontal: 20.w),
                                     AppWidgets.starTextWidget(
-                                      text: LocaleKeys.you_have_accepted_this_ad,
+                                      text: LocaleKeys.you_accepted_ad,
                                       fontSize: 12.sp,
                                       fontWeight: FontWeight.w500,
                                       color: AppColorUtils.DARK_6,
@@ -366,7 +363,8 @@ class _OrganizationCharityItemWidgetState
                     ),
                   ),
                 ],
-              ));
+              ),
+          );
         },
       ),
     );

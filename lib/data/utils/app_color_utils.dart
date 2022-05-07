@@ -112,6 +112,7 @@ class AppColorUtils {
   static const Color GREEN_LIGHT= Color(0xFFF8FFFD);
   static const Color GREY_BLACK= Color(0xFF5E646D);
   static const Color WHITE_GREEN5= Color(0xFFECFFFA);
+  static const Color WHITE_GREEN8= Color(0xFF007A58);
 
 
 

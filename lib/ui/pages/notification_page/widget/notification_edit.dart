@@ -12,6 +12,7 @@ import '../../../../data/custom_time_picker/date_picker/i18n/date_picker_i18n.da
 import '../../../../data/custom_time_picker/date_picker/widget/date_picker_widget.dart';
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/model/volunteering_model.dart';
+import '../../../../data/utils/date_time_util.dart';
 import '../../../widgets/app_widgets.dart';
 import 'notification_success_adding.dart';
 
@@ -27,6 +28,7 @@ class NotificationEdit extends StatefulWidget {
   DateTime _time = DateTime.now();
 
   VolunteeringModel model;
+
   @override
   _NotificationEditState createState() => _NotificationEditState();
 }
@@ -83,7 +85,7 @@ class _NotificationEditState extends State<NotificationEdit> {
                               height: 16,
                             ).paddingOnly(right: 5),
                             AppWidgets.textLocale(
-                              text: widget.model.completedDate!,
+                              text: "${DateTimeUtil.dmy(DateTime.now(), context.locale)}",
                               color: AppColorUtils.BLUE_TEXT,
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w500,
@@ -119,7 +121,7 @@ class _NotificationEditState extends State<NotificationEdit> {
                           ).paddingOnly(right: 5),
                           Expanded(
                             child: AppWidgets.textLocale(
-                              text: LocaleKeys.select_the_date_and_time_of_the_event,
+                              text: LocaleKeys.select_date_time,
                               fontSize: 13.sp,
                               fontWeight: FontWeight.w500,
                               color: AppColorUtils.GREEN_BLACK2,
@@ -149,22 +151,21 @@ class _NotificationEditState extends State<NotificationEdit> {
                           spacing: 15.sp,
                           itemHeight: 40,
                           onTimeChange: (time) {
-                            setState(
-                                  () {
-                                  widget._time = DateTime(
-                                  time.month,
-                                  time.month,
-                                  time.day,
-                                  time.hour, //< 8 ? time.hour + 16 : time.hour,
-                                  time.minute,
-                                );
-
-                                // print(_time);
-                              },
-                            );
+                            // setState(
+                            //       () {
+                            //       widget._time = DateTime(
+                            //       time.month,
+                            //       time.month,
+                            //       time.day,
+                            //       time.hour, //< 8 ? time.hour + 16 : time.hour,
+                            //       time.minute,
+                            //     );
+                            //
+                            //     // print(_time);
+                            //   },
+                            // );
                           },
                         ),
-
                       ),
                       Container(
                         child: DatePickerWidget(
@@ -191,7 +192,6 @@ class _NotificationEditState extends State<NotificationEdit> {
                           ),
                         ),
                       ),
-
                     ],
                   ).paddingSymmetric(
                     vertical: 24,
@@ -206,15 +206,22 @@ class _NotificationEditState extends State<NotificationEdit> {
                   children: [
                     AppWidgets.appButton(
                       onTap: () async {
+                        var dateTime = DateTime(
+                          widget._date.year,
+                          widget._date.month,
+                          widget._date.day,
+                          widget._time.hour,
+                          widget._time.minute,
+                        );
                         NavigatorService.to.pop();
                         await showDialog(
                           context: context,
                           builder: (context) => NotificationSuccessAdding(
-                            selectFunction: (dateTime) {
+                            // selectFunction: (dateTime) {
                               // print(dateTime.toUtc().toString());
                               // bloc.add(VolunteerBirthDateSelected(dateTime));
-                            },
-                            model: widget.model,
+                            // },
+                            dateTime: dateTime,
                           ),
                         );
                       },

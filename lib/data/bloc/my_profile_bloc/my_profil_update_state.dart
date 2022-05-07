@@ -18,6 +18,8 @@ class MyProfileUpdateState extends Equatable {
   final bool hasError;
   final bool nextPage;
   final XFile? userImgPath;
+  final int changePage;
+
 
   const MyProfileUpdateState({
     this.name = '',
@@ -33,6 +35,7 @@ class MyProfileUpdateState extends Equatable {
     this.nextPage=false,
     this.hasError = false,
     this.userImgPath,
+    this.changePage=1
   });
 
   @override
@@ -49,7 +52,9 @@ class MyProfileUpdateState extends Equatable {
         userImgPath,
         phoneNumberFill,
         nextPage,
-        isVisible
+        isVisible,
+        changePage
+
       ];
 
   MyProfileUpdateState copyWith({
@@ -67,6 +72,7 @@ class MyProfileUpdateState extends Equatable {
     bool? isVisible,
     bool? nextPage,
     XFile? userImgPath,
+    int? changePage
   }) {
     return MyProfileUpdateState(
       name: name ?? this.name,
@@ -82,6 +88,8 @@ class MyProfileUpdateState extends Equatable {
       nextPage: nextPage ?? this.nextPage,
       hasError: hasError ?? this.hasError,
       userImgPath: userImgPath ?? this.userImgPath,
+      changePage: changePage ?? this.changePage,
+
     );
   }
 }

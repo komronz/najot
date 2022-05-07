@@ -21,6 +21,7 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
   EditVolunteerBloc()
       : pageController = PageController(),
         super(EditVolunteerState()) {
+
     on<MyProfileLoad>(_loadProfile);
     on<ImageChanged>(_onImageChanged);
     on<FirstNameChanged>(_onNameChanged);
@@ -31,7 +32,7 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
     on<PageNext>(_onPageNext);
     on<SendCode>(_sendCode);
     on<EditProfileChangePage>(_onChangeEditProfile);
-    // on<ImagePickers>(_onImagePicker);
+    on<ImagePickers>(_onImagePicker);
     on<SaveIn>(_saveIn);
   }
 

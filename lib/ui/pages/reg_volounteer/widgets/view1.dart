@@ -26,7 +26,7 @@ class View1 extends StatelessWidget {
             bloc.add(VolunteerFirstNameChanged(v));
           },
           isFill: bloc.state.firstName.isNotEmpty,
-          title: LocaleKeys.name_as_in_the_passport,
+          title: LocaleKeys.name_passport,
         ).paddingOnly(top: 18),
         AppTextField(
           hintText: "Sapokulov",
@@ -34,7 +34,7 @@ class View1 extends StatelessWidget {
           onChanged: (v) {
             bloc.add(VolunteerLastNameChanged(v));
           },
-          title: LocaleKeys.sure_name_as_in_the_passport,
+          title: LocaleKeys.name_passport,
           isFill: bloc.state.lastName.isNotEmpty,
         ).paddingOnly(top: 24),
         AppTextField(

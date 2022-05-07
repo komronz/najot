@@ -49,7 +49,7 @@ class MyVolunteeringDeleteProjectDialog extends StatelessWidget {
                   ],
                 ).paddingOnly(bottom: 5),
                 AppWidgets.textLocale(
-                  text: LocaleKeys.contact_us_to_delete_the_project,
+                  text: LocaleKeys.contact_delete_project,
                   maxLines: 2,
                   color: AppColorUtils.DARK_6,
                   fontWeight: FontWeight.w400,
@@ -59,7 +59,7 @@ class MyVolunteeringDeleteProjectDialog extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     fontSize: 14.sp,
                     color: AppColorUtils.DARK2,
-                    text: LocaleKeys.reason_for_deletion_in_short,
+                    text: LocaleKeys.reason_deletion_short,
                     richText: true,
                     othersMarkers: [
                       MarkerText(marker: "//", style: TextStyle(

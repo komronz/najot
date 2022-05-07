@@ -42,7 +42,7 @@ class MyCharitySuccessSendQuestion extends StatelessWidget {
               fontSize: 18.sp,
               color: AppColorUtils.DARK2,
               textAlign: TextAlign.center,
-              text: LocaleKeys.thank_you_for_your_inquiry_moderators_will_contact_you_soon,
+              text: LocaleKeys.inquiry_moderators_contact,
               richText: true,
               othersMarkers: [
                 MarkerText(marker: "//", style: TextStyle(
