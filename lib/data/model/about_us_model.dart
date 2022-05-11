@@ -1,45 +1,53 @@
 import 'dart:convert';
 
-AboutUs newsFromJson(String str) => AboutUs.fromJson(json.decode(str));
+AboutUs aboutUsFromJson(String str) => AboutUs.fromJson(json.decode(str));
 
-String newsToJson(AboutUs data) => json.encode(data.toJson());
+String aboutUsToJson(AboutUs data) => json.encode(data.toJson());
 
 class AboutUs {
   AboutUs({
+    required this.ok,
     required this.message,
   });
 
+  bool ok;
   Message message;
 
   factory AboutUs.fromJson(Map<String, dynamic> json) => AboutUs(
+    ok: json["ok"],
     message: Message.fromJson(json["message"]),
   );
 
   Map<String, dynamic> toJson() => {
+    "ok": ok,
     "message": message.toJson(),
   };
 }
 
 class Message {
   Message({
-    required this.title,
-    required this.description,
-    required this.content,
+    required this.id,
+    required this.name,
+    required this.phone,
+    required this.message,
   });
 
-  String title;
-  String description;
-  String content;
+  int id;
+  String name;
+  String phone;
+  String message;
 
   factory Message.fromJson(Map<String, dynamic> json) => Message(
-    title: json["title"],
-    description: json["description"],
-    content: json["content"],
+    id: json["id"],
+    name: json["name"],
+    phone: json["phone"],
+    message: json["message"],
   );
 
   Map<String, dynamic> toJson() => {
-    "title": title,
-    "description": description,
-    "content": content,
+    "id": id,
+    "name": name,
+    "phone": phone,
+    "message": message,
   };
 }

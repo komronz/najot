@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 part 'appeal_event.dart';
@@ -14,7 +15,7 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
   AppealBloc()
       : phoneNumberFormatter =
             MaskTextInputFormatter(mask: "+### (##) ### ## ##"),
-        super(AppealState()) {
+            super(AppealState()) {
     on<AppealNameChanged>(_onNameChanged);
     on<AppealPhoneChanged>(_onPhoneChanged);
     on<AppealTextChanged>(_onAppealTxtChanged);
@@ -41,6 +42,10 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
   bool _isNotEmpty(String value) {
     return value.trim().isNotEmpty;
   }
+  bool _isEmpty(String value) {
+    return value.trim().isEmpty;
+  }
+
 
   bool _nextBtnActive(
     String firstName,
@@ -92,5 +97,13 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
   Future _onBtnPressed(
     AppealBtnEvent event,
     Emitter<AppealState> emit,
-  ) async {}
+  ) async {
+    emit(
+      state.copyWith(
+          firstName: "",
+          phone: "",
+          applyText: ""
+      ),
+    );
+  }
 }

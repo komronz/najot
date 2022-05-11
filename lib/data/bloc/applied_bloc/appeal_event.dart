@@ -32,6 +32,7 @@ class AppealTextChanged extends AppealEvent {
 }
 
 class AppealBtnEvent extends AppealEvent {
+
   @override
   List<Object?> get props => [];
 }
