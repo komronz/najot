@@ -47,7 +47,7 @@ class KraudfandingCardWidget extends StatelessWidget {
                         width: double.infinity,
                         imageUrl: projectModel.cover!,
                         errorWidget: (context, url, error) => Image.asset(
-                          AppImageUtils.KRAUDFANDING,
+                          AppImageUtils.Splash2,
                         ),
                         placeholder: (context, url) =>
                             Center(child: CircularProgressIndicator()),
