@@ -104,15 +104,15 @@ class Categories {
 class SliderList {
   int? id;
   String? title;
-  String? image;
+  String? cover;
   String? description;
 
-  SliderList({this.id, this.title, this.image, this.description});
+  SliderList({this.id, this.title, this.cover, this.description});
 
   SliderList.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
-    image = json['image'];
+    cover = json['cover'];
     description = json['description'];
   }
 
@@ -120,7 +120,7 @@ class SliderList {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['title'] = this.title;
-    data['image'] = this.image;
+    data['cover'] = this.cover;
     data['description'] = this.description;
     return data;
   }

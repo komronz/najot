@@ -22,11 +22,11 @@ class SliderItem extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(24),
             child: CachedNetworkImage(
-              imageUrl: sliderModel.image!,
+              imageUrl: sliderModel.cover!,
               placeholder: (context, url) =>
                   Center(child: CircularProgressIndicator()),
               errorWidget: (context, url, error) => Image.asset(
-                AppImageUtils.NOTIFICATION,
+                AppImageUtils.Splash2,
               ),
               width: MediaQuery.of(context).size.width,
               fit: BoxFit.cover,
@@ -48,7 +48,7 @@ class SliderItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppWidgets.text(
-                text: LocaleKeys.crowdfunding.tr(),
+                text: sliderModel.title!,
                 color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
@@ -57,7 +57,7 @@ class SliderItem extends StatelessWidget {
                 height: 5,
               ),
               AppWidgets.text(
-                text: sliderModel.title!,
+                text: sliderModel.description!,
                 color: Colors.white,
                 fontSize: 12,
                 fontWeight: FontWeight.w300,

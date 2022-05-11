@@ -7,7 +7,10 @@ import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/model/slider_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/product_datail_page/product_detail_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+
+import '../../../../data/services/navigator_service.dart';
 
 class VolunteerCardWidget extends StatelessWidget {
   VolunteerCardWidget({required this.projectModel});
@@ -40,13 +43,12 @@ class VolunteerCardWidget extends StatelessWidget {
                         width: double.infinity,
                         imageUrl: projectModel.cover!,
                         errorWidget: (context, url, error) => Image.asset(
-                          AppImageUtils.VOLONTYOR,
+                          AppImageUtils.Splash2,
                         ),
                         placeholder: (context, url) =>
                             Center(child: CircularProgressIndicator()),
                         fit: BoxFit.cover,
                       ),
-
                     ),
                     flex: 1,
                   ),
@@ -129,7 +131,12 @@ class VolunteerCardWidget extends StatelessWidget {
           ],
         ),
       ),
-      onTap: () {},
+      onTap: () {
+        NavigatorService.to.pushNamed(
+          ProductDetailPage.routeName,
+          arguments: projectModel
+        );
+      },
     );
   }
 }

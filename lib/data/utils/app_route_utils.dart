@@ -117,6 +117,9 @@ class AppRouteUtils {
             cardModel: settings.arguments as CardModel,
           ),
         );
+
+
+
       case OrganizationItemDetailPage.routeName:
         return MaterialPageRoute(
           builder: (context) => OrganizationItemDetailPage(
