@@ -7,7 +7,8 @@ import '../../services/charity_history_service.dart';
 
 part 'volunteering_charity_history_state.dart';
 
-class VolunteeringCharityHistoryCubit extends Cubit<VolunteeringCharityHistoryState> {
+class VolunteeringCharityHistoryCubit
+    extends Cubit<VolunteeringCharityHistoryState> {
   VolunteeringCharityHistoryCubit() : super(VolunteeringCharityHistoryState());
   var service = CharityHistoryService();
 
@@ -15,7 +16,6 @@ class VolunteeringCharityHistoryCubit extends Cubit<VolunteeringCharityHistorySt
     emit(state.copyWith(isLoading: true));
     await Future.delayed(Duration(seconds: 4));
     try {
-
       ///TODO cardmodelni kraufanding modelga o'zgartirish
       /// TODO: WARNING: crowdFounding
       var kraufandingList = await service.getKraufandingList();

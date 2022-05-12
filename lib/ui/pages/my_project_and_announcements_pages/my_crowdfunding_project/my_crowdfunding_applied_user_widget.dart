@@ -10,8 +10,8 @@ import '../../../../data/utils/app_color_utils.dart';
 class MyCrowdfundingAppliedUserWidget extends StatelessWidget {
   final KraufandingModel model;
 
-  const MyCrowdfundingAppliedUserWidget({required this.model,Key? key}) : super(key: key);
-
+  const MyCrowdfundingAppliedUserWidget({required this.model, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

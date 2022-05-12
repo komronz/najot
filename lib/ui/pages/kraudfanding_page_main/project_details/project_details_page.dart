@@ -1,16 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/kraudfanding_detail_cubit/kraudfanding_detail_cubit.dart';
-import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/about_project_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/products_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/tabbar_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
-import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
@@ -45,7 +43,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
     super.initState();
   }
 
-  _handleTabSelection() {
+  void _handleTabSelection() {
     if (_controller.indexIsChanging) {
       setState(() {});
     }
@@ -87,7 +85,9 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
                   Container(
                     child: [
                       AboutProjectWidget(cardModel: widget.cardModel),
-                      ProductsWidget(cardModel: widget.cardModel,)
+                      ProductsWidget(
+                        cardModel: widget.cardModel,
+                      )
                     ][_controller.index],
                   )
                 ],

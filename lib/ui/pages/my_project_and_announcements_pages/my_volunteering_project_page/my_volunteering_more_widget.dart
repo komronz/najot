@@ -14,7 +14,6 @@ class MyVolunteeringMoreWidget extends StatelessWidget {
 
   final VolunteeringModel cardModel;
 
-
   @override
   Widget build(BuildContext context) {
     return Column(

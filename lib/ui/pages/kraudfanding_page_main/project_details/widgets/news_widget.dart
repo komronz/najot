@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,7 +7,6 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class NewsWidget extends StatelessWidget {
@@ -63,7 +61,6 @@ class NewsWidget extends StatelessWidget {
                                 fontSize: 14.sp,
                               ),
                             ),
-
                             Row(
                               children: [
                                 AppWidgets.textLocale(
@@ -73,25 +70,25 @@ class NewsWidget extends StatelessWidget {
                                   color: AppColorUtils.DARK_6,
                                 ).paddingOnly(right: 65.w),
                                 AppWidgets.text(
-                                    text: "25.08.2022 18:19",
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColorUtils.BLUE_PERCENT,)
+                                  text: "25.08.2022 18:19",
+                                  fontSize: 10.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColorUtils.BLUE_PERCENT,
+                                )
                               ],
                             ).paddingOnly(top: 5),
                           ],
                         ).paddingOnly(left: 10),
                       ],
                     ),
-
                   ],
                 ),
                 AppWidgets.text(
-                        text: cardModel.infoModel![0].title!,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
-                        color: AppColorUtils.BLACK,)
-                    .paddingOnly(
+                  text: cardModel.infoModel![0].title!,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w600,
+                  color: AppColorUtils.BLACK,
+                ).paddingOnly(
                   bottom: 7.w,
                   top: 18.w,
                 ),

@@ -1,11 +1,11 @@
 part of 'volonteer_detail_cubit.dart';
 
 class VolunteerDetailState extends Equatable {
-  VolunteerDetailState({
-    this.tobeVolunteer = true,
-    required this.checkBox,
-    this.saveHelp=true
-  });
+  VolunteerDetailState(
+      {
+      required this.checkBox,
+        this.tobeVolunteer = true,
+      this.saveHelp = true,});
 
   final bool tobeVolunteer;
   final bool checkBox;
@@ -13,7 +13,7 @@ class VolunteerDetailState extends Equatable {
 
   @override
   // TODO: implement props
-  List<Object?> get props => [tobeVolunteer, checkBox,saveHelp];
+  List<Object?> get props => [tobeVolunteer, checkBox, saveHelp];
 
   VolunteerDetailState copyWith({
     bool? tobeVolunteer,

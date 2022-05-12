@@ -1,6 +1,5 @@
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
@@ -9,11 +8,10 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/product_datail_page/product_detail_page.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class ProductsWidget extends StatelessWidget {
-   ProductsWidget({required this.cardModel});
+  ProductsWidget({required this.cardModel});
 
   CardModel cardModel;
 
@@ -48,7 +46,7 @@ class ProductsWidget extends StatelessWidget {
             child: Column(
               children: List.generate(
                 cardModel.productModel!.length,
-                    (index) => Container(
+                (index) => Container(
                   padding: EdgeInsets.all(18.w),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
@@ -93,8 +91,7 @@ class ProductsWidget extends StatelessWidget {
                         height: 10.w,
                       ),
                       Row(
-                        mainAxisAlignment:
-                        MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           AppWidgets.starTextWidget(
                             text: LocaleKeys.approximate_branch.tr(),
@@ -108,8 +105,7 @@ class ProductsWidget extends StatelessWidget {
                         ],
                       ),
                       Row(
-                        mainAxisAlignment:
-                        MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           AppWidgets.text(
                             text: "25.02.2022",
@@ -119,7 +115,7 @@ class ProductsWidget extends StatelessWidget {
                           ).paddingOnly(left: 6.w),
                           AppWidgets.circleImages(
                             image: cardModel.productModel![index]!.imgUrl!,
-                           count: 100,
+                            count: 100,
                           )
                         ],
                       ),

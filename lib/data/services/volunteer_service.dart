@@ -1,8 +1,3 @@
-
-
-
-class Volunteer{
-
-
-  static bool tobeVolunteer=true;
+class Volunteer {
+  static bool tobeVolunteer = true;
 }

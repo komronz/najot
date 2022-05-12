@@ -9,6 +9,7 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+
 import '../../../../data/bloc/intro_page_bloc/intro_state.dart';
 import '../../login_page/custom_shape.dart';
 
@@ -32,7 +33,8 @@ Widget viewOfOnePage(BuildContext context) {
         child: Container(
           height: 40.w,
           width: 40.w,
-          child: Icon(Icons.chevron_right, color: AppColorUtils.WHITE, size: 34.w),
+          child:
+              Icon(Icons.chevron_right, color: AppColorUtils.WHITE, size: 34.w),
           decoration: BoxDecoration(
               color: AppColorUtils.PERCENT_COLOR,
               borderRadius: BorderRadius.circular(25.0)),
@@ -65,7 +67,8 @@ Widget viewOfTwoPage(BuildContext context, IntroPageNextState state) {
             child: Container(
               height: 40.w,
               width: 40.w,
-              child: Icon(Icons.chevron_left, color: AppColorUtils.WHITE, size: 34.w),
+              child: Icon(Icons.chevron_left,
+                  color: AppColorUtils.WHITE, size: 34.w),
               decoration: BoxDecoration(
                   color: AppColorUtils.PERCENT_COLOR,
                   borderRadius: BorderRadius.circular(25.0)),
@@ -80,7 +83,8 @@ Widget viewOfTwoPage(BuildContext context, IntroPageNextState state) {
             child: Container(
               height: 40.w,
               width: 40.w,
-              child: Icon(Icons.chevron_right, color: AppColorUtils.WHITE, size: 34.w),
+              child: Icon(Icons.chevron_right,
+                  color: AppColorUtils.WHITE, size: 34.w),
               decoration: BoxDecoration(
                   color: AppColorUtils.PERCENT_COLOR,
                   borderRadius: BorderRadius.circular(25.0)),
@@ -106,7 +110,8 @@ Widget viewOfThreePage(BuildContext context, IntroPageNextState state) {
         child: Container(
           height: 40.w,
           width: 40.w,
-          child: Icon(Icons.chevron_left, color: AppColorUtils.WHITE, size: 34.w),
+          child:
+              Icon(Icons.chevron_left, color: AppColorUtils.WHITE, size: 34.w),
           decoration: BoxDecoration(
               color: AppColorUtils.PERCENT_COLOR,
               borderRadius: BorderRadius.circular(25.0)),
@@ -127,7 +132,8 @@ Widget viewOfThreePage(BuildContext context, IntroPageNextState state) {
             child: Container(
               height: 40.w,
               width: 40.w,
-              child: Icon(Icons.chevron_right, color: AppColorUtils.WHITE, size: 34.w),
+              child: Icon(Icons.chevron_right,
+                  color: AppColorUtils.WHITE, size: 34.w),
               decoration: BoxDecoration(
                   color: AppColorUtils.GREEN_APP,
                   borderRadius: BorderRadius.circular(25.0)),
@@ -138,6 +144,7 @@ Widget viewOfThreePage(BuildContext context, IntroPageNextState state) {
     ],
   );
 }
+
 class IntroClipPathWidget extends StatelessWidget {
   final double height;
 
@@ -155,4 +162,3 @@ class IntroClipPathWidget extends StatelessWidget {
     );
   }
 }
-

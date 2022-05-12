@@ -1,12 +1,12 @@
 import 'dart:math';
 
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-import '../date_time_formatter.dart';
-import '../date_picker_theme.dart';
 import '../date_picker_constants.dart';
+import '../date_picker_theme.dart';
+import '../date_time_formatter.dart';
 import '../i18n/date_picker_i18n.dart';
 
 /// Solar months of 31 days.
@@ -256,8 +256,9 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
   }
 
   double sizeByFormat(String format) {
-    if (format.contains("-MMMM") || format.contains("MMMM-"))
+    if (format.contains("-MMMM") || format.contains("MMMM-")) {
       return DATETIME_PICKER_ITEM_TEXT_SIZE_SMALL;
+    }
 
     return DATETIME_PICKER_ITEM_TEXT_SIZE_BIG;
   }

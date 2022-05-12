@@ -15,29 +15,27 @@ class VolunteeringModel {
   bool? isDone;
   List<InfoModel>? infoModel;
 
-
   VolunteeringModel(
-    this.imgUrl,
-    this.title,
-    this.typeVolunteering,
-    this.address,
-    this.completedDate,
-    this.mobileNumber,
-    this.isDone,
-    this.collectedDate,
-    this.volunteerName,
-    this.currentSum,
-    this.createdDate,
-    this.totalSum,
-    this.author,
-    this.isFavorite,
-    this.infoModel
-  );
+      this.imgUrl,
+      this.title,
+      this.typeVolunteering,
+      this.address,
+      this.completedDate,
+      this.mobileNumber,
+      this.isDone,
+      this.collectedDate,
+      this.volunteerName,
+      this.currentSum,
+      this.createdDate,
+      this.totalSum,
+      this.author,
+      this.isFavorite,
+      this.infoModel);
 
   VolunteeringModel.fromJson(Map<String, dynamic> json) {
     typeVolunteering = json['type_volunteering']?.toString();
-    address=json['address']?.toString();
-    completedDate=json['completed_date']?.toString();
+    address = json['address']?.toString();
+    completedDate = json['completed_date']?.toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -47,6 +45,7 @@ class VolunteeringModel {
     data['completed_date'] = completedDate;
     return data;
   }
+
   static final List<VolunteeringModel> list = [
     VolunteeringModel(
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
@@ -63,8 +62,7 @@ class VolunteeringModel {
         "+10 000 000",
         "Baxrom",
         true,
-        info
-    ),
+        info),
     VolunteeringModel(
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
@@ -80,8 +78,7 @@ class VolunteeringModel {
         "+10 000 000",
         "Baxrom",
         true,
-        info
-        ),
+        info),
     VolunteeringModel(
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
@@ -97,8 +94,7 @@ class VolunteeringModel {
         "+10 000 000",
         "Baxrom",
         true,
-        info
-        ),
+        info),
     VolunteeringModel(
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
@@ -114,8 +110,7 @@ class VolunteeringModel {
         "+10 000 000",
         "Baxrom",
         false,
-        info
-        ),
+        info),
     // VolunteeringModel(
     //     "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
     //     "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
@@ -746,6 +741,7 @@ class VolunteeringModel {
             "and scrambled it to make a type specimen book")
   ];
 }
+
 class InfoModel {
   InfoModel(this.title, this.text);
 

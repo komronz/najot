@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/custom_time_picker/flutter_time_picker_spinner.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
+
 import '../../ui/pages/home_page/widget/button_card_widget.dart';
 import '../localization/locale_keys.g.dart';
 import '../utils/app_color_utils.dart';
@@ -13,6 +15,7 @@ class CustomTimePickerDialog extends StatefulWidget {
   CustomTimePickerDialog({
     required this.title,
   });
+
   final String title;
 
   @override
@@ -140,7 +143,7 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                       _time.minute,
                       _time.second,
                     ).add(Duration(minutes: 30));
-                    print(dateTime);
+                    AppLoggerUtil.d(dateTime.toString());
                     // RootService.appBloc.orderBloc.add(
                     //   OrderDateTimeEvent(
                     //     dateTime: dateTime,
@@ -161,21 +164,21 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                 padding: EdgeInsets.symmetric(horizontal: 12.w),
                 child: ButtonCard(
                   onPress: () {
-                    print(_time.hour);
+                    AppLoggerUtil.d(_time.hour.toString());
                     if (_date.month == DateTime.now().month &&
                         _date.day == DateTime.now().day) {
                       if ((_time.hour * 60 + _time.minute) -
                               (DateTime.now().hour * 60 +
                                   DateTime.now().minute) >
                           30) {
-                        var dateTime = DateTime(
-                          _date.year,
-                          _date.month,
-                          _date.day,
-                          _time.hour,
-                          _time.minute,
-                          _time.second,
-                        );
+                        // var dateTime = DateTime(
+                        //   _date.year,
+                        //   _date.month,
+                        //   _date.day,
+                        //   _time.hour,
+                        //   _time.minute,
+                        //   _time.second,
+                        // );
                         // RootService.appBloc.orderBloc.add(
                         //   OrderDateTimeEvent(
                         //     dateTime: dateTime,
@@ -187,14 +190,14 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                         // AppWidgets.showToast(LocaleKeys.select_long_time.tr());
                       }
                     } else {
-                      var dateTime = DateTime(
-                        _date.year,
-                        _date.month,
-                        _date.day,
-                        _time.hour,
-                        _time.minute,
-                        _time.second,
-                      );
+                      // var dateTime = DateTime(
+                      //   _date.year,
+                      //   _date.month,
+                      //   _date.day,
+                      //   _time.hour,
+                      //   _time.minute,
+                      //   _time.second,
+                      // );
                       // RootService.appBloc.orderBloc.add(
                       //   OrderDateTimeEvent(
                       //     dateTime: dateTime,

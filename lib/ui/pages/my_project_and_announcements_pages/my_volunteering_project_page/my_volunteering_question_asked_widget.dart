@@ -18,6 +18,7 @@ class MyVolunteeringQuestionsAskedWidget extends StatefulWidget {
   }) : super(key: key);
   final MyVolunteeringProjectCubit cubit;
   final VolunteeringModel cardModel;
+
   @override
   _MyVolunteeringQuestionsAskedWidgetState createState() =>
       _MyVolunteeringQuestionsAskedWidgetState();
@@ -26,6 +27,7 @@ class MyVolunteeringQuestionsAskedWidget extends StatefulWidget {
 class _MyVolunteeringQuestionsAskedWidgetState
     extends State<MyVolunteeringQuestionsAskedWidget> {
   bool isVisible = true;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -66,7 +68,7 @@ class _MyVolunteeringQuestionsAskedWidgetState
         Column(
           children: List.generate(
             widget.cubit.state.cardList.length,
-                (index) => MyVolunteeringQuestionList(
+            (index) => MyVolunteeringQuestionList(
               cardModel: widget.cubit.state.cardList[index],
             ),
           ),

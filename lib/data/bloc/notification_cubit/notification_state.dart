@@ -9,11 +9,7 @@ class NotificationState extends Equatable {
   // TODO: implement props
   List<Object?> get props => [cardList];
 
-
-  NotificationState copyWith({
-    List<VolunteeringModel>? list
-
-  }) {
+  NotificationState copyWith({List<VolunteeringModel>? list}) {
     return NotificationState(cardList: list ?? this.cardList);
   }
 }

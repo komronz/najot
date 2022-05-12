@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -162,11 +161,11 @@ class OrganizationHelpWidget extends StatelessWidget {
                     color: AppColorUtils.DARK_6,
                   ).paddingOnly(top: 13.w, left: 20.w, bottom: 3.w),
                   AppWidgets.text(
-                      text: "Ovqat qilib berish va uyni yig'ishtirish",
-                      maxLines: 2,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16.sp,
-                      color: AppColorUtils.GREEN_TEXT)
+                          text: "Ovqat qilib berish va uyni yig'ishtirish",
+                          maxLines: 2,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16.sp,
+                          color: AppColorUtils.GREEN_TEXT)
                       .paddingSymmetric(horizontal: 20.w),
                   AppWidgets.textLocale(
                     text: LocaleKeys.address,
@@ -179,22 +178,23 @@ class OrganizationHelpWidget extends StatelessWidget {
                     bottom: 3.w,
                   ),
                   AppWidgets.text(
-                      text: "Toshkent Shahar, Mirobod tumani*********",
-                      fontSize: 14.w,
-                      fontWeight: FontWeight.w500,
-                      color: AppColorUtils.TEXT_BLUE,
-                      maxLines: 2)
+                          text: "Toshkent Shahar, Mirobod tumani*********",
+                          fontSize: 14.w,
+                          fontWeight: FontWeight.w500,
+                          color: AppColorUtils.TEXT_BLUE,
+                          maxLines: 2)
                       .paddingSymmetric(horizontal: 20.w),
                   ButtonCard(
                     onPress: () {
                       if (state.checkBox) {
                         showDialog(
-                            context: context,
-                            builder: (ctx) => TimePickerOrganization(
-                              model: helpModel.cardModel,
-                              cubit: helpModel.cubit,
-                              con: context,
-                            ),);
+                          context: context,
+                          builder: (ctx) => TimePickerOrganization(
+                            model: helpModel.cardModel,
+                            cubit: helpModel.cubit,
+                            con: context,
+                          ),
+                        );
                       }
                     },
                     text: LocaleKeys.help,
@@ -225,13 +225,12 @@ class OrganizationHelpWidget extends StatelessWidget {
                           borderRadius: BorderRadius.circular(2.0),
                         ),
                         side: MaterialStateBorderSide.resolveWith(
-                              (states) => BorderSide(
+                          (states) => BorderSide(
                             width: 2.0,
                             color: AppColorUtils.BORDER_COLOR,
                           ),
                         ),
                       ).paddingOnly(left: 8.w),
-
                       AppWidgets.textLocale(
                           text: LocaleKeys.i_agree,
                           color: AppColorUtils.DARK_1,
@@ -240,13 +239,13 @@ class OrganizationHelpWidget extends StatelessWidget {
                     ],
                   ),
                   AppWidgets.textLocale(
-                      text: LocaleKeys.attention_agree_help,
-                      color: AppColorUtils.RED,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12.sp,
-                      maxLines: 2
-                  ).paddingSymmetric(horizontal: 20.w),
-                  SizedBox(height : 20.w)
+                          text: LocaleKeys.attention_agree_help,
+                          color: AppColorUtils.RED,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12.sp,
+                          maxLines: 2)
+                      .paddingSymmetric(horizontal: 20.w),
+                  SizedBox(height: 20.w)
                 ],
               ),
             );

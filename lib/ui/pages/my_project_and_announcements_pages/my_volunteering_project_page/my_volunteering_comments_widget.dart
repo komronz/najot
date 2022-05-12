@@ -1,5 +1,3 @@
-
-
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,21 +10,24 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../../data/model/volunteering_model.dart';
 
 class MyVolunteeringCommentsWidget extends StatefulWidget {
-   MyVolunteeringCommentsWidget({required this.cardModel}) ;
-   final VolunteeringModel cardModel;
+  MyVolunteeringCommentsWidget({required this.cardModel});
+
+  final VolunteeringModel cardModel;
 
   @override
-  State<MyVolunteeringCommentsWidget> createState() => _MyVolunteeringCommentsWidgetState();
+  State<MyVolunteeringCommentsWidget> createState() =>
+      _MyVolunteeringCommentsWidgetState();
 }
 
-class _MyVolunteeringCommentsWidgetState extends State<MyVolunteeringCommentsWidget> {
+class _MyVolunteeringCommentsWidgetState
+    extends State<MyVolunteeringCommentsWidget> {
   bool hasTextTitle = false;
   bool hasTextComment = false;
+
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment:
-      CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           padding: EdgeInsets.only(
@@ -35,14 +36,11 @@ class _MyVolunteeringCommentsWidgetState extends State<MyVolunteeringCommentsWid
             right: 12.w,
           ),
           decoration: BoxDecoration(
-            borderRadius:
-            BorderRadius.circular(12),
-            color:
-            AppColorUtils.GREEN_ACCENT4,
+            borderRadius: BorderRadius.circular(12),
+            color: AppColorUtils.GREEN_ACCENT4,
           ),
           child: Column(
-            crossAxisAlignment:
-            CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
@@ -52,55 +50,43 @@ class _MyVolunteeringCommentsWidgetState extends State<MyVolunteeringCommentsWid
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                          image: NetworkImage(
-                            widget.cardModel
-                                .imgUrl!,
-                          ),
-                          fit: BoxFit.cover,
+                        image: NetworkImage(
+                          widget.cardModel.imgUrl!,
+                        ),
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
                   Column(
-                    crossAxisAlignment:
-                    CrossAxisAlignment
-                        .start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        child:
-                        AppWidgets.text(
+                        child: AppWidgets.text(
                           text: LocaleKeys.great_project.tr(),
-                          color: AppColorUtils
-                              .TEXT_GREEN2,
-                          fontWeight:
-                          FontWeight.w600,
+                          color: AppColorUtils.TEXT_GREEN2,
+                          fontWeight: FontWeight.w600,
                           fontSize: 14.sp,
                         ),
                         width: 220.w,
                       ),
                       AppWidgets.textLocale(
-                        text:
-                        "Eshonov Fakhriyor",
+                        text: "Eshonov Fakhriyor",
                         fontSize: 12.sp,
-                        fontWeight:
-                        FontWeight.w400,
-                        color: AppColorUtils
-                            .DARK_6,
+                        fontWeight: FontWeight.w400,
+                        color: AppColorUtils.DARK_6,
                       ).paddingOnly(top: 5.w),
                     ],
                   ).paddingOnly(left: 10),
                 ],
               ),
               AppWidgets.text(
-                text: widget.cardModel
-                    .infoModel![0].text!,
+                text: widget.cardModel.infoModel![0].text!,
                 fontWeight: FontWeight.w400,
                 fontSize: 14.sp,
-                color:
-                AppColorUtils.TEXT_GREY2,
+                color: AppColorUtils.TEXT_GREY2,
                 maxLines: 100,
                 height: 1.5,
-              ).paddingSymmetric(
-                  vertical: 15.w),
+              ).paddingSymmetric(vertical: 15.w),
             ],
           ),
         ),
@@ -109,15 +95,13 @@ class _MyVolunteeringCommentsWidgetState extends State<MyVolunteeringCommentsWid
           color: AppColorUtils.BLACK_12,
         ),
         AppWidgets.textLocale(
-          text:
-          LocaleKeys.writing_comment.tr(),
+          text: LocaleKeys.writing_comment.tr(),
           fontSize: 14.sp,
           fontWeight: FontWeight.w600,
           color: AppColorUtils.TEXT_GREEN2,
         ).paddingSymmetric(vertical: 8.w),
         Row(
-          mainAxisAlignment:
-          MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
               child: AppTextField(
@@ -134,9 +118,7 @@ class _MyVolunteeringCommentsWidgetState extends State<MyVolunteeringCommentsWid
                 },
                 title: '',
                 hasTitle: false,
-                hintText: LocaleKeys
-                    .comment_title
-                    .tr(),
+                hintText: LocaleKeys.comment_title.tr(),
               ),
               width: 270.w,
             ),
@@ -144,27 +126,19 @@ class _MyVolunteeringCommentsWidgetState extends State<MyVolunteeringCommentsWid
               child: Ink(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: hasTextTitle ==
-                      false ||
-                      hasTextComment ==
-                          false
-                      ? AppColorUtils
-                      .DISABLE_BC
-                      : AppColorUtils
-                      .PERCENT_COLOR,
+                  color: hasTextTitle == false || hasTextComment == false
+                      ? AppColorUtils.DISABLE_BC
+                      : AppColorUtils.PERCENT_COLOR,
                 ),
                 child: InkWell(
-                  borderRadius:
-                  BorderRadius.circular(
-                      25),
+                  borderRadius: BorderRadius.circular(25),
                   onTap: () {},
                   child: Container(
                     height: 46.w,
                     width: 46.w,
                     child: Icon(
                       Icons.arrow_upward,
-                      color:
-                      AppColorUtils.WHITE,
+                      color: AppColorUtils.WHITE,
                     ),
                   ),
                 ),
@@ -173,9 +147,7 @@ class _MyVolunteeringCommentsWidgetState extends State<MyVolunteeringCommentsWid
           ],
         ),
         AppTextField(
-          hintText: LocaleKeys
-              .write_your_comment
-              .tr(),
+          hintText: LocaleKeys.write_your_comment.tr(),
           onChanged: (v) {
             if (v != "") {
               setState(() {

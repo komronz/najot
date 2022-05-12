@@ -1,4 +1,3 @@
-
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/http_service.dart';
@@ -16,6 +15,7 @@ class RootService {
       await _getIt<RootService>().initServices();
     }
   }
+
   Future initServices() async {
     await StorageService.init();
     await DIService.init();
@@ -23,5 +23,6 @@ class RootService {
     await HiveService.init();
     await HttpService.init();
   }
+
   static HttpService get httpService => _getIt.get<HttpService>();
 }

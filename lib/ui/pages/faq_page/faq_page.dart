@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -47,8 +46,10 @@ class FaqPage extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
               InkWell(
-                onTap: (){
-                  NavigatorService.to.pushNamed(NotificationPage.routeName,);
+                onTap: () {
+                  NavigatorService.to.pushNamed(
+                    NotificationPage.routeName,
+                  );
                 },
                 child: SvgPicture.asset(
                   AppImageUtils.NOTIFICATION,
@@ -67,7 +68,8 @@ class FaqPage extends StatelessWidget {
                 width: context.width,
                 height: 336.w,
               ).paddingSymmetric(
-                horizontal: 20,vertical: 30,
+                horizontal: 20,
+                vertical: 30,
               ),
               BlocBuilder<FaqCubit, FaqState>(
                 builder: (context, state) => buildBody(state),
@@ -103,5 +105,3 @@ class FaqPage extends StatelessWidget {
     }
   }
 }
-
-

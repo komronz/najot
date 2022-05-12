@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -114,7 +113,8 @@ class MyVolunteeringDrawerBody extends StatelessWidget {
                   vertical: 14,
                 ),
                 onTap: () {
-                  NavigatorService.to.pushReplacementNamed(VolunteeringCharityHistoryPage.routeName);
+                  NavigatorService.to.pushReplacementNamed(
+                      VolunteeringCharityHistoryPage.routeName);
                   // context.read<AppPageCubit>().changePage(
                   //   pageType: AppPageType.ORDERS,
                   // );
@@ -131,7 +131,8 @@ class MyVolunteeringDrawerBody extends StatelessWidget {
                   vertical: 14,
                 ),
                 onTap: () {
-                  NavigatorService.to.pushReplacementNamed(MyProductsPage.routeName);
+                  NavigatorService.to
+                      .pushReplacementNamed(MyProductsPage.routeName);
                   // context.read<AppPageCubit>().changePage(
                   //   pageType: AppPageType.ORDERS,
                   // );

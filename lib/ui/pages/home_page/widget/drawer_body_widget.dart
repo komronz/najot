@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
@@ -12,16 +13,16 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+
 import '../../../../data/services/volunteer_service.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 
 class DrawerBody extends StatelessWidget {
   DrawerBody({
     required this.state,
-
   });
 
   AppPageState state;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -122,11 +123,8 @@ class DrawerBody extends StatelessWidget {
                           }
                         },
                       )
-
                     ],
                   ),
-
-
                   Divider(
                     color: AppColorUtils.DIVIDER,
                     height: 1,
@@ -256,12 +254,13 @@ class DrawerBody extends StatelessWidget {
                     },
                   ),
                   FlutterSwitch(
-
                     showOnOff: true,
                     value: state.tobeVolunteer,
                     onToggle: (v) {
-                      Volunteer.tobeVolunteer=!Volunteer.tobeVolunteer;
-                      context.read<AppPageCubit>().changeVolunteer(Volunteer.tobeVolunteer);
+                      Volunteer.tobeVolunteer = !Volunteer.tobeVolunteer;
+                      context
+                          .read<AppPageCubit>()
+                          .changeVolunteer(Volunteer.tobeVolunteer);
                     },
                   ),
                 ],
@@ -270,7 +269,6 @@ class DrawerBody extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.w),
                   child: ButtonCard(

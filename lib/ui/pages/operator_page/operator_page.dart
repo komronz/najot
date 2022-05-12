@@ -232,7 +232,8 @@ class OperatorPage extends StatelessWidget {
               fontSize: 18.sp,
               color: AppColorUtils.GRAY_4,
               height: 1.4,
-            ).paddingOnly(top: 21).paddingSymmetric(horizontal: 86.w), // TODO: Warning
+            ).paddingOnly(top: 21).paddingSymmetric(horizontal: 86.w),
+            // TODO: Warning
           ],
         ),
       );

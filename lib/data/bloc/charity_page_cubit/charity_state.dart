@@ -2,9 +2,9 @@ part of 'charity_cubit.dart';
 
 class CharityState extends Equatable {
   CharityState(
-      {this.list = const [],
+      {required this.checkBox,this.list = const [],
       this.tobeVolunteer = true,
-      required this.checkBox,
+
       this.saveHelp = true});
 
   List<CardModel> list;

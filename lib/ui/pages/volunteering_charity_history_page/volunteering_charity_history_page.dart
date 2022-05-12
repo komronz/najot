@@ -16,12 +16,13 @@ import 'package:najot/ui/pages/volunteering_charity_history_page/widgets/volunte
 import 'package:najot/ui/pages/volunteering_charity_history_page/widgets/volunteering_kraufanding_list_widget.dart';
 import 'package:najot/ui/widgets/app_search_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+
 import '../../../data/bloc/volunteering_charity_history_cubit/volunteering_charity_history_cubit.dart';
 import '../../../data/services/navigator_service.dart';
 import '../notification_page/notification_page.dart';
 
 class VolunteeringCharityHistoryPage extends StatelessWidget {
-  static const String routeName="/volunteeringCharityHistoryPage";
+  static const String routeName = "/volunteeringCharityHistoryPage";
 
   const VolunteeringCharityHistoryPage({Key? key}) : super(key: key);
 
@@ -29,7 +30,8 @@ class VolunteeringCharityHistoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => VolunteeringCharityHistoryCubit()..loadHistory(),
-      child: BlocBuilder<VolunteeringCharityHistoryCubit, VolunteeringCharityHistoryState>(
+      child: BlocBuilder<VolunteeringCharityHistoryCubit,
+          VolunteeringCharityHistoryState>(
         builder: (context, state) => Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
@@ -57,9 +59,10 @@ class VolunteeringCharityHistoryPage extends StatelessWidget {
                   ),
                 ),
                 InkWell(
-                  onTap: (){
-                    NavigatorService.to.pushNamed(NotificationPage.routeName,);
-
+                  onTap: () {
+                    NavigatorService.to.pushNamed(
+                      NotificationPage.routeName,
+                    );
                   },
                   child: SvgPicture.asset(
                     AppImageUtils.NOTIFICATION,
@@ -79,7 +82,7 @@ class VolunteeringCharityHistoryPage extends StatelessWidget {
 
   Widget _buildBody(
     BuildContext context,
-      VolunteeringCharityHistoryState state,
+    VolunteeringCharityHistoryState state,
   ) {
     if (state.isLoading) {
       return Center(
@@ -138,9 +141,12 @@ class VolunteeringCharityHistoryPage extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: [
-                  VolunteeringKraufandingListWidget(list: state.kraufandingList),
+                  VolunteeringKraufandingListWidget(
+                      list: state.kraufandingList),
                   VolunteeringCharityListWidget(list: state.charityList),
-                  VolunteeringItemsCharityList(list: state.itemsCharity,)
+                  VolunteeringItemsCharityList(
+                    list: state.itemsCharity,
+                  )
                 ],
               ),
             )

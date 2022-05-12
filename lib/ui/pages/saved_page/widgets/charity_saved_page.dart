@@ -10,9 +10,11 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class CharitySavedPage extends StatelessWidget {
-  CharitySavedPage({required this.cardModel, required this.visible, Key? key }) : super(key: key);
+  CharitySavedPage({required this.cardModel, required this.visible, Key? key})
+      : super(key: key);
   final CardModel cardModel;
   final bool visible;
+
   // static const String routeName = '/routeName';
 
   @override

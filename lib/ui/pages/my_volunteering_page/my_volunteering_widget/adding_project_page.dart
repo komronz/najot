@@ -29,13 +29,11 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
     'Xayriya',
     'Volontyorlik',
     'Kroudfanding',
-
   ];
   List<String> projectType = [
     'Xayriya',
     'Volontyorlik',
     'Kroudfanding',
-
   ];
 
   @override
@@ -66,7 +64,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                 fontWeight: FontWeight.w600,
               ),
               InkWell(
-                onTap: (){
+                onTap: () {
                   NavigatorService.to.pushNamed(NotificationPage.routeName);
                 },
                 child: SvgPicture.asset(
@@ -100,9 +98,9 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
             Text(
               LocaleKeys.project_name.tr(),
               style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  color: AppColorUtils.DARK_4,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w400,
+                color: AppColorUtils.DARK_4,
               ),
             ).paddingOnly(
               bottom: 10,
@@ -114,9 +112,9 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
             Text(
               LocaleKeys.project_or_announcement_type.tr(),
               style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  color: AppColorUtils.DARK_4,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w400,
+                color: AppColorUtils.DARK_4,
               ),
             ).paddingOnly(
               bottom: 10,
@@ -136,7 +134,8 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
             AppWidgets.appButton(
               title: LocaleKeys.send,
               onTap: () {
-                NavigatorService.to.pushReplacementNamed(MyVolunteeringPage.routeName);
+                NavigatorService.to
+                    .pushReplacementNamed(MyVolunteeringPage.routeName);
               },
               textColor: Colors.white,
               color: AppColorUtils.PERCENT_COLOR,

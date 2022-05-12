@@ -38,7 +38,8 @@ class MyCharityEditProjectDialog extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    SvgPicture.asset(AppImageUtils.EDIT_DEMO).paddingOnly(right: 5),
+                    SvgPicture.asset(AppImageUtils.EDIT_DEMO)
+                        .paddingOnly(right: 5),
                     AppWidgets.textLocale(
                       text: LocaleKeys.edit_the_project,
                       color: AppColorUtils.DARK2,
@@ -55,10 +56,10 @@ class MyCharityEditProjectDialog extends StatelessWidget {
                   fontSize: 16.sp,
                 ).paddingOnly(bottom: 24.h),
                 AppWidgets.textLocale(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.sp,
-                    color: AppColorUtils.DARK2,
-                    text: LocaleKeys.what_changes_make,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14.sp,
+                  color: AppColorUtils.DARK2,
+                  text: LocaleKeys.what_changes_make,
                 ).paddingOnly(bottom: 8.h),
                 AppTextField(
                   isMultiLine: true,

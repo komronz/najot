@@ -74,7 +74,6 @@ class MyCrowdfundingProductsItemsWidget extends StatelessWidget {
                         ),
                       ],
                     )
-
                   ],
                 ),
               ),
@@ -83,13 +82,12 @@ class MyCrowdfundingProductsItemsWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppWidgets.textLocale(
-                        text: "Telefon raqam",
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w400,
-                        color: AppColorUtils.GRAY_4)
+                            text: "Telefon raqam",
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.w400,
+                            color: AppColorUtils.GRAY_4)
                         .paddingOnly(
                       bottom: 8.w,
-
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -121,7 +119,6 @@ class MyCrowdfundingProductsItemsWidget extends StatelessWidget {
                     ).paddingOnly(
                       bottom: 8,
                     ),
-
                   ],
                 ),
               ),

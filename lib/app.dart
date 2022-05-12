@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/utils/app_route_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
+
 import 'data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'data/bloc/language_cubit/language_cubit.dart';
 import 'data/services/navigator_service.dart';
@@ -30,7 +31,9 @@ class App extends StatelessWidget {
           // darkTheme: AppThemes.darkTheme(),
           localizationsDelegates: context.localizationDelegates,
           builder: BotToastInit(),
-          home: HomePage(appPageType: AppPageType.MAIN,),
+          home: HomePage(
+            appPageType: AppPageType.MAIN,
+          ),
           navigatorObservers: [
             BotToastNavigatorObserver(),
           ],

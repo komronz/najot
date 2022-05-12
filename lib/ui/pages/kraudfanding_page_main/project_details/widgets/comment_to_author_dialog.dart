@@ -56,7 +56,9 @@ class CommentToAuthorDialog extends StatelessWidget {
                   title: "",
                   hasTitle: false,
                 ),
-                SizedBox(height: 12.w,),
+                SizedBox(
+                  height: 12.w,
+                ),
                 ButtonCard(
                   onPress: () {
                     Navigator.pop(context);
@@ -66,7 +68,6 @@ class CommentToAuthorDialog extends StatelessWidget {
                         return SuccessSendQuestion();
                       },
                     );
-
                   },
                   text: LocaleKeys.send.tr(),
                   textSize: 16.sp,

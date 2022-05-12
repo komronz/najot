@@ -242,8 +242,7 @@ class CharityHelpWidget extends StatelessWidget {
                     ],
                   ),
                   AppWidgets.textLocale(
-                          text:
-                              LocaleKeys.attention_agree_help,
+                          text: LocaleKeys.attention_agree_help,
                           color: AppColorUtils.RED,
                           fontWeight: FontWeight.w400,
                           fontSize: 12.sp,

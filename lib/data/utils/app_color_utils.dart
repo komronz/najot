@@ -5,6 +5,7 @@ class AppColorUtils {
 
   // static const Color MAIN_50 = Color(0x8019C685);
   static const Color BLACK = Colors.black;
+
   // static const Color BACKGROUND = Color(0xFC8F5E5);
   static const Color KRAUDFANDING = Color(0xFF048D6A);
   static const Color VOLONTYOR = Color(0xFF093D8D);
@@ -78,46 +79,39 @@ class AppColorUtils {
   static const Color ITEM_CHARITY_TEXT2 = Color(0xFF739E96);
   static const Color ITEM_ORDERS_TEXT2 = Color(0xFF9CB2AF);
   static const Color ITEM_ORDERS_BUTTON = Color(0xFF0AC254);
-    static const Color ITEM_ORDERS_CARD= Color(0xFFF8FFFE);
-  static const Color ITEM_ORDERS_BORDER= Color(0xFFB7E4DB);
-  static const Color DELETE_BTN= Color(0xffFFF5F5);
-  static const Color SMS_BTN1= Color(0xFFEAEAEA);
-  static const Color SMS_OPERATOR= Color(0xFFF4FEFD);
-  static const Color SMS_OPERATOR_TEXT= Color(0xFF2E413F);
-  static const Color SMS_USER= Color(0xFF12B561);
-  static const Color SMS_BTN2= Color(0xFFE7EFEE);
-  static const Color SMS_BTN3= Color(0xFF055641);
-  static const Color GRAY_3= Color(0xFFE6E7E8);
-  static const Color DIVIDER_COLOR= Color(0xFFD7E8E3);
-  static const Color ADD_PROJECT_COLOR= Color(0xFFEAF2FF);
-  static const Color TEXT_8= Color(0xFF384643);
-  static const Color GREEN_ACCENT8= Color(0xFFEAF9EC);
-  static const Color GREEN_TEXT_1= Color(0xFF064A0D);
-  static const Color GREEN_TEXT_10= Color(0xFF038D69);
-  static const Color GREEN_INTRO= Color(0xFFEEFFFB);
-  static const Color GREEN_BLACK= Color(0xFF224A40);
-  static const Color GREEN_WHITE= Color(0xFF5D7B73);
-  static const Color WHITE_GREEN= Color(0xFFE5FAF3);
-  static const Color WHITE_GREY= Color(0xFFF5F9FF);
-  static const Color GREEN_2= Color(0xFF0BA42D);
-  static const Color BlUE_2= Color(0xFF0B58B2);
-  static const Color GREEN_6= Color(0xFF97C2BA);
-  static const Color GREEN_1= Color(0xFF007A58);
-  static const Color GREEN_9= Color(0xFFEDFCF9);
-  static const Color GREEN_8= Color(0xFFE6EDEC);
-  static const Color GREEN_11= Color(0xFFDFF8F3);
-  static const Color GREEN_BLACK1= Color(0xFF024739);
-  static const Color GREEN_BLACK2= Color(0xFF415B55);
-  static const Color GREEN_10= Color(0xFF9FB6B0);
-  static const Color GREEN_LIGHT= Color(0xFFF8FFFD);
-  static const Color GREY_BLACK= Color(0xFF5E646D);
-  static const Color WHITE_GREEN5= Color(0xFFECFFFA);
-  static const Color WHITE_GREEN8= Color(0xFF007A58);
-
-
-
-
-
-
-
+  static const Color ITEM_ORDERS_CARD = Color(0xFFF8FFFE);
+  static const Color ITEM_ORDERS_BORDER = Color(0xFFB7E4DB);
+  static const Color DELETE_BTN = Color(0xffFFF5F5);
+  static const Color SMS_BTN1 = Color(0xFFEAEAEA);
+  static const Color SMS_OPERATOR = Color(0xFFF4FEFD);
+  static const Color SMS_OPERATOR_TEXT = Color(0xFF2E413F);
+  static const Color SMS_USER = Color(0xFF12B561);
+  static const Color SMS_BTN2 = Color(0xFFE7EFEE);
+  static const Color SMS_BTN3 = Color(0xFF055641);
+  static const Color GRAY_3 = Color(0xFFE6E7E8);
+  static const Color DIVIDER_COLOR = Color(0xFFD7E8E3);
+  static const Color ADD_PROJECT_COLOR = Color(0xFFEAF2FF);
+  static const Color TEXT_8 = Color(0xFF384643);
+  static const Color GREEN_ACCENT8 = Color(0xFFEAF9EC);
+  static const Color GREEN_TEXT_1 = Color(0xFF064A0D);
+  static const Color GREEN_TEXT_10 = Color(0xFF038D69);
+  static const Color GREEN_INTRO = Color(0xFFEEFFFB);
+  static const Color GREEN_BLACK = Color(0xFF224A40);
+  static const Color GREEN_WHITE = Color(0xFF5D7B73);
+  static const Color WHITE_GREEN = Color(0xFFE5FAF3);
+  static const Color WHITE_GREY = Color(0xFFF5F9FF);
+  static const Color GREEN_2 = Color(0xFF0BA42D);
+  static const Color BlUE_2 = Color(0xFF0B58B2);
+  static const Color GREEN_6 = Color(0xFF97C2BA);
+  static const Color GREEN_1 = Color(0xFF007A58);
+  static const Color GREEN_9 = Color(0xFFEDFCF9);
+  static const Color GREEN_8 = Color(0xFFE6EDEC);
+  static const Color GREEN_11 = Color(0xFFDFF8F3);
+  static const Color GREEN_BLACK1 = Color(0xFF024739);
+  static const Color GREEN_BLACK2 = Color(0xFF415B55);
+  static const Color GREEN_10 = Color(0xFF9FB6B0);
+  static const Color GREEN_LIGHT = Color(0xFFF8FFFD);
+  static const Color GREY_BLACK = Color(0xFF5E646D);
+  static const Color WHITE_GREEN5 = Color(0xFFECFFFA);
+  static const Color WHITE_GREEN8 = Color(0xFF007A58);
 }

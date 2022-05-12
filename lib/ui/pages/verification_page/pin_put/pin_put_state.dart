@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:najot/ui/pages/verification_page/pin_put/pin_put.dart';
-
 
 class AlwaysDisabledFocusNode extends FocusNode {
   @override
@@ -75,7 +73,7 @@ class PinPutState extends State<PinPut>
       _cursorAnimationController!.forward();
     }
 
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     super.initState();
   }
 
@@ -98,7 +96,7 @@ class PinPutState extends State<PinPut>
 
     _cursorAnimationController?.dispose();
     _textControllerValue.dispose();
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
@@ -246,7 +244,7 @@ class PinPutState extends State<PinPut>
     }
 
     if (widget.preFilledWidget != null) {
-      return  SizedBox(
+      return SizedBox(
         key: ValueKey<String>(index < pin.length ? pin[index] : ''),
         child: widget.preFilledWidget,
       );

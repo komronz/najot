@@ -43,7 +43,7 @@ class View1 extends StatelessWidget {
           onChanged: (v) {
             bloc.add(VolunteerAddressChanged(v));
           },
-          title:LocaleKeys.address,
+          title: LocaleKeys.address,
           isFill: bloc.state.address.isNotEmpty,
         ).paddingOnly(top: 24),
         AppRadioButton(

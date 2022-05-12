@@ -12,7 +12,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:provider/src/provider.dart';
 
 class NumberUpdating extends StatelessWidget {
-  NumberUpdating({required this.state,required this.con});
+  NumberUpdating({required this.state, required this.con});
 
   EditVolunteerState state;
   BuildContext con;
@@ -68,9 +68,7 @@ class NumberUpdating extends StatelessWidget {
             color: AppColorUtils.PERCENT_COLOR,
             onPress: () {
               con.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
-              con.read<EditVolunteerBloc>().add(MyProfileLoad()
-              );
-
+              con.read<EditVolunteerBloc>().add(MyProfileLoad());
             },
             text: LocaleKeys.confirmation.tr(),
           ).paddingOnly(bottom: 18.w),
@@ -93,6 +91,5 @@ class NumberUpdating extends StatelessWidget {
         ],
       ),
     );
-
   }
 }

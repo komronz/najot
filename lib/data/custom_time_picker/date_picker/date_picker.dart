@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
 
-import 'date_picker_theme.dart';
 import 'date_picker_constants.dart';
+import 'date_picker_theme.dart';
 import 'i18n/date_picker_i18n.dart';
 import 'widget/date_picker_widget.dart';
 
@@ -136,13 +137,15 @@ class DatePicker {
       initialDate = DateTime.now();
     }
 
-    if (backgroundColor == null)
+    if (backgroundColor == null) {
       backgroundColor = DateTimePickerTheme.Default.backgroundColor;
+    }
 //    if (itemTextStyle == null)
 //      itemTextStyle = DateTimePickerTheme.Default.itemTextStyle;
 
-    if (textColor == null)
+    if (textColor == null) {
       textColor = DateTimePickerTheme.Default.itemTextStyle.color;
+    }
 
     var datePickerDialog = AlertDialog(
       title: Text(
@@ -164,7 +167,7 @@ class DatePicker {
             itemTextStyle: itemTextStyle ?? TextStyle(color: textColor),
           ),
           onChange: ((DateTime date, list) {
-            print(date);
+            AppLoggerUtil.d(date.toString());
             _selectedDate = date;
           }),
           looping: looping,

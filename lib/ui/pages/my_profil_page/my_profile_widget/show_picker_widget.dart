@@ -1,14 +1,14 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_image_utils.dart';
@@ -31,7 +31,7 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
       final imagePermanent = await saveImagePermanently(image.path);
       setState(() => this.image = imagePermanent);
     } on PlatformException catch (e) {
-      print('Failed to pick image: $e');
+      AppLoggerUtil.e('Failed to pick image: $e');
     }
   }
 
@@ -71,7 +71,7 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
     );
   }
 
-  _showPicker(context) {
+  void _showPicker(context) {
     showModalBottomSheet(
         context: context,
         builder: (BuildContext bc) {

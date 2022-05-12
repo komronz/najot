@@ -33,6 +33,7 @@ class SizeConst {
   static const SIZE_280 = 280.0;
   static const SIZE_450 = 450.0;
   static const SIZE_600 = 600.0;
+
   // Font Sizes
   static const FONT_18 = 18.0;
   static const FONT_16 = 16.0;

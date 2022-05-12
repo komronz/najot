@@ -43,10 +43,11 @@ class RulesPage extends StatelessWidget {
               fontSize: 26.sp,
               fontWeight: FontWeight.w600,
             ),
-
             InkWell(
-              onTap: (){
-                NavigatorService.to.pushNamed(NotificationPage.routeName,);
+              onTap: () {
+                NavigatorService.to.pushNamed(
+                  NotificationPage.routeName,
+                );
               },
               child: SvgPicture.asset(
                 AppImageUtils.NOTIFICATION,

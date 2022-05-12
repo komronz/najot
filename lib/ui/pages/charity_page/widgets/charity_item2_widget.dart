@@ -21,91 +21,90 @@ class CharityItem2Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      child: Container(
-        width: 160.w,
-        height: 267.w,
-        child: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-          elevation: 1,
-          color: AppColorUtils.WHITE,
-          child: Column(
-            children: [
-              Expanded(
-                child: Stack(
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: ClipRRect(
-                            borderRadius:
-                                BorderRadius.vertical(top: Radius.circular(12)),
-                            child: CachedNetworkImage(
-                              placeholder: (context, url) => Center(
-                                child: CircularProgressIndicator(),
+        child: Container(
+          width: 160.w,
+          height: 267.w,
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            elevation: 1,
+            color: AppColorUtils.WHITE,
+            child: Column(
+              children: [
+                Expanded(
+                  child: Stack(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(12)),
+                              child: CachedNetworkImage(
+                                placeholder: (context, url) => Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                                imageUrl: model.image!,
+                                errorWidget: (context, url, error) =>
+                                    Icon(Icons.error),
+                                fit: BoxFit.cover,
                               ),
-                              imageUrl: model.image!,
-                              errorWidget: (context, url, error) =>
-                                  Icon(Icons.error),
-                              fit: BoxFit.cover,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Expanded(child: SizedBox()),
-                        InkWell(
-                          child: FavoriteButton(
-                            isFavorite: model.isFavorite!,
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(child: SizedBox()),
+                          InkWell(
+                            child: FavoriteButton(
+                              isFavorite: model.isFavorite!,
+                            ),
+                            onTap: () {},
                           ),
-                          onTap: () {},
-                        ),
-                      ],
-                    ).paddingAll(10)
-                  ],
+                        ],
+                      ).paddingAll(10)
+                    ],
+                  ),
+                  flex: 1,
                 ),
-                flex: 1,
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AppWidgets.text(
-                      text: model.title!,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w600,
-                      maxLines: 2,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        AppWidgets.textLocale(
-                          text: LocaleKeys.item_type,
-                          fontSize: 10.sp,
-                          fontWeight: FontWeight.w400,
-                          color: AppColorUtils.DARK_6,
-                        ).paddingOnly(top: 12.w),
-                        AppWidgets.text(
-                          text: "Oyoq kiyim",
-                          fontWeight: FontWeight.w600,
-                          color: AppColorUtils.TEXT_GREEN,
-                          fontSize: 12.sp,
-                        ).paddingOnly(top: 5.w),
-                      ],
-                    )
-                  ],
-                ).paddingSymmetric(vertical: 14, horizontal: 12),
-                flex: 1,
-              )
-            ],
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AppWidgets.text(
+                        text: model.title!,
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w600,
+                        maxLines: 2,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppWidgets.textLocale(
+                            text: LocaleKeys.item_type,
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.w400,
+                            color: AppColorUtils.DARK_6,
+                          ).paddingOnly(top: 12.w),
+                          AppWidgets.text(
+                            text: "Oyoq kiyim",
+                            fontWeight: FontWeight.w600,
+                            color: AppColorUtils.TEXT_GREEN,
+                            fontSize: 12.sp,
+                          ).paddingOnly(top: 5.w),
+                        ],
+                      )
+                    ],
+                  ).paddingSymmetric(vertical: 14, horizontal: 12),
+                  flex: 1,
+                )
+              ],
+            ),
           ),
         ),
-      ),
-      onTap: onTap
-    );
+        onTap: onTap);
   }
 }

@@ -16,58 +16,56 @@ class EditVolunteerState extends Equatable {
   final XFile? userImgPath;
   final int changePage;
 
-  const EditVolunteerState({
-    this.name = '',
-    this.sureName = '',
-    this.imageUrl = '',
-    this.phoneNumber='',
-    this.isMan = Gender.MAN,
-    this.isSavedBtn = false,
-    this.nameFill = false,
-    this.phoneNumberFill=false,
-    this.sureNameFill = false,
-    this.isVisible=true,
-    this.nextPage=false,
-    this.hasError = false,
-    this.userImgPath,
-    this.changePage=1
-  });
+  const EditVolunteerState(
+      {this.name = '',
+      this.sureName = '',
+      this.imageUrl = '',
+      this.phoneNumber = '',
+      this.isMan = Gender.MAN,
+      this.isSavedBtn = false,
+      this.nameFill = false,
+      this.phoneNumberFill = false,
+      this.sureNameFill = false,
+      this.isVisible = true,
+      this.nextPage = false,
+      this.hasError = false,
+      this.userImgPath,
+      this.changePage = 1});
 
   @override
   List<Object?> get props => [
-    name,
-    sureName,
-    imageUrl,
-    phoneNumber,
-    isMan,
-    isSavedBtn,
-    nameFill,
-    sureNameFill,
-    hasError,
-    userImgPath,
-    phoneNumberFill,
-    nextPage,
-    isVisible,
-    changePage
-  ];
+        name,
+        sureName,
+        imageUrl,
+        phoneNumber,
+        isMan,
+        isSavedBtn,
+        nameFill,
+        sureNameFill,
+        hasError,
+        userImgPath,
+        phoneNumberFill,
+        nextPage,
+        isVisible,
+        changePage
+      ];
 
-  EditVolunteerState copyWith({
-    String? name,
-    String? sureName,
-    String? imageUrl,
-    String? phoneNumber,
-    bool? phoneNumberFill,
-    Gender? isMan,
-    bool? isSavedBtn,
-    bool? nameFill,
-    bool? sureNameFill,
-    bool? hasError,
-    bool? sendBtnActive,
-    bool? isVisible,
-    bool? nextPage,
-    XFile? userImgPath,
-    int? changePage
-  }) {
+  EditVolunteerState copyWith(
+      {String? name,
+      String? sureName,
+      String? imageUrl,
+      String? phoneNumber,
+      bool? phoneNumberFill,
+      Gender? isMan,
+      bool? isSavedBtn,
+      bool? nameFill,
+      bool? sureNameFill,
+      bool? hasError,
+      bool? sendBtnActive,
+      bool? isVisible,
+      bool? nextPage,
+      XFile? userImgPath,
+      int? changePage}) {
     return EditVolunteerState(
       name: name ?? this.name,
       sureName: sureName ?? this.sureName,

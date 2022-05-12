@@ -28,7 +28,9 @@ class MyCrowdfundingPriceWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppWidgets.starTextWidget(text: LocaleKeys.amount_needed.tr(),),
+                AppWidgets.starTextWidget(
+                  text: LocaleKeys.amount_needed.tr(),
+                ),
                 AppWidgets.text(
                   text: model.totalSum!,
                   color: Color(0xFF043F3B),

@@ -6,7 +6,6 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
-import '../../../../data/model/volunteering_model.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
@@ -14,9 +13,7 @@ import '../../../../data/utils/date_time_util.dart';
 import '../../../widgets/app_widgets.dart';
 
 class NotificationSuccessAdding extends StatelessWidget {
-
-  NotificationSuccessAdding(
-      {required this.dateTime, Key? key})
+  NotificationSuccessAdding({required this.dateTime, Key? key})
       : super(key: key);
   DateTime dateTime;
 
@@ -110,7 +107,6 @@ class NotificationSuccessAdding extends StatelessWidget {
                     textColor: AppColorUtils.BLACK,
                     onTap: () {
                       NavigatorService.to.pop();
-
                     },
                     title: LocaleKeys.exit,
                     fontSize: 16.sp,

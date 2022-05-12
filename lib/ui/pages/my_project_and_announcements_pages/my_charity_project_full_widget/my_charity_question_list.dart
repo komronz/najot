@@ -65,8 +65,7 @@ class _MyVolunteeringQuestionListState extends State<MyCharityQuestionList> {
                           children: [
                             SizedBox(
                               child: AppWidgets.text(
-                                text: LocaleKeys.how_humanity_benefits
-                                    .tr(),
+                                text: LocaleKeys.how_humanity_benefits.tr(),
                                 color: AppColorUtils.TEXT_GREEN2,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14.sp,

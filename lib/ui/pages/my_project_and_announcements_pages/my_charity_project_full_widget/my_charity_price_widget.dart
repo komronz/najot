@@ -28,7 +28,9 @@ class MyCharityPriceWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppWidgets.starTextWidget(text: LocaleKeys.amount_needed.tr(),),
+                AppWidgets.starTextWidget(
+                  text: LocaleKeys.amount_needed.tr(),
+                ),
                 AppWidgets.text(
                   text: model.totalSum!,
                   color: AppColorUtils.TEXT_GREEN2,

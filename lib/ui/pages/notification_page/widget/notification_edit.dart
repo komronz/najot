@@ -7,6 +7,7 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+
 import '../../../../data/custom_time_picker/date_picker/date_picker_theme.dart';
 import '../../../../data/custom_time_picker/date_picker/i18n/date_picker_i18n.dart';
 import '../../../../data/custom_time_picker/date_picker/widget/date_picker_widget.dart';
@@ -85,7 +86,8 @@ class _NotificationEditState extends State<NotificationEdit> {
                               height: 16,
                             ).paddingOnly(right: 5),
                             AppWidgets.textLocale(
-                              text: "${DateTimeUtil.dmy(DateTime.now(), context.locale)}",
+                              text:
+                                  "${DateTimeUtil.dmy(DateTime.now(), context.locale)}",
                               color: AppColorUtils.BLUE_TEXT,
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w500,
@@ -218,8 +220,8 @@ class _NotificationEditState extends State<NotificationEdit> {
                           context: context,
                           builder: (context) => NotificationSuccessAdding(
                             // selectFunction: (dateTime) {
-                              // print(dateTime.toUtc().toString());
-                              // bloc.add(VolunteerBirthDateSelected(dateTime));
+                            // print(dateTime.toUtc().toString());
+                            // bloc.add(VolunteerBirthDateSelected(dateTime));
                             // },
                             dateTime: dateTime,
                           ),

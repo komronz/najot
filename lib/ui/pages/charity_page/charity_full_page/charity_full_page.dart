@@ -52,7 +52,7 @@ class _CharityFullPageState extends State<CharityFullPage>
     super.initState();
   }
 
-  _handleTabSelection() {
+  void _handleTabSelection() {
     if (_controller.indexIsChanging) {
       setState(() {});
     }
@@ -73,216 +73,212 @@ class _CharityFullPageState extends State<CharityFullPage>
         body: BlocBuilder<CharityCubit, CharityState>(
           builder: (context, state) {
             return SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
-              child:  Column(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(11),
-                        bottomRight: Radius.circular(11),
-                      ),
-                    ),
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            Container(
-                              height: 300.w,
-                              margin: EdgeInsets.symmetric(
-                                horizontal: 20.w,
-                                vertical: 18.w,
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(12),
-                                ),
-                                child: CachedNetworkImage(
-                                  imageUrl: widget.cardModel.image!,
-                                  fit: BoxFit.cover,
-                                  width:
-                                  MediaQuery.of(context).size.width,
-                                  placeholder: (context, url) => Center(
-                                    child: CircularProgressIndicator(),
-                                  ),
-                                  errorWidget: (context, url, error) =>
-                                      Icon(Icons.error),
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              bottom: 120.w,
-                              right: 0,
-                              child: InkWell(
-                                onTap: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return PaymentHistoryDialog();
-                                    },
-                                  );
-                                },
-                                child: Container(
-                                  height: 35.w,
-                                  width: 60.w,
-                                  decoration: BoxDecoration(
-                                    color: AppColorUtils.BLUE_PERCENT,
-                                    borderRadius:
-                                    BorderRadius.horizontal(
-                                      left: Radius.circular(12),
-                                    ),
-                                  ),
-                                  child: Icon(
-                                    Icons.monetization_on_outlined,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        AppWidgets.text(
-                          text:
-                          "Drenajni kuzatish uchun mo’jallangan moslama",
-                          fontSize: 20.sp,
-                          color: AppColorUtils.DARK2,
-                          fontWeight: FontWeight.w500,
-                          maxLines: 2,
-                        ).paddingSymmetric(horizontal: 20.w),
-                        KraudfandingAuthorWidget(
-                          model: widget.cardModel,
-                          onTap: (){
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return CommentToAuthorDialog();
-                              },
-                            );
-                          },
-                        ).paddingOnly(top: 15.w),
-                        SizedBox(height: 12.w),
-                        DetailBodyPart2(cardModel: widget.cardModel)
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 24.w,
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 20.w),
-                    decoration: BoxDecoration(
+                physics: BouncingScrollPhysics(),
+                child: Column(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(11.0)),
-                    child: DefaultTabController(
-                      initialIndex: 0,
-                      length: 4,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(11),
+                          bottomRight: Radius.circular(11),
+                        ),
+                      ),
                       child: Column(
                         children: [
-                          TabBar(
-                            controller: _controller,
-                            enableFeedback: true,
-                            labelColor: AppColorUtils.GREEN_APP,
-                            unselectedLabelColor: AppColorUtils.DARK_6,
-                            unselectedLabelStyle: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                            labelStyle: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w600,
-                            ),
-                            tabs: [
-                              Text(
-                                LocaleKeys.more.tr(),
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                              Text(
-                                LocaleKeys.news.tr(),
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                              Text(
-                                LocaleKeys.questions_asked.tr(),
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                              Text(
-                                LocaleKeys.comments.tr(),
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                            ],
-                            isScrollable: true,
-                            indicatorWeight: 2,
-                            indicatorColor: AppColorUtils.GREEN_APP,
-                            indicatorSize: TabBarIndicatorSize.tab,
-                            padding: EdgeInsets.only(right: 10),
-                            indicatorPadding:
-                            EdgeInsets.only(right: 10, left: 10),
-                            labelPadding:
-                            EdgeInsets.only(right: 10, left: 10),
-                          ).paddingOnly(left: 15.w, top: 8.w),
-                          Container(
-                            child: [
-                              MoreWidget(
-                                cardModel: widget.cardModel,
-                              ),
-                              NewsWidget(
-                                cardModel: widget.cardModel,
-                              ).paddingAll(20.w),
-                              QuestionsAskedWidget(
-                                cardModel: widget.cardModel,
-                              ).paddingAll(20.w),
-                              CommentsWidget(
-                                cardModel: widget.cardModel,
-                              ).paddingAll(20.w)
-                            ][_controller.index],
-                          ),
-                          SizedBox(
-                            height: 10.w,
-                          ),
-                          Row(
-                            mainAxisAlignment:
-                            MainAxisAlignment.spaceBetween,
+                          Stack(
                             children: [
-                              ButtonCard(
-                                onPress: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return SupportProjectDialog();
-                                    },
-                                  );
-                                },
-                                text: LocaleKeys.project_implementation,
-                                height: 48.w,
-                                width: 274.w,
-                                color: AppColorUtils.PERCENT_COLOR,
-                                textSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                                textColor: AppColorUtils.WHITE,
+                              Container(
+                                height: 300.w,
+                                margin: EdgeInsets.symmetric(
+                                  horizontal: 20.w,
+                                  vertical: 18.w,
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(12),
+                                  ),
+                                  child: CachedNetworkImage(
+                                    imageUrl: widget.cardModel.image!,
+                                    fit: BoxFit.cover,
+                                    width: MediaQuery.of(context).size.width,
+                                    placeholder: (context, url) => Center(
+                                      child: CircularProgressIndicator(),
+                                    ),
+                                    errorWidget: (context, url, error) =>
+                                        Icon(Icons.error),
+                                  ),
+                                ),
                               ),
-                              AppWidgets.favouriteButton(
-                                select: widget.cardModel.isFavorite!,
-                                height: 48.w,
-                                width: 48.w,
-                                onTap: () {},
+                              Positioned(
+                                bottom: 120.w,
+                                right: 0,
+                                child: InkWell(
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return PaymentHistoryDialog();
+                                      },
+                                    );
+                                  },
+                                  child: Container(
+                                    height: 35.w,
+                                    width: 60.w,
+                                    decoration: BoxDecoration(
+                                      color: AppColorUtils.BLUE_PERCENT,
+                                      borderRadius: BorderRadius.horizontal(
+                                        left: Radius.circular(12),
+                                      ),
+                                    ),
+                                    child: Icon(
+                                      Icons.monetization_on_outlined,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
                               )
                             ],
+                          ),
+                          AppWidgets.text(
+                            text:
+                                "Drenajni kuzatish uchun mo’jallangan moslama",
+                            fontSize: 20.sp,
+                            color: AppColorUtils.DARK2,
+                            fontWeight: FontWeight.w500,
+                            maxLines: 2,
                           ).paddingSymmetric(horizontal: 20.w),
+                          KraudfandingAuthorWidget(
+                            model: widget.cardModel,
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return CommentToAuthorDialog();
+                                },
+                              );
+                            },
+                          ).paddingOnly(top: 15.w),
+                          SizedBox(height: 12.w),
+                          DetailBodyPart2(cardModel: widget.cardModel)
                         ],
                       ),
                     ),
-                  ),
-                ],
-              )
-            );
+                    SizedBox(
+                      height: 24.w,
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 20.w),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(11.0)),
+                      child: DefaultTabController(
+                        initialIndex: 0,
+                        length: 4,
+                        child: Column(
+                          children: [
+                            TabBar(
+                              controller: _controller,
+                              enableFeedback: true,
+                              labelColor: AppColorUtils.GREEN_APP,
+                              unselectedLabelColor: AppColorUtils.DARK_6,
+                              unselectedLabelStyle: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w400,
+                              ),
+                              labelStyle: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              tabs: [
+                                Text(
+                                  LocaleKeys.more.tr(),
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                  ),
+                                ),
+                                Text(
+                                  LocaleKeys.news.tr(),
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                  ),
+                                ),
+                                Text(
+                                  LocaleKeys.questions_asked.tr(),
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                  ),
+                                ),
+                                Text(
+                                  LocaleKeys.comments.tr(),
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                  ),
+                                ),
+                              ],
+                              isScrollable: true,
+                              indicatorWeight: 2,
+                              indicatorColor: AppColorUtils.GREEN_APP,
+                              indicatorSize: TabBarIndicatorSize.tab,
+                              padding: EdgeInsets.only(right: 10),
+                              indicatorPadding:
+                                  EdgeInsets.only(right: 10, left: 10),
+                              labelPadding:
+                                  EdgeInsets.only(right: 10, left: 10),
+                            ).paddingOnly(left: 15.w, top: 8.w),
+                            Container(
+                              child: [
+                                MoreWidget(
+                                  cardModel: widget.cardModel,
+                                ),
+                                NewsWidget(
+                                  cardModel: widget.cardModel,
+                                ).paddingAll(20.w),
+                                QuestionsAskedWidget(
+                                  cardModel: widget.cardModel,
+                                ).paddingAll(20.w),
+                                CommentsWidget(
+                                  cardModel: widget.cardModel,
+                                ).paddingAll(20.w)
+                              ][_controller.index],
+                            ),
+                            SizedBox(
+                              height: 10.w,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                ButtonCard(
+                                  onPress: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return SupportProjectDialog();
+                                      },
+                                    );
+                                  },
+                                  text: LocaleKeys.project_implementation,
+                                  height: 48.w,
+                                  width: 274.w,
+                                  color: AppColorUtils.PERCENT_COLOR,
+                                  textSize: 16.sp,
+                                  fontWeight: FontWeight.w600,
+                                  textColor: AppColorUtils.WHITE,
+                                ),
+                                AppWidgets.favouriteButton(
+                                  select: widget.cardModel.isFavorite!,
+                                  height: 48.w,
+                                  width: 48.w,
+                                  onTap: () {},
+                                )
+                              ],
+                            ).paddingSymmetric(horizontal: 20.w),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ));
           },
         ),
       ),

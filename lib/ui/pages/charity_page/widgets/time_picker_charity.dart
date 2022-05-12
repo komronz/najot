@@ -17,12 +17,9 @@ import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/item_
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class TimePikerCharity extends StatelessWidget {
-  TimePikerCharity({
-    required this.model,
-    required this.cubit,
-    required this.con
+  TimePikerCharity(
+      {required this.model, required this.cubit, required this.con});
 
-  });
   DateTime _date = DateTime.now();
   DateTime _time = DateTime.now();
   CardModel model;
@@ -148,7 +145,7 @@ class TimePikerCharity extends StatelessWidget {
                             time.month,
                             time.month,
                             time.day,
-                            time.hour ,
+                            time.hour,
                             time.minute,
                           );
                         },
@@ -217,7 +214,6 @@ class TimePikerCharity extends StatelessWidget {
                             cubit.Load();
                             Navigator.pop(con);
                             Navigator.pop(context);
-
                           },
                         ),
                       );

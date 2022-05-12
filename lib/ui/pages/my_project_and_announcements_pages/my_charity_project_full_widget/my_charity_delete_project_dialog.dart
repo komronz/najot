@@ -56,18 +56,19 @@ class MyCharityDeleteProjectDialog extends StatelessWidget {
                   fontSize: 16.sp,
                 ).paddingOnly(bottom: 24.h),
                 AppWidgets.textLocale(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.sp,
-                    color: AppColorUtils.DARK2,
-                    text: LocaleKeys.reason_deletion_short,
-                    richText: true,
-                    othersMarkers: [
-                      MarkerText(marker: "//", style: TextStyle(
-                          color: AppColorUtils.RED
-                      ),)
-                    ],
-                    maxLines: 2
-                ).paddingOnly(bottom: 8.h),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14.sp,
+                        color: AppColorUtils.DARK2,
+                        text: LocaleKeys.reason_deletion_short,
+                        richText: true,
+                        othersMarkers: [
+                          MarkerText(
+                            marker: "//",
+                            style: TextStyle(color: AppColorUtils.RED),
+                          )
+                        ],
+                        maxLines: 2)
+                    .paddingOnly(bottom: 8.h),
                 AppTextField(
                   isMultiLine: true,
                   height: 170.w,

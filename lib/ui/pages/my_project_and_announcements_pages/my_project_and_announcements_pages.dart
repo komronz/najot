@@ -27,12 +27,10 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => MyProjectAndAnnouncementsPagesCubit(),
-        child: BlocBuilder < MyProjectAndAnnouncementsPagesCubit,
-        MyProjectAndAnnouncementsPagesState >(
-        builder: (context, state)
-    =>
-        Scaffold(
+      create: (context) => MyProjectAndAnnouncementsPagesCubit(),
+      child: BlocBuilder<MyProjectAndAnnouncementsPagesCubit,
+          MyProjectAndAnnouncementsPagesState>(
+        builder: (context, state) => Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
             backgroundColor: Colors.transparent,
@@ -56,12 +54,13 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
                       text: LocaleKeys.projects_and_ads,
                       fontSize: 25.sp,
                       fontWeight: FontWeight.w600,
-                      textAlign: TextAlign.center
-                  ),
+                      textAlign: TextAlign.center),
                 ),
                 InkWell(
                   onTap: () {
-                    NavigatorService.to.pushNamed(NotificationPage.routeName,);
+                    NavigatorService.to.pushNamed(
+                      NotificationPage.routeName,
+                    );
                   },
                   child: SvgPicture.asset(
                     AppImageUtils.NOTIFICATION,
@@ -74,15 +73,15 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
             ).paddingSymmetric(horizontal: 20),
           ),
           body: _buildBody(context, state),
-        )
-    ,
-    )
-    ,
+        ),
+      ),
     );
   }
 
-  Widget _buildBody(BuildContext context,
-      MyProjectAndAnnouncementsPagesState state,) {
+  Widget _buildBody(
+    BuildContext context,
+    MyProjectAndAnnouncementsPagesState state,
+  ) {
     if (state.isLoading) {
       return Center(
         child: CircularProgressIndicator(),

@@ -23,7 +23,7 @@ class OrganizationCubit extends Cubit<OrganizationState> {
     emit(state.copyWith(checkBox: v));
   }
 
-  Future  onChangeSave(bool v) async {
+  Future onChangeSave(bool v) async {
     emit(state.copyWith(saveHelp: v));
   }
 }

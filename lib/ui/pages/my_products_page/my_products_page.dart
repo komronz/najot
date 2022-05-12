@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/bloc/my_products_cubit/my_products_cubit.dart';
-import 'package:najot/data/bloc/orders_cubit/orders_cubit.dart';
 import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -53,8 +52,10 @@ class MyProductsPage extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
                 InkWell(
-                  onTap: (){
-                    NavigatorService.to.pushNamed(NotificationPage.routeName,);
+                  onTap: () {
+                    NavigatorService.to.pushNamed(
+                      NotificationPage.routeName,
+                    );
                   },
                   child: SvgPicture.asset(
                     AppImageUtils.NOTIFICATION,

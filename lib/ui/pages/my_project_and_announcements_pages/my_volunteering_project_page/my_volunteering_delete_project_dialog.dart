@@ -12,7 +12,6 @@ import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
-
 class MyVolunteeringDeleteProjectDialog extends StatelessWidget {
   const MyVolunteeringDeleteProjectDialog({Key? key}) : super(key: key);
 
@@ -56,18 +55,19 @@ class MyVolunteeringDeleteProjectDialog extends StatelessWidget {
                   fontSize: 16.sp,
                 ).paddingOnly(bottom: 24.h),
                 AppWidgets.textLocale(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.sp,
-                    color: AppColorUtils.DARK2,
-                    text: LocaleKeys.reason_deletion_short,
-                    richText: true,
-                    othersMarkers: [
-                      MarkerText(marker: "//", style: TextStyle(
-                          color: AppColorUtils.RED
-                      ),)
-                    ],
-                    maxLines: 2
-                ).paddingOnly(bottom: 8.h),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14.sp,
+                        color: AppColorUtils.DARK2,
+                        text: LocaleKeys.reason_deletion_short,
+                        richText: true,
+                        othersMarkers: [
+                          MarkerText(
+                            marker: "//",
+                            style: TextStyle(color: AppColorUtils.RED),
+                          )
+                        ],
+                        maxLines: 2)
+                    .paddingOnly(bottom: 8.h),
                 AppTextField(
                   isMultiLine: true,
                   height: 170.w,

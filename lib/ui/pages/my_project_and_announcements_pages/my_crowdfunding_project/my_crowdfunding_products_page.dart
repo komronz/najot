@@ -14,7 +14,6 @@ import '../../../../data/bloc/my_products_cubit/my_products_state.dart';
 import 'my_crowdfunding_products_items_widget.dart';
 
 class MyCrowdfundingProductPage extends StatelessWidget {
-
   const MyCrowdfundingProductPage({Key? key}) : super(key: key);
 
   @override
@@ -80,5 +79,4 @@ class MyCrowdfundingProductPage extends StatelessWidget {
       itemCount: state.list.length,
     );
   }
-
 }

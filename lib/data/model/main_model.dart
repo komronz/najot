@@ -80,7 +80,7 @@ class Categories {
   int? id;
   String? name;
   String? slug;
-  Null? parent;
+  Null parent;
 
   Categories({this.id, this.name, this.slug, this.parent});
 

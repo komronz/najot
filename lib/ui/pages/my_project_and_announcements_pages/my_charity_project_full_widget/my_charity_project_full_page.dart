@@ -18,7 +18,8 @@ class MyCharityProjectFullPage extends StatefulWidget {
   CharityModel cardModel;
 
   @override
-  State<MyCharityProjectFullPage> createState() => _MyCharityProjectFullPageState();
+  State<MyCharityProjectFullPage> createState() =>
+      _MyCharityProjectFullPageState();
 }
 
 class _MyCharityProjectFullPageState extends State<MyCharityProjectFullPage>
@@ -40,8 +41,7 @@ class _MyCharityProjectFullPageState extends State<MyCharityProjectFullPage>
     super.initState();
   }
 
-  _handleTabSelection() {
-
+  void _handleTabSelection() {
     if (_controller.indexIsChanging) {
       setState(() {});
     }
@@ -63,11 +63,11 @@ class _MyCharityProjectFullPageState extends State<MyCharityProjectFullPage>
           builder: (context, state) {
             return SingleChildScrollView(
               physics: BouncingScrollPhysics(),
-                 child: Container(
-                    child: [
-                      AboutMyCharityProjectWidget(model: widget.cardModel),
-                    ][_controller.index],
-                  ),
+              child: Container(
+                child: [
+                  AboutMyCharityProjectWidget(model: widget.cardModel),
+                ][_controller.index],
+              ),
             );
           },
         ),

@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
@@ -17,7 +16,8 @@ class ItemAddingSuccess extends StatelessWidget {
     required this.dateTime,
     required this.back,
     required this.goto,
-  }) ;
+  });
+
   DateTime dateTime;
   VoidCallback goto;
   VoidCallback back;
@@ -40,7 +40,10 @@ class ItemAddingSuccess extends StatelessWidget {
             children: [
               Container(
                 child: Image.asset('assets/images/success.png'),
-              ).paddingOnly(top: 24.h, bottom: 14.h,),
+              ).paddingOnly(
+                top: 24.h,
+                bottom: 14.h,
+              ),
               AppWidgets.textLocale(
                 textAlign: TextAlign.center,
                 text: LocaleKeys.note_successful_added,

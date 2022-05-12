@@ -41,8 +41,8 @@ class LoginState extends Equatable {
         phoneFill,
         signBtnActive,
         hasError,
-    authSuccess,
-    checkPhoneNumber
+        authSuccess,
+        checkPhoneNumber
       ];
 
   LoginState copyWith({
@@ -58,7 +58,6 @@ class LoginState extends Equatable {
     bool? hasError,
     bool? authSuccess,
     bool? checkPhoneNumber,
-
   }) {
     return LoginState(
       firstName: firstName ?? this.firstName,

@@ -39,7 +39,11 @@ class VolunteeringKraufandingListWidget extends StatelessWidget {
             color: AppColorUtils.GRAY_4,
             textAlign: TextAlign.center,
             maxLines: 2,
-          ).paddingOnly(top: 20, left: 50.w, right: 50.w,),
+          ).paddingOnly(
+            top: 20,
+            left: 50.w,
+            right: 50.w,
+          ),
         ],
       );
     }
@@ -49,15 +53,14 @@ class VolunteeringKraufandingListWidget extends StatelessWidget {
         model: list[index],
         onTap: () {
           var model = CardModel(
-            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
-            "Texnalogiya",
-            "Drenajni kuzatish uchun mo'ljallangan",
-            0.6,
-            true,
-            CardModel.info,
-            "22.08.2022",
-              ProductsService().getProducts()
-          );
+              "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+              "Texnalogiya",
+              "Drenajni kuzatish uchun mo'ljallangan",
+              0.6,
+              true,
+              CardModel.info,
+              "22.08.2022",
+              ProductsService().getProducts());
           NavigatorService.to.pushNamed(
             ProjectDetailsPage.routeName,
             arguments: model,

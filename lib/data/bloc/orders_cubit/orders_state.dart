@@ -1,4 +1,3 @@
-
 import 'package:equatable/equatable.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
 

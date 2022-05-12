@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,7 +10,7 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class DetailBodyPart1 extends StatelessWidget {
-   DetailBodyPart1({required this.cardModel});
+  DetailBodyPart1({required this.cardModel});
 
   CardModel cardModel;
 
@@ -69,11 +68,11 @@ class DetailBodyPart1 extends StatelessWidget {
           color: AppColorUtils.DARK_6,
         ).paddingOnly(top: 13.w, left: 20.w, bottom: 3.w),
         AppWidgets.text(
-            text: "Ovqat qilib berish va uyni yig'ishtirish",
-            maxLines: 2,
-            fontWeight: FontWeight.w600,
-            fontSize: 16.sp,
-            color: AppColorUtils.GREEN_TEXT)
+                text: "Ovqat qilib berish va uyni yig'ishtirish",
+                maxLines: 2,
+                fontWeight: FontWeight.w600,
+                fontSize: 16.sp,
+                color: AppColorUtils.GREEN_TEXT)
             .paddingSymmetric(horizontal: 20.w),
         AppWidgets.textLocale(
           text: LocaleKeys.address,
@@ -86,11 +85,11 @@ class DetailBodyPart1 extends StatelessWidget {
           bottom: 3.w,
         ),
         AppWidgets.text(
-            text: "Toshkent Shahar, Mirobod tumani*********",
-            fontSize: 14.w,
-            fontWeight: FontWeight.w500,
-            color: AppColorUtils.TEXT_BLUE2,
-            maxLines: 2)
+                text: "Toshkent Shahar, Mirobod tumani*********",
+                fontSize: 14.w,
+                fontWeight: FontWeight.w500,
+                color: AppColorUtils.TEXT_BLUE2,
+                maxLines: 2)
             .paddingSymmetric(horizontal: 20.w)
       ],
     );

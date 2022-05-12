@@ -10,22 +10,14 @@ part 'charity_state.dart';
 class CharityCubit extends Cubit<CharityState> {
   CharityCubit() : super(CharityState(checkBox: false));
 
-
-
-  Future Load()async{
-
-    try{
-      var list= await CharitySavedService().getCharityList();
-      emit(state.copyWith(list: list,tobeVolunteer: Volunteer.tobeVolunteer));
-
-    }catch(e){
-
-      
-    }
-
+  Future Load() async {
+    try {
+      var list = await CharitySavedService().getCharityList();
+      emit(state.copyWith(list: list, tobeVolunteer: Volunteer.tobeVolunteer));
+    } catch (e) {}
   }
 
-  void loading(){
+  void loading() {
     emit(state.copyWith());
   }
 
@@ -33,10 +25,8 @@ class CharityCubit extends Cubit<CharityState> {
     emit(state.copyWith(checkBox: v));
   }
 
-  Future onChangeSave(bool v) async{
-    var list= await CharitySavedService().getCharityList();
-    emit(state.copyWith(saveHelp: v,list:  list));
+  Future onChangeSave(bool v) async {
+    var list = await CharitySavedService().getCharityList();
+    emit(state.copyWith(saveHelp: v, list: list));
   }
-
-
 }

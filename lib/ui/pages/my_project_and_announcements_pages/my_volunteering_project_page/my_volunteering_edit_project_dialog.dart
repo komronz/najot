@@ -11,7 +11,6 @@ import 'package:najot/ui/pages/my_project_and_announcements_pages/my_volunteerin
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-
 class MyVolunteeringEditProjectDialog extends StatelessWidget {
   const MyVolunteeringEditProjectDialog({Key? key}) : super(key: key);
 
@@ -38,7 +37,8 @@ class MyVolunteeringEditProjectDialog extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    SvgPicture.asset(AppImageUtils.EDIT_DEMO).paddingOnly(right: 5),
+                    SvgPicture.asset(AppImageUtils.EDIT_DEMO)
+                        .paddingOnly(right: 5),
                     AppWidgets.textLocale(
                       text: LocaleKeys.edit_the_project,
                       color: AppColorUtils.DARK2,
@@ -55,10 +55,10 @@ class MyVolunteeringEditProjectDialog extends StatelessWidget {
                   fontSize: 16.sp,
                 ).paddingOnly(bottom: 24.h),
                 AppWidgets.textLocale(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.sp,
-                    color: AppColorUtils.DARK2,
-                    text: LocaleKeys.what_changes_make,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14.sp,
+                  color: AppColorUtils.DARK2,
+                  text: LocaleKeys.what_changes_make,
                 ).paddingOnly(bottom: 8.h),
                 AppTextField(
                   isMultiLine: true,

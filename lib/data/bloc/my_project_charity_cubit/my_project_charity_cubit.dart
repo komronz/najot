@@ -7,11 +7,7 @@ part 'my_project_charity_state.dart';
 class MyProjectCharityCubit extends Cubit<MyProjectCharityState> {
   MyProjectCharityCubit() : super(MyProjectCharityState(0));
 
-
-
-
-  void tabChange(int tabChange){
-
+  void tabChange(int tabChange) {
     emit(state.copyWith(tabChange: tabChange));
   }
 }

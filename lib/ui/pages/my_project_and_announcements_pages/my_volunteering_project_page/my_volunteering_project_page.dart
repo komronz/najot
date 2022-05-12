@@ -55,10 +55,9 @@ class MyVolunteeringProjectPage extends StatelessWidget {
             reverse: false,
             children: List.generate(
               list.length,
-                  (index) => VolunteeringProjectWidget(
-                model: list[index], onTap: () {
-
-                  },
+              (index) => VolunteeringProjectWidget(
+                model: list[index],
+                onTap: () {},
               ),
             ),
           ),
@@ -67,7 +66,6 @@ class MyVolunteeringProjectPage extends StatelessWidget {
         left: 20,
         top: 10,
         right: 10,
-
       ),
     );
   }

@@ -62,7 +62,7 @@ class UserDegreePage extends StatelessWidget {
                           text: LocaleKeys.degree_types,
                           fontSize: 22.sp,
                           fontWeight: FontWeight.w600,
-                            color: AppColorUtils.DARK2,
+                          color: AppColorUtils.DARK2,
                         ),
                       ).paddingOnly(top: 18.h, bottom: 10.h),
                       Container(
@@ -86,10 +86,10 @@ class UserDegreePage extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.only(left: 5),
                               child: AppWidgets.textLocale(
-                                  text: LocaleKeys.normal_user,
-                                  color: AppColorUtils.BLUE_PERCENT,
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w600,
+                                text: LocaleKeys.normal_user,
+                                color: AppColorUtils.BLUE_PERCENT,
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ],
@@ -124,7 +124,7 @@ class UserDegreePage extends StatelessWidget {
                                       ),
                                     ),
                                     child: SvgPicture.asset(
-                                        AppImageUtils.CHECK_SMALL,
+                                      AppImageUtils.CHECK_SMALL,
                                     ),
                                   ).paddingOnly(bottom: 8.h),
                                   SizedBox(width: 8),
@@ -143,7 +143,8 @@ class UserDegreePage extends StatelessWidget {
                                         ),
                                       ),
                                       Text(
-                                        LocaleKeys.excluding_clothing_donations.tr(),
+                                        LocaleKeys.excluding_clothing_donations
+                                            .tr(),
                                         style: TextStyle(
                                           fontSize: 12.sp,
                                           color: AppColorUtils.DARK_4,
@@ -155,13 +156,18 @@ class UserDegreePage extends StatelessWidget {
                                 ],
                               ),
                             ).paddingOnly(bottom: 13.h),
-                            blueCheckWidgets(title: LocaleKeys.buy_reward.tr(),)
-                                .paddingOnly(bottom: 13.h),
-                            blueCheckWidgets(title: LocaleKeys.apply_for_projects.tr(),)
-                                .paddingOnly(bottom: 13.h),
-                            blueCheckWidgets(title: LocaleKeys.ask_questions.tr(),)
-                                .paddingOnly(bottom: 13.h),
-                            blueCheckWidgets(title: LocaleKeys.leave_comment.tr(),),
+                            blueCheckWidgets(
+                              title: LocaleKeys.buy_reward.tr(),
+                            ).paddingOnly(bottom: 13.h),
+                            blueCheckWidgets(
+                              title: LocaleKeys.apply_for_projects.tr(),
+                            ).paddingOnly(bottom: 13.h),
+                            blueCheckWidgets(
+                              title: LocaleKeys.ask_questions.tr(),
+                            ).paddingOnly(bottom: 13.h),
+                            blueCheckWidgets(
+                              title: LocaleKeys.leave_comment.tr(),
+                            ),
                           ],
                         ),
                       ).paddingOnly(bottom: 18.h),
@@ -194,20 +200,16 @@ class UserDegreePage extends StatelessWidget {
                             ),
                             SizedBox(height: 12.h),
                             greenCheckWidgets(
-                              title:
-                                  LocaleKeys.options_average_user.tr(),
+                              title: LocaleKeys.options_average_user.tr(),
                             ),
                             greenCheckWidgets(
-                              title: LocaleKeys
-                                  .use_volunteer_category
-                                  .tr(),
+                              title: LocaleKeys.use_volunteer_category.tr(),
                             ),
                             greenCheckWidgets(
                               title: LocaleKeys.clothes_charity.tr(),
                             ),
                             greenCheckWidgets(
-                              title: LocaleKeys.receive_gifts_project
-                                  .tr(),
+                              title: LocaleKeys.receive_gifts_project.tr(),
                             ),
                             greenCheckWidgets(
                               title: LocaleKeys.add_project.tr(),

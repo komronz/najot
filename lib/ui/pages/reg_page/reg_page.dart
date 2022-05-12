@@ -13,7 +13,8 @@ import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class RegPage extends StatelessWidget {
-  const RegPage({required this.loginBloc}) ;
+  const RegPage({required this.loginBloc});
+
   static const String routeName = '/regPage';
   final LoginBloc loginBloc;
 
@@ -47,7 +48,6 @@ class RegPage extends StatelessWidget {
                         context.read<LoginBloc>().add(LoginFirstNameChanged(v));
                       },
                       title: LocaleKeys.name,
-
                     ).paddingOnly(
                       left: 20,
                       right: 20,
@@ -107,16 +107,13 @@ class RegPage extends StatelessWidget {
                     ).paddingSymmetric(horizontal: 15, vertical: 24),
                     AppWidgets.appButton(
                       title: LocaleKeys.log_in,
-                      onTap: loginBloc
-                          .state.isNextBtnActive
+                      onTap: loginBloc.state.isNextBtnActive
                           ? () {
                               NavigatorService.to.pushNamed(
                                 VerificationPage.routeName,
-                                arguments: loginBloc
-                                ,
+                                arguments: loginBloc,
                               );
-                              loginBloc
-                                  .add(LoginSignIn());
+                              loginBloc.add(LoginSignIn());
                             }
                           : () {
                               AppWidgets.showText(
@@ -124,8 +121,7 @@ class RegPage extends StatelessWidget {
                                 duration: Duration(seconds: 1),
                               );
                             },
-                      color: loginBloc
-                          .state.isNextBtnActive
+                      color: loginBloc.state.isNextBtnActive
                           ? AppColorUtils.GREEN_APP
                           : AppColorUtils.DISABLE_BC,
                     ).paddingSymmetric(horizontal: 20),

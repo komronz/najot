@@ -42,16 +42,14 @@ class VolunteerPassInfoDialog extends StatelessWidget {
                 height: 1.5,
               ).paddingOnly(top: 18),
               AppWidgets.text(
-                text:
-                LocaleKeys.both_sides_uploaded.tr(),
+                text: LocaleKeys.both_sides_uploaded.tr(),
                 fontWeight: FontWeight.w400,
                 fontSize: 14.sp,
                 maxLines: 10,
                 height: 1.3,
               ).paddingOnly(top: 18),
               AppWidgets.text(
-                text:
-                LocaleKeys.uploaded_by_owner.tr(),
+                text: LocaleKeys.uploaded_by_owner.tr(),
                 fontWeight: FontWeight.w400,
                 fontSize: 14.sp,
                 maxLines: 10,
@@ -85,8 +83,7 @@ class VolunteerPassInfoDialog extends StatelessWidget {
                   ),
                   Expanded(
                     child: AppWidgets.text(
-                      text:
-                      LocaleKeys.project_guarantees_document.tr(),
+                      text: LocaleKeys.project_guarantees_document.tr(),
                       maxLines: 10,
                       fontSize: 14.sp,
                       height: 1.3,

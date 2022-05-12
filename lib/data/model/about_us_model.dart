@@ -14,14 +14,14 @@ class AboutUs {
   Message message;
 
   factory AboutUs.fromJson(Map<String, dynamic> json) => AboutUs(
-    ok: json["ok"],
-    message: Message.fromJson(json["message"]),
-  );
+        ok: json["ok"],
+        message: Message.fromJson(json["message"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "ok": ok,
-    "message": message.toJson(),
-  };
+        "ok": ok,
+        "message": message.toJson(),
+      };
 }
 
 class Message {
@@ -38,16 +38,16 @@ class Message {
   String message;
 
   factory Message.fromJson(Map<String, dynamic> json) => Message(
-    id: json["id"],
-    name: json["name"],
-    phone: json["phone"],
-    message: json["message"],
-  );
+        id: json["id"],
+        name: json["name"],
+        phone: json["phone"],
+        message: json["message"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "phone": phone,
-    "message": message,
-  };
+        "id": id,
+        "name": name,
+        "phone": phone,
+        "message": message,
+      };
 }

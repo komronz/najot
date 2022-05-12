@@ -1,5 +1,3 @@
-
-
 class ProductModel {
   String? title;
   String? project_name;
@@ -9,14 +7,12 @@ class ProductModel {
   int? applied;
   String? date;
 
-  ProductModel({
-    this.title,
-    this.imgUrl,
-    this.author,
-    this.totalSum,
-    this.applied,
-    this.date,
-    this.project_name
-  });
-
+  ProductModel(
+      {this.title,
+      this.imgUrl,
+      this.author,
+      this.totalSum,
+      this.applied,
+      this.date,
+      this.project_name});
 }

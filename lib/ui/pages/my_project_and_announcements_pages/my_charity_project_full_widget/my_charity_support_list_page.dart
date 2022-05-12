@@ -117,7 +117,7 @@ class MyCharitySupportListPage extends StatelessWidget {
                 ],
               ),
             Visibility(
-              visible: !list.isEmpty?true:false,
+              visible: !list.isEmpty ? true : false,
               child: Flexible(
                 child: Container(
                   height: 73.w,

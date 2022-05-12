@@ -17,9 +17,11 @@ class AppPageCubit extends Cubit<AppPageState> {
   AppPageCubit() : super(AppPageState());
 
   void load(AppPageType pageType) {
-    emit(state.copyWith(pageType: pageType,
+    emit(state.copyWith(
+      pageType: pageType,
       changeMenu: 1,
-      tobeVolunteer: Volunteer.tobeVolunteer,));
+      tobeVolunteer: Volunteer.tobeVolunteer,
+    ));
   }
 
   Future changePage({required AppPageType pageType}) async {

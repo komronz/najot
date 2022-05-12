@@ -21,11 +21,10 @@ class HomeState extends Equatable {
 
   HomeState copyWith({
     List<Categories>? categories,
-     List<ProjectModel>? crudFunding,
-     List<ProjectModel>? volunteer,
-     List<ProjectModel>? charity,
-     List<SliderList>? slider,
-
+    List<ProjectModel>? crudFunding,
+    List<ProjectModel>? volunteer,
+    List<ProjectModel>? charity,
+    List<SliderList>? slider,
   }) {
     return HomeState(
       categories: categories ?? this.categories,

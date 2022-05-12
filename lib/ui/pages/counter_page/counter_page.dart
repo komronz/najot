@@ -16,7 +16,6 @@ class CounterPage extends StatelessWidget {
         appBar: AppBar(title: const Text('Counter')),
         body: Center(
           child: BlocBuilder<CounterCubit, int>(
-
             builder: (context, state) {
               return Text('$state', style: textTheme.headline2);
             },

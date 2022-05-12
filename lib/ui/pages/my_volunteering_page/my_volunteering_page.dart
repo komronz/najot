@@ -60,8 +60,10 @@ class MyVolunteeringPage extends StatelessWidget {
                       width: 35.w,
                       fit: BoxFit.fill,
                     ),
-                    onTap: (){
-                     NavigatorService.to.pushNamed(NotificationPage.routeName,);
+                    onTap: () {
+                      NavigatorService.to.pushNamed(
+                        NotificationPage.routeName,
+                      );
                     },
                   ),
                 ],

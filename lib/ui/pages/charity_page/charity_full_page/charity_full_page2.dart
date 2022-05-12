@@ -24,7 +24,7 @@ import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
-class CharityFullModel{
+class CharityFullModel {
   CardModel cardModel;
 
   CharityCubit cubit;
@@ -36,9 +36,7 @@ class CharityFullModel{
 }
 
 class CharityFullPage2 extends StatefulWidget {
-  CharityFullPage2({
-    required this.helpModel
-  });
+  CharityFullPage2({required this.helpModel});
 
   static const String routName = 'charityFullPage2';
   static int tabChange = 0;
@@ -51,8 +49,6 @@ class CharityFullPage2 extends StatefulWidget {
 class _CharityFullPageState extends State<CharityFullPage2>
     with TickerProviderStateMixin {
   late TabController _controller;
-
-
 
   @override
   void dispose() {
@@ -67,7 +63,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
     super.initState();
   }
 
- void _handleTabSelection() {
+  void _handleTabSelection() {
     if (_controller.indexIsChanging) {
       setState(() {});
     }
@@ -155,8 +151,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                           ],
                         ),
                         AppWidgets.text(
-                          text:
-                              "Drenajni kuzatish uchun mo’jallangan moslama",
+                          text: "Drenajni kuzatish uchun mo’jallangan moslama",
                           fontSize: 20.sp,
                           color: AppColorUtils.DARK2,
                           fontWeight: FontWeight.w500,
@@ -237,8 +232,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                             padding: EdgeInsets.only(right: 10),
                             indicatorPadding:
                                 EdgeInsets.only(right: 10, left: 10),
-                            labelPadding:
-                                EdgeInsets.only(right: 10, left: 10),
+                            labelPadding: EdgeInsets.only(right: 10, left: 10),
                           ).paddingOnly(left: 15.w, top: 8.w),
                           Container(
                             child: [
@@ -261,13 +255,13 @@ class _CharityFullPageState extends State<CharityFullPage2>
                           ),
                           state.saveHelp
                               ? Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     state.tobeVolunteer
                                         ? SizedBox()
                                         : AppWidgets.text(
-                                            text: LocaleKeys.tobe_volunteer
-                                                .tr(),
+                                            text:
+                                                LocaleKeys.tobe_volunteer.tr(),
                                             color: AppColorUtils.DARK_6,
                                             fontWeight: FontWeight.w400,
                                             fontSize: 12.w,
@@ -282,8 +276,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                                 MarkerText(
                                                   marker: "//",
                                                   style: TextStyle(
-                                                    color:
-                                                        AppColorUtils.BLACK,
+                                                    color: AppColorUtils.BLACK,
                                                   ),
                                                 )
                                               ]).paddingSymmetric(
@@ -300,13 +293,15 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                               NavigatorService.to.pushNamed(
                                                 CharityHelpWidget.routeName,
                                                 arguments: CharityHelpModel(
-                                                  cardModel: widget.helpModel.cardModel,
+                                                  cardModel: widget
+                                                      .helpModel.cardModel,
                                                   cubit: widget.helpModel.cubit,
                                                 ),
                                               );
                                             } else {
                                               Fluttertoast.showToast(
-                                                msg: LocaleKeys.be_volunteer.tr(),
+                                                msg: LocaleKeys.be_volunteer
+                                                    .tr(),
                                               );
                                             }
                                           },
@@ -321,8 +316,8 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                           textColor: AppColorUtils.WHITE,
                                         ),
                                         AppWidgets.favouriteButton(
-                                          select:
-                                              widget.helpModel.cardModel.isFavorite!,
+                                          select: widget
+                                              .helpModel.cardModel.isFavorite!,
                                           height: 48.w,
                                           width: 48.w,
                                           onTap: () {},
@@ -335,7 +330,8 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                   children: [
                                     ButtonCard(
                                       onPress: () {},
-                                      text: LocaleKeys.go_to_personal_profile.tr(),
+                                      text: LocaleKeys.go_to_personal_profile
+                                          .tr(),
                                       height: 48.w,
                                       width: 1.sw,
                                       color: AppColorUtils.BLUE_BUTTON,

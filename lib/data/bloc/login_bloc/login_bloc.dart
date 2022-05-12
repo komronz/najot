@@ -4,23 +4,17 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:najot/data/model/token_model.dart';
-import 'package:najot/data/model/user.dart';
 import 'package:najot/data/services/auth_service.dart';
-import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
-import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/widgets/app_widgets.dart';
 
 part 'login_event.dart';
-
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final MaskTextInputFormatter phoneNumberFormatter;
 
   LoginBloc()
-      : phoneNumberFormatter =
-            MaskTextInputFormatter(mask: "## ### ## ##"),
+      : phoneNumberFormatter = MaskTextInputFormatter(mask: "## ### ## ##"),
         super(LoginState()) {
     on<LoginFirstNameChanged>(_onFirstNameChanged);
     on<LoginLastNameChanged>(_onLastNameChanged);
@@ -33,8 +27,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginAuthSuccess>(_onAuthSuccess);
   }
 
+  final AuthService authService = AuthService();
 
-  final AuthService authService=AuthService();
   Future _onFirstNameChanged(
     LoginFirstNameChanged event,
     Emitter<LoginState> emit,
@@ -52,13 +46,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       ),
     );
   }
+
   Future _onAuthSuccess(
-      LoginAuthSuccess event,
-      Emitter<LoginState> emit,
-      ) async {
+    LoginAuthSuccess event,
+    Emitter<LoginState> emit,
+  ) async {
     emit(
-      state.copyWith(authSuccess: event.authSuccess
-      ),
+      state.copyWith(authSuccess: event.authSuccess),
     );
   }
 
@@ -87,7 +81,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       isNextBtnActive: _nextBtnActive(
         state.firstName,
         state.lastName,
-
         state.agree,
       ),
     ));
@@ -115,9 +108,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     String lastName,
     bool agree,
   ) {
-    if (_isNotEmpty(firstName) &&
-        _isNotEmpty(lastName) &&
-        agree) {
+    if (_isNotEmpty(firstName) && _isNotEmpty(lastName) && agree) {
       return true;
     }
     return false;
@@ -159,36 +150,33 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     LoginSignIn event,
     Emitter<LoginState> emit,
   ) async {
-      TokenModel? tokenModel =await authService.userLogin(state.phone, "111111");
-      print(state.phone);
-      if(tokenModel !=null){
-        emit(state.copyWith(authSuccess: true));
-      }else{
-        emit(state.copyWith(hasError: true));
-      }
-
+    TokenModel? tokenModel = await authService.userLogin(state.phone, "111111");
+    AppLoggerUtil.d(state.phone);
+    if (tokenModel != null) {
+      emit(state.copyWith(authSuccess: true));
+    } else {
+      emit(state.copyWith(hasError: true));
+    }
   }
 
   void _checkPhoneNumberChanged(
-      CheckPhoneNumberChanged event,
-      Emitter<LoginState> emit,){
+    CheckPhoneNumberChanged event,
+    Emitter<LoginState> emit,
+  ) {
     emit(state.copyWith(checkPhoneNumber: event.check));
   }
 
-
   Future _checkPhoneNumber(
-      CheckPhoneNumber event,
-      Emitter<LoginState> emit,
-      ) async {
-    if(state.phone.length==12){
+    CheckPhoneNumber event,
+    Emitter<LoginState> emit,
+  ) async {
+    if (state.phone.length == 12) {
       emit(state.copyWith(hasError: false));
-      bool checkPhoneNumber=await authService.confirmPhoneNumber(state.phone);
+      bool checkPhoneNumber = await authService.confirmPhoneNumber(state.phone);
       emit(state.copyWith(checkPhoneNumber: checkPhoneNumber));
-    }else{
+    } else {
       emit(state.copyWith(hasError: true));
     }
-
-
   }
 
   Future _loginSignUp(

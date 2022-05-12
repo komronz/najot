@@ -117,7 +117,7 @@ class MyVolunteeringSupportListPage extends StatelessWidget {
                 ],
               ),
             Visibility(
-              visible: !list.isEmpty?true:false,
+              visible: !list.isEmpty ? true : false,
               child: Flexible(
                 child: Container(
                   height: 73.w,
@@ -171,11 +171,11 @@ class MyVolunteeringSupportListPage extends StatelessWidget {
                               fontWeight: FontWeight.w400,
                             ),
                             AppWidgets.textLocale(
-                                text: LocaleKeys.sum,
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                                color: AppColorUtils.GREEN_TEXT,
-                                args: ["10 000 000"],
+                              text: LocaleKeys.sum,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w600,
+                              color: AppColorUtils.GREEN_TEXT,
+                              args: ["10 000 000"],
                             ),
                           ],
                         ),
@@ -221,10 +221,10 @@ class SupportListWidget extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                          image: NetworkImage(
-                            model.imgUrl!,
-                          ),
-                          fit: BoxFit.cover,
+                        image: NetworkImage(
+                          model.imgUrl!,
+                        ),
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
@@ -234,7 +234,8 @@ class SupportListWidget extends StatelessWidget {
                       fontSize: 13.sp,
                       fontWeight: FontWeight.w500,
                       color: AppColorUtils.DARK2,
-                    ).paddingOnly(left: 4.w,
+                    ).paddingOnly(
+                      left: 4.w,
                     ),
                   ),
                 ],
@@ -253,11 +254,11 @@ class SupportListWidget extends StatelessWidget {
             Expanded(
               flex: 3,
               child: AppWidgets.text(
-                  text: "+${'10 000 000'} so'm",
-                  color: AppColorUtils.TEXT_GREEN,
-                  fontSize: 13.sp,
-                  fontWeight: FontWeight.w500,
-                  textAlign: TextAlign.right,
+                text: "+${'10 000 000'} so'm",
+                color: AppColorUtils.TEXT_GREEN,
+                fontSize: 13.sp,
+                fontWeight: FontWeight.w500,
+                textAlign: TextAlign.right,
               ),
             )
           ],

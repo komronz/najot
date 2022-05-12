@@ -35,10 +35,10 @@ class LoginSignIn extends LoginEvent {
   @override
   List<Object?> get props => [];
 }
-class LoginSignUp extends LoginEvent{
+
+class LoginSignUp extends LoginEvent {
   @override
   List<Object?> get props => [];
-
 }
 
 class LoginAgreeChanged extends LoginEvent {
@@ -49,6 +49,7 @@ class LoginAgreeChanged extends LoginEvent {
   @override
   List<Object?> get props => [isAgree];
 }
+
 class LoginAuthSuccess extends LoginEvent {
   final bool authSuccess;
 
@@ -59,11 +60,9 @@ class LoginAuthSuccess extends LoginEvent {
 }
 
 class CheckPhoneNumber extends LoginEvent {
-@override
-List<Object?> get props => [];
+  @override
+  List<Object?> get props => [];
 }
-
-
 
 class CheckPhoneNumberChanged extends LoginEvent {
   final bool check;

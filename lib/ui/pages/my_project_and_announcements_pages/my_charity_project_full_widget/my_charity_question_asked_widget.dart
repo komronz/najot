@@ -19,6 +19,7 @@ class MyCharityQuestionsAskedWidget extends StatefulWidget {
 
   final CharityModel cardModel;
   final MyCharitySupportListCubit cubit;
+
   @override
   _MyCharityQuestionsAskedWidgetState createState() =>
       _MyCharityQuestionsAskedWidgetState();
@@ -68,7 +69,7 @@ class _MyCharityQuestionsAskedWidgetState
         Column(
           children: List.generate(
             widget.cubit.state.cardList.length,
-                (index) => MyCharityQuestionList(
+            (index) => MyCharityQuestionList(
               cardModel: widget.cubit.state.cardList[index],
             ),
           ),

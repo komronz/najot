@@ -7,13 +7,13 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class QuestionsAskedWidget extends StatelessWidget {
   const QuestionsAskedWidget({
-    Key? key,
     required this.cardModel,
+    Key? key,
+
   }) : super(key: key);
 
   final CardModel cardModel;
@@ -53,11 +53,11 @@ class QuestionsAskedWidget extends StatelessWidget {
                       children: [
                         SizedBox(
                           child: AppWidgets.text(
-                              text: LocaleKeys.how_humanity_benefits.tr(),
-                              color: AppColorUtils.TEXT_GREEN2,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14.sp,
-                              maxLines: 2,
+                            text: LocaleKeys.how_humanity_benefits.tr(),
+                            color: AppColorUtils.TEXT_GREEN2,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14.sp,
+                            maxLines: 2,
                           ),
                           width: 220.w,
                         ),
@@ -104,7 +104,9 @@ class QuestionsAskedWidget extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
-                  SizedBox(height: 30.w,),
+                  SizedBox(
+                    height: 30.w,
+                  ),
                   SvgPicture.asset(AppImageUtils.EMPTY_QUESTIONS),
                   SizedBox(
                     width: 200.sp,

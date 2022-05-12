@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
-import 'package:najot/data/bloc/edit_volunteer_bloc/edit_volunteer_bloc.dart';
 import 'package:najot/data/bloc/login_bloc/login_bloc.dart';
-import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
+import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
 import 'package:najot/data/model/product_model.dart';
 import 'package:najot/data/model/volunteering_model.dart';
@@ -27,6 +26,7 @@ import 'package:najot/ui/pages/verification_page/verification_page.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/volunteer_detail_page.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_help_widget.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_page.dart';
+
 import '../../ui/pages/charity_page/charity_full_page/charity_full_page2.dart';
 import '../../ui/pages/charity_page/widgets/charity_help_widget.dart';
 import '../../ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
@@ -75,15 +75,20 @@ class AppRouteUtils {
         );
       case RegPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => RegPage(loginBloc: settings.arguments as LoginBloc,),
+          builder: (context) => RegPage(
+            loginBloc: settings.arguments as LoginBloc,
+          ),
         );
       case VerificationPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => VerificationPage(loginBloc: settings.arguments as LoginBloc),
+          builder: (context) =>
+              VerificationPage(loginBloc: settings.arguments as LoginBloc),
         );
       case HomePage.routeName:
         return CupertinoPageRoute(
-          builder: (context) => HomePage(appPageType: settings.arguments as AppPageType,),
+          builder: (context) => HomePage(
+            appPageType: settings.arguments as AppPageType,
+          ),
         );
       case CharityPage.routeName:
         return MaterialPageRoute(
@@ -117,8 +122,6 @@ class AppRouteUtils {
             cardModel: settings.arguments as CardModel,
           ),
         );
-
-
 
       case OrganizationItemDetailPage.routeName:
         return MaterialPageRoute(
@@ -283,7 +286,8 @@ class AppRouteUtils {
             list: settings.arguments as List<KraufandingModel>,
           ),
         );
-
+      default:
+        return Container();
     }
   }
 }

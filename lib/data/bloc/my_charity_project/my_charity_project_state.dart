@@ -8,14 +8,13 @@ class MyProjectAndAnnouncementsPagesState extends Equatable {
   final bool hasConnection;
   final bool isLoading;
 
-  MyProjectAndAnnouncementsPagesState({
-    this.charityList = const [],
-    this.kraufandingList = const [],
-    this.volunteeringList = const [],
-    this.hasError = false,
-    this.hasConnection = true,
-    this.isLoading = false
-  });
+  MyProjectAndAnnouncementsPagesState(
+      {this.charityList = const [],
+      this.kraufandingList = const [],
+      this.volunteeringList = const [],
+      this.hasError = false,
+      this.hasConnection = true,
+      this.isLoading = false});
 
   MyProjectAndAnnouncementsPagesState copyWith({
     List<CharityModel>? charityList,
@@ -35,14 +34,13 @@ class MyProjectAndAnnouncementsPagesState extends Equatable {
     );
   }
 
-
   @override
   List<Object> get props => [
-    charityList,
-    kraufandingList,
-    volunteeringList,
-    hasConnection,
-    hasConnection,
-    isLoading,
-  ];
+        charityList,
+        kraufandingList,
+        volunteeringList,
+        hasConnection,
+        hasConnection,
+        isLoading,
+      ];
 }

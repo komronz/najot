@@ -17,13 +17,12 @@ class BannerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 173.w ,
+      height: 173.w,
       padding: EdgeInsets.all(10.w),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           color: AppColorUtils.BACK_AD,
-          border:
-          Border.all(width: 1, color: AppColorUtils.DIVIDER)),
+          border: Border.all(width: 1, color: AppColorUtils.DIVIDER)),
       child: Row(
         children: [
           SizedBox(

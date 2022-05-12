@@ -5,12 +5,14 @@ abstract class EditVolunteerEvent extends Equatable {
   const EditVolunteerEvent();
 }
 
-class EditProfileChangePage extends EditVolunteerEvent{
+class EditProfileChangePage extends EditVolunteerEvent {
   EditProfileChangePage(this.changePage);
+
   final int changePage;
+
   @override
   // TODO: implement props
-  List<Object?> get props =>[changePage];
+  List<Object?> get props => [changePage];
 }
 
 class MyProfileLoad extends EditVolunteerEvent {
@@ -33,8 +35,8 @@ class FirstNameChanged extends EditVolunteerEvent {
   final String name;
 
   const FirstNameChanged(
-      this.name,
-      );
+    this.name,
+  );
 
   @override
   List<Object?> get props => [name];
@@ -44,12 +46,13 @@ class PhoneChanged extends EditVolunteerEvent {
   final String phoneNumber;
 
   const PhoneChanged(
-      this.phoneNumber,
-      );
+    this.phoneNumber,
+  );
 
   @override
   List<Object?> get props => [phoneNumber];
 }
+
 class LastNameChanged extends EditVolunteerEvent {
   final String sureName;
 
@@ -58,6 +61,7 @@ class LastNameChanged extends EditVolunteerEvent {
   @override
   List<Object?> get props => [sureName];
 }
+
 class GenderChanged extends EditVolunteerEvent {
   final Gender isMan;
 
@@ -66,6 +70,7 @@ class GenderChanged extends EditVolunteerEvent {
   @override
   List<Object?> get props => [isMan];
 }
+
 class PageChanged extends EditVolunteerEvent {
   final bool isVisible;
 
@@ -74,6 +79,7 @@ class PageChanged extends EditVolunteerEvent {
   @override
   List<Object?> get props => [isVisible];
 }
+
 class PageNext extends EditVolunteerEvent {
   final bool isNext;
 
@@ -82,19 +88,18 @@ class PageNext extends EditVolunteerEvent {
   @override
   List<Object?> get props => [isNext];
 }
+
 class SaveIn extends EditVolunteerEvent {
-
   @override
   List<Object?> get props => [];
 }
+
 class SendCode extends EditVolunteerEvent {
-
   @override
   List<Object?> get props => [];
 }
+
 class ImagePickers extends EditVolunteerEvent {
   @override
   List<Object?> get props => [];
 }
-
-

@@ -5,7 +5,7 @@ class ProjectModel {
   String? description;
   String? cover;
   String? deadline;
-  Null? category;
+  Null category;
   int? person;
   int? requiredFund;
   String? helpType;
@@ -15,18 +15,18 @@ class ProjectModel {
 
   ProjectModel(
       {this.owner,
-        this.type,
-        this.title,
-        this.description,
-        this.cover,
-        this.deadline,
-        this.category,
-        this.person,
-        this.requiredFund,
-        this.helpType,
-        this.address,
-        this.createdAt,
-        this.modifiedAt});
+      this.type,
+      this.title,
+      this.description,
+      this.cover,
+      this.deadline,
+      this.category,
+      this.person,
+      this.requiredFund,
+      this.helpType,
+      this.address,
+      this.createdAt,
+      this.modifiedAt});
 
   ProjectModel.fromJson(Map<String, dynamic> json) {
     owner = json['owner'];

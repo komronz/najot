@@ -9,7 +9,8 @@ import '../../../../data/utils/app_image_utils.dart';
 
 class blueCheckWidgets extends StatelessWidget {
   blueCheckWidgets({
-    required this.title, Key? key,
+    required this.title,
+    Key? key,
   }) : super(key: key);
   String title;
 
@@ -39,21 +40,23 @@ class blueCheckWidgets extends StatelessWidget {
           SizedBox(width: 8.w),
           Expanded(
             child: AppWidgets.textLocale(
-                fontSize: 14.sp,
-                color: AppColorUtils.DARK_4,
-                fontWeight: FontWeight.w500,
+              fontSize: 14.sp,
+              color: AppColorUtils.DARK_4,
+              fontWeight: FontWeight.w500,
               text: title,
               maxLines: 2,
-              ),
+            ),
           ),
         ],
       ),
     );
   }
 }
+
 class greenCheckWidgets extends StatelessWidget {
   greenCheckWidgets({
-    required this.title, Key? key,
+    required this.title,
+    Key? key,
   }) : super(key: key);
   String title;
 
@@ -84,16 +87,15 @@ class greenCheckWidgets extends StatelessWidget {
           SizedBox(width: 8),
           Expanded(
             child: AppWidgets.textLocale(
-                fontSize: 14.sp,
-                color: AppColorUtils.DARK_4,
-                fontWeight: FontWeight.w500,
+              fontSize: 14.sp,
+              color: AppColorUtils.DARK_4,
+              fontWeight: FontWeight.w500,
               text: title,
               maxLines: 2,
-              ),
+            ),
           ),
         ],
       ),
     ).paddingOnly(top: 5.w);
   }
 }
-

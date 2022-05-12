@@ -5,19 +5,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:provider/src/provider.dart';
 
-import '../../my_project_and_announcements_pages/my_project_and_announcements_pages.dart';
-import '../../my_volunteering_page/my_volunteering_page.dart';
-import '../../my_volunteering_page/my_volunteering_widget/adding_project_page.dart';
-
 class DrawerBodySecond extends StatelessWidget {
-   DrawerBodySecond({required this.state}) ;
+  DrawerBodySecond({required this.state});
 
   AppPageState state;
 
@@ -51,13 +46,13 @@ class DrawerBodySecond extends StatelessWidget {
             top: 50.w,
             left: 20.w,
           ),
-           ButtonCard(
+          ButtonCard(
             height: 48.w,
             width: MediaQuery.of(context).size.width,
             onPress: () {
               context.read<AppPageCubit>().changePage(
-                pageType: AppPageType.ADD_PROJECT,
-              );
+                    pageType: AppPageType.ADD_PROJECT,
+                  );
               Navigator.pop(context);
             },
             visibleIcon: true,
@@ -85,98 +80,100 @@ class DrawerBodySecond extends StatelessWidget {
             ),
             onTap: () {
               context.read<AppPageCubit>().changePage(
-                pageType: AppPageType.PROJECT,
-              );
-              Navigator.pop(context);
-            },
-          ),
-          state.tobeVolunteer
-          ? AppWidgets.rowIconText(
-            isActive: pageType == AppPageType.VOLUNTEERING,
-            icon: AppImageUtils.TOBE_VOLUNTEER,
-            iconSelect: AppImageUtils.TOBE_VOLUNTEER2,
-            text: LocaleKeys.my_volunteering.tr(),
-            fontSize: 16.sp,
-            padding: EdgeInsets.symmetric(
-              horizontal: 18.w,
-              vertical: 14,
-            ),
-            onTap: () {
-              context.read<AppPageCubit>().changePage(
-                pageType: AppPageType.VOLUNTEERING,
-              );
-              Navigator.pop(context);
-
-            },
-          ) : SizedBox(),
-          state.tobeVolunteer
-          ? AppWidgets.rowIconText(
-            isActive: pageType == AppPageType.CHARITY_VOLUNTEER,
-            icon: AppImageUtils.HISTORY,
-            iconSelect: AppImageUtils.HISTORY2,
-            text: LocaleKeys.charity_history,
-            fontSize: 16.sp,
-            padding: EdgeInsets.symmetric(
-              horizontal: 18.w,
-              vertical: 14,
-            ),
-            onTap: () {
-              context.read<AppPageCubit>().changePage(
-                    pageType: AppPageType.CHARITY_VOLUNTEER,
+                    pageType: AppPageType.PROJECT,
                   );
               Navigator.pop(context);
             },
-          ): AppWidgets.rowIconText(
-            isActive: pageType == AppPageType.CHARITY,
-            icon: AppImageUtils.HISTORY,
-            iconSelect: AppImageUtils.HISTORY2,
-            text: LocaleKeys.charity_history,
-            fontSize: 16.sp,
-            padding: EdgeInsets.symmetric(
-              horizontal: 18.w,
-              vertical: 14,
-            ),
-            onTap: () {
-              context.read<AppPageCubit>().changePage(
-                pageType: AppPageType.CHARITY,
-              );
-              Navigator.pop(context);
-            },
           ),
           state.tobeVolunteer
-         ? AppWidgets.rowIconText(
-            isActive: pageType == AppPageType.ORDERS,
-            icon: AppImageUtils.PRODUCTS,
-            iconSelect: AppImageUtils.PRODUCTS2,
-            text: LocaleKeys.my_products,
-            fontSize: 16.sp,
-            padding: EdgeInsets.symmetric(
-              horizontal: 18.w,
-              vertical: 14,
-            ),
-            onTap: () {
-              context.read<AppPageCubit>().changePage(
-                    pageType: AppPageType.ORDERS_VOLUNTEER,
-                  );
-              Navigator.pop(context);
-            },
-          ): AppWidgets.rowIconText(
-            isActive: pageType == AppPageType.ORDERS,
-            icon: AppImageUtils.PRODUCTS,
-            iconSelect: AppImageUtils.PRODUCTS2,
-            text: LocaleKeys.my_products,
-            fontSize: 16.sp,
-            padding: EdgeInsets.symmetric(
-              horizontal: 18.w,
-              vertical: 14,
-            ),
-            onTap: () {
-              context.read<AppPageCubit>().changePage(
-                pageType: AppPageType.ORDERS,
-              );
-              Navigator.pop(context);
-            },
-          ),
+              ? AppWidgets.rowIconText(
+                  isActive: pageType == AppPageType.VOLUNTEERING,
+                  icon: AppImageUtils.TOBE_VOLUNTEER,
+                  iconSelect: AppImageUtils.TOBE_VOLUNTEER2,
+                  text: LocaleKeys.my_volunteering.tr(),
+                  fontSize: 16.sp,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 18.w,
+                    vertical: 14,
+                  ),
+                  onTap: () {
+                    context.read<AppPageCubit>().changePage(
+                          pageType: AppPageType.VOLUNTEERING,
+                        );
+                    Navigator.pop(context);
+                  },
+                )
+              : SizedBox(),
+          state.tobeVolunteer
+              ? AppWidgets.rowIconText(
+                  isActive: pageType == AppPageType.CHARITY_VOLUNTEER,
+                  icon: AppImageUtils.HISTORY,
+                  iconSelect: AppImageUtils.HISTORY2,
+                  text: LocaleKeys.charity_history,
+                  fontSize: 16.sp,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 18.w,
+                    vertical: 14,
+                  ),
+                  onTap: () {
+                    context.read<AppPageCubit>().changePage(
+                          pageType: AppPageType.CHARITY_VOLUNTEER,
+                        );
+                    Navigator.pop(context);
+                  },
+                )
+              : AppWidgets.rowIconText(
+                  isActive: pageType == AppPageType.CHARITY,
+                  icon: AppImageUtils.HISTORY,
+                  iconSelect: AppImageUtils.HISTORY2,
+                  text: LocaleKeys.charity_history,
+                  fontSize: 16.sp,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 18.w,
+                    vertical: 14,
+                  ),
+                  onTap: () {
+                    context.read<AppPageCubit>().changePage(
+                          pageType: AppPageType.CHARITY,
+                        );
+                    Navigator.pop(context);
+                  },
+                ),
+          state.tobeVolunteer
+              ? AppWidgets.rowIconText(
+                  isActive: pageType == AppPageType.ORDERS,
+                  icon: AppImageUtils.PRODUCTS,
+                  iconSelect: AppImageUtils.PRODUCTS2,
+                  text: LocaleKeys.my_products,
+                  fontSize: 16.sp,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 18.w,
+                    vertical: 14,
+                  ),
+                  onTap: () {
+                    context.read<AppPageCubit>().changePage(
+                          pageType: AppPageType.ORDERS_VOLUNTEER,
+                        );
+                    Navigator.pop(context);
+                  },
+                )
+              : AppWidgets.rowIconText(
+                  isActive: pageType == AppPageType.ORDERS,
+                  icon: AppImageUtils.PRODUCTS,
+                  iconSelect: AppImageUtils.PRODUCTS2,
+                  text: LocaleKeys.my_products,
+                  fontSize: 16.sp,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 18.w,
+                    vertical: 14,
+                  ),
+                  onTap: () {
+                    context.read<AppPageCubit>().changePage(
+                          pageType: AppPageType.ORDERS,
+                        );
+                    Navigator.pop(context);
+                  },
+                ),
         ],
       ),
     );

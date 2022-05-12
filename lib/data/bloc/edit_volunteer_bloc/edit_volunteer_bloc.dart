@@ -11,17 +11,14 @@ import 'package:najot/data/utils/app_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 part 'edit_volunteer_event.dart';
-
 part 'edit_volunteer_state.dart';
 
 class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
   final PageController pageController;
 
-
   EditVolunteerBloc()
       : pageController = PageController(),
         super(EditVolunteerState()) {
-
     on<MyProfileLoad>(_loadProfile);
     on<ImageChanged>(_onImageChanged);
     on<FirstNameChanged>(_onNameChanged);
@@ -36,13 +33,17 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
     on<SaveIn>(_saveIn);
   }
 
-  Future _onChangeEditProfile(EditProfileChangePage event,
-      Emitter<EditVolunteerState> emit,)async{
+  Future _onChangeEditProfile(
+    EditProfileChangePage event,
+    Emitter<EditVolunteerState> emit,
+  ) async {
     emit(state.copyWith(changePage: event.changePage));
   }
 
-  Future _onPageChanged(PageChanged event,
-      Emitter<EditVolunteerState> emit,) async {
+  Future _onPageChanged(
+    PageChanged event,
+    Emitter<EditVolunteerState> emit,
+  ) async {
     emit(
       state.copyWith(
         isVisible: event.isVisible,
@@ -50,8 +51,10 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
     );
   }
 
-  Future _onPageNext(PageNext event,
-      Emitter<EditVolunteerState> emit,) async {
+  Future _onPageNext(
+    PageNext event,
+    Emitter<EditVolunteerState> emit,
+  ) async {
     emit(
       state.copyWith(
         nextPage: event.isNext,
@@ -59,8 +62,10 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
     );
   }
 
-  Future _onImagePicker(ImagePickers event,
-      Emitter<EditVolunteerState> emit,) async {
+  Future _onImagePicker(
+    ImagePickers event,
+    Emitter<EditVolunteerState> emit,
+  ) async {
     XFile? imagePicker = await ImagePicker().pickImage(
       source: ImageSource.gallery,
     );
@@ -71,8 +76,10 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
     }
   }
 
-  Future _onImageChanged(ImageChanged event,
-      Emitter<EditVolunteerState> emit,) async {
+  Future _onImageChanged(
+    ImageChanged event,
+    Emitter<EditVolunteerState> emit,
+  ) async {
     emit(
       state.copyWith(
         imageUrl: event.imageUrl,
@@ -80,8 +87,10 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
     );
   }
 
-  Future _onNameChanged(FirstNameChanged event,
-      Emitter<EditVolunteerState> emit,) async {
+  Future _onNameChanged(
+    FirstNameChanged event,
+    Emitter<EditVolunteerState> emit,
+  ) async {
     emit(
       state.copyWith(
         name: event.name,
@@ -90,8 +99,10 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
     );
   }
 
-  Future _onPhoneChanged(PhoneChanged event,
-      Emitter<EditVolunteerState> emit,) async {
+  Future _onPhoneChanged(
+    PhoneChanged event,
+    Emitter<EditVolunteerState> emit,
+  ) async {
     emit(
       state.copyWith(
         phoneNumber: event.phoneNumber,
@@ -100,8 +111,10 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
     );
   }
 
-  Future _onGenderChanged(GenderChanged event,
-      Emitter<EditVolunteerState> emit,) async {
+  Future _onGenderChanged(
+    GenderChanged event,
+    Emitter<EditVolunteerState> emit,
+  ) async {
     emit(
       state.copyWith(
         isMan: event.isMan,
@@ -109,8 +122,10 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
     );
   }
 
-  Future _onLastNameChanged(LastNameChanged event,
-      Emitter<EditVolunteerState> emit,) async {
+  Future _onLastNameChanged(
+    LastNameChanged event,
+    Emitter<EditVolunteerState> emit,
+  ) async {
     emit(
       state.copyWith(
         sureName: event.sureName,
@@ -120,21 +135,20 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
   }
 
   bool _isNotEmpty(String value) {
-    return value
-        .trim()
-        .isNotEmpty;
+    return value.trim().isNotEmpty;
   }
 
-  Future _saveIn(SaveIn event,
-      Emitter<EditVolunteerState> emit,) async {
+  Future _saveIn(
+    SaveIn event,
+    Emitter<EditVolunteerState> emit,
+  ) async {
     if (_isNotEmpty(state.name) && _isNotEmpty(state.sureName)) {
       var user = User(
           imageUrl: state.imageUrl,
           firstName: state.name,
           lastName: state.sureName,
           isMan: state.isMan,
-          phone: state.phoneNumber
-      );
+          phone: state.phoneNumber);
       HiveService.to.setUser(user);
       AppWidgets.showText(text: 'Success');
       emit(state.copyWith(hasError: false));
@@ -145,8 +159,10 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
     }
   }
 
-  Future _loadProfile(MyProfileLoad event,
-      Emitter<EditVolunteerState> emit,) async {
+  Future _loadProfile(
+    MyProfileLoad event,
+    Emitter<EditVolunteerState> emit,
+  ) async {
     var user = HiveService.to.getUser();
     if (user != null) {
       emit(
@@ -163,8 +179,10 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
     }
   }
 
-  Future _sendCode(SendCode event,
-      Emitter<EditVolunteerState> emit,) async {
+  Future _sendCode(
+    SendCode event,
+    Emitter<EditVolunteerState> emit,
+  ) async {
     if (_isNotEmpty(state.phoneNumber)) {
       var user = User(
         imageUrl: state.imageUrl,

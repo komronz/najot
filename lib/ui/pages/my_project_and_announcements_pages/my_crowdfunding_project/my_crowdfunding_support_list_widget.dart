@@ -11,7 +11,6 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../../data/localization/locale_keys.g.dart';
 
 class MyCrowdfundingSupportListWidget extends StatelessWidget {
-
   final List<KraufandingModel> list;
 
   const MyCrowdfundingSupportListWidget({
@@ -108,7 +107,7 @@ class MyCrowdfundingSupportListWidget extends StatelessWidget {
                 ],
               ),
             Visibility(
-              visible: !list.isEmpty?true:false,
+              visible: !list.isEmpty ? true : false,
               child: Flexible(
                 child: Container(
                   height: 73.w,

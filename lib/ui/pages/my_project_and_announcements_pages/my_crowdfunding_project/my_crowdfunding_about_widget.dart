@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -58,7 +57,7 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
     super.initState();
   }
 
-  _handleTabSelection() {
+  void _handleTabSelection() {
     if (_tabController.indexIsChanging) {
       setState(() {});
     }
@@ -69,8 +68,9 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context)=>cubit,
-      child: BlocBuilder<MyCrowdfundingSupportCubit, MyCrowdfundingSupportState>(
+      create: (context) => cubit,
+      child:
+          BlocBuilder<MyCrowdfundingSupportCubit, MyCrowdfundingSupportState>(
         builder: (context, state) {
           return Scaffold(
             appBar: AppBarWithTitle(
@@ -340,7 +340,7 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                     size: 20.w,
                                   ),
                                 ),
-                                onTap: (){
+                                onTap: () {
                                   cubit.widgetChange(false);
                                 },
                               ).paddingOnly(
@@ -376,14 +376,16 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                                       shape: BoxShape.circle,
                                                       image: DecorationImage(
                                                           image: NetworkImage(
-                                                            widget.model.imgUrl!,
+                                                            widget
+                                                                .model.imgUrl!,
                                                           ),
                                                           fit: BoxFit.cover),
                                                     ),
                                                   ),
                                                   Column(
                                                     crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       SizedBox(
                                                         child: AppWidgets.text(
@@ -399,10 +401,13 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                                         width: 240.w,
                                                       ),
                                                       AppWidgets.textLocale(
-                                                        text: "Eshonov Fakhriyor",
+                                                        text:
+                                                            "Eshonov Fakhriyor",
                                                         fontSize: 12.sp,
-                                                        fontWeight: FontWeight.w400,
-                                                        color: AppColorUtils.DARK_6,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: AppColorUtils
+                                                            .DARK_6,
                                                       ).paddingOnly(top: 3.w),
                                                     ],
                                                   ).paddingOnly(left: 10),
@@ -416,14 +421,16 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                                 color: AppColorUtils.TEXT_GREY2,
                                                 maxLines: 100,
                                                 height: 1.5,
-                                              ).paddingSymmetric(vertical: 15.w),
+                                              ).paddingSymmetric(
+                                                  vertical: 15.w),
                                               Divider(
                                                 thickness: 1,
                                                 color: AppColorUtils.BLACK_12,
                                               ),
                                               AppWidgets.text(
                                                 text: "Sizning javobingiz",
-                                                color: AppColorUtils.TEXT_GREEN2,
+                                                color:
+                                                    AppColorUtils.TEXT_GREEN2,
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 14.sp,
                                               ).paddingOnly(top: 20.w),
@@ -435,7 +442,8 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                                 color: AppColorUtils.TEXT_GREY2,
                                                 maxLines: 100,
                                                 height: 1.5,
-                                              ).paddingSymmetric(vertical: 15.w),
+                                              ).paddingSymmetric(
+                                                  vertical: 15.w),
                                             ],
                                           )
                                         : Container(
@@ -449,13 +457,17 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                                       .EMPTY_QUESTIONS),
                                                   SizedBox(
                                                     width: 200.sp,
-                                                    child: AppWidgets.textLocale(
-                                                      textAlign: TextAlign.center,
+                                                    child:
+                                                        AppWidgets.textLocale(
+                                                      textAlign:
+                                                          TextAlign.center,
                                                       text: LocaleKeys
                                                           .questions_empty,
-                                                      color: AppColorUtils.DARK_4,
+                                                      color:
+                                                          AppColorUtils.DARK_4,
                                                       fontSize: 14.sp,
-                                                      fontWeight: FontWeight.w600,
+                                                      fontWeight:
+                                                          FontWeight.w600,
                                                       maxLines: 2,
                                                     ),
                                                   )

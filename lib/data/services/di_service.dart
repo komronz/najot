@@ -15,6 +15,5 @@ class DIService {
     await HomeCubit.init();
     await ThemeCubit.init();
     await AppPageCubit.init();
-
   }
 }

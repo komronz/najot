@@ -1,4 +1,3 @@
-
 class TokenModel {
   String? expiry;
   String? token;

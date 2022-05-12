@@ -86,22 +86,22 @@ class ItemCharityWidget extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      AppWidgets.textLocale(
-                        text: LocaleKeys.address,
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w400,
-                        color: AppColorUtils.GRAY_4,
-                      ).paddingOnly(bottom: 4),
-                      AppWidgets.textLocale(
-                        text: model.address!,
-                        color: AppColorUtils.BLUE_TEXT,
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w500,
-                        maxLines: 2,
-                      ),
-                    ],
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppWidgets.textLocale(
+                      text: LocaleKeys.address,
+                      fontSize: 10.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColorUtils.GRAY_4,
+                    ).paddingOnly(bottom: 4),
+                    AppWidgets.textLocale(
+                      text: model.address!,
+                      color: AppColorUtils.BLUE_TEXT,
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w500,
+                      maxLines: 2,
+                    ),
+                  ],
                 ),
               ),
               Expanded(

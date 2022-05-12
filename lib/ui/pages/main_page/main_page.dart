@@ -19,6 +19,7 @@ import 'package:najot/ui/pages/volunteer_page/volunteer_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../notification_page/notification_page.dart';
+
 class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);
   static const String routeName = "/homePage";
@@ -35,18 +36,21 @@ class MainPage extends StatelessWidget {
               color: AppColorUtils.BACKGROUND,
               child: Column(
                 children: [
-                  SizedBox(height: 20.w,),
+                  SizedBox(
+                    height: 20.w,
+                  ),
                   AppWidgets.appBarMenu(
                     title: LocaleKeys.main.tr(),
                     onTapMenu: () {
                       HomePage.globalKey.currentState!.openDrawer();
                     },
                     visibleIcon: true,
-                    onTapIcon: (){
-                      NavigatorService.to.pushNamed(NotificationPage.routeName,);
-
+                    onTapIcon: () {
+                      NavigatorService.to.pushNamed(
+                        NotificationPage.routeName,
+                      );
                     },
-                    icon:AppImageUtils.NOTIFICATION,
+                    icon: AppImageUtils.NOTIFICATION,
                   ),
                   Expanded(
                     child: SingleChildScrollView(
@@ -93,12 +97,10 @@ class MainPage extends StatelessWidget {
                                       fontWeight: FontWeight.w600,
                                       fontsize: 14,
                                       color: AppColorUtils.VOLONTYOR,
-
                                       onTap: () {
                                         NavigatorService.to
                                             .pushNamed(VolunteerPage.routeName);
                                       },
-
                                     ),
                                     IconAndName(
                                       text: LocaleKeys.charity.tr(),
@@ -159,8 +161,7 @@ class MainPage extends StatelessWidget {
                                       (index) => Container(
                                         margin: EdgeInsets.only(left: 10.w),
                                         child: VolunteerCardWidget(
-                                          projectModel:
-                                              state.volunteer[index],
+                                          projectModel: state.volunteer[index],
                                         ),
                                       ),
                                     ),
@@ -183,8 +184,7 @@ class MainPage extends StatelessWidget {
                                       (index) => Container(
                                         margin: EdgeInsets.only(left: 10.w),
                                         child: KraudfandingCardWidget(
-                                          projectModel:
-                                              state.charity[index],
+                                          projectModel: state.charity[index],
                                           visible: false,
                                         ),
                                       ),

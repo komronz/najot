@@ -107,8 +107,7 @@ class _RegVolunteerState extends State<RegVolunteer>
               ],
             ).paddingOnly(top: 18),
             AppWidgets.text(
-              text:
-                  LocaleKeys.information_write_operator.tr(),
+              text: LocaleKeys.information_write_operator.tr(),
               fontSize: 16.sp,
               fontWeight: FontWeight.w500,
               textAlign: TextAlign.center,
@@ -172,8 +171,7 @@ class _RegVolunteerState extends State<RegVolunteer>
             ],
           ).paddingOnly(top: 18),
           AppWidgets.text(
-            text:
-                LocaleKeys.fill_out_form_volunteer.tr(),
+            text: LocaleKeys.fill_out_form_volunteer.tr(),
             fontSize: 16.sp,
             fontWeight: FontWeight.w600,
             color: AppColorUtils.DARK2,

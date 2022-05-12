@@ -9,7 +9,6 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
-
 class OperatorClearSmsWidget extends StatelessWidget {
   final OperatorCubit cubit;
 

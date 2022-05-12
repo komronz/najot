@@ -17,12 +17,9 @@ import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/item_
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class TimePickerOrganization extends StatelessWidget {
-  TimePickerOrganization({
-    required this.model,
-    required this.cubit,
-    required this.con
+  TimePickerOrganization(
+      {required this.model, required this.cubit, required this.con});
 
-  });
   DateTime _date = DateTime.now();
   DateTime _time = DateTime.now();
   CardModel model;
@@ -80,8 +77,7 @@ class TimePickerOrganization extends StatelessWidget {
                           ).paddingOnly(right: 5),
                           AppWidgets.textLocale(
                             text: model.date!,
-                            color: AppColorUtils.VOLONTYOR
-                            ,
+                            color: AppColorUtils.VOLONTYOR,
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w500,
                           ),
@@ -149,7 +145,7 @@ class TimePickerOrganization extends StatelessWidget {
                             time.month,
                             time.month,
                             time.day,
-                            time.hour ,
+                            time.hour,
                             time.minute,
                           );
                         },
@@ -218,7 +214,6 @@ class TimePickerOrganization extends StatelessWidget {
                             cubit.load();
                             Navigator.pop(con);
                             Navigator.pop(context);
-
                           },
                         ),
                       );

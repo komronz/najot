@@ -1,8 +1,7 @@
 import 'dart:math';
 
-
-part 'strings_ru.dart';
 part 'strings_en_us.dart';
+part 'strings_ru.dart';
 part 'strings_uz.dart';
 
 abstract class _StringsI18n {

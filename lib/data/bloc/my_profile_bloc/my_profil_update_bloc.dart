@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -6,16 +7,20 @@ import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/utils/app_utils.dart';
+
 import '../../../ui/widgets/app_widgets.dart';
 import '../../model/user.dart';
 import '../../utils/app_logger_util.dart';
 
 part 'my_profil_update_event.dart';
 
-class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateState> {
+class MyProfileUpdateBloc
+    extends Bloc<MyProfileUpdateEvent, MyProfileUpdateState> {
   final PageController pageController;
-  MyProfileUpdateBloc() : pageController=PageController(), super(MyProfileUpdateState()) {
 
+  MyProfileUpdateBloc()
+      : pageController = PageController(),
+        super(MyProfileUpdateState()) {
     on<MyProfileLoad>(_loadProfile);
     on<ImageChanged>(_onImageChanged);
     on<FirstNameChanged>(_onNameChanged);
@@ -30,11 +35,13 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
     on<ImagePickers>(_onImagePicker);
     on<SaveIn>(_saveIn);
   }
-  Future _onChangeEditProfile(EditProfileChangePage event,
-      Emitter<MyProfileUpdateState> emit,)async{
+
+  Future _onChangeEditProfile(
+    EditProfileChangePage event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(state.copyWith(changePage: event.changePage));
   }
-
 
   Future _onPageChanged(
     PageChanged event,
@@ -46,10 +53,11 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
       ),
     );
   }
+
   Future _onPageNext(
-      PageNext event,
-      Emitter<MyProfileUpdateState> emit,
-      ) async {
+    PageNext event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         nextPage: event.isNext,
@@ -139,12 +147,11 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
   ) async {
     if (_isNotEmpty(state.name) && _isNotEmpty(state.sureName)) {
       var user = User(
-        imageUrl: state.imageUrl,
-        firstName: state.name,
-        lastName: state.sureName,
-        isMan: state.isMan,
-        phone: state.phoneNumber
-      );
+          imageUrl: state.imageUrl,
+          firstName: state.name,
+          lastName: state.sureName,
+          isMan: state.isMan,
+          phone: state.phoneNumber);
       HiveService.to.setUser(user);
       AppWidgets.showText(text: 'Success');
       emit(state.copyWith(hasError: false));

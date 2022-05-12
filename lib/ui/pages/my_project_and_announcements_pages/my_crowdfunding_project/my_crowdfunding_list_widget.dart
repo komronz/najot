@@ -55,8 +55,10 @@ class MyCrowdfundingListWidget extends StatelessWidget {
             reverse: false,
             children: List.generate(
               list.length,
-                  (index) => MyCrowdfundingList(
-                    cardModel: list[index], visible: true, onTap: () {  },
+              (index) => MyCrowdfundingList(
+                cardModel: list[index],
+                visible: true,
+                onTap: () {},
               ),
             ),
           ),
@@ -65,7 +67,6 @@ class MyCrowdfundingListWidget extends StatelessWidget {
         left: 20,
         top: 10,
         right: 10,
-
       ),
     );
   }

@@ -52,7 +52,7 @@ class SupportProjectDialog extends StatelessWidget {
               onChanged: (v) {},
               title: '',
             ),
-          MixTextWidget().paddingSymmetric(vertical: 12.w),
+            MixTextWidget().paddingSymmetric(vertical: 12.w),
             ButtonCard(
               onPress: () {},
               text: LocaleKeys.switch_amount.tr(),

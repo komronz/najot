@@ -29,8 +29,8 @@ class _NotificationPageState extends State<NotificationPage> {
     NotificationApi.init(initScheduled: true);
     listenNotifications();
     super.initState();
-
   }
+
   void listenNotifications() =>
       NotificationApi.onNotification.stream.listen(onClickNotification);
 
@@ -46,7 +46,9 @@ class _NotificationPageState extends State<NotificationPage> {
       },
     );
   }
-  bool isRead=true;
+
+  bool isRead = true;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -70,20 +72,19 @@ class _NotificationPageState extends State<NotificationPage> {
       shrinkWrap: true,
       reverse: true,
       itemBuilder: (context, index) {
-        if (index == state.cardList.length -1) {
+        if (index == state.cardList.length - 1) {
           return MyNoteWidget(
             model: state.cardList[index],
             isLast: isRead,
-            onTap: (){
+            onTap: () {
               setState(() {
-                isRead=false;
+                isRead = false;
               });
               NotificationApi.showNotification(
-                  title:LocaleKeys.attention_hello_volunteer.tr(),
+                  title: LocaleKeys.attention_hello_volunteer.tr(),
                   body: LocaleKeys.you_go_to_help.tr(),
                   payload: jsonEncode(state.cardList[index].toJson()),
-                  scheduledDate: DateTime.now().add(Duration(seconds: 10))
-              );
+                  scheduledDate: DateTime.now().add(Duration(seconds: 10)));
             },
           );
         }
@@ -91,7 +92,7 @@ class _NotificationPageState extends State<NotificationPage> {
           model: state.cardList[index],
           onTap: () {
             NotificationApi.showNotification(
-              title:LocaleKeys.attention_hello_volunteer.tr(),
+              title: LocaleKeys.attention_hello_volunteer.tr(),
               body: LocaleKeys.you_go_to_help.tr(),
               payload: jsonEncode(state.cardList[index].toJson()),
               scheduledDate: DateTime.now().add(Duration(seconds: 10)),

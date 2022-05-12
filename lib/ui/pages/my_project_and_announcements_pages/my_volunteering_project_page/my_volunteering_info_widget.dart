@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/volunteering_model.dart';
+
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
@@ -59,7 +60,6 @@ class MyVolunteeringInfoWidget extends StatelessWidget {
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ).paddingOnly(top: 5.w),
-
               ],
             )
           ],
@@ -88,14 +88,17 @@ class MyVolunteeringInfoWidget extends StatelessWidget {
               maxLines: 2,
               fontWeight: FontWeight.w600,
               fontSize: 14.sp,
-            ).paddingOnly(top: 3.w, right: 60.w, bottom: 12.w,),
-            Divider(thickness: 2,),
-
+            ).paddingOnly(
+              top: 3.w,
+              right: 60.w,
+              bottom: 12.w,
+            ),
+            Divider(
+              thickness: 2,
+            ),
           ],
         ).paddingOnly(top: 12.w),
-
       ],
     );
   }
 }
-

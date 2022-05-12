@@ -1,5 +1,5 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
-abstract class  LocaleKeys {
+abstract class LocaleKeys {
   static const app_name = 'app_name';
   static const cancel = 'cancel';
   static const add = 'add';
@@ -225,7 +225,8 @@ abstract class  LocaleKeys {
   static const agree_terms_project = 'agree_terms_project';
   static const agree_project_first = 'agree_project_first';
   static const uploaded = 'uploaded';
-  static const instructions_uploading_passport = 'instructions_uploading_passport';
+  static const instructions_uploading_passport =
+      'instructions_uploading_passport';
   static const document_must_be_clear = 'document_must_be_clear';
   static const both_sides_uploaded = 'both_sides_uploaded';
   static const uploaded_by_owner = 'uploaded_by_owner';
@@ -243,6 +244,4 @@ abstract class  LocaleKeys {
   static const select_date = 'select_date';
   static const enter_project_name = 'enter_project_name';
   static const successful_send = 'successful_send';
-
-
 }

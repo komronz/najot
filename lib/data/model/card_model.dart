@@ -33,15 +33,8 @@ class CardModel {
     this.date,
   );
 
-  CardModel.charity(
-    this.type,
-    this.image,
-    this.title,
-    this.progres,
-    this.isFavorite,
-    this.date,
-      this.infoModel
-  );
+  CardModel.charity(this.type, this.image, this.title, this.progres,
+      this.isFavorite, this.date, this.infoModel);
 
   static final List<InfoModel> info = [
     InfoModel(

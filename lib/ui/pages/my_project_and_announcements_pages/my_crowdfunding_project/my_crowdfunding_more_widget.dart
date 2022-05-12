@@ -13,7 +13,6 @@ class MyCrowdfundingMoreWidget extends StatelessWidget {
 
   final KraufandingModel cardModel;
 
-
   @override
   Widget build(BuildContext context) {
     return Column(

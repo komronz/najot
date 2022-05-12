@@ -12,11 +12,10 @@ part 'reg_volunteer_event.dart';
 part 'reg_volunteer_state.dart';
 
 class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
-   final PageController pageController;
+  final PageController pageController;
   final maskFormatterSerial = MaskTextInputFormatter(mask: 'AA');
   final maskFormatterPasNumber = MaskTextInputFormatter(mask: '#######');
   final maskFormatter = MaskTextInputFormatter();
-
 
   RegVolunteerBloc()
       : pageController = PageController(),

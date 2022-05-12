@@ -9,6 +9,7 @@ import '../../../../data/utils/app_color_utils.dart';
 class DropDownWidget extends StatefulWidget {
   DropDownWidget({required this.items, Key? key}) : super(key: key);
   List<String> items;
+
   @override
   _DropDownWidgetState createState() => _DropDownWidgetState();
 }
@@ -33,7 +34,7 @@ class _DropDownWidgetState extends State<DropDownWidget> {
             ),
             Expanded(
               child: Text(
-                  LocaleKeys.select.tr(),
+                LocaleKeys.select.tr(),
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
@@ -45,16 +46,16 @@ class _DropDownWidgetState extends State<DropDownWidget> {
         ),
         items: widget.items
             .map((item) => DropdownMenuItem<String>(
-          value: item,
-          child: Text(
-            item,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-              color: AppColorUtils.GRAY_4,
-            ),
-          ),
-        ))
+                  value: item,
+                  child: Text(
+                    item,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      color: AppColorUtils.GRAY_4,
+                    ),
+                  ),
+                ))
             .toList(),
         value: selectedValue,
         onChanged: (value) {
@@ -95,6 +96,5 @@ class _DropDownWidgetState extends State<DropDownWidget> {
         offset: const Offset(0, 0),
       ),
     );
-
   }
 }

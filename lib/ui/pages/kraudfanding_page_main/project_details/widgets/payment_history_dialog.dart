@@ -1,5 +1,3 @@
-
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,8 +13,7 @@ class PaymentHistoryDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      insetPadding:
-      EdgeInsets.symmetric(horizontal: 20.w),
+      insetPadding: EdgeInsets.symmetric(horizontal: 20.w),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -30,8 +27,7 @@ class PaymentHistoryDialog extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
-          crossAxisAlignment:
-          CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             AppWidgets.textLocale(
               fontWeight: FontWeight.w600,
@@ -46,7 +42,10 @@ class PaymentHistoryDialog extends StatelessWidget {
               color: AppColorUtils.DARK_6,
               textAlign: TextAlign.start,
               text: LocaleKeys.was_implementation,
-            ).paddingOnly(top: 15.w,bottom: 5.w,),
+            ).paddingOnly(
+              top: 15.w,
+              bottom: 5.w,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -58,17 +57,17 @@ class PaymentHistoryDialog extends StatelessWidget {
                   text: LocaleKeys.summa,
                 ),
                 AppWidgets.textLocale(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 18.sp,
-                  color: AppColorUtils.PERCENT_COLOR,
-                  textAlign: TextAlign.center,
-                  text: LocaleKeys.sum,
-                  args: ["1 000"]
-                ),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18.sp,
+                    color: AppColorUtils.PERCENT_COLOR,
+                    textAlign: TextAlign.center,
+                    text: LocaleKeys.sum,
+                    args: ["1 000"]),
               ],
             ),
-            SizedBox(height: 10.w,),
-
+            SizedBox(
+              height: 10.w,
+            ),
             ButtonCard(
               onPress: () {},
               text: LocaleKeys.switch_amount.tr(),
@@ -80,7 +79,9 @@ class PaymentHistoryDialog extends StatelessWidget {
               textColor: AppColorUtils.WHITE,
               borderRadius: 10,
             ),
-            SizedBox(height: 12.w,),
+            SizedBox(
+              height: 12.w,
+            ),
             ButtonCard(
               onPress: () {
                 Navigator.pop(context);

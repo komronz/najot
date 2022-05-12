@@ -17,41 +17,39 @@ class RegVolunteerState extends Equatable {
   final bool waitVolunteer;
   final MaskTextInputFormatter? inputFormatter;
 
-  RegVolunteerState({
-    this.firstName = '',
-    this.lastName = '',
-    this.address = '',
-    this.gender = Gender.MAN,
-    this.birthDate,
-    this.isActiveNextBtn = false,
-    this.serial = '',
-    this.serialNumber = '',
-    this.givenAddress = '',
-    this.givenDate,
-    this.passportImgPath,
-    this.pageImgPath,
-    this.sendBtnActive = false,
-    this.waitVolunteer = false,
-    this.inputFormatter
-  });
+  RegVolunteerState(
+      {this.firstName = '',
+      this.lastName = '',
+      this.address = '',
+      this.gender = Gender.MAN,
+      this.birthDate,
+      this.isActiveNextBtn = false,
+      this.serial = '',
+      this.serialNumber = '',
+      this.givenAddress = '',
+      this.givenDate,
+      this.passportImgPath,
+      this.pageImgPath,
+      this.sendBtnActive = false,
+      this.waitVolunteer = false,
+      this.inputFormatter});
 
-  RegVolunteerState copyWith({
-    String? firstName,
-    String? lastName,
-    String? address,
-    Gender? gender,
-    DateTime? birthDate,
-    bool? isActiveNextBtn,
-    String? serial,
-    String? serialNumber,
-    String? givenAddress,
-    DateTime? givenDate,
-    XFile? passportImgPath,
-    XFile? pageImgPath,
-    bool? sendBtnActive,
-    bool? waitVolunteer,
-    MaskTextInputFormatter? inputFormatter
-  }) {
+  RegVolunteerState copyWith(
+      {String? firstName,
+      String? lastName,
+      String? address,
+      Gender? gender,
+      DateTime? birthDate,
+      bool? isActiveNextBtn,
+      String? serial,
+      String? serialNumber,
+      String? givenAddress,
+      DateTime? givenDate,
+      XFile? passportImgPath,
+      XFile? pageImgPath,
+      bool? sendBtnActive,
+      bool? waitVolunteer,
+      MaskTextInputFormatter? inputFormatter}) {
     return RegVolunteerState(
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
@@ -86,7 +84,7 @@ class RegVolunteerState extends Equatable {
         pageImgPath,
         passportImgPath,
         waitVolunteer,
-    inputFormatter
+        inputFormatter
       ];
 }
 

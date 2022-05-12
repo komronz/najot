@@ -1,17 +1,17 @@
-import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/kraudfanding_detail_cubit/kraudfanding_detail_cubit.dart';
-import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
-import 'package:najot/ui/widgets/app_widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 
 class TabBarWidget extends StatelessWidget {
-  TabBarWidget(this._controller,this.title1,this.title2,);
- static int index = 0;
+  TabBarWidget(
+    this._controller,
+    this.title1,
+    this.title2,
+  );
+
+  static int index = 0;
   TabController _controller;
   String title1;
   String title2;
@@ -52,7 +52,6 @@ class TabBarWidget extends StatelessWidget {
                   } else {
                     context.read<KraudfandingDetailCubit>().tabChange(1);
                   }
-
                 },
                 indicator: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
@@ -70,7 +69,7 @@ class TabBarWidget extends StatelessWidget {
                   ),
                   Tab(
                     child: Text(
-                     title2,
+                      title2,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 14.sp,

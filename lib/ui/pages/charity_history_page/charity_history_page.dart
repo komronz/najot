@@ -54,7 +54,8 @@ class CharityHistoryPage extends StatelessWidget {
                   ),
                 ),
                 InkWell(
-                  onTap: ()=> NavigatorService.to.pushNamed(NotificationPage.routeName),
+                  onTap: () =>
+                      NavigatorService.to.pushNamed(NotificationPage.routeName),
                   child: SvgPicture.asset(
                     AppImageUtils.NOTIFICATION,
                     height: 35.w,

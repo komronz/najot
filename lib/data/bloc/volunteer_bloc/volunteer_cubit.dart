@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:najot/data/model/card_model.dart';
 
 part 'volunteer_state.dart';
+
 class VolunteerCubit extends Cubit<VolunteerState> {
   VolunteerCubit() : super(VolunteerState(list: CardModel.list));
 

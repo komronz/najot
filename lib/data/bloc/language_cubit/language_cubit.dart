@@ -101,11 +101,8 @@ class LanguageCubit extends HydratedCubit<LanguageState> {
 
   @override
   Map<String, dynamic>? toJson(LanguageState state) {
-    if (state is LanguageState) {
-      return {
-        'locale': "${state.locale.languageCode}_${state.locale.countryCode}",
-      };
-    }
-    return null;
+    return {
+      'locale': "${state.locale.languageCode}_${state.locale.countryCode}",
+    };
   }
 }

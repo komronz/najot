@@ -40,11 +40,11 @@ class VolunteeringItemWidget extends StatelessWidget {
                 SizedBox(
                   width: 265.w,
                   child: AppWidgets.text(
-                      text: model.title!,
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColorUtils.ITEM_CHARITY_TEXT,
-                      maxLines: 2)
+                          text: model.title!,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                          color: AppColorUtils.ITEM_CHARITY_TEXT,
+                          maxLines: 2)
                       .paddingOnly(top: 3),
                 ),
                 Row(
@@ -80,7 +80,6 @@ class VolunteeringItemWidget extends StatelessWidget {
                 ).paddingOnly(top: 3),
               ],
             ).paddingAll(12),
-
           ],
         ),
       ),

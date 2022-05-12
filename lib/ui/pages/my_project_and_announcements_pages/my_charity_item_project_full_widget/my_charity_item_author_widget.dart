@@ -1,5 +1,3 @@
-
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -80,7 +78,8 @@ class MyCharityItemAuthorWidget extends StatelessWidget {
         ButtonCard(
           onPress: onTap,
           iconColor: AppColorUtils.KRAUDFANDING,
-          addIcon: AppImageUtils.IC_PHONE,visibleIcon: true,
+          addIcon: AppImageUtils.IC_PHONE,
+          visibleIcon: true,
           text: LocaleKeys.connection.tr(),
           width: 110.w,
           height: 35.w,

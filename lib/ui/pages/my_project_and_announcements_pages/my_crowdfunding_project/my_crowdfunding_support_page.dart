@@ -15,8 +15,8 @@ class MyCrowdfundingSupportPage extends StatelessWidget {
   static const String routeName = "/myCrowdfundingSupportPage";
   final List<KraufandingModel> list;
 
-
-  const MyCrowdfundingSupportPage({required this.list, Key? key}) : super(key: key);
+  const MyCrowdfundingSupportPage({required this.list, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,9 @@ class MyCrowdfundingSupportPage extends StatelessWidget {
               Expanded(
                 child: TabBarView(
                   children: [
-                    MyCrowdfundingSupportListWidget(list: list,),
+                    MyCrowdfundingSupportListWidget(
+                      list: list,
+                    ),
                     MyCrowdfundingProductPage(),
                   ],
                 ),

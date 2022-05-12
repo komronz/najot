@@ -138,7 +138,7 @@ class _CharityPageState extends State<CharityPage>
                           if (state.list[index].progres != null) {
                             return CharityItemWidget(
                               model: state.list[index],
-                              onTap: (){
+                              onTap: () {
                                 NavigatorService.to.pushNamed(
                                   CharityFullPage.routName,
                                   arguments: state.list[index],
@@ -231,7 +231,7 @@ class _CharityPageState extends State<CharityPage>
                                     List.generate(state.list.length, (index) {
                                   if (state.list[index].progres != null) {
                                     return CharityItemWidget(
-                                      onTap: (){
+                                      onTap: () {
                                         NavigatorService.to.pushNamed(
                                           CharityFullPage.routName,
                                           arguments: state.list[index],
@@ -268,7 +268,7 @@ class _CharityPageState extends State<CharityPage>
                                     List.generate(state.list.length, (index) {
                                   if (state.list[index].progres != null) {
                                     return CharityItemWidget(
-                                      onTap: (){
+                                      onTap: () {
                                         NavigatorService.to.pushNamed(
                                           CharityFullPage.routName,
                                           arguments: state.list[index],
@@ -305,7 +305,7 @@ class _CharityPageState extends State<CharityPage>
                                     List.generate(state.list.length, (index) {
                                   if (state.list[index].progres != null) {
                                     return CharityItemWidget(
-                                      onTap: (){
+                                      onTap: () {
                                         NavigatorService.to.pushNamed(
                                           CharityFullPage.routName,
                                           arguments: state.list[index],

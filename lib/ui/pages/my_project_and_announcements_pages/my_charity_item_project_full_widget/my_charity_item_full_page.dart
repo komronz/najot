@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
@@ -40,8 +39,7 @@ class _MyCharityItemFullPageState extends State<MyCharityItemFullPage>
     super.initState();
   }
 
-  _handleTabSelection() {
-
+  void _handleTabSelection() {
     if (_controller.indexIsChanging) {
       setState(() {});
     }

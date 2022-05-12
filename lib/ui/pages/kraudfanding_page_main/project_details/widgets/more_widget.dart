@@ -7,8 +7,9 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/pr
 
 class MoreWidget extends StatelessWidget {
   const MoreWidget({
-    Key? key,
     required this.cardModel,
+
+    Key? key,
   }) : super(key: key);
 
   final CardModel cardModel;

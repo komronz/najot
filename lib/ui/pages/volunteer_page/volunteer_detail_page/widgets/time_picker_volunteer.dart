@@ -17,11 +17,9 @@ import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/item_
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class TimePikerVolunteer extends StatelessWidget {
-  TimePikerVolunteer({
-    required this.model,
-    required this.cubit,
-    required this.con
-  });
+  TimePikerVolunteer(
+      {required this.model, required this.cubit, required this.con});
+
   DateTime _date = DateTime.now();
   DateTime _time = DateTime.now();
   CardModel model;
@@ -220,7 +218,6 @@ class TimePikerVolunteer extends StatelessWidget {
                           back: () {
                             cubit.loading();
                             Navigator.pop(context);
-
                           },
                         ),
                       );

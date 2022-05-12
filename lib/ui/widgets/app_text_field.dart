@@ -127,18 +127,19 @@ class _AppTextFieldState extends State<AppTextField> {
                 fontWeight: FontWeight.w400,
                 color: AppColorUtils.GRAY_4,
               ),
-              prefixIcon: widget.phoneNumberCode==true?
-              Container(
-                padding: EdgeInsets.only(left: 10),
-                width: 60.w,
-                child: Center(
-                  child: AppWidgets.text(
-                    text: "+998",
-                    fontSize: 15.sp,
-                    color: AppColorUtils.DARK2,
-                  ),
-                ),
-              ):null,
+              prefixIcon: widget.phoneNumberCode == true
+                  ? Container(
+                      padding: EdgeInsets.only(left: 10),
+                      width: 60.w,
+                      child: Center(
+                        child: AppWidgets.text(
+                          text: "+998",
+                          fontSize: 15.sp,
+                          color: AppColorUtils.DARK2,
+                        ),
+                      ),
+                    )
+                  : null,
               suffixIcon: widget.isPassword
                   ? InkWell(
                       onTap: () {

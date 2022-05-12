@@ -37,11 +37,11 @@ class VolunteeringCharityHistoryState extends Equatable {
 
   @override
   List<Object?> get props => [
-    kraufandingList,
-    charityList,
-    itemsCharity,
-    hasConnection,
-    hasConnection,
-    isLoading,
-  ];
+        kraufandingList,
+        charityList,
+        itemsCharity,
+        hasConnection,
+        hasConnection,
+        isLoading,
+      ];
 }

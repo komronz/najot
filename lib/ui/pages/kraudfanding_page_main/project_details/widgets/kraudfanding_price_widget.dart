@@ -1,5 +1,3 @@
-
-
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,12 +30,11 @@ class KraudfandingPriceWidget extends StatelessWidget {
               children: [
                 AppWidgets.starTextWidget(text: LocaleKeys.need_summa.tr()),
                 AppWidgets.textLocale(
-                  text: LocaleKeys.sum,
-                  color: Color(0xFF043F3B),
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w600,
-                  args: ["100 000"]
-                ).paddingOnly(top: 3.w),
+                    text: LocaleKeys.sum,
+                    color: Color(0xFF043F3B),
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                    args: ["100 000"]).paddingOnly(top: 3.w),
               ],
             ),
             Column(

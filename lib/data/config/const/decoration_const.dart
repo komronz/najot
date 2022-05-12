@@ -43,10 +43,8 @@ class DecorationConst {
       color: AppColorUtils.BORDER_COLOR,
     ),
   );
-  InputDecoration inputDecoration(
-      {
-        Widget? prefixIcon,
-        Widget? suffixIcon}) =>
+
+  InputDecoration inputDecoration({Widget? prefixIcon, Widget? suffixIcon}) =>
       InputDecoration(
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,

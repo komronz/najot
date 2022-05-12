@@ -24,7 +24,7 @@ import '../saved_page/saved_page.dart';
 import '../volunteering_charity_history_page/volunteering_charity_history_page.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({ required this.appPageType});
+  HomePage({required this.appPageType});
 
   AppPageType appPageType;
   static const String routeName = "/homePage";
@@ -39,13 +39,12 @@ class HomePage extends StatelessWidget {
       child: BlocBuilder<AppPageCubit, AppPageState>(
         builder: (context, state) {
           return Scaffold(
-            // backgroundColor: AppColorUtils.BACKGROUND,
-            key: globalKey,
-            drawer: state.changeMenu==1
-                ? DrawerBody(state: state)
-                : DrawerBodySecond(state: state),
-            body: buildBody(state)
-          );
+              // backgroundColor: AppColorUtils.BACKGROUND,
+              key: globalKey,
+              drawer: state.changeMenu == 1
+                  ? DrawerBody(state: state)
+                  : DrawerBodySecond(state: state),
+              body: buildBody(state));
         },
       ),
     );

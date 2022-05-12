@@ -9,11 +9,7 @@ class KraudFandingState extends Equatable {
   // TODO: implement props
   List<Object?> get props => [cardList];
 
-
-  KraudFandingState copyWith({
-    List<CardModel>? list
-
-  }) {
+  KraudFandingState copyWith({List<CardModel>? list}) {
     return KraudFandingState(cardList: list ?? this.cardList);
   }
 }

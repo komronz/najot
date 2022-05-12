@@ -224,7 +224,8 @@ class _AboutProjectVolunteerWidgetState
         Container(
           padding: EdgeInsets.symmetric(vertical: 20.w),
           decoration: BoxDecoration(
-              color: AppColorUtils.WHITE, borderRadius: BorderRadius.circular(11.0)),
+              color: AppColorUtils.WHITE,
+              borderRadius: BorderRadius.circular(11.0)),
           child: DefaultTabController(
             initialIndex: 0,
             length: 4,
@@ -299,7 +300,7 @@ class _AboutProjectVolunteerWidgetState
                 ),
                 widget.state.saveHelp
                     ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           widget.state.tobeVolunteer
                               ? SizedBox()
@@ -378,10 +379,10 @@ class _AboutProjectVolunteerWidgetState
                             textColor: AppColorUtils.WHITE,
                           ).paddingSymmetric(horizontal: 20.w),
                           AppWidgets.starTextWidget(
-                                  text: LocaleKeys.you_accepted_ad,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColorUtils.DARK_6,
+                            text: LocaleKeys.you_accepted_ad,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w500,
+                            color: AppColorUtils.DARK_6,
                           ).paddingOnly(
                             left: 20.w,
                             top: 10.w,

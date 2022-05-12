@@ -14,12 +14,11 @@ import '../../../../data/utils/date_time_util.dart';
 import '../../../widgets/app_widgets.dart';
 
 class WaitingForAddingSuccess extends StatelessWidget {
-
   WaitingForAddingSuccess(
       {required this.model, required this.dateTime, Key? key})
       : super(key: key);
   DateTime dateTime;
-  DateTime _dateTime = DateTime.now();
+  // DateTime _dateTime = DateTime.now();
   TimeOfDay timeOfDay = TimeOfDay.now();
   VolunteeringModel model;
 
@@ -113,7 +112,6 @@ class WaitingForAddingSuccess extends StatelessWidget {
                     textColor: AppColorUtils.BLACK,
                     onTap: () {
                       NavigatorService.to.pop();
-
                     },
                     title: LocaleKeys.exit,
                     fontSize: 16.sp,

@@ -31,21 +31,23 @@ class NotificationDeleteWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SvgPicture.asset(AppImageUtils.DELETED_ICON).paddingOnly(bottom: 24.w),
+            SvgPicture.asset(AppImageUtils.DELETED_ICON)
+                .paddingOnly(bottom: 24.w),
             AppWidgets.textLocale(
-                fontWeight: FontWeight.w600,
-                fontSize: 18.sp,
-                color: AppColorUtils.DARK2,
-                text: LocaleKeys.want_delete_note,
-                richText: true,
-                textAlign: TextAlign.center,
-                othersMarkers: [
-                  MarkerText(marker: "//", style: TextStyle(
-                      color: AppColorUtils.RED
-                  ),),
-                ],
-                maxLines: 2
-            ).paddingOnly(bottom: 24.w),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18.sp,
+                    color: AppColorUtils.DARK2,
+                    text: LocaleKeys.want_delete_note,
+                    richText: true,
+                    textAlign: TextAlign.center,
+                    othersMarkers: [
+                      MarkerText(
+                        marker: "//",
+                        style: TextStyle(color: AppColorUtils.RED),
+                      ),
+                    ],
+                    maxLines: 2)
+                .paddingOnly(bottom: 24.w),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -83,7 +85,6 @@ class NotificationDeleteWidget extends StatelessWidget {
                 )
               ],
             ),
-
           ],
         ),
       ),

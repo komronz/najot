@@ -13,16 +13,14 @@ import '../../../../data/bloc/app_page_cubit/app_page_cubit.dart';
 import '../../../../data/model/volunteering_model.dart';
 import '../../../widgets/app_widgets.dart';
 import '../../home_page/home_page.dart';
-import '../../my_volunteering_page/my_volunteering_page.dart';
 
 class AttentionNote extends StatelessWidget {
   static const String routeName = "/attentionNote";
 
   AttentionNote({required this.model, Key? key}) : super(key: key);
-  DateTime _date = DateTime.now();
-  DateTime _time = DateTime.now();
+  // DateTime _date = DateTime.now();
+  // DateTime _time = DateTime.now();
   final VolunteeringModel model;
-
 
   // VolunteeringModel model;
 
@@ -49,7 +47,10 @@ class AttentionNote extends StatelessWidget {
                     AppWidgets.imageSvg(
                       path: AppImageUtils.NOTIFICATION_GREY,
                       color: AppColorUtils.KRAUDFANDING,
-                    ).paddingOnly(right: 5.w, top: 15.w,),
+                    ).paddingOnly(
+                      right: 5.w,
+                      top: 15.w,
+                    ),
                     AppWidgets.textLocale(
                       text: LocaleKeys.attention_note,
                       fontSize: 20.sp,
@@ -142,7 +143,6 @@ class AttentionNote extends StatelessWidget {
                 ).paddingOnly(
                   bottom: 18.w,
                 ),
-
                 Column(
                   children: [
                     AppWidgets.appButton(

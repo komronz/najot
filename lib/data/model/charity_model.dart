@@ -14,44 +14,44 @@ class CharityModel {
   String? typeOfCharity;
   List<InfoModel>? infoModel;
 
+  CharityModel(
+      {this.title,
+      this.percent,
+      this.imgUrl,
+      this.author,
+      this.totalSum,
+      this.currentSum,
+      this.applied,
+      this.createdDate,
+      this.isFavorite,
+      this.collectedDate,
+      this.typeOfHelp,
+      this.volunteerName,
+      this.typeOfCharity,
+      this.infoModel});
 
-  CharityModel({
-    this.title,
-    this.percent,
-    this.imgUrl,
-    this.author,
-    this.totalSum,
-    this.currentSum,
-    this.applied,
-    this.createdDate,
-    this.isFavorite,
-    this.collectedDate,
-    this.typeOfHelp,
-    this.volunteerName,
-    this.typeOfCharity,
-    this.infoModel
-  });
   static final List<CharityModel> list = [
-    CharityModel(
-      title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
-      percent: 75.0,
-      imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
-      author: "Fayzullayev Olim",
-      totalSum: "1 000 000",
-      currentSum: "1 000 000",
-      applied: 50,
-      createdDate: "25.08.2022",
-      isFavorite: false,
-      collectedDate: "28.08.2022",
-      typeOfHelp: "Oyoq kiyimi",
-      volunteerName: "Abdulloh",
-      typeOfCharity: "item",
-      infoModel: info
-    ),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 75.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        author: "Fayzullayev Olim",
+        totalSum: "1 000 000",
+        currentSum: "1 000 000",
+        applied: 50,
+        createdDate: "25.08.2022",
+        isFavorite: false,
+        collectedDate: "28.08.2022",
+        typeOfHelp: "Oyoq kiyimi",
+        volunteerName: "Abdulloh",
+        typeOfCharity: "item",
+        infoModel: info),
+    CharityModel(
+        title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
+        percent: 75.0,
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -62,12 +62,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: null,
         typeOfCharity: "item",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 75.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -78,12 +78,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "item",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 75.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -94,12 +94,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "item",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 70.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -110,12 +110,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Salohiddin",
         typeOfCharity: "cash",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 70.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -126,12 +126,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "cash",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 70.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -142,12 +142,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Salohiddin",
         typeOfCharity: "cash",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 70.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -158,12 +158,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "cash",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 75.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -174,12 +174,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "item",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 75.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -190,12 +190,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "item",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 75.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -206,12 +206,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "item",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 75.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -222,12 +222,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "item",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 70.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -238,12 +238,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Salohiddin",
         typeOfCharity: "cash",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 70.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -254,12 +254,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "cash",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 70.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -270,12 +270,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Salohiddin",
         typeOfCharity: "cash",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 70.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -286,12 +286,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "cash",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 75.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -302,12 +302,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "item",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 75.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -318,12 +318,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "item",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 75.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -334,12 +334,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "item",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 75.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -350,12 +350,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "item",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 70.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -366,12 +366,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Salohiddin",
         typeOfCharity: "cash",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 70.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -382,12 +382,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "cash",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 70.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -398,12 +398,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Salohiddin",
         typeOfCharity: "cash",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 70.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -414,12 +414,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "cash",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 75.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -430,12 +430,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "item",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 75.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -446,12 +446,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "item",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 75.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -462,12 +462,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "item",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 75.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -478,12 +478,12 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Abdulloh",
         typeOfCharity: "item",
-        infoModel: info
-    ),
+        infoModel: info),
     CharityModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 70.0,
-        imgUrl: "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
+        imgUrl:
+            "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
         author: "Fayzullayev Olim",
         totalSum: "1 000 000",
         currentSum: "1 000 000",
@@ -494,10 +494,7 @@ class CharityModel {
         typeOfHelp: "Oyoq kiyimi",
         volunteerName: "Salohiddin",
         typeOfCharity: "cash",
-        infoModel: info
-    ),
-
-
+        infoModel: info),
   ];
 
   static final List<InfoModel> info = [
@@ -551,6 +548,7 @@ class CharityModel {
             "and scrambled it to make a type specimen book")
   ];
 }
+
 class InfoModel {
   InfoModel(this.title, this.text);
 

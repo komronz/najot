@@ -1,5 +1,3 @@
-
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
@@ -22,15 +20,18 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/su
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class AboutProjectWidget extends StatefulWidget {
-   AboutProjectWidget({required this.cardModel}) ;
-    final CardModel cardModel;
+  AboutProjectWidget({required this.cardModel});
+
+  final CardModel cardModel;
+
   @override
   _AboutProjectWidgetState createState() => _AboutProjectWidgetState();
 }
 
 class _AboutProjectWidgetState extends State<AboutProjectWidget>
-    with TickerProviderStateMixin{
+    with TickerProviderStateMixin {
   late TabController _tabController;
+
   @override
   void dispose() {
     _tabController.dispose();
@@ -44,11 +45,10 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
     super.initState();
   }
 
-  _handleTabSelection() {
+  void _handleTabSelection() {
     if (_tabController.indexIsChanging) {
       setState(() {});
     }
-
   }
 
   @override
@@ -80,13 +80,11 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                       child: CachedNetworkImage(
                         imageUrl: widget.cardModel.image!,
                         fit: BoxFit.cover,
-                        width:
-                        MediaQuery.of(context).size.width,
+                        width: MediaQuery.of(context).size.width,
                         placeholder: (context, url) => Center(
                           child: CircularProgressIndicator(),
                         ),
-                        errorWidget: (context, url, error) =>
-                            Icon(Icons.error),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
                       ),
                     ),
                   ),
@@ -107,8 +105,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                         width: 60.w,
                         decoration: BoxDecoration(
                           color: AppColorUtils.BLUE_PERCENT,
-                          borderRadius:
-                          BorderRadius.horizontal(
+                          borderRadius: BorderRadius.horizontal(
                             left: Radius.circular(12),
                           ),
                         ),
@@ -122,27 +119,25 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                 ],
               ),
               AppWidgets.text(
-                text:
-                "Drenajni kuzatish uchun mo’jallangan moslama",
+                text: "Drenajni kuzatish uchun mo’jallangan moslama",
                 fontSize: 20.sp,
                 color: AppColorUtils.DARK2,
                 fontWeight: FontWeight.w500,
                 maxLines: 2,
               ).paddingSymmetric(horizontal: 20.w),
               KraudfandingAuthorWidget(
-                  model: widget.cardModel,
-              onTap: (){
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return CommentToAuthorDialog();
-                  },
-                );
-              },
+                model: widget.cardModel,
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return CommentToAuthorDialog();
+                    },
+                  );
+                },
               ).paddingOnly(top: 15.w),
               SizedBox(height: 12.w),
-              KraudfandingPriceWidget(
-                  model: widget.cardModel),
+              KraudfandingPriceWidget(model: widget.cardModel),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -150,8 +145,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                     model: widget.cardModel,
                   ),
                   Column(
-                    crossAxisAlignment:
-                    CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppWidgets.starTextWidget(
                         text: LocaleKeys.must_collect_date.tr(),
@@ -238,10 +232,8 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                   indicatorColor: AppColorUtils.GREEN_APP,
                   indicatorSize: TabBarIndicatorSize.tab,
                   padding: EdgeInsets.only(right: 10),
-                  indicatorPadding:
-                  EdgeInsets.only(right: 10, left: 10),
-                  labelPadding:
-                  EdgeInsets.only(right: 10, left: 10),
+                  indicatorPadding: EdgeInsets.only(right: 10, left: 10),
+                  labelPadding: EdgeInsets.only(right: 10, left: 10),
                 ).paddingOnly(left: 15.w, top: 8.w),
                 Container(
                   child: [
@@ -263,8 +255,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                   height: 10.w,
                 ),
                 Row(
-                  mainAxisAlignment:
-                  MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ButtonCard(
                       onPress: () {

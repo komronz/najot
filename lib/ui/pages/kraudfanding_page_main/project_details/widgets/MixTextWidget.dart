@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
@@ -13,7 +11,7 @@ class MixTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child:   AppWidgets.textLocale(
+      child: AppWidgets.textLocale(
           text: LocaleKeys.send_payment1,
           color: AppColorUtils.DARK3,
           fontWeight: FontWeight.w400,
@@ -36,9 +34,7 @@ class MixTextWidget extends StatelessWidget {
             MarkerText(
               marker: "#",
               style: TextStyle(
-                  color: AppColorUtils.BLACK,
-                  fontWeight: FontWeight.w600
-              ),
+                  color: AppColorUtils.BLACK, fontWeight: FontWeight.w600),
             )
           ]),
     );

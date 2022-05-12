@@ -41,7 +41,7 @@ class ProductDetailPage extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: size.height*0.8,
+              height: size.height * 0.8,
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,7 +63,8 @@ class ProductDetailPage extends StatelessWidget {
                           placeholder: (context, url) => Center(
                             child: CircularProgressIndicator(),
                           ),
-                          errorWidget: (context, url, error) => Icon(Icons.error),
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.error),
                         ),
                       ),
                     ),
@@ -140,7 +141,9 @@ class ProductDetailPage extends StatelessWidget {
                       maxLines: 50,
                       color: AppColorUtils.DARK2,
                     ).paddingSymmetric(horizontal: 20.w),
-                    SizedBox(height: 18.w,),
+                    SizedBox(
+                      height: 18.w,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -183,15 +186,15 @@ class ProductDetailPage extends StatelessWidget {
                     ).paddingSymmetric(
                       horizontal: 20.w,
                     ),
-                    SizedBox(height: 18.w,),
-
+                    SizedBox(
+                      height: 18.w,
+                    ),
                   ],
                 ),
               ),
             ),
             Container(
               color: AppColorUtils.WHITE,
-
               child: ButtonCard(
                 height: 48.w,
                 width: MediaQuery.of(context).size.width,

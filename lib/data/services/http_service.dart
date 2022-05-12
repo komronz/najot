@@ -19,13 +19,14 @@ class HttpService {
     await getIt<HttpService>().create();
   }
 
-  Future create() async {
+  Future<void> create() async {
     if (_dio == null) {
       _dio = Dio();
       (_dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
           (client) {
         client.badCertificateCallback =
             (X509Certificate cert, String host, int port) => true;
+        return null;
       };
     }
   }

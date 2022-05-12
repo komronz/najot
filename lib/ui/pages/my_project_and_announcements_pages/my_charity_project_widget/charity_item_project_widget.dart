@@ -6,7 +6,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/charity_model.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
@@ -97,49 +96,49 @@ class CharityItemProjectWidget extends StatelessWidget {
                   ).paddingOnly(
                     bottom: 3.h,
                   ),
-                  model.volunteerName==null
+                  model.volunteerName == null
                       ? Row(
-                    children: [
-                      Container(
-                        width: 11.w,
-                        height: 11.w,
-                        child: CircularProgressIndicator(
-                          color: Color(0xFFE8B811),
-                          backgroundColor: AppColorUtils.WHITE,
-                          strokeWidth: 2,
-                        ),
-                      ).paddingOnly(right: 5),
-                      AppWidgets.textLocale(
-                        text: LocaleKeys.expected,
-                        fontSize: 12.sp,
-                        color: Color(0xFFE8B811),
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ],
-                  )
+                          children: [
+                            Container(
+                              width: 11.w,
+                              height: 11.w,
+                              child: CircularProgressIndicator(
+                                color: Color(0xFFE8B811),
+                                backgroundColor: AppColorUtils.WHITE,
+                                strokeWidth: 2,
+                              ),
+                            ).paddingOnly(right: 5),
+                            AppWidgets.textLocale(
+                              text: LocaleKeys.expected,
+                              fontSize: 12.sp,
+                              color: Color(0xFFE8B811),
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ],
+                        )
                       : Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(2),
-                        height: 12.w,
-                        width: 12.w,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: Color(0xFFE8FEF2),
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(2),
+                              height: 12.w,
+                              width: 12.w,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                color: Color(0xFFE8FEF2),
+                              ),
+                              child: SvgPicture.asset(
+                                AppImageUtils.CHECK_SMALL,
+                                color: Color(0xFF038D69),
+                              ).paddingAll(0.2),
+                            ).paddingOnly(right: 5),
+                            AppWidgets.textLocale(
+                              text: model.volunteerName!,
+                              fontSize: 12.sp,
+                              color: AppColorUtils.TEXT_GREEN,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ],
                         ),
-                        child: SvgPicture.asset(
-                          AppImageUtils.CHECK_SMALL,
-                          color: Color(0xFF038D69),
-                        ).paddingAll(0.2),
-                      ).paddingOnly(right: 5),
-                      AppWidgets.textLocale(
-                        text: model.volunteerName!,
-                        fontSize: 12.sp,
-                        color: AppColorUtils.TEXT_GREEN,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ],
-                  ),
                 ],
               ).paddingSymmetric(vertical: 14, horizontal: 12),
               flex: 1,

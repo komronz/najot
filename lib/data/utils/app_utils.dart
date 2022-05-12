@@ -1,5 +1,3 @@
-const List<String> status =["All","In progress","Done"];
+const List<String> status = ["All", "In progress", "Done"];
 
-enum Gender{
-  WOMAN, MAN
-}
+enum Gender { WOMAN, MAN }

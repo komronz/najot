@@ -22,23 +22,25 @@ import '../../my_project_and_announcements_pages/my_charity_project_full_widget/
 import '../../my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_news_widget.dart';
 import '../../my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_question_asked_widget.dart';
 
-
 class VolunteeringCharityFullPage extends StatefulWidget {
   final CharityModel model;
-   MyCharitySupportListCubit cubit = MyCharitySupportListCubit();
+  MyCharitySupportListCubit cubit = MyCharitySupportListCubit();
 
   VolunteeringCharityFullPage({
     required this.model,
     Key? key,
   }) : super(key: key);
   static const String routName = 'volunteeringCharityFullPage';
+
   @override
-  _VolunteeringCharityFullPageState createState() => _VolunteeringCharityFullPageState();
+  _VolunteeringCharityFullPageState createState() =>
+      _VolunteeringCharityFullPageState();
 }
 
-class _VolunteeringCharityFullPageState extends State<VolunteeringCharityFullPage>
-    with TickerProviderStateMixin{
+class _VolunteeringCharityFullPageState
+    extends State<VolunteeringCharityFullPage> with TickerProviderStateMixin {
   late TabController _tabController;
+
   @override
   void dispose() {
     _tabController.dispose();
@@ -56,8 +58,8 @@ class _VolunteeringCharityFullPageState extends State<VolunteeringCharityFullPag
     if (_tabController.indexIsChanging) {
       setState(() {});
     }
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,8 +123,10 @@ class _VolunteeringCharityFullPageState extends State<VolunteeringCharityFullPag
                     color: AppColorUtils.DARK2,
                     maxLines: 10,
                   ).paddingSymmetric(horizontal: 20),
-                  CharityAuthorWidget(model: widget.model).paddingOnly(top: 18.w),
-                  CharityPriceWidget(model: widget.model).paddingOnly(top: 18.w),
+                  CharityAuthorWidget(model: widget.model)
+                      .paddingOnly(top: 18.w),
+                  CharityPriceWidget(model: widget.model)
+                      .paddingOnly(top: 18.w),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -134,7 +138,10 @@ class _VolunteeringCharityFullPageState extends State<VolunteeringCharityFullPag
                         children: [
                           AppWidgets.starTextWidget(
                             text: LocaleKeys.must_collected_date.tr(),
-                          ).paddingOnly(bottom: 5.w,top: 3.w,),
+                          ).paddingOnly(
+                            bottom: 5.w,
+                            top: 3.w,
+                          ),
                           Row(
                             children: [
                               Icon(
@@ -199,7 +206,6 @@ class _VolunteeringCharityFullPageState extends State<VolunteeringCharityFullPag
                                   fontSize: 14.sp,
                                 ),
                               ),
-
                               Text(
                                 LocaleKeys.comments.tr(),
                                 style: TextStyle(
@@ -212,9 +218,18 @@ class _VolunteeringCharityFullPageState extends State<VolunteeringCharityFullPag
                             indicatorColor: AppColorUtils.GREEN_APP,
                             indicatorSize: TabBarIndicatorSize.tab,
                             padding: EdgeInsets.only(right: 10),
-                            indicatorPadding: EdgeInsets.only(right: 10, left: 10,),
-                            labelPadding: EdgeInsets.only(right: 10, left: 10,),
-                          ).paddingOnly(left: 15.w, top: 8.w,),
+                            indicatorPadding: EdgeInsets.only(
+                              right: 10,
+                              left: 10,
+                            ),
+                            labelPadding: EdgeInsets.only(
+                              right: 10,
+                              left: 10,
+                            ),
+                          ).paddingOnly(
+                            left: 15.w,
+                            top: 8.w,
+                          ),
                           Container(
                             child: [
                               MyCharityMoreWidget(
@@ -224,7 +239,8 @@ class _VolunteeringCharityFullPageState extends State<VolunteeringCharityFullPag
                                 cardModel: widget.model,
                               ).paddingAll(20.w),
                               MyCharityQuestionsAskedWidget(
-                                cardModel: widget.model, cubit: widget.cubit,
+                                cardModel: widget.model,
+                                cubit: widget.cubit,
                               ).paddingAll(20.w),
                               MyCharityCommentsWidget(
                                 cardModel: widget.model,
@@ -235,8 +251,7 @@ class _VolunteeringCharityFullPageState extends State<VolunteeringCharityFullPag
                             height: 20.w,
                           ),
                           Row(
-                            mainAxisAlignment:
-                            MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               ButtonCard(
                                 onPress: () {
@@ -267,7 +282,6 @@ class _VolunteeringCharityFullPageState extends State<VolunteeringCharityFullPag
                       ),
                     ),
                   ),
-
                 ],
               ),
             ),

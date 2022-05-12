@@ -16,28 +16,28 @@ class FavoriteButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return isFavorite
         ? Container(
-      width: 24.w,
-      height: 24.w,
-      decoration: BoxDecoration(
-        color: AppColorUtils.PURPLE,
-        borderRadius: BorderRadius.circular(2),
-      ),
-      child: AppWidgets.imageSvg(
-        path: AppImageUtils.UNLIKE,
-        fit: BoxFit.none,
-      ),
-    )
+            width: 24.w,
+            height: 24.w,
+            decoration: BoxDecoration(
+              color: AppColorUtils.PURPLE,
+              borderRadius: BorderRadius.circular(2),
+            ),
+            child: AppWidgets.imageSvg(
+              path: AppImageUtils.UNLIKE,
+              fit: BoxFit.none,
+            ),
+          )
         : Container(
-      width: 24.w,
-      height: 24.w,
-      decoration: BoxDecoration(
-        color: AppColorUtils.IC_GREEN,
-        borderRadius: BorderRadius.circular(2),
-      ),
-      child: AppWidgets.imageSvg(
-        path: AppImageUtils.IC_FAVORITE_ADD,
-        fit: BoxFit.none,
-      ),
-    );
+            width: 24.w,
+            height: 24.w,
+            decoration: BoxDecoration(
+              color: AppColorUtils.IC_GREEN,
+              borderRadius: BorderRadius.circular(2),
+            ),
+            child: AppWidgets.imageSvg(
+              path: AppImageUtils.IC_FAVORITE_ADD,
+              fit: BoxFit.none,
+            ),
+          );
   }
 }

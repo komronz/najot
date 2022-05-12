@@ -1,7 +1,7 @@
 part of 'saved_page_cubit.dart';
 
 @immutable
-class SavedPageState extends Equatable{
+class SavedPageState extends Equatable {
   final List<CardModel> kraufandingSavedList;
   final bool hasError;
   final bool hasConnection;
@@ -30,12 +30,9 @@ class SavedPageState extends Equatable{
 
   @override
   List<Object?> get props => [
-    kraufandingSavedList,
-    hasConnection,
-    hasConnection,
-    isLoading,
-  ];
-
+        kraufandingSavedList,
+        hasConnection,
+        hasConnection,
+        isLoading,
+      ];
 }
-
-

@@ -10,8 +10,8 @@ import '../../../../data/utils/app_color_utils.dart';
 class MyCharityAppliedUserWidget extends StatelessWidget {
   final CharityModel model;
 
-  const MyCharityAppliedUserWidget({required this.model,Key? key}) : super(key: key);
-
+  const MyCharityAppliedUserWidget({required this.model, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

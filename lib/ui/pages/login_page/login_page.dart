@@ -2,20 +2,18 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/bloc/login_bloc/login_bloc.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/ui/pages/home_page/home_page.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/pages/login_page/custom_shape.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
-import '../reg_page/reg_page.dart';
 import '../verification_page/verification_page.dart';
 
 class LoginPage extends StatelessWidget {
@@ -31,7 +29,7 @@ class LoginPage extends StatelessWidget {
       child: BlocConsumer<LoginBloc, LoginState>(
         listener: (context, state) {
           if (state.phone.length == 12) {
-            print("dddddd");
+            AppLoggerUtil.i("dddddd");
           }
           if (state.checkPhoneNumber) {
             NavigatorService.to.pushNamed(
@@ -89,17 +87,17 @@ class LoginPage extends StatelessWidget {
                   left: 20,
                   right: 20,
                 ),
-               state.hasError ? AppWidgets.starTextWidget(
-                  text: "Telefon raqamni to'liq kiriting",
-                  color: AppColorUtils.RED
-                ).paddingOnly(left: 20) : SizedBox(),
+                state.hasError
+                    ? AppWidgets.starTextWidget(
+                            text: "Telefon raqamni to'liq kiriting",
+                            color: AppColorUtils.RED)
+                        .paddingOnly(left: 20)
+                    : SizedBox(),
                 AppWidgets.appButton(
                   title: LocaleKeys.enter,
                   color: AppColorUtils.GREEN_APP,
                   onTap: () {
-                      context.read<LoginBloc>().add(CheckPhoneNumber());
-
-
+                    context.read<LoginBloc>().add(CheckPhoneNumber());
                   },
                 ).paddingSymmetric(vertical: 24.h, horizontal: 20),
               ],
@@ -174,9 +172,7 @@ class LoginErrorTextWidget extends StatelessWidget {
                       style: TextStyle(color: AppColorUtils.RED),
                     ),
                   ],
-                  text: LocaleKeys
-                      .information_not_found
-                      .tr(),
+                  text: LocaleKeys.information_not_found.tr(),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                   maxLines: 3,

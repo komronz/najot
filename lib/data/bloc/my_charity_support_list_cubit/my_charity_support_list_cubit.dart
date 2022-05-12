@@ -1,10 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/charity_model.dart';
 
 import 'my_charity_support_list_state.dart';
-
 
 class MyCharitySupportListCubit extends Cubit<MyCharitySupportListState> {
   static MyCharitySupportListCubit get to =>
@@ -22,7 +20,7 @@ class MyCharitySupportListCubit extends Cubit<MyCharitySupportListState> {
           widgetChange: false,
         ));
 
-  void widgetChange(bool v){
+  void widgetChange(bool v) {
     emit(state.copyWith(widgetChange: v));
   }
 }

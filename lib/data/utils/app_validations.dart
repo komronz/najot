@@ -1,8 +1,4 @@
-
-
-
-class Validator{
-
+class Validator {
   // static String? validateNumber(String value){
   //   if (value.isEmpty) {
   //     return LocaleKeys.enter_number.tr();

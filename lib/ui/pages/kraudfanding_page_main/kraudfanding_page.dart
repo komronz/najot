@@ -41,7 +41,7 @@ class _KraudfandingPageState extends State<KraudfandingPage>
     super.initState();
   }
 
-  _handleTabSelection() {
+  void _handleTabSelection() {
     if (_tabController.indexIsChanging) {
       setState(() {});
     }
@@ -72,10 +72,10 @@ class _KraudfandingPageState extends State<KraudfandingPage>
                   ).paddingOnly(left: 20.w, right: 20.w, bottom: 15.w),
                   KraudfandingBanner(),
                   AppWidgets.textLocale(
-                          text: LocaleKeys.new_add,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: AppColorUtils.DARK2,
+                    text: LocaleKeys.new_add,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: AppColorUtils.DARK2,
                   ).paddingOnly(
                     top: 24.w,
                     bottom: 15.w,

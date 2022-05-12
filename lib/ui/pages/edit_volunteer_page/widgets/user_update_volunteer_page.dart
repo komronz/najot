@@ -7,6 +7,7 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/widgets/edit_view1.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
@@ -25,11 +26,10 @@ class UserUpdateVolunteerPage extends StatelessWidget {
     return WillPopScope(
       onWillPop: () {
         context.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
-        return Future(()=>false);
-
+        return Future(() => false);
       },
       child: GestureDetector(
-        onTap: (){
+        onTap: () {
           FocusManager.instance.primaryFocus?.unfocus();
         },
         child: BlocProvider(
@@ -37,7 +37,7 @@ class UserUpdateVolunteerPage extends StatelessWidget {
           child: BlocConsumer<RegVolunteerBloc, RegVolunteerState>(
             listener: (context, state) {},
             builder: (context, state) {
-              return   Scaffold(
+              return Scaffold(
                 resizeToAvoidBottomInset: false,
                 appBar: AppBar(
                   backgroundColor: AppColorUtils.BACKGROUND,
@@ -53,7 +53,9 @@ class UserUpdateVolunteerPage extends StatelessWidget {
                       },
                       visibleIcon: true,
                       onTapIcon: () {
-                        context.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
+                        context
+                            .read<EditVolunteerBloc>()
+                            .add(EditProfileChangePage(1));
                       },
                       icon: AppImageUtils.REMOVE,
                     ),
@@ -66,7 +68,8 @@ class UserUpdateVolunteerPage extends StatelessWidget {
                     children: [
                       Container(
                         child: SmoothPageIndicator(
-                          controller: context.read<RegVolunteerBloc>().pageController,
+                          controller:
+                              context.read<RegVolunteerBloc>().pageController,
                           count: 2,
                           effect: WormEffect(
                             dotColor: AppColorUtils.INDICATOR,
@@ -78,7 +81,8 @@ class UserUpdateVolunteerPage extends StatelessWidget {
                         child: Container(
                           child: PageView(
                             physics: NeverScrollableScrollPhysics(),
-                            controller: context.read<RegVolunteerBloc>().pageController,
+                            controller:
+                                context.read<RegVolunteerBloc>().pageController,
                             children: [
                               EditView1(),
                               EditView2(),

@@ -102,7 +102,8 @@ class VolunteerHelpWidget extends StatelessWidget {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                              image: NetworkImage(volunteerHelpModel.cardModel.image!),
+                              image: NetworkImage(
+                                  volunteerHelpModel.cardModel.image!),
                               fit: BoxFit.cover),
                         ),
                       ).paddingOnly(
@@ -224,7 +225,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                           borderRadius: BorderRadius.circular(2.0),
                         ),
                         side: MaterialStateBorderSide.resolveWith(
-                              (states) => BorderSide(
+                          (states) => BorderSide(
                             width: 2.0,
                             color: AppColorUtils.BORDER_COLOR,
                           ),
@@ -238,14 +239,15 @@ class VolunteerHelpWidget extends StatelessWidget {
                     ],
                   ),
                   AppWidgets.textLocale(
-                      text:
-                      LocaleKeys.attention_agree_help,
-                      color: AppColorUtils.RED,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12.sp,
-                      maxLines: 2
-                  ).paddingSymmetric(horizontal: 20.w),
-                  SizedBox(height: 20.w,)
+                          text: LocaleKeys.attention_agree_help,
+                          color: AppColorUtils.RED,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12.sp,
+                          maxLines: 2)
+                      .paddingSymmetric(horizontal: 20.w),
+                  SizedBox(
+                    height: 20.w,
+                  )
                 ],
               ),
             );

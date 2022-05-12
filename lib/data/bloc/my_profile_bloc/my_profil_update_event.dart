@@ -4,13 +4,17 @@ part of 'my_profil_update_bloc.dart';
 abstract class MyProfileUpdateEvent extends Equatable {
   const MyProfileUpdateEvent();
 }
-class EditProfileChangePage extends MyProfileUpdateEvent{
+
+class EditProfileChangePage extends MyProfileUpdateEvent {
   EditProfileChangePage(this.changePage);
+
   final int changePage;
+
   @override
   // TODO: implement props
-  List<Object?> get props =>[changePage];
+  List<Object?> get props => [changePage];
 }
+
 class MyProfileLoad extends MyProfileUpdateEvent {
   const MyProfileLoad();
 
@@ -42,12 +46,13 @@ class PhoneChanged extends MyProfileUpdateEvent {
   final String phoneNumber;
 
   const PhoneChanged(
-      this.phoneNumber,
-      );
+    this.phoneNumber,
+  );
 
   @override
   List<Object?> get props => [phoneNumber];
 }
+
 class LastNameChanged extends MyProfileUpdateEvent {
   final String sureName;
 
@@ -56,6 +61,7 @@ class LastNameChanged extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [sureName];
 }
+
 class GenderChanged extends MyProfileUpdateEvent {
   final Gender isMan;
 
@@ -64,6 +70,7 @@ class GenderChanged extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [isMan];
 }
+
 class PageChanged extends MyProfileUpdateEvent {
   final bool isVisible;
 
@@ -72,6 +79,7 @@ class PageChanged extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [isVisible];
 }
+
 class PageNext extends MyProfileUpdateEvent {
   final bool isNext;
 
@@ -80,19 +88,18 @@ class PageNext extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [isNext];
 }
+
 class SaveIn extends MyProfileUpdateEvent {
-
   @override
   List<Object?> get props => [];
 }
+
 class SendCode extends MyProfileUpdateEvent {
-
   @override
   List<Object?> get props => [];
 }
+
 class ImagePickers extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [];
 }
-
-

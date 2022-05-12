@@ -9,10 +9,12 @@ class MyVolunteeringCubit extends Cubit<MyVolunteeringState> {
   static MyVolunteeringCubit get to => GetIt.I<MyVolunteeringCubit>();
 
   static Future init() async {
-    GetIt.instance..registerSingleton<MyVolunteeringCubit>(MyVolunteeringCubit());
+    GetIt.instance
+      ..registerSingleton<MyVolunteeringCubit>(MyVolunteeringCubit());
   }
 
-  MyVolunteeringCubit() : super(MyVolunteeringState(cardList: VolunteeringModel.list));
+  MyVolunteeringCubit()
+      : super(MyVolunteeringState(cardList: VolunteeringModel.list));
 
   Future CardItems() async {}
 }

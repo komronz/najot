@@ -1,5 +1,3 @@
-
-
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,7 +10,7 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kr
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class DetailBodyPart2 extends StatelessWidget {
-   DetailBodyPart2({required this.cardModel}) ;
+  DetailBodyPart2({required this.cardModel});
 
   CardModel cardModel;
 
@@ -20,8 +18,7 @@ class DetailBodyPart2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        KraudfandingPriceWidget(
-            model: cardModel),
+        KraudfandingPriceWidget(model: cardModel),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -29,12 +26,10 @@ class DetailBodyPart2 extends StatelessWidget {
               model: cardModel,
             ),
             Column(
-              crossAxisAlignment:
-              CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppWidgets.starTextWidget(
-                  text: LocaleKeys.must_collect_date.tr()
-                ),
+                    text: LocaleKeys.must_collect_date.tr()),
                 Row(
                   children: [
                     Icon(

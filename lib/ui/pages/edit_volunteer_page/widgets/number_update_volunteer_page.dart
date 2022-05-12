@@ -11,6 +11,7 @@ import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/widgets/number_updating.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/app_disable_text_field.dart';
+
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
@@ -34,7 +35,7 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
         return Future(() => false);
       },
       child: GestureDetector(
-        onTap: (){
+        onTap: () {
           FocusManager.instance.primaryFocus?.unfocus();
         },
         child: BlocProvider(
@@ -56,7 +57,9 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                     },
                     visibleIcon: true,
                     onTapIcon: () {
-                      con.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
+                      con
+                          .read<EditVolunteerBloc>()
+                          .add(EditProfileChangePage(1));
                     },
                     icon: AppImageUtils.REMOVE,
                   ),
@@ -103,7 +106,8 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                     bottom: 8.w,
                                   ),
                                   TextFormField(
-                                    style: TextStyle(color: AppColorUtils.BLACK),
+                                    style:
+                                        TextStyle(color: AppColorUtils.BLACK),
                                     inputFormatters: [maskFormatter],
                                     controller: numberController,
                                     onChanged: (v) {
@@ -115,8 +119,10 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                     validator: (value) {
                                       // return AppValidator.validateNumber(
                                       //     value!);
+                                      return null;
                                     },
-                                    decoration: DecorationConst().inputDecoration(
+                                    decoration:
+                                        DecorationConst().inputDecoration(
                                       prefixIcon: Container(
                                         padding: EdgeInsets.only(left: 10),
                                         width: size.width * 0.2,
@@ -135,7 +141,6 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                     left: 20.w,
                                     right: 20.w,
                                   ),
-
                                 ],
                               ),
                               Container(
@@ -169,14 +174,16 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(12),
-                                                  color: AppColorUtils.BLUE_BUTTON,
+                                                  color:
+                                                      AppColorUtils.BLUE_BUTTON,
                                                 ),
                                                 child: AppWidgets.textLocale(
                                                     text: LocaleKeys.send_code,
                                                     textAlign: TextAlign.center,
                                                     color: AppColorUtils.WHITE,
                                                     fontSize: 15.sp,
-                                                    fontWeight: FontWeight.w600),
+                                                    fontWeight:
+                                                        FontWeight.w600),
                                               ),
                                             )
                                           : NumberUpdating(

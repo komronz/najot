@@ -6,9 +6,9 @@ class AppPageState extends Equatable {
   final bool tobeVolunteer;
 
   const AppPageState({
-     this.pageType=AppPageType.MAIN,
-     this.changeMenu=1,
-     this.tobeVolunteer=false,
+    this.pageType = AppPageType.MAIN,
+    this.changeMenu = 1,
+    this.tobeVolunteer = false,
   });
 
   AppPageState copyWith({
@@ -24,7 +24,7 @@ class AppPageState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [pageType, changeMenu,tobeVolunteer];
+  List<Object?> get props => [pageType, changeMenu, tobeVolunteer];
 }
 
 enum AppPageType {
@@ -48,5 +48,4 @@ enum AppPageType {
   USER_UPDATE,
   NUMBER,
   DEFAULT,
-
 }

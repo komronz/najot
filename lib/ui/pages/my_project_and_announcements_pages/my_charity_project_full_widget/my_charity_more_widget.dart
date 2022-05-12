@@ -14,7 +14,6 @@ class MyCharityMoreWidget extends StatelessWidget {
 
   final CharityModel cardModel;
 
-
   @override
   Widget build(BuildContext context) {
     return Column(

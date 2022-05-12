@@ -2,8 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/utils/app_utils.dart';
 
-import 'my_profil_update_bloc.dart';
-
 class MyProfileUpdateState extends Equatable {
   final String name;
   final String sureName;
@@ -20,23 +18,21 @@ class MyProfileUpdateState extends Equatable {
   final XFile? userImgPath;
   final int changePage;
 
-
-  const MyProfileUpdateState({
-    this.name = '',
-    this.sureName = '',
-    this.imageUrl = '',
-    this.phoneNumber='',
-    this.isMan = Gender.MAN,
-    this.isSavedBtn = false,
-    this.nameFill = false,
-    this.phoneNumberFill=false,
-    this.sureNameFill = false,
-    this.isVisible=true,
-    this.nextPage=false,
-    this.hasError = false,
-    this.userImgPath,
-    this.changePage=1
-  });
+  const MyProfileUpdateState(
+      {this.name = '',
+      this.sureName = '',
+      this.imageUrl = '',
+      this.phoneNumber = '',
+      this.isMan = Gender.MAN,
+      this.isSavedBtn = false,
+      this.nameFill = false,
+      this.phoneNumberFill = false,
+      this.sureNameFill = false,
+      this.isVisible = true,
+      this.nextPage = false,
+      this.hasError = false,
+      this.userImgPath,
+      this.changePage = 1});
 
   @override
   List<Object?> get props => [
@@ -54,26 +50,24 @@ class MyProfileUpdateState extends Equatable {
         nextPage,
         isVisible,
         changePage
-
       ];
 
-  MyProfileUpdateState copyWith({
-    String? name,
-    String? sureName,
-    String? imageUrl,
-    String? phoneNumber,
-    bool? phoneNumberFill,
-    Gender? isMan,
-    bool? isSavedBtn,
-    bool? nameFill,
-    bool? sureNameFill,
-    bool? hasError,
-    bool? sendBtnActive,
-    bool? isVisible,
-    bool? nextPage,
-    XFile? userImgPath,
-    int? changePage
-  }) {
+  MyProfileUpdateState copyWith(
+      {String? name,
+      String? sureName,
+      String? imageUrl,
+      String? phoneNumber,
+      bool? phoneNumberFill,
+      Gender? isMan,
+      bool? isSavedBtn,
+      bool? nameFill,
+      bool? sureNameFill,
+      bool? hasError,
+      bool? sendBtnActive,
+      bool? isVisible,
+      bool? nextPage,
+      XFile? userImgPath,
+      int? changePage}) {
     return MyProfileUpdateState(
       name: name ?? this.name,
       sureName: sureName ?? this.sureName,
@@ -89,7 +83,6 @@ class MyProfileUpdateState extends Equatable {
       hasError: hasError ?? this.hasError,
       userImgPath: userImgPath ?? this.userImgPath,
       changePage: changePage ?? this.changePage,
-
     );
   }
 }

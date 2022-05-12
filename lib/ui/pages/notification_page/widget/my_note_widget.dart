@@ -5,6 +5,7 @@ import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
@@ -22,16 +23,13 @@ class MyNoteWidget extends StatelessWidget {
   final VoidCallback onTap;
   bool isLast;
 
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
         width: context.width,
         decoration: BoxDecoration(
-          color: isLast
-              ? AppColorUtils.ITEM_ORDERS_CARD
-              : AppColorUtils.WHITE,
+          color: isLast ? AppColorUtils.ITEM_ORDERS_CARD : AppColorUtils.WHITE,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: AppColorUtils.ITEM_ORDERS_BORDER,
@@ -99,7 +97,6 @@ class MyNoteWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -179,15 +176,13 @@ class MyNoteWidget extends StatelessWidget {
           ],
         ),
       ).paddingSymmetric(horizontal: 20).paddingOnly(top: 12.w),
-      onTap:onTap,
+      onTap: onTap,
       //     (){
       //   widget.onTap;
       //   setState(() {
       //     widget.isLast = false;
       //   });
       // }
-
-
     );
   }
 }

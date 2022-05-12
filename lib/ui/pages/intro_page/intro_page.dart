@@ -62,12 +62,16 @@ class IntroPage extends StatelessWidget {
                     if (state.currentIndex == 0) ...[
                       viewOfOnePage(context),
                     ] else if (state.currentIndex == 1) ...[
-                      viewOfTwoPage(context,state),
+                      viewOfTwoPage(context, state),
                     ] else ...[
-                      viewOfThreePage(context,state),
+                      viewOfThreePage(context, state),
                     ]
                   ],
-                ).paddingOnly(bottom: 35.w, right: 20.w, left: 20.w,),
+                ).paddingOnly(
+                  bottom: 35.w,
+                  right: 20.w,
+                  left: 20.w,
+                ),
               ],
             );
           }
