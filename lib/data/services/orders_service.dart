@@ -1,8 +1,8 @@
-import 'package:najot/data/model/kraufanding_model.dart';
+import 'package:najot/data/model/crowd_founding_model.dart';
 
 class OrdersService {
-  Future<List<KraufandingModel>?> getOrderList() async {
-    var model = KraufandingModel(
+  Future<List<CrowdFoundingModel>?> getOrderList() async {
+    var model = CrowdFoundingModel(
       title:
           "Drenajni kuzatish uchun mo’jallangan moslama Drenajni kuzatish uchun mo’jallangan moslamaDrenajni kuzatish uchun mo’jallangan moslamaDrenajni kuzatish uchun mo’jallangan moslama ",
       applied: 100,
@@ -15,7 +15,7 @@ class OrdersService {
       totalSum: "100 000 000",
       isFavorite: false,
     );
-    List<KraufandingModel> list = [
+    List<CrowdFoundingModel> list = [
       model,
       model,
       model,

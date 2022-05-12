@@ -21,7 +21,7 @@ class SavedPageCubit extends Cubit<SavedPageState> {
 
       emit(
         state.copyWith(
-          kraufandingSavedList: kraufandingSavedList,
+          crowdFoundingSavedList: kraufandingSavedList,
           isLoading: false,
         ),
       );

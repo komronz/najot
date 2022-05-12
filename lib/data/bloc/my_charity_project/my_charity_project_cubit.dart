@@ -4,7 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 
 import '../../model/charity_model.dart';
-import '../../model/kraufanding_model.dart';
+import '../../model/crowd_founding_model.dart';
 
 part 'my_charity_project_state.dart';
 
@@ -14,7 +14,7 @@ class MyProjectAndAnnouncementsPagesCubit
       GetIt.I<MyProjectAndAnnouncementsPagesCubit>();
 
   static Future init() async {
-    GetIt.instance
+    GetIt.I
       ..registerSingleton<MyProjectAndAnnouncementsPagesCubit>(
           MyProjectAndAnnouncementsPagesCubit());
   }
@@ -23,5 +23,5 @@ class MyProjectAndAnnouncementsPagesCubit
       : super(MyProjectAndAnnouncementsPagesState(
             volunteeringList: VolunteeringModel.list,
             charityList: CharityModel.list,
-            kraufandingList: KraufandingModel.list));
+            crowdFoundingList: CrowdFoundingModel.list));
 }

@@ -4,7 +4,7 @@ import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/bloc/login_bloc/login_bloc.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/model/card_model.dart';
-import 'package:najot/data/model/kraufanding_model.dart';
+import 'package:najot/data/model/crowd_founding_model.dart';
 import 'package:najot/data/model/product_model.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
@@ -266,7 +266,7 @@ class AppRouteUtils {
       case MyCrowdfundingAboutWidget.routeName:
         return MaterialPageRoute(
           builder: (context) => MyCrowdfundingAboutWidget(
-            model: settings.arguments as KraufandingModel,
+            model: settings.arguments as CrowdFoundingModel,
           ),
         );
       case VolunteeringCharityFullPage.routName:
@@ -278,7 +278,7 @@ class AppRouteUtils {
       case MyCrowdfundingSupportPage.routeName:
         return MaterialPageRoute(
           builder: (context) => MyCrowdfundingSupportPage(
-            list: settings.arguments as List<KraufandingModel>,
+            list: settings.arguments as List<CrowdFoundingModel>,
           ),
         );
       default:

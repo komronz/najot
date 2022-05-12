@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../model/charity_model.dart';
-import '../../model/kraufanding_model.dart';
+import '../../model/crowd_founding_model.dart';
 import '../../services/charity_history_service.dart';
 
 part 'volunteering_charity_history_state.dart';
@@ -18,14 +18,14 @@ class VolunteeringCharityHistoryCubit
     try {
       ///TODO cardmodelni kraufanding modelga o'zgartirish
       /// TODO: WARNING: crowdFounding
-      var kraufandingList = await service.getKraufandingList();
+      var crowdFoundingList = await service.getCrowdFoundingList();
       var charityList = await service.getCharityList();
       var itemsCharity = await service.getItemsList();
 
       emit(
         state.copyWith(
           charityList: charityList,
-          kraufandingList: kraufandingList,
+          kraufandingList: crowdFoundingList,
           itemsCharity: itemsCharity,
           isLoading: false,
         ),

@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/model/kraufanding_model.dart';
+import 'package:najot/data/model/crowd_founding_model.dart';
 import 'package:najot/ui/pages/my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_project_details_widgets.dart';
 
 class MyCrowdfundingMoreWidget extends StatelessWidget {
@@ -11,7 +11,7 @@ class MyCrowdfundingMoreWidget extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final KraufandingModel cardModel;
+  final CrowdFoundingModel cardModel;
 
   @override
   Widget build(BuildContext context) {

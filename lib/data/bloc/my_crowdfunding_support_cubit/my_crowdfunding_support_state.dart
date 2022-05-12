@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../../model/kraufanding_model.dart';
+import '../../model/crowd_founding_model.dart';
 
 class MyCrowdfundingSupportState extends Equatable {
   MyCrowdfundingSupportState(
@@ -8,7 +8,7 @@ class MyCrowdfundingSupportState extends Equatable {
       required this.isVisible,
       required this.widgetChange});
 
-  final List<KraufandingModel> cardList;
+  final List<CrowdFoundingModel> cardList;
   final bool widgetChange;
   final bool isVisible;
 
@@ -17,7 +17,7 @@ class MyCrowdfundingSupportState extends Equatable {
   List<Object?> get props => [cardList, isVisible, widgetChange];
 
   MyCrowdfundingSupportState copyWith({
-    List<KraufandingModel>? list,
+    List<CrowdFoundingModel>? list,
     bool? widgetChange,
     bool? isVisible,
   }) {

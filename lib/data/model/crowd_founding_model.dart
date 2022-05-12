@@ -1,4 +1,4 @@
-class KraufandingModel {
+class CrowdFoundingModel {
   String? title;
   double? percent;
   String? imgUrl;
@@ -10,7 +10,7 @@ class KraufandingModel {
   String? createdDate;
   List<InfoModel>? infoModel;
 
-  KraufandingModel({
+  CrowdFoundingModel({
     this.title,
     this.percent,
     this.imgUrl,
@@ -23,8 +23,8 @@ class KraufandingModel {
     this.infoModel,
   });
 
-  static final List<KraufandingModel> list = [
-    KraufandingModel(
+  static final List<CrowdFoundingModel> list = [
+    CrowdFoundingModel(
       title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
       percent: 60.0,
       imgUrl:
@@ -37,7 +37,7 @@ class KraufandingModel {
       isFavorite: false,
       infoModel: info,
     ),
-    KraufandingModel(
+    CrowdFoundingModel(
         title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
         percent: 60.0,
         imgUrl:
@@ -49,7 +49,7 @@ class KraufandingModel {
         createdDate: "25.08.2022",
         isFavorite: false,
         infoModel: info),
-    KraufandingModel(
+    CrowdFoundingModel(
       title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
       percent: 60.0,
       imgUrl:
@@ -62,7 +62,7 @@ class KraufandingModel {
       isFavorite: false,
       infoModel: info,
     ),
-    KraufandingModel(
+    CrowdFoundingModel(
       title: "Onaxonni yoshlari katta, ularga ovqat qilib berish kerak",
       percent: 60.0,
       imgUrl:

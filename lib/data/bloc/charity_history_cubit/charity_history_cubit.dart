@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:najot/data/model/charity_model.dart';
-import 'package:najot/data/model/kraufanding_model.dart';
+import 'package:najot/data/model/crowd_founding_model.dart';
 import 'package:najot/data/services/charity_history_service.dart';
 
 part 'charity_history_state.dart';
@@ -17,7 +17,7 @@ class CharityHistoryCubit extends Cubit<CharityHistoryState> {
       var charityList = await service.getCharityList();
 
       /// TODO: WARNING: crowdFounding
-      var crowdFounding = await service.getKraufandingList();
+      var crowdFounding = await service.getCrowdFoundingList();
 
       emit(
         state.copyWith(

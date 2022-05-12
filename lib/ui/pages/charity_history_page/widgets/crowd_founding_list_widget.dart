@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
-import 'package:najot/data/model/kraufanding_model.dart';
+import 'package:najot/data/model/crowd_founding_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/services/products_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
@@ -13,7 +13,7 @@ import 'package:najot/ui/pages/crowd_founding_page_main/project_details/project_
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class KraufandingListWidget extends StatelessWidget {
-  final List<KraufandingModel> list;
+  final List<CrowdFoundingModel> list;
 
   const KraufandingListWidget({
     required this.list,

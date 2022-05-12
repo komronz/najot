@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
-import '../../../../data/model/kraufanding_model.dart';
+import '../../../../data/model/crowd_founding_model.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_text_field.dart';
@@ -13,7 +13,7 @@ import '../../../widgets/app_widgets.dart';
 class MyCrowdfundingQuestionList extends StatefulWidget {
   MyCrowdfundingQuestionList({required this.cardModel, Key? key})
       : super(key: key);
-  final KraufandingModel cardModel;
+  final CrowdFoundingModel cardModel;
 
   @override
   _MyCrowdfundingQuestionListState createState() =>

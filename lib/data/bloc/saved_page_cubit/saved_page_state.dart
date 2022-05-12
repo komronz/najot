@@ -2,26 +2,26 @@ part of 'saved_page_cubit.dart';
 
 @immutable
 class SavedPageState extends Equatable {
-  final List<CardModel> kraufandingSavedList;
+  final List<CardModel> crowdFoundingSavedList;
   final bool hasError;
   final bool hasConnection;
   final bool isLoading;
 
   SavedPageState({
-    this.kraufandingSavedList = const [],
+    this.crowdFoundingSavedList = const [],
     this.hasError = false,
     this.hasConnection = true,
     this.isLoading = false,
   });
 
   SavedPageState copyWith({
-    List<CardModel>? kraufandingSavedList,
+    List<CardModel>? crowdFoundingSavedList,
     bool? hasError,
     bool? hasConnection,
     bool? isLoading,
   }) {
     return SavedPageState(
-      kraufandingSavedList: kraufandingSavedList ?? this.kraufandingSavedList,
+      crowdFoundingSavedList: crowdFoundingSavedList ?? this.crowdFoundingSavedList,
       hasConnection: hasConnection ?? this.hasConnection,
       hasError: hasError ?? this.hasError,
       isLoading: isLoading ?? this.isLoading,
@@ -30,7 +30,7 @@ class SavedPageState extends Equatable {
 
   @override
   List<Object?> get props => [
-        kraufandingSavedList,
+        crowdFoundingSavedList,
         hasConnection,
         hasConnection,
         isLoading,

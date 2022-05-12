@@ -12,7 +12,7 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import '../../../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_cubit.dart';
 import '../../../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_state.dart';
 import '../../../../data/config/const/decoration_const.dart';
-import '../../../../data/model/kraufanding_model.dart';
+import '../../../../data/model/crowd_founding_model.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_bar_with_title.dart';
@@ -32,7 +32,7 @@ class MyCrowdfundingAboutWidget extends StatefulWidget {
 
   const MyCrowdfundingAboutWidget({required this.model});
 
-  final KraufandingModel model;
+  final CrowdFoundingModel model;
 
   @override
   _AboutMyCharityProjectWidgetState createState() =>

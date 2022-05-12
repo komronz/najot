@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/kraufanding_model.dart';
+import 'package:najot/data/model/crowd_founding_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -11,7 +11,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 class MyCrowdfundingCommentsWidget extends StatefulWidget {
   MyCrowdfundingCommentsWidget({required this.cardModel});
 
-  final KraufandingModel cardModel;
+  final CrowdFoundingModel cardModel;
 
   @override
   State<MyCrowdfundingCommentsWidget> createState() =>

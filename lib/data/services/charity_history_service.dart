@@ -1,5 +1,5 @@
 import 'package:najot/data/model/charity_model.dart';
-import 'package:najot/data/model/kraufanding_model.dart';
+import 'package:najot/data/model/crowd_founding_model.dart';
 
 class CharityHistoryService {
   Future<List<CharityModel>?>? getCharityList() async {
@@ -26,8 +26,8 @@ class CharityHistoryService {
     return list;
   }
 
-  Future<List<KraufandingModel>?>? getKraufandingList() async {
-    var model = KraufandingModel(
+  Future<List<CrowdFoundingModel>?>? getCrowdFoundingList() async {
+    var model = CrowdFoundingModel(
       title:
           "Drenajni kuzatish uchun mo’jallangan moslama Drenajni kuzatish uchun mo’jallangan moslamaDrenajni kuzatish uchun mo’jallangan moslamaDrenajni kuzatish uchun mo’jallangan moslama ",
       applied: 100,

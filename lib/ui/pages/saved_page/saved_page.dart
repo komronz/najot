@@ -83,7 +83,7 @@ class SavedPage extends StatelessWidget {
     return Container(
       child: ListView(
         children: [
-          KraufandingSavedListWidget(list: state.kraufandingSavedList)
+          KraufandingSavedListWidget(list: state.crowdFoundingSavedList)
         ],
       ),
     ).paddingAll(15);

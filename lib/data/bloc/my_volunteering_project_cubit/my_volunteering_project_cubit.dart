@@ -10,7 +10,7 @@ class MyVolunteeringProjectCubit extends Cubit<MyVolunteeringProjectState> {
       GetIt.I<MyVolunteeringProjectCubit>();
 
   static Future init() async {
-    GetIt.instance
+    GetIt.I
       ..registerSingleton<MyVolunteeringProjectCubit>(
           MyVolunteeringProjectCubit());
   }

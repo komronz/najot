@@ -136,7 +136,7 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: [
-                  MyCrowdfundingListWidget(list: state.kraufandingList),
+                  MyCrowdfundingListWidget(list: state.crowdFoundingList),
                   MyVolunteeringProjectPage(list: state.volunteeringList),
                   MyCharityProjectList(list: state.charityList)
                 ],
