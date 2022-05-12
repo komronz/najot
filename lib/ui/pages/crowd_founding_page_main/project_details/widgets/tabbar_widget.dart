@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/data/bloc/kraudfanding_detail_cubit/kraudfanding_detail_cubit.dart';
+import 'package:najot/data/bloc/crowd_founding_detail_cubit/crowd_founding_detail_cubit.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 
 class TabBarWidget extends StatelessWidget {
@@ -48,9 +48,9 @@ class TabBarWidget extends StatelessWidget {
                 labelColor: AppColorUtils.WHITE,
                 onTap: (i) {
                   if (i == 0) {
-                    context.read<KraudfandingDetailCubit>().tabChange(0);
+                    context.read<CrowdFoundingDetailCubit>().tabChange(0);
                   } else {
-                    context.read<KraudfandingDetailCubit>().tabChange(1);
+                    context.read<CrowdFoundingDetailCubit>().tabChange(1);
                   }
                 },
                 indicator: BoxDecoration(

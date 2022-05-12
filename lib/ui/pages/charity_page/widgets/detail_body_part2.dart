@@ -5,8 +5,8 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_applied_user_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_price_widget.dart';
+import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/kraudfanding_applied_user_widget.dart';
+import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/kraudfanding_price_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class DetailBodyPart2 extends StatelessWidget {

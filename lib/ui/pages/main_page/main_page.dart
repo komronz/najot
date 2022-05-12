@@ -12,9 +12,9 @@ import 'package:najot/ui/pages/charity_page/charity_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/home_page/widget/carousel_slider_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/icon_name_widget.dart';
-import 'package:najot/ui/pages/home_page/widget/kraudfanding_card_widget.dart';
+import 'package:najot/ui/pages/home_page/widget/crowd_founding_card_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/volunteer_card_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
+import 'package:najot/ui/pages/crowd_founding_page_main/crowd_founding_page.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -87,7 +87,7 @@ class MainPage extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  KraudfandingPage(),
+                                                  CrowdFoundingPage(),
                                             ));
                                       },
                                     ),

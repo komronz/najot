@@ -15,8 +15,8 @@ import '../../../widgets/app_widgets.dart';
 import '../../home_page/widget/button_card_widget.dart';
 import '../project_details/project_details_page.dart';
 
-class KraudfandingMiniCardWidget extends StatelessWidget {
-  KraudfandingMiniCardWidget(
+class CrowdFoundingMiniCardWidget extends StatelessWidget {
+  CrowdFoundingMiniCardWidget(
       {required this.cardModel, required this.visible, Key? key})
       : super(key: key);
   final CardModel cardModel;

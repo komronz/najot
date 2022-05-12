@@ -10,12 +10,11 @@ import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_full_page/charity_full_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
-import 'package:najot/ui/pages/counter_page/counter_page.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/edit_volunteer_page.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/widgets/number_update_volunteer_page.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/widgets/user_update_volunteer_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/product_datail_page/product_detail_page.dart';
+import 'package:najot/ui/pages/crowd_founding_page_main/project_details/product_datail_page/product_detail_page.dart';
 import 'package:najot/ui/pages/loading_page/loading_page.dart';
 import 'package:najot/ui/pages/login_page/login_page.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_page.dart';
@@ -29,8 +28,8 @@ import 'package:najot/ui/pages/volunteer_page/volunteer_page.dart';
 
 import '../../ui/pages/charity_page/charity_full_page/charity_full_page2.dart';
 import '../../ui/pages/charity_page/widgets/charity_help_widget.dart';
-import '../../ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
-import '../../ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
+import '../../ui/pages/crowd_founding_page_main/crowd_founding_page.dart';
+import '../../ui/pages/crowd_founding_page_main/project_details/project_details_page.dart';
 import '../../ui/pages/my_products_page/my_products_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/number_update_page.dart';
@@ -60,10 +59,6 @@ class AppRouteUtils {
       case LoadingPage.routeName:
         return MaterialPageRoute(
           builder: (context) => LoadingPage(),
-        );
-      case CounterPage.routeName:
-        return CupertinoPageRoute(
-          builder: (context) => CounterPage(),
         );
       case AuthPage.routeName:
         return MaterialPageRoute(
@@ -147,9 +142,9 @@ class AppRouteUtils {
             helpModel: settings.arguments as OrganizationHelpModel,
           ),
         );
-      case KraudfandingPage.routeName:
+      case CrowdFoundingPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => KraudfandingPage(),
+          builder: (context) => CrowdFoundingPage(),
         );
       case VolunteerDetailPage.routeName:
         return MaterialPageRoute(

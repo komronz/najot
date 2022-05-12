@@ -17,7 +17,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../data/bloc/my_charity_support_list_cubit/my_charity_support_list_cubit.dart';
-import '../../kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
+import '../../crowd_founding_page_main/project_details/widgets/support_project_dialog.dart';
 import '../../my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_comments_widget.dart';
 import '../../my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_news_widget.dart';
 import '../../my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_question_asked_widget.dart';

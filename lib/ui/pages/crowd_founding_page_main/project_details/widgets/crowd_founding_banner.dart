@@ -11,8 +11,8 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../../../data/services/navigator_service.dart';
 import '../../../home_page/home_page.dart';
 
-class KraudfandingBanner extends StatelessWidget {
-  const KraudfandingBanner({
+class CrowdFoundingBanner extends StatelessWidget {
+  const CrowdFoundingBanner({
     Key? key,
   }) : super(key: key);
 

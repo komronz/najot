@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/card_model.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/project_details_widgets.dart';
+import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/project_details_widgets.dart';
 
 class MoreWidget extends StatelessWidget {
   const MoreWidget({

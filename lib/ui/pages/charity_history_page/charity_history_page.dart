@@ -17,7 +17,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../notification_page/notification_page.dart';
 import 'widgets/charity_list_widget.dart';
-import 'widgets/kraufanding_list_widget.dart';
+import 'widgets/crowd_founding_list_widget.dart';
 
 class CharityHistoryPage extends StatelessWidget {
   const CharityHistoryPage({Key? key}) : super(key: key);

@@ -5,7 +5,7 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/success_send_question_dialog.dart';
+import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/success_send_question_dialog.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 

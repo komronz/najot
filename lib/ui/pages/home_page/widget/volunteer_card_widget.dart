@@ -6,7 +6,7 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/product_datail_page/product_detail_page.dart';
+import 'package:najot/ui/pages/crowd_founding_page_main/project_details/product_datail_page/product_detail_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../../data/services/navigator_service.dart';

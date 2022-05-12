@@ -7,7 +7,7 @@ import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/product_datail_page/product_detail_page.dart';
+import 'package:najot/ui/pages/crowd_founding_page_main/project_details/product_datail_page/product_detail_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class ProductsWidget extends StatelessWidget {

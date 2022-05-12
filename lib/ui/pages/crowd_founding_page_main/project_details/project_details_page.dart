@@ -2,12 +2,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/data/bloc/kraudfanding_detail_cubit/kraudfanding_detail_cubit.dart';
+import 'package:najot/data/bloc/crowd_founding_cubit/crowd_founding_cubit.dart';
+import 'package:najot/data/bloc/crowd_founding_detail_cubit/crowd_founding_detail_cubit.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/about_project_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/products_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/tabbar_widget.dart';
+import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/about_project_widget.dart';
+import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/products_widget.dart';
+import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/tabbar_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 
 import '../../../../data/services/navigator_service.dart';
@@ -28,7 +29,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
     with TickerProviderStateMixin {
   late TabController _controller;
 
-  KraudfandingDetailCubit cubit = KraudfandingDetailCubit();
+  CrowdFoundingDetailCubit cubit = CrowdFoundingDetailCubit();
 
   @override
   void dispose() {
@@ -61,7 +62,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
             NavigatorService.to.pop();
           },
         ),
-        body: BlocBuilder<KraudfandingDetailCubit, KraudfandingDetailState>(
+        body: BlocBuilder<CrowdFoundingDetailCubit, CrowdFoundingDetailState>(
           builder: (context, state) {
             return SingleChildScrollView(
               physics: BouncingScrollPhysics(),

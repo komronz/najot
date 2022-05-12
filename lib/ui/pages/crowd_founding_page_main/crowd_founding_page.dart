@@ -2,30 +2,30 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/data/bloc/kraudfanding_cubit/kraud_fanding_cubit.dart';
+import 'package:najot/data/bloc/crowd_founding_cubit/crowd_founding_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/KraudfandingBanner.dart';
+import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/crowd_founding_banner.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_search_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-import 'kraudfanding_widget/kraudfanding_mini_card_widget.dart';
+import 'widgets/crowd_founding_mini_card_widget.dart';
 
-class KraudfandingPage extends StatefulWidget {
-  KraudfandingPage({Key? key});
+class CrowdFoundingPage extends StatefulWidget {
+  CrowdFoundingPage({Key? key});
 
-  static const String routeName = '/kraudfanding';
+  static const String routeName = '/crowd_founding';
 
   @override
-  State<KraudfandingPage> createState() => _KraudfandingPageState();
+  State<CrowdFoundingPage> createState() => _CrowdFoundingPageState();
 }
 
-class _KraudfandingPageState extends State<KraudfandingPage>
+class _CrowdFoundingPageState extends State<CrowdFoundingPage>
     with SingleTickerProviderStateMixin {
-  KraudFandingCubit cubit = KraudFandingCubit();
+  CrowdFoundingCubit cubit = CrowdFoundingCubit();
   late TabController _tabController;
 
   @override
@@ -59,7 +59,7 @@ class _KraudfandingPageState extends State<KraudfandingPage>
             NavigatorService.to.pop();
           },
         ),
-        body: BlocBuilder<KraudFandingCubit, KraudFandingState>(
+        body: BlocBuilder<CrowdFoundingCubit, CrowdFoundingState>(
           builder: (context, state) {
             return SingleChildScrollView(
               physics: BouncingScrollPhysics(),
@@ -70,7 +70,7 @@ class _KraudfandingPageState extends State<KraudfandingPage>
                     onChange: (v) {},
                     search: () {},
                   ).paddingOnly(left: 20.w, right: 20.w, bottom: 15.w),
-                  KraudfandingBanner(),
+                  CrowdFoundingBanner(),
                   AppWidgets.textLocale(
                     text: LocaleKeys.new_add,
                     fontSize: 18,
@@ -87,7 +87,7 @@ class _KraudfandingPageState extends State<KraudfandingPage>
                     child: Row(
                       children: List.generate(
                         state.cardList.length,
-                        (index) => KraudfandingMiniCardWidget(
+                        (index) => CrowdFoundingMiniCardWidget(
                           cardModel: state.cardList[index],
                           visible: true,
                         ).paddingOnly(left: 10.w),
@@ -172,7 +172,7 @@ class _KraudfandingPageState extends State<KraudfandingPage>
                                 mainAxisSpacing: 6,
                                 children: List.generate(
                                   state.cardList.length,
-                                  (index) => KraudfandingMiniCardWidget(
+                                  (index) => CrowdFoundingMiniCardWidget(
                                     visible: true,
                                     cardModel: state.cardList[index],
                                   ),
@@ -189,7 +189,7 @@ class _KraudfandingPageState extends State<KraudfandingPage>
                                 mainAxisSpacing: 6,
                                 children: List.generate(
                                   state.cardList.length,
-                                  (index) => KraudfandingMiniCardWidget(
+                                  (index) => CrowdFoundingMiniCardWidget(
                                     visible: true,
                                     cardModel: state.cardList[index],
                                   ),
@@ -206,7 +206,7 @@ class _KraudfandingPageState extends State<KraudfandingPage>
                                 mainAxisSpacing: 6,
                                 children: List.generate(
                                   state.cardList.length,
-                                  (index) => KraudfandingMiniCardWidget(
+                                  (index) => CrowdFoundingMiniCardWidget(
                                     visible: true,
                                     cardModel: state.cardList[index],
                                   ),
