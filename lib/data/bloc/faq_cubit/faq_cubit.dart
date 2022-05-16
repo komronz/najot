@@ -24,7 +24,8 @@ class FaqCubit extends Cubit<FaqState> {
   Future openFaqItem(int index, bool isOpen) async {
     var mainFaqModel = await faqService.getModel();
     mainFaqModel!.faqModel![index].isOpen = !(mainFaqModel.faqModel![index].isOpen ?? false);
-    emit(state.copyWith(list: mainFaqModel.faqModel,));
+    List<FaqModel>? list=List.from(mainFaqModel.faqModel!);
+    emit(state.copyWith(list: list,));
     // getFaqList();
   }
 }
