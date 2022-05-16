@@ -205,7 +205,7 @@ class AboutPage extends StatelessWidget {
                         title: LocaleKeys.your_application.tr(),
                       ).paddingOnly(top: 18),
                       AppWidgets.appButton(
-                        title: LocaleKeys.str_registration.tr(),
+                        title: LocaleKeys.send.tr(),
                         onTap: () async {
                           _key=UniqueKey();
                           await showDialog(
