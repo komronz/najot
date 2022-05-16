@@ -30,8 +30,6 @@ class HomeCubit extends Cubit<HomeState> {
         charity: mainModel.charity,
         slider: mainModel.slider,
       ));
-      print(mainModel.slider![0].title);
-
     }else{
 
     }

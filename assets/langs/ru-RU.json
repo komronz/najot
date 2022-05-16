@@ -241,6 +241,8 @@
     "enter_another_number": "Введите другой номер",
     "select_date":"Выберите дату",
     "enter_project_name": "Введите название проекта",
+    "connection_error": "Ошибка",
+    "connection_success": "Есть связь",
     "successful_send": "// Успешно отправлено! // Модераторы свяжутся с вами в ближайшее время."
 
 

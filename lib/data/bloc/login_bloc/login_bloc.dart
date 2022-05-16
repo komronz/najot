@@ -166,7 +166,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       }else{
         emit(state.copyWith(hasError: true));
       }
-
   }
 
   void _checkPhoneNumberChanged(

@@ -24,7 +24,7 @@ class FaqState extends Equatable {
       list: list ?? this.list,
       hasConnection: hasConnection ?? this.hasConnection,
       hasLoading: hasLoading ?? this.hasLoading,
-    );
+     );
   }
 
   @override

@@ -22,6 +22,7 @@ class AppTextField extends StatefulWidget {
   final bool hasTitle;
   final bool autoFocus;
   final bool phoneNumberCode;
+  final Key? key;
 
   AppTextField({
     required this.hintText,
@@ -39,6 +40,7 @@ class AppTextField extends StatefulWidget {
     this.hasTitle = true,
     this.autoFocus = false,
     this.phoneNumberCode = false,
+    this.key,
   });
 
   @override
@@ -112,6 +114,7 @@ class _AppTextFieldState extends State<AppTextField> {
             maxLines: widget.isMultiLine ? null : 1,
             controller: _textEditingController,
             enabled: widget.enabled,
+            key: widget.key,
             style: GoogleFonts.inter(
               fontSize: 16,
             ),

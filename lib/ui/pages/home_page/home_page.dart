@@ -89,7 +89,7 @@ class HomePage extends StatelessWidget {
         return AddingProjectPage();
       case AppPageType.NUMBER:
         return NumberUpdatePage();
-      default:
+        default:
         return Container();
     }
   }

@@ -1,78 +1,32 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/faq_model.dart';
-
+import 'package:najot/data/services/faq_service.dart';
 part 'faq_state.dart';
 
 class FaqCubit extends Cubit<FaqState> {
-  FaqCubit() : super(FaqState());
-  List<FaqModel> faqList = [
-    FaqModel(
-      title:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry?",
-      text:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
-      isOpen: false,
-    ),
-    FaqModel(
-      title:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry?",
-      text:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
-      isOpen: false,
-    ),
-    FaqModel(
-      title:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry?",
-      text:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
-      isOpen: false,
-    ),
-    FaqModel(
-      title:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry?",
-      text:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
-      isOpen: false,
-    ),
-    FaqModel(
-      title:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry?",
-      text:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
-      isOpen: false,
-    ),
-  ];
+  static FaqCubit get to => GetIt.I<FaqCubit>();
+  FaqService faqService = FaqService();
 
+  static Future init() async {
+    GetIt.instance..registerSingleton<FaqCubit>(FaqCubit());
+  }
+  FaqCubit() : super(FaqState());
   Future getFaqList() async {
-    emit(
-      state.copyWith(
-        hasLoading: true,
-        hasError: false,
-      ),
-    );
-    // await Future.delayed(Duration(milliseconds: 5000));
-    if (faqList.isNotEmpty) {
-      emit(
-        state.copyWith(
-          hasLoading: false,
-          list: faqList,
-        ),
-      );
-    } else {
-      emit(
-        state.copyWith(
-          hasLoading: false,
-          hasError: true,
-        ),
-      );
+    var mainFaqModel = await faqService.getModel();
+      emit(state.copyWith(hasLoading: true, hasError: false,),);
+    if(mainFaqModel!=null){
+      emit(state.copyWith(hasLoading: false, list: mainFaqModel.faqModel));
+    }else{
+      emit(state.copyWith(hasLoading: false, hasError: true,),);
     }
   }
 
   Future openFaqItem(int index, bool isOpen) async {
-    // List<FaqModel> list = List.from(state.list);
-    faqList[index].isOpen = !(faqList[index].isOpen ?? false);
-    emit(state.copyWith(list: faqList));
+    var mainFaqModel = await faqService.getModel();
+    mainFaqModel!.faqModel![index].isOpen = !(mainFaqModel.faqModel![index].isOpen ?? false);
+    emit(state.copyWith(list: mainFaqModel.faqModel, ));
     getFaqList();
   }
 }

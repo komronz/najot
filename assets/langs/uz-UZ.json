@@ -242,5 +242,7 @@
   "enter_another_number": "Boshqa raqam kiritish",
   "select_date":"Sanani tanlang",
   "enter_project_name": "Loyiha nomini kiriting",
+  "connection_error": "Xatolik",
+  "connection_success": "Aloqa mavjud",
   "successful_send": "//Muvoffaqiyatli yuborildi! //Tez orada Moderatorlar siz bilan aloqaga chiqishadi."
 }

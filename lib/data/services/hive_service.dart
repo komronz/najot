@@ -7,7 +7,9 @@ import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 // 🌎 Project imports:
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/model/token_model.dart';
 import 'package:najot/data/model/user.dart';
+
 
 class HiveService {
   late Box _box;
@@ -46,9 +48,27 @@ class HiveService {
   void deleteUser(User user){
     _box.delete(_HiveKeys.USER);
   }
+  //token
+  void setToken(TokenModel tokenModel) {
+    _box.put(_HiveKeys.TOKEN, jsonEncode(tokenModel));
+  }
+
+  TokenModel? getToken() {
+    var tokenModel = _box.get(_HiveKeys.TOKEN);
+    if (tokenModel != null) {
+      return TokenModel.fromJson(jsonDecode(tokenModel));
+    }
+    return null;
+  }
+
+  void deleteToken() {
+    _box.delete(_HiveKeys.TOKEN);
+  }
 }
 
 class _HiveKeys {
   static const String LANG = "lang";
   static const String USER = "user";
+  static const String TOKEN = 'token';
+
 }

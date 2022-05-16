@@ -8,6 +8,7 @@ import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
 import 'package:najot/data/model/product_model.dart';
 import 'package:najot/data/model/volunteering_model.dart';
+import 'package:najot/ui/pages/about_page/about_page.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_full_page/charity_full_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
@@ -282,6 +283,10 @@ class AppRouteUtils {
           builder: (context) => MyCrowdfundingSupportPage(
             list: settings.arguments as List<KraufandingModel>,
           ),
+        );
+      case AboutPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => AboutPage(),
         );
 
     }

@@ -4,6 +4,7 @@ import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/http_service.dart';
 import 'package:najot/data/services/storage_service.dart';
 
+import 'about_us_service.dart';
 import 'di_service.dart';
 import 'navigator_service.dart';
 
@@ -22,6 +23,11 @@ class RootService {
     await NavigatorService.init();
     await HiveService.init();
     await HttpService.init();
+    // await AboutUsService.init();
+
   }
   static HttpService get httpService => _getIt.get<HttpService>();
+  static HiveService get hiveService => _getIt.get<HiveService>();
+  // static AboutUsService get aboutUsService => _getIt.get<AboutUsService>();
+
 }
