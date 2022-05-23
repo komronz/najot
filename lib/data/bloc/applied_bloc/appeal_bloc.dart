@@ -2,8 +2,11 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:najot/data/model/about_us_model.dart';
+import 'package:najot/data/model/token_model.dart';
+import 'package:najot/data/services/about_us_service.dart';
+import 'package:najot/data/services/root_service.dart';
 
 part 'appeal_event.dart';
 
@@ -20,8 +23,10 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
     on<AppealPhoneChanged>(_onPhoneChanged);
     on<AppealTextChanged>(_onAppealTxtChanged);
     on<AppealBtnEvent>(_onBtnPressed);
+    on<SendDateEvent>(_onBtnSend);
   }
 
+  final AboutUsService aboutUsService=AboutUsService();
   Future _onNameChanged(
     AppealNameChanged event,
     Emitter<AppealState> emit,
@@ -32,8 +37,8 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
         firstNameFill: _isNotEmpty(event.name),
         isNextBtnActive: _nextBtnActive(
           event.name,
-          state.applyText,
-          state.phone,
+          state.content,
+          state.phoneNumber,
         ),
       ),
     );
@@ -66,12 +71,12 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
   ) async {
     emit(
       state.copyWith(
-        phone: event.phone,
-        phoneFill: _isNotEmpty(event.phone),
+        phoneNumber: event.phoneNumber,
+        phoneFill: _isNotEmpty(event.phoneNumber),
         isNextBtnActive: _nextBtnActive(
-          state.firstName,
-          state.applyText,
-          event.phone,
+          state.name,
+          state.content,
+          event.phoneNumber,
         ),
       ),
     );
@@ -83,12 +88,12 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
   ) async {
     emit(
       state.copyWith(
-        applyText: event.appeal,
-        applyFill: _isNotEmpty(event.appeal),
+        content: event.content,
+        applyFill: _isNotEmpty(event.content),
         isNextBtnActive: _nextBtnActive(
-          state.firstName,
-          event.appeal,
-          state.phone,
+          state.name,
+          event.content,
+          state.phoneNumber,
         ),
       ),
     );
@@ -99,11 +104,22 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
     Emitter<AppealState> emit,
   ) async {
     emit(
-      state.copyWith(
-          firstName: "",
-          phone: "",
-          applyText: ""
+      AppealState(name: "",
+          phoneNumber: "",
+          content: ""
       ),
+
     );
+  }
+  Future _onBtnSend(
+      SendDateEvent event,
+      Emitter<AppealState> emit,
+      ) async {
+    AboutUs? aboutUs =await aboutUsService.postModel(state.name, state.phoneNumber, state.content);
+    if(aboutUs !=null){
+      emit(state.copyWith(isLoading: true));
+    }else{
+      emit(state.copyWith(hasError: true));
+    }
   }
 }

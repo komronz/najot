@@ -1,12 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/bloc/notification_cubit/notification_cubit.dart';
 import 'package:najot/data/custom_time_picker/flutter_time_picker_spinner.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+
 import '../../../../data/custom_time_picker/date_picker/date_picker_theme.dart';
 import '../../../../data/custom_time_picker/date_picker/i18n/date_picker_i18n.dart';
 import '../../../../data/custom_time_picker/date_picker/widget/date_picker_widget.dart';
@@ -20,13 +22,16 @@ class NotificationEdit extends StatefulWidget {
   NotificationEdit({
     required this.selectFunction,
     required this.model,
+    required this.index,
+    required this.cubit,
     Key? key,
   }) : super(key: key);
 
   final Function selectFunction;
+  final NotificationCubit cubit;
+  final int index;
   DateTime _date = DateTime.now();
   DateTime _time = DateTime.now();
-
   VolunteeringModel model;
 
   @override
@@ -34,8 +39,10 @@ class NotificationEdit extends StatefulWidget {
 }
 
 class _NotificationEditState extends State<NotificationEdit> {
+
   @override
   Widget build(BuildContext context) {
+
     return Center(
       child: Material(
         color: Colors.transparent,
@@ -85,7 +92,8 @@ class _NotificationEditState extends State<NotificationEdit> {
                               height: 16,
                             ).paddingOnly(right: 5),
                             AppWidgets.textLocale(
-                              text: "${DateTimeUtil.dmy(DateTime.now(), context.locale)}",
+                              text:
+                                  "${DateTimeUtil.dmy(DateTime.now(), context.locale)}",
                               color: AppColorUtils.BLUE_TEXT,
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w500,
@@ -151,6 +159,7 @@ class _NotificationEditState extends State<NotificationEdit> {
                           spacing: 15.sp,
                           itemHeight: 40,
                           onTimeChange: (time) {
+                            widget._time=time;
                             // setState(
                             //       () {
                             //       widget._time = DateTime(
@@ -213,13 +222,14 @@ class _NotificationEditState extends State<NotificationEdit> {
                           widget._time.hour,
                           widget._time.minute,
                         );
+                        widget.cubit.dateChange(dateTime, widget.index);
                         NavigatorService.to.pop();
                         await showDialog(
                           context: context,
                           builder: (context) => NotificationSuccessAdding(
                             // selectFunction: (dateTime) {
-                              // print(dateTime.toUtc().toString());
-                              // bloc.add(VolunteerBirthDateSelected(dateTime));
+                            // print(dateTime.toUtc().toString());
+                            // bloc.add(VolunteerBirthDateSelected(dateTime));
                             // },
                             dateTime: dateTime,
                           ),

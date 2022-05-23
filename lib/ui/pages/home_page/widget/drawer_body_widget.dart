@@ -256,7 +256,6 @@ class DrawerBody extends StatelessWidget {
                     },
                   ),
                   FlutterSwitch(
-
                     showOnOff: true,
                     value: state.tobeVolunteer,
                     onToggle: (v) {

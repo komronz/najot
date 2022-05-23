@@ -14,25 +14,29 @@ class AppealNameChanged extends AppealEvent {
 }
 
 class AppealPhoneChanged extends AppealEvent {
-  final String phone;
+  final String phoneNumber;
 
-  AppealPhoneChanged(this.phone);
+  AppealPhoneChanged(this.phoneNumber);
 
   @override
-  List<Object?> get props => [phone];
+  List<Object?> get props => [phoneNumber];
 }
 
 class AppealTextChanged extends AppealEvent {
-  final String appeal;
+  final String content;
 
-  AppealTextChanged(this.appeal);
+  AppealTextChanged(this.content);
 
   @override
-  List<Object?> get props => [appeal];
+  List<Object?> get props => [content];
 }
 
 class AppealBtnEvent extends AppealEvent {
 
+  @override
+  List<Object?> get props => [];
+}
+class SendDateEvent extends AppealEvent {
   @override
   List<Object?> get props => [];
 }

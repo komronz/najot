@@ -28,5 +28,20 @@ class FaqState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [hasLoading, hasError, hasConnection, list];
+  List<Object?> get props => [
+        hasLoading,
+        hasError,
+        hasConnection,
+        list,
+      ];
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FaqState &&
+          runtimeType == other.runtimeType &&
+          hasError == other.hasError &&
+          list == other.list &&
+          hasConnection == other.hasConnection &&
+          hasLoading == other.hasLoading;
 }

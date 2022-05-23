@@ -32,7 +32,7 @@ class FaqItemWidget extends StatelessWidget {
             children: [
               SizedBox(
                 child: AppWidgets.text(
-                  text: faqModel.title!,
+                  text: faqModel.question!,
                   maxLines: 10,
                   color: AppColorUtils.DARK2,
                   fontSize: 18.sp,
@@ -48,18 +48,19 @@ class FaqItemWidget extends StatelessWidget {
                 ),
                 onTap: () {
                   AppLoggerUtil.i("$index  ${faqModel.isOpen}");
-                  context.read<FaqCubit>().openFaqItem(index, faqModel.isOpen!);
+                  context.read<FaqCubit>().openFaqItem(index);
+
                 },
               )
             ],
           ),
           AnimatedContainer(
             height: faqModel.isOpen! ? null : 0,
-            duration: Duration(milliseconds: 200),
+            duration: Duration(milliseconds: 500),
             child: SizedBox(
               width: 280.w,
               child: AppWidgets.text(
-                text: faqModel.text!,
+                text: faqModel.answer!,
                 maxLines: 30,
                 color: AppColorUtils.DARK3,
                 fontSize: 16.sp,

@@ -242,6 +242,8 @@ abstract class  LocaleKeys {
   static const enter_another_number = 'enter_another_number';
   static const select_date = 'select_date';
   static const enter_project_name = 'enter_project_name';
+  static const connection_error = 'connection_error';
+  static const connection_success = 'connection_success';
   static const successful_send = 'successful_send';
 
 

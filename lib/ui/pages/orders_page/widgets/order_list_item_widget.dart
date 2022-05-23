@@ -5,13 +5,14 @@ import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
+import 'package:najot/data/model/oreder_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/charity_history_page/widgets/date_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class OrdersItemsWidget extends StatelessWidget {
-  final KraufandingModel model;
+  final OrderModelResults model;
   final bool isLast;
 
   const OrdersItemsWidget({
@@ -22,6 +23,10 @@ class OrdersItemsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    String date = DateFormat("dd.MM.yyyy").format(
+      DateTime.parse(model.modifiedAt.toString()),
+    );
     return Container(
       margin: isLast ? EdgeInsets.only(bottom: 18.w) : null,
       width: context.width,
@@ -56,9 +61,7 @@ class OrdersItemsWidget extends StatelessWidget {
             color: AppColorUtils.ITEM_ORDERS_TEXT2,
           ).paddingOnly(top: 12.w, bottom: 3),
           AppWidgets.text(
-            text:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-                " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
+            text: model.description!,
             fontSize: 12.sp,
             fontWeight: FontWeight.w400,
             height: 1.3,
@@ -88,10 +91,10 @@ class OrdersItemsWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              DateWidget(date: model.createdDate!),
+              DateWidget(date: date),
               AppWidgets.textLocale(
                 text: LocaleKeys.sum,
-                args: [model.totalSum!],
+                args: [model.price!],
                 color: AppColorUtils.KRAUDFANDING,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,

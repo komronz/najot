@@ -94,6 +94,8 @@ class OrdersPage extends StatelessWidget {
             text: LocaleKeys.not_purchased_product,
             fontWeight: FontWeight.w600,
             color: AppColorUtils.GRAY_4,
+            textAlign: TextAlign.center,
+            maxLines: 2,
           ).paddingOnly(top: 16.w),
         ],
       ).paddingOnly(
