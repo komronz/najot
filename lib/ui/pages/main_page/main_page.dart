@@ -193,7 +193,7 @@ class MainPage extends StatelessWidget {
                                               arguments: VolunteerDetailModel(
                                                 cubit: VolunteerCubit.to,
                                                 cardModel:
-                                                    state.crudFunding[index],
+                                                    state.volunteer[index],
                                               ),
                                             );
                                           },
