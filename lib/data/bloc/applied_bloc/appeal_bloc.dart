@@ -96,6 +96,7 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
           state.phoneNumber,
         ),
       ),
+
     );
   }
 

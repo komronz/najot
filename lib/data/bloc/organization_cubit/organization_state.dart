@@ -7,8 +7,8 @@ class OrganizationState extends Equatable {
   final bool checkBox;
   final bool saveHelp;
 
-  OrganizationState({
-      required this.checkBox,
+  OrganizationState(
+      {required this.checkBox,
       this.list = const [],
       this.listProject = const [],
       this.tobeVolunteer = true,
@@ -16,7 +16,13 @@ class OrganizationState extends Equatable {
 
   @override
   // TODO: implement props
-  List<Object?> get props => [list,tobeVolunteer,listProject, checkBox, saveHelp,];
+  List<Object?> get props => [
+        list,
+        tobeVolunteer,
+        listProject,
+        checkBox,
+        saveHelp,
+      ];
 
   OrganizationState copyWith({
     List<OrganizationModelResults>? list,

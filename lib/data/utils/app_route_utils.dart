@@ -129,6 +129,8 @@ class AppRouteUtils {
           ),
         );
 
+
+
       case OrganizationItemDetailPage.routeName:
         return MaterialPageRoute(
           builder: (context) => OrganizationItemDetailPage(

@@ -1,5 +1,6 @@
+
 import 'package:get_it/get_it.dart';
-import 'package:najot/data/services/faq_service.dart';
+import 'package:najot/data/services/crowdfunding_service.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/http_service.dart';
 import 'package:najot/data/services/order_service.dart';
@@ -8,7 +9,9 @@ import 'package:najot/data/services/projects_model_service.dart';
 import 'package:najot/data/services/storage_service.dart';
 
 import 'about_us_service.dart';
+import 'crowdfunding_service.dart';
 import 'di_service.dart';
+import 'faq_service.dart';
 import 'navigator_service.dart';
 
 class RootService {

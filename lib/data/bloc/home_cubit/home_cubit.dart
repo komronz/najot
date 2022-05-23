@@ -21,7 +21,6 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future getModel() async {
     var mainModel = await mainService.getModel();
-    print({"${mainModel}    qqqqqqqqqqqqq"});
 
     if(mainModel!=null){
       emit(state.copyWith(

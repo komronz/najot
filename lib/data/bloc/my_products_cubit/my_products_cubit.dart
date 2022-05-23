@@ -3,10 +3,14 @@ import 'package:equatable/equatable.dart';
 import 'package:najot/data/bloc/my_products_cubit/my_products_state.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
 import 'package:najot/data/services/orders_service.dart';
+import 'package:najot/data/services/products_service.dart';
+
+import '../../services/product_service.dart';
 
 
 class MyProductsCubit extends Cubit<MyProductsState> {
   MyProductsCubit() : super(MyProductsState());
+  var service = ProductService();
 
   Future load() async {
     emit(state.copyWith(isLoading: true));
