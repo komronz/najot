@@ -1,4 +1,5 @@
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -13,10 +15,12 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 class DetailBodyPart1 extends StatelessWidget {
    DetailBodyPart1({required this.cardModel});
 
-  CardModel cardModel;
+  ProjectModel cardModel;
 
   @override
   Widget build(BuildContext context) {
+    var modifiedAt= DateTime.parse(cardModel.modifiedAt??"");
+    var createAt= DateTime.parse(cardModel.createdAt??"");
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -34,7 +38,7 @@ class DetailBodyPart1 extends StatelessWidget {
                   children: [
                     SvgPicture.asset(AppImageUtils.DATE),
                     AppWidgets.text(
-                      text: cardModel.date!,
+                      text: DateFormat("dd.MM.yyyy").format(modifiedAt),
                       color: AppColorUtils.BLUE_PERCENT,
                       fontWeight: FontWeight.w600,
                       fontSize: 16.sp,
@@ -53,7 +57,7 @@ class DetailBodyPart1 extends StatelessWidget {
                   color: AppColorUtils.DARK_6,
                 ),
                 AppWidgets.text(
-                  text: "25.08.2022",
+                  text: DateFormat("dd.MM.yyyy").format(createAt),
                   color: Color(0xFF043F3B),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
@@ -69,7 +73,7 @@ class DetailBodyPart1 extends StatelessWidget {
           color: AppColorUtils.DARK_6,
         ).paddingOnly(top: 13.w, left: 20.w, bottom: 3.w),
         AppWidgets.text(
-            text: "Ovqat qilib berish va uyni yig'ishtirish",
+            text: cardModel.title??"",
             maxLines: 2,
             fontWeight: FontWeight.w600,
             fontSize: 16.sp,
@@ -86,7 +90,7 @@ class DetailBodyPart1 extends StatelessWidget {
           bottom: 3.w,
         ),
         AppWidgets.text(
-            text: "Toshkent Shahar, Mirobod tumani*********",
+            text: cardModel.address??"",
             fontSize: 14.w,
             fontWeight: FontWeight.w500,
             color: AppColorUtils.TEXT_BLUE2,

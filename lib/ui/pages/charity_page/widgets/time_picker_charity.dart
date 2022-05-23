@@ -16,6 +16,8 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/item_adding_success.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../../../data/model/project_model.dart';
+
 class TimePikerCharity extends StatelessWidget {
   TimePikerCharity({
     required this.model,
@@ -25,12 +27,13 @@ class TimePikerCharity extends StatelessWidget {
   });
   DateTime _date = DateTime.now();
   DateTime _time = DateTime.now();
-  CardModel model;
+  ProjectModel model;
   CharityCubit cubit;
   BuildContext con;
 
   @override
   Widget build(BuildContext context) {
+    var modifiedAt= DateTime.parse(model.modifiedAt!);
     return Center(
       child: Material(
         color: Colors.transparent,
@@ -79,7 +82,7 @@ class TimePikerCharity extends StatelessWidget {
                             height: 16,
                           ).paddingOnly(right: 5),
                           AppWidgets.textLocale(
-                            text: model.date!,
+                            text: DateFormat("dd.MM.yyyy").format(modifiedAt),
                             color: AppColorUtils.VOLONTYOR,
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w500,
@@ -208,13 +211,11 @@ class TimePikerCharity extends StatelessWidget {
                           dateTime: dateTime,
                           goto: () {
                             cubit.onChangeSave(false);
-                            cubit.Load();
                             Navigator.pop(con);
                             Navigator.pop(context);
                           },
                           back: () {
                             cubit.onChangeSave(false);
-                            cubit.Load();
                             Navigator.pop(con);
                             Navigator.pop(context);
 

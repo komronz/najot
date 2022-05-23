@@ -8,7 +8,7 @@ import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
-import '../../home_page/widget/button_card_widget.dart';
+import '../../main_page/widgets/button_card_widget.dart';
 
 class KraudfandingSavedPage extends StatelessWidget {
   KraudfandingSavedPage(

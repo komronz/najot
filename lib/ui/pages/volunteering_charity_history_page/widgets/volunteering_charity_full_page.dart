@@ -9,7 +9,7 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
+import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/pages/my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_applied_user_widget.dart';
 import 'package:najot/ui/pages/my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_more_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';

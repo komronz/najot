@@ -149,8 +149,8 @@ class AboutPage extends StatelessWidget {
                             color: AppColorUtils.DARK2,
                           ).paddingOnly(top: 24),
                           AppTextField(
-                            isFill:
-                                context.read<AppealBloc>().state.firstNameFill,
+                            initialText: context.read<AppealBloc>().state.firstName,
+                            isFill: context.read<AppealBloc>().state.firstNameFill,
                             hintText: "(abdumalik)",
                             onChanged: (v) {
                               context
@@ -189,11 +189,13 @@ class AboutPage extends StatelessWidget {
                           AppWidgets.appButton(
                             title: LocaleKeys.str_registration.tr(),
                             onTap: () async {
+                              appealBloc.add(AppealBtnEvent());
                               await showDialog(
                                   context: context,
                                   builder: (ctx) => EditShowSuccessSend(
                                         appealBloc: appealBloc,
-                                      ));
+                                      ),
+                              );
                             },
                             textColor: Colors.white,
                             color:

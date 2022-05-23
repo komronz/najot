@@ -3,7 +3,7 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:najot/data/model/main_model.dart';
 import 'package:najot/data/model/slider_model.dart';
-import 'package:najot/ui/pages/home_page/widget/slider_item_widget.dart';
+import 'package:najot/ui/pages/main_page/widgets/slider_item_widget.dart';
 
 class CarouselSliderWidget extends StatelessWidget {
   final List<SliderList?> sliderList;

@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
+import 'package:najot/data/bloc/charity_page_cubit/charity_cubit.dart';
 import 'package:najot/data/bloc/edit_volunteer_bloc/edit_volunteer_bloc.dart';
+import 'package:najot/data/bloc/kraudfanding_cubit/kraud_fanding_cubit.dart';
 import 'package:najot/data/bloc/login_bloc/login_bloc.dart';
+import 'package:najot/data/bloc/volunteer_bloc/volunteer_cubit.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
@@ -13,9 +16,11 @@ import 'package:najot/ui/pages/charity_page/charity_full_page/charity_full_page.
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
 import 'package:najot/ui/pages/counter_page/counter_page.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/edit_volunteer_page.dart';
+import 'package:najot/ui/pages/edit_volunteer_page/widgets/choose_lang.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/widgets/number_update_volunteer_page.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/widgets/user_update_volunteer_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
+import 'package:najot/ui/pages/intro_page/intro_page.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/product_datail_page/product_detail_page.dart';
 import 'package:najot/ui/pages/loading_page/loading_page.dart';
 import 'package:najot/ui/pages/login_page/login_page.dart';
@@ -53,6 +58,7 @@ import '../../ui/pages/volunteering_charity_history_page/volunteering_charity_hi
 import '../../ui/pages/volunteering_charity_history_page/widgets/volunteering_charity_full_page.dart';
 import '../model/card_model.dart';
 import '../model/charity_model.dart';
+import '../model/project_model.dart';
 
 class AppRouteUtils {
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
@@ -60,6 +66,14 @@ class AppRouteUtils {
       case LoadingPage.routeName:
         return MaterialPageRoute(
           builder: (context) => LoadingPage(),
+        );
+      case IntroPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => IntroPage(),
+        );
+      case ChooseLangPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => ChooseLangPage(),
         );
       case CounterPage.routeName:
         return CupertinoPageRoute(
@@ -75,28 +89,26 @@ class AppRouteUtils {
         );
       case RegPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => RegPage(loginBloc: settings.arguments as LoginBloc,),
+          builder: (context) => RegPage(
+            loginBloc: settings.arguments as LoginBloc,
+          ),
         );
       case VerificationPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => VerificationPage(loginBloc: settings.arguments as LoginBloc),
+          builder: (context) =>
+              VerificationPage(loginBloc: settings.arguments as LoginBloc),
         );
       case HomePage.routeName:
         return CupertinoPageRoute(
-          builder: (context) => HomePage(appPageType: settings.arguments as AppPageType,),
+          builder: (context) => HomePage(
+            appPageType: settings.arguments as AppPageType,
+          ),
         );
-      case CharityPage.routeName:
-        return MaterialPageRoute(
-          builder: (context) => CharityPage(),
-        );
-      case VolunteerPage.routeName:
-        return MaterialPageRoute(
-          builder: (context) => VolunteerPage(),
-        );
+
       case CharityFullPage.routName:
         return MaterialPageRoute(
           builder: (context) => CharityFullPage(
-            cardModel: settings.arguments as CardModel,
+            cardModel: settings.arguments as ProjectModel,
           ),
         );
       case CharityFullPage2.routName:
@@ -114,11 +126,9 @@ class AppRouteUtils {
       case ProjectDetailsPage.routeName:
         return MaterialPageRoute(
           builder: (context) => ProjectDetailsPage(
-            cardModel: settings.arguments as CardModel,
+            model: settings.arguments as CrowdfundingDetailModel,
           ),
         );
-
-
 
       case OrganizationItemDetailPage.routeName:
         return MaterialPageRoute(
@@ -135,7 +145,7 @@ class AppRouteUtils {
       case ProductDetailPage.routeName:
         return MaterialPageRoute(
           builder: (context) => ProductDetailPage(
-            productModel: settings.arguments as ProductModel,
+            model: settings.arguments as ProductDetailModel,
           ),
         );
       case OrganizationHelpWidget.routeName:
@@ -144,23 +154,26 @@ class AppRouteUtils {
             helpModel: settings.arguments as OrganizationHelpModel,
           ),
         );
-      case KraudfandingPage.routeName:
+      case CrowdfundingPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => KraudfandingPage(),
+          builder: (context) => CrowdfundingPage(
+          ),
         );
       case VolunteerDetailPage.routeName:
         return MaterialPageRoute(
           builder: (context) => VolunteerDetailPage(
-            cardModel: settings.arguments as CardModel,
+            model: settings.arguments as VolunteerDetailModel,
           ),
         );
       case VolunteerPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => VolunteerPage(),
+          builder: (context) => VolunteerPage(
+          ),
         );
       case CharityPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => CharityPage(),
+          builder: (context) => CharityPage(
+          ),
         );
       case MyProfilePage.routeName:
         return MaterialPageRoute(
@@ -191,10 +204,7 @@ class AppRouteUtils {
         return MaterialPageRoute(
           builder: (context) => UserDegreePage(),
         );
-      case VolunteerPage.routeName:
-        return MaterialPageRoute(
-          builder: (context) => VolunteerPage(),
-        );
+
       case ImgView.routeName:
         return MaterialPageRoute(
           builder: (context) => ImgView(imgPath: settings.arguments as String),
@@ -283,7 +293,6 @@ class AppRouteUtils {
             list: settings.arguments as List<KraufandingModel>,
           ),
         );
-
     }
   }
 }

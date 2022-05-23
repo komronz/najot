@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,12 +13,14 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/charity_page/widgets/time_picker_charity.dart';
-import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
+import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../../../data/model/project_model.dart';
+
 class CharityHelpModel {
-  CardModel cardModel;
+  ProjectModel cardModel;
 
   CharityCubit cubit;
 
@@ -36,6 +39,7 @@ class CharityHelpWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var modifiedAt= DateTime.parse(helpModel.cardModel.modifiedAt!);
     return Scaffold(
         backgroundColor: AppColorUtils.BACKGROUND,
         appBar: AppBarWithTitle(
@@ -64,7 +68,7 @@ class CharityHelpWidget extends StatelessWidget {
                             Radius.circular(12),
                           ),
                           child: CachedNetworkImage(
-                            imageUrl: helpModel.cardModel.image!,
+                            imageUrl: helpModel.cardModel.coverUrl!,
                             fit: BoxFit.cover,
                             width: MediaQuery.of(context).size.width,
                             placeholder: (context, url) => Center(
@@ -88,7 +92,7 @@ class CharityHelpWidget extends StatelessWidget {
                     bottom: 3.w,
                   ),
                   AppWidgets.text(
-                    text: "Drenajni kuzatish uchun mo’ljallangan moslama",
+                    text: helpModel.cardModel.title??"",
                     fontSize: 20.sp,
                     color: AppColorUtils.DARK2,
                     fontWeight: FontWeight.w500,
@@ -102,7 +106,7 @@ class CharityHelpWidget extends StatelessWidget {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                              image: NetworkImage(helpModel.cardModel.image!),
+                              image: NetworkImage(helpModel.cardModel.coverUrl!),
                               fit: BoxFit.cover),
                         ),
                       ).paddingOnly(
@@ -146,7 +150,7 @@ class CharityHelpWidget extends StatelessWidget {
                         children: [
                           SvgPicture.asset(AppImageUtils.DATE),
                           AppWidgets.text(
-                            text: helpModel.cardModel.date!,
+                            text: DateFormat("dd.MM.yyyy").format(modifiedAt),
                             color: AppColorUtils.BLUE_PERCENT,
                             fontWeight: FontWeight.w600,
                             fontSize: 16.sp,
@@ -166,7 +170,7 @@ class CharityHelpWidget extends StatelessWidget {
                     bottom: 3.w,
                   ),
                   AppWidgets.text(
-                          text: "Ovqat qilib berish va uyni yig'ishtirish",
+                          text: helpModel.cardModel.title??"",
                           maxLines: 2,
                           fontWeight: FontWeight.w600,
                           fontSize: 16.sp,
@@ -183,7 +187,7 @@ class CharityHelpWidget extends StatelessWidget {
                     bottom: 3.w,
                   ),
                   AppWidgets.text(
-                          text: "Toshkent Shahar, Mirobod tumani*********",
+                          text: helpModel.cardModel.address??"",
                           fontSize: 14.w,
                           fontWeight: FontWeight.w500,
                           color: AppColorUtils.TEXT_BLUE,

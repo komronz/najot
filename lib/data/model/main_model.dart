@@ -9,18 +9,10 @@ class MainModel {
 
   MainModel(
       {this.categories,
-      this.crowdfunding,
-      this.volunteering,
-      this.charity,
-      this.slider});
-
-  static MainModel mainModel = MainModel(
-    categories: const [],
-    crowdfunding: const [],
-    charity: const [],
-    slider: const [],
-    volunteering: const [],
-  );
+        this.crowdfunding,
+        this.volunteering,
+        this.charity,
+        this.slider});
 
   MainModel.fromJson(Map<String, dynamic> json) {
     if (json['categories'] != null) {
@@ -79,40 +71,46 @@ class MainModel {
 class Categories {
   int? id;
   String? name;
+  String? cover;
+  String? type;
   String? slug;
-  Null? parent;
 
-  Categories({this.id, this.name, this.slug, this.parent});
+  Categories({this.id, this.name, this.cover, this.type, this.slug});
 
   Categories.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
+    cover = json['cover'];
+    type = json['type'];
     slug = json['slug'];
-    parent = json['parent'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['name'] = this.name;
+    data['cover'] = this.cover;
+    data['type'] = this.type;
     data['slug'] = this.slug;
-    data['parent'] = this.parent;
     return data;
   }
 }
+
 
 class SliderList {
   int? id;
   String? title;
   String? cover;
+  String? coverUrl;
   String? description;
 
-  SliderList({this.id, this.title, this.cover, this.description});
+  SliderList({this.id, this.title, this.cover, this.coverUrl, this.description});
 
   SliderList.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     cover = json['cover'];
+    coverUrl = json['cover_url'];
     description = json['description'];
   }
 
@@ -121,6 +119,7 @@ class SliderList {
     data['id'] = this.id;
     data['title'] = this.title;
     data['cover'] = this.cover;
+    data['cover_url'] = this.coverUrl;
     data['description'] = this.description;
     return data;
   }

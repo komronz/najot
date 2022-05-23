@@ -10,11 +10,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 class TabBarWidget extends StatelessWidget {
-  TabBarWidget(this._controller,this.title1,this.title2,);
+  TabBarWidget(this._controller,this.title1,this.title2,this.function);
  static int index = 0;
   TabController _controller;
   String title1;
   String title2;
+  Function function;
+
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +49,7 @@ class TabBarWidget extends StatelessWidget {
                 unselectedLabelColor: AppColorUtils.GREEN_TAB,
                 labelColor: AppColorUtils.WHITE,
                 onTap: (i) {
-                  if (i == 0) {
-                    context.read<KraudfandingDetailCubit>().tabChange(0);
-                  } else {
-                    context.read<KraudfandingDetailCubit>().tabChange(1);
-                  }
+                  function(i);
 
                 },
                 indicator: BoxDecoration(

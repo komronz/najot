@@ -4,8 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
+import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/MixTextWidget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/text_field_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -13,7 +14,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 class VolunteerDonateWidget extends StatelessWidget {
   VolunteerDonateWidget({required this.cardModel});
 
-  CardModel cardModel;
+  ProjectModel cardModel;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,7 @@ class VolunteerDonateWidget extends StatelessWidget {
                   color: AppColorUtils.DARK_6)
               .paddingSymmetric(horizontal: 20.w),
           AppWidgets.circleImages(
-            image: cardModel.image!,
+            image: cardModel.coverUrl!,
             count: 100,
           ).paddingSymmetric(horizontal: 20.w),
           AppWidgets.textLocale(

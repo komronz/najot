@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,12 +9,13 @@ import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class KraudfandingPriceWidget extends StatelessWidget {
-  final CardModel model;
+  final ProjectModel model;
 
   const KraudfandingPriceWidget({
     required this.model,
@@ -22,6 +24,7 @@ class KraudfandingPriceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var createdAt= DateTime.parse(model.createdAt!);
     return Column(
       children: [
         Row(
@@ -36,7 +39,7 @@ class KraudfandingPriceWidget extends StatelessWidget {
                   color: Color(0xFF043F3B),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
-                  args: ["100 000"]
+                  args: ["${model.requiredFund}"]
                 ).paddingOnly(top: 3.w),
               ],
             ),
@@ -50,7 +53,7 @@ class KraudfandingPriceWidget extends StatelessWidget {
                   color: AppColorUtils.DARK_6,
                 ),
                 AppWidgets.text(
-                  text: "25.08.2022",
+                  text: DateFormat("dd.MM.yyyy").format(createdAt),
                   color: AppColorUtils.TEXT_GREEN2,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
@@ -89,7 +92,7 @@ class KraudfandingPriceWidget extends StatelessWidget {
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.GREEN_TEXT,
-                    args: ["1 000 000"],
+                    args: ["${model.amountCollected}"],
                   ),
                   AppWidgets.text(
                     text: "${"60"} %",

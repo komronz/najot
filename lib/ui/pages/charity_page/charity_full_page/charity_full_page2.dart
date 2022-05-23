@@ -8,11 +8,12 @@ import 'package:najot/data/bloc/charity_page_cubit/charity_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/charity_page/widgets/charity_help_widget.dart';
 import 'package:najot/ui/pages/charity_page/widgets/detail_body_part1.dart';
-import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
+import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comment_to_author_dialog.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comments_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
@@ -25,7 +26,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
 class CharityFullModel{
-  CardModel cardModel;
+  ProjectModel cardModel;
 
   CharityCubit cubit;
 
@@ -113,7 +114,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                   Radius.circular(12),
                                 ),
                                 child: CachedNetworkImage(
-                                  imageUrl: widget.helpModel.cardModel.image!,
+                                  imageUrl: widget.helpModel.cardModel.coverUrl!,
                                   fit: BoxFit.cover,
                                   width: MediaQuery.of(context).size.width,
                                   placeholder: (context, url) => Center(
@@ -155,8 +156,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                           ],
                         ),
                         AppWidgets.text(
-                          text:
-                              "Drenajni kuzatish uchun mo’jallangan moslama",
+                          text: widget.helpModel.cardModel.title??"",
                           fontSize: 20.sp,
                           color: AppColorUtils.DARK2,
                           fontWeight: FontWeight.w500,
@@ -242,18 +242,22 @@ class _CharityFullPageState extends State<CharityFullPage2>
                           ).paddingOnly(left: 15.w, top: 8.w),
                           Container(
                             child: [
-                              MoreWidget(
-                                cardModel: widget.helpModel.cardModel,
-                              ),
-                              NewsWidget(
-                                cardModel: widget.helpModel.cardModel,
-                              ).paddingAll(20.w),
-                              QuestionsAskedWidget(
-                                cardModel: widget.helpModel.cardModel,
-                              ).paddingAll(20.w),
-                              CommentsWidget(
-                                cardModel: widget.helpModel.cardModel,
-                              ).paddingAll(20.w)
+                              Container(),
+                              Container(),
+                              Container(),
+                              Container(),
+                              // MoreWidget(
+                              //   cardModel: widget.helpModel.cardModel,
+                              // ),
+                              // NewsWidget(
+                              //   cardModel: widget.helpModel.cardModel,
+                              // ).paddingAll(20.w),
+                              // QuestionsAskedWidget(
+                              //   cardModel: widget.helpModel.cardModel,
+                              // ).paddingAll(20.w),
+                              // CommentsWidget(
+                              //   cardModel: widget.helpModel.cardModel,
+                              // ).paddingAll(20.w)
                             ][_controller.index],
                           ),
                           SizedBox(
@@ -321,8 +325,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                           textColor: AppColorUtils.WHITE,
                                         ),
                                         AppWidgets.favouriteButton(
-                                          select:
-                                              widget.helpModel.cardModel.isFavorite!,
+                                          select: true,
                                           height: 48.w,
                                           width: 48.w,
                                           onTap: () {},
@@ -360,7 +363,8 @@ class _CharityFullPageState extends State<CharityFullPage2>
                     ),
                   ),
                 ],
-              ));
+              ),
+          );
         },
       ),
     );

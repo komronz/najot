@@ -21,6 +21,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future getModel() async {
     var mainModel = await mainService.getModel();
+    print({"${mainModel}    qqqqqqqqqqqqq"});
 
     if(mainModel!=null){
       emit(state.copyWith(
@@ -30,7 +31,6 @@ class HomeCubit extends Cubit<HomeState> {
         charity: mainModel.charity,
         slider: mainModel.slider,
       ));
-      print(mainModel.slider![0].title);
 
     }else{
 

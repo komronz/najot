@@ -5,7 +5,6 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
-import 'package:najot/data/services/products_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
@@ -56,7 +55,6 @@ class VolunteeringKraufandingListWidget extends StatelessWidget {
             true,
             CardModel.info,
             "22.08.2022",
-              ProductsService().getProducts()
           );
           NavigatorService.to.pushNamed(
             ProjectDetailsPage.routeName,

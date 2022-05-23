@@ -1,14 +1,16 @@
 
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
+import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comment_to_author_dialog.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comments_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_applied_user_widget.dart';
@@ -23,7 +25,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 
 class AboutProjectWidget extends StatefulWidget {
    AboutProjectWidget({required this.cardModel}) ;
-    final CardModel cardModel;
+    final ProjectModel cardModel;
   @override
   _AboutProjectWidgetState createState() => _AboutProjectWidgetState();
 }
@@ -53,6 +55,8 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
 
   @override
   Widget build(BuildContext context) {
+    var modifiedAt= DateTime.parse(widget.cardModel.modifiedAt!);
+
     return Column(
       children: [
         Container(
@@ -64,6 +68,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
             ),
           ),
           child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(
                 children: [
@@ -78,7 +83,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                         Radius.circular(12),
                       ),
                       child: CachedNetworkImage(
-                        imageUrl: widget.cardModel.image!,
+                        imageUrl: widget.cardModel.cover!,
                         fit: BoxFit.cover,
                         width:
                         MediaQuery.of(context).size.width,
@@ -122,8 +127,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                 ],
               ),
               AppWidgets.text(
-                text:
-                "Drenajni kuzatish uchun mo’jallangan moslama",
+                text:  widget.cardModel.title!,
                 fontSize: 20.sp,
                 color: AppColorUtils.DARK2,
                 fontWeight: FontWeight.w500,
@@ -141,8 +145,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
               },
               ).paddingOnly(top: 15.w),
               SizedBox(height: 12.w),
-              KraudfandingPriceWidget(
-                  model: widget.cardModel),
+              KraudfandingPriceWidget(model: widget.cardModel),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -164,7 +167,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                             size: 14.sp,
                           ),
                           AppWidgets.text(
-                            text: "25.02.2022",
+                            text: DateFormat("dd.MM.yyyy").format(modifiedAt),
                             color: AppColorUtils.BLUE_PERCENT,
                             fontWeight: FontWeight.w500,
                             fontSize: 14.sp,
@@ -245,18 +248,22 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                 ).paddingOnly(left: 15.w, top: 8.w),
                 Container(
                   child: [
-                    MoreWidget(
-                      cardModel: widget.cardModel,
-                    ),
-                    NewsWidget(
-                      cardModel: widget.cardModel,
-                    ).paddingAll(20.w),
-                    QuestionsAskedWidget(
-                      cardModel: widget.cardModel,
-                    ).paddingAll(20.w),
-                    CommentsWidget(
-                      cardModel: widget.cardModel,
-                    ).paddingAll(20.w)
+                    Container(),
+                    Container(),
+                    Container(),
+                    Container(),
+                    // MoreWidget(
+                    //   cardModel: widget.cardModel,
+                    // ),
+                    // NewsWidget(
+                    //   cardModel: widget.cardModel,
+                    // ).paddingAll(20.w),
+                    // QuestionsAskedWidget(
+                    //   cardModel: widget.cardModel,
+                    // ).paddingAll(20.w),
+                    // CommentsWidget(
+                    //   cardModel: widget.cardModel,
+                    // ).paddingAll(20.w)
                   ][_tabController.index],
                 ),
                 SizedBox(
@@ -284,7 +291,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                       textColor: AppColorUtils.WHITE,
                     ),
                     AppWidgets.favouriteButton(
-                      select: widget.cardModel.isFavorite!,
+                      select: true,
                       height: 48.w,
                       width: 48.w,
                       onTap: () {},

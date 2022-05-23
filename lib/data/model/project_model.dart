@@ -1,44 +1,59 @@
 class ProjectModel {
-  int? owner;
+  int? id;
+  Owner? owner;
   String? type;
   String? title;
-  String? description;
-  String? cover;
-  String? deadline;
-  Null? category;
-  int? person;
-  int? requiredFund;
   String? helpType;
+  int? organization;
+  String? deadline;
+  String? cover;
+  String? coverUrl;
+  int? category;
+  int? person;
+  int? amountCollected;
+  int? percent;
+  String? cardNumber;
+  int? requiredFund;
   String? address;
   String? createdAt;
   String? modifiedAt;
 
   ProjectModel(
-      {this.owner,
+      {this.id,
+        this.owner,
         this.type,
         this.title,
-        this.description,
-        this.cover,
+        this.helpType,
+        this.organization,
         this.deadline,
+        this.cover,
+        this.coverUrl,
         this.category,
         this.person,
+        this.amountCollected,
+        this.percent,
+        this.cardNumber,
         this.requiredFund,
-        this.helpType,
         this.address,
         this.createdAt,
         this.modifiedAt});
 
   ProjectModel.fromJson(Map<String, dynamic> json) {
-    owner = json['owner'];
+    id = json['id'];
+    owner = json['owner'] != null ? new Owner.fromJson(json['owner']) : null;
     type = json['type'];
     title = json['title'];
-    description = json['description'];
-    cover = json['cover'];
+    helpType = json['help_type'];
+    organization = json['organization'];
     deadline = json['deadline'];
+    cover = json['cover'];
+    coverUrl = json['cover_url'];
     category = json['category'];
     person = json['person'];
+    amountCollected = json['amount_collected'];
+    percent = json['percent'];
+    cardNumber = json['card_number'];
     requiredFund = json['required_fund'];
-    helpType = json['help_type'];
     address = json['address'];
     createdAt = json['created_at'];
     modifiedAt = json['modified_at'];
@@ -46,19 +61,51 @@ class ProjectModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['owner'] = this.owner;
+    data['id'] = this.id;
+    if (this.owner != null) {
+      data['owner'] = this.owner!.toJson();
+    }
     data['type'] = this.type;
     data['title'] = this.title;
-    data['description'] = this.description;
-    data['cover'] = this.cover;
+    data['help_type'] = this.helpType;
+    data['organization'] = this.organization;
     data['deadline'] = this.deadline;
+    data['cover'] = this.cover;
+    data['cover_url'] = this.coverUrl;
     data['category'] = this.category;
     data['person'] = this.person;
+    data['amount_collected'] = this.amountCollected;
+    data['percent'] = this.percent;
+    data['card_number'] = this.cardNumber;
     data['required_fund'] = this.requiredFund;
-    data['help_type'] = this.helpType;
     data['address'] = this.address;
     data['created_at'] = this.createdAt;
     data['modified_at'] = this.modifiedAt;
+    return data;
+  }
+}
+
+class Owner {
+  int? id;
+  String? firstName;
+  String? lastName;
+  String? photo;
+
+  Owner({this.id, this.firstName, this.lastName, this.photo});
+
+  Owner.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    firstName = json['first_name'];
+    lastName = json['last_name'];
+    photo = json['photo'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['first_name'] = this.firstName;
+    data['last_name'] = this.lastName;
+    data['photo'] = this.photo;
     return data;
   }
 }

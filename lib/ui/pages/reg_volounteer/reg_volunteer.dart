@@ -11,7 +11,7 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
+import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/view1.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/view2.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';

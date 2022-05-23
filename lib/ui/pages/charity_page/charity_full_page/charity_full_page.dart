@@ -6,28 +6,25 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/charity_page_cubit/charity_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/charity_page/widgets/detail_body_part2.dart';
-import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
+import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comment_to_author_dialog.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comments_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/more_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/news_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/payment_history_dialog.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+
+import '../../../../data/model/project_model.dart';
 
 class CharityFullPage extends StatefulWidget {
   CharityFullPage({required this.cardModel});
 
   static const String routName = 'charityFullPage';
   static int tabChange = 0;
-  CardModel cardModel;
+  ProjectModel cardModel;
 
   @override
   State<CharityFullPage> createState() => _CharityFullPageState();
@@ -52,7 +49,7 @@ class _CharityFullPageState extends State<CharityFullPage>
     super.initState();
   }
 
-  _handleTabSelection() {
+ void _handleTabSelection() {
     if (_controller.indexIsChanging) {
       setState(() {});
     }
@@ -99,7 +96,7 @@ class _CharityFullPageState extends State<CharityFullPage>
                                   Radius.circular(12),
                                 ),
                                 child: CachedNetworkImage(
-                                  imageUrl: widget.cardModel.image!,
+                                  imageUrl: widget.cardModel.coverUrl!,
                                   fit: BoxFit.cover,
                                   width:
                                   MediaQuery.of(context).size.width,
@@ -230,18 +227,22 @@ class _CharityFullPageState extends State<CharityFullPage>
                           ).paddingOnly(left: 15.w, top: 8.w),
                           Container(
                             child: [
-                              MoreWidget(
-                                cardModel: widget.cardModel,
-                              ),
-                              NewsWidget(
-                                cardModel: widget.cardModel,
-                              ).paddingAll(20.w),
-                              QuestionsAskedWidget(
-                                cardModel: widget.cardModel,
-                              ).paddingAll(20.w),
-                              CommentsWidget(
-                                cardModel: widget.cardModel,
-                              ).paddingAll(20.w)
+                              Container(),
+                              Container(),
+                              Container(),
+                              Container(),
+                              // MoreWidget(
+                              //   cardModel: widget.cardModel,
+                              // ),
+                              // NewsWidget(
+                              //   cardModel: widget.cardModel,
+                              // ).paddingAll(20.w),
+                              // QuestionsAskedWidget(
+                              //   cardModel: widget.cardModel,
+                              // ).paddingAll(20.w),
+                              // CommentsWidget(
+                              //   cardModel: widget.cardModel,
+                              // ).paddingAll(20.w)
                             ][_controller.index],
                           ),
                           SizedBox(
@@ -269,7 +270,7 @@ class _CharityFullPageState extends State<CharityFullPage>
                                 textColor: AppColorUtils.WHITE,
                               ),
                               AppWidgets.favouriteButton(
-                                select: widget.cardModel.isFavorite!,
+                                select: true,
                                 height: 48.w,
                                 width: 48.w,
                                 onTap: () {},

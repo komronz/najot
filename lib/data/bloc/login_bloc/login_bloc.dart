@@ -182,8 +182,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       ) async {
     if(state.phone.length==12){
       emit(state.copyWith(hasError: false));
-      bool checkPhoneNumber=await authService.confirmPhoneNumber(state.phone);
-      emit(state.copyWith(checkPhoneNumber: checkPhoneNumber));
+      var checkPhoneNumber=await authService.confirmPhoneNumber(state.phone);
+      emit(state.copyWith(checkPhoneNumber: checkPhoneNumber!.isExists));
     }else{
       emit(state.copyWith(hasError: true));
     }

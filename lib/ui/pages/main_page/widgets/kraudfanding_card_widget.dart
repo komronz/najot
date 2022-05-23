@@ -9,7 +9,7 @@ import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/model/slider_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
+import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
@@ -17,10 +17,12 @@ class KraudfandingCardWidget extends StatelessWidget {
   KraudfandingCardWidget({
     required this.projectModel,
     required this.visible,
+    required this.onTap
   });
 
   final ProjectModel projectModel;
   final bool visible;
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -63,7 +65,7 @@ class KraudfandingCardWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           AppWidgets.text(
-                            text: projectModel.title!,
+                            text: projectModel.title??"",
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
                             maxLines: 2,
@@ -97,7 +99,7 @@ class KraudfandingCardWidget extends StatelessWidget {
                                     fontSize: 14.sp,
                                     fontWeight: FontWeight.w600,
                                     color: AppColorUtils.GREEN_TEXT,
-                                    args: ["${projectModel.requiredFund}"],
+                                    args: ["${projectModel.amountCollected??""}"],
                                   )
                                 ],
                               ),
@@ -153,7 +155,7 @@ class KraudfandingCardWidget extends StatelessWidget {
           ],
         ),
       ),
-      onTap: () {},
+      onTap: onTap
     );
   }
 }

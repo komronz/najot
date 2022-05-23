@@ -47,15 +47,14 @@ class AuthService {
     }
   }
 
-  Future<bool> confirmPhoneNumber(
+  Future<ConfirmNumberModel?> confirmPhoneNumber(
     String phone,
 
   ) async {
     try {
-      final path = 'http://api.najot.thinkland.uz/auth/login-start';
+      final path = 'https://najot.uz/ru/auth/check_phone';
       final body = {
         "phone": formatNumber(phone),
-        "first_name": "Ozodbek",
       };
       final headers = {HttpHeaders.contentTypeHeader: "application/json"};
       var response = await _httpService.post(
@@ -63,22 +62,23 @@ class AuthService {
         fields: body,
         headers: headers,
       );
-      print(response!.statusCode);
       if (response != null) {
         if (response.statusCode == 200) {
+          final ConfirmNumberModel confirmNumberModel=
+          ConfirmNumberModel.fromJson(response.data);
           AppLoggerUtil.i(TokenModel.fromJson(response.data).token.toString());
-          return true;
+          return confirmNumberModel;
         } else if (response.statusCode! > 200) {
-          return false;
+          return null;
         }
       } else {
-        return false;
+        return null;
       }
     } catch (e) {
       AppLoggerUtil.e("$e");
-      return false;
+      return null;
     }
-    return false;
+    return null;
   }
 
   String formatNumber(String number) {

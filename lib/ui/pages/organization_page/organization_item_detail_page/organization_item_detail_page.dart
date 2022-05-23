@@ -147,30 +147,31 @@ class OrganizationItemDetailPage extends StatelessWidget {
                         children: List.generate(
                           model.model.list.length,
                           (index) {
-                            if (model.model.list[index].progres != null) {
-                              return CharityItemWidget(
-                                onTap: () {
-                                  NavigatorService.to.pushNamed(
-                                    CharityFullPage.routName,
-                                    arguments: model.model.list[index],
-                                  );
-                                },
-                                model: model.model.list[index],
-                              ).paddingOnly(left: 10);
-                            } else {
-                              return CharityItem2Widget(
-                                model: model.model.list[index],
-                                onTap: () {
-                                  NavigatorService.to.pushNamed(
-                                    OrganizationCharityItemWidget.routName,
-                                    arguments: OrganizationCharityItemModel(
-                                      cardModel: model.model.list[index],
-                                      cubit: model.cubit,
-                                    ),
-                                  );
-                                },
-                              ).paddingOnly(left: 10);
-                            }
+                           return  Container();
+                            // if (model.model.list[index].progres != null) {
+                            //   return CharityItemWidget(
+                            //     onTap: () {
+                            //       NavigatorService.to.pushNamed(
+                            //         CharityFullPage.routName,
+                            //         arguments: model.model.list[index],
+                            //       );
+                            //     },
+                            //     model: model.model.list[index],
+                            //   ).paddingOnly(left: 10);
+                            // } else {
+                            //   return CharityItem2Widget(
+                            //     model: model.model.list[index],
+                            //     onTap: () {
+                            //       NavigatorService.to.pushNamed(
+                            //         OrganizationCharityItemWidget.routName,
+                            //         arguments: OrganizationCharityItemModel(
+                            //           cardModel: model.model.list[index],
+                            //           cubit: model.cubit,
+                            //         ),
+                            //       );
+                            //     },
+                            //   ).paddingOnly(left: 10);
+                            // }
                           },
                         ),
                       ),

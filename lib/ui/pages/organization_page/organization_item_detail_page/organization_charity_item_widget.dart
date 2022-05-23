@@ -11,7 +11,7 @@ import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/charity_page/widgets/detail_body_part1.dart';
-import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
+import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comment_to_author_dialog.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comments_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
@@ -157,19 +157,19 @@ class _OrganizationCharityItemWidgetState
                           fontWeight: FontWeight.w500,
                           maxLines: 2,
                         ).paddingSymmetric(horizontal: 20.w),
-                        KraudfandingAuthorWidget(
-                          model: widget.helpModel.cardModel,
-                          onTap: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return CommentToAuthorDialog();
-                              },
-                            );
-                          },
-                        ).paddingOnly(top: 15.w),
+                        // KraudfandingAuthorWidget(
+                        //   model: widget.helpModel.cardModel,
+                        //   onTap: () {
+                        //     showDialog(
+                        //       context: context,
+                        //       builder: (context) {
+                        //         return CommentToAuthorDialog();
+                        //       },
+                        //     );
+                        //   },
+                        // ).paddingOnly(top: 15.w),
                         SizedBox(height: 12.w),
-                        DetailBodyPart1(cardModel: widget.helpModel.cardModel)
+                        // DetailBodyPart1(cardModel: widget.helpModel.cardModel)
                       ],
                     ),
                   ),

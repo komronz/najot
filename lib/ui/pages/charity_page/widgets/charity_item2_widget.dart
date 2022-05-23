@@ -4,12 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/charity_page/widgets/favorite_button.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class CharityItem2Widget extends StatelessWidget {
-  final CardModel model;
+  final ProjectModel model;
   final VoidCallback onTap;
 
   const CharityItem2Widget({
@@ -45,7 +46,9 @@ class CharityItem2Widget extends StatelessWidget {
                               placeholder: (context, url) => Center(
                                 child: CircularProgressIndicator(),
                               ),
-                              imageUrl: model.image!,
+                              height: double.infinity,
+                              width: double.infinity,
+                              imageUrl: model.coverUrl!,
                               errorWidget: (context, url, error) =>
                                   Icon(Icons.error),
                               fit: BoxFit.cover,
@@ -59,7 +62,7 @@ class CharityItem2Widget extends StatelessWidget {
                         Expanded(child: SizedBox()),
                         InkWell(
                           child: FavoriteButton(
-                            isFavorite: model.isFavorite!,
+                            isFavorite: true,
                           ),
                           onTap: () {},
                         ),
@@ -90,7 +93,7 @@ class CharityItem2Widget extends StatelessWidget {
                           color: AppColorUtils.DARK_6,
                         ).paddingOnly(top: 12.w),
                         AppWidgets.text(
-                          text: "Oyoq kiyim",
+                          text: model.title??"",
                           fontWeight: FontWeight.w600,
                           color: AppColorUtils.TEXT_GREEN,
                           fontSize: 12.sp,

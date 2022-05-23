@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/custom_time_picker/flutter_time_picker_spinner.dart';
-import '../../ui/pages/home_page/widget/button_card_widget.dart';
+import '../../ui/pages/main_page/widgets/button_card_widget.dart';
 import '../localization/locale_keys.g.dart';
 import '../utils/app_color_utils.dart';
 import 'date_picker/date_picker_theme.dart';

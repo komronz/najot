@@ -14,7 +14,7 @@ import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
-import '../../home_page/widget/button_card_widget.dart';
+import '../../main_page/widgets/button_card_widget.dart';
 
 class NumberUpdateStep1 extends StatelessWidget {
   static const String routeName = "/numberUpdateStep1Page";

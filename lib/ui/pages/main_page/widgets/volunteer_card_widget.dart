@@ -4,18 +4,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
-import 'package:najot/data/model/slider_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/product_datail_page/product_detail_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-import '../../../../data/services/navigator_service.dart';
 
 class VolunteerCardWidget extends StatelessWidget {
-  VolunteerCardWidget({required this.projectModel});
+  VolunteerCardWidget({
+    required this.projectModel,
+    required this.onTap,
+  });
 
   final ProjectModel projectModel;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +61,7 @@ class VolunteerCardWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           AppWidgets.text(
-                            text:
-                                "Onaxonni yoshlari katta, ularga ovqat qilib beri...",
+                            text: projectModel.title??"",
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
                             maxLines: 2,
@@ -79,10 +79,11 @@ class VolunteerCardWidget extends StatelessWidget {
                                 height: 2.h,
                               ),
                               AppWidgets.text(
-                                  text: "Ovqat qilib berish",
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColorUtils.GREEN_TEXT),
+                                text: projectModel.title??"",
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w600,
+                                color: AppColorUtils.GREEN_TEXT,
+                              ),
                             ],
                           ),
                           Column(
@@ -131,12 +132,7 @@ class VolunteerCardWidget extends StatelessWidget {
           ],
         ),
       ),
-      onTap: () {
-        NavigatorService.to.pushNamed(
-          ProductDetailPage.routeName,
-          arguments: projectModel
-        );
-      },
+      onTap: onTap
     );
   }
 }

@@ -1,5 +1,4 @@
 import 'package:najot/data/model/product_model.dart';
-import 'package:najot/data/services/products_service.dart';
 
 class CardModel {
   String? type;
@@ -9,7 +8,6 @@ class CardModel {
   String? title;
   double? progres;
   bool? isFavorite;
-  List<ProductModel?>? productModel;
   List<InfoModel>? infoModel;
 
   CardModel(
@@ -20,7 +18,6 @@ class CardModel {
     this.isFavorite,
     this.infoModel,
     this.date,
-    this.productModel,
   );
 
   CardModel.kraufanding(
@@ -79,7 +76,6 @@ class CardModel {
       true,
       info,
       "22.08.2022",
-      ProductsService().getProducts(),
     ),
     CardModel(
       "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
@@ -89,7 +85,6 @@ class CardModel {
       false,
       info,
       "22.08.2022",
-      ProductsService().getProducts(),
     ),
     CardModel(
       "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
@@ -99,7 +94,6 @@ class CardModel {
       true,
       info,
       "22.08.2022",
-      ProductsService().getProducts(),
     ),
     CardModel(
       "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
@@ -109,7 +103,6 @@ class CardModel {
       true,
       info,
       "22.08.2022",
-      ProductsService().getProducts(),
     ),
     // CardModel("assets/images/rasm.jpg", "Texnalogiya", "Drenajni kuzatish uchun mo'ljallangan", 0.6, false),
   ];

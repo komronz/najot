@@ -3,7 +3,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:najot/data/bloc/kraudfanding_cubit/kraud_fanding_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
@@ -12,15 +14,16 @@ import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
-import '../../home_page/widget/button_card_widget.dart';
+import '../../main_page/widgets/button_card_widget.dart';
 import '../project_details/project_details_page.dart';
 
 class KraudfandingMiniCardWidget extends StatelessWidget {
   KraudfandingMiniCardWidget(
-      {required this.cardModel, required this.visible, Key? key})
-      : super(key: key);
-  final CardModel cardModel;
+      {required this.cardModel, required this.visible, required this.cubit});
+
+  final ProjectModel cardModel;
   final bool visible;
+  final CrowdfundingCubit cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +49,7 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
                       ),
                       child: CachedNetworkImage(
                         width: double.infinity,
-                        imageUrl: cardModel.image!,
+                        imageUrl: cardModel.cover ?? "",
                         errorWidget: (context, url, error) => Image.asset(
                           AppImageUtils.Splash2,
                         ),
@@ -54,11 +57,6 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
                             Center(child: CircularProgressIndicator()),
                         fit: BoxFit.cover,
                       ),
-                      // child: Image.asset(
-                      //   cardModel.image,
-                      //   fit: BoxFit.cover,
-                      //   width: MediaQuery.of(context).size.width,
-                      // ),
                     ),
                     flex: 1,
                   ),
@@ -73,7 +71,7 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           AppWidgets.text(
-                            text: cardModel.title!,
+                            text: cardModel.title ?? "",
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w500,
                             maxLines: 2,
@@ -116,9 +114,7 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
             ),
             Align(
               child: SvgPicture.asset(
-                cardModel.isFavorite!
-                    ? AppImageUtils.LIKE
-                    : AppImageUtils.UNLIKE,
+                true ? AppImageUtils.LIKE : AppImageUtils.UNLIKE,
               ),
               alignment: Alignment.topRight,
             ).paddingAll(12.w),
@@ -140,7 +136,10 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
       onTap: () {
         NavigatorService.to.pushNamed(
           ProjectDetailsPage.routeName,
-          arguments: cardModel,
+          arguments: CrowdfundingDetailModel(
+            cubit: cubit,
+            cardModel: cardModel,
+          ),
         );
       },
     );

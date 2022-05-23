@@ -7,6 +7,7 @@ import 'package:najot/data/bloc/volunteer_bloc/volunteer_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -14,9 +15,13 @@ import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/volunteer_de
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class NewVolunteerCard extends StatelessWidget {
-  NewVolunteerCard({required this.cardModel});
+  NewVolunteerCard({
+    required this.cardModel,
+    required this.onTap,
+  });
 
-  CardModel cardModel;
+  ProjectModel cardModel;
+  VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +31,7 @@ class NewVolunteerCard extends StatelessWidget {
       child: Stack(
         children: [
           GestureDetector(
-            onTap: () {
-              NavigatorService.to.pushNamed(
-                VolunteerDetailPage.routeName,
-                arguments: cardModel,
-              );
-            },
+            onTap: onTap,
             child: Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
@@ -48,7 +48,7 @@ class NewVolunteerCard extends StatelessWidget {
                       ),
                       child: CachedNetworkImage(
                         width: double.infinity,
-                        imageUrl: cardModel.image!,
+                        imageUrl: cardModel.coverUrl!,
                         errorWidget: (context, url, error) => Image.asset(
                           AppImageUtils.Splash2,
                         ),
@@ -67,8 +67,7 @@ class NewVolunteerCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         AppWidgets.text(
-                          text:
-                              "Drenajni kuzatish uchun mo’jallangan moslama...",
+                          text: cardModel.title!,
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w500,
                           maxLines: 2,
@@ -102,14 +101,14 @@ class NewVolunteerCard extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              context.read<VolunteerCubit>().changeLike(cardModel: cardModel);
+              // context.read<VolunteerCubit>().changeLike(cardModel: cardModel);
             },
             child: Align(
               child: Container(
                 width: 24.w,
                 height: 24.w,
                 child: SvgPicture.asset(
-                  cardModel.isFavorite!
+                  false
                       ? AppImageUtils.UNLIKE
                       : AppImageUtils.LIKE,
                 ),

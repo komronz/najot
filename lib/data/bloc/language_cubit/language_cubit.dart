@@ -26,7 +26,10 @@ class LanguageCubit extends HydratedCubit<LanguageState> {
 
   void change(Locale locale) {
     emit(state.copyWith(locale: locale));
+
   }
+
+
 
   final List<LanguageItem> languages = [
     LanguageItem(
@@ -38,6 +41,9 @@ class LanguageCubit extends HydratedCubit<LanguageState> {
       locale: Locale('ru', 'RU'),
     ),
   ];
+     void changeValue(int value){
+       emit(state.copyWith(value: value));
+     }
 
   Future changeLanguage(Locale locale) async {
     if (!await checkConnection()) {

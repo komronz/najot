@@ -1,23 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:najot/data/bloc/volonteer_detail_cubit/volonteer_detail_cubit.dart';
+import 'package:najot/data/bloc/volunteer_bloc/volunteer_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comments_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/more_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/news_widget.dart';
+import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/payment_history_dialog.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_help_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
@@ -29,9 +24,9 @@ class AboutProjectVolunteerWidget extends StatefulWidget {
     required this.cubit,
   });
 
-  final CardModel cardModel;
-  final VolunteerDetailState state;
-  final VolonteerDetailCubit cubit;
+  final ProjectModel cardModel;
+  final VolunteerState state;
+  final VolunteerCubit cubit;
 
   @override
   _AboutProjectVolunteerWidgetState createState() =>
@@ -61,8 +56,13 @@ class _AboutProjectVolunteerWidgetState
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
+    var modifiedAt= DateTime.parse(widget.cardModel.modifiedAt!);
+    var createdAt= DateTime.parse(widget.cardModel.createdAt!);
+
+
     return Column(
       children: [
         Container(
@@ -89,7 +89,7 @@ class _AboutProjectVolunteerWidgetState
                         Radius.circular(12),
                       ),
                       child: CachedNetworkImage(
-                        imageUrl: widget.cardModel.image!,
+                        imageUrl: widget.cardModel.coverUrl!,
                         fit: BoxFit.cover,
                         width: MediaQuery.of(context).size.width,
                         placeholder: (context, url) => Center(
@@ -130,16 +130,16 @@ class _AboutProjectVolunteerWidgetState
                 ],
               ),
               AppWidgets.text(
-                text: "Drenajni kuzatish uchun mo’jallangan moslama",
+                text: widget.cardModel.title!,
                 fontSize: 20.sp,
                 color: AppColorUtils.DARK2,
                 fontWeight: FontWeight.w500,
                 maxLines: 2,
               ).paddingSymmetric(horizontal: 20.w),
-              KraudfandingAuthorWidget(
-                model: widget.cardModel,
-                onTap: () {},
-              ).paddingOnly(top: 15.w),
+              // KraudfandingAuthorWidget(
+              //   model: widget.cardModel,
+              //   onTap: () {},
+              // ).paddingOnly(top: 15.w),
               SizedBox(height: 12.w),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -157,7 +157,7 @@ class _AboutProjectVolunteerWidgetState
                         children: [
                           SvgPicture.asset(AppImageUtils.DATE),
                           AppWidgets.text(
-                            text: widget.cardModel.date!,
+                            text: DateFormat("dd.MM.yyyy").format(modifiedAt),
                             color: AppColorUtils.BLUE_PERCENT,
                             fontWeight: FontWeight.w600,
                             fontSize: 16.sp,
@@ -176,7 +176,7 @@ class _AboutProjectVolunteerWidgetState
                         color: AppColorUtils.DARK_6,
                       ),
                       AppWidgets.text(
-                        text: "25.08.2022",
+                        text:  DateFormat("dd.MM.yyyy").format(createdAt),
                         color: Color(0xFF043F3B),
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w600,
@@ -192,7 +192,7 @@ class _AboutProjectVolunteerWidgetState
                 color: AppColorUtils.DARK_6,
               ).paddingOnly(top: 13.w, left: 20.w, bottom: 3.w),
               AppWidgets.text(
-                      text: "Ovqat qilib berish va uyni yig'ishtirish",
+                      text: widget.cardModel.title!,
                       maxLines: 2,
                       fontWeight: FontWeight.w600,
                       fontSize: 16.sp,
@@ -209,7 +209,7 @@ class _AboutProjectVolunteerWidgetState
                 bottom: 3.w,
               ),
               AppWidgets.text(
-                      text: "Toshkent Shahar, Mirobod tumani*********",
+                      text: widget.cardModel.address??"",
                       fontSize: 14.w,
                       fontWeight: FontWeight.w500,
                       color: AppColorUtils.TEXT_BLUE2,
@@ -224,7 +224,9 @@ class _AboutProjectVolunteerWidgetState
         Container(
           padding: EdgeInsets.symmetric(vertical: 20.w),
           decoration: BoxDecoration(
-              color: AppColorUtils.WHITE, borderRadius: BorderRadius.circular(11.0)),
+            color: AppColorUtils.WHITE,
+            borderRadius: BorderRadius.circular(11.0),
+          ),
           child: DefaultTabController(
             initialIndex: 0,
             length: 4,
@@ -280,18 +282,22 @@ class _AboutProjectVolunteerWidgetState
                 ).paddingOnly(left: 15.w, top: 8.w),
                 Container(
                   child: [
-                    MoreWidget(
-                      cardModel: widget.cardModel,
-                    ),
-                    NewsWidget(
-                      cardModel: widget.cardModel,
-                    ).paddingAll(20.w),
-                    QuestionsAskedWidget(
-                      cardModel: widget.cardModel,
-                    ).paddingAll(20.w),
-                    CommentsWidget(
-                      cardModel: widget.cardModel,
-                    ).paddingAll(20.w)
+                    Container(),
+                    Container(),
+                    Container(),
+                    Container(),
+                    // MoreWidget(
+                    //   cardModel: widget.cardModel,
+                    // ),
+                    // NewsWidget(
+                    //   cardModel: widget.cardModel,
+                    // ).paddingAll(20.w),
+                    // QuestionsAskedWidget(
+                    //   cardModel: widget.cardModel,
+                    // ).paddingAll(20.w),
+                    // CommentsWidget(
+                    //   cardModel: widget.cardModel,
+                    // ).paddingAll(20.w)
                   ][_tabController.index],
                 ),
                 SizedBox(
@@ -299,7 +305,7 @@ class _AboutProjectVolunteerWidgetState
                 ),
                 widget.state.saveHelp
                     ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           widget.state.tobeVolunteer
                               ? SizedBox()
@@ -356,7 +362,7 @@ class _AboutProjectVolunteerWidgetState
                                 textColor: AppColorUtils.WHITE,
                               ),
                               AppWidgets.favouriteButton(
-                                select: widget.cardModel.isFavorite!,
+                                select: true,
                                 height: 48.w,
                                 width: 48.w,
                                 onTap: () {},
@@ -378,10 +384,10 @@ class _AboutProjectVolunteerWidgetState
                             textColor: AppColorUtils.WHITE,
                           ).paddingSymmetric(horizontal: 20.w),
                           AppWidgets.starTextWidget(
-                                  text: LocaleKeys.you_accepted_ad,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColorUtils.DARK_6,
+                            text: LocaleKeys.you_accepted_ad,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w500,
+                            color: AppColorUtils.DARK_6,
                           ).paddingOnly(
                             left: 20.w,
                             top: 10.w,

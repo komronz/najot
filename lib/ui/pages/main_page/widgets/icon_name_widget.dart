@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -24,20 +25,27 @@ class IconAndName extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Column(
+
         children: [
           SizedBox(
-            height: 85.h,
-            width: 85.h,
+            height: 85.w,
+            width: 85.w,
             child: SvgPicture.asset(
               icon,
             ),
           ),
-          SizedBox(height: 5.h,),
-          AppWidgets.textLocale(
-              text: text,
-              color: color,
-              fontSize: fontsize,
-              fontWeight: fontWeight)
+          SizedBox(height: 5.w,),
+          SizedBox(
+            width: 105.w,
+            child: AppWidgets.textLocale(
+                text: text,
+                color: color,
+                fontSize: fontsize,
+                fontWeight: fontWeight,
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            ),
+          )
         ],
       ),
     );

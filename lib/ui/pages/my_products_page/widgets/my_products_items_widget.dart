@@ -44,7 +44,7 @@ class MyProductsItemsWidget extends StatelessWidget {
             color: AppColorUtils.ITEM_ORDERS_TEXT2,
           ).paddingOnly(bottom: 3.w),
           AppWidgets.text(
-            text: model.title!,
+            text: "model.title!",
             fontSize: 14.sp,
             fontWeight: FontWeight.w500,
             color: AppColorUtils.DARK2,
@@ -85,10 +85,10 @@ class MyProductsItemsWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              DateWidget(date: model.date!),
+              DateWidget(date: "model.date!"),
               AppWidgets.textLocale(
                 text: LocaleKeys.sum,
-                args: [model.totalSum!],
+                args: ["model.totalSum!"],
                 color: AppColorUtils.KRAUDFANDING,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,

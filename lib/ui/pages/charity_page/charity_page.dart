@@ -6,11 +6,13 @@ import 'package:najot/data/bloc/charity_page_cubit/charity_cubit.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/model/project_model.dart';
+import 'package:najot/data/services/charity_service.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/charity_page/widgets/charity_item2_widget.dart';
 import 'package:najot/ui/pages/charity_page/widgets/charity_item_widget.dart';
-import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
+import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_search_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -19,7 +21,8 @@ import 'charity_full_page/charity_full_page.dart';
 import 'charity_full_page/charity_full_page2.dart';
 
 class CharityPage extends StatefulWidget {
-  const CharityPage({Key? key}) : super(key: key);
+  const CharityPage();
+
   static const String routeName = '/routeName';
 
   @override
@@ -29,7 +32,6 @@ class CharityPage extends StatefulWidget {
 class _CharityPageState extends State<CharityPage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  CharityCubit cubit = CharityCubit();
 
   @override
   void dispose() {
@@ -39,7 +41,10 @@ class _CharityPageState extends State<CharityPage>
 
   @override
   void initState() {
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(
+      length: CharityCubit.to.state.category.length,
+      vsync: this,
+    );
     _tabController.addListener(_handleTabSelection);
     super.initState();
   }
@@ -52,19 +57,24 @@ class _CharityPageState extends State<CharityPage>
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => cubit..Load(),
-      child: BlocBuilder<CharityCubit, CharityState>(
+    return Scaffold(
+      appBar: AppBarWithTitle(
+        title: LocaleKeys.charity.tr(),
+        onPress: () {
+          NavigatorService.to.pop();
+        },
+      ),
+      backgroundColor: AppColorUtils.BACKGROUND,
+      body: BlocBuilder<CharityCubit, CharityState>(
+        bloc: CharityCubit.to,
         builder: (context, state) {
-          return Scaffold(
-            appBar: AppBarWithTitle(
-              title: LocaleKeys.charity.tr(),
-              onPress: () {
-                NavigatorService.to.pop();
-              },
-            ),
-            backgroundColor: AppColorUtils.BACKGROUND,
-            body: SingleChildScrollView(
+          List<ProjectModel> list = state.charityModel!.projectModel!;
+          if (state.loading == true) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            return SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -134,14 +144,14 @@ class _CharityPageState extends State<CharityPage>
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       child: Row(
-                        children: List.generate(state.list.length, (index) {
-                          if (state.list[index].progres != null) {
+                        children: List.generate(list.length, (index) {
+                          if (list[index].requiredFund != null) {
                             return CharityItemWidget(
-                              model: state.list[index],
-                              onTap: (){
+                              model: list[index],
+                              onTap: () {
                                 NavigatorService.to.pushNamed(
                                   CharityFullPage.routName,
-                                  arguments: state.list[index],
+                                  arguments: list[index],
                                 );
                               },
                             ).paddingOnly(left: 10.w);
@@ -151,12 +161,12 @@ class _CharityPageState extends State<CharityPage>
                                 NavigatorService.to.pushNamed(
                                   CharityFullPage2.routName,
                                   arguments: CharityFullModel(
-                                    cardModel: state.list[index],
-                                    cubit: cubit,
+                                    cardModel: list[index],
+                                    cubit: CharityCubit.to,
                                   ),
                                 );
                               },
-                              model: state.list[index],
+                              model: list[index],
                             ).paddingOnly(left: 10.w);
                           }
                         }),
@@ -199,11 +209,12 @@ class _CharityPageState extends State<CharityPage>
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                             ),
-                            tabs: [
-                              Text("Barchasi"),
-                              Text("Mablag'"),
-                              Text("Buyumlar"),
-                            ],
+                            tabs: List.generate(state.category.length,
+                                (index) => Text(state.category[index].name!)),
+                            onTap: (index) {
+                              CharityCubit.to
+                                  .tabChange(state.category[index].id!);
+                            },
                             isScrollable: true,
                             indicatorWeight: 4,
                             indicatorColor: AppColorUtils.GREEN_APP,
@@ -216,9 +227,14 @@ class _CharityPageState extends State<CharityPage>
                           SizedBox(
                             height: 20.w,
                           ),
-                          Container(
-                            child: [
-                              GridView.count(
+                          state.tabLoading
+                              ? Center(
+                            child: CircularProgressIndicator(),
+                          ).paddingSymmetric(vertical: 50.w)
+                              :Container(
+                            child: List.generate(
+                              state.category.length,
+                              (index) => GridView.count(
                                 shrinkWrap: true,
                                 crossAxisCount: 2,
                                 physics: ClampingScrollPhysics(),
@@ -227,27 +243,32 @@ class _CharityPageState extends State<CharityPage>
                                 reverse: false,
                                 crossAxisSpacing: 8,
                                 mainAxisSpacing: 6,
-                                children:
-                                    List.generate(state.list.length, (index) {
-                                  if (state.list[index].progres != null) {
+                                children: List.generate(
+                                    state.tabProjects!.projectModel!.length,
+                                    (index) {
+                                  if (state.tabProjects!.projectModel![index]
+                                          .requiredFund !=
+                                      null) {
                                     return CharityItemWidget(
-                                      onTap: (){
+                                      onTap: () {
                                         NavigatorService.to.pushNamed(
                                           CharityFullPage.routName,
-                                          arguments: state.list[index],
+                                          arguments: state.tabProjects!
+                                              .projectModel![index],
                                         );
                                       },
-                                      model: state.list[index],
+                                      model: list[index],
                                     );
                                   } else {
                                     return CharityItem2Widget(
-                                      model: state.list[index],
+                                      model: list[index],
                                       onTap: () {
                                         NavigatorService.to.pushNamed(
                                           CharityFullPage2.routName,
                                           arguments: CharityFullModel(
-                                            cardModel: state.list[index],
-                                            cubit: cubit,
+                                            cardModel: state.tabProjects!
+                                                .projectModel![index],
+                                            cubit: CharityCubit.to,
                                           ),
                                         );
                                       },
@@ -255,81 +276,7 @@ class _CharityPageState extends State<CharityPage>
                                   }
                                 }),
                               ),
-                              GridView.count(
-                                shrinkWrap: true,
-                                crossAxisCount: 2,
-                                physics: ClampingScrollPhysics(),
-                                childAspectRatio: 160 / 267,
-                                padding: EdgeInsets.all(0),
-                                reverse: false,
-                                crossAxisSpacing: 8,
-                                mainAxisSpacing: 6,
-                                children:
-                                    List.generate(state.list.length, (index) {
-                                  if (state.list[index].progres != null) {
-                                    return CharityItemWidget(
-                                      onTap: (){
-                                        NavigatorService.to.pushNamed(
-                                          CharityFullPage.routName,
-                                          arguments: state.list[index],
-                                        );
-                                      },
-                                      model: state.list[index],
-                                    );
-                                  } else {
-                                    return CharityItem2Widget(
-                                      model: state.list[index],
-                                      onTap: () {
-                                        NavigatorService.to.pushNamed(
-                                          CharityFullPage2.routName,
-                                          arguments: CharityFullModel(
-                                            cardModel: state.list[index],
-                                            cubit: cubit,
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  }
-                                }),
-                              ),
-                              GridView.count(
-                                shrinkWrap: true,
-                                crossAxisCount: 2,
-                                physics: ClampingScrollPhysics(),
-                                childAspectRatio: 160 / 267,
-                                padding: EdgeInsets.all(0),
-                                reverse: false,
-                                crossAxisSpacing: 8,
-                                mainAxisSpacing: 6,
-                                children:
-                                    List.generate(state.list.length, (index) {
-                                  if (state.list[index].progres != null) {
-                                    return CharityItemWidget(
-                                      onTap: (){
-                                        NavigatorService.to.pushNamed(
-                                          CharityFullPage.routName,
-                                          arguments: state.list[index],
-                                        );
-                                      },
-                                      model: state.list[index],
-                                    );
-                                  } else {
-                                    return CharityItem2Widget(
-                                      model: state.list[index],
-                                      onTap: () {
-                                        NavigatorService.to.pushNamed(
-                                          CharityFullPage2.routName,
-                                          arguments: CharityFullModel(
-                                            cardModel: state.list[index],
-                                            cubit: cubit,
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  }
-                                }),
-                              ),
-                            ][_tabController.index],
+                            )[_tabController.index],
                           ).paddingSymmetric(horizontal: 15.w),
                         ],
                       ),
@@ -337,8 +284,8 @@ class _CharityPageState extends State<CharityPage>
                   )
                 ],
               ),
-            ),
-          );
+            );
+          }
         },
       ),
     );

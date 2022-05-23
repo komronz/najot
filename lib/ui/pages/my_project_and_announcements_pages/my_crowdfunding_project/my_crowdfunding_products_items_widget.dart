@@ -57,7 +57,7 @@ class MyCrowdfundingProductsItemsWidget extends StatelessWidget {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                                 image: NetworkImage(
-                                  model.imgUrl!,
+                                  '',
                                 ),
                                 fit: BoxFit.cover),
                           ),
@@ -162,10 +162,10 @@ class MyCrowdfundingProductsItemsWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              DateWidget(date: model.date!),
+              DateWidget(date: ""),
               AppWidgets.textLocale(
                 text: LocaleKeys.sum,
-                args: [model.totalSum!],
+                args: ["111111"],
                 color: AppColorUtils.KRAUDFANDING,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,

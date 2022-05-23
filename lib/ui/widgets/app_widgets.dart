@@ -276,6 +276,73 @@ class AppWidgets {
     );
   }
 
+ static Widget selectLangWidget(
+      BuildContext context,
+      VoidCallback onTap,
+      ) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
+        height: 44.w,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: AppColorUtils.LANG_BACK),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Icon(
+                  Icons.language,
+                  color: AppColorUtils.BORDER_COLOR,
+                ),
+                SizedBox(
+                  width: 10.w,
+                ),
+                AppWidgets.text(
+                  text: context.locale == Locale('uz', 'UZ') ? "Til" : " Язык",
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColorUtils.DARK2,
+                )
+              ],
+            ),
+            Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(3.w),
+                  child: context.locale == Locale('uz', 'UZ')
+                      ? SvgPicture.asset(
+                    AppImageUtils.UZ_FLAG,
+                  )
+                      : SvgPicture.asset(
+                    AppImageUtils.RUS_FLAG,
+                  ),
+                ),
+                SizedBox(
+                  width: 8.w,
+                ),
+                AppWidgets.text(
+                  text: context.locale == Locale('uz', 'UZ')
+                      ? "O'zbek tili"
+                      : "Русский язык",
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColorUtils.DARK2,
+                ),
+                SizedBox(
+                  width: 15.w,
+                ),
+                Icon(Icons.chevron_right)
+              ],
+            )
+          ],
+        ),
+      ).paddingOnly(bottom: 24.w),
+    );
+  }
+
   static Widget appBarMenu({required String title,
     required VoidCallback onTapMenu,
     VoidCallback? onTapIcon,

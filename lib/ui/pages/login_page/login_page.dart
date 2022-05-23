@@ -32,6 +32,7 @@ class LoginPage extends StatelessWidget {
         listener: (context, state) {
           if (state.phone.length == 12) {
             print("dddddd");
+
           }
           if (state.checkPhoneNumber) {
             NavigatorService.to.pushNamed(

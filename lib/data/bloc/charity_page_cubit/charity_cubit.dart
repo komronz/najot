@@ -1,31 +1,59 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/charity_saved_service.dart';
 
+import '../../model/categories_model.dart';
+import '../../model/volunteer_model.dart';
+import '../../services/charity_service.dart';
 import '../../services/volunteer_service.dart';
+import '../../utils/app_logger_util.dart';
 
 part 'charity_state.dart';
 
 class CharityCubit extends Cubit<CharityState> {
-  CharityCubit() : super(CharityState(checkBox: false));
 
 
+  static CharityCubit get to => GetIt.I<CharityCubit>();
 
-  Future Load()async{
+  static Future init() async {
+    GetIt.instance..registerSingleton<CharityCubit>(CharityCubit());
+    CharityCubit.to.load();
+  }
+  CharityCubit() : super(CharityState());
 
-    try{
-      var list= await CharitySavedService().getCharityList();
-      emit(state.copyWith(list: list,tobeVolunteer: Volunteer.tobeVolunteer));
+  CharityService charityService = CharityService();
 
-    }catch(e){
+  Future load() async {
+    var charityModel = await charityService.getCharityModel();
+    var categories = await charityService.getCategoriesModel();
+    var list= categories!.results![0];
+    var tabProjects=await charityService.getProjectsById(list.children![0].id!);
 
-      
+    if (charityModel != null && categories != null) {
+      emit(state.copyWith(
+          charityModel: charityModel,
+          category: list.children,
+          tabProjects: tabProjects
+      ),
+
+      );
+      AppLoggerUtil.i(charityModel.count.toString());
     }
-
   }
 
-  void loading(){
+  Future tabChange(int id) async{
+    emit(state.copyWith(tabLoading: true));
+    var tabProjects=await charityService.getProjectsById(id);
+
+    if(tabProjects!=null){
+      await Future.delayed(Duration(seconds: 1));
+      emit(state.copyWith(tabProjects: tabProjects));
+      emit(state.copyWith(tabLoading: false));
+    }
+  }
+  void loading() {
     emit(state.copyWith());
   }
 
@@ -33,10 +61,8 @@ class CharityCubit extends Cubit<CharityState> {
     emit(state.copyWith(checkBox: v));
   }
 
-  Future onChangeSave(bool v) async{
-    var list= await CharitySavedService().getCharityList();
-    emit(state.copyWith(saveHelp: v,list:  list));
+  Future onChangeSave(bool v) async {
+    var list = await CharitySavedService().getCharityList();
+    emit(state.copyWith(saveHelp: v));
   }
-
-
 }

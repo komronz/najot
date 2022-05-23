@@ -10,13 +10,12 @@ class MainService{
 
   Future<MainModel?> getModel() async {
 
-
     try {
       final Response response = await RootService.httpService.get(
-        url: "http://api.najot.thinkland.uz/home/",
+        url: "https://najot.uz/ru/home/",
       );
-
       if (response.statusCode == 200) {
+
         final MainModel responseModel =
         MainModel.fromJson(
           response.data,);
@@ -26,6 +25,7 @@ class MainService{
         return null;
       }
     } catch (e) {
+      AppLoggerUtil.e("-----------------");
       return null;
     }
   }

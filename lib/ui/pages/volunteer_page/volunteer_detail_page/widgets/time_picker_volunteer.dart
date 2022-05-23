@@ -1,14 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/data/bloc/volonteer_detail_cubit/volonteer_detail_cubit.dart';
+import 'package:najot/data/bloc/volunteer_bloc/volunteer_cubit.dart';
 import 'package:najot/data/custom_time_picker/date_picker/date_picker_theme.dart';
 import 'package:najot/data/custom_time_picker/date_picker/i18n/date_picker_i18n.dart';
 import 'package:najot/data/custom_time_picker/date_picker/widget/date_picker_widget.dart';
 import 'package:najot/data/custom_time_picker/flutter_time_picker_spinner.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
@@ -24,12 +24,14 @@ class TimePikerVolunteer extends StatelessWidget {
   });
   DateTime _date = DateTime.now();
   DateTime _time = DateTime.now();
-  CardModel model;
-  VolonteerDetailCubit cubit;
+  ProjectModel model;
+  VolunteerCubit cubit;
   BuildContext con;
 
   @override
   Widget build(BuildContext context) {
+    var modifiedAt= DateTime.parse(model.modifiedAt!);
+
     return Center(
       child: Material(
         color: Colors.transparent,
@@ -78,7 +80,7 @@ class TimePikerVolunteer extends StatelessWidget {
                             height: 16,
                           ).paddingOnly(right: 5),
                           AppWidgets.textLocale(
-                            text: model.date!,
+                            text:  DateFormat("dd.MM.yyyy").format(modifiedAt),
                             color: AppColorUtils.VOLONTYOR,
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w500,

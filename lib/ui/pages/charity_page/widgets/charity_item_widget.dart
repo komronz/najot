@@ -13,8 +13,10 @@ import 'package:najot/ui/pages/charity_page/widgets/favorite_button.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
+import '../../../../data/model/project_model.dart';
+
 class CharityItemWidget extends StatelessWidget {
-  final CardModel model;
+  final ProjectModel model;
   final VoidCallback onTap;
 
 
@@ -52,7 +54,9 @@ class CharityItemWidget extends StatelessWidget {
                               placeholder: (context, url) => Center(
                                 child: CircularProgressIndicator(),
                               ),
-                              imageUrl: model.image!,
+                              width: double.infinity,
+                              height: double.infinity,
+                              imageUrl: model.coverUrl!,
                               errorWidget: (context, url, error) =>
                                   Icon(Icons.error),
                               fit: BoxFit.cover,
@@ -66,7 +70,7 @@ class CharityItemWidget extends StatelessWidget {
                         Expanded(child: SizedBox()),
                         InkWell(
                           child: FavoriteButton(
-                            isFavorite: model.isFavorite!,
+                            isFavorite: true,
                           ),
                           onTap: () {},
                         ),
@@ -92,7 +96,7 @@ class CharityItemWidget extends StatelessWidget {
                       padding: EdgeInsets.all(0),
                       lineHeight: 10.h,
                       animationDuration: 2000,
-                      percent: model.progres! / 100,
+                      percent: 60 / 100,
                       progressColor: AppColorUtils.PERCENT_COLOR,
                       backgroundColor: AppColorUtils.PERCENT_COLOR2,
                     ).paddingOnly(top: 12.w),
@@ -103,7 +107,8 @@ class CharityItemWidget extends StatelessWidget {
                       color: AppColorUtils.DARK_6,
                     ).paddingOnly(top: 12.w),
                     AppWidgets.text(
-                      text: "${model.progres.toString().split(".").first}%",
+                      // text: "${model.progres.toString().split(".").first}%",
+                      text: "60%",
                       fontWeight: FontWeight.w600,
                       color: AppColorUtils.BLUE_PERCENT,
                     ).paddingOnly(top: 5.w),
