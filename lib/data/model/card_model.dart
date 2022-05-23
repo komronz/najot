@@ -79,7 +79,7 @@ class CardModel {
       true,
       info,
       "22.08.2022",
-      ProductsService().getProducts(),
+      ProductService().getProducts(),
     ),
     CardModel(
       "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
@@ -89,7 +89,7 @@ class CardModel {
       false,
       info,
       "22.08.2022",
-      ProductsService().getProducts(),
+      ProductService().getProducts(),
     ),
     CardModel(
       "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
@@ -99,7 +99,7 @@ class CardModel {
       true,
       info,
       "22.08.2022",
-      ProductsService().getProducts(),
+      ProductService().getProducts(),
     ),
     CardModel(
       "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
@@ -109,7 +109,7 @@ class CardModel {
       true,
       info,
       "22.08.2022",
-      ProductsService().getProducts(),
+      ProductService().getProducts(),
     ),
     // CardModel("assets/images/rasm.jpg", "Texnalogiya", "Drenajni kuzatish uchun mo'ljallangan", 0.6, false),
   ];

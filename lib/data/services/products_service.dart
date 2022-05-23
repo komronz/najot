@@ -1,8 +1,11 @@
 
 
+import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/product_model.dart';
+import 'package:najot/data/services/http_service.dart';
+import 'package:najot/data/services/root_service.dart';
 
-class ProductsService{
+class ProductService{
 
   List<ProductModel> getProducts() {
     ProductModel productModel= ProductModel(
@@ -28,9 +31,9 @@ class ProductsService{
     ];
     return list;
 
-
   }
 
 
 
 }
+

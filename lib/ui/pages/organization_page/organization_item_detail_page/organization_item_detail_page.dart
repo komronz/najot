@@ -15,7 +15,7 @@ import '../../charity_page/widgets/charity_item2_widget.dart';
 import '../../charity_page/widgets/charity_item_widget.dart';
 
 class OrganizationItemDetailPageModel {
-  final OrganizationModel model;
+  final OrganizationModelResults model;
   final OrganizationCubit cubit;
 
   OrganizationItemDetailPageModel({
@@ -36,8 +36,10 @@ class OrganizationItemDetailPage extends StatelessWidget {
           elevation: 0,
           automaticallyImplyLeading: false,
           title: AppWidgets.appBarWidget(
-            title: model.model.name,
-            onTap: () {},
+            title: model.model.name!,
+            onTap: () {
+              NavigatorService.to.pop();
+            },
           ),
         ),
         body: SingleChildScrollView(
@@ -65,7 +67,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
                           Radius.circular(12),
                         ),
                         child: CachedNetworkImage(
-                          imageUrl: model.model.image,
+                          imageUrl: model.model.logo!,
                           fit: BoxFit.cover,
                           width: MediaQuery.of(context).size.width,
                           placeholder: (context, url) => Center(
@@ -84,7 +86,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                              image: NetworkImage(model.model.image),
+                              image: NetworkImage(model.model.founderImage!),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -102,7 +104,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
                             SizedBox(
                               width: 150.w,
                               child: AppWidgets.text(
-                                text: "Eshonov Fakhriyor",
+                                text: model.model.founderName!,
                                 color: AppColorUtils.TEXT_GREEN2,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14.sp,
@@ -123,12 +125,12 @@ class OrganizationItemDetailPage extends StatelessWidget {
                       bottom: 10.w,
                     ),
                     AppWidgets.text(
-                            text: model.model.title,
+                            text: model.model.description!,
                             fontSize: 16.w,
                             fontWeight: FontWeight.w400,
                             color: AppColorUtils.DARK3,
                             maxLines: 50,
-                            height: 1.5.w)
+                            height: 1.1.w)
                         .paddingSymmetric(horizontal: 20.w),
                     AppWidgets.textLocale(
                       text: LocaleKeys.organizational_projects,
@@ -140,41 +142,41 @@ class OrganizationItemDetailPage extends StatelessWidget {
                       top: 12.w,
                       bottom: 10.w,
                     ),
-                    SingleChildScrollView(
-                      physics: BouncingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: List.generate(
-                          model.model.list.length,
-                          (index) {
-                            if (model.model.list[index].progres != null) {
-                              return CharityItemWidget(
-                                onTap: () {
-                                  NavigatorService.to.pushNamed(
-                                    CharityFullPage.routName,
-                                    arguments: model.model.list[index],
-                                  );
-                                },
-                                model: model.model.list[index],
-                              ).paddingOnly(left: 10);
-                            } else {
-                              return CharityItem2Widget(
-                                model: model.model.list[index],
-                                onTap: () {
-                                  NavigatorService.to.pushNamed(
-                                    OrganizationCharityItemWidget.routName,
-                                    arguments: OrganizationCharityItemModel(
-                                      cardModel: model.model.list[index],
-                                      cubit: model.cubit,
-                                    ),
-                                  );
-                                },
-                              ).paddingOnly(left: 10);
-                            }
-                          },
-                        ),
-                      ),
-                    )
+                    // SingleChildScrollView(
+                    //   physics: BouncingScrollPhysics(),
+                    //   scrollDirection: Axis.horizontal,
+                    //   child: Row(
+                    //     children: List.generate(
+                    //       model.model.length,
+                    //       (index) {
+                    //         if (model.model.list[index].progres != null) {
+                    //           return CharityItemWidget(
+                    //             onTap: () {
+                    //               NavigatorService.to.pushNamed(
+                    //                 CharityFullPage.routName,
+                    //                 arguments: model.model.list[index],
+                    //               );
+                    //             },
+                    //             model: model.model.list[index],
+                    //           ).paddingOnly(left: 10);
+                    //         } else {
+                    //           return CharityItem2Widget(
+                    //             model: model.model.list[index],
+                    //             onTap: () {
+                    //               NavigatorService.to.pushNamed(
+                    //                 OrganizationCharityItemWidget.routName,
+                    //                 arguments: OrganizationCharityItemModel(
+                    //                   cardModel: model.model.list[index],
+                    //                   cubit: model.cubit,
+                    //                 ),
+                    //               );
+                    //             },
+                    //           ).paddingOnly(left: 10);
+                    //         }
+                    //       },
+                    //     ),
+                    //   ),
+                    // )
                   ],
                 ),
               ),

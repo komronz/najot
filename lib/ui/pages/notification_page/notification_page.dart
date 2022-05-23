@@ -15,6 +15,7 @@ import '../../../data/services/navigator_service.dart';
 
 class NotificationPage extends StatefulWidget {
   static const String routeName = "/notificationPage";
+  bool isRead=false;
 
   NotificationPage({Key? key}) : super(key: key);
 
@@ -46,7 +47,6 @@ class _NotificationPageState extends State<NotificationPage> {
       },
     );
   }
-  bool isRead=true;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -73,11 +73,10 @@ class _NotificationPageState extends State<NotificationPage> {
         if (index == state.cardList.length -1) {
           return MyNoteWidget(
             model: state.cardList[index],
-            isLast: isRead,
+            isLast: state.isRead,
+            index: index,
             onTap: (){
-              setState(() {
-                isRead=false;
-              });
+              context.read<NotificationCubit>().isRead(widget.isRead);
               NotificationApi.showNotification(
                   title:LocaleKeys.attention_hello_volunteer.tr(),
                   body: LocaleKeys.you_go_to_help.tr(),
@@ -89,6 +88,7 @@ class _NotificationPageState extends State<NotificationPage> {
         }
         return MyNoteWidget(
           model: state.cardList[index],
+          index: index,
           onTap: () {
             NotificationApi.showNotification(
               title:LocaleKeys.attention_hello_volunteer.tr(),

@@ -8,7 +8,7 @@ import 'package:najot/data/services/products_service.dart';
 
 class MyProductsCubit extends Cubit<MyProductsState> {
   MyProductsCubit() : super(MyProductsState());
-  var service = ProductsService();
+  var service = ProductService();
 
   Future load() async {
     emit(state.copyWith(isLoading: true));

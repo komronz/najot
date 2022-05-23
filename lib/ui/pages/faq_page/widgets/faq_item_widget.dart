@@ -48,7 +48,8 @@ class FaqItemWidget extends StatelessWidget {
                 ),
                 onTap: () {
                   AppLoggerUtil.i("$index  ${faqModel.isOpen}");
-                  context.read<FaqCubit>().openFaqItem(index, faqModel.isOpen!);
+                  context.read<FaqCubit>().openFaqItem(index);
+
                 },
               )
             ],

@@ -22,6 +22,7 @@ import 'package:najot/ui/pages/loading_page/loading_page.dart';
 import 'package:najot/ui/pages/login_page/login_page.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_page.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/adding_project_page.dart';
+import 'package:najot/ui/pages/notification_page/widget/my_note_widget.dart';
 import 'package:najot/ui/pages/reg_page/reg_page.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/img_view.dart';
 import 'package:najot/ui/pages/verification_page/verification_page.dart';
@@ -118,9 +119,6 @@ class AppRouteUtils {
             cardModel: settings.arguments as CardModel,
           ),
         );
-
-
-
       case OrganizationItemDetailPage.routeName:
         return MaterialPageRoute(
           builder: (context) => OrganizationItemDetailPage(
@@ -163,7 +161,7 @@ class AppRouteUtils {
         return MaterialPageRoute(
           builder: (context) => CharityPage(),
         );
-      case MyProfilePage.routeName:
+       case MyProfilePage.routeName:
         return MaterialPageRoute(
           builder: (context) => MyProfilePage(),
         );

@@ -5,14 +5,12 @@ class FaqState extends Equatable {
   final bool hasError;
   final bool hasConnection;
   final List<FaqModel> list;
-  final bool isOpened;
 
   const FaqState({
     this.hasLoading = false,
     this.hasError = false,
     this.hasConnection = true,
     this.list = const [],
-    this.isOpened=false,
   });
 
   FaqState copyWith({
@@ -20,18 +18,30 @@ class FaqState extends Equatable {
     bool? hasError,
     bool? hasConnection,
     List<FaqModel>? list,
-    bool? isOpened=false,
   }) {
     return FaqState(
       hasError: hasError ?? this.hasError,
       list: list ?? this.list,
       hasConnection: hasConnection ?? this.hasConnection,
       hasLoading: hasLoading ?? this.hasLoading,
-      isOpened: isOpened ?? this.isOpened,
-
     );
   }
 
   @override
-  List<Object?> get props => [hasLoading, hasError, hasConnection,isOpened, list];
+  List<Object?> get props => [
+        hasLoading,
+        hasError,
+        hasConnection,
+        list,
+      ];
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FaqState &&
+          runtimeType == other.runtimeType &&
+          hasError == other.hasError &&
+          list == other.list &&
+          hasConnection == other.hasConnection &&
+          hasLoading == other.hasLoading;
 }

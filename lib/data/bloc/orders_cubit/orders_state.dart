@@ -1,9 +1,10 @@
 
 import 'package:equatable/equatable.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
+import 'package:najot/data/model/oreder_model.dart';
 
 class OrdersState extends Equatable {
-  final List<KraufandingModel> list;
+  final List<OrderModelResults> list;
   final bool hasError;
   final bool hasConnection;
   final bool isLoading;
@@ -16,7 +17,7 @@ class OrdersState extends Equatable {
   });
 
   OrdersState copyWith({
-    List<KraufandingModel>? list,
+    List<OrderModelResults>? list,
     bool? hasError,
     bool? hasConnection,
     bool? isLoading,

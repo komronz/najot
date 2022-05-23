@@ -12,6 +12,17 @@ class NotificationCubit extends Cubit<NotificationState> {
     GetIt.instance..registerSingleton<NotificationCubit>(NotificationCubit());
   }
 
-  NotificationCubit() : super(NotificationState( cardList: VolunteeringModel.list));
+  NotificationCubit()
+      : super(NotificationState(cardList: VolunteeringModel.list));
 
+  void isRead(bool vol) {
+    emit(state.copyWith(isRead: vol));
+  }
+
+  void dateChange(DateTime dateTime, int index) {
+    List<VolunteeringModel>? list = List.from(state.cardList);
+    list[index].createdDate = dateTime.toString();
+    // list[index].completedDate = dateTime.toString();
+    emit(state.copyWith(list:list));
+  }
 }

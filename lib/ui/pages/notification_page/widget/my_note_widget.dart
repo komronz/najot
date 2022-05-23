@@ -1,13 +1,18 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:najot/data/bloc/notification_cubit/notification_cubit.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
+import 'notification_date_widget.dart';
 import 'notification_delete_widget.dart';
 import 'notification_edit.dart';
 
@@ -15,23 +20,24 @@ class MyNoteWidget extends StatelessWidget {
   MyNoteWidget({
     required this.model,
     required this.onTap,
+    required this.index,
     Key? key,
     this.isLast = false,
   }) : super(key: key);
   final VolunteeringModel model;
   final VoidCallback onTap;
+  final int index;
   bool isLast;
 
 
   @override
   Widget build(BuildContext context) {
+    var cubit = context.read<NotificationCubit>();
     return InkWell(
       child: Container(
         width: context.width,
         decoration: BoxDecoration(
-          color: isLast
-              ? AppColorUtils.ITEM_ORDERS_CARD
-              : AppColorUtils.WHITE,
+          color: isLast ? AppColorUtils.ITEM_ORDERS_CARD : AppColorUtils.WHITE,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: AppColorUtils.ITEM_ORDERS_BORDER,
@@ -69,37 +75,37 @@ class MyNoteWidget extends StatelessWidget {
                   top: 12.w,
                   bottom: 3,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    AppWidgets.imageSvg(
-                      path: AppImageUtils.CALENDAR_RED,
-                      color: AppColorUtils.BLUE_PERCENT,
-                      height: 15.w,
-                    ).paddingOnly(right: 5),
-                    AppWidgets.textLocale(
-                      text: model.completedDate!,
-                      color: AppColorUtils.BLUE_PERCENT,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w600,
-                    ).paddingOnly(right: 24.w),
-                    AppWidgets.imageSvg(
-                      path: AppImageUtils.CLOCK,
-                      color: AppColorUtils.BLUE_PERCENT,
-                      height: 15.w,
-                    ).paddingOnly(
-                      right: 5.w,
-                      top: 2.w,
-                    ),
-                    AppWidgets.textLocale(
-                      text: "18:00",
-                      color: AppColorUtils.BLUE_PERCENT,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ],
-                ),
-
+                NotificationDateWidget(date: model.createdDate!,),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.start,
+                //   children: [
+                //     AppWidgets.imageSvg(
+                //       path: AppImageUtils.CALENDAR_RED,
+                //       color: AppColorUtils.BLUE_PERCENT,
+                //       height: 15.w,
+                //     ).paddingOnly(right: 5),
+                //     AppWidgets.textLocale(
+                //       text: model.completedDate!,
+                //       color: AppColorUtils.BLUE_PERCENT,
+                //       fontSize: 16.sp,
+                //       fontWeight: FontWeight.w600,
+                //     ).paddingOnly(right: 24.w),
+                //     AppWidgets.imageSvg(
+                //       path: AppImageUtils.CLOCK,
+                //       color: AppColorUtils.BLUE_PERCENT,
+                //       height: 15.w,
+                //     ).paddingOnly(
+                //       right: 5.w,
+                //       top: 2.w,
+                //     ),
+                //     AppWidgets.textLocale(
+                //       text: "18:00",
+                //       color: AppColorUtils.BLUE_PERCENT,
+                //       fontSize: 16.sp,
+                //       fontWeight: FontWeight.w600,
+                //     ),
+                //   ],
+                // ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -146,8 +152,10 @@ class MyNoteWidget extends StatelessWidget {
                         context: context,
                         builder: (context) {
                           return NotificationEdit(
+                            cubit: cubit,
                             selectFunction: (dateTime) {},
                             model: model,
+                            index: index,
                           );
                         },
                       );
@@ -179,15 +187,13 @@ class MyNoteWidget extends StatelessWidget {
           ],
         ),
       ).paddingSymmetric(horizontal: 20).paddingOnly(top: 12.w),
-      onTap:onTap,
+      onTap: onTap,
       //     (){
       //   widget.onTap;
       //   setState(() {
       //     widget.isLast = false;
       //   });
       // }
-
-
     );
   }
 }

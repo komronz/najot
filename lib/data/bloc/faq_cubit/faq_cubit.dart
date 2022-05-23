@@ -6,12 +6,13 @@ import 'package:najot/data/services/faq_service.dart';
 part 'faq_state.dart';
 class FaqCubit extends Cubit<FaqState> {
   static FaqCubit get to => GetIt.I<FaqCubit>();
+  FaqCubit() : super(FaqState());
   FaqService faqService = FaqService();
 
   static Future init() async {
     GetIt.instance..registerSingleton<FaqCubit>(FaqCubit());
   }
-  FaqCubit() : super(FaqState());
+
   Future getFaqList() async {
     var mainFaqModel = await faqService.getModel();
       emit(state.copyWith(hasLoading: true, hasError: false,),);
@@ -21,11 +22,10 @@ class FaqCubit extends Cubit<FaqState> {
       emit(state.copyWith(hasLoading: false, hasError: true,),);
     }
   }
-  Future openFaqItem(int index, bool isOpen) async {
-    var mainFaqModel = await faqService.getModel();
-    mainFaqModel!.faqModel![index].isOpen = !(mainFaqModel.faqModel![index].isOpen ?? false);
-    List<FaqModel>? list=List.from(mainFaqModel.faqModel!);
-    emit(state.copyWith(list: list,));
+  Future openFaqItem(int index) async {
+    List<FaqModel> list=List.from(state.list);
+    list[index].isOpen = !(list[index].isOpen ?? false);
+    emit(state.copyWith(list: list));
     // getFaqList();
   }
 }

@@ -11,7 +11,7 @@ import 'package:najot/ui/pages/organization_page/organization_item_detail_page/o
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class OrganizationItemWidget extends StatelessWidget {
-  final OrganizationModel model;
+  final OrganizationModelResults model;
   final OrganizationCubit cubit;
 
   const OrganizationItemWidget({
@@ -40,39 +40,39 @@ class OrganizationItemWidget extends StatelessWidget {
                   placeholder: (context, url) => Center(
                     child: CircularProgressIndicator(),
                   ),
-                  imageUrl: model.image,
+                  imageUrl: model.logo!,
                   errorWidget: (context, url, error) => Icon(Icons.error),
                   fit: BoxFit.cover,
                   width: 1.sw,
                 ),
               ),
-            ),
+            ).paddingOnly(bottom: 10.w),
             Expanded(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppWidgets.text(
-                    text: model.name,
-                    fontSize: 14.sp,
+                    text: model.name!,
+                    fontSize: 15.sp,
                     fontWeight: FontWeight.w500,
                     maxLines: 2,
-                  ),
+                  ).paddingOnly(bottom: 20.w),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppWidgets.textLocale(
                         text: LocaleKeys.number_of_projects,
-                        fontSize: 10.sp,
+                        fontSize: 11.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColorUtils.DARK_6,
-                      ).paddingOnly(top: 12.w),
+                      ),
                       AppWidgets.text(
-                        text: "${model.count}",
+                        text: "${cubit.state.list.length}",
                         fontWeight: FontWeight.w600,
                         color: AppColorUtils.BLUE_PERCENT,
-                        fontSize: 14.sp,
-                      ).paddingOnly(top: 5.w),
+                        fontSize: 15.sp,
+                      ).paddingOnly(top: 10.w),
                     ],
                   )
                 ],
