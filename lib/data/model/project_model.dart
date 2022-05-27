@@ -1,19 +1,23 @@
+
+
 class ProjectModel {
   int? id;
   Owner? owner;
   String? type;
   String? title;
+  bool? reaction;
   String? helpType;
   int? organization;
   String? deadline;
   String? cover;
+  String? content;
   String? coverUrl;
   int? category;
-  int? person;
-  int? amountCollected;
+  int? totalPeopleInvested;
+  String? amountCollected;
   int? percent;
   String? cardNumber;
-  int? requiredFund;
+  String? requiredFund;
   String? address;
   String? createdAt;
   String? modifiedAt;
@@ -23,13 +27,15 @@ class ProjectModel {
         this.owner,
         this.type,
         this.title,
+        this.reaction,
         this.helpType,
         this.organization,
         this.deadline,
         this.cover,
+        this.content,
         this.coverUrl,
         this.category,
-        this.person,
+        this.totalPeopleInvested,
         this.amountCollected,
         this.percent,
         this.cardNumber,
@@ -43,13 +49,15 @@ class ProjectModel {
     owner = json['owner'] != null ? new Owner.fromJson(json['owner']) : null;
     type = json['type'];
     title = json['title'];
+    reaction = json['reaction'];
     helpType = json['help_type'];
     organization = json['organization'];
     deadline = json['deadline'];
     cover = json['cover'];
+    content = json['content'];
     coverUrl = json['cover_url'];
     category = json['category'];
-    person = json['person'];
+    totalPeopleInvested = json['total_people_invested'];
     amountCollected = json['amount_collected'];
     percent = json['percent'];
     cardNumber = json['card_number'];
@@ -67,13 +75,15 @@ class ProjectModel {
     }
     data['type'] = this.type;
     data['title'] = this.title;
+    data['reaction'] = this.reaction;
     data['help_type'] = this.helpType;
     data['organization'] = this.organization;
     data['deadline'] = this.deadline;
     data['cover'] = this.cover;
+    data['content'] = this.content;
     data['cover_url'] = this.coverUrl;
     data['category'] = this.category;
-    data['person'] = this.person;
+    data['total_people_invested'] = this.totalPeopleInvested;
     data['amount_collected'] = this.amountCollected;
     data['percent'] = this.percent;
     data['card_number'] = this.cardNumber;

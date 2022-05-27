@@ -244,18 +244,22 @@ class _OrganizationCharityItemWidgetState
                           ),
                           Container(
                             child: [
-                              MoreWidget(
-                                cardModel: widget.helpModel.cardModel,
-                              ),
-                              NewsWidget(
-                                cardModel: widget.helpModel.cardModel,
-                              ).paddingAll(20.w),
-                              QuestionsAskedWidget(
-                                cardModel: widget.helpModel.cardModel,
-                              ).paddingAll(20.w),
-                              CommentsWidget(
-                                cardModel: widget.helpModel.cardModel,
-                              ).paddingAll(20.w)
+                              Container(),
+                              Container(),
+                              Container(),
+                              Container(),
+                              // MoreWidget(
+                              //   cardModel: widget.helpModel.cardModel,
+                              // ),
+                              // NewsWidget(
+                              //   cardModel: widget.helpModel.cardModel,
+                              // ).paddingAll(20.w),
+                              // QuestionsAskedWidget(
+                              //   cardModel: widget.helpModel.cardModel,
+                              // ).paddingAll(20.w),
+                              // CommentsWidget(
+                              //   cardModel: widget.helpModel.cardModel,
+                              // ).paddingAll(20.w)
                             ][_controller.index],
                           ),
                           SizedBox(
