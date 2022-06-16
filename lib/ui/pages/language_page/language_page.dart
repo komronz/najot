@@ -135,8 +135,7 @@ class _LanguagePageState extends State<LanguagePage> {
                     if (val != 0) {
                       // NavigatorService.to.pushNamed(IntroPage.routeName);
                       NavigatorService.to.pushNamed(
-                        HomePage.routeName,
-                        arguments: AppPageType.MAIN,
+                        IntroPage.routeName,
                       );
                     }
                   },

@@ -82,7 +82,7 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
                               animation: true,
                               padding: EdgeInsets.all(0),
                               animationDuration: 2000,
-                              percent: 0.60,
+                              percent: cardModel.percent!/100,
                               progressColor: AppColorUtils.PERCENT_COLOR,
                               backgroundColor: AppColorUtils.PERCENT_COLOR2,
                             ),
@@ -99,7 +99,7 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
                           SizedBox(height: 5.w),
                           Container(
                             child: AppWidgets.text(
-                              text: "60%",
+                              text: "${cardModel.percent}%",
                               fontSize: 14.sp,
                               fontWeight: FontWeight.w600,
                               color: AppColorUtils.BLUE_PERCENT,

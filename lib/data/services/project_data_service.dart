@@ -13,9 +13,9 @@ class ProjectDataService{
   Future<NewsModel?> getNewsById(int id) async {
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://najot.uz/en/news-feed/?project__id=${id}",
+        url: "https://api.najot.uz/ru/news/?project__id=${id}",
       );
-
+        print(response.statusCode);
       if (response.statusCode == 200) {
         final NewsModel responseModel =
         NewsModel.fromJson(

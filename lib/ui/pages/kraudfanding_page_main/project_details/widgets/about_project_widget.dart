@@ -248,16 +248,15 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                 ).paddingOnly(left: 15.w, top: 8.w),
                 Container(
                   child: [
+
+                    MoreWidget(
+                      cardModel: widget.cardModel,
+                    ),
+                    NewsWidget(
+                      cardModel: widget.cardModel,
+                    ).paddingAll(20.w),
                     Container(),
                     Container(),
-                    Container(),
-                    Container(),
-                    // MoreWidget(
-                    //   cardModel: widget.cardModel,
-                    // ),
-                    // NewsWidget(
-                    //   cardModel: widget.cardModel,
-                    // ).paddingAll(20.w),
                     // QuestionsAskedWidget(
                     //   cardModel: widget.cardModel,
                     // ).paddingAll(20.w),

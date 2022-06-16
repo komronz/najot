@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -20,6 +21,7 @@ class VolunteerCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var modifiedAt= DateTime.parse(projectModel.modifiedAt!);
     return GestureDetector(
       child: Container(
         height: 300.w,
@@ -107,7 +109,7 @@ class VolunteerCardWidget extends StatelessWidget {
                                 height: 2.h,
                               ),
                               AppWidgets.text(
-                                text: "25.08.2022",
+                                text: DateFormat("dd.MM.yyyy").format(modifiedAt),
                                 fontSize: 14.sp,
                                 fontWeight: FontWeight.w600,
                                 color: AppColorUtils.BLUE_PERCENT,

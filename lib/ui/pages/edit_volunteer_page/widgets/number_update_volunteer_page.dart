@@ -6,7 +6,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:najot/data/bloc/edit_volunteer_bloc/edit_volunteer_bloc.dart';
 import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/model/user.dart';
+import 'package:najot/data/model/auth_model/user.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/widgets/number_updating.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';

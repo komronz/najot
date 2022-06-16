@@ -29,7 +29,7 @@ class KraudfandingAppliedUserWidgets extends StatelessWidget {
         ),
         AppWidgets.circleImages(
           image: model.cover!,
-          count: 100,
+          count: model.investorsCount!,
         ).paddingOnly(top: 3)
       ],
     );

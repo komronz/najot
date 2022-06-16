@@ -98,6 +98,7 @@ class MainPage extends StatelessWidget {
                                       fontsize: 14.sp,
                                       color: AppColorUtils.KRAUDFANDING,
                                       onTap: () {
+                                        // print(state.categories[0].name!);
                                         NavigatorService.to.pushNamed(
                                           CrowdfundingPage.routeName,
                                         );

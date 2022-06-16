@@ -9,10 +9,11 @@ class MainModel {
 
   MainModel(
       {this.categories,
-        this.crowdfunding,
-        this.volunteering,
-        this.charity,
-        this.slider});
+      this.crowdfunding,
+      this.volunteering,
+      this.charity,
+      this.slider,
+      });
 
   MainModel.fromJson(Map<String, dynamic> json) {
     if (json['categories'] != null) {
@@ -75,7 +76,13 @@ class Categories {
   String? type;
   String? slug;
 
-  Categories({this.id, this.name, this.cover, this.type, this.slug});
+  Categories({
+    this.id,
+    this.name,
+    this.cover,
+    this.type,
+    this.slug,
+  });
 
   Categories.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -96,7 +103,6 @@ class Categories {
   }
 }
 
-
 class SliderList {
   int? id;
   String? title;
@@ -104,7 +110,8 @@ class SliderList {
   String? coverUrl;
   String? description;
 
-  SliderList({this.id, this.title, this.cover, this.coverUrl, this.description});
+  SliderList(
+      {this.id, this.title, this.cover, this.coverUrl, this.description});
 
   SliderList.fromJson(Map<String, dynamic> json) {
     id = json['id'];
