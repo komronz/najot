@@ -1,3 +1,5 @@
+import 'package:najot/data/model/news_model.dart';
+
 import 'categories_model.dart';
 
 class ProductModel {
@@ -46,53 +48,82 @@ class ProductModel {
 
 class Products {
   int? id;
-  int? author;
-  String? authorName;
-  int? category;
-  int? project;
+  Author? author;
+  String? authorImage;
+  String? productImage;
+  Category2? category;
+  Category2? project;
   String? title;
   String? description;
   String? price;
-  String? createdAt;
-  String? modifiedAt;
+  String? deliveryTime;
 
   Products(
       {this.id,
         this.author,
-        this.authorName,
+        this.authorImage,
+        this.productImage,
         this.category,
         this.project,
         this.title,
         this.description,
         this.price,
-        this.createdAt,
-        this.modifiedAt});
+        this.deliveryTime});
 
   Products.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    author = json['author'];
-    authorName = json['author_name'];
-    category = json['category'];
-    project = json['project'];
+    author =
+    json['author'] != null ? new Author.fromJson(json['author']) : null;
+    authorImage = json['author_image'];
+    productImage = json['product_image'];
+    category = json['category'] != null
+        ? new Category2.fromJson(json['category'])
+        : null;
+    project =
+    json['project'] != null ? new Category2.fromJson(json['project']) : null;
     title = json['title'];
     description = json['description'];
     price = json['price'];
-    createdAt = json['created_at'];
-    modifiedAt = json['modified_at'];
+    deliveryTime = json['delivery_time'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    data['author'] = this.author;
-    data['author_name'] = this.authorName;
-    data['category'] = this.category;
-    data['project'] = this.project;
+    if (this.author != null) {
+      data['author'] = this.author!.toJson();
+    }
+    data['author_image'] = this.authorImage;
+    data['product_image'] = this.productImage;
+    if (this.category != null) {
+      data['category'] = this.category!.toJson();
+    }
+    if (this.project != null) {
+      data['project'] = this.project!.toJson();
+    }
     data['title'] = this.title;
     data['description'] = this.description;
     data['price'] = this.price;
-    data['created_at'] = this.createdAt;
-    data['modified_at'] = this.modifiedAt;
+    data['delivery_time'] = this.deliveryTime;
+    return data;
+  }
+}
+
+class Category2 {
+  int? id;
+  String? title;
+
+  Category2({this.id, this.title});
+
+  Category2.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    title = json['title'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['title'] = this.title;
     return data;
   }
 }

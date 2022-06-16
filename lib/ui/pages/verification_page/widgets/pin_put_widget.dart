@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/ui/pages/verification_page/pin_put/pin_put.dart';
+
+import '../pin_put/pin_put.dart';
 
 class PinPutWidget extends StatelessWidget {
   const PinPutWidget({
@@ -28,10 +29,11 @@ class PinPutWidget extends StatelessWidget {
           color: AppColorUtils.TEXT_GREEN,
           fontSize: 18,
         ),
-        fieldsCount: 5,
+        fieldsCount: 6,
         onSubmit: (String pin) {
           FocusScope.of(context).unfocus();
         },
+
         focusNode: _pinPutFocusNode,
         controller: _pinPutController,
         submittedFieldDecoration: _pinPutDecoration.copyWith(),
@@ -42,6 +44,27 @@ class PinPutWidget extends StatelessWidget {
           ),
         ),
       ),
+      // child: Pinput(
+      //   androidSmsAutofillMethod:  AndroidSmsAutofillMethod.smsUserConsentApi,
+      //    defaultPinTheme:  PinTheme(
+      //      width: 20,
+      //      height: 20,
+      //      textStyle: TextStyle(fontSize: 20, color: Color.fromRGBO(30, 60, 87, 1), fontWeight: FontWeight.w600),
+      //      decoration: BoxDecoration(
+      //        border: Border.all(color: Color.fromRGBO(234, 239, 243, 1)),
+      //        borderRadius: BorderRadius.circular(20),
+      //      ),
+      //    ).copyDecorationWith(
+      //      border: Border.all(color: Color.fromRGBO(114, 178, 238, 1)),
+      //      borderRadius: BorderRadius.circular(8),
+      //    ),
+      //   length: 6,
+      //   pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
+      //   showCursor: true,
+      //     focusNode: _pinPutFocusNode,
+      //     controller: _pinPutController,
+      //
+      // ),
     );
   }
 }

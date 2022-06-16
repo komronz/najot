@@ -45,6 +45,7 @@ class SliderItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppWidgets.text(
+                // text: sliderModel.title??"",
                 text: sliderModel.title??"",
                 color: Colors.white,
                 fontSize: 18,

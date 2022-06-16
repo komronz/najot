@@ -3,22 +3,25 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/model/favorites-add_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/saved_page/widgets/charity_kraufanding.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../../../data/bloc/favorite-add_cubit/favorite_add_cubit.dart';
+
 class KraufandingSavedListWidget extends StatelessWidget {
-  final List<CardModel> list;
+  final FavoriteAddCubit cubit;
 
   const KraufandingSavedListWidget({
-    required this.list,
+    required this.cubit,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (list.isEmpty) {
+    if (cubit.state.list.isEmpty) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -47,9 +50,9 @@ class KraufandingSavedListWidget extends StatelessWidget {
       crossAxisSpacing: 8,
       mainAxisSpacing: 6,
       children: List.generate(
-        list.length,
+        cubit.state.list.length,
         (index) => CharityKraufanding(
-          cardModel: list[index],
+          favouriteModel: cubit.state.list[index],
         ),
       ),
     );

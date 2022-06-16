@@ -13,7 +13,7 @@ class VolunteerProjectService{
 
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://najot.uz/ru/project/?type=VL",
+        url: "https://api.najot.uz/ru/project/?type=VL&page_size=15",
       );
 
       if (response.statusCode == 200) {

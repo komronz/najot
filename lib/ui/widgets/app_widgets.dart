@@ -1,12 +1,15 @@
 import 'dart:io';
 
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bot_toast/bot_toast.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
@@ -547,6 +550,37 @@ class AppWidgets {
       width: width,
       fit: fit,
       color: color,
+    );
+  }
+
+  static Widget networkImage({
+    required String url,
+    double? height,
+    double? width,
+    Color? color,
+    BoxFit fit = BoxFit.cover,
+    int? scale
+  }) {
+    return ClipRRect(
+      borderRadius: BorderRadius.all(Radius.circular(14)),
+      child: CachedNetworkImage(
+        imageUrl: url,
+        width: width,
+        height: height,
+        fit: fit,
+        color: color,
+        placeholder: (context, url){
+          return Center(
+              child: CircularProgressIndicator(),
+            );
+        },
+        errorWidget: (context, url, error ){
+          return ColoredBox(
+              color: Colors.black12,
+            child: CircularProgressIndicator()
+          );
+        }
+      ),
     );
   }
 

@@ -1,4 +1,4 @@
-part of 'kraud_fanding_cubit.dart';
+ part of 'kraud_fanding_cubit.dart';
 
 class CrowdfundingState extends Equatable {
   CrowdfundingState(

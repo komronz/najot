@@ -18,7 +18,7 @@ class CharityService{
   Future<RootProjectModel?> getCharityModel() async {
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://najot.uz/ru/project/?type=CH",
+        url: "https://api.najot.uz/ru/project/?type=CH&page_size=15",
       );
 
       if (response.statusCode == 200) {
@@ -39,7 +39,7 @@ class CharityService{
 
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://najot.uz/en/categories/?type=CH",
+        url: "https://api.najot.uz/ru/categories/?type=CH",
       );
 
       if (response.statusCode == 200) {
@@ -62,7 +62,7 @@ class CharityService{
 
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://najot.uz/en/project/?type=CH&category=${id}&page_size=15",
+        url: "https://api.najot.uz/ru/project/?type=CH&category=${id}&page_size=15",
       );
 
       if (response.statusCode == 200) {

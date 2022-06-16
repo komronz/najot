@@ -31,13 +31,19 @@ class LoginPhoneChanged extends LoginEvent {
   List<Object?> get props => [phone];
 }
 
-class LoginSignIn extends LoginEvent {
+class RegisSuccessChange extends LoginEvent {
+
+  RegisSuccessChange(this.change);
+  final bool change;
+
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [change];
 }
-class LoginSignUp extends LoginEvent{
+class LoginEnd extends LoginEvent{
+  LoginEnd(this.code);
+  int code;
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [code];
 
 }
 
@@ -66,9 +72,18 @@ List<Object?> get props => [];
 
 
 class CheckPhoneNumberChanged extends LoginEvent {
-  final bool check;
+  final int check;
 
   CheckPhoneNumberChanged(this.check);
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [check];
+}
+
+class Registration extends LoginEvent {
+
+  Registration();
 
   @override
   // TODO: implement props

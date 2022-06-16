@@ -74,7 +74,7 @@ class KraudfandingCardWidget extends StatelessWidget {
                             padding: EdgeInsets.all(0),
                             lineHeight: 10.h,
                             animationDuration: 2000,
-                            percent: 0.45,
+                            percent: projectModel.percent!/100,
                             progressColor: AppColorUtils.PERCENT_COLOR,
                             backgroundColor: AppColorUtils.PERCENT_COLOR2,
                           ),
@@ -115,7 +115,7 @@ class KraudfandingCardWidget extends StatelessWidget {
                                     height: 2,
                                   ),
                                   AppWidgets.text(
-                                    text: "60%",
+                                    text: "${projectModel.percent}%",
                                     fontSize: 14.sp,
                                     fontWeight: FontWeight.w600,
                                     color: AppColorUtils.BLUE_PERCENT,

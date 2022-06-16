@@ -133,6 +133,7 @@ class AddProjectBloc extends Bloc<AddProjectEvent, AddProjectState> {
       ) async {
     AddProjectModel? addProjectModel =await addProjectService.postModel(state.whoAdd!,
         state.name, state.type!, state.description,);
+    print(addProjectModel);
     if(addProjectModel !=null){
       emit(state.copyWith(isLoading: true));
     }else{

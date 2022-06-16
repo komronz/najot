@@ -34,7 +34,6 @@ class RootService {
     await OrganizationService.init();
     await DIService.init();
     await CrowdfundingService.init();
-    await ProductService.init();
     await RuleService.init();
   }
   static HttpService get httpService => _getIt.get<HttpService>();

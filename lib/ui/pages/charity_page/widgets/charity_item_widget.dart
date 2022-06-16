@@ -93,7 +93,7 @@ class CharityItemWidget extends StatelessWidget {
                       padding: EdgeInsets.all(0),
                       lineHeight: 10.h,
                       animationDuration: 2000,
-                      percent: 60 / 100,
+                      percent: model.percent! / 100,
                       progressColor: AppColorUtils.PERCENT_COLOR,
                       backgroundColor: AppColorUtils.PERCENT_COLOR2,
                     ).paddingOnly(top: 12.w),
@@ -105,7 +105,7 @@ class CharityItemWidget extends StatelessWidget {
                     ).paddingOnly(top: 12.w),
                     AppWidgets.text(
                       // text: "${model.progres.toString().split(".").first}%",
-                      text: "60%",
+                      text: "${model.percent}%",
                       fontWeight: FontWeight.w600,
                       color: AppColorUtils.BLUE_PERCENT,
                     ).paddingOnly(top: 5.w),

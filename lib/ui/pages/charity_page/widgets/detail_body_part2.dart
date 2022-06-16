@@ -1,5 +1,6 @@
 
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,6 +19,7 @@ class DetailBodyPart2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var modifiedAt= DateTime.parse(cardModel.modifiedAt!);
     return Column(
       children: [
         KraudfandingPriceWidget(
@@ -43,7 +45,7 @@ class DetailBodyPart2 extends StatelessWidget {
                       size: 14.sp,
                     ),
                     AppWidgets.text(
-                      text: "25.02.2022",
+                      text: DateFormat("dd.MM.yyyy").format(modifiedAt),
                       color: AppColorUtils.BLUE_PERCENT,
                       fontWeight: FontWeight.w500,
                       fontSize: 14.sp,

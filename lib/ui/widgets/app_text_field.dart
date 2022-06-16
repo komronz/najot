@@ -22,7 +22,6 @@ class AppTextField extends StatefulWidget {
   final bool hasTitle;
   final bool autoFocus;
   final bool phoneNumberCode;
-  final Key? key;
 
   AppTextField({
     required this.hintText,
@@ -40,7 +39,6 @@ class AppTextField extends StatefulWidget {
     this.hasTitle = true,
     this.autoFocus = false,
     this.phoneNumberCode = false,
-    this.key,
   });
 
   @override
@@ -53,7 +51,7 @@ class _AppTextFieldState extends State<AppTextField> {
 
   @override
   void initState() {
-    _textEditingController = TextEditingController(text: widget.initialText);
+    _textEditingController = TextEditingController(text: widget.initialText,);
     obscureText = widget.isPassword;
     super.initState();
   }
@@ -114,7 +112,6 @@ class _AppTextFieldState extends State<AppTextField> {
             maxLines: widget.isMultiLine ? null : 1,
             controller: _textEditingController,
             enabled: widget.enabled,
-            key: widget.key,
             style: GoogleFonts.inter(
               fontSize: 16,
             ),
@@ -130,18 +127,19 @@ class _AppTextFieldState extends State<AppTextField> {
                 fontWeight: FontWeight.w400,
                 color: AppColorUtils.GRAY_4,
               ),
-              prefixIcon: widget.phoneNumberCode==true?
-              Container(
-                padding: EdgeInsets.only(left: 10),
-                width: 60.w,
-                child: Center(
-                  child: AppWidgets.text(
-                    text: "+998",
-                    fontSize: 15.sp,
-                    color: AppColorUtils.DARK2,
-                  ),
-                ),
-              ):null,
+              prefixIcon: widget.phoneNumberCode == true
+                  ? Container(
+                      padding: EdgeInsets.only(left: 10),
+                      width: 60.w,
+                      child: Center(
+                        child: AppWidgets.text(
+                          text: "+998",
+                          fontSize: 15.sp,
+                          color: AppColorUtils.DARK2,
+                        ),
+                      ),
+                    )
+                  : null,
               suffixIcon: widget.isPassword
                   ? InkWell(
                       onTap: () {

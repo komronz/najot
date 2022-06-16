@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:najot/data/bloc/saved_page_cubit/saved_page_cubit.dart';
+import 'package:najot/data/bloc/favorite-add_cubit/favorite_add_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/saved_page/widgets/kraufanding_list_widget.dart';
@@ -17,9 +17,10 @@ class SavedPage extends StatelessWidget {
   const SavedPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
-        create: (context)=>SavedPageCubit()..loadHistory(),
-        child: BlocBuilder<SavedPageCubit,SavedPageState>(
+        create: (context)=>FavoriteAddCubit()..getFavoriteAddList(),
+        child: BlocBuilder<FavoriteAddCubit,FavoriteAddState>(
           builder: (context, state) => Scaffold(
             appBar: AppBar(
               automaticallyImplyLeading: false,
@@ -63,11 +64,9 @@ class SavedPage extends StatelessWidget {
 
     );
   }
-  Widget _buildBody(
-      BuildContext context,
-      SavedPageState state,
+  Widget _buildBody(BuildContext context, FavoriteAddState state,
       ) {
-    if (state.isLoading) {
+    if (state.hasLoading) {
       return Center(
         child: CircularProgressIndicator(),
       );
@@ -79,7 +78,7 @@ class SavedPage extends StatelessWidget {
     return Container(
         child: ListView(
         children: [
-        KraufandingSavedListWidget(list: state.kraufandingSavedList)
+          KraufandingSavedListWidget(cubit: context.read<FavoriteAddCubit>(),)
         ],
     ),
     ).paddingAll(15);

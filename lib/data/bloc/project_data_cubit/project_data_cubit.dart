@@ -13,6 +13,7 @@ class ProjectDataCubit extends Cubit<ProjectDataState> {
 
   Future load(int id ) async{
     var news= await projectDataService.getNewsById(id);
+    emit(state.copyWith(newsModel: news));
 
 
   }

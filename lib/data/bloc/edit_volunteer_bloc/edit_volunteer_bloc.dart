@@ -1,10 +1,10 @@
-import 'dart:async';
+ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:najot/data/model/user.dart';
+import 'package:najot/data/model/auth_model/user.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/data/utils/app_utils.dart';

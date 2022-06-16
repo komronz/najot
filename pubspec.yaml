@@ -28,31 +28,29 @@ dependencies:
   hive_flutter: ^1.0.0
   logger: ^1.0.0
   hydrated_bloc: ^8.0.0
-  path_provider: ^2.0.9
+  path_provider_android: ^2.0.14
   flutter_screenutil: ^5.5.3+2
   connectivity_plus: ^2.2.1
-  bot_toast: ^4.0.1
+  bot_toast: ^4.0.2
   auto_size_text: ^3.0.0
   flutter_svg: ^1.0.3
-  card_swiper: ^2.0.1
-  cached_network_image: ^3.1.0+1
+  card_swiper: ^2.0.4
+  cached_network_image: ^3.2.1
   super_rich_text: ^1.0.0
   mask_text_input_formatter: ^2.1.0
-  percent_indicator: ^4.0.0
+  percent_indicator: ^4.2.2
   cupertino_radio_choice: ^1.0.2
   smooth_page_indicator: ^1.0.0+2
-  syncfusion_flutter_datepicker: ^19.4.56
+  syncfusion_flutter_datepicker: ^20.1.58
   dotted_border: ^2.0.0+2
   image_picker: ^0.8.4+11
   keyboard_attachable: ^2.1.0
   flutter_picker: ^2.0.3
-  dropdown_button2: ^1.2.3
+  dropdown_button2: ^1.5.3
   flutter_local_notifications: ^9.4.0
   rxdart: ^0.27.3
   flutter_native_timezone: ^2.0.0
   flutter_switch: ^0.3.2
-
-
 
 dev_dependencies:
   flutter_test:
