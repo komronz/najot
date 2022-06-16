@@ -18,6 +18,7 @@ class CrowdfundingCubit extends Cubit<CrowdfundingState> {
   }
   CrowdfundingCubit() : super(CrowdfundingState());
   CrowdfundingService crowdfundingService = CrowdfundingService();
+  List<RootProjectModel> rootList= [];
 
   Future load() async {
     var crowdfundingModel = await crowdfundingService.getCrowdfundingModel();
@@ -34,6 +35,7 @@ class CrowdfundingCubit extends Cubit<CrowdfundingState> {
         tabProjects: tabProjects
       ),
       );
+      rootList.add(tabProjects!);
       AppLoggerUtil.i(crowdfundingModel.count.toString());
     }
   }

@@ -25,33 +25,4 @@ Widget singleTabDetail(bool type, String text) {
   );
 }
 
-Widget listDetail(String title, String text) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Container(
-        margin: EdgeInsets.only(top: 18.h),
-        child: Text(
-          title,
-          style: TextStyle(
-            fontSize: 17.sp,
-            color: AppColorUtils.DARK2,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
-      SizedBox(height: 6.h),
-      Container(
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 14.sp,
-            color: AppColorUtils.DARK3,
-            fontWeight: FontWeight.w400,
-            height: 1.5
-          ),
-        ),
-      ),
-    ],
-  );
-}
+

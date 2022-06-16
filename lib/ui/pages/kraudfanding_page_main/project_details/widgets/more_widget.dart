@@ -3,29 +3,50 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/project_details_widgets.dart';
+
+import '../../../../../data/utils/app_color_utils.dart';
 
 class MoreWidget extends StatelessWidget {
   const MoreWidget({
-    Key? key,
     required this.cardModel,
-  }) : super(key: key);
+  });
 
-  final CardModel cardModel;
+  final ProjectModel cardModel;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Column(
-          children: List.generate(
-            cardModel.infoModel!.length,
-            (index) => listDetail(
-              cardModel.infoModel![index].title!,
-              cardModel.infoModel![index].text!,
-            ).paddingSymmetric(horizontal: 20.w),
+      Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 18.h),
+          child: Text(
+            cardModel.title!,
+            style: TextStyle(
+              fontSize: 17.sp,
+              color: AppColorUtils.DARK2,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
+        SizedBox(height: 6.h),
+        Container(
+          child: Text(
+            cardModel.title!,
+            style: TextStyle(
+                fontSize: 14.sp,
+                color: AppColorUtils.DARK3,
+                fontWeight: FontWeight.w400,
+                height: 1.5
+            ),
+          ),
+        ),
+      ],
+    ),
         Container(
           padding: EdgeInsets.symmetric(
             horizontal: 20.w,
@@ -37,7 +58,7 @@ class MoreWidget extends StatelessWidget {
               Radius.circular(12),
             ),
             child: CachedNetworkImage(
-              imageUrl: cardModel.image!,
+              imageUrl: cardModel.coverUrl!,
               fit: BoxFit.cover,
               width: MediaQuery.of(context).size.width,
               placeholder: (context, url) => Center(
