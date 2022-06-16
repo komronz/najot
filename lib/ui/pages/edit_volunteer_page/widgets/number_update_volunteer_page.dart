@@ -113,6 +113,8 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                     },
                                     keyboardType: TextInputType.number,
                                     validator: (value) {
+                                      return null;
+                                    
                                       // return AppValidator.validateNumber(
                                       //     value!);
                                     },

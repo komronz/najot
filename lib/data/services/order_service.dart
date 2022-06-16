@@ -16,7 +16,8 @@ class OrderService{
   Future<OrderModel?> getModel() async {
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://api.najot.uz/product/",
+        url: "https://api.najot.uz/ru/product/",
+          token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU1NzA2MjQ2LCJpYXQiOjE2NTUxMDE0NDYsImp0aSI6IjJkMGZhMmVhNTAyMzQ2NDJiODM0YjdiN2E0NmE3OTM1IiwidXNlcl9pZCI6NH0.dnnXkBJMgusAePSK7jAOpTf-i9YurF8PIqBErrmtEbc"
       );
       if (response.statusCode == 200) {
         final OrderModel responseModel =

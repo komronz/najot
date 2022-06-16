@@ -1,10 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/bloc/orders_cubit/orders_cubit.dart';
+import 'package:najot/data/bloc/orders_cubit/orders_state.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/kraufanding_model.dart';
 import 'package:najot/data/model/oreder_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -14,18 +16,19 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 class OrdersItemsWidget extends StatelessWidget {
   final OrderModelResults model;
   final bool isLast;
+  final int index;
 
-  const OrdersItemsWidget({
+  OrdersItemsWidget({
     required this.model,
+    required this.index,
     this.isLast = false,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     String date = DateFormat("dd.MM.yyyy").format(
-      DateTime.parse(model.modifiedAt.toString()),
+      DateTime.parse(model.deliveryTime.toString()),
     );
     return Container(
       margin: isLast ? EdgeInsets.only(bottom: 18.w) : null,
@@ -106,8 +109,12 @@ class OrdersItemsWidget extends StatelessWidget {
             fontSize: 14.sp,
             fontWeight: FontWeight.w500,
             borderRadius: 10,
-            onTap: () {},
-            color: AppColorUtils.ITEM_ORDERS_BUTTON,
+            onTap: () {
+              context.read<OrdersCubit>().isClick(index);
+            },
+            color: model.isClick!
+                ? AppColorUtils.ITEM_ORDERS_BUTTON
+                : AppColorUtils.ITEM_CHARITY_TEXT2,
             height: 38.w,
             width: 145.w,
             icon: AppWidgets.imageSvg(path: AppImageUtils.IC_ORDERS_SUCCESS)

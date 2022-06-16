@@ -17,12 +17,12 @@ import '../notification_page/notification_page.dart';
 import 'widgets/order_list_item_widget.dart';
 
 class OrdersPage extends StatelessWidget {
-  const OrdersPage({Key? key}) : super(key: key);
-
+  OrdersPage({Key? key}) : super(key: key);
+  OrdersCubit ordersCubit=OrdersCubit();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => OrdersCubit()..load(),
+      create: (context) => ordersCubit..load(),
       child: BlocBuilder<OrdersCubit, OrdersState>(
         builder: (context, state) => Scaffold(
           appBar: AppBar(
@@ -108,12 +108,15 @@ class OrdersPage extends StatelessWidget {
       itemBuilder: (context, index) {
         if (index == state.list.length - 1) {
           return OrdersItemsWidget(
+            index: index,
             model: state.list[index],
-            isLast: true,
+            isLast: false,
           );
         }
         return OrdersItemsWidget(
           model: state.list[index],
+          index: index,
+
         );
       },
       itemCount: state.list.length,

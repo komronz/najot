@@ -13,7 +13,6 @@ import '../../../../data/bloc/app_page_cubit/app_page_cubit.dart';
 import '../../../../data/model/volunteering_model.dart';
 import '../../../widgets/app_widgets.dart';
 import '../../home_page/home_page.dart';
-import '../../my_volunteering_page/my_volunteering_page.dart';
 
 class AttentionNote extends StatelessWidget {
   static const String routeName = "/attentionNote";

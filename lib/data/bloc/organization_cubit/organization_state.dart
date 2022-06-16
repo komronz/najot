@@ -2,7 +2,7 @@ part of 'organization_cubit.dart';
 
 class OrganizationState extends Equatable {
   final List<OrganizationModelResults> list;
-  final List<ProjectsModelResults> listProject;
+  final RootProjectModel? project;
   final bool tobeVolunteer;
   final bool checkBox;
   final bool saveHelp;
@@ -10,7 +10,7 @@ class OrganizationState extends Equatable {
   OrganizationState(
       {required this.checkBox,
       this.list = const [],
-      this.listProject = const [],
+      this.project,
       this.tobeVolunteer = true,
       this.saveHelp = true});
 
@@ -19,21 +19,21 @@ class OrganizationState extends Equatable {
   List<Object?> get props => [
         list,
         tobeVolunteer,
-        listProject,
+        project,
         checkBox,
         saveHelp,
       ];
 
   OrganizationState copyWith({
     List<OrganizationModelResults>? list,
-    List<ProjectsModelResults>? listProject,
+    RootProjectModel? project,
     bool? tobeVolunteer,
     bool? checkBox,
     bool? saveHelp,
   }) {
     return OrganizationState(
       list: list ?? this.list,
-      listProject: listProject ?? this.listProject,
+      project: project ?? this.project,
       tobeVolunteer: tobeVolunteer ?? this.tobeVolunteer,
       checkBox: checkBox ?? this.checkBox,
       saveHelp: saveHelp ?? this.saveHelp,

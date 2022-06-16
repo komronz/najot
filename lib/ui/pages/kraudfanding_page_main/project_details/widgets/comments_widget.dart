@@ -10,7 +10,6 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-import '../project_details_page.dart';
 
 class CommentsWidget extends StatefulWidget {
    CommentsWidget({required this.cardModel}) ;

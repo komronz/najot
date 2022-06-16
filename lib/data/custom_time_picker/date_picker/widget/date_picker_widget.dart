@@ -256,8 +256,9 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
   }
 
   double sizeByFormat(String format) {
-    if (format.contains("-MMMM") || format.contains("MMMM-"))
+    if (format.contains("-MMMM") || format.contains("MMMM-")) {
       return DATETIME_PICKER_ITEM_TEXT_SIZE_SMALL;
+    }
 
     return DATETIME_PICKER_ITEM_TEXT_SIZE_BIG;
   }

@@ -45,6 +45,7 @@ class AuthService {
       AppLoggerUtil.e("$e");
       return null;
     }
+    return null;
   }
 
   Future<ConfirmNumberModel?> confirmPhoneNumber(

@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/utils/app_utils.dart';
 
-import 'my_profil_update_bloc.dart';
 
 class MyProfileUpdateState extends Equatable {
   final String name;

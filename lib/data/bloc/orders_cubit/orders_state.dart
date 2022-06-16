@@ -1,6 +1,5 @@
 
 import 'package:equatable/equatable.dart';
-import 'package:najot/data/model/kraufanding_model.dart';
 import 'package:najot/data/model/oreder_model.dart';
 
 class OrdersState extends Equatable {
@@ -21,6 +20,8 @@ class OrdersState extends Equatable {
     bool? hasError,
     bool? hasConnection,
     bool? isLoading,
+    bool? isClick,
+
   }) {
     return OrdersState(
       hasError: hasError ?? this.hasError,
@@ -36,5 +37,14 @@ class OrdersState extends Equatable {
         hasError,
         hasConnection,
         isLoading,
-      ];
+  ];
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is OrdersState &&
+              runtimeType == other.runtimeType &&
+              hasError == other.hasError &&
+              list == other.list &&
+              hasConnection == other.hasConnection &&
+              isLoading == other.isLoading;
 }

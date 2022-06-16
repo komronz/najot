@@ -5,13 +5,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/MixTextWidget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/text_field_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class SupportProjectDialog extends StatelessWidget {

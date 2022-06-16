@@ -4,12 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:najot/data/model/token_model.dart';
-import 'package:najot/data/model/user.dart';
 import 'package:najot/data/services/auth_service.dart';
-import 'package:najot/data/services/navigator_service.dart';
-import 'package:najot/data/utils/app_logger_util.dart';
-import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/widgets/app_widgets.dart';
 
 part 'login_event.dart';
 

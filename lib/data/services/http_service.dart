@@ -26,6 +26,7 @@ class HttpService {
           (client) {
         client.badCertificateCallback =
             (X509Certificate cert, String host, int port) => true;
+        return null;
       };
     }
   }

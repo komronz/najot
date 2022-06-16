@@ -1,7 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
-import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
 
 import 'my_crowdfunding_support_state.dart';

@@ -4,9 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:najot/data/model/about_us_model.dart';
-import 'package:najot/data/model/token_model.dart';
 import 'package:najot/data/services/about_us_service.dart';
-import 'package:najot/data/services/root_service.dart';
 
 part 'appeal_event.dart';
 

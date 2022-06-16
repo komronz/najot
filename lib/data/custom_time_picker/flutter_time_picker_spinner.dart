@@ -38,11 +38,9 @@ class ItemScrollPhysics extends ScrollPhysics {
   double _getTargetPixels(
       ScrollPosition position, Tolerance tolerance, double velocity) {
     double item = _getItem(position);
-    if (velocity < -tolerance.velocity) {
+    if (velocity < -tolerance.velocity)
       item -= targetPixelsLimit;
-    } else if (velocity > tolerance.velocity) {
-      item += targetPixelsLimit;
-    }
+    else if (velocity > tolerance.velocity) item += targetPixelsLimit;
     return _getPixels(position, item.roundToDouble());
   }
 
@@ -57,10 +55,9 @@ class ItemScrollPhysics extends ScrollPhysics {
     Tolerance tolerance = this.tolerance;
     final double target =
         _getTargetPixels(position as ScrollPosition, tolerance, velocity);
-    if (target != position.pixels) {
+    if (target != position.pixels)
       return ScrollSpringSimulation(spring, position.pixels, target, velocity,
           tolerance: tolerance);
-    }
     return null;
   }
 
@@ -361,11 +358,11 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
       },
       child: ListView.builder(
         itemBuilder: (context, index) {
-          int count = index;
+          int count =  index;
           String text = '';
           if (isLoop(max)) {
             if (hour == true) {
-              text = ((count % max) * interval).toString();
+              text = ((count % max) * interval ).toString();
             } else {
               text = ((index % max) * interval).toString();
             }
