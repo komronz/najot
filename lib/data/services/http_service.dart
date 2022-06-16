@@ -26,6 +26,7 @@ class HttpService {
           (client) {
         client.badCertificateCallback =
             (X509Certificate cert, String host, int port) => true;
+        return null;
       };
     }
   }
@@ -91,7 +92,9 @@ class HttpService {
           queryParameters: parameters,
         );
       } else {
-        if (parameters == null && token == null) return await _dio!.get(url);
+        if (parameters == null && token == null) {
+          return await _dio!.get(url);
+        }
         return await _dio!.get(
           url,
           options: Options(

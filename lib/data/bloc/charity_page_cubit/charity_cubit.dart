@@ -1,13 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
-import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/charity_saved_service.dart';
 
 import '../../model/categories_model.dart';
 import '../../model/volunteer_model.dart';
 import '../../services/charity_service.dart';
-import '../../services/volunteer_service.dart';
 import '../../utils/app_logger_util.dart';
 
 part 'charity_state.dart';
@@ -31,7 +29,7 @@ class CharityCubit extends Cubit<CharityState> {
     var list= categories!.results![0];
     var tabProjects=await charityService.getProjectsById(list.children![0].id!);
 
-    if (charityModel != null && categories != null) {
+    if (charityModel != null) {
       emit(state.copyWith(
           charityModel: charityModel,
           category: list.children,

@@ -6,7 +6,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/charity_model.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';

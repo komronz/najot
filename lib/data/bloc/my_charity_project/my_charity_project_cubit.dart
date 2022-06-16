@@ -3,7 +3,6 @@ import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 
-import '../../model/card_model.dart';
 import '../../model/charity_model.dart';
 import '../../model/kraufanding_model.dart';
 

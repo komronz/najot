@@ -1,6 +1,5 @@
 
 import 'package:equatable/equatable.dart';
-import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/data/model/product_model.dart';
 
 class MyProductsState extends Equatable {

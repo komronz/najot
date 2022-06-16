@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,7 +10,6 @@ import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class NewsWidget extends StatelessWidget {

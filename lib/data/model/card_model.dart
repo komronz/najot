@@ -1,4 +1,3 @@
-import 'package:najot/data/model/product_model.dart';
 
 class CardModel {
   String? type;
@@ -114,3 +113,6 @@ class InfoModel {
   String? title;
   String? text;
 }
+
+
+

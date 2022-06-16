@@ -46,7 +46,7 @@ class OrganizationItemWidget extends StatelessWidget {
                   width: 1.sw,
                 ),
               ),
-            ).paddingOnly(bottom: 10.w),
+            ),
             Expanded(
               child: Column(
                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,7 +57,7 @@ class OrganizationItemWidget extends StatelessWidget {
                     fontSize: 15.sp,
                     fontWeight: FontWeight.w500,
                     maxLines: 2,
-                  ).paddingOnly(bottom: 20.w),
+                  ).paddingOnly(bottom: 10.w),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -72,11 +72,11 @@ class OrganizationItemWidget extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         color: AppColorUtils.BLUE_PERCENT,
                         fontSize: 15.sp,
-                      ).paddingOnly(top: 10.w),
+                      ).paddingOnly(top: 5.w),
                     ],
                   )
                 ],
-              ).paddingSymmetric(vertical: 14, horizontal: 12),
+              ).paddingSymmetric(vertical: 14.w, horizontal: 12.w),
             )
           ],
         ),

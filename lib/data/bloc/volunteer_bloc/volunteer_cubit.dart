@@ -1,10 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
-import 'package:najot/data/bloc/kraudfanding_cubit/kraud_fanding_cubit.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/project_model.dart';
-import 'package:najot/data/model/volunteer_model.dart';
 import 'package:najot/data/services/volunteer_project_service.dart';
 
 import '../../services/volunteer_service.dart';

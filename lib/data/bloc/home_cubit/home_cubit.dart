@@ -3,9 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/main_model.dart';
 import 'package:najot/data/model/project_model.dart';
-import 'package:najot/data/model/slider_model.dart';
 import 'package:najot/data/services/main_service.dart';
-import 'package:najot/data/services/root_service.dart';
 
 part 'home_state.dart';
 
@@ -15,6 +13,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   static Future init() async {
     GetIt.instance..registerSingleton<HomeCubit>(HomeCubit());
+    await GetIt.I<HomeCubit>().getModel();
   }
 
   HomeCubit() : super(HomeState());

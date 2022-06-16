@@ -9,6 +9,7 @@ import 'package:najot/data/custom_time_picker/flutter_time_picker_spinner.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
@@ -25,7 +26,7 @@ class TimePickerOrganization extends StatelessWidget {
   });
   DateTime _date = DateTime.now();
   DateTime _time = DateTime.now();
-  CardModel model;
+  ProjectModel model;
   OrganizationCubit cubit;
   BuildContext con;
 
@@ -79,7 +80,7 @@ class TimePickerOrganization extends StatelessWidget {
                             height: 16,
                           ).paddingOnly(right: 5),
                           AppWidgets.textLocale(
-                            text: model.date!,
+                            text: model.createdAt!,
                             color: AppColorUtils.VOLONTYOR
                             ,
                             fontSize: 18.sp,

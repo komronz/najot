@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/services/root_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
@@ -11,7 +10,6 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../../../data/services/navigator_service.dart';
 import '../../../home_page/home_page.dart';
-import '../../../my_volunteering_page/my_volunteering_widget/adding_project_page.dart';
 
 class KraudfandingBanner extends StatelessWidget {
   const KraudfandingBanner({
@@ -41,7 +39,7 @@ class KraudfandingBanner extends StatelessWidget {
           SizedBox(width: 14.w),
           Expanded(
               child: Container(
-            margin: EdgeInsets.only(
+              margin: EdgeInsets.only(
               top: 20.w,
               bottom: 20.w,
             ),

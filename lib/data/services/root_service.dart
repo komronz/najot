@@ -1,11 +1,11 @@
-
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/services/crowdfunding_service.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/http_service.dart';
 import 'package:najot/data/services/order_service.dart';
 import 'package:najot/data/services/organization_service.dart';
-import 'package:najot/data/services/projects_model_service.dart';
+import 'package:najot/data/services/product_service.dart';
+import 'package:najot/data/services/rule_service.dart';
 import 'package:najot/data/services/storage_service.dart';
 
 import 'about_us_service.dart';
@@ -32,16 +32,17 @@ class RootService {
     await OrderService.init();
     await FaqService.init();
     await OrganizationService.init();
-    await ProjectsModelService.init();
-
     await DIService.init();
     await CrowdfundingService.init();
+    await ProductService.init();
+    await RuleService.init();
   }
   static HttpService get httpService => _getIt.get<HttpService>();
   static HiveService get hiveService => _getIt.get<HiveService>();
   static AboutUsService get aboutService => _getIt.get<AboutUsService>();
   static OrderService get orderService => _getIt.get<OrderService>();
   static OrganizationService get organizationService => _getIt.get<OrganizationService>();
-  static ProjectsModelService get productModelService => _getIt.get<ProjectsModelService>();
+  static ProductService get productService => _getIt.get<ProductService>();
+  static RuleService get ruleService => _getIt.get<RuleService>();
 
 }

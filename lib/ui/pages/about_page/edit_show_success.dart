@@ -2,21 +2,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/applied_bloc/appeal_bloc.dart';
-import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/ui/pages/about_page/about_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
-
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
-import '../../../data/bloc/app_page_cubit/app_page_cubit.dart';
 import '../../../data/bloc/applied_bloc/appeal_bloc.dart';
-import '../../../data/bloc/applied_bloc/appeal_bloc.dart';
-import '../../../data/bloc/applied_bloc/appeal_bloc.dart';
-import '../../../data/bloc/applied_bloc/appeal_bloc.dart';
-import '../../../data/services/navigator_service.dart';
 
 class EditShowSuccessSend extends StatelessWidget {
 

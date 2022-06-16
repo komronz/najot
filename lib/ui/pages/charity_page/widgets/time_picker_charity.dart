@@ -8,7 +8,6 @@ import 'package:najot/data/custom_time_picker/date_picker/widget/date_picker_wid
 import 'package:najot/data/custom_time_picker/flutter_time_picker_spinner.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';

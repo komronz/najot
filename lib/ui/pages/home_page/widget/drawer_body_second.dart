@@ -5,16 +5,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:provider/src/provider.dart';
 
-import '../../my_project_and_announcements_pages/my_project_and_announcements_pages.dart';
-import '../../my_volunteering_page/my_volunteering_page.dart';
-import '../../my_volunteering_page/my_volunteering_widget/adding_project_page.dart';
 
 class DrawerBodySecond extends StatelessWidget {
    DrawerBodySecond({required this.state}) ;
