@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:najot/data/bloc/about/about_cubit.dart';
 import 'package:najot/data/bloc/applied_bloc/appeal_bloc.dart';
 import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/context_extension.dart';
@@ -27,8 +28,15 @@ class AboutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => appealBloc,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => appealBloc,
+        ),
+        BlocProvider(
+            create: (context) =>AboutCubit()..getAboutList(),
+        )
+      ],
       child: Scaffold(
         key: UniqueKey(),
       backgroundColor: AppColorUtils.BACKGROUND,
@@ -71,70 +79,97 @@ class AboutPage extends StatelessWidget {
           ],
         ).paddingSymmetric(horizontal: 20),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            AppWidgets.imageAsset(
-              path: AppImageUtils.IMG_ABOUT,
-              width: context.width,
-            ).paddingOnly(top: 30, left: 20, right: 20),
-            AppWidgets.text(
-              text:
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-              maxLines: 100,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w400,
-              color: AppColorUtils.DARK3,
-              height: 1.5,
-            ).paddingSymmetric(horizontal: 20, vertical: 9),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AppWidgets.imageSvg(path: AppImageUtils.IC_LOCATION),
-                Expanded(
-                  child: AppWidgets.text(
-                    textAlign: TextAlign.start,
-                    text:
-                    "Toshkent viloyati, Toshkent Shahar, Yunusobod Tumani, Alisher novoiy ko’chasi 4",
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w600,
-                    height: 1.2,
-                    color: AppColorUtils.KRAUDFANDING,
-                    maxLines: 10,
-                  ).paddingOnly(left: 8),
-                )
-              ],
-            ).paddingSymmetric(horizontal: 20, vertical: 9),
-            Row(
-              children: [
-                AppWidgets.imageSvg(path: AppImageUtils.IC_PHONE),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AppWidgets.text(
-                      textAlign: TextAlign.start,
-                      text: "998 99 999 99 99",
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w600,
-                      height: 1.5,
-                      color: AppColorUtils.KRAUDFANDING,
-                      maxLines: 10,
-                    ),
-                    AppWidgets.text(
-                      textAlign: TextAlign.start,
-                      text: "998 99 999 99 99",
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w600,
-                      height: 1.2,
-                      color: AppColorUtils.KRAUDFANDING,
-                      maxLines: 10,
-                    ),
-                  ],
-                ).paddingOnly(left: 8)
-              ],
-            ).paddingSymmetric(horizontal: 20, vertical: 9),
+        body:  SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(children: [
+            SizedBox(
+
+              child: BlocBuilder<AboutCubit, AboutState>(
+                  builder: (context, state){
+                    if(state.hasLoading){
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }else if(state.hasError){
+                      return Center(
+                        child: Icon(Icons.error),
+                      );
+                    }else{
+                      return Container(
+                              child: Column(
+                                children: [
+                                  AppWidgets.networkImage(
+
+                                    url: '${state.list.length>0 ? state.list[3].cover : ''}',
+                                    width: 400,
+                                    height: 360,
+                                  ).paddingOnly(top: 30,left: 20,right: 20),
+                                  // AppWidgets.imageAsset(
+                                  //     path:AppImageUtils.IMG_ABOUT,
+                                  //   width: context.width,
+                                  // ).paddingOnly(top: 30,left: 20,right: 20),
+                                  AppWidgets.text(
+                                    text:'${state.list.length>0 ? state.list[3].name : ""}',
+                                    maxLines: 100,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColorUtils.DARK3,
+                                    height: 1.5,
+                                  ).paddingSymmetric(horizontal: 20, vertical: 9),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      AppWidgets.imageSvg(path: AppImageUtils.IC_LOCATION),
+                                      Expanded(
+                                        child: AppWidgets.text(
+                                          textAlign: TextAlign.start,
+                                          text:'${state.list.length>0 ? state.list[3].address : ""}',
+                                          fontSize: 16.sp,
+                                          fontWeight: FontWeight.w600,
+                                          height: 1.2,
+                                          color: AppColorUtils.KRAUDFANDING,
+                                          maxLines: 10,
+                                        ).paddingOnly(left: 8),
+                                      )
+                                    ],
+                                  ).paddingSymmetric(horizontal: 20, vertical: 9),
+                                  Row(
+                                    children: [
+                                      AppWidgets.imageSvg(path: AppImageUtils.IC_PHONE),
+                                      Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          AppWidgets.text(
+                                            textAlign: TextAlign.start,
+                                            text:'${state.list.length>0 ? state.list[3].phone1 : ""}',
+                                            fontSize: 16.sp,
+                                            fontWeight: FontWeight.w600,
+                                            height: 1.5,
+                                            color: AppColorUtils.KRAUDFANDING,
+                                            maxLines: 10,
+                                          ),
+                                          AppWidgets.text(
+                                            textAlign: TextAlign.start,
+                                            text:'${state.list.length>0 ? state.list[3].phone2 : ""}',
+                                            fontSize: 16.sp,
+                                            fontWeight: FontWeight.w600,
+                                            height: 1.2,
+                                            color: AppColorUtils.KRAUDFANDING,
+                                            maxLines: 10,
+                                          ),
+                                        ],
+                                      ).paddingOnly(left: 8)
+                                    ],
+                                  ).paddingSymmetric(horizontal: 20, vertical: 9),
+                                ],
+                              ),
+                            );
+                    }
+                  }
+              ),
+            ),
             BlocBuilder<AppealBloc, AppealState>(
               bloc: appealBloc,
               builder: (context, state) {
@@ -151,11 +186,8 @@ class AboutPage extends StatelessWidget {
                         color: AppColorUtils.DARK2,
                       ).paddingOnly(top: 24),
                       AppTextField(
-                        isFill:
-                        context
-                            .read<AppealBloc>()
-                            .state
-                            .firstNameFill,
+
+                        isFill: context.read<AppealBloc>().state.firstNameFill,
                         hintText: "(abdumalik)",
                         key: _key,
                         initialText: state.name,
@@ -209,20 +241,15 @@ class AboutPage extends StatelessWidget {
                         onTap: () async {
                           _key=UniqueKey();
                           await showDialog(
-                              context: context,
-                              builder: (context) =>
-                                  EditShowSuccessSend(
-                                    appealBloc: appealBloc,
-                                  ),
+                            context: context,
+                            builder: (context) =>
+                                EditShowSuccessSend(
+                                  appealBloc: appealBloc,
+                                ),
                           );
                         },
                         textColor: Colors.white,
-                        color:
-                        context
-                            .read<AppealBloc>()
-                            .state
-                            .isNextBtnActive
-                            ? AppColorUtils.PERCENT_COLOR
+                        color: context.read<AppealBloc>().state.isNextBtnActive ? AppColorUtils.PERCENT_COLOR
                             : AppColorUtils.GREEN_BTN,
                       ).paddingSymmetric(vertical: 25),
                     ],
@@ -233,9 +260,9 @@ class AboutPage extends StatelessWidget {
                 );
               },
             ).paddingOnly(top: 15),
-          ],
+          ],),
         ),
       ),
-    ),);
+    );
   }
 }

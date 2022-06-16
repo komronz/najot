@@ -99,8 +99,6 @@ class LoginPage extends StatelessWidget {
                   color: AppColorUtils.GREEN_APP,
                   onTap: () {
                       context.read<LoginBloc>().add(CheckPhoneNumber());
-
-
                   },
                 ).paddingSymmetric(vertical: 24.h, horizontal: 20),
               ],

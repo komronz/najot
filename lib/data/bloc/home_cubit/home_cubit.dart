@@ -15,6 +15,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   static Future init() async {
     GetIt.instance..registerSingleton<HomeCubit>(HomeCubit());
+    await GetIt.I<HomeCubit>().getModel();
   }
 
   HomeCubit() : super(HomeState());

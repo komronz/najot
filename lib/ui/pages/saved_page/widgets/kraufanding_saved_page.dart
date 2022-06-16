@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/bloc/favorite-add_cubit/favorite_add_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/model/favorites-add_model.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
@@ -12,9 +14,9 @@ import '../../main_page/widgets/button_card_widget.dart';
 
 class KraudfandingSavedPage extends StatelessWidget {
   KraudfandingSavedPage(
-      {required this.cardModel, required this.visible, Key? key})
+      {required this.model, required this.visible, Key? key})
       : super(key: key);
-  final CardModel cardModel;
+  final FavouriteModel model;
   final bool visible;
 
   @override
@@ -41,7 +43,7 @@ class KraudfandingSavedPage extends StatelessWidget {
                       ),
                       child: CachedNetworkImage(
                         width: double.infinity,
-                        imageUrl: cardModel.image!,
+                        imageUrl: model.project!.cover?? "",
                         errorWidget: (context, url, error) => Image.asset(
                           AppImageUtils.Splash2,
                         ),
@@ -63,7 +65,7 @@ class KraudfandingSavedPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           AppWidgets.text(
-                            text: cardModel.title!,
+                            text: model.project!.title!,
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w500,
                             maxLines: 2,
@@ -106,7 +108,7 @@ class KraudfandingSavedPage extends StatelessWidget {
             ),
             Align(
               child: FavoriteButton(
-                isFavorite: cardModel.isFavorite!,
+                // isFavorite: cardModel.isFavorite!,
               ),
               alignment: Alignment.topRight,
             ).paddingAll(12.w),

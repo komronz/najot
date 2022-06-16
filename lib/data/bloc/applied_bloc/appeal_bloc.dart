@@ -15,10 +15,7 @@ part 'applied_state.dart';
 class AppealBloc extends Bloc<AppealEvent, AppealState> {
   final MaskTextInputFormatter phoneNumberFormatter;
 
-  AppealBloc()
-      : phoneNumberFormatter =
-            MaskTextInputFormatter(mask: "+### (##) ### ## ##"),
-            super(AppealState()) {
+  AppealBloc(): phoneNumberFormatter = MaskTextInputFormatter(mask: "+### (##) ### ## ##"),super(AppealState()) {
     on<AppealNameChanged>(_onNameChanged);
     on<AppealPhoneChanged>(_onPhoneChanged);
     on<AppealTextChanged>(_onAppealTxtChanged);
@@ -65,10 +62,7 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
     return false;
   }
 
-  Future _onPhoneChanged(
-    AppealPhoneChanged event,
-    Emitter<AppealState> emit,
-  ) async {
+  Future _onPhoneChanged(AppealPhoneChanged event, Emitter<AppealState> emit) async {
     emit(
       state.copyWith(
         phoneNumber: event.phoneNumber,

@@ -31,6 +31,7 @@ class CharityHistoryPage extends StatelessWidget {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             backgroundColor: Colors.transparent,
+            centerTitle: true,
             elevation: 0,
             titleSpacing: 0,
             title: Row(

@@ -110,14 +110,10 @@ class DrawerBody extends StatelessWidget {
                         ),
                         onTap: () {
                           if (state.tobeVolunteer) {
-                            context
-                                .read<AppPageCubit>()
-                                .changePage(pageType: AppPageType.PROFILE);
+                            context.read<AppPageCubit>().changePage(pageType: AppPageType.PROFILE);
                             Navigator.pop(context);
                           } else {
-                            context
-                                .read<AppPageCubit>()
-                                .changePage(pageType: AppPageType.USERPROFILE);
+                            context.read<AppPageCubit>().changePage(pageType: AppPageType.USERPROFILE);
                             Navigator.pop(context);
                           }
                         },

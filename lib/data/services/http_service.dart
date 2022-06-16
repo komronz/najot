@@ -91,7 +91,9 @@ class HttpService {
           queryParameters: parameters,
         );
       } else {
-        if (parameters == null && token == null) return await _dio!.get(url);
+        if (parameters == null && token == null) {
+          return await _dio!.get(url);
+        }
         return await _dio!.get(
           url,
           options: Options(

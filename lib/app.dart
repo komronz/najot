@@ -16,7 +16,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(375, 812),
-      builder: () => BlocListener<LanguageCubit, LanguageState>(
+      builder: (context, child) => BlocListener<LanguageCubit, LanguageState>(
         bloc: LanguageCubit.to,
         listener: (context, state) {
           context.setLocale(state.locale);

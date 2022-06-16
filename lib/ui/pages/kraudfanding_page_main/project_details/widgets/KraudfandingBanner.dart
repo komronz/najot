@@ -41,7 +41,7 @@ class KraudfandingBanner extends StatelessWidget {
           SizedBox(width: 14.w),
           Expanded(
               child: Container(
-            margin: EdgeInsets.only(
+              margin: EdgeInsets.only(
               top: 20.w,
               bottom: 20.w,
             ),

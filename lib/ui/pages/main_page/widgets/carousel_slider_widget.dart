@@ -15,6 +15,7 @@ class CarouselSliderWidget extends StatelessWidget {
     return Container(
       height: 220,
       child: Swiper(
+        itemCount: sliderList.length,
         itemBuilder: (context, index) {
           return SliderItem(
             sliderModel: sliderList[index]!,
@@ -23,7 +24,6 @@ class CarouselSliderWidget extends StatelessWidget {
         viewportFraction: 0.9,
         scale: 0.95,
         autoplay: true,
-        itemCount: sliderList.length,
       ),
     );
   }
