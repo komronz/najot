@@ -9,6 +9,7 @@ import 'package:najot/data/bloc/organization_cubit/organization_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -18,7 +19,7 @@ import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class OrganizationHelpModel {
-  CardModel cardModel;
+  ProjectModel cardModel;
   OrganizationCubit cubit;
 
   OrganizationHelpModel({
@@ -64,7 +65,7 @@ class OrganizationHelpWidget extends StatelessWidget {
                             Radius.circular(12),
                           ),
                           child: CachedNetworkImage(
-                            imageUrl: helpModel.cardModel.image!,
+                            imageUrl: helpModel.cardModel.cover!,
                             fit: BoxFit.cover,
                             width: MediaQuery.of(context).size.width,
                             placeholder: (context, url) => Center(
@@ -102,7 +103,7 @@ class OrganizationHelpWidget extends StatelessWidget {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                              image: NetworkImage(helpModel.cardModel.image!),
+                              image: NetworkImage(helpModel.cardModel.coverUrl!),
                               fit: BoxFit.cover),
                         ),
                       ).paddingOnly(
@@ -146,7 +147,7 @@ class OrganizationHelpWidget extends StatelessWidget {
                         children: [
                           SvgPicture.asset(AppImageUtils.DATE),
                           AppWidgets.text(
-                            text: helpModel.cardModel.date!,
+                            text: helpModel.cardModel.createdAt!,
                             color: AppColorUtils.BLUE_PERCENT,
                             fontWeight: FontWeight.w600,
                             fontSize: 16.sp,

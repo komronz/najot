@@ -1,4 +1,6 @@
-part of 'faq_cubit.dart';
+
+import 'package:equatable/equatable.dart';
+import 'package:najot/data/model/faq_model.dart';
 
 class FaqState extends Equatable {
   final bool hasLoading;

@@ -21,6 +21,7 @@ import 'edit_show_success.dart';
 class AboutPage extends StatelessWidget {
   static const String routeName = '/aboutPage';
 
+
   AboutPage({Key? key}) : super(key: key);
   AppealBloc appealBloc = AppealBloc();
   Key _key=Key("");

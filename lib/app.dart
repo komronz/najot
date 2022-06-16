@@ -5,8 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/utils/app_route_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/pages/intro_page/intro_page.dart';
-import 'package:najot/ui/pages/language_page/language_page.dart';
 import 'data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'data/bloc/language_cubit/language_cubit.dart';
 import 'data/services/navigator_service.dart';
@@ -16,7 +14,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(375, 812),
-      builder: () => BlocListener<LanguageCubit, LanguageState>(
+      builder: (context, state) => BlocListener<LanguageCubit, LanguageState>(
         bloc: LanguageCubit.to,
         listener: (context, state) {
           context.setLocale(state.locale);

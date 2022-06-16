@@ -8,7 +8,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/language_cubit/language_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 
-import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';

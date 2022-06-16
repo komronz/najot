@@ -8,7 +8,6 @@ import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/app_disable_text_field.dart';
 
-import '../../../data/bloc/app_page_cubit/app_page_cubit.dart';
 import '../../../data/localization/locale_keys.g.dart';
 import '../../../data/services/navigator_service.dart';
 import '../../../data/utils/app_color_utils.dart';

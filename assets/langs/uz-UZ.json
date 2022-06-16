@@ -244,5 +244,9 @@
   "enter_project_name": "Loyiha nomini kiriting",
   "connection_error": "Xatolik",
   "connection_success": "Aloqa mavjud",
-  "successful_send": "//Muvoffaqiyatli yuborildi! //Tez orada Moderatorlar siz bilan aloqaga chiqishadi."
+  "successful_send": "//Muvoffaqiyatli yuborildi! //Tez orada Moderatorlar siz bilan aloqaga chiqishadi.",
+  "who_joining_project": "Loyihani kim qo’shmoqda?",
+  "organization": "Tashkilot",
+  "user": "Foydalanuvchi"
+
 }

@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
   static const String routeName = "/homePage";
   AppPageCubit cubit = AppPageCubit();
 
-  static GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
+  static final GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {

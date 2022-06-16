@@ -136,13 +136,15 @@ class DatePicker {
       initialDate = DateTime.now();
     }
 
-    if (backgroundColor == null)
+    if (backgroundColor == null) {
       backgroundColor = DateTimePickerTheme.Default.backgroundColor;
+    }
 //    if (itemTextStyle == null)
 //      itemTextStyle = DateTimePickerTheme.Default.itemTextStyle;
 
-    if (textColor == null)
+    if (textColor == null) {
       textColor = DateTimePickerTheme.Default.itemTextStyle.color;
+    }
 
     var datePickerDialog = AlertDialog(
       title: Text(

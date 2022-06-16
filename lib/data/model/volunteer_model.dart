@@ -47,14 +47,14 @@ class RootProjectModel {
 }
 
 class Links {
-  int? next;
+  String? next;
   String? previous;
 
   Links({this.next, this.previous});
 
   Links.fromJson(Map<String, dynamic> json) {
-    next = json['next'];
-    previous = json['previous'];
+    next = json['next']?.toString();
+    previous = json['previous']?.toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -64,4 +64,6 @@ class Links {
     return data;
   }
 }
+
+
 

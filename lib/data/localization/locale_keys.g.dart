@@ -245,6 +245,9 @@ abstract class  LocaleKeys {
   static const connection_error = 'connection_error';
   static const connection_success = 'connection_success';
   static const successful_send = 'successful_send';
+  static const who_joining_project = 'who_joining_project';
+  static const organization = 'organization';
+  static const user = 'user';
 
 
 }

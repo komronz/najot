@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 import 'package:najot/data/model/product_model.dart';
-import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/product_service.dart';
 
 part 'product_state.dart';
@@ -17,11 +15,9 @@ class ProductCubit extends Cubit<ProductState> {
      var product= await productService.getProductsModel();
      print(product!.results!.length);
 
-     if(product!= null){
-       Future.delayed(Duration(seconds: 2));
-       emit(state.copyWith(list: product.results));
-       emit(state.copyWith(loading: false));
-     }
+     Future.delayed(Duration(seconds: 2));
+     emit(state.copyWith(list: product.results));
+     emit(state.copyWith(loading: false));
 
    }
 }
