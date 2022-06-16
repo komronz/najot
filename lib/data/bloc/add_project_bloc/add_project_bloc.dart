@@ -11,7 +11,7 @@ class AddProjectBloc extends Bloc<AddProjectEvent, AddProjectState> {
     on<AddProjectTypeChanged>(_onTypeChanged);
     on<AddProjectDescriptionChanged>(_onDescriptionChanged);
     on<AddProjectAddWhoChanged>(_onAddWhoChanged);
-    // on<AddProjectAddWhoChanged>(_onBtnPressed);
+    on<AddProjectBtnEvent>(_onBtnPressed);
     on<SendDateEvent>(_onBtnSend);
   }
 
@@ -115,18 +115,18 @@ class AddProjectBloc extends Bloc<AddProjectEvent, AddProjectState> {
     );
   }
 
-  // Future _onBtnPressed(
-  //     AppealBtnEvent event,
-  //     Emitter<AppealState> emit,
-  //     ) async {
-  //   emit(
-  //     AppealState(name: "",
-  //         phoneNumber: "",
-  //         content: ""
-  //     ),
-  //
-  //   );
-  // }
+  Future _onBtnPressed(
+      AddProjectBtnEvent event,
+      Emitter<AddProjectState> emit,
+      ) async {
+    emit(
+      AddProjectState(
+          name: "",
+          description: ""
+      ),
+
+    );
+  }
   Future _onBtnSend(
       SendDateEvent event,
       Emitter<AddProjectState> emit,

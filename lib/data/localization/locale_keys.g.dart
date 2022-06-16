@@ -248,6 +248,7 @@ abstract class  LocaleKeys {
   static const who_joining_project = 'who_joining_project';
   static const organization = 'organization';
   static const user = 'user';
+  static const project_successful_added = 'project_successful_added';
 
 
 }
