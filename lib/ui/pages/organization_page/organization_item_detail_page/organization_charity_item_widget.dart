@@ -23,7 +23,7 @@ import 'package:super_rich_text/super_rich_text.dart';
 import 'organization_help_widget.dart';
 
 class OrganizationCharityItemModel {
-  CardModel cardModel;
+  ProjectModel cardModel;
   OrganizationCubit cubit;
 
   OrganizationCharityItemModel({
@@ -107,7 +107,7 @@ class _OrganizationCharityItemWidgetState
                                   Radius.circular(12),
                                 ),
                                 child: CachedNetworkImage(
-                                  imageUrl: widget.helpModel.cardModel.image!,
+                                  imageUrl: widget.helpModel.cardModel.coverUrl!,
                                   fit: BoxFit.cover,
                                   width: MediaQuery.of(context).size.width,
                                   placeholder: (context, url) => Center(
@@ -327,8 +327,7 @@ class _OrganizationCharityItemWidgetState
                                           textColor: AppColorUtils.WHITE,
                                         ),
                                         AppWidgets.favouriteButton(
-                                          select: widget
-                                              .helpModel.cardModel.isFavorite!,
+                                          select: true,
                                           height: 48.w,
                                           width: 48.w,
                                           onTap: () {},
