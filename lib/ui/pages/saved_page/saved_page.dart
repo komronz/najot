@@ -18,51 +18,52 @@ class SavedPage extends StatelessWidget {
   const SavedPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context)=>FavoriteAddCubit()..getFavoriteAddList(),
-        child: BlocBuilder<FavoriteAddCubit,FavoriteAddState>(
-          builder: (context, state) => Scaffold(
-            appBar: AppBar(
-              automaticallyImplyLeading: false,
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              titleSpacing: 0,
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    child: SvgPicture.asset(
-                      AppImageUtils.MENU,
-                      height: 35.w,
-                      width: 35.w,
-                    ),
-                    onTap: () {
-                      HomePage.globalKey.currentState!.openDrawer();
-                    },
-                  ),
-                  AppWidgets.textLocale(
-                    text: LocaleKeys.saved,
-                    fontSize: 26.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  InkWell(
-                    onTap: (){
-                      NavigatorService.to.pushNamed(NotificationPage.routeName,);
-                    },
-                    child: SvgPicture.asset(
-                      AppImageUtils.NOTIFICATION,
-                      height: 35.w,
-                      width: 35.w,
-                      fit: BoxFit.fill,
-                    ),
-                  )
-                ],
-              ).paddingAll(20),
-            ),
-            body: _buildBody(context, state),
-          ),),
-
-    );
+    return Container();
+    // return BlocProvider(
+    //     create: (context)=>FavoriteAddCubit()..getFavoriteAddList(),
+    //     child: BlocBuilder<FavoriteAddCubit,FavoriteAddState>(
+    //       builder: (context, state) => Scaffold(
+    //         appBar: AppBar(
+    //           automaticallyImplyLeading: false,
+    //           backgroundColor: Colors.transparent,
+    //           elevation: 0,
+    //           titleSpacing: 0,
+    //           title: Row(
+    //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //             children: [
+    //               InkWell(
+    //                 child: SvgPicture.asset(
+    //                   AppImageUtils.MENU,
+    //                   height: 35.w,
+    //                   width: 35.w,
+    //                 ),
+    //                 onTap: () {
+    //                   HomePage.globalKey.currentState!.openDrawer();
+    //                 },
+    //               ),
+    //               AppWidgets.textLocale(
+    //                 text: LocaleKeys.saved,
+    //                 fontSize: 26.sp,
+    //                 fontWeight: FontWeight.w600,
+    //               ),
+    //               InkWell(
+    //                 onTap: (){
+    //                   NavigatorService.to.pushNamed(NotificationPage.routeName,);
+    //                 },
+    //                 child: SvgPicture.asset(
+    //                   AppImageUtils.NOTIFICATION,
+    //                   height: 35.w,
+    //                   width: 35.w,
+    //                   fit: BoxFit.fill,
+    //                 ),
+    //               )
+    //             ],
+    //           ).paddingAll(20),
+    //         ),
+    //         body: _buildBody(context, state),
+    //       ),),
+    //
+    // );
   }
   Widget _buildBody(BuildContext context, FavoriteAddState state,
       ) {
