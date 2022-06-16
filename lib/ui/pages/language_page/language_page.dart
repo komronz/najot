@@ -11,6 +11,8 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../intro_page/intro_page.dart';
+
 class LanguagePage extends StatefulWidget {
   LanguagePage({Key? key}) : super(key: key);
 

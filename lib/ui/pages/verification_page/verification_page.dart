@@ -8,7 +8,9 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/verification_page/widgets/pin_put_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../../data/bloc/app_page_cubit/app_page_cubit.dart';
 import '../../../data/localization/locale_keys.g.dart';
+import '../home_page/home_page.dart';
 
 class VerificationPage extends StatelessWidget {
   VerificationPage({required this.loginBloc});
@@ -33,7 +35,7 @@ class VerificationPage extends StatelessWidget {
         body: BlocConsumer<LoginBloc, LoginState>(
           listener: (context,state){
             if(state.loginSuccess){
-              NavigatorService.to.pushNamed(
+              NavigatorService.to.pushNamedAndRemoveUntil(
                 HomePage.routeName,
                 arguments: AppPageType.MAIN,
               );

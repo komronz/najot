@@ -42,7 +42,8 @@ class HttpService {
       AppLoggerUtil.d("API: ${APIConst.API_URL + path!}");
       if (token != null) {
         return await _dio!.post(
-          APIConst.API_URL + path,
+          path,
+          data: jsonEncode(fields),
           options: Options(
             headers: {
               HttpHeaders.contentTypeHeader: "application/json",

@@ -15,7 +15,7 @@ class ProductCubit extends Cubit<ProductState> {
      var product= await productService.getProductsModel();
 
      Future.delayed(Duration(seconds: 2));
-     emit(state.copyWith(list: product.results));
+     emit(state.copyWith(list: product!.results));
      emit(state.copyWith(loading: false));
 
    }

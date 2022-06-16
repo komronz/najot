@@ -32,7 +32,7 @@ class App extends StatelessWidget {
           // darkTheme: AppThemes.darkTheme(),
           localizationsDelegates: context.localizationDelegates,
           builder: BotToastInit(),
-          // home: LanguagePage(),
+           // home: LanguagePage(),
           home: HomePage(appPageType: AppPageType.MAIN),
           navigatorObservers: [
             BotToastNavigatorObserver(),

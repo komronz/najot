@@ -16,38 +16,6 @@ class AuthService {
     getIt.registerSingleton<AuthService>(AuthService());
   }
 
-  Future<TokenModel?> userLogin(String phone, String password) async {
-    try {
-      final path = 'http://api.najot.thinkland.uz/auth/login-end';
-      final body = {
-        "phone": formatNumber(phone),
-        "code": password,
-      };
-      print(formatNumber(phone));
-      final headers = {HttpHeaders.contentTypeHeader: "application/json"};
-      var response = await _httpService.post(
-        path: path,
-        fields: body,
-        headers: headers,
-      );
-      if (response != null) {
-        if (response.statusCode == 200) {
-          AppLoggerUtil.i(TokenModel.fromJson(response.data).token.toString());
-          return TokenModel.fromJson(response.data);
-        } else if (response.statusCode == 401) {
-          return null;
-        } else if (response.statusCode! >= 500) {
-          return null;
-        }
-      } else {
-        return null;
-      }
-    } catch (e) {
-      AppLoggerUtil.e("$e");
-      return null;
-    }
-    return null;
-  }
 
   Future<ConfirmNumberModel?> confirmPhoneNumber(
     String phone,
