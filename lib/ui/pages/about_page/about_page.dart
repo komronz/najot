@@ -38,6 +38,8 @@ class AboutPage extends StatelessWidget {
             create: (context) =>AboutCubit()..getAboutList(),
         )
       ],
+
+
       child: Scaffold(
         key: UniqueKey(),
       backgroundColor: AppColorUtils.BACKGROUND,
