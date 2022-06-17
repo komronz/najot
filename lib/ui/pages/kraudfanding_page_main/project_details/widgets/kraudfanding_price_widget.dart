@@ -93,7 +93,7 @@ class KraudfandingPriceWidget extends StatelessWidget {
                     args: ["${model.amountCollected}"],
                   ),
                   AppWidgets.text(
-                    text: "${"60"} %",
+                    text: "${model.percent} %",
                     color: AppColorUtils.BLUE_PERCENT,
                     fontWeight: FontWeight.w500,
                     fontSize: 16.sp,
@@ -105,7 +105,7 @@ class KraudfandingPriceWidget extends StatelessWidget {
                 padding: EdgeInsets.all(0),
                 lineHeight: 10.h,
                 animationDuration: 2000,
-                percent: 60 / 100,
+                percent: model.percent! / 100,
                 progressColor: AppColorUtils.PERCENT_COLOR,
                 backgroundColor: AppColorUtils.WHITE,
               ).paddingOnly(top: 10.w),

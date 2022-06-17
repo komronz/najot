@@ -50,7 +50,7 @@ class KraufandingSavedListWidget extends StatelessWidget {
       crossAxisSpacing: 8,
       mainAxisSpacing: 6,
       children: List.generate(
-        cubit.state.list.length ?? 0,
+        cubit.state.list.length,
         (index) => CharityKraufanding(
           favouriteModel: cubit.state.list[index],
         ),

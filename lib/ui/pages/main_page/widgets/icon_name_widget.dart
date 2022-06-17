@@ -36,7 +36,7 @@ class IconAndName extends StatelessWidget {
           SizedBox(height: 5.w,),
           SizedBox(
             width: 105.w,
-            child: AppWidgets.textLocale(
+            child: AppWidgets.text(
                 text: text,
                 color: color,
                 fontSize: fontsize,

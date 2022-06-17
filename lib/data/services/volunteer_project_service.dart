@@ -13,9 +13,7 @@ class VolunteerProjectService{
 
     try {
       final Response response = await RootService.httpService.get(
-
-        url: "https://najot.uz/ru/project/?type=VL",
-        token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU1NzE2NDAzLCJpYXQiOjE2NTUxMTE2MDMsImp0aSI6ImE1MjFjN2FjZGFhZTRkZTY4OGUxMDQ2YmNhNzMwNmZiIiwidXNlcl9pZCI6NH0.4_9ZQtR8e761v-QGlGZxXiIq61o-79hAKfNdNlDm_N4"
+        url: "https://api.najot.uz/ru/project/?type=VL&page_size=15",
       );
 
       if (response.statusCode == 200) {

@@ -192,7 +192,6 @@ class AboutPage extends StatelessWidget {
 
                         isFill: context.read<AppealBloc>().state.firstNameFill,
                         hintText: "(abdumalik)",
-                        key: _key,
                         initialText: state.name,
                         onChanged: (v) {
                           context
@@ -213,7 +212,6 @@ class AboutPage extends StatelessWidget {
                             .read<AppealBloc>()
                             .phoneNumberFormatter,
                         initialText: state.phoneNumber,
-                        key: _key,
                         onChanged: (v) {
                           context
                               .read<AppealBloc>()
@@ -229,7 +227,6 @@ class AboutPage extends StatelessWidget {
                         isMultiLine: true,
                         height: 154.w,
                         initialText: state.content,
-                        key: _key,
                         hintText: LocaleKeys.write_your_application.tr(),
                         onChanged: (v) {
                           context

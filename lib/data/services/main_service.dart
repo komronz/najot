@@ -11,15 +11,15 @@ class MainService{
   Future<MainModel?> getModel() async {
 
     try {
-
-      final Response response = await RootService.httpService.get(url:"https://api.najot.uz/en/home/");
-
+      final Response response = await RootService.httpService.get(
+        url: "https://api.najot.uz/ru/home/",
+      );
       if (response.statusCode == 200) {
 
-        final MainModel responseModel = MainModel.fromJson(response.data);
-
+        final MainModel responseModel =
+        MainModel.fromJson(
+          response.data,);
         return responseModel;
-
       } else {
         AppLoggerUtil.e("-----------------");
         return null;

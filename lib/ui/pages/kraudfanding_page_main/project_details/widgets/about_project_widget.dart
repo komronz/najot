@@ -17,6 +17,9 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/pa
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import 'more_widget.dart';
+import 'news_widget.dart';
+
 class AboutProjectWidget extends StatefulWidget {
    AboutProjectWidget({required this.cardModel}) ;
     final ProjectModel cardModel;
@@ -242,16 +245,15 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                 ).paddingOnly(left: 15.w, top: 8.w),
                 Container(
                   child: [
+
+                    MoreWidget(
+                      cardModel: widget.cardModel,
+                    ),
+                    NewsWidget(
+                      cardModel: widget.cardModel,
+                    ).paddingAll(20.w),
                     Container(),
                     Container(),
-                    Container(),
-                    Container(),
-                    // MoreWidget(
-                    //   cardModel: widget.cardModel,
-                    // ),
-                    // NewsWidget(
-                    //   cardModel: widget.cardModel,
-                    // ).paddingAll(20.w),
                     // QuestionsAskedWidget(
                     //   cardModel: widget.cardModel,
                     // ).paddingAll(20.w),

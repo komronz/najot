@@ -140,8 +140,7 @@ class _CharityFullPageState extends State<CharityFullPage>
                           ],
                         ),
                         AppWidgets.text(
-                          text:
-                          "Drenajni kuzatish uchun mo’jallangan moslama",
+                          text: widget.cardModel.title!,
                           fontSize: 20.sp,
                           color: AppColorUtils.DARK2,
                           fontWeight: FontWeight.w500,

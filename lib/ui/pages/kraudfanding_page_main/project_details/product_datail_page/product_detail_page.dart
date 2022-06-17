@@ -32,7 +32,7 @@ class ProductDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var createdAt= DateTime.parse(model.products.createdAt!);
+    var createdAt= DateTime.parse(model.products.deliveryTime!);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColorUtils.BACKGROUND,
@@ -73,7 +73,7 @@ class ProductDetailPage extends StatelessWidget {
                           Radius.circular(12),
                         ),
                         child: CachedNetworkImage(
-                          imageUrl: "productModel.imgUrl!",
+                          imageUrl: model.products.productImage!,
                           fit: BoxFit.cover,
                           width: MediaQuery.of(context).size.width,
                           placeholder: (context, url) => Center(

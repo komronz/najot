@@ -24,9 +24,8 @@ class CrowdfundingService{
 
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://najot.uz/ru/project/?type=CF",
+        url: "https://api.najot.uz/ru/project/?type=CF",
       );
-
       if (response.statusCode == 200) {
         final RootProjectModel responseModel =
         RootProjectModel.fromJson(
@@ -37,6 +36,7 @@ class CrowdfundingService{
         return null;
       }
     } catch (e) {
+
       return null;
     }
   }
@@ -45,7 +45,7 @@ class CrowdfundingService{
 
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://najot.uz/en/categories/?type=CF",
+        url: "https://api.najot.uz/ru/categories/?type=CF",
       );
       print(response.statusCode);
 
@@ -69,9 +69,8 @@ class CrowdfundingService{
 
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://najot.uz/en/project/?type=CF&category=${id}&page_size=15",
+        url: "https://api.najot.uz/ru/project/?type=CF&category=${id}&page_size=15",
       );
-      print(response.statusCode);
 
       if (response.statusCode == 200) {
         final RootProjectModel responseModel =

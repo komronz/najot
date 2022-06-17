@@ -12,7 +12,11 @@ class LoginState extends Equatable {
   final bool signBtnActive;
   final bool hasError;
   final bool authSuccess;
-  final bool checkPhoneNumber;
+  final bool loginSuccess;
+  final bool registerSuccess;
+  final int checkPhoneNumber;
+  final String codeToken;
+  final int code;
 
   const LoginState({
     this.firstName = '',
@@ -26,7 +30,11 @@ class LoginState extends Equatable {
     this.signBtnActive = false,
     this.hasError = false,
     this.authSuccess = false,
-    this.checkPhoneNumber = false,
+    this.loginSuccess = false,
+    this.registerSuccess = false,
+    this.checkPhoneNumber=0,
+    this.codeToken = "",
+    this.code=0,
   });
 
   @override
@@ -42,7 +50,11 @@ class LoginState extends Equatable {
         signBtnActive,
         hasError,
     authSuccess,
-    checkPhoneNumber
+    checkPhoneNumber,
+    codeToken,
+    code,
+    loginSuccess,
+    registerSuccess
       ];
 
   LoginState copyWith({
@@ -57,7 +69,11 @@ class LoginState extends Equatable {
     bool? signBtnActive,
     bool? hasError,
     bool? authSuccess,
-    bool? checkPhoneNumber,
+    bool? loginSuccess,
+    bool? registerSuccess,
+    int? checkPhoneNumber,
+    String? codeToken,
+    int? code,
 
   }) {
     return LoginState(
@@ -73,6 +89,10 @@ class LoginState extends Equatable {
       hasError: hasError ?? this.hasError,
       authSuccess: authSuccess ?? this.authSuccess,
       checkPhoneNumber: checkPhoneNumber ?? this.checkPhoneNumber,
+      codeToken: codeToken ?? this.codeToken,
+      code: code ?? this.code,
+      loginSuccess: loginSuccess ?? this.loginSuccess,
+      registerSuccess: registerSuccess ?? this.registerSuccess,
     );
   }
 }

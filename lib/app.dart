@@ -16,7 +16,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(375, 812),
-      builder: (context, state) => BlocListener<LanguageCubit, LanguageState>(
+      builder: (context,widget) => BlocListener<LanguageCubit, LanguageState>(
         bloc: LanguageCubit.to,
         listener: (context, state) {
           context.setLocale(state.locale);
@@ -32,6 +32,7 @@ class App extends StatelessWidget {
           // darkTheme: AppThemes.darkTheme(),
           localizationsDelegates: context.localizationDelegates,
           builder: BotToastInit(),
+           // home: LanguagePage(),
           home: HomePage(appPageType: AppPageType.MAIN),
           navigatorObservers: [
             BotToastNavigatorObserver(),

@@ -27,7 +27,7 @@ class CrowdfundingCubit extends Cubit<CrowdfundingState> {
     var tabProjects=await crowdfundingService.getProjectsById(list.children![0].id!);
 
 
-    if (crowdfundingModel != null) {
+    if (crowdfundingModel != null ) {
       emit(state.copyWith(loading: false));
       emit(state.copyWith(
         crowdfundingModel: crowdfundingModel,

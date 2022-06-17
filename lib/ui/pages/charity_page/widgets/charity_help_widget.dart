@@ -124,7 +124,7 @@ class CharityHelpWidget extends StatelessWidget {
                           SizedBox(
                             width: 150.w,
                             child: AppWidgets.text(
-                              text: "Eshonov Fakhriyor",
+                              text: helpModel.cardModel.owner!.firstName!,
                               color: AppColorUtils.TEXT_GREEN2,
                               fontWeight: FontWeight.w600,
                               fontSize: 14.sp,
