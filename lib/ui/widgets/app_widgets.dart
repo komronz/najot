@@ -571,13 +571,17 @@ class AppWidgets {
         color: color,
         placeholder: (context, url){
           return Center(
+            widthFactor: 20,
+              heightFactor: 20,
               child: CircularProgressIndicator(),
             );
         },
         errorWidget: (context, url, error ){
-          return ColoredBox(
+          return Container(
               color: Colors.black12,
-            child: CircularProgressIndicator()
+            child: Container(
+
+            )
           );
         }
       ),
