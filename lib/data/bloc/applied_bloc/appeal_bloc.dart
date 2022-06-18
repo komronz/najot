@@ -23,18 +23,13 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
   }
 
   final AboutUsService aboutUsService=AboutUsService();
-  Future _onNameChanged(
-    AppealNameChanged event,
-    Emitter<AppealState> emit,
-  ) async {
+  Future _onNameChanged(AppealNameChanged event, Emitter<AppealState> emit,) async {
     emit(
       state.copyWith(
         firstName: event.name,
         firstNameFill: _isNotEmpty(event.name),
         isNextBtnActive: _nextBtnActive(
-          event.name,
-          state.content,
-          state.phoneNumber,
+          event.name, state.content, state.phoneNumber,
         ),
       ),
     );
@@ -110,6 +105,7 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
       Emitter<AppealState> emit,
       ) async {
     AboutUs? aboutUs =await aboutUsService.postModel(state.name, state.phoneNumber, state.content);
+    print(aboutUs!.phoneNumber);
     if(aboutUs !=null){
       emit(state.copyWith(isLoading: true));
     }else{

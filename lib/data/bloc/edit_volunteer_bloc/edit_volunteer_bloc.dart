@@ -71,13 +71,8 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
     }
   }
 
-  Future _onImageChanged(ImageChanged event,
-      Emitter<EditVolunteerState> emit,) async {
-    emit(
-      state.copyWith(
-        imageUrl: event.imageUrl,
-      ),
-    );
+  Future _onImageChanged(ImageChanged event, Emitter<EditVolunteerState> emit) async {
+    emit(state.copyWith(imageUrl: event.imageUrl,));
   }
 
   Future _onNameChanged(FirstNameChanged event,

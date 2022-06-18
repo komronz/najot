@@ -13,17 +13,23 @@ class AboutUsService{
     getIt.registerSingleton<AboutUsService>(AboutUsService());
   }
 
-  Future<AboutUs?> postModel(String name, String phoneNumber, String content) async {
+  Future<AboutUs?> postModel(
+      String name,
+      String phoneNumber,
+      String content) async {
     try {
-      final _path = "https://api.najot.uz/about/";
+      final _path = "https://api.najot.uz/en/contact/";
       final body = {
         "name": name,
-        "phone_number": formatNumber(phoneNumber),
+        "phone": formatNumber(phoneNumber),
         "content": content
       };
+
+      print(formatNumber(phoneNumber));
       final headers = {HttpHeaders.contentTypeHeader: "application/json"};
       Response? response = await _httpService.post(
         path: _path,
+        token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU2MDUyNDEwLCJpYXQiOjE2NTU0NDc2MTAsImp0aSI6ImM2YmY1N2MxNzE1NjQ0NmNhODRiOWZjOWMzZjFkMTU2IiwidXNlcl9pZCI6NH0.Ku-m6ZnlD9nc7zQ1mWGgkb5iWy3bJN1_Kt-bG6lpYJE",
         fields: body,
         headers: headers,
       );
@@ -46,8 +52,8 @@ class AboutUsService{
     return null;
   }
 
-  String formatNumber(String number) {
-    var text = number.replaceAll(RegExp(r'\D()'), '');
+  String formatNumber(String? number) {
+    var text = number!.replaceAll(RegExp(r'\D()'), '');
     return "+${text}";
   }
 }

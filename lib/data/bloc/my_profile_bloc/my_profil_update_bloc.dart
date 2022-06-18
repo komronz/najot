@@ -94,12 +94,8 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
     );
   }
 
-  Future _onPhoneChanged(
-    PhoneChanged event,
-    Emitter<MyProfileUpdateState> emit,
-  ) async {
-    emit(
-      state.copyWith(
+  Future _onPhoneChanged(PhoneChanged event, Emitter<MyProfileUpdateState> emit) async {
+    emit(state.copyWith(
         phoneNumber: event.phoneNumber,
         phoneNumberFill: _isNotEmpty(event.phoneNumber),
       ),
