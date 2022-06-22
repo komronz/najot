@@ -22,14 +22,14 @@ class OperatorUserSmsWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Container(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             vertical: 15,
             horizontal: 20,
           ),
           width: width.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            color: AppColorUtils.SMS_USER,
+            color: AppColorUtils.smsUser,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -39,7 +39,7 @@ class OperatorUserSmsWidget extends StatelessWidget {
                 maxLines: 100,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
-                color: AppColorUtils.WHITE,
+                color: AppColorUtils.white,
                 height: 1.5,
               ),
               AppWidgets.text(
@@ -49,7 +49,7 @@ class OperatorUserSmsWidget extends StatelessWidget {
                 ),
                 fontSize: 10.sp,
                 fontWeight: FontWeight.w500,
-                color: AppColorUtils.WHITE,
+                color: AppColorUtils.white,
               ).paddingOnly(top: 10),
             ],
           ),

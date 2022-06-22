@@ -40,7 +40,7 @@ class MyVolunteeringPage extends StatelessWidget {
                 children: [
                   InkWell(
                     child: SvgPicture.asset(
-                      AppImageUtils.MENU,
+                      AppImageUtils.menu,
                       height: 35.w,
                       width: 35.w,
                     ),
@@ -55,7 +55,7 @@ class MyVolunteeringPage extends StatelessWidget {
                   ),
                   InkWell(
                     child: SvgPicture.asset(
-                      AppImageUtils.NOTIFICATION,
+                      AppImageUtils.notification,
                       height: 35.w,
                       width: 35.w,
                       fit: BoxFit.fill,
@@ -81,8 +81,8 @@ class MyVolunteeringPage extends StatelessWidget {
       initialIndex: 0,
       length: 2,
       child: Container(
-        padding: EdgeInsets.all(20),
-        decoration: DecorationConst.DEC_WITH_SHADOW,
+        padding: const EdgeInsets.all(20),
+        decoration: DecorationConst.decWithShadow,
         height: context.height,
         width: context.width,
         child: Column(
@@ -91,8 +91,8 @@ class MyVolunteeringPage extends StatelessWidget {
           children: [
             TabBar(
               enableFeedback: true,
-              labelColor: AppColorUtils.GREEN_APP,
-              unselectedLabelColor: AppColorUtils.DARK_6,
+              labelColor: AppColorUtils.greenApp,
+              unselectedLabelColor: AppColorUtils.dark6,
               unselectedLabelStyle: TextStyle(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w400,
@@ -107,7 +107,7 @@ class MyVolunteeringPage extends StatelessWidget {
               ],
               isScrollable: true,
               indicatorWeight: 1.5,
-              indicatorColor: AppColorUtils.GREEN_APP,
+              indicatorColor: AppColorUtils.greenApp,
               indicatorSize: TabBarIndicatorSize.label,
               // padding: EdgeInsets.only(right: 10),
               // indicatorPadding: EdgeInsets.only(right: 10, left: 10),
@@ -119,8 +119,8 @@ class MyVolunteeringPage extends StatelessWidget {
                   ListView(
                     shrinkWrap: true,
                     primary: false,
-                    physics: ClampingScrollPhysics(),
-                    padding: EdgeInsets.all(0),
+                    physics: const ClampingScrollPhysics(),
+                    padding: const EdgeInsets.all(0),
                     reverse: false,
                     children: List.generate(
                       state.cardList.length,
@@ -132,8 +132,8 @@ class MyVolunteeringPage extends StatelessWidget {
                   ListView(
                     shrinkWrap: true,
                     primary: false,
-                    physics: ClampingScrollPhysics(),
-                    padding: EdgeInsets.all(0),
+                    physics: const ClampingScrollPhysics(),
+                    padding: const EdgeInsets.all(0),
                     reverse: false,
                     children: List.generate(
                       state.cardList.length,

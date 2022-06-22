@@ -28,7 +28,7 @@ class MyCharityEditProjectDialog extends StatelessWidget {
         padding: EdgeInsets.all(20.w),
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
-          color: AppColorUtils.WHITE,
+          color: AppColorUtils.white,
           borderRadius: BorderRadius.circular(12),
         ),
         child: ListView(
@@ -38,11 +38,11 @@ class MyCharityEditProjectDialog extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    SvgPicture.asset(AppImageUtils.EDIT_DEMO)
+                    SvgPicture.asset(AppImageUtils.editDemo)
                         .paddingOnly(right: 5),
                     AppWidgets.textLocale(
                       text: LocaleKeys.edit_the_project,
-                      color: AppColorUtils.DARK2,
+                      color: AppColorUtils.dark2,
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w600,
                     ),
@@ -51,14 +51,14 @@ class MyCharityEditProjectDialog extends StatelessWidget {
                 AppWidgets.textLocale(
                   text: LocaleKeys.contact_changes_project,
                   maxLines: 2,
-                  color: AppColorUtils.DARK_6,
+                  color: AppColorUtils.dark6,
                   fontWeight: FontWeight.w400,
                   fontSize: 16.sp,
                 ).paddingOnly(bottom: 24.h),
                 AppWidgets.textLocale(
                   fontWeight: FontWeight.w400,
                   fontSize: 14.sp,
-                  color: AppColorUtils.DARK2,
+                  color: AppColorUtils.dark2,
                   text: LocaleKeys.what_changes_make,
                 ).paddingOnly(bottom: 8.h),
                 AppTextField(
@@ -78,7 +78,7 @@ class MyCharityEditProjectDialog extends StatelessWidget {
                     showDialog(
                       context: context,
                       builder: (context) {
-                        return MyCharitySuccessSendQuestion();
+                        return const MyCharitySuccessSendQuestion();
                       },
                     );
                   },
@@ -87,8 +87,8 @@ class MyCharityEditProjectDialog extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   height: 48.w,
                   width: double.infinity,
-                  color: AppColorUtils.PERCENT_COLOR,
-                  textColor: AppColorUtils.WHITE,
+                  color: AppColorUtils.percentColor,
+                  textColor: AppColorUtils.white,
                   borderRadius: 10,
                 ),
                 SizedBox(
@@ -103,8 +103,8 @@ class MyCharityEditProjectDialog extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   height: 48.w,
                   width: double.infinity,
-                  color: AppColorUtils.GREEN_ACCENT5,
-                  textColor: AppColorUtils.BLACK,
+                  color: AppColorUtils.greenAccent5,
+                  textColor: AppColorUtils.black,
                   borderRadius: 10,
                 )
               ],

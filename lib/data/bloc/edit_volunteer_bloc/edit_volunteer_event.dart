@@ -6,12 +6,11 @@ abstract class EditVolunteerEvent extends Equatable {
 }
 
 class EditProfileChangePage extends EditVolunteerEvent {
-  EditProfileChangePage(this.changePage);
+  const EditProfileChangePage(this.changePage);
 
   final int changePage;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [changePage];
 }
 
@@ -65,7 +64,7 @@ class LastNameChanged extends EditVolunteerEvent {
 class GenderChanged extends EditVolunteerEvent {
   final Gender isMan;
 
-  GenderChanged(this.isMan);
+  const GenderChanged(this.isMan);
 
   @override
   List<Object?> get props => [isMan];
@@ -74,7 +73,7 @@ class GenderChanged extends EditVolunteerEvent {
 class PageChanged extends EditVolunteerEvent {
   final bool isVisible;
 
-  PageChanged(this.isVisible);
+  const PageChanged(this.isVisible);
 
   @override
   List<Object?> get props => [isVisible];
@@ -83,7 +82,7 @@ class PageChanged extends EditVolunteerEvent {
 class PageNext extends EditVolunteerEvent {
   final bool isNext;
 
-  PageNext(this.isNext);
+  const PageNext(this.isNext);
 
   @override
   List<Object?> get props => [isNext];

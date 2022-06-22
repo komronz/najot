@@ -1,7 +1,7 @@
 part of 'my_volunteering_cubit.dart';
 
 class MyVolunteeringState extends Equatable {
-  MyVolunteeringState({required this.cardList});
+  const MyVolunteeringState({required this.cardList});
 
   final List<VolunteeringModel> cardList;
 
@@ -10,6 +10,6 @@ class MyVolunteeringState extends Equatable {
   List<Object?> get props => [cardList];
 
   MyVolunteeringState copyWith({List<VolunteeringModel>? list}) {
-    return MyVolunteeringState(cardList: list ?? this.cardList);
+    return MyVolunteeringState(cardList: list ?? cardList);
   }
 }

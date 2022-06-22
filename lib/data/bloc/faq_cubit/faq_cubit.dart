@@ -5,7 +5,7 @@ import 'package:najot/data/model/faq_model.dart';
 part 'faq_state.dart';
 
 class FaqCubit extends Cubit<FaqState> {
-  FaqCubit() : super(FaqState());
+  FaqCubit() : super(const FaqState());
   List<FaqModel> faqList = [
     FaqModel(
       title:

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 
 class DecorationConst {
-  static const BoxDecoration DEC_WITH_SHADOW = BoxDecoration(
-    color: AppColorUtils.WHITE,
+  static const BoxDecoration decWithShadow = BoxDecoration(
+    color: AppColorUtils.white,
     boxShadow: [
       BoxShadow(
         color: Color.fromRGBO(11, 191, 144, 0.02),
@@ -13,74 +13,75 @@ class DecorationConst {
       Radius.circular(11),
     ),
   );
-  static const InputDecoration DEC_INPUT = InputDecoration(
+  static const InputDecoration decInput = InputDecoration(
     disabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(12)),
       borderSide: BorderSide(
         width: 2,
-        color: AppColorUtils.BORDER_COLOR,
+        color: AppColorUtils.borderColor,
       ),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(12)),
       borderSide: BorderSide(
         width: 2,
-        color: AppColorUtils.BORDER_COLOR,
+        color: AppColorUtils.borderColor,
       ),
     ),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(12)),
       borderSide: BorderSide(
         width: 2,
-        color: AppColorUtils.BORDER_COLOR,
+        color: AppColorUtils.borderColor,
       ),
     ),
   );
-  static const InputBorder INPUT_BORDER = OutlineInputBorder(
+  static const InputBorder inputBorder = OutlineInputBorder(
     borderRadius: BorderRadius.all(Radius.circular(12)),
     borderSide: BorderSide(
       width: 2,
-      color: AppColorUtils.BORDER_COLOR,
+      color: AppColorUtils.borderColor,
     ),
   );
 
   InputDecoration inputDecoration({Widget? prefixIcon, Widget? suffixIcon}) =>
       InputDecoration(
-          prefixIcon: prefixIcon,
-          suffixIcon: suffixIcon,
-          labelStyle: TextStyle(color: Color(0xFF9E9292)),
-          isDense: true,
-          contentPadding: EdgeInsets.fromLTRB(27, 16, 0, 16),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(10),
-            ),
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
+        labelStyle: const TextStyle(color: Color(0xFF9E9292)),
+        isDense: true,
+        contentPadding: const EdgeInsets.fromLTRB(27, 16, 0, 16),
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
           ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: AppColorUtils.BORDER_COLOR,
-              width: 2,
-            ),
-            borderRadius: BorderRadius.all(
-              Radius.circular(10),
-            ),
+        ),
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: AppColorUtils.borderColor,
+            width: 2,
           ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: AppColorUtils.BORDER_COLOR,
-              width: 2,
-            ),
-            borderRadius: BorderRadius.all(
-              Radius.circular(10),
-            ),
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
           ),
-          errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: AppColorUtils.RED,
-              width: 1,
-            ),
-            borderRadius: BorderRadius.all(
-              Radius.circular(10),
-            ),
-          ));
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: AppColorUtils.borderColor,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+        ),
+        errorBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: AppColorUtils.red,
+            width: 1,
+          ),
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+        ),
+      );
 }

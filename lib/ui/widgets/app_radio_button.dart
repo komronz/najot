@@ -16,7 +16,7 @@ class AppRadioButton extends StatefulWidget {
       : super(key: key);
 
   @override
-  _AppRadioButtonState createState() => _AppRadioButtonState();
+  State<StatefulWidget> createState() => _AppRadioButtonState();
 }
 
 class _AppRadioButtonState extends State<AppRadioButton> {
@@ -24,7 +24,7 @@ class _AppRadioButtonState extends State<AppRadioButton> {
 
   @override
   void initState() {
-    _selection = widget.initial == Gender.MAN ? 1 : 2;
+    _selection = widget.initial == Gender.man ? 1 : 2;
     super.initState();
   }
 
@@ -44,27 +44,27 @@ class _AppRadioButtonState extends State<AppRadioButton> {
           text: LocaleKeys.gender.tr(),
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,
-          color: AppColorUtils.DARK_4,
+          color: AppColorUtils.dark4,
         ).paddingOnly(bottom: 10),
         Row(
           children: [
             InkWell(
               child: Container(
-                padding: EdgeInsets.only(right: 10),
+                padding: const EdgeInsets.only(right: 10),
                 height: 50.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
                     color: _selection == 1
-                        ? AppColorUtils.KRAUDFANDING
-                        : AppColorUtils.DARK_6,
+                        ? AppColorUtils.kraudfanding
+                        : AppColorUtils.dark6,
                     width: 1,
                   ),
                 ),
                 child: Row(
                   children: [
                     Radio(
-                      activeColor: AppColorUtils.KRAUDFANDING,
+                      activeColor: AppColorUtils.kraudfanding,
                       value: 1,
                       groupValue: _selection,
                       onChanged: (v) => selectTime(v as int),
@@ -72,8 +72,8 @@ class _AppRadioButtonState extends State<AppRadioButton> {
                     AppWidgets.textLocale(
                       text: LocaleKeys.man,
                       color: _selection == 1
-                          ? AppColorUtils.KRAUDFANDING
-                          : AppColorUtils.DARK_6,
+                          ? AppColorUtils.kraudfanding
+                          : AppColorUtils.dark6,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                     ),
@@ -90,13 +90,13 @@ class _AppRadioButtonState extends State<AppRadioButton> {
             InkWell(
               child: Container(
                 height: 50.w,
-                padding: EdgeInsets.only(right: 10),
+                padding: const EdgeInsets.only(right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
                     color: _selection == 2
-                        ? AppColorUtils.KRAUDFANDING
-                        : AppColorUtils.DARK_6,
+                        ? AppColorUtils.kraudfanding
+                        : AppColorUtils.dark6,
                     width: 1,
                   ),
                 ),
@@ -104,8 +104,8 @@ class _AppRadioButtonState extends State<AppRadioButton> {
                   children: [
                     Radio(
                       activeColor: _selection == 2
-                          ? AppColorUtils.KRAUDFANDING
-                          : AppColorUtils.DARK_6,
+                          ? AppColorUtils.kraudfanding
+                          : AppColorUtils.dark6,
                       value: 2,
                       groupValue: _selection,
                       onChanged: (v) => selectTime(v as int),
@@ -113,8 +113,8 @@ class _AppRadioButtonState extends State<AppRadioButton> {
                     AppWidgets.textLocale(
                       text: LocaleKeys.woman,
                       color: _selection == 2
-                          ? AppColorUtils.KRAUDFANDING
-                          : AppColorUtils.DARK_6,
+                          ? AppColorUtils.kraudfanding
+                          : AppColorUtils.dark6,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                     ),

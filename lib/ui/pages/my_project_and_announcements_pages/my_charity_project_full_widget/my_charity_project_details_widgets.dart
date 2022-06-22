@@ -7,10 +7,10 @@ Widget singleTabDetailCharity(bool type, String text) {
     onTap: () {},
     child: Container(
       decoration: type
-          ? BoxDecoration(
+          ? const BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                  color: AppColorUtils.TEXT_GREEN,
+                  color: AppColorUtils.textGreen,
                   width: 1.5,
                 ),
               ),
@@ -21,7 +21,7 @@ Widget singleTabDetailCharity(bool type, String text) {
         text,
         style: TextStyle(
           fontSize: 14.sp,
-          color: type ? AppColorUtils.TEXT_GREEN : AppColorUtils.DARK_6,
+          color: type ? AppColorUtils.textGreen : AppColorUtils.dark6,
           fontWeight: type ? FontWeight.w600 : FontWeight.w600,
         ),
       ),
@@ -39,21 +39,19 @@ Widget listDetailCharity(String title, String text) {
           title,
           style: TextStyle(
             fontSize: 17.sp,
-            color: AppColorUtils.DARK2,
+            color: AppColorUtils.dark2,
             fontWeight: FontWeight.w600,
           ),
         ),
       ),
       SizedBox(height: 6.h),
-      Container(
-        child: Text(
-          text,
-          style: TextStyle(
-              fontSize: 14.sp,
-              color: AppColorUtils.DARK3,
-              fontWeight: FontWeight.w400,
-              height: 1.5),
-        ),
+      Text(
+        text,
+        style: TextStyle(
+            fontSize: 14.sp,
+            color: AppColorUtils.dark3,
+            fontWeight: FontWeight.w400,
+            height: 1.5),
       ),
     ],
   );

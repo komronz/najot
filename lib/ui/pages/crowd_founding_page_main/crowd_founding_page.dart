@@ -15,7 +15,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'widgets/crowd_founding_mini_card_widget.dart';
 
 class CrowdFoundingPage extends StatefulWidget {
-  CrowdFoundingPage({Key? key});
+  const CrowdFoundingPage({Key? key}) : super(key: key);
 
   static const String routeName = '/crowd_founding';
 
@@ -52,7 +52,7 @@ class _CrowdFoundingPageState extends State<CrowdFoundingPage>
     return BlocProvider(
       create: (context) => cubit,
       child: Scaffold(
-        backgroundColor: AppColorUtils.BACKGROUND,
+        backgroundColor: AppColorUtils.background,
         appBar: AppBarWithTitle(
           title: LocaleKeys.crowdfunding.tr(),
           onPress: () {
@@ -62,7 +62,7 @@ class _CrowdFoundingPageState extends State<CrowdFoundingPage>
         body: BlocBuilder<CrowdFoundingCubit, CrowdFoundingState>(
           builder: (context, state) {
             return SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -70,19 +70,19 @@ class _CrowdFoundingPageState extends State<CrowdFoundingPage>
                     onChange: (v) {},
                     search: () {},
                   ).paddingOnly(left: 20.w, right: 20.w, bottom: 15.w),
-                  CrowdFoundingBanner(),
+                  const CrowdFoundingBanner(),
                   AppWidgets.textLocale(
                     text: LocaleKeys.new_add,
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
-                    color: AppColorUtils.DARK2,
+                    color: AppColorUtils.dark2,
                   ).paddingOnly(
                     top: 24.w,
                     bottom: 15.w,
                     left: 18,
                   ),
                   SingleChildScrollView(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: List.generate(
@@ -101,7 +101,7 @@ class _CrowdFoundingPageState extends State<CrowdFoundingPage>
                     length: 3,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: AppColorUtils.WHITE,
+                        color: AppColorUtils.white,
                         borderRadius: BorderRadius.circular(11.0),
                       ),
                       child: Column(
@@ -115,7 +115,7 @@ class _CrowdFoundingPageState extends State<CrowdFoundingPage>
                             child: Text(
                               LocaleKeys.category.tr(),
                               style: TextStyle(
-                                color: AppColorUtils.DARK2,
+                                color: AppColorUtils.dark2,
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -124,13 +124,13 @@ class _CrowdFoundingPageState extends State<CrowdFoundingPage>
                           TabBar(
                             controller: _tabController,
                             enableFeedback: true,
-                            labelColor: AppColorUtils.GREEN_APP,
-                            unselectedLabelColor: AppColorUtils.DARK_6,
+                            labelColor: AppColorUtils.greenApp,
+                            unselectedLabelColor: AppColorUtils.dark6,
                             unselectedLabelStyle: TextStyle(
                               fontSize: 14.sp,
                               fontWeight: FontWeight.w400,
                             ),
-                            labelStyle: TextStyle(
+                            labelStyle: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                             ),
@@ -141,13 +141,13 @@ class _CrowdFoundingPageState extends State<CrowdFoundingPage>
                             ],
                             isScrollable: true,
                             indicatorWeight: 2,
-                            indicatorColor: AppColorUtils.TEXT_GREEN,
+                            indicatorColor: AppColorUtils.textGreen,
                             indicatorSize: TabBarIndicatorSize.tab,
-                            indicatorPadding: EdgeInsets.only(
+                            indicatorPadding: const EdgeInsets.only(
                               right: 10,
                               left: 10,
                             ),
-                            labelPadding: EdgeInsets.only(
+                            labelPadding: const EdgeInsets.only(
                               right: 10,
                               left: 10,
                             ),
@@ -164,9 +164,9 @@ class _CrowdFoundingPageState extends State<CrowdFoundingPage>
                                 shrinkWrap: true,
                                 crossAxisCount: 2,
                                 primary: false,
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 childAspectRatio: 160 / 267,
-                                padding: EdgeInsets.all(0),
+                                padding: const EdgeInsets.all(0),
                                 reverse: false,
                                 crossAxisSpacing: 8,
                                 mainAxisSpacing: 6,
@@ -181,9 +181,9 @@ class _CrowdFoundingPageState extends State<CrowdFoundingPage>
                               GridView.count(
                                 shrinkWrap: true,
                                 crossAxisCount: 2,
-                                physics: ClampingScrollPhysics(),
+                                physics: const ClampingScrollPhysics(),
                                 childAspectRatio: 160 / 267,
-                                padding: EdgeInsets.all(0),
+                                padding: const EdgeInsets.all(0),
                                 reverse: false,
                                 crossAxisSpacing: 8,
                                 mainAxisSpacing: 6,
@@ -198,9 +198,9 @@ class _CrowdFoundingPageState extends State<CrowdFoundingPage>
                               GridView.count(
                                 shrinkWrap: true,
                                 crossAxisCount: 2,
-                                physics: ClampingScrollPhysics(),
+                                physics: const ClampingScrollPhysics(),
                                 childAspectRatio: 160 / 267,
-                                padding: EdgeInsets.all(0),
+                                padding: const EdgeInsets.all(0),
                                 reverse: false,
                                 crossAxisSpacing: 8,
                                 mainAxisSpacing: 6,

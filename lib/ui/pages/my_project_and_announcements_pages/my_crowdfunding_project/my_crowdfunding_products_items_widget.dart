@@ -26,10 +26,10 @@ class MyCrowdfundingProductsItemsWidget extends StatelessWidget {
       margin: isLast ? EdgeInsets.only(bottom: 18.w) : null,
       width: context.width,
       decoration: BoxDecoration(
-        color: AppColorUtils.ITEM_ORDERS_CARD,
+        color: AppColorUtils.itemOrdersCard,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          color: AppColorUtils.ITEM_ORDERS_BORDER,
+          color: AppColorUtils.itemOrdersBorder,
           width: 1,
         ),
       ),
@@ -46,7 +46,7 @@ class MyCrowdfundingProductsItemsWidget extends StatelessWidget {
                       text: "Sotib oldi",
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w400,
-                      color: AppColorUtils.ITEM_ORDERS_TEXT2,
+                      color: AppColorUtils.itemOrdersText2,
                     ).paddingOnly(bottom: 8.w),
                     Row(
                       children: [
@@ -69,7 +69,7 @@ class MyCrowdfundingProductsItemsWidget extends StatelessWidget {
                             maxLines: 2,
                             height: 1.2,
                             fontWeight: FontWeight.w500,
-                            color: AppColorUtils.DARK2,
+                            color: AppColorUtils.dark2,
                           ),
                         ),
                       ],
@@ -85,7 +85,7 @@ class MyCrowdfundingProductsItemsWidget extends StatelessWidget {
                             text: "Telefon raqam",
                             fontSize: 10.sp,
                             fontWeight: FontWeight.w400,
-                            color: AppColorUtils.GRAY_4)
+                            color: AppColorUtils.gray4)
                         .paddingOnly(
                       bottom: 8.w,
                     ),
@@ -95,18 +95,18 @@ class MyCrowdfundingProductsItemsWidget extends StatelessWidget {
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Color(0xFFEAF2FF),
+                            color: const Color(0xFFEAF2FF),
                           ),
                           child: Row(
                             children: [
                               AppWidgets.imageSvg(
-                                path: AppImageUtils.IC_PHONE,
-                                color: AppColorUtils.BLUE_TEXT,
+                                path: AppImageUtils.icPhone,
+                                color: AppColorUtils.blueText,
                               ).paddingOnly(right: 5),
                               AppWidgets.text(
                                 text: "+998991234567",
                                 fontWeight: FontWeight.w600,
-                                color: AppColorUtils.BLUE_TEXT,
+                                color: AppColorUtils.blueText,
                                 fontSize: 12.sp,
                               ).paddingOnly(bottom: 12.w, top: 12.w),
                             ],
@@ -128,7 +128,7 @@ class MyCrowdfundingProductsItemsWidget extends StatelessWidget {
             text: LocaleKeys.briefly_about_the_product,
             fontSize: 10.sp,
             fontWeight: FontWeight.w400,
-            color: AppColorUtils.ITEM_ORDERS_TEXT2,
+            color: AppColorUtils.itemOrdersText2,
           ).paddingOnly(bottom: 3),
           AppWidgets.text(
             text:
@@ -136,7 +136,7 @@ class MyCrowdfundingProductsItemsWidget extends StatelessWidget {
             fontSize: 12.sp,
             fontWeight: FontWeight.w400,
             height: 1.3,
-            color: AppColorUtils.DARK2,
+            color: AppColorUtils.dark2,
             maxLines: 3,
           ),
           Row(
@@ -146,13 +146,13 @@ class MyCrowdfundingProductsItemsWidget extends StatelessWidget {
                 text: LocaleKeys.estimated_delivery.tr(),
                 fontSize: 10.sp,
                 fontWeight: FontWeight.w400,
-                color: AppColorUtils.ITEM_ORDERS_TEXT2,
+                color: AppColorUtils.itemOrdersText2,
               ),
               AppWidgets.textLocale(
                 text: LocaleKeys.product_amount,
                 fontSize: 10.sp,
                 fontWeight: FontWeight.w400,
-                color: AppColorUtils.ITEM_ORDERS_TEXT2,
+                color: AppColorUtils.itemOrdersText2,
               )
             ],
           ).paddingOnly(top: 12.w, bottom: 3.w),
@@ -163,7 +163,7 @@ class MyCrowdfundingProductsItemsWidget extends StatelessWidget {
               AppWidgets.textLocale(
                 text: LocaleKeys.sum,
                 args: [model.totalSum!],
-                color: AppColorUtils.KRAUDFANDING,
+                color: AppColorUtils.kraudfanding,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,
               ),

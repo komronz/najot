@@ -23,20 +23,20 @@ class OperatorClearSmsWidget extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 24),
+          margin: const EdgeInsets.symmetric(horizontal: 24),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            color: AppColorUtils.WHITE,
+            color: AppColorUtils.white,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
               AppWidgets.imageSvg(
-                path: AppImageUtils.IC_OPERATOR_DELETE,
+                path: AppImageUtils.icOperatorDelete,
                 width: 53.w,
                 height: 70.w,
-                color: AppColorUtils.GRAY_4,
+                color: AppColorUtils.gray4,
               ).paddingOnly(top: 20),
               AppWidgets.text(
                 textAlign: TextAlign.center,
@@ -44,14 +44,14 @@ class OperatorClearSmsWidget extends StatelessWidget {
                 richText: true,
                 maxLines: 3,
                 height: 1.35,
-                color: AppColorUtils.DARK2,
+                color: AppColorUtils.dark2,
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w600,
                 othersMarkers: [
                   MarkerText(
                     marker: '//',
                     style: TextStyle(
-                      color: AppColorUtils.RED,
+                      color: AppColorUtils.red,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
                     ),
@@ -69,8 +69,8 @@ class OperatorClearSmsWidget extends StatelessWidget {
                     flex: 3,
                     child: AppWidgets.appButton(
                       width: double.infinity,
-                      color: AppColorUtils.SMS_BTN2,
-                      textColor: AppColorUtils.SMS_BTN3,
+                      color: AppColorUtils.smsBtn2,
+                      textColor: AppColorUtils.smsBtn3,
                       height: 48.w,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
@@ -87,8 +87,8 @@ class OperatorClearSmsWidget extends StatelessWidget {
                     flex: 2,
                     child: AppWidgets.appButton(
                       width: double.infinity,
-                      color: AppColorUtils.DELETE_BTN,
-                      textColor: AppColorUtils.RED,
+                      color: AppColorUtils.deleteBtn,
+                      textColor: AppColorUtils.red,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
                       height: 48.w,

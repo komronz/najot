@@ -30,10 +30,10 @@ class OperatorPage extends StatelessWidget {
       child: BlocBuilder<OperatorCubit, OperatorState>(
         builder: (context, state) => Scaffold(
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(70),
+            preferredSize: const Size.fromHeight(70),
             child: Container(
-              decoration: BoxDecoration(
-                color: AppColorUtils.WAIT_COLOR,
+              decoration: const BoxDecoration(
+                color: AppColorUtils.waitColor,
                 boxShadow: [
                   BoxShadow(
                     color: Color.fromRGBO(0, 0, 0, 0.1),
@@ -52,7 +52,7 @@ class OperatorPage extends StatelessWidget {
                   children: [
                     InkWell(
                       child: SvgPicture.asset(
-                        AppImageUtils.MENU,
+                        AppImageUtils.menu,
                         height: 35.w,
                         width: 35.w,
                       ),
@@ -78,13 +78,13 @@ class OperatorPage extends StatelessWidget {
                         );
                       },
                       iconWidget: AppWidgets.imageSvg(
-                        path: AppImageUtils.IC_BASKET,
-                        color: AppColorUtils.RED,
+                        path: AppImageUtils.icBasket,
+                        color: AppColorUtils.red,
                       ).paddingAll(6.w),
                       width: 31.w,
                       height: 31.w,
                       borderRadius: 3,
-                      color: AppColorUtils.DELETE_BTN,
+                      color: AppColorUtils.deleteBtn,
                     )
                   ],
                 ).paddingSymmetric(horizontal: 20),
@@ -107,8 +107,8 @@ class OperatorPage extends StatelessWidget {
                   vertical: 18.w,
                 ),
                 height: 150.w,
-                decoration: BoxDecoration(
-                  color: AppColorUtils.GREEN_BACK,
+                decoration: const BoxDecoration(
+                  color: AppColorUtils.greenBack,
                   boxShadow: [
                     BoxShadow(
                       color: Color.fromRGBO(11, 191, 144, 0.08),
@@ -123,7 +123,7 @@ class OperatorPage extends StatelessWidget {
                       child: Container(
                         height: 110.w,
                         decoration: BoxDecoration(
-                          color: AppColorUtils.WHITE,
+                          color: AppColorUtils.white,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: TextField(
@@ -138,15 +138,15 @@ class OperatorPage extends StatelessWidget {
                           ),
                           decoration: InputDecoration(
                             // border: _border,
-                            disabledBorder: DecorationConst.INPUT_BORDER,
-                            focusedBorder: DecorationConst.INPUT_BORDER,
-                            enabledBorder: DecorationConst.INPUT_BORDER,
-                            contentPadding: EdgeInsets.all(14),
+                            disabledBorder: DecorationConst.inputBorder,
+                            focusedBorder: DecorationConst.inputBorder,
+                            enabledBorder: DecorationConst.inputBorder,
+                            contentPadding: const EdgeInsets.all(14),
                             hintText: LocaleKeys.send_message.tr(),
                             hintStyle: GoogleFonts.inter(
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w500,
-                              color: AppColorUtils.GRAY_4,
+                              color: AppColorUtils.gray4,
                             ),
                           ),
                           keyboardType: TextInputType.multiline,
@@ -160,15 +160,15 @@ class OperatorPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         AppRoundedButton(
-                          color: AppColorUtils.SMS_BTN1,
+                          color: AppColorUtils.smsBtn1,
                           onTap: () {},
                           icon: AppWidgets.imageSvg(
-                            path: AppImageUtils.IC_OTHER_FILE,
+                            path: AppImageUtils.icOtherFile,
                             fit: BoxFit.none,
                           ).paddingAll(5),
                         ),
                         AppRoundedButton(
-                          color: AppColorUtils.PERCENT_COLOR,
+                          color: AppColorUtils.percentColor,
                           onTap: () {
                             if (context
                                 .read<OperatorCubit>()
@@ -180,7 +180,7 @@ class OperatorPage extends StatelessWidget {
                                   .sendSms(state.sendSmsTxt);
                             }
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.arrow_forward_rounded,
                             color: Colors.white,
                           ),
@@ -199,11 +199,11 @@ class OperatorPage extends StatelessWidget {
 
   Widget buildBody(BuildContext context, OperatorState state) {
     if (state.isLoading) {
-      return Center(child: CircularProgressIndicator());
+      return const Center(child: CircularProgressIndicator());
     } else if (state.hasError) {
-      return Center(child: Icon(Icons.error));
+      return const Center(child: Icon(Icons.error));
     } else if (!state.hasConnection) {
-      return Center(
+      return const Center(
         child: Icon(Icons.network_check),
       );
     }
@@ -218,10 +218,10 @@ class OperatorPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             AppWidgets.imageSvg(
-              path: AppImageUtils.IC_SMS_EMPTY,
+              path: AppImageUtils.icSmsEmpty,
               height: 93.w,
               width: 93.w,
-              color: AppColorUtils.GRAY_3,
+              color: AppColorUtils.gray3,
               fit: BoxFit.fitWidth,
             ).paddingOnly(top: 120.w),
             AppWidgets.text(
@@ -230,7 +230,7 @@ class OperatorPage extends StatelessWidget {
               fontWeight: FontWeight.w600,
               maxLines: 2,
               fontSize: 18.sp,
-              color: AppColorUtils.GRAY_4,
+              color: AppColorUtils.gray4,
               height: 1.4,
             ).paddingOnly(top: 21).paddingSymmetric(horizontal: 86.w),
             // TODO: Warning
@@ -241,9 +241,9 @@ class OperatorPage extends StatelessWidget {
 
     return ListView.builder(
       controller: context.read<OperatorCubit>().controller,
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) {
-        if (list[index].type! == SmsType.OPERATOR) {
+        if (list[index].type! == SmsType.operator) {
           return OperatorSmsWidget(
             model: list[index],
           );

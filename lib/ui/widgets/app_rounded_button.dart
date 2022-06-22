@@ -10,7 +10,7 @@ class AppRoundedButton extends StatelessWidget {
   const AppRoundedButton({
     required this.onTap,
     required this.icon,
-    this.color = AppColorUtils.KRAUDFANDING,
+    this.color = AppColorUtils.kraudfanding,
     this.height = 46.0,
     Key? key,
   }) : super(key: key);
@@ -21,7 +21,7 @@ class AppRoundedButton extends StatelessWidget {
       child: Material(
         color: color,
         child: InkWell(
-          splashColor: AppColorUtils.DISABLE_BC,
+          splashColor: AppColorUtils.disableBc,
           onTap: onTap,
           child: SizedBox(
             width: height,

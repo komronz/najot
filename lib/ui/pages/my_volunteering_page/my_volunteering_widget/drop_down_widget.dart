@@ -7,11 +7,11 @@ import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 
 class DropDownWidget extends StatefulWidget {
-  DropDownWidget({required this.items, Key? key}) : super(key: key);
-  List<String> items;
+  const DropDownWidget({required this.items, Key? key}) : super(key: key);
+  final List<String> items;
 
   @override
-  _DropDownWidgetState createState() => _DropDownWidgetState();
+  State<StatefulWidget> createState() => _DropDownWidgetState();
 }
 
 class _DropDownWidgetState extends State<DropDownWidget> {
@@ -24,21 +24,21 @@ class _DropDownWidgetState extends State<DropDownWidget> {
         isExpanded: true,
         hint: Row(
           children: [
-            Icon(
+            const Icon(
               Icons.keyboard_arrow_down_outlined,
               size: 35,
-              color: AppColorUtils.GREEN_TEXT,
+              color: AppColorUtils.greenText,
             ),
-            SizedBox(
+            const SizedBox(
               width: 4,
             ),
             Expanded(
               child: Text(
                 LocaleKeys.select.tr(),
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
-                  color: AppColorUtils.GRAY_4,
+                  color: AppColorUtils.gray4,
                 ),
               ),
             ),
@@ -52,7 +52,7 @@ class _DropDownWidgetState extends State<DropDownWidget> {
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
-                      color: AppColorUtils.GRAY_4,
+                      color: AppColorUtils.gray4,
                     ),
                   ),
                 ))
@@ -65,7 +65,7 @@ class _DropDownWidgetState extends State<DropDownWidget> {
         },
         icon: const Icon(
           Icons.keyboard_arrow_down_outlined,
-          color: AppColorUtils.WHITE,
+          color: AppColorUtils.white,
         ),
         buttonHeight: 50.h,
         buttonPadding: const EdgeInsets.symmetric(
@@ -75,9 +75,9 @@ class _DropDownWidgetState extends State<DropDownWidget> {
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
             width: 2,
-            color: AppColorUtils.BORDER_COLOR,
+            color: AppColorUtils.borderColor,
           ),
-          color: AppColorUtils.WHITE,
+          color: AppColorUtils.white,
         ),
         buttonElevation: 0,
         itemHeight: 40,
@@ -87,7 +87,7 @@ class _DropDownWidgetState extends State<DropDownWidget> {
         dropdownPadding: null,
         dropdownDecoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: AppColorUtils.WHITE,
+          color: AppColorUtils.white,
         ),
         dropdownElevation: 0,
         scrollbarRadius: const Radius.circular(40),

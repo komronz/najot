@@ -11,11 +11,12 @@ import '../../../../data/bloc/my_project_charity_cubit/my_project_charity_cubit.
 import 'about_my_charity_project_widget.dart';
 
 class MyCharityProjectFullPage extends StatefulWidget {
-  MyCharityProjectFullPage({required this.cardModel});
+  const MyCharityProjectFullPage({Key? key, required this.cardModel})
+      : super(key: key);
 
   static const String routeName = "/myCharityProjectFullPage";
   static int tabChange = 0;
-  CharityModel cardModel;
+  final CharityModel cardModel;
 
   @override
   State<MyCharityProjectFullPage> createState() =>
@@ -52,7 +53,7 @@ class _MyCharityProjectFullPageState extends State<MyCharityProjectFullPage>
     return BlocProvider(
       create: (context) => cubit,
       child: Scaffold(
-        backgroundColor: AppColorUtils.BACKGROUND,
+        backgroundColor: AppColorUtils.background,
         appBar: AppBarWithTitle(
           title: LocaleKeys.about_project.tr(),
           onPress: () {
@@ -62,7 +63,7 @@ class _MyCharityProjectFullPageState extends State<MyCharityProjectFullPage>
         body: BlocBuilder<MyProjectCharityCubit, MyProjectCharityState>(
           builder: (context, state) {
             return SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Container(
                 child: [
                   AboutMyCharityProjectWidget(model: widget.cardModel),

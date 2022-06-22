@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 abstract class IntroState extends Equatable {}
 
 class IntroPageNextState extends IntroState {
-  int currentIndex;
+  final int currentIndex;
 
   IntroPageNextState({required this.currentIndex});
 

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/faq_cubit/faq_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -9,7 +10,6 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-import 'package:provider/src/provider.dart';
 
 class FaqItemWidget extends StatelessWidget {
   final FaqModel faqModel;
@@ -32,20 +32,20 @@ class FaqItemWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
+                width: 265.w,
                 child: AppWidgets.text(
                   text: faqModel.title!,
                   maxLines: 10,
-                  color: AppColorUtils.DARK2,
+                  color: AppColorUtils.dark2,
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w400,
                   height: 1.2,
                 ),
-                width: 265.w,
               ),
               GestureDetector(
                 child: Transform.rotate(
                   angle: faqModel.isOpen! ? 45 * pi / 180 : 0,
-                  child: AppWidgets.imageSvg(path: AppImageUtils.IC_FAQ_OPEN),
+                  child: AppWidgets.imageSvg(path: AppImageUtils.icFaqOpen),
                 ),
                 onTap: () {
                   AppLoggerUtil.i("$index  ${faqModel.isOpen}");
@@ -56,13 +56,13 @@ class FaqItemWidget extends StatelessWidget {
           ),
           AnimatedContainer(
             height: faqModel.isOpen! ? null : 0,
-            duration: Duration(milliseconds: 200),
+            duration: const Duration(milliseconds: 200),
             child: SizedBox(
               width: 280.w,
               child: AppWidgets.text(
                 text: faqModel.text!,
                 maxLines: 30,
-                color: AppColorUtils.DARK3,
+                color: AppColorUtils.dark3,
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w400,
                 height: 1.5,

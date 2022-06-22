@@ -21,10 +21,10 @@ class DatePicker {
   static DateTimePickerLocale localeFromString(String languageCode) {
     switch (languageCode) {
       case 'zh':
-        return DateTimePickerLocale.zh_cn;
+        return DateTimePickerLocale.zhCn;
 
       case 'pt':
-        return DateTimePickerLocale.pt_br;
+        return DateTimePickerLocale.ptBr;
 
       case 'uz':
         return DateTimePickerLocale.uz;
@@ -66,13 +66,13 @@ class DatePicker {
         return DateTimePickerLocale.tr;
 
       case 'nb':
-        return DateTimePickerLocale.no_nb;
+        return DateTimePickerLocale.noNb;
 
       case 'nn':
-        return DateTimePickerLocale.no_nn;
+        return DateTimePickerLocale.noNn;
 
       default:
-        return DateTimePickerLocale.en_us;
+        return DateTimePickerLocale.enUs;
     }
   }
 
@@ -95,24 +95,24 @@ class DatePicker {
     DateTime? lastDate,
     DateTime? initialDate,
     String? dateFormat,
-    DateTimePickerLocale locale: DATETIME_PICKER_LOCALE_DEFAULT,
-    DateTimePickerMode pickerMode: DateTimePickerMode.date,
+    DateTimePickerLocale locale = datetimePickerLocaleDefault,
+    DateTimePickerMode pickerMode = DateTimePickerMode.date,
     Color? backgroundColor,
     Color? textColor,
     TextStyle? itemTextStyle,
     String? titleText,
     String? confirmText,
     String? cancelText,
-    bool looping: false,
-    bool reverse: false,
+    bool looping = false,
+    bool reverse = false,
   }) {
-    DateTime? _selectedDate = initialDate;
+    DateTime? selectedDate = initialDate;
     final List<Widget> listButtonActions = [
       TextButton(
         style: TextButton.styleFrom(primary: textColor),
         child: Text(confirmText ?? "OK"),
         onPressed: () {
-          Navigator.pop(context, _selectedDate);
+          Navigator.pop(context, selectedDate);
         },
       ),
       TextButton(
@@ -125,36 +125,26 @@ class DatePicker {
     ];
 
     // handle the range of datetime
-    if (firstDate == null) {
-      firstDate = DateTime.parse(DATE_PICKER_MIN_DATETIME);
-    }
-    if (lastDate == null) {
-      lastDate = DateTime.parse(DATE_PICKER_MAX_DATETIME);
-    }
+    firstDate ??= DateTime.parse(datePickerMinDatetime);
+    lastDate ??= DateTime.parse(datePickerMaxDatetime);
 
     // handle initial DateTime
-    if (initialDate == null) {
-      initialDate = DateTime.now();
-    }
+    initialDate ??= DateTime.now();
 
-    if (backgroundColor == null) {
-      backgroundColor = DateTimePickerTheme.Default.backgroundColor;
-    }
+    backgroundColor ??= DateTimePickerTheme.defaultT.backgroundColor;
 //    if (itemTextStyle == null)
 //      itemTextStyle = DateTimePickerTheme.Default.itemTextStyle;
 
-    if (textColor == null) {
-      textColor = DateTimePickerTheme.Default.itemTextStyle.color;
-    }
+    textColor ??= DateTimePickerTheme.defaultT.itemTextStyle.color;
 
     var datePickerDialog = AlertDialog(
       title: Text(
         titleText ?? "Select Date",
         style: TextStyle(color: textColor),
       ),
-      contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 14),
+      contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 14),
       backgroundColor: backgroundColor,
-      content: Container(
+      content: SizedBox(
         width: 300,
         child: DatePickerWidget(
           firstDate: firstDate,
@@ -168,7 +158,7 @@ class DatePicker {
           ),
           onChange: ((DateTime date, list) {
             AppLoggerUtil.d(date.toString());
-            _selectedDate = date;
+            selectedDate = date;
           }),
           looping: looping,
         ),
@@ -258,8 +248,8 @@ class _DatePickerComponent extends StatelessWidget {
   final _DatePickerRoute route;
   final double _pickerHeight;
 
-  _DatePickerComponent({required this.route, required pickerHeight})
-      : this._pickerHeight = pickerHeight;
+  const _DatePickerComponent({required this.route, required pickerHeight})
+      : _pickerHeight = pickerHeight;
 
   @override
   Widget build(BuildContext context) {

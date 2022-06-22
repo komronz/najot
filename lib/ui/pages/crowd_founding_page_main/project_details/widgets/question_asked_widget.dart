@@ -13,7 +13,6 @@ class QuestionsAskedWidget extends StatelessWidget {
   const QuestionsAskedWidget({
     required this.cardModel,
     Key? key,
-
   }) : super(key: key);
 
   final CardModel cardModel;
@@ -29,7 +28,7 @@ class QuestionsAskedWidget extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              color: AppColorUtils.GREEN_ACCENT4,
+              color: AppColorUtils.greenAccent4,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,20 +51,20 @@ class QuestionsAskedWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
+                          width: 220.w,
                           child: AppWidgets.text(
                             text: LocaleKeys.how_humanity_benefits.tr(),
-                            color: AppColorUtils.TEXT_GREEN2,
+                            color: AppColorUtils.textGreen2,
                             fontWeight: FontWeight.w600,
                             fontSize: 14.sp,
                             maxLines: 2,
                           ),
-                          width: 220.w,
                         ),
                         AppWidgets.textLocale(
                           text: "Eshonov Fakhriyor",
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w400,
-                          color: AppColorUtils.DARK_6,
+                          color: AppColorUtils.dark6,
                         ).paddingOnly(top: 2.w),
                       ],
                     ).paddingOnly(left: 10),
@@ -75,52 +74,50 @@ class QuestionsAskedWidget extends StatelessWidget {
                   text: cardModel.infoModel![0].text!,
                   fontWeight: FontWeight.w400,
                   fontSize: 14.sp,
-                  color: AppColorUtils.TEXT_GREY2,
+                  color: AppColorUtils.textGrey2,
                   maxLines: 100,
                   height: 1.5,
                 ).paddingSymmetric(vertical: 15.w),
-                Divider(
+                const Divider(
                   thickness: 1,
-                  color: AppColorUtils.BLACK_12,
+                  color: AppColorUtils.black12,
                 ),
                 AppWidgets.textLocale(
                   text: LocaleKeys.author_answer,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
-                  color: AppColorUtils.TEXT_GREEN2,
+                  color: AppColorUtils.textGreen2,
                 ).paddingSymmetric(vertical: 8.w),
                 AppWidgets.text(
                   text: cardModel.infoModel![0].text!,
                   fontWeight: FontWeight.w400,
                   fontSize: 14.sp,
-                  color: AppColorUtils.TEXT_GREY2,
+                  color: AppColorUtils.textGrey2,
                   maxLines: 100,
                   height: 1.5,
                 )
               ],
             ),
           )
-        : Container(
-            child: Center(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 30.w,
+        : Center(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 30.w,
+                ),
+                SvgPicture.asset(AppImageUtils.emptyQuestions),
+                SizedBox(
+                  width: 200.sp,
+                  child: AppWidgets.textLocale(
+                    textAlign: TextAlign.center,
+                    text: LocaleKeys.questions_empty,
+                    color: AppColorUtils.dark4,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                    maxLines: 2,
                   ),
-                  SvgPicture.asset(AppImageUtils.EMPTY_QUESTIONS),
-                  SizedBox(
-                    width: 200.sp,
-                    child: AppWidgets.textLocale(
-                      textAlign: TextAlign.center,
-                      text: LocaleKeys.questions_empty,
-                      color: AppColorUtils.DARK_4,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w600,
-                      maxLines: 2,
-                    ),
-                  )
-                ],
-              ),
+                )
+              ],
             ),
           );
   }

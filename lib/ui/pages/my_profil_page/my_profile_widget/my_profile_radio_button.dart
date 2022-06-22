@@ -17,7 +17,7 @@ class MyProfileRadioButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _selection = initial == Gender.MAN ? 1 : 2;
+    var selection = initial == Gender.man ? 1 : 2;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -25,7 +25,7 @@ class MyProfileRadioButton extends StatelessWidget {
           text: LocaleKeys.gender,
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,
-          color: AppColorUtils.DARK_4,
+          color: AppColorUtils.dark4,
         ).paddingOnly(bottom: 10),
         Row(
           children: [
@@ -34,21 +34,21 @@ class MyProfileRadioButton extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: AppColorUtils.DARK_6,
+                  color: AppColorUtils.dark6,
                   width: 2,
                 ),
               ),
               child: Row(
                 children: [
                   Radio(
-                    activeColor: AppColorUtils.DARK_6,
+                    activeColor: AppColorUtils.dark6,
                     value: 1,
-                    groupValue: _selection,
+                    groupValue: selection,
                     onChanged: (v) {},
                   ),
                   AppWidgets.textLocale(
                     text: LocaleKeys.man,
-                    color: AppColorUtils.DARK_6,
+                    color: AppColorUtils.dark6,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
                   ),
@@ -60,21 +60,21 @@ class MyProfileRadioButton extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: AppColorUtils.DARK_6,
+                  color: AppColorUtils.dark6,
                   width: 2,
                 ),
               ),
               child: Row(
                 children: [
                   Radio(
-                    activeColor: AppColorUtils.DARK_6,
+                    activeColor: AppColorUtils.dark6,
                     value: 2,
-                    groupValue: _selection,
+                    groupValue: selection,
                     onChanged: (v) {},
                   ),
                   AppWidgets.textLocale(
                     text: LocaleKeys.woman,
-                    color: AppColorUtils.DARK_6,
+                    color: AppColorUtils.dark6,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
                   ),

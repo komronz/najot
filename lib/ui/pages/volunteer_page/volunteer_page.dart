@@ -14,7 +14,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 
 class VolunteerPage extends StatelessWidget {
   VolunteerPage({Key? key}) : super(key: key);
-  VolunteerCubit volunteerCubit = VolunteerCubit();
+  final VolunteerCubit volunteerCubit = VolunteerCubit();
   static const String routeName = '/volunteer';
 
   @override
@@ -28,7 +28,7 @@ class VolunteerPage extends StatelessWidget {
             NavigatorService.to.pop();
           },
         ),
-        backgroundColor: AppColorUtils.BACKGROUND,
+        backgroundColor: AppColorUtils.background,
         body: BlocBuilder<VolunteerCubit, VolunteerState>(
           builder: (context, state) {
             var list = context.read<VolunteerCubit>().state.list;
@@ -41,7 +41,7 @@ class VolunteerPage extends StatelessWidget {
                       onChange: (v) {},
                       search: () {},
                     ).paddingSymmetric(horizontal: 20.w),
-                    BannerCard().paddingSymmetric(
+                    const BannerCard().paddingSymmetric(
                       horizontal: 10.w,
                       vertical: 20.w,
                     ),
@@ -49,7 +49,7 @@ class VolunteerPage extends StatelessWidget {
                             text: LocaleKeys.new_add,
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w600,
-                            color: AppColorUtils.DARK2)
+                            color: AppColorUtils.dark2)
                         .paddingOnly(left: 15.w, bottom: 7.w),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -69,17 +69,17 @@ class VolunteerPage extends StatelessWidget {
                             text: LocaleKeys.all,
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w600,
-                            color: AppColorUtils.DARK2)
+                            color: AppColorUtils.dark2)
                         .paddingOnly(
                       left: 15.w,
                       top: 15.w,
                     ),
                     GridView.count(
                       shrinkWrap: true,
-                      physics: ClampingScrollPhysics(),
+                      physics: const ClampingScrollPhysics(),
                       childAspectRatio: 0.68,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 5),
                       crossAxisSpacing: 8,
                       mainAxisSpacing: 6,
                       crossAxisCount: 2,

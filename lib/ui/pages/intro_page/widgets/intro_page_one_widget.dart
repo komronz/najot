@@ -8,15 +8,15 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'intro_view_widgets.dart';
 
 class IntroPageOneWidget extends StatelessWidget {
-  IntroPageOneWidget({
+  const IntroPageOneWidget({
     required this.image,
     required this.title,
     required this.content,
     Key? key,
   }) : super(key: key);
-  String image;
-  String title;
-  String content;
+  final String image;
+  final String title;
+  final String content;
 
   @override
   Widget build(BuildContext context) {
@@ -31,14 +31,14 @@ class IntroPageOneWidget extends StatelessWidget {
             ),
             AppWidgets.textLocale(
               text: title,
-              color: AppColorUtils.GREEN_BLACK,
+              color: AppColorUtils.greenBlack,
               fontSize: 30.sp,
               fontWeight: FontWeight.w600,
               textAlign: TextAlign.center,
             ).paddingOnly(bottom: 8.w),
             AppWidgets.textLocale(
               text: content,
-              color: AppColorUtils.GREEN_WHITE,
+              color: AppColorUtils.greenWhite,
               textAlign: TextAlign.center,
               maxLines: 2,
               fontSize: 15.sp,

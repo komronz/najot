@@ -9,12 +9,12 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
+import 'package:najot/ui/pages/crowd_founding_page_main/crowd_founding_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/home_page/widget/carousel_slider_widget.dart';
-import 'package:najot/ui/pages/home_page/widget/icon_name_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/crowd_founding_card_widget.dart';
+import 'package:najot/ui/pages/home_page/widget/icon_name_widget.dart';
 import 'package:najot/ui/pages/home_page/widget/volunteer_card_widget.dart';
-import 'package:najot/ui/pages/crowd_founding_page_main/crowd_founding_page.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -23,7 +23,7 @@ import '../notification_page/notification_page.dart';
 class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);
   static const String routeName = "/homePage";
-  HomeCubit cubit = HomeCubit();
+  final HomeCubit cubit = HomeCubit();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class MainPage extends StatelessWidget {
         body: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             return Container(
-              color: AppColorUtils.BACKGROUND,
+              color: AppColorUtils.background,
               child: Column(
                 children: [
                   SizedBox(
@@ -50,7 +50,7 @@ class MainPage extends StatelessWidget {
                         NotificationPage.routeName,
                       );
                     },
-                    icon: AppImageUtils.NOTIFICATION,
+                    icon: AppImageUtils.notification,
                   ),
                   Expanded(
                     child: SingleChildScrollView(
@@ -78,25 +78,25 @@ class MainPage extends StatelessWidget {
                                   children: [
                                     IconAndName(
                                       text: LocaleKeys.crowdfunding.tr(),
-                                      icon: AppImageUtils.KRAUDFANDING,
+                                      icon: AppImageUtils.kraudfanding,
                                       fontWeight: FontWeight.w600,
                                       fontsize: 14,
-                                      color: AppColorUtils.KRAUDFANDING,
+                                      color: AppColorUtils.kraudfanding,
                                       onTap: () {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  CrowdFoundingPage(),
+                                                  const CrowdFoundingPage(),
                                             ));
                                       },
                                     ),
                                     IconAndName(
                                       text: LocaleKeys.volunteering.tr(),
-                                      icon: AppImageUtils.VOLONTYOR,
+                                      icon: AppImageUtils.volontyor,
                                       fontWeight: FontWeight.w600,
                                       fontsize: 14,
-                                      color: AppColorUtils.VOLONTYOR,
+                                      color: AppColorUtils.volontyor,
                                       onTap: () {
                                         NavigatorService.to
                                             .pushNamed(VolunteerPage.routeName);
@@ -104,10 +104,10 @@ class MainPage extends StatelessWidget {
                                     ),
                                     IconAndName(
                                       text: LocaleKeys.charity.tr(),
-                                      icon: AppImageUtils.CHARITY,
+                                      icon: AppImageUtils.charity,
                                       fontWeight: FontWeight.w600,
                                       fontsize: 14,
-                                      color: AppColorUtils.CHARITY,
+                                      color: AppColorUtils.charity,
                                       onTap: () {
                                         NavigatorService.to
                                             .pushNamed(CharityPage.routeName);

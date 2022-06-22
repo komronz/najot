@@ -22,23 +22,23 @@ class NumberUpdatePage extends StatelessWidget {
   static const String routeName = "/numberUpdatePage";
 
   NumberUpdatePage({Key? key}) : super(key: key);
-  bool isVisible = true;
-  User? user = HiveService.to.getUser();
+  final bool isVisible = true;
+  final User? user = HiveService.to.getUser();
 
   @override
-  Widget build(BuildContext con) {
+  Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) =>
-          MyProfileUpdateBloc()..add(MyProfileLoad()),
+      create: (BuildContext _) =>
+          MyProfileUpdateBloc()..add(const MyProfileLoad()),
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: AppColorUtils.BACKGROUND,
+            backgroundColor: AppColorUtils.background,
             titleSpacing: 0,
             elevation: 0,
             automaticallyImplyLeading: false,
             title: Container(
-              color: AppColorUtils.BACKGROUND,
+              color: AppColorUtils.background,
               child: AppWidgets.appBarMenu(
                 title: LocaleKeys.edit_my_profile.tr(),
                 onTapMenu: () {
@@ -46,13 +46,15 @@ class NumberUpdatePage extends StatelessWidget {
                 },
                 visibleIcon: true,
                 onTapIcon: () {
-                  con.read<MyProfileUpdateBloc>().add(EditProfileChangePage(1));
+                  context
+                      .read<MyProfileUpdateBloc>()
+                      .add(const EditProfileChangePage(1));
                 },
-                icon: AppImageUtils.REMOVE,
+                icon: AppImageUtils.remove,
               ),
             ),
           ),
-          backgroundColor: AppColorUtils.WHITE,
+          backgroundColor: AppColorUtils.white,
           body: BlocBuilder<MyProfileUpdateBloc, MyProfileUpdateState>(
               builder: (context, state) {
             return Column(
@@ -63,7 +65,7 @@ class NumberUpdatePage extends StatelessWidget {
                       width: 375.w,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: AppColorUtils.WHITE,
+                        color: AppColorUtils.white,
                       ),
                       child: Column(
                         children: [
@@ -104,7 +106,7 @@ class NumberUpdatePage extends StatelessWidget {
                             right: 20.w,
                           ),
                           Container(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
                             width: double.infinity,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +128,7 @@ class NumberUpdatePage extends StatelessWidget {
                                               .state
                                               .isVisible,
                                           child: Container(
-                                            padding: EdgeInsets.only(
+                                            padding: const EdgeInsets.only(
                                                 top: 10,
                                                 bottom: 13,
                                                 right: 10,
@@ -134,12 +136,12 @@ class NumberUpdatePage extends StatelessWidget {
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(12),
-                                              color: Color(0xFF1F6ADE),
+                                              color: const Color(0xFF1F6ADE),
                                             ),
                                             child: AppWidgets.textLocale(
                                               text: LocaleKeys.send_code,
                                               textAlign: TextAlign.center,
-                                              color: AppColorUtils.WHITE,
+                                              color: AppColorUtils.white,
                                               fontSize: 15.sp,
                                               fontWeight: FontWeight.w600,
                                             ),
@@ -147,7 +149,7 @@ class NumberUpdatePage extends StatelessWidget {
                                         )
                                       : NumberUpdateStep1(
                                           state: state,
-                                          con: con,
+                                          con: context,
                                         ),
                                 ),
                               ],

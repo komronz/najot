@@ -25,7 +25,7 @@ class MyVolunteeringSupportListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColorUtils.BACKGROUND,
+      backgroundColor: AppColorUtils.background,
       appBar: AppBarWithTitle(
         title: "Loyihani qo’llaganlar",
         onPress: () {
@@ -34,7 +34,7 @@ class MyVolunteeringSupportListPage extends StatelessWidget {
       ),
       body: Container(
         width: context.width,
-        color: AppColorUtils.WHITE,
+        color: AppColorUtils.white,
         child: Column(
           children: [
             Row(
@@ -42,19 +42,19 @@ class MyVolunteeringSupportListPage extends StatelessWidget {
               children: [
                 AppWidgets.textLocale(
                   text: LocaleKeys.name,
-                  color: AppColorUtils.GRAY_4,
+                  color: AppColorUtils.gray4,
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w500,
                 ),
                 AppWidgets.textLocale(
                   text: LocaleKeys.date,
-                  color: AppColorUtils.GRAY_4,
+                  color: AppColorUtils.gray4,
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w500,
                 ),
                 AppWidgets.textLocale(
-                  text: LocaleKeys.total.tr() + "(so'm)",
-                  color: AppColorUtils.GRAY_4,
+                  text: "${LocaleKeys.total.tr()}(so'm)",
+                  color: AppColorUtils.gray4,
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w500,
                 ),
@@ -64,29 +64,29 @@ class MyVolunteeringSupportListPage extends StatelessWidget {
               right: 20.w,
               left: 20.w,
             ),
-            Divider(
+            const Divider(
               thickness: 2,
             ).paddingOnly(
               bottom: 8.w,
               right: 20.w,
               left: 20.w,
             ),
-            if (!list.isEmpty)
+            if (list.isNotEmpty)
               Expanded(
                 flex: 8,
-                child: Container(
+                child: SizedBox(
                   height: 550.w,
                   child: ListView.builder(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
                       if (list[index].volunteerName != null) {
                         return SupportListWidget(
                           model: list[index],
                         );
                       }
-                      return SizedBox();
+                      return const SizedBox();
                     },
                     itemCount: list.length,
                   ),
@@ -97,7 +97,7 @@ class MyVolunteeringSupportListPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   AppWidgets.imageSvg(
-                    path: AppImageUtils.CHARITY_HAND,
+                    path: AppImageUtils.charityHand,
                     height: 70.w,
                     width: 70.w,
                     fit: BoxFit.none,
@@ -106,7 +106,7 @@ class MyVolunteeringSupportListPage extends StatelessWidget {
                           text: LocaleKeys.nothing_found_yet,
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
-                          color: AppColorUtils.GRAY_4,
+                          color: AppColorUtils.gray4,
                           maxLines: 2,
                           textAlign: TextAlign.center)
                       .paddingOnly(
@@ -117,13 +117,13 @@ class MyVolunteeringSupportListPage extends StatelessWidget {
                 ],
               ),
             Visibility(
-              visible: !list.isEmpty ? true : false,
+              visible: list.isNotEmpty ? true : false,
               child: Flexible(
                 child: Container(
                   height: 73.w,
                   width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: AppColorUtils.WHITE,
+                  decoration: const BoxDecoration(
+                    color: AppColorUtils.white,
                     boxShadow: [
                       BoxShadow(
                         color: Color.fromRGBO(11, 191, 144, 0.08),
@@ -146,12 +146,12 @@ class MyVolunteeringSupportListPage extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.calendar_today_outlined,
-                                color: AppColorUtils.BLUE_PERCENT,
+                                color: AppColorUtils.bluePercent,
                                 size: 14.sp,
                               ),
                               AppWidgets.text(
                                 text: "25.02.2022",
-                                color: AppColorUtils.BLUE_PERCENT,
+                                color: AppColorUtils.bluePercent,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14.sp,
                               ).paddingOnly(left: 6.w),
@@ -166,7 +166,7 @@ class MyVolunteeringSupportListPage extends StatelessWidget {
                           children: [
                             AppWidgets.textLocale(
                               text: LocaleKeys.collected,
-                              color: AppColorUtils.DARK_6,
+                              color: AppColorUtils.dark6,
                               fontSize: 10.sp,
                               fontWeight: FontWeight.w400,
                             ),
@@ -174,7 +174,7 @@ class MyVolunteeringSupportListPage extends StatelessWidget {
                               text: LocaleKeys.sum,
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w600,
-                              color: AppColorUtils.GREEN_TEXT,
+                              color: AppColorUtils.greenText,
                               args: ["10 000 000"],
                             ),
                           ],
@@ -233,7 +233,7 @@ class SupportListWidget extends StatelessWidget {
                       text: model.volunteerName!,
                       fontSize: 13.sp,
                       fontWeight: FontWeight.w500,
-                      color: AppColorUtils.DARK2,
+                      color: AppColorUtils.dark2,
                     ).paddingOnly(
                       left: 4.w,
                     ),
@@ -247,7 +247,7 @@ class SupportListWidget extends StatelessWidget {
                   text: model.createdDate!,
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w500,
-                  color: AppColorUtils.DARK6,
+                  color: AppColorUtils.dark6,
                   maxLines: 2,
                   textAlign: TextAlign.right),
             ),
@@ -255,7 +255,7 @@ class SupportListWidget extends StatelessWidget {
               flex: 3,
               child: AppWidgets.text(
                 text: "+${'10 000 000'} so'm",
-                color: AppColorUtils.TEXT_GREEN,
+                color: AppColorUtils.textGreen,
                 fontSize: 13.sp,
                 fontWeight: FontWeight.w500,
                 textAlign: TextAlign.right,

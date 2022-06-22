@@ -10,11 +10,11 @@ import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_full_page/charity_full_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
+import 'package:najot/ui/pages/crowd_founding_page_main/project_details/product_datail_page/product_detail_page.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/edit_volunteer_page.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/widgets/number_update_volunteer_page.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/widgets/user_update_volunteer_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/pages/crowd_founding_page_main/project_details/product_datail_page/product_detail_page.dart';
 import 'package:najot/ui/pages/loading_page/loading_page.dart';
 import 'package:najot/ui/pages/login_page/login_page.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_page.dart';
@@ -58,15 +58,15 @@ class AppRouteUtils {
     switch (settings.name) {
       case LoadingPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => LoadingPage(),
+          builder: (context) => const LoadingPage(),
         );
       case AuthPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => AuthPage(),
+          builder: (context) => const AuthPage(),
         );
       case LoginPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => LoginPage(),
+          builder: (context) => const LoginPage(),
         );
       case RegPage.routeName:
         return MaterialPageRoute(
@@ -87,7 +87,7 @@ class AppRouteUtils {
         );
       case CharityPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => CharityPage(),
+          builder: (context) => const CharityPage(),
         );
       case VolunteerPage.routeName:
         return MaterialPageRoute(
@@ -144,7 +144,7 @@ class AppRouteUtils {
         );
       case CrowdFoundingPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => CrowdFoundingPage(),
+          builder: (context) => const CrowdFoundingPage(),
         );
       case VolunteerDetailPage.routeName:
         return MaterialPageRoute(
@@ -152,17 +152,9 @@ class AppRouteUtils {
             cardModel: settings.arguments as CardModel,
           ),
         );
-      case VolunteerPage.routeName:
-        return MaterialPageRoute(
-          builder: (context) => VolunteerPage(),
-        );
-      case CharityPage.routeName:
-        return MaterialPageRoute(
-          builder: (context) => CharityPage(),
-        );
       case MyProfilePage.routeName:
         return MaterialPageRoute(
-          builder: (context) => MyProfilePage(),
+          builder: (context) => const MyProfilePage(),
         );
       case UserUpdatePage.routeName:
         return MaterialPageRoute(
@@ -171,7 +163,7 @@ class AppRouteUtils {
         );
       case UserUpdateVolunteerPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => UserUpdateVolunteerPage(),
+          builder: (context) => const UserUpdateVolunteerPage(),
         );
       case NumberUpdatePage.routeName:
         return MaterialPageRoute(
@@ -179,19 +171,15 @@ class AppRouteUtils {
         );
       case EditVolunteerPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => EditVolunteerPage(),
+          builder: (context) => const EditVolunteerPage(),
         );
       case NumberUpdateVolunteerPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => NumberUpdateVolunteerPage(),
+          builder: (context) => const NumberUpdateVolunteerPage(),
         );
       case UserDegreePage.routeName:
         return MaterialPageRoute(
-          builder: (context) => UserDegreePage(),
-        );
-      case VolunteerPage.routeName:
-        return MaterialPageRoute(
-          builder: (context) => VolunteerPage(),
+          builder: (context) => const UserDegreePage(),
         );
       case ImgView.routeName:
         return MaterialPageRoute(
@@ -199,15 +187,15 @@ class AppRouteUtils {
         );
       case MyVolunteeringPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => MyVolunteeringPage(),
+          builder: (context) => const MyVolunteeringPage(),
         );
       case AddingProjectPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => AddingProjectPage(),
+          builder: (context) => const AddingProjectPage(),
         );
       case MyProjectAndAnnouncementsPages.routeName:
         return MaterialPageRoute(
-          builder: (context) => MyProjectAndAnnouncementsPages(),
+          builder: (context) => const MyProjectAndAnnouncementsPages(),
         );
       case VolunteerHelpWidget.routeName:
         return MaterialPageRoute(
@@ -247,15 +235,15 @@ class AppRouteUtils {
         );
       case MyProductsPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => MyProductsPage(),
+          builder: (context) => const MyProductsPage(),
         );
       case NotificationPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => NotificationPage(),
+          builder: (context) => const NotificationPage(),
         );
       case VolunteeringCharityHistoryPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => VolunteeringCharityHistoryPage(),
+          builder: (context) => const VolunteeringCharityHistoryPage(),
         );
       case AttentionNote.routeName:
         return MaterialPageRoute(
@@ -282,7 +270,13 @@ class AppRouteUtils {
           ),
         );
       default:
-        return Container();
+        return MaterialPageRoute(
+          builder: (context) => const Scaffold(
+            body: Center(
+              child: Text("Not Found"),
+            ),
+          ),
+        );
     }
   }
 }

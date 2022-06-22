@@ -16,9 +16,14 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/item_adding_success.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+// ignore: must_be_immutable
 class TimePikerCharity extends StatelessWidget {
-  TimePikerCharity(
-      {required this.model, required this.cubit, required this.con});
+  TimePikerCharity({
+    Key? key,
+    required this.model,
+    required this.cubit,
+    required this.con,
+  }) : super(key: key);
 
   DateTime _date = DateTime.now();
   DateTime _time = DateTime.now();
@@ -32,9 +37,9 @@ class TimePikerCharity extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: Container(
-          margin: EdgeInsets.all(20.0),
+          margin: const EdgeInsets.all(20.0),
           decoration: ShapeDecoration(
-            color: AppColors.WHITE,
+            color: AppColors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),
             ),
@@ -46,7 +51,7 @@ class TimePikerCharity extends StatelessWidget {
                 child: AppWidgets.text(
                   text: LocaleKeys.add_to_note.tr(),
                   fontSize: 20.sp,
-                  color: AppColorUtils.DARK2,
+                  color: AppColorUtils.dark2,
                   fontWeight: FontWeight.w600,
                 ),
               ).paddingOnly(
@@ -55,7 +60,7 @@ class TimePikerCharity extends StatelessWidget {
               ),
               Container(
                 width: double.infinity,
-                color: AppColorUtils.WHITE_GREY,
+                color: AppColorUtils.whiteGrey,
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -65,19 +70,19 @@ class TimePikerCharity extends StatelessWidget {
                         isCenter: true,
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
-                        color: AppColorUtils.VOLONTYOR,
+                        color: AppColorUtils.volontyor,
                       ).paddingOnly(bottom: 5),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           AppWidgets.imageSvg(
-                            path: AppImageUtils.CALENDAR_RED,
-                            color: AppColorUtils.VOLONTYOR,
+                            path: AppImageUtils.calendarRed,
+                            color: AppColorUtils.volontyor,
                             height: 16,
                           ).paddingOnly(right: 5),
                           AppWidgets.textLocale(
                             text: model.date!,
-                            color: AppColorUtils.VOLONTYOR,
+                            color: AppColorUtils.volontyor,
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w500,
                           ),
@@ -98,7 +103,7 @@ class TimePikerCharity extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                     width: 2,
-                    color: AppColorUtils.GRAY_3,
+                    color: AppColorUtils.gray3,
                   ),
                 ),
                 child: Column(
@@ -107,73 +112,69 @@ class TimePikerCharity extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         AppWidgets.imageSvg(
-                          path: AppImageUtils.NOTIFICATION_GREY,
-                          color: Color(0xFF415B55),
+                          path: AppImageUtils.notificationGrey,
+                          color: const Color(0xFF415B55),
                         ).paddingOnly(right: 5),
                         Expanded(
                           child: AppWidgets.textLocale(
                             text: LocaleKeys.select_date_time,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w500,
-                            color: Color(0xFF415B55),
+                            color: const Color(0xFF415B55),
                           ),
                         ),
                       ],
                     ).paddingOnly(
                       bottom: 17,
                     ),
-                    Container(
-                      child: TimePickerSpinner(
-                        is24HourMode: true,
-                        normalTextStyle: TextStyle(
-                          fontSize: 13.sp,
-                          color: Color(0xFF9FB6B0),
-                          fontWeight: FontWeight.w400,
-                        ),
-                        isForce2Digits: true,
-                        highlightedTextStyle: TextStyle(
-                          fontSize: 16.sp,
-                          color: AppColorUtils.GREEN_TEXT,
-                          decorationStyle: TextDecorationStyle.solid,
-                          inherit: true,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        spacing: 15.sp,
-                        itemHeight: 40,
-                        onTimeChange: (time) {
-                          _time = DateTime(
-                            time.month,
-                            time.month,
-                            time.day,
-                            time.hour,
-                            time.minute,
-                          );
-                        },
+                    TimePickerSpinner(
+                      is24HourMode: true,
+                      normalTextStyle: TextStyle(
+                        fontSize: 13.sp,
+                        color: const Color(0xFF9FB6B0),
+                        fontWeight: FontWeight.w400,
                       ),
+                      isForce2Digits: true,
+                      highlightedTextStyle: TextStyle(
+                        fontSize: 16.sp,
+                        color: AppColorUtils.greenText,
+                        decorationStyle: TextDecorationStyle.solid,
+                        inherit: true,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      spacing: 15.sp,
+                      itemHeight: 40,
+                      onTimeChange: (time) {
+                        _time = DateTime(
+                          time.month,
+                          time.month,
+                          time.day,
+                          time.hour,
+                          time.minute,
+                        );
+                      },
                     ),
-                    Container(
-                      child: DatePickerWidget(
-                        locale: context.locale == Locale("uz", "UZ")
-                            ? DateTimePickerLocale.uz
-                            : DateTimePickerLocale.ru,
-                        firstDate: DateTime.now(),
-                        initialDate: DateTime.now(),
-                        lastDate: DateTime(
-                          DateTime.now().year + 2,
+                    DatePickerWidget(
+                      locale: context.locale == const Locale("uz", "UZ")
+                          ? DateTimePickerLocale.uz
+                          : DateTimePickerLocale.ru,
+                      firstDate: DateTime.now(),
+                      initialDate: DateTime.now(),
+                      lastDate: DateTime(
+                        DateTime.now().year + 2,
+                      ),
+                      dateFormat: "dd-MMMM-yyyy",
+                      onChange: (DateTime newDate, _) {
+                        _date = newDate;
+                        // print(_date);
+                      },
+                      pickerTheme: DateTimePickerTheme(
+                        backgroundColor: AppColorUtils.white,
+                        itemTextStyle: TextStyle(
+                          color: AppColorUtils.greenText,
+                          fontSize: 16.sp,
                         ),
-                        dateFormat: "dd-MMMM-yyyy",
-                        onChange: (DateTime newDate, _) {
-                          _date = newDate;
-                          // print(_date);
-                        },
-                        pickerTheme: DateTimePickerTheme(
-                          backgroundColor: AppColorUtils.WHITE,
-                          itemTextStyle: TextStyle(
-                            color: AppColorUtils.GREEN_TEXT,
-                            fontSize: 16.sp,
-                          ),
-                          dividerColor: AppColorUtils.DIVIDER_COLOR,
-                        ),
+                        dividerColor: AppColorUtils.dividerColor,
                       ),
                     ),
                   ],
@@ -205,13 +206,13 @@ class TimePikerCharity extends StatelessWidget {
                           dateTime: dateTime,
                           goto: () {
                             cubit.onChangeSave(false);
-                            cubit.Load();
+                            cubit.load();
                             Navigator.pop(con);
                             Navigator.pop(context);
                           },
                           back: () {
                             cubit.onChangeSave(false);
-                            cubit.Load();
+                            cubit.load();
                             Navigator.pop(con);
                             Navigator.pop(context);
                           },
@@ -223,8 +224,8 @@ class TimePikerCharity extends StatelessWidget {
                   ),
                   SizedBox(height: 12.h),
                   AppWidgets.appButton(
-                    color: AppColorUtils.LIGHT_GRAY,
-                    textColor: AppColorUtils.BLACK,
+                    color: AppColorUtils.lightGray,
+                    textColor: AppColorUtils.black,
                     onTap: () {
                       NavigatorService.to.pop();
                     },

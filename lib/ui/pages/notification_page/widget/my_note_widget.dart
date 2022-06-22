@@ -13,7 +13,7 @@ import 'notification_delete_widget.dart';
 import 'notification_edit.dart';
 
 class MyNoteWidget extends StatelessWidget {
-  MyNoteWidget({
+  const MyNoteWidget({
     required this.model,
     required this.onTap,
     Key? key,
@@ -21,18 +21,19 @@ class MyNoteWidget extends StatelessWidget {
   }) : super(key: key);
   final VolunteeringModel model;
   final VoidCallback onTap;
-  bool isLast;
+  final bool isLast;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: onTap,
       child: Container(
         width: context.width,
         decoration: BoxDecoration(
-          color: isLast ? AppColorUtils.ITEM_ORDERS_CARD : AppColorUtils.WHITE,
+          color: isLast ? AppColorUtils.itemOrdersCard : AppColorUtils.white,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: AppColorUtils.ITEM_ORDERS_BORDER,
+            color: AppColorUtils.itemOrdersBorder,
             width: 1,
           ),
         ),
@@ -45,16 +46,16 @@ class MyNoteWidget extends StatelessWidget {
                   text: LocaleKeys.project_name,
                   fontSize: 10.sp,
                   fontWeight: FontWeight.w400,
-                  color: AppColorUtils.ITEM_ORDERS_TEXT2,
+                  color: AppColorUtils.itemOrdersText2,
                 ).paddingOnly(bottom: 3.w),
-                Container(
+                SizedBox(
                   width: 260.w,
                   child: AppWidgets.text(
                     text: model.title!,
                     height: 1.3,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w500,
-                    color: AppColorUtils.DARK2,
+                    color: AppColorUtils.dark2,
                     maxLines: 2,
                   ),
                 ),
@@ -62,7 +63,7 @@ class MyNoteWidget extends StatelessWidget {
                   text: LocaleKeys.note_time,
                   fontSize: 10.sp,
                   fontWeight: FontWeight.w400,
-                  color: AppColorUtils.ITEM_ORDERS_TEXT2,
+                  color: AppColorUtils.itemOrdersText2,
                 ).paddingOnly(
                   top: 12.w,
                   bottom: 3,
@@ -71,19 +72,19 @@ class MyNoteWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     AppWidgets.imageSvg(
-                      path: AppImageUtils.CALENDAR_RED,
-                      color: AppColorUtils.BLUE_PERCENT,
+                      path: AppImageUtils.calendarRed,
+                      color: AppColorUtils.bluePercent,
                       height: 15.w,
                     ).paddingOnly(right: 5),
                     AppWidgets.textLocale(
                       text: model.completedDate!,
-                      color: AppColorUtils.BLUE_PERCENT,
+                      color: AppColorUtils.bluePercent,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
                     ).paddingOnly(right: 24.w),
                     AppWidgets.imageSvg(
-                      path: AppImageUtils.CLOCK,
-                      color: AppColorUtils.BLUE_PERCENT,
+                      path: AppImageUtils.clock,
+                      color: AppColorUtils.bluePercent,
                       height: 15.w,
                     ).paddingOnly(
                       right: 5.w,
@@ -91,7 +92,7 @@ class MyNoteWidget extends StatelessWidget {
                     ),
                     AppWidgets.textLocale(
                       text: "18:00",
-                      color: AppColorUtils.BLUE_PERCENT,
+                      color: AppColorUtils.bluePercent,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
                     ),
@@ -104,18 +105,18 @@ class MyNoteWidget extends StatelessWidget {
                       text: LocaleKeys.date_of_completion,
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w400,
-                      color: AppColorUtils.ITEM_ORDERS_TEXT2,
+                      color: AppColorUtils.itemOrdersText2,
                     ).paddingOnly(bottom: 4.w),
                     Row(
                       children: [
                         AppWidgets.imageSvg(
-                          path: AppImageUtils.CALENDAR_RED,
-                          color: AppColorUtils.GREY_BLACK,
+                          path: AppImageUtils.calendarRed,
+                          color: AppColorUtils.greyBlack,
                           height: 12.w,
                         ).paddingOnly(right: 5),
                         AppWidgets.textLocale(
                           text: model.completedDate!,
-                          color: AppColorUtils.KRAUDFANDING,
+                          color: AppColorUtils.kraudfanding,
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
                         ).paddingOnly(right: 24.w),
@@ -135,8 +136,8 @@ class MyNoteWidget extends StatelessWidget {
                 children: [
                   InkWell(
                     child: SvgPicture.asset(
-                      AppImageUtils.EDIT_DEMO,
-                      color: AppColorUtils.KRAUDFANDING,
+                      AppImageUtils.editDemo,
+                      color: AppColorUtils.kraudfanding,
                     ),
                     onTap: () {
                       showDialog(
@@ -155,14 +156,14 @@ class MyNoteWidget extends StatelessWidget {
                   ),
                   InkWell(
                     child: SvgPicture.asset(
-                      AppImageUtils.TRASH,
-                      color: AppColorUtils.RED,
+                      AppImageUtils.trash,
+                      color: AppColorUtils.red,
                     ),
                     onTap: () {
                       showDialog(
                         context: context,
                         builder: (context) {
-                          return NotificationDeleteWidget();
+                          return const NotificationDeleteWidget();
                         },
                       );
                     },
@@ -176,7 +177,6 @@ class MyNoteWidget extends StatelessWidget {
           ],
         ),
       ).paddingSymmetric(horizontal: 20).paddingOnly(top: 12.w),
-      onTap: onTap,
       //     (){
       //   widget.onTap;
       //   setState(() {

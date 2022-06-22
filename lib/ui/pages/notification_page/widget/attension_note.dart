@@ -17,7 +17,8 @@ import '../../home_page/home_page.dart';
 class AttentionNote extends StatelessWidget {
   static const String routeName = "/attentionNote";
 
-  AttentionNote({required this.model, Key? key}) : super(key: key);
+  const AttentionNote({required this.model, Key? key}) : super(key: key);
+
   // DateTime _date = DateTime.now();
   // DateTime _time = DateTime.now();
   final VolunteeringModel model;
@@ -30,9 +31,9 @@ class AttentionNote extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: Container(
-          margin: EdgeInsets.all(20.0),
+          margin: const EdgeInsets.all(20.0),
           decoration: ShapeDecoration(
-            color: AppColors.WHITE,
+            color: AppColors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),
             ),
@@ -45,8 +46,8 @@ class AttentionNote extends StatelessWidget {
                 Row(
                   children: [
                     AppWidgets.imageSvg(
-                      path: AppImageUtils.NOTIFICATION_GREY,
-                      color: AppColorUtils.KRAUDFANDING,
+                      path: AppImageUtils.notificationGrey,
+                      color: AppColorUtils.kraudfanding,
                     ).paddingOnly(
                       right: 5.w,
                       top: 15.w,
@@ -54,7 +55,7 @@ class AttentionNote extends StatelessWidget {
                     AppWidgets.textLocale(
                       text: LocaleKeys.attention_note,
                       fontSize: 20.sp,
-                      color: AppColorUtils.DARK2,
+                      color: AppColorUtils.dark2,
                       fontWeight: FontWeight.w600,
                     ).paddingOnly(
                       top: 20.w,
@@ -64,14 +65,14 @@ class AttentionNote extends StatelessWidget {
                 AppWidgets.textLocale(
                   fontWeight: FontWeight.w500,
                   fontSize: 16.sp,
-                  color: AppColorUtils.DARK2,
+                  color: AppColorUtils.dark2,
                   maxLines: 2,
                   text: LocaleKeys.hello_volunteer_go,
                   richText: true,
                   othersMarkers: [
                     MarkerText(
                       marker: "//",
-                      style: TextStyle(color: AppColorUtils.KRAUDFANDING),
+                      style: const TextStyle(color: AppColorUtils.kraudfanding),
                     ),
                   ],
                 ).paddingOnly(
@@ -82,7 +83,7 @@ class AttentionNote extends StatelessWidget {
                 ),
                 Container(
                   width: double.infinity,
-                  color: AppColorUtils.WHITE_GREY,
+                  color: AppColorUtils.whiteGrey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -90,19 +91,19 @@ class AttentionNote extends StatelessWidget {
                         text: LocaleKeys.date,
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
-                        color: AppColorUtils.DARK_6,
+                        color: AppColorUtils.dark6,
                       ).paddingOnly(bottom: 3.w),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           AppWidgets.imageSvg(
-                            path: AppImageUtils.CALENDAR_RED,
-                            color: AppColorUtils.BLUE_PERCENT,
+                            path: AppImageUtils.calendarRed,
+                            color: AppColorUtils.bluePercent,
                             height: 16,
                           ).paddingOnly(right: 5.w),
                           AppWidgets.textLocale(
                             text: model.completedDate!,
-                            color: AppColorUtils.BLUE_PERCENT,
+                            color: AppColorUtils.bluePercent,
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
                           ),
@@ -112,26 +113,26 @@ class AttentionNote extends StatelessWidget {
                         text: LocaleKeys.address,
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
-                        color: AppColorUtils.DARK_6,
+                        color: AppColorUtils.dark6,
                       ).paddingOnly(bottom: 3.w),
                       AppWidgets.textLocale(
                         text: model.address!,
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
-                        color: AppColorUtils.BLUE_TEXT,
+                        color: AppColorUtils.blueText,
                         maxLines: 2,
                       ).paddingOnly(bottom: 18.w),
                       AppWidgets.starTextWidget(
                         text: LocaleKeys.help_type,
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
-                        color: AppColorUtils.DARK_6,
+                        color: AppColorUtils.dark6,
                       ),
                       AppWidgets.textLocale(
                         text: model.typeVolunteering!,
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
-                        color: AppColorUtils.KRAUDFANDING,
+                        color: AppColorUtils.kraudfanding,
                         maxLines: 2,
                       ).paddingOnly(bottom: 18.w),
                     ],
@@ -149,7 +150,7 @@ class AttentionNote extends StatelessWidget {
                       onTap: () {
                         NavigatorService.to.pushNamedAndRemoveUntil(
                           HomePage.routeName,
-                          arguments: AppPageType.VOLUNTEERING,
+                          arguments: AppPageType.volunteering,
                         );
                       },
                       title: LocaleKeys.my_volunteering.tr(),
@@ -158,8 +159,8 @@ class AttentionNote extends StatelessWidget {
                     ),
                     SizedBox(height: 12.h),
                     AppWidgets.appButton(
-                      color: AppColorUtils.SMS_BTN2,
-                      textColor: AppColorUtils.KRAUDFANDING,
+                      color: AppColorUtils.smsBtn2,
+                      textColor: AppColorUtils.kraudfanding,
                       onTap: () {
                         NavigatorService.to.pop();
                       },

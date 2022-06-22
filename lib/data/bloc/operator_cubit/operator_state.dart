@@ -7,7 +7,7 @@ class OperatorState extends Equatable {
   final String sendSmsTxt;
   final bool isLoading;
 
-  OperatorState({
+  const OperatorState({
     this.list = const [],
     this.hasError = false,
     this.hasConnection = true,

@@ -32,7 +32,7 @@ Widget _baseText({
 }) {
   TextStyle textStyle = GoogleFonts.inter(
     fontSize: fontSize ?? 16.sp,
-    color: color ?? AppColors.BLACK,
+    color: color ?? AppColors.black,
     fontStyle: fontStyle,
     fontWeight: fontWeight,
     height: height,
@@ -69,7 +69,7 @@ class AppWidgets {
   static Widget iconButton({
     required VoidCallback onTap,
     required Widget iconWidget,
-    Color? color = AppColorUtils.GREEN_BTN,
+    Color? color = AppColorUtils.greenBtn,
     double borderRadius = 3.0,
     double height = 23,
     double width = 23,
@@ -79,12 +79,12 @@ class AppWidgets {
       borderRadius: BorderRadius.circular(borderRadius),
       child: InkWell(
         borderRadius: BorderRadius.circular(borderRadius),
+        onTap: onTap,
         child: Ink(
-          child: iconWidget,
           height: height,
           width: width,
+          child: iconWidget,
         ),
-        onTap: onTap,
       ),
     );
   }
@@ -99,16 +99,16 @@ class AppWidgets {
       child: Ink(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: select ? AppColorUtils.IC_GREEN : AppColorUtils.PURPLE,
+          color: select ? AppColorUtils.icGreen : AppColorUtils.purple,
         ),
         child: InkWell(
           borderRadius: BorderRadius.circular(10),
           onTap: onTap,
-          child: Container(
+          child: SizedBox(
             height: height,
             width: width,
             child: SvgPicture.asset(
-              select ? AppImageUtils.LIKE_ICON : AppImageUtils.UNLIKE_ICON,
+              select ? AppImageUtils.likeIcon : AppImageUtils.unlikeIcon,
             ).paddingAll(10.w),
           ),
         ),
@@ -124,10 +124,10 @@ class AppWidgets {
             Container(
               height: 25.w,
               width: 25.w,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: AssetImage(AppImageUtils.DEF_PERSON),
+                  image: AssetImage(AppImageUtils.defPerson),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -148,10 +148,10 @@ class AppWidgets {
               margin: EdgeInsets.only(left: 16.w),
               height: 25.w,
               width: 25.w,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: AssetImage(AppImageUtils.DEF_PERSON),
+                  image: AssetImage(AppImageUtils.defPerson),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -171,8 +171,8 @@ class AppWidgets {
           ],
         ),
         AppWidgets.text(
-          text: "+${count}",
-          color: AppColorUtils.TEXT_GREEN2,
+          text: "+$count",
+          color: AppColorUtils.textGreen2,
           fontSize: 14.sp,
           fontWeight: FontWeight.w500,
         ).paddingOnly(left: 3),
@@ -182,7 +182,7 @@ class AppWidgets {
 
   static Widget starTextWidget({
     required String text,
-    Color? color = AppColorUtils.DARK_6,
+    Color? color = AppColorUtils.dark6,
     double? fontSize = 10,
     FontWeight fontWeight = FontWeight.w400,
     bool isCenter = false,
@@ -199,10 +199,10 @@ class AppWidgets {
                 child: textLocale(
                   text: '*',
                   fontSize: fontSize,
-                  color: AppColorUtils.RED,
+                  color: AppColorUtils.red,
                 ),
               )
-            : SizedBox(),
+            : const SizedBox(),
         textLocale(
           text: text,
           color: color,
@@ -220,8 +220,8 @@ class AppWidgets {
     required VoidCallback onTap,
     double? width,
     double? height,
-    Color color = AppColorUtils.GREEN_APP,
-    Color textColor = AppColorUtils.WHITE,
+    Color color = AppColorUtils.greenApp,
+    Color textColor = AppColorUtils.white,
     double fontSize = 16.0,
     FontWeight fontWeight = FontWeight.w600,
     double borderRadius = 12.0,
@@ -232,6 +232,7 @@ class AppWidgets {
       borderRadius: BorderRadius.circular(borderRadius),
       child: InkWell(
         borderRadius: BorderRadius.circular(borderRadius),
+        onTap: onTap,
         child: Ink(
           width: width ?? ScreenUtil().screenWidth,
           height: height ?? 50,
@@ -255,7 +256,6 @@ class AppWidgets {
             ),
           ),
         ),
-        onTap: onTap,
       ),
     );
   }
@@ -264,7 +264,7 @@ class AppWidgets {
       {required String title,
       required VoidCallback onTapMenu,
       VoidCallback? onTapIcon,
-      Color? textColor = AppColorUtils.BLACK,
+      Color? textColor = AppColorUtils.black,
       bool visibleIcon = false,
       String icon = ""}) {
     return Container(
@@ -277,11 +277,11 @@ class AppWidgets {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            child: Container(
+            onTap: onTapMenu,
+            child: SizedBox(
                 height: 35.w,
                 width: 35.w,
-                child: SvgPicture.asset(AppImageUtils.MENU)),
-            onTap: onTapMenu,
+                child: SvgPicture.asset(AppImageUtils.menu)),
           ),
           AppWidgets.textLocale(
             text: title,
@@ -290,14 +290,14 @@ class AppWidgets {
           ),
           visibleIcon
               ? InkWell(
-                  child: Container(
+                  onTap: onTapIcon,
+                  child: SizedBox(
                     height: 35.w,
                     width: 35.w,
                     child: SvgPicture.asset(icon),
                   ),
-                  onTap: onTapIcon,
                 )
-              : SizedBox(
+              : const SizedBox(
                   width: 20,
                 )
         ],
@@ -308,25 +308,25 @@ class AppWidgets {
   static Widget appBarWidget({
     required String title,
     required VoidCallback onTap,
-    Color? color = AppColorUtils.BACK_BUTTON,
-    Color? textColor = AppColorUtils.BLACK,
+    Color? color = AppColorUtils.backButton,
+    Color? textColor = AppColorUtils.black,
   }) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [
           InkWell(
+            onTap: onTap,
             child: Container(
               width: 31,
               height: 34,
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: color,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: SvgPicture.asset(AppImageUtils.BACK_ICON),
+              child: SvgPicture.asset(AppImageUtils.backIcon),
             ),
-            onTap: onTap,
           ),
           Expanded(
             child: Container(
@@ -339,7 +339,7 @@ class AppWidgets {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 34,
             width: 31,
           )
@@ -386,7 +386,7 @@ class AppWidgets {
     double fontSize = 15,
     EdgeInsets padding = const EdgeInsets.all(10),
   }) {
-    var color = isActive ? AppColorUtils.GREEN_TEXT : AppColorUtils.DARK3;
+    var color = isActive ? AppColorUtils.greenText : AppColorUtils.dark3;
     var iconSelected = isActive ? iconSelect : icon;
     var fontWeight = isActive ? FontWeight.w600 : FontWeight.w500;
     return InkWell(
@@ -414,9 +414,9 @@ class AppWidgets {
             ),
             direction == true
                 ? SvgPicture.asset(
-                    AppImageUtils.RIGHT_DIRECTION,
+                    AppImageUtils.rightDirection,
                   )
-                : SizedBox()
+                : const SizedBox()
           ],
         ),
       ),
@@ -504,14 +504,12 @@ class AppWidgets {
     required String text,
     Duration? duration,
   }) {
-    if (duration == null) {
-      duration = Duration(seconds: 2);
-    }
+    duration ??= const Duration(seconds: 2);
     BotToast.showText(
       text: text,
       textStyle: GoogleFonts.inter(
         fontSize: 14.sp,
-        color: AppColors.WHITE,
+        color: AppColors.white,
       ),
       align: Alignment.center,
       duration: duration,
@@ -522,13 +520,13 @@ class AppWidgets {
     return Container(
       height: size ?? 35.w,
       width: size ?? 35.w,
-      color: AppColors.GREY,
+      color: AppColors.grey,
       padding: EdgeInsets.all(5.w),
       child: FittedBox(
         fit: BoxFit.fill,
         child: Icon(
           Icons.person,
-          color: AppColors.WHITE,
+          color: AppColors.white,
         ),
       ),
     );
@@ -551,7 +549,7 @@ class AppWidgets {
         PageRouteBuilder(
           opaque: false,
           pageBuilder: (context, animation, secondaryAnimation) =>
-              LoadingPage(),
+              const LoadingPage(),
         ),
       );
     } else {

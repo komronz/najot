@@ -28,7 +28,7 @@ class OrdersPage extends StatelessWidget {
         builder: (context, state) => Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            backgroundColor: AppColorUtils.BACKGROUND,
+            backgroundColor: AppColorUtils.background,
             elevation: 0,
             titleSpacing: 0,
             title: Row(
@@ -36,7 +36,7 @@ class OrdersPage extends StatelessWidget {
               children: [
                 InkWell(
                   child: SvgPicture.asset(
-                    AppImageUtils.MENU,
+                    AppImageUtils.menu,
                     height: 35.w,
                     width: 35.w,
                   ),
@@ -56,7 +56,7 @@ class OrdersPage extends StatelessWidget {
                     );
                   },
                   child: SvgPicture.asset(
-                    AppImageUtils.NOTIFICATION,
+                    AppImageUtils.notification,
                     height: 35.w,
                     width: 35.w,
                     fit: BoxFit.fill,
@@ -73,14 +73,14 @@ class OrdersPage extends StatelessWidget {
 
   Widget _buildBody(OrdersState state, BuildContext context) {
     if (state.isLoading) {
-      return Center(child: CircularProgressIndicator());
+      return const Center(child: CircularProgressIndicator());
     } else if (state.hasError) {
       return Center(
-        child: AppWidgets.imageSvg(path: AppImageUtils.IMG_WAIT),
+        child: AppWidgets.imageSvg(path: AppImageUtils.imgWait),
       );
     }
     return Container(
-      decoration: DecorationConst.DEC_WITH_SHADOW,
+      decoration: DecorationConst.decWithShadow,
       height: context.height,
       width: context.width,
       child: buildList(state),
@@ -92,11 +92,11 @@ class OrdersPage extends StatelessWidget {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          AppWidgets.imageSvg(path: AppImageUtils.IMG_ORDERS_EMPTY),
+          AppWidgets.imageSvg(path: AppImageUtils.imgOrdersEmpty),
           AppWidgets.textLocale(
             text: LocaleKeys.not_purchased_product,
             fontWeight: FontWeight.w600,
-            color: AppColorUtils.GRAY_4,
+            color: AppColorUtils.gray4,
           ).paddingOnly(top: 16.w),
         ],
       ).paddingOnly(

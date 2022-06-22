@@ -16,7 +16,7 @@ import '../../home_page/widget/button_card_widget.dart';
 import '../project_details/project_details_page.dart';
 
 class CrowdFoundingMiniCardWidget extends StatelessWidget {
-  CrowdFoundingMiniCardWidget(
+  const CrowdFoundingMiniCardWidget(
       {required this.cardModel, required this.visible, Key? key})
       : super(key: key);
   final CardModel cardModel;
@@ -25,7 +25,7 @@ class CrowdFoundingMiniCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Container(
+      child: SizedBox(
         height: 267.w,
         width: 162.w,
         child: Stack(
@@ -35,12 +35,13 @@ class CrowdFoundingMiniCardWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
               ),
               elevation: 1,
-              color: AppColorUtils.WHITE,
+              color: AppColorUtils.white,
               child: Column(
                 children: [
                   Expanded(
+                    flex: 1,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(12),
                         topRight: Radius.circular(12),
                       ),
@@ -48,10 +49,10 @@ class CrowdFoundingMiniCardWidget extends StatelessWidget {
                         width: double.infinity,
                         imageUrl: cardModel.image!,
                         errorWidget: (context, url, error) => Image.asset(
-                          AppImageUtils.Splash2,
+                          AppImageUtils.splash2,
                         ),
                         placeholder: (context, url) =>
-                            Center(child: CircularProgressIndicator()),
+                            const Center(child: CircularProgressIndicator()),
                         fit: BoxFit.cover,
                       ),
                       // child: Image.asset(
@@ -60,11 +61,10 @@ class CrowdFoundingMiniCardWidget extends StatelessWidget {
                       //   width: MediaQuery.of(context).size.width,
                       // ),
                     ),
-                    flex: 1,
                   ),
                   Expanded(
                     child: Container(
-                      margin: EdgeInsets.only(
+                      margin: const EdgeInsets.only(
                         left: 12,
                         top: 12,
                         right: 5,
@@ -79,14 +79,14 @@ class CrowdFoundingMiniCardWidget extends StatelessWidget {
                             maxLines: 2,
                           ),
                           Container(
-                            margin: EdgeInsets.only(top: 13),
+                            margin: const EdgeInsets.only(top: 13),
                             child: LinearPercentIndicator(
                               animation: true,
-                              padding: EdgeInsets.all(0),
+                              padding: const EdgeInsets.all(0),
                               animationDuration: 2000,
                               percent: 0.60,
-                              progressColor: AppColorUtils.PERCENT_COLOR,
-                              backgroundColor: AppColorUtils.PERCENT_COLOR2,
+                              progressColor: AppColorUtils.percentColor,
+                              backgroundColor: AppColorUtils.percentColor2,
                             ),
                           ),
                           SizedBox(height: 20.w),
@@ -95,7 +95,7 @@ class CrowdFoundingMiniCardWidget extends StatelessWidget {
                               text: LocaleKeys.done,
                               fontWeight: FontWeight.w400,
                               fontSize: 10.sp,
-                              color: AppColorUtils.DARK6,
+                              color: AppColorUtils.dark6,
                             ),
                           ),
                           SizedBox(height: 5.w),
@@ -104,7 +104,7 @@ class CrowdFoundingMiniCardWidget extends StatelessWidget {
                               text: "60%",
                               fontSize: 14.sp,
                               fontWeight: FontWeight.w600,
-                              color: AppColorUtils.BLUE_PERCENT,
+                              color: AppColorUtils.bluePercent,
                             ),
                           ),
                         ],
@@ -115,12 +115,12 @@ class CrowdFoundingMiniCardWidget extends StatelessWidget {
               ),
             ),
             Align(
+              alignment: Alignment.topRight,
               child: SvgPicture.asset(
                 cardModel.isFavorite!
-                    ? AppImageUtils.LIKE
-                    : AppImageUtils.UNLIKE,
+                    ? AppImageUtils.like
+                    : AppImageUtils.unlike,
               ),
-              alignment: Alignment.topRight,
             ).paddingAll(12.w),
             Visibility(
               visible: visible,
@@ -128,7 +128,7 @@ class CrowdFoundingMiniCardWidget extends StatelessWidget {
                 width: 70.w,
                 onPress: () {},
                 text: LocaleKeys.technology.tr(),
-                textColor: AppColorUtils.GREEN_TEXT,
+                textColor: AppColorUtils.greenText,
                 textSize: 10.sp,
                 fontWeight: FontWeight.w400,
                 color: Colors.white54,

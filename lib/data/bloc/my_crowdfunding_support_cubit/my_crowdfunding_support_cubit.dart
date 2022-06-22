@@ -9,9 +9,8 @@ class MyCrowdfundingSupportCubit extends Cubit<MyCrowdfundingSupportState> {
       GetIt.I<MyCrowdfundingSupportCubit>();
 
   static Future init() async {
-    GetIt.I
-      ..registerSingleton<MyCrowdfundingSupportCubit>(
-          MyCrowdfundingSupportCubit());
+    GetIt.I.registerSingleton<MyCrowdfundingSupportCubit>(
+        MyCrowdfundingSupportCubit());
   }
 
   MyCrowdfundingSupportCubit()

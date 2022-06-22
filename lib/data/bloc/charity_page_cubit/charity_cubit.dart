@@ -2,19 +2,22 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/charity_saved_service.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
 
 import '../../services/volunteer_service.dart';
 
 part 'charity_state.dart';
 
 class CharityCubit extends Cubit<CharityState> {
-  CharityCubit() : super(CharityState(checkBox: false));
+  CharityCubit() : super(const CharityState(checkBox: false));
 
-  Future Load() async {
+  Future load() async {
     try {
-      var list = await CharitySavedService().getCharityList();
+      var list = CharitySavedService().getCharityList();
       emit(state.copyWith(list: list, tobeVolunteer: Volunteer.tobeVolunteer));
-    } catch (e) {}
+    } catch (e) {
+      AppLoggerUtil.e(e.toString());
+    }
   }
 
   void loading() {
@@ -26,7 +29,7 @@ class CharityCubit extends Cubit<CharityState> {
   }
 
   Future onChangeSave(bool v) async {
-    var list = await CharitySavedService().getCharityList();
+    var list = CharitySavedService().getCharityList();
     emit(state.copyWith(saveHelp: v, list: list));
   }
 }

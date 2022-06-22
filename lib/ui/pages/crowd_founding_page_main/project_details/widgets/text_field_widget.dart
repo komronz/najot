@@ -18,8 +18,9 @@ class TextFieldWidget extends StatefulWidget {
   final bool isMultiLine;
   final double? height;
 
-  TextFieldWidget(
-      {required this.hintText,
+  const TextFieldWidget(
+      {Key? key,
+      required this.hintText,
       required this.onChanged,
       required this.title,
       this.isMultiLine = false,
@@ -30,9 +31,11 @@ class TextFieldWidget extends StatefulWidget {
       this.isFill = false,
       this.initialText = '',
       this.hasError = false,
-      this.height});
+      this.height})
+      : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _TextFieldWidgetState createState() => _TextFieldWidgetState();
 }
 
@@ -55,19 +58,19 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
 
   @override
   Widget build(BuildContext context) {
-    InputBorder _border = widget.hasError
+    InputBorder border = widget.hasError
         ? OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               width: 2,
-              color: AppColorUtils.RED,
+              color: AppColorUtils.red,
             ),
           )
         : OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               width: 2,
-              color: AppColorUtils.BORDER_COLOR,
+              color: AppColorUtils.borderColor,
             ),
           );
     return Column(
@@ -77,7 +80,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         Container(
           height: widget.height,
           decoration: BoxDecoration(
-            color: AppColorUtils.WHITE,
+            color: AppColorUtils.white,
             borderRadius: BorderRadius.circular(12),
           ),
           child: TextField(
@@ -91,15 +94,15 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
             ),
             decoration: InputDecoration(
               // border: _border,
-              disabledBorder: _border,
-              focusedBorder: _border,
-              enabledBorder: _border,
-              contentPadding: EdgeInsets.all(14),
+              disabledBorder: border,
+              focusedBorder: border,
+              enabledBorder: border,
+              contentPadding: const EdgeInsets.all(14),
               hintText: widget.hintText,
               hintStyle: GoogleFonts.inter(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w400,
-                color: AppColorUtils.GRAY_4,
+                color: AppColorUtils.gray4,
               ),
               suffixIcon: widget.isPassword
                   ? InkWell(

@@ -20,7 +20,7 @@ class MyCrowdfundingAppliedUserWidget extends StatelessWidget {
       children: [
         AppWidgets.textLocale(
           text: LocaleKeys.the_man_applied,
-          color: AppColorUtils.DARK_6,
+          color: AppColorUtils.dark6,
           fontSize: 10.sp,
           fontWeight: FontWeight.w400,
         ),

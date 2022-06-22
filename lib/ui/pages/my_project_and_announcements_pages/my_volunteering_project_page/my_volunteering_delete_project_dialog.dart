@@ -28,7 +28,7 @@ class MyVolunteeringDeleteProjectDialog extends StatelessWidget {
         padding: EdgeInsets.all(20.w),
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
-          color: AppColorUtils.WHITE,
+          color: AppColorUtils.white,
           borderRadius: BorderRadius.circular(12),
         ),
         child: ListView(
@@ -38,10 +38,10 @@ class MyVolunteeringDeleteProjectDialog extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    SvgPicture.asset(AppImageUtils.TRASH).paddingOnly(right: 5),
+                    SvgPicture.asset(AppImageUtils.trash).paddingOnly(right: 5),
                     AppWidgets.textLocale(
                       text: LocaleKeys.delete_the_project,
-                      color: AppColorUtils.DARK2,
+                      color: AppColorUtils.dark2,
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w600,
                     ),
@@ -50,20 +50,20 @@ class MyVolunteeringDeleteProjectDialog extends StatelessWidget {
                 AppWidgets.textLocale(
                   text: LocaleKeys.contact_delete_project,
                   maxLines: 2,
-                  color: AppColorUtils.DARK_6,
+                  color: AppColorUtils.dark6,
                   fontWeight: FontWeight.w400,
                   fontSize: 16.sp,
                 ).paddingOnly(bottom: 24.h),
                 AppWidgets.textLocale(
                         fontWeight: FontWeight.w400,
                         fontSize: 14.sp,
-                        color: AppColorUtils.DARK2,
+                        color: AppColorUtils.dark2,
                         text: LocaleKeys.reason_deletion_short,
                         richText: true,
                         othersMarkers: [
                           MarkerText(
                             marker: "//",
-                            style: TextStyle(color: AppColorUtils.RED),
+                            style: const TextStyle(color: AppColorUtils.red),
                           )
                         ],
                         maxLines: 2)
@@ -85,7 +85,7 @@ class MyVolunteeringDeleteProjectDialog extends StatelessWidget {
                     showDialog(
                       context: context,
                       builder: (context) {
-                        return MyCharitySuccessSendQuestion();
+                        return const MyCharitySuccessSendQuestion();
                       },
                     );
                   },
@@ -94,8 +94,8 @@ class MyVolunteeringDeleteProjectDialog extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   height: 48.w,
                   width: double.infinity,
-                  color: AppColorUtils.PERCENT_COLOR,
-                  textColor: AppColorUtils.WHITE,
+                  color: AppColorUtils.percentColor,
+                  textColor: AppColorUtils.white,
                   borderRadius: 10,
                 ),
                 SizedBox(
@@ -110,8 +110,8 @@ class MyVolunteeringDeleteProjectDialog extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   height: 48.w,
                   width: double.infinity,
-                  color: AppColorUtils.GREEN_ACCENT5,
-                  textColor: AppColorUtils.BLACK,
+                  color: AppColorUtils.greenAccent5,
+                  textColor: AppColorUtils.black,
                   borderRadius: 10,
                 )
               ],

@@ -21,8 +21,7 @@ class MyCharityQuestionsAskedWidget extends StatefulWidget {
   final MyCharitySupportListCubit cubit;
 
   @override
-  _MyCharityQuestionsAskedWidgetState createState() =>
-      _MyCharityQuestionsAskedWidgetState();
+  State<StatefulWidget> createState() => _MyCharityQuestionsAskedWidgetState();
 }
 
 class _MyCharityQuestionsAskedWidgetState
@@ -40,7 +39,7 @@ class _MyCharityQuestionsAskedWidgetState
           },
           child: Container(
             decoration: BoxDecoration(
-              color: AppColorUtils.GREEN_ACCENT8,
+              color: AppColorUtils.greenAccent8,
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Row(
@@ -48,7 +47,7 @@ class _MyCharityQuestionsAskedWidgetState
               children: [
                 AppWidgets.textLocale(
                   text: LocaleKeys.answered,
-                  color: AppColorUtils.GREEN_TEXT_1,
+                  color: AppColorUtils.greenText1,
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w500,
                 ).paddingOnly(
@@ -58,8 +57,8 @@ class _MyCharityQuestionsAskedWidgetState
                   right: 15.w,
                 ),
                 AppWidgets.imageSvg(
-                  path: AppImageUtils.RIGHT_DIRECTION,
-                  color: AppColorUtils.GREEN_TEXT_1,
+                  path: AppImageUtils.rightDirection,
+                  color: AppColorUtils.greenText1,
                   height: 15.w,
                 ).paddingOnly(right: 15.w),
               ],

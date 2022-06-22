@@ -1,7 +1,7 @@
 part of 'my_volunteering_project_cubit.dart';
 
 class MyVolunteeringProjectState extends Equatable {
-  MyVolunteeringProjectState(
+  const MyVolunteeringProjectState(
       {required this.cardList, required this.widgetChange});
 
   final List<VolunteeringModel> cardList;
@@ -16,7 +16,7 @@ class MyVolunteeringProjectState extends Equatable {
     bool? widgetChange,
   }) {
     return MyVolunteeringProjectState(
-      cardList: list ?? this.cardList,
+      cardList: list ?? cardList,
       widgetChange: widgetChange ?? this.widgetChange,
     );
   }

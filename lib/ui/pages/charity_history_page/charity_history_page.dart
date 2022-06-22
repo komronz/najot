@@ -38,7 +38,7 @@ class CharityHistoryPage extends StatelessWidget {
               children: [
                 InkWell(
                   child: SvgPicture.asset(
-                    AppImageUtils.MENU,
+                    AppImageUtils.menu,
                     height: 35.w,
                     width: 35.w,
                   ),
@@ -57,7 +57,7 @@ class CharityHistoryPage extends StatelessWidget {
                   onTap: () =>
                       NavigatorService.to.pushNamed(NotificationPage.routeName),
                   child: SvgPicture.asset(
-                    AppImageUtils.NOTIFICATION,
+                    AppImageUtils.notification,
                     height: 35.w,
                     width: 35.w,
                     fit: BoxFit.fill,
@@ -77,19 +77,19 @@ class CharityHistoryPage extends StatelessWidget {
     CharityHistoryState state,
   ) {
     if (state.isLoading) {
-      return Center(
+      return const Center(
         child: CircularProgressIndicator(),
       );
     } else if (state.hasError) {
       return Center(
-        child: AppWidgets.imageSvg(path: AppImageUtils.IMG_WAIT),
+        child: AppWidgets.imageSvg(path: AppImageUtils.imgWait),
       );
     }
     return DefaultTabController(
       initialIndex: 0,
       length: 2,
       child: Container(
-        decoration: DecorationConst.DEC_WITH_SHADOW,
+        decoration: DecorationConst.decWithShadow,
         height: context.height,
         width: context.width,
         child: Column(
@@ -98,8 +98,8 @@ class CharityHistoryPage extends StatelessWidget {
           children: [
             TabBar(
               enableFeedback: true,
-              labelColor: AppColorUtils.GREEN_APP,
-              unselectedLabelColor: AppColorUtils.DARK_6,
+              labelColor: AppColorUtils.greenApp,
+              unselectedLabelColor: AppColorUtils.dark6,
               unselectedLabelStyle: TextStyle(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w400,
@@ -114,7 +114,7 @@ class CharityHistoryPage extends StatelessWidget {
               ],
               isScrollable: true,
               indicatorWeight: 1.5,
-              indicatorColor: AppColorUtils.GREEN_APP,
+              indicatorColor: AppColorUtils.greenApp,
               indicatorSize: TabBarIndicatorSize.label,
               // padding: EdgeInsets.only(right: 10),
               // indicatorPadding: EdgeInsets.only(right: 10, left: 10),

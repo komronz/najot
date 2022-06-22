@@ -13,7 +13,7 @@ import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class RegPage extends StatelessWidget {
-  const RegPage({required this.loginBloc});
+  const RegPage({Key? key, required this.loginBloc}) : super(key: key);
 
   static const String routeName = '/regPage';
   final LoginBloc loginBloc;
@@ -25,7 +25,7 @@ class RegPage extends StatelessWidget {
       bloc: loginBloc,
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: AppColorUtils.BACKGROUND,
+          backgroundColor: AppColorUtils.background,
           resizeToAvoidBottomInset: true,
           body: SingleChildScrollView(
             reverse: true,
@@ -90,19 +90,19 @@ class RegPage extends StatelessWidget {
                                 .add(LoginAgreeChanged(v!));
                           },
                           value: context.read<LoginBloc>().state.agree,
-                          checkColor: AppColorUtils.BORDER_COLOR,
+                          checkColor: AppColorUtils.borderColor,
                           activeColor: Colors.transparent,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(2.0),
                           ),
                           side: MaterialStateBorderSide.resolveWith(
-                            (states) => BorderSide(
+                            (states) => const BorderSide(
                               width: 2.0,
-                              color: AppColorUtils.BORDER_COLOR,
+                              color: AppColorUtils.borderColor,
                             ),
                           ),
                         ),
-                        RichTextWidget()
+                        const RichTextWidget()
                       ],
                     ).paddingSymmetric(horizontal: 15, vertical: 24),
                     AppWidgets.appButton(
@@ -118,22 +118,22 @@ class RegPage extends StatelessWidget {
                           : () {
                               AppWidgets.showText(
                                 text: LocaleKeys.agree_terms_project.tr(),
-                                duration: Duration(seconds: 1),
+                                duration: const Duration(seconds: 1),
                               );
                             },
                       color: loginBloc.state.isNextBtnActive
-                          ? AppColorUtils.GREEN_APP
-                          : AppColorUtils.DISABLE_BC,
+                          ? AppColorUtils.greenApp
+                          : AppColorUtils.disableBc,
                     ).paddingSymmetric(horizontal: 20),
                     context.read<LoginBloc>().state.agree
-                        ? SizedBox()
+                        ? const SizedBox()
                         : Row(
                             children: [
                               AppWidgets.text(
                                 text: "*",
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
-                                color: AppColorUtils.RED,
+                                color: AppColorUtils.red,
                               ),
                               AppWidgets.text(
                                 text: LocaleKeys.agree_project_first.tr(),

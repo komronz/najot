@@ -14,9 +14,10 @@ import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_image_utils.dart';
 
 class ShowPickerWidget extends StatefulWidget {
-  ShowPickerWidget({Key? key}) : super(key: key);
+  const ShowPickerWidget({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _ShowPickerPageState createState() => _ShowPickerPageState();
 }
 
@@ -48,19 +49,17 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
       child: SafeArea(
         child: Container(
           child: image != null
-              ? Container(
-                  child: ClipRRect(
-                    child: Image.file(
-                      image!,
-                      width: 130,
-                      height: 130,
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.circular(75),
+              ? ClipRRect(
+                  borderRadius: BorderRadius.circular(75),
+                  child: Image.file(
+                    image!,
+                    width: 130,
+                    height: 130,
+                    fit: BoxFit.cover,
                   ),
                 )
               : SvgPicture.asset(
-                  AppImageUtils.USERADD,
+                  AppImageUtils.useradd,
                   width: 130,
                 ),
         ).paddingOnly(top: 25, bottom: 4),

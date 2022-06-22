@@ -20,12 +20,13 @@ class VolunteeringCharityListItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: AppColorUtils.ITEM_CHARITY_COLOR,
+          color: AppColorUtils.itemCharityColor,
         ),
-        margin: EdgeInsets.only(bottom: 12, left: 20, right: 20),
+        margin: const EdgeInsets.only(bottom: 12, left: 20, right: 20),
         child: Stack(
           children: [
             Column(
@@ -36,14 +37,14 @@ class VolunteeringCharityListItemWidget extends StatelessWidget {
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
                     maxLines: 10,
-                    color: AppColorUtils.ITEM_CHARITY_TEXT2),
+                    color: AppColorUtils.itemCharityText2),
                 SizedBox(
                   width: 265.w,
                   child: AppWidgets.text(
                           text: model.title!,
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
-                          color: AppColorUtils.ITEM_CHARITY_TEXT,
+                          color: AppColorUtils.itemCharityText,
                           maxLines: 2)
                       .paddingOnly(top: 3),
                 ),
@@ -55,14 +56,14 @@ class VolunteeringCharityListItemWidget extends StatelessWidget {
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w400,
                       maxLines: 10,
-                      color: AppColorUtils.ITEM_CHARITY_TEXT2,
+                      color: AppColorUtils.itemCharityText2,
                     ),
                     AppWidgets.textLocale(
                       text: LocaleKeys.date,
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w400,
                       maxLines: 10,
-                      color: AppColorUtils.ITEM_CHARITY_TEXT2,
+                      color: AppColorUtils.itemCharityText2,
                     ),
                   ],
                 ).paddingOnly(top: 12.w),
@@ -73,7 +74,7 @@ class VolunteeringCharityListItemWidget extends StatelessWidget {
                       text: LocaleKeys.sum,
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w600,
-                      color: AppColorUtils.KRAUDFANDING,
+                      color: AppColorUtils.kraudfanding,
                       args: ["- ${model.currentSum!}"],
                     ),
                     DateWidget(date: model.createdDate!),
@@ -88,17 +89,16 @@ class VolunteeringCharityListItemWidget extends StatelessWidget {
                 height: 31,
                 width: 30,
                 onTap: onTap,
-                iconWidget: Icon(
+                iconWidget: const Icon(
                   Icons.visibility_outlined,
                   size: 18,
                 ),
-                color: AppColorUtils.WHITE_GREEN,
+                color: AppColorUtils.whiteGreen,
               ),
             )
           ],
         ),
       ),
-      onTap: onTap,
     );
   }
 }

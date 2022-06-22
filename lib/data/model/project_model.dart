@@ -5,7 +5,7 @@ class ProjectModel {
   String? description;
   String? cover;
   String? deadline;
-  Null category;
+  Object? category;
   int? person;
   int? requiredFund;
   String? helpType;
@@ -45,20 +45,20 @@ class ProjectModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['owner'] = this.owner;
-    data['type'] = this.type;
-    data['title'] = this.title;
-    data['description'] = this.description;
-    data['cover'] = this.cover;
-    data['deadline'] = this.deadline;
-    data['category'] = this.category;
-    data['person'] = this.person;
-    data['required_fund'] = this.requiredFund;
-    data['help_type'] = this.helpType;
-    data['address'] = this.address;
-    data['created_at'] = this.createdAt;
-    data['modified_at'] = this.modifiedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['owner'] = owner;
+    data['type'] = type;
+    data['title'] = title;
+    data['description'] = description;
+    data['cover'] = cover;
+    data['deadline'] = deadline;
+    data['category'] = category;
+    data['person'] = person;
+    data['required_fund'] = requiredFund;
+    data['help_type'] = helpType;
+    data['address'] = address;
+    data['created_at'] = createdAt;
+    data['modified_at'] = modifiedAt;
     return data;
   }
 }

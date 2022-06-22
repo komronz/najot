@@ -15,14 +15,12 @@ import '../../home_page/widget/button_card_widget.dart';
 import 'my_crowdfunding_about_widget.dart';
 
 class MyCrowdfundingList extends StatelessWidget {
-  MyCrowdfundingList(
-      {required this.cardModel,
-      required this.visible,
-        required this.onTap,
-
-        Key? key,
-      })
-      : super(key: key);
+  const MyCrowdfundingList({
+    required this.cardModel,
+    required this.visible,
+    required this.onTap,
+    Key? key,
+  }) : super(key: key);
   final CrowdFoundingModel cardModel;
   final bool visible;
   final VoidCallback onTap;
@@ -31,11 +29,11 @@ class MyCrowdfundingList extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        margin: EdgeInsets.only(right: 10, bottom: 10),
+        margin: const EdgeInsets.only(right: 10, bottom: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Color.fromRGBO(11, 191, 144, 0.08),
               blurRadius: 12,
@@ -50,8 +48,9 @@ class MyCrowdfundingList extends StatelessWidget {
             Column(
               children: [
                 Expanded(
+                  flex: 1,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(12),
                       topRight: Radius.circular(12),
                     ),
@@ -59,10 +58,10 @@ class MyCrowdfundingList extends StatelessWidget {
                       width: double.infinity,
                       imageUrl: cardModel.imgUrl!,
                       errorWidget: (context, url, error) => Image.asset(
-                        AppImageUtils.Splash2,
+                        AppImageUtils.splash2,
                       ),
                       placeholder: (context, url) =>
-                          Center(child: CircularProgressIndicator()),
+                          const Center(child: CircularProgressIndicator()),
                       fit: BoxFit.cover,
                     ),
                     // child: Image.asset(
@@ -71,11 +70,10 @@ class MyCrowdfundingList extends StatelessWidget {
                     //   width: MediaQuery.of(context).size.width,
                     // ),
                   ),
-                  flex: 1,
                 ),
                 Expanded(
                   child: Container(
-                    margin: EdgeInsets.only(left: 12, top: 12, right: 5),
+                    margin: const EdgeInsets.only(left: 12, top: 12, right: 5),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -88,28 +86,28 @@ class MyCrowdfundingList extends StatelessWidget {
                         Row(
                           children: [
                             AppWidgets.textLocale(
-                              text: LocaleKeys.done.tr() + ":",
+                              text: "${LocaleKeys.done.tr()}:",
                               fontWeight: FontWeight.w400,
                               fontSize: 10.sp,
-                              color: AppColorUtils.DARK6,
+                              color: AppColorUtils.dark6,
                             ).paddingOnly(right: 5.w),
                             AppWidgets.text(
                               text: "60%",
                               fontSize: 14.sp,
                               fontWeight: FontWeight.w600,
-                              color: AppColorUtils.BLUE_PERCENT,
+                              color: AppColorUtils.bluePercent,
                             ),
                           ],
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 13),
+                          margin: const EdgeInsets.only(top: 13),
                           child: LinearPercentIndicator(
                             animation: true,
-                            padding: EdgeInsets.all(0),
+                            padding: const EdgeInsets.all(0),
                             animationDuration: 2000,
                             percent: 0.60,
-                            progressColor: AppColorUtils.PERCENT_COLOR,
-                            backgroundColor: AppColorUtils.PERCENT_COLOR2,
+                            progressColor: AppColorUtils.percentColor,
+                            backgroundColor: AppColorUtils.percentColor2,
                           ),
                         ).paddingOnly(bottom: 10.w),
                         AppWidgets.starTextWidget(
@@ -118,12 +116,12 @@ class MyCrowdfundingList extends StatelessWidget {
                           children: [
                             Icon(
                               Icons.calendar_today_outlined,
-                              color: AppColorUtils.BLUE_PERCENT,
+                              color: AppColorUtils.bluePercent,
                               size: 12.sp,
                             ),
                             AppWidgets.text(
                               text: cardModel.createdDate!,
-                              color: AppColorUtils.BLUE_PERCENT,
+                              color: AppColorUtils.bluePercent,
                               fontWeight: FontWeight.w500,
                               fontSize: 12.sp,
                             ).paddingOnly(left: 6.w),
@@ -144,7 +142,7 @@ class MyCrowdfundingList extends StatelessWidget {
                 borderRadius: 20,
                 height: 24.w,
                 width: 77.w,
-                textColor: AppColorUtils.GREEN_TEXT,
+                textColor: AppColorUtils.greenText,
                 textSize: 10.sp,
                 fontWeight: FontWeight.w400,
                 color: Colors.white54,

@@ -22,7 +22,7 @@ class RegVolunteer extends StatefulWidget {
   const RegVolunteer({Key? key}) : super(key: key);
 
   @override
-  _RegVolunteerState createState() => _RegVolunteerState();
+  State<StatefulWidget> createState() => _RegVolunteerState();
 }
 
 class _RegVolunteerState extends State<RegVolunteer>
@@ -32,7 +32,7 @@ class _RegVolunteerState extends State<RegVolunteer>
     return BlocProvider(
       create: (context) => RegVolunteerBloc(),
       child: Scaffold(
-        backgroundColor: AppColorUtils.BACKGROUND,
+        backgroundColor: AppColorUtils.background,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           titleSpacing: 0,
@@ -43,7 +43,7 @@ class _RegVolunteerState extends State<RegVolunteer>
             children: [
               InkWell(
                 child: SvgPicture.asset(
-                  AppImageUtils.MENU,
+                  AppImageUtils.menu,
                   height: 35.w,
                   width: 35.w,
                 ),
@@ -57,7 +57,7 @@ class _RegVolunteerState extends State<RegVolunteer>
                 fontWeight: FontWeight.w600,
               ),
               SvgPicture.asset(
-                AppImageUtils.NOTIFICATION,
+                AppImageUtils.notification,
                 height: 35.w,
                 width: 35.w,
               )
@@ -81,7 +81,7 @@ class _RegVolunteerState extends State<RegVolunteer>
     return Container(
       width: context.width,
       height: context.height,
-      color: AppColorUtils.WHITE,
+      color: AppColorUtils.white,
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -91,15 +91,15 @@ class _RegVolunteerState extends State<RegVolunteer>
                 Container(
                   width: context.width,
                   height: 280.w,
-                  decoration: BoxDecoration(
-                    color: AppColorUtils.WAIT_COLOR,
+                  decoration: const BoxDecoration(
+                    color: AppColorUtils.waitColor,
                     shape: BoxShape.circle,
                   ),
                 ),
                 Align(
                   alignment: Alignment.center,
                   child: AppWidgets.imageSvg(
-                    path: AppImageUtils.IMG_WAIT,
+                    path: AppImageUtils.imgWait,
                     height: 204.w,
                     width: 160.w,
                   ).paddingOnly(top: 40.w),
@@ -118,24 +118,24 @@ class _RegVolunteerState extends State<RegVolunteer>
                 MarkerText(
                   marker: '//',
                   style: TextStyle(
-                    color: AppColorUtils.KRAUDFANDING,
+                    color: AppColorUtils.kraudfanding,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
               ],
-              color: AppColorUtils.DARK2,
+              color: AppColorUtils.dark2,
             ).paddingOnly(top: 24, left: 60.w, right: 60.w),
             ButtonCard(
               width: context.width,
               height: 45.w,
               onPress: () {},
               text: LocaleKeys.write_to_the_operator,
-              color: AppColorUtils.BLUE_ACCENT1,
-              textColor: AppColorUtils.BLUE_TEXT,
+              color: AppColorUtils.blueAccent1,
+              textColor: AppColorUtils.blueText,
               visibleIcon: true,
-              iconColor: AppColorUtils.BLUE_TEXT,
-              addIcon: AppImageUtils.IC_EARPHONES,
+              iconColor: AppColorUtils.blueText,
+              addIcon: AppImageUtils.icEarphones,
             ).paddingSymmetric(
               horizontal: 70,
               vertical: 24,
@@ -155,7 +155,7 @@ class _RegVolunteerState extends State<RegVolunteer>
               Container(
                 width: 1.sw,
                 height: 280.w,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle,
                 ),
@@ -163,7 +163,7 @@ class _RegVolunteerState extends State<RegVolunteer>
               Align(
                 alignment: Alignment.center,
                 child: AppWidgets.imageAsset(
-                  path: AppImageUtils.IMG_VOLUNTEER,
+                  path: AppImageUtils.imgVolunteer,
                   height: 204.w,
                   width: 160.w,
                 ).paddingOnly(top: 40.w),
@@ -174,7 +174,7 @@ class _RegVolunteerState extends State<RegVolunteer>
             text: LocaleKeys.fill_out_form_volunteer.tr(),
             fontSize: 16.sp,
             fontWeight: FontWeight.w600,
-            color: AppColorUtils.DARK2,
+            color: AppColorUtils.dark2,
             maxLines: 2,
             height: 1.2,
             textAlign: TextAlign.center,
@@ -191,25 +191,23 @@ class _RegVolunteerState extends State<RegVolunteer>
             fontStyle: FontStyle.italic,
           ).paddingOnly(top: 6),
           Container(
-            decoration: DecorationConst.DEC_WITH_SHADOW,
+            decoration: DecorationConst.decWithShadow,
             child: Column(
               children: [
-                Container(
-                  child: SmoothPageIndicator(
-                    controller: context.read<RegVolunteerBloc>().pageController,
-                    count: 2,
-                    effect: WormEffect(
-                      dotColor: AppColorUtils.INDICATOR,
-                      activeDotColor: AppColorUtils.GREEN_APP,
-                    ),
+                SmoothPageIndicator(
+                  controller: context.read<RegVolunteerBloc>().pageController,
+                  count: 2,
+                  effect: const WormEffect(
+                    dotColor: AppColorUtils.indicator,
+                    activeDotColor: AppColorUtils.greenApp,
                   ),
                 ).paddingOnly(top: 18),
-                Container(
+                SizedBox(
                   height: 620.w,
                   child: PageView(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     controller: context.read<RegVolunteerBloc>().pageController,
-                    children: [
+                    children: const [
                       View1(),
                       View2(),
                     ],

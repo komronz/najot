@@ -1,4 +1,4 @@
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,7 +14,8 @@ import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'widgets/about_project_volunteer_widget.dart';
 
 class VolunteerDetailPage extends StatefulWidget {
-  VolunteerDetailPage({required this.cardModel});
+  const VolunteerDetailPage({Key? key, required this.cardModel})
+      : super(key: key);
 
   final CardModel cardModel;
   static const String routeName = '/announcement';
@@ -53,7 +54,7 @@ class _AboutAnnouncementPageState extends State<VolunteerDetailPage>
     return BlocProvider(
       create: (context) => cubit,
       child: Scaffold(
-        backgroundColor: AppColorUtils.BACKGROUND,
+        backgroundColor: AppColorUtils.background,
         appBar: AppBarWithTitle(
           title: LocaleKeys.about_project.tr(),
           onPress: () {
@@ -63,12 +64,12 @@ class _AboutAnnouncementPageState extends State<VolunteerDetailPage>
         body: BlocBuilder<VolonteerDetailCubit, VolunteerDetailState>(
           builder: (context, state) {
             return SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   Container(
                     padding: EdgeInsets.only(top: 18.w),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(11),

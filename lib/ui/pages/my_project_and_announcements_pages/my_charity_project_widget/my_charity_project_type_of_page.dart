@@ -17,7 +17,7 @@ class MyCharityProjectTypeOfPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColorUtils.WHITE,
+      backgroundColor: AppColorUtils.white,
       body: charityModel.typeOfCharity == "cash"
           ? CharityCashWidget(
               model: charityModel,

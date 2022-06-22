@@ -10,7 +10,8 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class CharitySavedPage extends StatelessWidget {
-  CharitySavedPage({required this.cardModel, required this.visible, Key? key})
+  const CharitySavedPage(
+      {required this.cardModel, required this.visible, Key? key})
       : super(key: key);
   final CardModel cardModel;
   final bool visible;
@@ -21,11 +22,11 @@ class CharitySavedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        margin: EdgeInsets.only(left: 5, bottom: 10, right: 5),
+        margin: const EdgeInsets.only(left: 5, bottom: 10, right: 5),
         decoration: BoxDecoration(
-          color: AppColorUtils.WHITE,
+          color: AppColorUtils.white,
           borderRadius: BorderRadius.circular(12),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Color.fromRGBO(11, 191, 144, 0.08),
               blurRadius: 12,
@@ -38,21 +39,22 @@ class CharitySavedPage extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
+              flex: 1,
               child: Stack(
                 children: [
                   Row(
                     children: [
                       Expanded(
                         child: ClipRRect(
-                          borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(12)),
+                          borderRadius: const BorderRadius.vertical(
+                              top: Radius.circular(12)),
                           child: CachedNetworkImage(
-                            placeholder: (context, url) => Center(
+                            placeholder: (context, url) => const Center(
                               child: CircularProgressIndicator(),
                             ),
                             imageUrl: cardModel.image!,
                             errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
+                                const Icon(Icons.error),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -61,7 +63,7 @@ class CharitySavedPage extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Expanded(child: SizedBox()),
+                      const Expanded(child: SizedBox()),
                       InkWell(
                         child: FavoriteButton(
                           isFavorite: cardModel.isFavorite!,
@@ -72,9 +74,9 @@ class CharitySavedPage extends StatelessWidget {
                   ).paddingAll(10)
                 ],
               ),
-              flex: 1,
             ),
             Expanded(
+              flex: 1,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,27 +89,26 @@ class CharitySavedPage extends StatelessWidget {
                   ),
                   LinearPercentIndicator(
                     animation: true,
-                    padding: EdgeInsets.all(0),
+                    padding: const EdgeInsets.all(0),
                     lineHeight: 10.h,
                     animationDuration: 2000,
                     percent: cardModel.progres! / 100,
-                    progressColor: AppColorUtils.PERCENT_COLOR,
-                    backgroundColor: AppColorUtils.PERCENT_COLOR2,
+                    progressColor: AppColorUtils.percentColor,
+                    backgroundColor: AppColorUtils.percentColor2,
                   ).paddingOnly(top: 12.w),
                   AppWidgets.textLocale(
                     text: LocaleKeys.done,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
-                    color: AppColorUtils.DARK_6,
+                    color: AppColorUtils.dark6,
                   ).paddingOnly(top: 12.w),
                   AppWidgets.text(
                     text: "${cardModel.progres.toString().split(".").first}%",
                     fontWeight: FontWeight.w600,
-                    color: AppColorUtils.BLUE_PERCENT,
+                    color: AppColorUtils.bluePercent,
                   ).paddingOnly(top: 5.w),
                 ],
               ).paddingSymmetric(vertical: 14, horizontal: 12),
-              flex: 1,
             )
           ],
         ),
@@ -131,11 +132,11 @@ class FavoriteButton extends StatelessWidget {
             width: 24.w,
             height: 24.w,
             decoration: BoxDecoration(
-              color: AppColorUtils.PURPLE,
+              color: AppColorUtils.purple,
               borderRadius: BorderRadius.circular(2),
             ),
             child: AppWidgets.imageSvg(
-              path: AppImageUtils.UNLIKE,
+              path: AppImageUtils.unlike,
               fit: BoxFit.none,
             ),
           )
@@ -143,11 +144,11 @@ class FavoriteButton extends StatelessWidget {
             width: 24.w,
             height: 24.w,
             decoration: BoxDecoration(
-              color: AppColorUtils.IC_GREEN,
+              color: AppColorUtils.icGreen,
               borderRadius: BorderRadius.circular(2),
             ),
             child: AppWidgets.imageSvg(
-              path: AppImageUtils.IC_FAVORITE_ADD,
+              path: AppImageUtils.icFavoriteAdd,
               fit: BoxFit.none,
             ),
           );

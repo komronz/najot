@@ -13,7 +13,7 @@ class MixTextWidget extends StatelessWidget {
     return Container(
       child: AppWidgets.textLocale(
           text: LocaleKeys.send_payment1,
-          color: AppColorUtils.DARK3,
+          color: AppColorUtils.dark3,
           fontWeight: FontWeight.w400,
           fontSize: 12.sp,
           maxLines: 2,
@@ -21,20 +21,20 @@ class MixTextWidget extends StatelessWidget {
           othersMarkers: [
             MarkerText(
               marker: "&",
-              style: TextStyle(
-                color: AppColorUtils.RED,
+              style: const TextStyle(
+                color: AppColorUtils.red,
               ),
             ),
             MarkerText(
               marker: "//",
-              style: TextStyle(
-                color: AppColorUtils.GREEN_TEXT,
+              style: const TextStyle(
+                color: AppColorUtils.greenText,
               ),
             ),
             MarkerText(
               marker: "#",
-              style: TextStyle(
-                  color: AppColorUtils.BLACK, fontWeight: FontWeight.w600),
+              style: const TextStyle(
+                  color: AppColorUtils.black, fontWeight: FontWeight.w600),
             )
           ]),
     );

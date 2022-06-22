@@ -14,9 +14,8 @@ class MyProjectAndAnnouncementsPagesCubit
       GetIt.I<MyProjectAndAnnouncementsPagesCubit>();
 
   static Future init() async {
-    GetIt.I
-      ..registerSingleton<MyProjectAndAnnouncementsPagesCubit>(
-          MyProjectAndAnnouncementsPagesCubit());
+    GetIt.I.registerSingleton<MyProjectAndAnnouncementsPagesCubit>(
+        MyProjectAndAnnouncementsPagesCubit());
   }
 
   MyProjectAndAnnouncementsPagesCubit()

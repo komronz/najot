@@ -16,84 +16,83 @@ import '../../home_page/widget/button_card_widget.dart';
 class NumberUpdateStep1 extends StatelessWidget {
   static const String routeName = "/numberUpdateStep1Page";
 
-  NumberUpdateStep1({required this.state, required this.con});
+  const NumberUpdateStep1({Key? key, required this.state, required this.con})
+      : super(key: key);
 
-  MyProfileUpdateState state;
-  BuildContext con;
+  final MyProfileUpdateState state;
+  final BuildContext con;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: AppColorUtils.WHITE,
-              border: Border.all(
-                color: AppColorUtils.GREEN_6,
-                width: 2,
-              ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: AppColorUtils.white,
+            border: Border.all(
+              color: AppColorUtils.green6,
+              width: 2,
             ),
-            child: !state.nextPage
-                ? AppWidgets.textLocale(
-                    text: "1 2 3 4 5 6",
-                    textAlign: TextAlign.center,
-                    color: AppColorUtils.GRAY_4,
-                    fontSize: 15.sp,
-                    fontWeight: FontWeight.w600,
-                  )
-                : Container(
-                    width: 150,
-                    child: Row(
-                      children: [
-                        AppWidgets.textLocale(
-                                text: "1 2 3 4 5 6",
-                                textAlign: TextAlign.center,
-                                color: AppColorUtils.GREEN_2,
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w600)
-                            .paddingOnly(right: 10),
-                        SvgPicture.asset(AppImageUtils.CHECK),
-                      ],
-                    ),
-                  ),
           ),
-          SizedBox(height: 16.w),
-          ButtonCard(
-            textSize: 16.sp,
-            fontWeight: FontWeight.w600,
-            textColor: AppColorUtils.WHITE,
-            borderRadius: 12,
-            height: 48.w,
-            width: 1.sw,
-            color: AppColorUtils.PERCENT_COLOR,
-            onPress: () {
-              con.read<MyProfileUpdateBloc>().add(EditProfileChangePage(1));
-              con.read<MyProfileUpdateBloc>().add(MyProfileLoad());
-            },
-            text: LocaleKeys.confirmation.tr(),
-          ).paddingOnly(bottom: 18.w),
-          state.nextPage
-              ? SizedBox()
-              : InkWell(
-                  onTap: () {
-                    // NavigatorService.to
-                    //     .pushNamed(NumberUpdateVolunteerPage.routeName);
-                  },
-                  child: Container(
-                    child: AppWidgets.textLocale(
-                      text: LocaleKeys.send_again.tr(),
-                      color: AppColorUtils.BlUE_2,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ).paddingOnly(left: 120.w),
+          child: !state.nextPage
+              ? AppWidgets.textLocale(
+                  text: "1 2 3 4 5 6",
+                  textAlign: TextAlign.center,
+                  color: AppColorUtils.gray4,
+                  fontSize: 15.sp,
+                  fontWeight: FontWeight.w600,
+                )
+              : SizedBox(
+                  width: 150,
+                  child: Row(
+                    children: [
+                      AppWidgets.textLocale(
+                              text: "1 2 3 4 5 6",
+                              textAlign: TextAlign.center,
+                              color: AppColorUtils.green2,
+                              fontSize: 15.sp,
+                              fontWeight: FontWeight.w600)
+                          .paddingOnly(right: 10),
+                      SvgPicture.asset(AppImageUtils.check),
+                    ],
+                  ),
                 ),
-        ],
-      ),
+        ),
+        SizedBox(height: 16.w),
+        ButtonCard(
+          textSize: 16.sp,
+          fontWeight: FontWeight.w600,
+          textColor: AppColorUtils.white,
+          borderRadius: 12,
+          height: 48.w,
+          width: 1.sw,
+          color: AppColorUtils.percentColor,
+          onPress: () {
+            con.read<MyProfileUpdateBloc>().add(const EditProfileChangePage(1));
+            con.read<MyProfileUpdateBloc>().add(const MyProfileLoad());
+          },
+          text: LocaleKeys.confirmation.tr(),
+        ).paddingOnly(bottom: 18.w),
+        state.nextPage
+            ? const SizedBox()
+            : InkWell(
+                onTap: () {
+                  // NavigatorService.to
+                  //     .pushNamed(NumberUpdateVolunteerPage.routeName);
+                },
+                child: Container(
+                  child: AppWidgets.textLocale(
+                    text: LocaleKeys.send_again.tr(),
+                    color: AppColorUtils.blUe2,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ).paddingOnly(left: 120.w),
+              ),
+      ],
     );
   }
 }

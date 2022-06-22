@@ -17,12 +17,12 @@ class AppSearchWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _AppSearchWidgetState createState() => _AppSearchWidgetState();
+  State<StatefulWidget> createState() => _AppSearchWidgetState();
 }
 
 InputBorder get _border => OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
-      borderSide: BorderSide(color: AppColorUtils.BORDER_COLOR, width: 1),
+      borderSide: const BorderSide(color: AppColorUtils.borderColor, width: 1),
     );
 
 class _AppSearchWidgetState extends State<AppSearchWidget> {
@@ -30,7 +30,7 @@ class _AppSearchWidgetState extends State<AppSearchWidget> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColorUtils.ITEM_ORDERS_CARD,
+        color: AppColorUtils.itemOrdersCard,
         borderRadius: BorderRadius.circular(10),
       ),
       height: 50,
@@ -45,14 +45,14 @@ class _AppSearchWidgetState extends State<AppSearchWidget> {
           suffixIcon: InkWell(
             onTap: widget.search,
             child: AppWidgets.imageSvg(
-                path: AppImageUtils.IC_SEARCH,
+                path: AppImageUtils.icSearch,
                 height: 14.w,
                 width: 14.w,
                 fit: BoxFit.none),
           ),
           hintText: LocaleKeys.enter_project_name.tr(),
           hintStyle: TextStyle(
-            color: AppColorUtils.GRAY_4,
+            color: AppColorUtils.gray4,
             fontSize: 14.sp,
             fontWeight: FontWeight.w500,
           ),

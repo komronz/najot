@@ -18,7 +18,7 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
 
   EditVolunteerBloc()
       : pageController = PageController(),
-        super(EditVolunteerState()) {
+        super(const EditVolunteerState()) {
     on<MyProfileLoad>(_loadProfile);
     on<ImageChanged>(_onImageChanged);
     on<FirstNameChanged>(_onNameChanged);
@@ -153,7 +153,7 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
       AppWidgets.showText(text: 'Success');
       emit(state.copyWith(hasError: false));
       AppLoggerUtil.i(user.toJson().toString());
-      add(MyProfileLoad());
+      add(const MyProfileLoad());
     } else {
       emit(state.copyWith(hasError: true));
     }
@@ -196,9 +196,9 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
       emit(state.copyWith(hasError: false, isVisible: true));
       AppLoggerUtil.i(user.toJson().toString());
       emit(state.copyWith(isVisible: false));
-      await Future.delayed(Duration(seconds: 3));
+      await Future.delayed(const Duration(seconds: 3));
       emit(state.copyWith(nextPage: true));
-      add(MyProfileLoad());
+      add(const MyProfileLoad());
     } else {
       AppWidgets.showText(text: 'fail');
       emit(state.copyWith(hasError: true));

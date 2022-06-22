@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,7 +11,6 @@ import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/charity_page/widgets/detail_body_part1.dart';
-import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/comment_to_author_dialog.dart';
 import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/comments_widget.dart';
 import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
@@ -19,6 +18,7 @@ import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/
 import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/news_widget.dart';
 import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/payment_history_dialog.dart';
 import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/question_asked_widget.dart';
+import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
@@ -36,11 +36,12 @@ class OrganizationCharityItemModel {
 }
 
 class OrganizationCharityItemWidget extends StatefulWidget {
-  OrganizationCharityItemWidget({required this.helpModel});
+  const OrganizationCharityItemWidget({Key? key, required this.helpModel})
+      : super(key: key);
 
   static const String routName = '/organizationItemDetailPage2';
   static int tabChange = 0;
-  OrganizationCharityItemModel helpModel;
+  final OrganizationCharityItemModel helpModel;
 
   @override
   State<OrganizationCharityItemWidget> createState() =>
@@ -73,7 +74,7 @@ class _OrganizationCharityItemWidgetState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColorUtils.BACKGROUND,
+      backgroundColor: AppColorUtils.background,
       appBar: AppBarWithTitle(
         title: LocaleKeys.about_project.tr(),
         onPress: () {
@@ -84,11 +85,11 @@ class _OrganizationCharityItemWidgetState
         bloc: widget.helpModel.cubit,
         builder: (context, state) {
           return SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(11),
@@ -106,18 +107,18 @@ class _OrganizationCharityItemWidgetState
                               vertical: 18.w,
                             ),
                             child: ClipRRect(
-                              borderRadius: BorderRadius.all(
+                              borderRadius: const BorderRadius.all(
                                 Radius.circular(12),
                               ),
                               child: CachedNetworkImage(
                                 imageUrl: widget.helpModel.cardModel.image!,
                                 fit: BoxFit.cover,
                                 width: MediaQuery.of(context).size.width,
-                                placeholder: (context, url) => Center(
+                                placeholder: (context, url) => const Center(
                                   child: CircularProgressIndicator(),
                                 ),
                                 errorWidget: (context, url, error) =>
-                                    Icon(Icons.error),
+                                    const Icon(Icons.error),
                               ),
                             ),
                           ),
@@ -129,20 +130,20 @@ class _OrganizationCharityItemWidgetState
                                 showDialog(
                                   context: context,
                                   builder: (context) {
-                                    return PaymentHistoryDialog();
+                                    return const PaymentHistoryDialog();
                                   },
                                 );
                               },
                               child: Container(
                                 height: 35.w,
                                 width: 60.w,
-                                decoration: BoxDecoration(
-                                  color: AppColorUtils.BLUE_PERCENT,
+                                decoration: const BoxDecoration(
+                                  color: AppColorUtils.bluePercent,
                                   borderRadius: BorderRadius.horizontal(
                                     left: Radius.circular(12),
                                   ),
                                 ),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.monetization_on_outlined,
                                   color: Colors.white,
                                 ),
@@ -154,7 +155,7 @@ class _OrganizationCharityItemWidgetState
                       AppWidgets.text(
                         text: "Drenajni kuzatish uchun mo’jallangan moslama",
                         fontSize: 20.sp,
-                        color: AppColorUtils.DARK2,
+                        color: AppColorUtils.dark2,
                         fontWeight: FontWeight.w500,
                         maxLines: 2,
                       ).paddingSymmetric(horizontal: 20.w),
@@ -164,7 +165,7 @@ class _OrganizationCharityItemWidgetState
                           showDialog(
                             context: context,
                             builder: (context) {
-                              return CommentToAuthorDialog();
+                              return const CommentToAuthorDialog();
                             },
                           );
                         },
@@ -190,8 +191,8 @@ class _OrganizationCharityItemWidgetState
                         TabBar(
                           controller: _controller,
                           enableFeedback: true,
-                          labelColor: AppColorUtils.GREEN_APP,
-                          unselectedLabelColor: AppColorUtils.DARK_6,
+                          labelColor: AppColorUtils.greenApp,
+                          unselectedLabelColor: AppColorUtils.dark6,
                           unselectedLabelStyle: TextStyle(
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w400,
@@ -228,14 +229,14 @@ class _OrganizationCharityItemWidgetState
                           ],
                           isScrollable: true,
                           indicatorWeight: 2,
-                          indicatorColor: AppColorUtils.GREEN_APP,
+                          indicatorColor: AppColorUtils.greenApp,
                           indicatorSize: TabBarIndicatorSize.tab,
-                          padding: EdgeInsets.only(right: 10),
-                          indicatorPadding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(right: 10),
+                          indicatorPadding: const EdgeInsets.only(
                             right: 10,
                             left: 10,
                           ),
-                          labelPadding: EdgeInsets.only(
+                          labelPadding: const EdgeInsets.only(
                             right: 10,
                             left: 10,
                           ),
@@ -267,24 +268,24 @@ class _OrganizationCharityItemWidgetState
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   state.tobeVolunteer
-                                      ? SizedBox()
+                                      ? const SizedBox()
                                       : AppWidgets.text(
                                           text: LocaleKeys.tobe_volunteer.tr(),
-                                          color: AppColorUtils.DARK_6,
+                                          color: AppColorUtils.dark6,
                                           fontWeight: FontWeight.w400,
                                           fontSize: 12.w,
                                           richText: true,
                                           othersMarkers: [
                                               MarkerText(
                                                 marker: "&",
-                                                style: TextStyle(
-                                                  color: AppColorUtils.RED,
+                                                style: const TextStyle(
+                                                  color: AppColorUtils.red,
                                                 ),
                                               ),
                                               MarkerText(
                                                 marker: "//",
-                                                style: TextStyle(
-                                                  color: AppColorUtils.BLACK,
+                                                style: const TextStyle(
+                                                  color: AppColorUtils.black,
                                                 ),
                                               )
                                             ]).paddingSymmetric(
@@ -316,11 +317,11 @@ class _OrganizationCharityItemWidgetState
                                         height: 48.w,
                                         width: 274.w,
                                         color: state.tobeVolunteer
-                                            ? AppColorUtils.PERCENT_COLOR
-                                            : AppColorUtils.DISABLE_BC,
+                                            ? AppColorUtils.percentColor
+                                            : AppColorUtils.disableBc,
                                         textSize: 16.sp,
                                         fontWeight: FontWeight.w600,
-                                        textColor: AppColorUtils.WHITE,
+                                        textColor: AppColorUtils.white,
                                       ),
                                       AppWidgets.favouriteButton(
                                         select: widget
@@ -340,16 +341,16 @@ class _OrganizationCharityItemWidgetState
                                     text: LocaleKeys.go_to_personal_profile,
                                     height: 48.w,
                                     width: 1.sw,
-                                    color: AppColorUtils.BLUE_BUTTON,
+                                    color: AppColorUtils.blueButton,
                                     textSize: 16.sp,
                                     fontWeight: FontWeight.w600,
-                                    textColor: AppColorUtils.WHITE,
+                                    textColor: AppColorUtils.white,
                                   ).paddingSymmetric(horizontal: 20.w),
                                   AppWidgets.starTextWidget(
                                     text: LocaleKeys.you_accepted_ad,
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w500,
-                                    color: AppColorUtils.DARK_6,
+                                    color: AppColorUtils.dark6,
                                   ).paddingOnly(
                                     left: 20.w,
                                     top: 10.w,

@@ -7,10 +7,10 @@ Widget singleTab(bool type, String text) {
     onTap: () {},
     child: Container(
       decoration: type
-          ? BoxDecoration(
+          ? const BoxDecoration(
               border: Border(
                 bottom:
-                    BorderSide(color: AppColorUtils.KRAUDFANDING, width: 1.5),
+                    BorderSide(color: AppColorUtils.kraudfanding, width: 1.5),
               ),
             )
           : null,
@@ -20,7 +20,7 @@ Widget singleTab(bool type, String text) {
         text,
         style: TextStyle(
           fontSize: 14.sp,
-          color: type ? AppColorUtils.KRAUDFANDING : AppColorUtils.DARK_6,
+          color: type ? AppColorUtils.kraudfanding : AppColorUtils.dark6,
           fontWeight: type ? FontWeight.w600 : FontWeight.w400,
         ),
       ),

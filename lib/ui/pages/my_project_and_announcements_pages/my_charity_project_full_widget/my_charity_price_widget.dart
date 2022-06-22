@@ -33,7 +33,7 @@ class MyCharityPriceWidget extends StatelessWidget {
                 ),
                 AppWidgets.text(
                   text: model.totalSum!,
-                  color: AppColorUtils.TEXT_GREEN2,
+                  color: AppColorUtils.textGreen2,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ).paddingOnly(top: 5.w),
@@ -46,11 +46,11 @@ class MyCharityPriceWidget extends StatelessWidget {
                   text: LocaleKeys.date_of_announcement,
                   fontWeight: FontWeight.w400,
                   fontSize: 10.sp,
-                  color: AppColorUtils.DARK_6,
+                  color: AppColorUtils.dark6,
                 ),
                 AppWidgets.text(
                   text: model.createdDate!,
-                  color: AppColorUtils.TEXT_GREEN2,
+                  color: AppColorUtils.textGreen2,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ).paddingOnly(top: 5.w),
@@ -60,7 +60,7 @@ class MyCharityPriceWidget extends StatelessWidget {
         ).paddingSymmetric(horizontal: 20),
         Container(
           width: context.width,
-          color: AppColorUtils.GREEN_BACK,
+          color: AppColorUtils.greenBack,
           child: Column(
             children: [
               Row(
@@ -68,13 +68,13 @@ class MyCharityPriceWidget extends StatelessWidget {
                 children: [
                   AppWidgets.textLocale(
                     text: LocaleKeys.collected,
-                    color: AppColorUtils.DARK_6,
+                    color: AppColorUtils.dark6,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
                   ),
                   AppWidgets.textLocale(
                     text: LocaleKeys.done,
-                    color: AppColorUtils.DARK_6,
+                    color: AppColorUtils.dark6,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
                   ),
@@ -87,12 +87,12 @@ class MyCharityPriceWidget extends StatelessWidget {
                     text: LocaleKeys.sum,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
-                    color: AppColorUtils.GREEN_TEXT,
+                    color: AppColorUtils.greenText,
                     args: [model.totalSum!],
                   ),
                   AppWidgets.text(
                     text: "${model.percent.toString().split('.').first} %",
-                    color: AppColorUtils.BLUE_PERCENT,
+                    color: AppColorUtils.bluePercent,
                     fontWeight: FontWeight.w500,
                     fontSize: 16.sp,
                   ),
@@ -100,12 +100,12 @@ class MyCharityPriceWidget extends StatelessWidget {
               ).paddingOnly(top: 3),
               LinearPercentIndicator(
                 animation: true,
-                padding: EdgeInsets.all(0),
+                padding: const EdgeInsets.all(0),
                 lineHeight: 7.h,
                 animationDuration: 2000,
                 percent: model.percent! / 100,
-                progressColor: AppColorUtils.PERCENT_COLOR,
-                backgroundColor: AppColorUtils.PERCENT_COLOR2,
+                progressColor: AppColorUtils.percentColor,
+                backgroundColor: AppColorUtils.percentColor2,
               ).paddingOnly(top: 10.w),
             ],
           ).paddingSymmetric(

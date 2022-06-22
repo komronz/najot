@@ -21,7 +21,7 @@ class AddingProjectPage extends StatefulWidget {
   const AddingProjectPage({Key? key}) : super(key: key);
 
   @override
-  _AddingProjectPageState createState() => _AddingProjectPageState();
+  State<StatefulWidget> createState() => _AddingProjectPageState();
 }
 
 class _AddingProjectPageState extends State<AddingProjectPage> {
@@ -53,7 +53,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                   HomePage.globalKey.currentState!.openDrawer();
                 },
                 child: SvgPicture.asset(
-                  AppImageUtils.MENU,
+                  AppImageUtils.menu,
                   height: 35.w,
                   width: 35.w,
                 ),
@@ -68,7 +68,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                   NavigatorService.to.pushNamed(NotificationPage.routeName);
                 },
                 child: SvgPicture.asset(
-                  AppImageUtils.NOTIFICATION,
+                  AppImageUtils.notification,
                   height: 35.w,
                   width: 35.w,
                   fit: BoxFit.fill,
@@ -84,13 +84,13 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
           children: [
             Center(
               child: AppWidgets.imageSvg(
-                path: AppImageUtils.ADDING_PROJECT,
+                path: AppImageUtils.addingProject,
               ).paddingOnly(top: 18.h),
             ),
             AppWidgets.textLocale(
               text: LocaleKeys.fill_out_form,
               maxLines: 2,
-              color: AppColorUtils.DARK2,
+              color: AppColorUtils.dark2,
               fontSize: 16.sp,
               fontWeight: FontWeight.w600,
               textAlign: TextAlign.center,
@@ -100,7 +100,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
               style: TextStyle(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
-                color: AppColorUtils.DARK_4,
+                color: AppColorUtils.dark4,
               ),
             ).paddingOnly(
               bottom: 10,
@@ -114,7 +114,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
               style: TextStyle(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
-                color: AppColorUtils.DARK_4,
+                color: AppColorUtils.dark4,
               ),
             ).paddingOnly(
               bottom: 10,
@@ -138,7 +138,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                     .pushReplacementNamed(MyVolunteeringPage.routeName);
               },
               textColor: Colors.white,
-              color: AppColorUtils.PERCENT_COLOR,
+              color: AppColorUtils.percentColor,
             ).paddingSymmetric(
               vertical: 18,
             ),

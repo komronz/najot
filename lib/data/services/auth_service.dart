@@ -18,7 +18,7 @@ class AuthService {
 
   Future<TokenModel?> userLogin(String phone, String password) async {
     try {
-      final path = 'http://api.najot.thinkland.uz/auth/login-end';
+      const path = 'http://api.najot.thinkland.uz/auth/login-end';
       final body = {
         "phone": formatNumber(phone),
         "code": password,
@@ -46,7 +46,7 @@ class AuthService {
     String phone,
   ) async {
     try {
-      final path = 'http://api.najot.thinkland.uz/auth/login-start';
+      const path = 'http://api.najot.thinkland.uz/auth/login-start';
       final body = {
         "phone": formatNumber(phone),
         "first_name": "Ozodbek",
@@ -77,6 +77,6 @@ class AuthService {
 
   String formatNumber(String number) {
     var text = number.replaceAll(RegExp(r'\D()'), '');
-    return "998${text}";
+    return "998$text";
   }
 }

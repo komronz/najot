@@ -8,7 +8,6 @@ import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/
 class MoreWidget extends StatelessWidget {
   const MoreWidget({
     required this.cardModel,
-
     Key? key,
   }) : super(key: key);
 
@@ -34,17 +33,17 @@ class MoreWidget extends StatelessWidget {
           ),
           height: 218.w,
           child: ClipRRect(
-            borderRadius: BorderRadius.all(
+            borderRadius: const BorderRadius.all(
               Radius.circular(12),
             ),
             child: CachedNetworkImage(
               imageUrl: cardModel.image!,
               fit: BoxFit.cover,
               width: MediaQuery.of(context).size.width,
-              placeholder: (context, url) => Center(
+              placeholder: (context, url) => const Center(
                 child: CircularProgressIndicator(),
               ),
-              errorWidget: (context, url, error) => Icon(Icons.error),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
         ),

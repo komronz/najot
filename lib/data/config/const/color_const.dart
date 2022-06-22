@@ -2,5 +2,5 @@
 import 'package:flutter/material.dart';
 
 class ColorConst {
-  static const Color BLACK = Colors.black;
+  static const Color black = Colors.black;
 }

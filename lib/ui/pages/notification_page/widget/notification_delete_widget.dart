@@ -24,26 +24,26 @@ class NotificationDeleteWidget extends StatelessWidget {
         padding: EdgeInsets.all(24.w),
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
-          color: AppColorUtils.WHITE,
+          color: AppColorUtils.white,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SvgPicture.asset(AppImageUtils.DELETED_ICON)
+            SvgPicture.asset(AppImageUtils.deletedIcon)
                 .paddingOnly(bottom: 24.w),
             AppWidgets.textLocale(
                     fontWeight: FontWeight.w600,
                     fontSize: 18.sp,
-                    color: AppColorUtils.DARK2,
+                    color: AppColorUtils.dark2,
                     text: LocaleKeys.want_delete_note,
                     richText: true,
                     textAlign: TextAlign.center,
                     othersMarkers: [
                       MarkerText(
                         marker: "//",
-                        style: TextStyle(color: AppColorUtils.RED),
+                        style: const TextStyle(color: AppColorUtils.red),
                       ),
                     ],
                     maxLines: 2)
@@ -66,8 +66,8 @@ class NotificationDeleteWidget extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   height: 48.w,
                   width: 156.w,
-                  color: AppColorUtils.SMS_BTN2,
-                  textColor: AppColorUtils.KRAUDFANDING,
+                  color: AppColorUtils.smsBtn2,
+                  textColor: AppColorUtils.kraudfanding,
                   borderRadius: 10,
                 ),
                 ButtonCard(
@@ -79,8 +79,8 @@ class NotificationDeleteWidget extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   height: 48.w,
                   width: 106.w,
-                  color: AppColorUtils.DELETE_BTN,
-                  textColor: AppColorUtils.RED,
+                  color: AppColorUtils.deleteBtn,
+                  textColor: AppColorUtils.red,
                   borderRadius: 10,
                 )
               ],

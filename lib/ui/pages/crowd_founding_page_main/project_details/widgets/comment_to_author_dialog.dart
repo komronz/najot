@@ -1,11 +1,11 @@
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/success_send_question_dialog.dart';
+import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -25,7 +25,7 @@ class CommentToAuthorDialog extends StatelessWidget {
         padding: EdgeInsets.all(20.w),
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
-          color: AppColorUtils.WHITE,
+          color: AppColorUtils.white,
           borderRadius: BorderRadius.circular(12),
         ),
         child: ListView(
@@ -35,7 +35,7 @@ class CommentToAuthorDialog extends StatelessWidget {
               children: [
                 AppWidgets.textLocale(
                   text: LocaleKeys.author_write_question,
-                  color: AppColorUtils.DARK2,
+                  color: AppColorUtils.dark2,
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w600,
                 ),
@@ -65,7 +65,7 @@ class CommentToAuthorDialog extends StatelessWidget {
                     showDialog(
                       context: context,
                       builder: (context) {
-                        return SuccessSendQuestion();
+                        return const SuccessSendQuestion();
                       },
                     );
                   },
@@ -74,8 +74,8 @@ class CommentToAuthorDialog extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   height: 50.w,
                   width: 296.w,
-                  color: AppColorUtils.PERCENT_COLOR,
-                  textColor: AppColorUtils.WHITE,
+                  color: AppColorUtils.percentColor,
+                  textColor: AppColorUtils.white,
                   borderRadius: 10,
                 ),
                 SizedBox(
@@ -90,8 +90,8 @@ class CommentToAuthorDialog extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   height: 50.w,
                   width: 296.w,
-                  color: AppColorUtils.GREEN_ACCENT5,
-                  textColor: AppColorUtils.BLACK,
+                  color: AppColorUtils.greenAccent5,
+                  textColor: AppColorUtils.black,
                   borderRadius: 10,
                 )
               ],

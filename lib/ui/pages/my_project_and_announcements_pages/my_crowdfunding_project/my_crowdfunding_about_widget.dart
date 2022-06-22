@@ -30,13 +30,13 @@ import 'my_crowdfunding_support_page.dart';
 class MyCrowdfundingAboutWidget extends StatefulWidget {
   static const String routeName = "/myCrowdfundingAboutWidget";
 
-  const MyCrowdfundingAboutWidget({required this.model});
+  const MyCrowdfundingAboutWidget({Key? key, required this.model})
+      : super(key: key);
 
   final CrowdFoundingModel model;
 
   @override
-  _AboutMyCharityProjectWidgetState createState() =>
-      _AboutMyCharityProjectWidgetState();
+  State<StatefulWidget> createState() => _AboutMyCharityProjectWidgetState();
 }
 
 class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
@@ -84,7 +84,7 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                 children: [
                   Container(
                     width: context.width,
-                    decoration: DecorationConst.DEC_WITH_SHADOW,
+                    decoration: DecorationConst.decWithShadow,
                     child: Column(
                       children: [
                         Stack(
@@ -97,11 +97,11 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                 child: CachedNetworkImage(
                                   imageUrl: widget.model.imgUrl!,
                                   fit: BoxFit.cover,
-                                  placeholder: (context, url) => Center(
+                                  placeholder: (context, url) => const Center(
                                     child: CircularProgressIndicator(),
                                   ),
                                   errorWidget: (context, url, error) =>
-                                      Icon(Icons.error),
+                                      const Icon(Icons.error),
                                 ),
                               ).paddingSymmetric(horizontal: 20, vertical: 20),
                             ),
@@ -110,12 +110,12 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   AppWidgets.appButton(
-                                    color: AppColorUtils.BLUE,
+                                    color: AppColorUtils.blue,
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600,
                                     width: 128.w,
                                     height: 36.w,
-                                    textColor: AppColorUtils.WHITE,
+                                    textColor: AppColorUtils.white,
                                     title: LocaleKeys.used,
                                     borderRadius: 12,
                                     onTap: () {
@@ -123,28 +123,28 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                           MyCrowdfundingSupportPage.routeName,
                                           arguments: state.cardList);
                                     },
-                                    icon: SvgPicture.asset(AppImageUtils.USERS),
+                                    icon: SvgPicture.asset(AppImageUtils.users),
                                   ).paddingOnly(right: 17.w),
                                   InkWell(
                                     child: SvgPicture.asset(
-                                        AppImageUtils.TRASH_RED),
+                                        AppImageUtils.trashRed),
                                     onTap: () {
                                       showDialog(
                                         context: context,
                                         builder: (context) {
-                                          return MyCharityDeleteProjectDialog();
+                                          return const MyCharityDeleteProjectDialog();
                                         },
                                       );
                                     },
                                   ).paddingOnly(right: 12.w),
                                   InkWell(
                                     child: SvgPicture.asset(
-                                        AppImageUtils.EDIT_GREEN),
+                                        AppImageUtils.editGreen),
                                     onTap: () {
                                       showDialog(
                                         context: context,
                                         builder: (context) {
-                                          return MyCharityEditProjectDialog();
+                                          return const MyCharityEditProjectDialog();
                                         },
                                       );
                                     },
@@ -158,7 +158,7 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                           text: widget.model.title!,
                           fontWeight: FontWeight.w500,
                           fontSize: 20.sp,
-                          color: AppColorUtils.DARK2,
+                          color: AppColorUtils.dark2,
                           maxLines: 10,
                         ).paddingSymmetric(horizontal: 20),
                         MyCrowdfundingPriceWidget(model: widget.model)
@@ -178,12 +178,12 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                   children: [
                                     Icon(
                                       Icons.calendar_today_outlined,
-                                      color: AppColorUtils.BLUE_PERCENT,
+                                      color: AppColorUtils.bluePercent,
                                       size: 14.sp,
                                     ),
                                     AppWidgets.text(
                                       text: "25.02.2022",
-                                      color: AppColorUtils.BLUE_PERCENT,
+                                      color: AppColorUtils.bluePercent,
                                       fontWeight: FontWeight.w500,
                                       fontSize: 14.sp,
                                     ).paddingOnly(
@@ -228,8 +228,8 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                   },
                                   controller: _tabController,
                                   enableFeedback: true,
-                                  labelColor: AppColorUtils.GREEN_APP,
-                                  unselectedLabelColor: AppColorUtils.DARK_6,
+                                  labelColor: AppColorUtils.greenApp,
+                                  unselectedLabelColor: AppColorUtils.dark6,
                                   unselectedLabelStyle: TextStyle(
                                     fontSize: 14.sp,
                                     fontWeight: FontWeight.w400,
@@ -285,14 +285,14 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                   ],
                                   isScrollable: true,
                                   indicatorWeight: 2,
-                                  indicatorColor: AppColorUtils.GREEN_APP,
+                                  indicatorColor: AppColorUtils.greenApp,
                                   indicatorSize: TabBarIndicatorSize.tab,
-                                  padding: EdgeInsets.only(right: 10),
-                                  indicatorPadding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  indicatorPadding: const EdgeInsets.only(
                                     right: 10,
                                     left: 10,
                                   ),
-                                  labelPadding: EdgeInsets.only(
+                                  labelPadding: const EdgeInsets.only(
                                     right: 10,
                                     left: 10,
                                   ),
@@ -322,7 +322,7 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                           ),
                         )
                       : Container(
-                          color: AppColorUtils.WHITE,
+                          color: AppColorUtils.white,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -331,12 +331,12 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                   width: 31.w,
                                   height: 34.w,
                                   decoration: BoxDecoration(
-                                    color: AppColorUtils.BACK_BUTTON,
+                                    color: AppColorUtils.backButton,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Icon(
                                     Icons.arrow_back_ios_rounded,
-                                    color: AppColorUtils.IC_GREEN2,
+                                    color: AppColorUtils.icGreen2,
                                     size: 20.w,
                                   ),
                                 ),
@@ -357,7 +357,7 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                 ),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
-                                  color: AppColorUtils.GREEN_ACCENT4,
+                                  color: AppColorUtils.greenAccent4,
                                 ),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -388,17 +388,17 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                                             .start,
                                                     children: [
                                                       SizedBox(
+                                                        width: 240.w,
                                                         child: AppWidgets.text(
                                                           text:
                                                               "Insoniyat aynan qanday foyda beradi",
                                                           color: AppColorUtils
-                                                              .TEXT_GREEN2,
+                                                              .textGreen2,
                                                           fontWeight:
                                                               FontWeight.w600,
                                                           fontSize: 14.sp,
                                                           maxLines: 2,
                                                         ).paddingOnly(top: 5.w),
-                                                        width: 240.w,
                                                       ),
                                                       AppWidgets.textLocale(
                                                         text:
@@ -406,8 +406,8 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                                         fontSize: 12.sp,
                                                         fontWeight:
                                                             FontWeight.w400,
-                                                        color: AppColorUtils
-                                                            .DARK_6,
+                                                        color:
+                                                            AppColorUtils.dark6,
                                                       ).paddingOnly(top: 3.w),
                                                     ],
                                                   ).paddingOnly(left: 10),
@@ -418,19 +418,18 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                                     .model.infoModel![0].text!,
                                                 fontWeight: FontWeight.w400,
                                                 fontSize: 14.sp,
-                                                color: AppColorUtils.TEXT_GREY2,
+                                                color: AppColorUtils.textGrey2,
                                                 maxLines: 100,
                                                 height: 1.5,
                                               ).paddingSymmetric(
                                                   vertical: 15.w),
-                                              Divider(
+                                              const Divider(
                                                 thickness: 1,
-                                                color: AppColorUtils.BLACK_12,
+                                                color: AppColorUtils.black12,
                                               ),
                                               AppWidgets.text(
                                                 text: "Sizning javobingiz",
-                                                color:
-                                                    AppColorUtils.TEXT_GREEN2,
+                                                color: AppColorUtils.textGreen2,
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 14.sp,
                                               ).paddingOnly(top: 20.w),
@@ -439,40 +438,34 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                                     .model.infoModel![0].text!,
                                                 fontWeight: FontWeight.w400,
                                                 fontSize: 14.sp,
-                                                color: AppColorUtils.TEXT_GREY2,
+                                                color: AppColorUtils.textGrey2,
                                                 maxLines: 100,
                                                 height: 1.5,
                                               ).paddingSymmetric(
                                                   vertical: 15.w),
                                             ],
                                           )
-                                        : Container(
-                                            child: Center(
-                                              child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 30.w,
+                                        : Center(
+                                            child: Column(
+                                              children: [
+                                                SizedBox(
+                                                  height: 30.w,
+                                                ),
+                                                SvgPicture.asset(AppImageUtils
+                                                    .emptyQuestions),
+                                                SizedBox(
+                                                  width: 200.sp,
+                                                  child: AppWidgets.textLocale(
+                                                    textAlign: TextAlign.center,
+                                                    text: LocaleKeys
+                                                        .questions_empty,
+                                                    color: AppColorUtils.dark4,
+                                                    fontSize: 14.sp,
+                                                    fontWeight: FontWeight.w600,
+                                                    maxLines: 2,
                                                   ),
-                                                  SvgPicture.asset(AppImageUtils
-                                                      .EMPTY_QUESTIONS),
-                                                  SizedBox(
-                                                    width: 200.sp,
-                                                    child:
-                                                        AppWidgets.textLocale(
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      text: LocaleKeys
-                                                          .questions_empty,
-                                                      color:
-                                                          AppColorUtils.DARK_4,
-                                                      fontSize: 14.sp,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      maxLines: 2,
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
+                                                )
+                                              ],
                                             ),
                                           ),
                                   ],

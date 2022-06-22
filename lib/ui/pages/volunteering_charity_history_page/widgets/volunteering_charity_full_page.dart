@@ -23,18 +23,17 @@ import '../../my_project_and_announcements_pages/my_charity_project_full_widget/
 import '../../my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_question_asked_widget.dart';
 
 class VolunteeringCharityFullPage extends StatefulWidget {
-  final CharityModel model;
-  MyCharitySupportListCubit cubit = MyCharitySupportListCubit();
-
   VolunteeringCharityFullPage({
     required this.model,
     Key? key,
   }) : super(key: key);
+
+  final CharityModel model;
+  final MyCharitySupportListCubit cubit = MyCharitySupportListCubit();
   static const String routName = 'volunteeringCharityFullPage';
 
   @override
-  _VolunteeringCharityFullPageState createState() =>
-      _VolunteeringCharityFullPageState();
+  State<StatefulWidget> createState() => _VolunteeringCharityFullPageState();
 }
 
 class _VolunteeringCharityFullPageState
@@ -69,13 +68,13 @@ class _VolunteeringCharityFullPageState
           NavigatorService.to.pop();
         },
       ),
-      backgroundColor: AppColorUtils.BACKGROUND,
+      backgroundColor: AppColorUtils.background,
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
               width: 1.sw,
-              decoration: DecorationConst.DEC_WITH_SHADOW,
+              decoration: DecorationConst.decWithShadow,
               child: Column(
                 children: [
                   Stack(
@@ -88,11 +87,11 @@ class _VolunteeringCharityFullPageState
                           child: CachedNetworkImage(
                             imageUrl: widget.model.imgUrl!,
                             fit: BoxFit.cover,
-                            placeholder: (context, url) => Center(
+                            placeholder: (context, url) => const Center(
                               child: CircularProgressIndicator(),
                             ),
                             errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
+                                const Icon(Icons.error),
                           ),
                         ).paddingSymmetric(horizontal: 20, vertical: 20),
                       ),
@@ -102,15 +101,15 @@ class _VolunteeringCharityFullPageState
                         child: Container(
                           height: 35.w,
                           width: 60.w,
-                          decoration: BoxDecoration(
-                            color: AppColorUtils.BLUE,
+                          decoration: const BoxDecoration(
+                            color: AppColorUtils.blue,
                             borderRadius: BorderRadius.horizontal(
                               left: Radius.circular(12),
                             ),
                           ),
-                          child: Icon(
+                          child: const Icon(
                             Icons.monetization_on_outlined,
-                            color: AppColorUtils.WHITE,
+                            color: AppColorUtils.white,
                           ),
                         ),
                       )
@@ -120,7 +119,7 @@ class _VolunteeringCharityFullPageState
                     text: widget.model.title!,
                     fontWeight: FontWeight.w500,
                     fontSize: 20.sp,
-                    color: AppColorUtils.DARK2,
+                    color: AppColorUtils.dark2,
                     maxLines: 10,
                   ).paddingSymmetric(horizontal: 20),
                   CharityAuthorWidget(model: widget.model)
@@ -146,12 +145,12 @@ class _VolunteeringCharityFullPageState
                             children: [
                               Icon(
                                 Icons.calendar_today_outlined,
-                                color: AppColorUtils.BLUE_PERCENT,
+                                color: AppColorUtils.bluePercent,
                                 size: 14.sp,
                               ),
                               AppWidgets.text(
                                 text: "25.02.2022",
-                                color: AppColorUtils.BLUE_PERCENT,
+                                color: AppColorUtils.bluePercent,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14.sp,
                               ).paddingOnly(left: 6.w),
@@ -167,7 +166,7 @@ class _VolunteeringCharityFullPageState
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 20.w),
                     decoration: BoxDecoration(
-                        color: AppColorUtils.WHITE,
+                        color: AppColorUtils.white,
                         borderRadius: BorderRadius.circular(11.0)),
                     child: DefaultTabController(
                       initialIndex: 0,
@@ -177,8 +176,8 @@ class _VolunteeringCharityFullPageState
                           TabBar(
                             controller: _tabController,
                             enableFeedback: true,
-                            labelColor: AppColorUtils.GREEN_APP,
-                            unselectedLabelColor: AppColorUtils.DARK_6,
+                            labelColor: AppColorUtils.greenApp,
+                            unselectedLabelColor: AppColorUtils.dark6,
                             unselectedLabelStyle: TextStyle(
                               fontSize: 14.sp,
                               fontWeight: FontWeight.w400,
@@ -215,14 +214,14 @@ class _VolunteeringCharityFullPageState
                             ],
                             isScrollable: true,
                             indicatorWeight: 2,
-                            indicatorColor: AppColorUtils.GREEN_APP,
+                            indicatorColor: AppColorUtils.greenApp,
                             indicatorSize: TabBarIndicatorSize.tab,
-                            padding: EdgeInsets.only(right: 10),
-                            indicatorPadding: EdgeInsets.only(
+                            padding: const EdgeInsets.only(right: 10),
+                            indicatorPadding: const EdgeInsets.only(
                               right: 10,
                               left: 10,
                             ),
-                            labelPadding: EdgeInsets.only(
+                            labelPadding: const EdgeInsets.only(
                               right: 10,
                               left: 10,
                             ),
@@ -258,17 +257,17 @@ class _VolunteeringCharityFullPageState
                                   showDialog(
                                     context: context,
                                     builder: (context) {
-                                      return SupportProjectDialog();
+                                      return const SupportProjectDialog();
                                     },
                                   );
                                 },
                                 text: LocaleKeys.project_implementation,
                                 height: 48.w,
                                 width: 274.w,
-                                color: AppColorUtils.PERCENT_COLOR,
+                                color: AppColorUtils.percentColor,
                                 textSize: 16.sp,
                                 fontWeight: FontWeight.w600,
-                                textColor: AppColorUtils.WHITE,
+                                textColor: AppColorUtils.white,
                               ),
                               AppWidgets.favouriteButton(
                                 select: widget.model.isFavorite!,
@@ -313,7 +312,7 @@ class CharityPriceWidget extends StatelessWidget {
                 AppWidgets.starTextWidget(text: LocaleKeys.need_summa),
                 AppWidgets.text(
                   text: model.totalSum!,
-                  color: AppColorUtils.TEXT_GREEN2,
+                  color: AppColorUtils.textGreen2,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ).paddingOnly(top: 3.w),
@@ -326,11 +325,11 @@ class CharityPriceWidget extends StatelessWidget {
                   text: LocaleKeys.announcement_day,
                   fontWeight: FontWeight.w400,
                   fontSize: 10.sp,
-                  color: AppColorUtils.DARK_6,
+                  color: AppColorUtils.dark6,
                 ),
                 AppWidgets.text(
                   text: model.createdDate!,
-                  color: AppColorUtils.TEXT_GREEN2,
+                  color: AppColorUtils.textGreen2,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ).paddingOnly(top: 3.w),
@@ -340,7 +339,7 @@ class CharityPriceWidget extends StatelessWidget {
         ).paddingSymmetric(horizontal: 20),
         Container(
           width: context.width,
-          color: AppColorUtils.GREEN_BACK,
+          color: AppColorUtils.greenBack,
           child: Column(
             children: [
               Row(
@@ -348,13 +347,13 @@ class CharityPriceWidget extends StatelessWidget {
                 children: [
                   AppWidgets.textLocale(
                     text: LocaleKeys.collected,
-                    color: AppColorUtils.DARK_6,
+                    color: AppColorUtils.dark6,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
                   ),
                   AppWidgets.textLocale(
                     text: LocaleKeys.done,
-                    color: AppColorUtils.DARK_6,
+                    color: AppColorUtils.dark6,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
                   ),
@@ -367,12 +366,12 @@ class CharityPriceWidget extends StatelessWidget {
                     text: LocaleKeys.sum,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
-                    color: AppColorUtils.GREEN_TEXT,
+                    color: AppColorUtils.greenText,
                     args: [model.totalSum!],
                   ),
                   AppWidgets.text(
                     text: "${model.percent.toString().split('.').first} %",
-                    color: AppColorUtils.BLUE_PERCENT,
+                    color: AppColorUtils.bluePercent,
                     fontWeight: FontWeight.w500,
                     fontSize: 16.sp,
                   ),
@@ -380,12 +379,12 @@ class CharityPriceWidget extends StatelessWidget {
               ).paddingOnly(top: 3),
               LinearPercentIndicator(
                 animation: true,
-                padding: EdgeInsets.all(0),
+                padding: const EdgeInsets.all(0),
                 lineHeight: 10.h,
                 animationDuration: 2000,
                 percent: model.percent! / 100,
-                progressColor: AppColorUtils.PERCENT_COLOR,
-                backgroundColor: AppColorUtils.PERCENT_COLOR2,
+                progressColor: AppColorUtils.percentColor,
+                backgroundColor: AppColorUtils.percentColor2,
               ).paddingOnly(top: 10.w),
             ],
           ).paddingSymmetric(
@@ -431,13 +430,13 @@ class CharityAuthorWidget extends StatelessWidget {
                   text: LocaleKeys.project_author,
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w400,
-                  color: AppColorUtils.DARK_6,
+                  color: AppColorUtils.dark6,
                 ),
                 SizedBox(
                   width: 150.w,
                   child: AppWidgets.text(
                     text: model.author!,
-                    color: AppColorUtils.TEXT_GREEN2,
+                    color: AppColorUtils.textGreen2,
                     fontWeight: FontWeight.w600,
                     fontSize: 14.sp,
                   ).paddingOnly(top: 2.w),
@@ -451,8 +450,8 @@ class CharityAuthorWidget extends StatelessWidget {
           text: LocaleKeys.ask_question,
           width: 100.w,
           height: 35.w,
-          color: AppColorUtils.GREEN_BTN,
-          textColor: AppColorUtils.GREEN_TEXT,
+          color: AppColorUtils.greenBtn,
+          textColor: AppColorUtils.greenText,
           borderRadius: 10,
           textSize: 12.sp,
           fontWeight: FontWeight.w600,

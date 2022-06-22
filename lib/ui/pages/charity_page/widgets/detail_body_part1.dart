@@ -1,4 +1,4 @@
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,9 +10,9 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class DetailBodyPart1 extends StatelessWidget {
-  DetailBodyPart1({required this.cardModel});
+  const DetailBodyPart1({required this.cardModel, Key? key}) : super(key: key);
 
-  CardModel cardModel;
+  final CardModel cardModel;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +31,10 @@ class DetailBodyPart1 extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    SvgPicture.asset(AppImageUtils.DATE),
+                    SvgPicture.asset(AppImageUtils.date),
                     AppWidgets.text(
                       text: cardModel.date!,
-                      color: AppColorUtils.BLUE_PERCENT,
+                      color: AppColorUtils.bluePercent,
                       fontWeight: FontWeight.w600,
                       fontSize: 16.sp,
                     ).paddingOnly(left: 6.w),
@@ -49,11 +49,11 @@ class DetailBodyPart1 extends StatelessWidget {
                   text: LocaleKeys.announcement_day,
                   fontWeight: FontWeight.w400,
                   fontSize: 10.sp,
-                  color: AppColorUtils.DARK_6,
+                  color: AppColorUtils.dark6,
                 ),
                 AppWidgets.text(
                   text: "25.08.2022",
-                  color: Color(0xFF043F3B),
+                  color: const Color(0xFF043F3B),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ).paddingOnly(top: 3.w),
@@ -65,32 +65,32 @@ class DetailBodyPart1 extends StatelessWidget {
           text: LocaleKeys.help_type.tr(),
           fontWeight: FontWeight.w400,
           fontSize: 10.sp,
-          color: AppColorUtils.DARK_6,
+          color: AppColorUtils.dark6,
         ).paddingOnly(top: 13.w, left: 20.w, bottom: 3.w),
         AppWidgets.text(
                 text: "Ovqat qilib berish va uyni yig'ishtirish",
                 maxLines: 2,
                 fontWeight: FontWeight.w600,
                 fontSize: 16.sp,
-                color: AppColorUtils.GREEN_TEXT)
+                color: AppColorUtils.greenText)
             .paddingSymmetric(horizontal: 20.w),
         AppWidgets.textLocale(
           text: LocaleKeys.address,
           fontWeight: FontWeight.w400,
           fontSize: 10.sp,
-          color: AppColorUtils.DARK_6,
+          color: AppColorUtils.dark6,
         ).paddingOnly(
           left: 20.w,
           top: 12.w,
           bottom: 3.w,
         ),
         AppWidgets.text(
-                text: "Toshkent Shahar, Mirobod tumani*********",
-                fontSize: 14.w,
-                fontWeight: FontWeight.w500,
-                color: AppColorUtils.TEXT_BLUE2,
-                maxLines: 2)
-            .paddingSymmetric(horizontal: 20.w)
+          text: "Toshkent Shahar, Mirobod tumani*********",
+          fontSize: 14.w,
+          fontWeight: FontWeight.w500,
+          color: AppColorUtils.textBlue2,
+          maxLines: 2,
+        ).paddingSymmetric(horizontal: 20.w)
       ],
     );
   }

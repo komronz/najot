@@ -33,17 +33,17 @@ class MyVolunteeringMoreWidget extends StatelessWidget {
           ),
           height: 218.w,
           child: ClipRRect(
-            borderRadius: BorderRadius.all(
+            borderRadius: const BorderRadius.all(
               Radius.circular(12),
             ),
             child: CachedNetworkImage(
               imageUrl: cardModel.imgUrl!,
               fit: BoxFit.cover,
               width: MediaQuery.of(context).size.width,
-              placeholder: (context, url) => Center(
+              placeholder: (context, url) => const Center(
                 child: CircularProgressIndicator(),
               ),
-              errorWidget: (context, url, error) => Icon(Icons.error),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
         ).paddingOnly(top: 20.h),

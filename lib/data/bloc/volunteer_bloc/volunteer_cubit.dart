@@ -8,13 +8,13 @@ class VolunteerCubit extends Cubit<VolunteerState> {
   VolunteerCubit() : super(VolunteerState(list: CardModel.list));
 
   Future changeLike({required CardModel cardModel}) async {
-    var list = await CardModel.list;
+    var list = CardModel.list;
 
-    list.forEach((element) {
+    for (var element in list) {
       if (cardModel.title == element.title) {
         element.isFavorite = !cardModel.isFavorite!;
       }
-    });
+    }
     emit(state.copyWith(list: list));
   }
 }

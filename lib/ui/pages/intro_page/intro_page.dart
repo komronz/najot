@@ -15,7 +15,7 @@ class IntroPage extends StatelessWidget {
   static const String routeName = "/introPage";
 
   @override
-  Widget build(BuildContext buildContext) {
+  Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => IntroCubit(),
       child: Scaffold(
@@ -29,7 +29,7 @@ class IntroPage extends StatelessWidget {
                     context.read<IntroCubit>().changePageNext(page);
                   },
                   controller: context.read<IntroCubit>().pageController,
-                  children: [
+                  children: const [
                     IntroPageOneWidget(
                       image: 'assets/images/splash_1.png',
                       content:
@@ -49,7 +49,7 @@ class IntroPage extends StatelessWidget {
                             "Lorem Ipsum is simply dummy text of the printing and typesetting industry"),
                   ],
                 ),
-                Container(
+                SizedBox(
                   height: 19.h,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -75,7 +75,7 @@ class IntroPage extends StatelessWidget {
               ],
             );
           }
-          return Center(
+          return const Center(
             child: Text("null"),
           );
         }),
@@ -90,7 +90,7 @@ class IntroPage extends StatelessWidget {
       width: isActive ? 26 : 19,
       margin: const EdgeInsets.only(right: 7),
       decoration: BoxDecoration(
-          color: isActive ? Color(0xFF0BBF90) : Colors.white,
+          color: isActive ? const Color(0xFF0BBF90) : Colors.white,
           borderRadius: BorderRadius.circular(11)),
     );
   }

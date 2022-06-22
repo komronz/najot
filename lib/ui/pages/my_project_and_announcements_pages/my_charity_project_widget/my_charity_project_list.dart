@@ -24,7 +24,7 @@ class MyCharityProjectList extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           AppWidgets.imageSvg(
-            path: AppImageUtils.IMG_CHARITY_EMPTY,
+            path: AppImageUtils.imgCharityEmpty,
             height: 70.w,
             width: 70.w,
             fit: BoxFit.none,
@@ -35,7 +35,7 @@ class MyCharityProjectList extends StatelessWidget {
             fontWeight: FontWeight.w600,
             maxLines: 2,
             textAlign: TextAlign.center,
-            color: AppColorUtils.GRAY_4,
+            color: AppColorUtils.gray4,
           ).paddingOnly(
             top: 20.w,
             right: 80.w,
@@ -50,9 +50,9 @@ class MyCharityProjectList extends StatelessWidget {
           GridView.count(
             shrinkWrap: true,
             crossAxisCount: 2,
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             childAspectRatio: 168 / 298,
-            padding: EdgeInsets.all(0),
+            padding: const EdgeInsets.all(0),
             reverse: false,
             children: List.generate(
               list.length,

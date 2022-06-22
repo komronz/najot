@@ -16,11 +16,11 @@ class LanguageCubit extends HydratedCubit<LanguageState> {
   static LanguageCubit get to => GetIt.I<LanguageCubit>();
 
   static Future init() async {
-    GetIt.instance..registerSingleton<LanguageCubit>(LanguageCubit());
+    GetIt.instance.registerSingleton<LanguageCubit>(LanguageCubit());
   }
 
   LanguageCubit()
-      : super(LanguageState(
+      : super(const LanguageState(
           locale: Locale('uz', 'UZ'),
         ));
 
@@ -29,11 +29,11 @@ class LanguageCubit extends HydratedCubit<LanguageState> {
   }
 
   final List<LanguageItem> languages = [
-    LanguageItem(
+    const LanguageItem(
       languageLocaleKey: LocaleKeys.str_uzbek,
       locale: Locale('uz', 'UZ'),
     ),
-    LanguageItem(
+    const LanguageItem(
       languageLocaleKey: LocaleKeys.str_russian,
       locale: Locale('ru', 'RU'),
     ),

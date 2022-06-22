@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,14 +30,15 @@ class VolunteerHelpModel {
 class VolunteerHelpWidget extends StatelessWidget {
   static const String routeName = '/volunteerHelpWidget';
 
-  VolunteerHelpWidget({required this.volunteerHelpModel});
+  const VolunteerHelpWidget({Key? key, required this.volunteerHelpModel})
+      : super(key: key);
 
-  VolunteerHelpModel volunteerHelpModel;
+  final VolunteerHelpModel volunteerHelpModel;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColorUtils.BACKGROUND,
+        backgroundColor: AppColorUtils.background,
         appBar: AppBarWithTitle(
           title: LocaleKeys.help,
           onPress: () {
@@ -60,18 +61,18 @@ class VolunteerHelpWidget extends StatelessWidget {
                           vertical: 18.w,
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.all(
+                          borderRadius: const BorderRadius.all(
                             Radius.circular(12),
                           ),
                           child: CachedNetworkImage(
                             imageUrl: volunteerHelpModel.cardModel.image!,
                             fit: BoxFit.cover,
                             width: MediaQuery.of(context).size.width,
-                            placeholder: (context, url) => Center(
+                            placeholder: (context, url) => const Center(
                               child: CircularProgressIndicator(),
                             ),
                             errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
+                                const Icon(Icons.error),
                           ),
                         ),
                       ),
@@ -81,7 +82,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                     text: LocaleKeys.project_name,
                     fontWeight: FontWeight.w400,
                     fontSize: 10.sp,
-                    color: AppColorUtils.DARK_6,
+                    color: AppColorUtils.dark6,
                   ).paddingOnly(
                     left: 20.w,
                     top: 12.w,
@@ -90,7 +91,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                   AppWidgets.text(
                     text: "Drenajni kuzatish uchun mo’ljallangan moslama",
                     fontSize: 20.sp,
-                    color: AppColorUtils.DARK2,
+                    color: AppColorUtils.dark2,
                     fontWeight: FontWeight.w500,
                     maxLines: 2,
                   ).paddingSymmetric(horizontal: 20.w),
@@ -118,13 +119,13 @@ class VolunteerHelpWidget extends StatelessWidget {
                             text: LocaleKeys.project_author,
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w400,
-                            color: AppColorUtils.DARK_6,
+                            color: AppColorUtils.dark6,
                           ),
                           SizedBox(
                             width: 150.w,
                             child: AppWidgets.text(
                               text: "Eshonov Fakhriyor",
-                              color: AppColorUtils.TEXT_GREEN2,
+                              color: AppColorUtils.textGreen2,
                               fontWeight: FontWeight.w600,
                               fontSize: 14.sp,
                             ).paddingOnly(top: 2.w),
@@ -145,10 +146,10 @@ class VolunteerHelpWidget extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          SvgPicture.asset(AppImageUtils.DATE),
+                          SvgPicture.asset(AppImageUtils.date),
                           AppWidgets.text(
                             text: volunteerHelpModel.cardModel.date!,
-                            color: AppColorUtils.BLUE_PERCENT,
+                            color: AppColorUtils.bluePercent,
                             fontWeight: FontWeight.w600,
                             fontSize: 16.sp,
                           ).paddingOnly(left: 6.w),
@@ -160,20 +161,20 @@ class VolunteerHelpWidget extends StatelessWidget {
                     text: LocaleKeys.help_type.tr(),
                     fontWeight: FontWeight.w400,
                     fontSize: 10.sp,
-                    color: AppColorUtils.DARK_6,
+                    color: AppColorUtils.dark6,
                   ).paddingOnly(top: 13.w, left: 20.w, bottom: 3.w),
                   AppWidgets.text(
                           text: "Ovqat qilib berish va uyni yig'ishtirish",
                           maxLines: 2,
                           fontWeight: FontWeight.w600,
                           fontSize: 16.sp,
-                          color: AppColorUtils.GREEN_TEXT)
+                          color: AppColorUtils.greenText)
                       .paddingSymmetric(horizontal: 20.w),
                   AppWidgets.textLocale(
                     text: LocaleKeys.address,
                     fontWeight: FontWeight.w400,
                     fontSize: 10.sp,
-                    color: AppColorUtils.DARK_6,
+                    color: AppColorUtils.dark6,
                   ).paddingOnly(
                     left: 20.w,
                     top: 12.w,
@@ -183,7 +184,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                           text: "Toshkent Shahar, Mirobod tumani*********",
                           fontSize: 14.w,
                           fontWeight: FontWeight.w500,
-                          color: AppColorUtils.TEXT_BLUE,
+                          color: AppColorUtils.textBlue,
                           maxLines: 2)
                       .paddingSymmetric(horizontal: 20.w),
                   ButtonCard(
@@ -202,11 +203,11 @@ class VolunteerHelpWidget extends StatelessWidget {
                     height: 48.w,
                     width: 1.sw,
                     color: state.checkBox
-                        ? AppColorUtils.PERCENT_COLOR
-                        : AppColorUtils.DISABLE_BC,
+                        ? AppColorUtils.percentColor
+                        : AppColorUtils.disableBc,
                     textSize: 16.sp,
                     fontWeight: FontWeight.w600,
-                    textColor: AppColorUtils.WHITE,
+                    textColor: AppColorUtils.white,
                   ).paddingOnly(
                     left: 20.w,
                     right: 20.w,
@@ -219,28 +220,28 @@ class VolunteerHelpWidget extends StatelessWidget {
                           volunteerHelpModel.cubit.onTapCheckBox(v!);
                         },
                         value: state.checkBox,
-                        checkColor: AppColorUtils.BORDER_COLOR,
+                        checkColor: AppColorUtils.borderColor,
                         activeColor: Colors.transparent,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(2.0),
                         ),
                         side: MaterialStateBorderSide.resolveWith(
-                          (states) => BorderSide(
+                          (states) => const BorderSide(
                             width: 2.0,
-                            color: AppColorUtils.BORDER_COLOR,
+                            color: AppColorUtils.borderColor,
                           ),
                         ),
                       ).paddingOnly(left: 8.w),
                       AppWidgets.textLocale(
                           text: LocaleKeys.i_agree,
-                          color: AppColorUtils.DARK_1,
+                          color: AppColorUtils.dark1,
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w400)
                     ],
                   ),
                   AppWidgets.textLocale(
                           text: LocaleKeys.attention_agree_help,
-                          color: AppColorUtils.RED,
+                          color: AppColorUtils.red,
                           fontWeight: FontWeight.w400,
                           fontSize: 12.sp,
                           maxLines: 2)

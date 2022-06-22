@@ -31,7 +31,7 @@ class MyCrowdfundingSupportPage extends StatelessWidget {
         initialIndex: 0,
         length: 2,
         child: Container(
-          decoration: DecorationConst.DEC_WITH_SHADOW,
+          decoration: DecorationConst.decWithShadow,
           height: context.height,
           width: context.width,
           child: Column(
@@ -40,8 +40,8 @@ class MyCrowdfundingSupportPage extends StatelessWidget {
             children: [
               TabBar(
                 enableFeedback: true,
-                labelColor: AppColorUtils.GREEN_APP,
-                unselectedLabelColor: AppColorUtils.DARK_6,
+                labelColor: AppColorUtils.greenApp,
+                unselectedLabelColor: AppColorUtils.dark6,
                 unselectedLabelStyle: TextStyle(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w400,
@@ -50,13 +50,13 @@ class MyCrowdfundingSupportPage extends StatelessWidget {
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w600,
                 ),
-                tabs: [
+                tabs: const [
                   Text("Mablag'"),
                   Text("Mahsulot sotib olganlar"),
                 ],
                 isScrollable: true,
                 indicatorWeight: 1.5,
-                indicatorColor: AppColorUtils.GREEN_APP,
+                indicatorColor: AppColorUtils.greenApp,
                 indicatorSize: TabBarIndicatorSize.label,
                 // padding: EdgeInsets.only(right: 10),
                 // indicatorPadding: EdgeInsets.only(right: 10, left: 10),
@@ -68,7 +68,7 @@ class MyCrowdfundingSupportPage extends StatelessWidget {
                     MyCrowdfundingSupportListWidget(
                       list: list,
                     ),
-                    MyCrowdfundingProductPage(),
+                    const MyCrowdfundingProductPage(),
                   ],
                 ),
               )

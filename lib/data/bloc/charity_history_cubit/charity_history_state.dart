@@ -7,7 +7,7 @@ class CharityHistoryState extends Equatable {
   final bool hasConnection;
   final bool isLoading;
 
-  CharityHistoryState({
+  const CharityHistoryState({
     this.charityList = const [],
     this.kraufandingList = const [],
     this.hasError = false,

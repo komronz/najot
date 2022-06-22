@@ -10,6 +10,8 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 class LoadingPage extends StatelessWidget {
   static const String routeName = "/loadingPage";
 
+  const LoadingPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -26,13 +28,13 @@ class LoadingPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CircularProgressIndicator(
-                  color: AppColors.MAIN,
+                  color: AppColors.main,
                 ),
                 AppWidgets.textLocale(
                   text: LocaleKeys.please_wait,
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w600,
-                  color: AppColors.BLACK,
+                  color: AppColors.black,
                 ).paddingOnly(top: 14.w),
               ],
             ),

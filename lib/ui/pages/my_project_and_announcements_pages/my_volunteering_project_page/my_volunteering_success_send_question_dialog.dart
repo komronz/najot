@@ -26,7 +26,7 @@ class MyVolunteeringSuccessSendQuestion extends StatelessWidget {
         padding: EdgeInsets.all(25.w),
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
-          color: AppColorUtils.WHITE,
+          color: AppColorUtils.white,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
@@ -35,19 +35,19 @@ class MyVolunteeringSuccessSendQuestion extends StatelessWidget {
             AppWidgets.textLocale(
                     fontWeight: FontWeight.w600,
                     fontSize: 18.sp,
-                    color: AppColorUtils.DARK2,
+                    color: AppColorUtils.dark2,
                     textAlign: TextAlign.center,
                     text: LocaleKeys.inquiry_moderators_contact,
                     richText: true,
                     othersMarkers: [
                       MarkerText(
                         marker: "//",
-                        style: TextStyle(color: AppColorUtils.GREEN_TEXT),
+                        style: const TextStyle(color: AppColorUtils.greenText),
                       )
                     ],
                     maxLines: 3)
                 .paddingSymmetric(horizontal: 25),
-            SvgPicture.asset(AppImageUtils.IC_EARPHONES)
+            SvgPicture.asset(AppImageUtils.icEarphones)
                 .paddingOnly(bottom: 24, top: 18),
             SizedBox(
               height: 12.w,
@@ -61,8 +61,8 @@ class MyVolunteeringSuccessSendQuestion extends StatelessWidget {
               fontWeight: FontWeight.w600,
               height: 50.w,
               width: double.infinity,
-              color: AppColorUtils.GREEN_ACCENT5,
-              textColor: AppColorUtils.SMS_BTN3,
+              color: AppColorUtils.greenAccent5,
+              textColor: AppColorUtils.smsBtn3,
               borderRadius: 10,
             ),
           ],

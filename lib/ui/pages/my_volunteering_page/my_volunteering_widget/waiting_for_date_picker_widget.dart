@@ -17,6 +17,7 @@ import '../../../../data/model/volunteering_model.dart';
 import '../../../../data/utils/date_time_util.dart';
 import '../../../widgets/app_widgets.dart';
 
+// ignore: must_be_immutable
 class WaitingForDatePickerWidget extends StatelessWidget {
   WaitingForDatePickerWidget({
     required this.selectFunction,
@@ -25,9 +26,10 @@ class WaitingForDatePickerWidget extends StatelessWidget {
   }) : super(key: key);
   final Function selectFunction;
   DateTime _date = DateTime.now();
+
   // DateTime _time = DateTime.now();
 
-  VolunteeringModel model;
+  final VolunteeringModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +37,9 @@ class WaitingForDatePickerWidget extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: Container(
-          margin: EdgeInsets.all(20.0),
+          margin: const EdgeInsets.all(20.0),
           decoration: ShapeDecoration(
-            color: AppColors.WHITE,
+            color: AppColors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),
             ),
@@ -49,7 +51,7 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                 child: AppWidgets.text(
                   text: LocaleKeys.add_to_note.tr(),
                   fontSize: 20.sp,
-                  color: AppColorUtils.DARK2,
+                  color: AppColorUtils.dark2,
                   fontWeight: FontWeight.w600,
                 ),
               ).paddingOnly(
@@ -58,7 +60,7 @@ class WaitingForDatePickerWidget extends StatelessWidget {
               ),
               Container(
                 width: double.infinity,
-                color: AppColorUtils.WHITE_GREY,
+                color: AppColorUtils.whiteGrey,
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -68,20 +70,20 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                         isCenter: true,
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
-                        color: AppColorUtils.BLUE_TEXT,
+                        color: AppColorUtils.blueText,
                       ).paddingOnly(bottom: 5),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           AppWidgets.imageSvg(
-                            path: AppImageUtils.CALENDAR_RED,
-                            color: AppColorUtils.BLUE_TEXT,
+                            path: AppImageUtils.calendarRed,
+                            color: AppColorUtils.blueText,
                             height: 16,
                           ).paddingOnly(right: 5),
                           AppWidgets.textLocale(
-                            text:
-                                "${DateTimeUtil.dmy(DateTime.now(), context.locale)}",
-                            color: AppColorUtils.BLUE_TEXT,
+                            text: DateTimeUtil.dmy(
+                                DateTime.now(), context.locale),
+                            color: AppColorUtils.blueText,
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w500,
                           ),
@@ -102,7 +104,7 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                     width: 2,
-                    color: AppColorUtils.GRAY_3,
+                    color: AppColorUtils.gray3,
                   ),
                 ),
                 child: Column(
@@ -111,79 +113,75 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         AppWidgets.imageSvg(
-                          path: AppImageUtils.NOTIFICATION_GREY,
-                          color: AppColorUtils.GREEN_BLACK2,
+                          path: AppImageUtils.notificationGrey,
+                          color: AppColorUtils.greenBlack2,
                         ).paddingOnly(right: 5),
                         Expanded(
                           child: AppWidgets.textLocale(
                             text: LocaleKeys.select_date_time,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w500,
-                            color: AppColorUtils.GREEN_BLACK2,
+                            color: AppColorUtils.greenBlack2,
                           ),
                         ),
                       ],
                     ).paddingOnly(
                       bottom: 17,
                     ),
-                    Container(
-                      child: TimePickerSpinner(
-                        is24HourMode: true,
-                        normalTextStyle: TextStyle(
-                          fontSize: 13.sp,
-                          color: AppColorUtils.GREEN_10,
-                          fontWeight: FontWeight.w400,
-                        ),
-                        isForce2Digits: true,
-                        highlightedTextStyle: TextStyle(
-                          fontSize: 16.sp,
-                          color: AppColorUtils.GREEN_TEXT,
-                          decorationStyle: TextDecorationStyle.solid,
-                          inherit: true,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        spacing: 15.sp,
-                        itemHeight: 40,
-                        onTimeChange: (time) {
-                          // setState(
-                          //       () {
-                          //     _time = DateTime(
-                          //       time.month,
-                          //       time.month,
-                          //       time.day,
-                          //       time.hour < 8 ? time.hour + 16 : time.hour,
-                          //       time.minute,
-                          //     );
-                          //
-                          //     // print(_time);
-                          //   },
-                          // );
-                        },
+                    TimePickerSpinner(
+                      is24HourMode: true,
+                      normalTextStyle: TextStyle(
+                        fontSize: 13.sp,
+                        color: AppColorUtils.green10,
+                        fontWeight: FontWeight.w400,
                       ),
+                      isForce2Digits: true,
+                      highlightedTextStyle: TextStyle(
+                        fontSize: 16.sp,
+                        color: AppColorUtils.greenText,
+                        decorationStyle: TextDecorationStyle.solid,
+                        inherit: true,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      spacing: 15.sp,
+                      itemHeight: 40,
+                      onTimeChange: (time) {
+                        // setState(
+                        //       () {
+                        //     _time = DateTime(
+                        //       time.month,
+                        //       time.month,
+                        //       time.day,
+                        //       time.hour < 8 ? time.hour + 16 : time.hour,
+                        //       time.minute,
+                        //     );
+                        //
+                        //     // print(_time);
+                        //   },
+                        // );
+                      },
                     ),
-                    Container(
-                      child: DatePickerWidget(
-                        locale: context.locale == Locale("uz", "UZ")
-                            ? DateTimePickerLocale.uz
-                            : DateTimePickerLocale.ru,
-                        firstDate: DateTime.now(),
-                        initialDate: DateTime.now(),
-                        lastDate: DateTime(
-                          DateTime.now().year + 2,
+                    DatePickerWidget(
+                      locale: context.locale == const Locale("uz", "UZ")
+                          ? DateTimePickerLocale.uz
+                          : DateTimePickerLocale.ru,
+                      firstDate: DateTime.now(),
+                      initialDate: DateTime.now(),
+                      lastDate: DateTime(
+                        DateTime.now().year + 2,
+                      ),
+                      dateFormat: "dd-MMMM-yyyy",
+                      onChange: (DateTime newDate, _) {
+                        _date = newDate;
+                        // print(_date);
+                      },
+                      pickerTheme: DateTimePickerTheme(
+                        backgroundColor: AppColorUtils.white,
+                        itemTextStyle: TextStyle(
+                          color: AppColorUtils.greenText,
+                          fontSize: 16.sp,
                         ),
-                        dateFormat: "dd-MMMM-yyyy",
-                        onChange: (DateTime newDate, _) {
-                          _date = newDate;
-                          // print(_date);
-                        },
-                        pickerTheme: DateTimePickerTheme(
-                          backgroundColor: AppColorUtils.WHITE,
-                          itemTextStyle: TextStyle(
-                            color: AppColorUtils.GREEN_TEXT,
-                            fontSize: 16.sp,
-                          ),
-                          dividerColor: AppColorUtils.DIVIDER_COLOR,
-                        ),
+                        dividerColor: AppColorUtils.dividerColor,
                       ),
                     ),
                   ],
@@ -214,8 +212,8 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                   ),
                   SizedBox(height: 12.h),
                   AppWidgets.appButton(
-                    color: AppColorUtils.LIGHT_GRAY,
-                    textColor: AppColorUtils.BLACK,
+                    color: AppColorUtils.lightGray,
+                    textColor: AppColorUtils.black,
                     onTap: () {
                       NavigatorService.to.pop();
                     },

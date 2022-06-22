@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,11 +17,12 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../../data/services/volunteer_service.dart';
 
 class DrawerBody extends StatelessWidget {
-  DrawerBody({
+  const DrawerBody({
+    Key? key,
     required this.state,
-  });
+  }) : super(key: key);
 
-  AppPageState state;
+  final AppPageState state;
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +32,12 @@ class DrawerBody extends StatelessWidget {
       width: 266.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: AppColorUtils.WHITE,
+        color: AppColorUtils.white,
       ),
       child: Drawer(
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: size.height * 0.75,
               child: Column(
                 // Important: Remove any padding from the ListView.
@@ -45,16 +46,16 @@ class DrawerBody extends StatelessWidget {
                     children: [
                       Container(
                         padding: EdgeInsets.all(10.w),
-                        color: AppColorUtils.LEFT_MENU_BACK,
+                        color: AppColorUtils.leftMenuBack,
                         height: 115.h,
                         child: Row(
                           children: [
-                            Container(
+                            SizedBox(
                               width: 66.w,
                               height: 66.w,
                               child: CircleAvatar(
-                                backgroundColor: AppColorUtils.LEFT_MENU_BACK,
-                                child: SvgPicture.asset(AppImageUtils.USER),
+                                backgroundColor: AppColorUtils.leftMenuBack,
+                                child: SvgPicture.asset(AppImageUtils.user),
                               ),
                             ),
                             SizedBox(
@@ -68,14 +69,14 @@ class DrawerBody extends StatelessWidget {
                                   text: "Fakhriyor",
                                   fontWeight: FontWeight.w500,
                                   fontSize: 18.sp,
-                                  color: AppColorUtils.TEXT_COLOR,
+                                  color: AppColorUtils.textColor,
                                 ),
                                 SizedBox(
                                   height: 8.h,
                                 ),
                                 Row(
                                   children: [
-                                    SvgPicture.asset(AppImageUtils.PERSON),
+                                    SvgPicture.asset(AppImageUtils.person),
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                         horizontal: 5.w,
@@ -84,12 +85,12 @@ class DrawerBody extends StatelessWidget {
                                         text: state.tobeVolunteer
                                             ? LocaleKeys.volunteer.tr()
                                             : LocaleKeys.normal_user.tr(),
-                                        color: AppColorUtils.BLUE_PERCENT,
+                                        color: AppColorUtils.bluePercent,
                                         fontSize: 12.sp,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
-                                    SvgPicture.asset(AppImageUtils.QUESTION),
+                                    SvgPicture.asset(AppImageUtils.question),
                                   ],
                                 )
                               ],
@@ -105,7 +106,7 @@ class DrawerBody extends StatelessWidget {
                             child: SizedBox(
                               height: 33.w,
                               width: 33.w,
-                              child: SvgPicture.asset(AppImageUtils.EDIT),
+                              child: SvgPicture.asset(AppImageUtils.edit),
                             ),
                           ),
                         ),
@@ -113,50 +114,50 @@ class DrawerBody extends StatelessWidget {
                           if (state.tobeVolunteer) {
                             context
                                 .read<AppPageCubit>()
-                                .changePage(pageType: AppPageType.PROFILE);
+                                .changePage(pageType: AppPageType.profile);
                             Navigator.pop(context);
                           } else {
                             context
                                 .read<AppPageCubit>()
-                                .changePage(pageType: AppPageType.USERPROFILE);
+                                .changePage(pageType: AppPageType.userprofile);
                             Navigator.pop(context);
                           }
                         },
                       )
                     ],
                   ),
-                  Divider(
-                    color: AppColorUtils.DIVIDER,
+                  const Divider(
+                    color: AppColorUtils.divider,
                     height: 1,
                     thickness: 1,
                   ),
                   state.tobeVolunteer
-                      ? SizedBox()
+                      ? const SizedBox()
                       : ButtonCard(
                           onPress: () {
                             context.read<AppPageCubit>().changePage(
-                                  pageType: AppPageType.VOLUNTEER,
+                                  pageType: AppPageType.volunteer,
                                 );
                             Navigator.pop(context);
                           },
                           text: LocaleKeys.be_volunteer.tr(),
                           width: 226.w,
                           height: 44.h,
-                          color: AppColorUtils.GREEN_ACCENT1,
+                          color: AppColorUtils.greenAccent1,
                           fontWeight: FontWeight.w600,
                           textSize: 16.sp,
-                          textColor: AppColorUtils.KRAUDFANDING,
+                          textColor: AppColorUtils.kraudfanding,
                           visibleIcon: true,
-                          addIcon: AppImageUtils.HANDS,
+                          addIcon: AppImageUtils.hands,
                         ).paddingOnly(
                           top: 20.w,
                           right: 20.w,
                           left: 20.w,
                         ),
                   AppWidgets.rowIconText(
-                    iconSelect: AppImageUtils.MAIN,
-                    icon: AppImageUtils.MAIN2,
-                    isActive: pageType == AppPageType.MAIN,
+                    iconSelect: AppImageUtils.main,
+                    icon: AppImageUtils.main2,
+                    isActive: pageType == AppPageType.main,
                     text: LocaleKeys.main.tr(),
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
@@ -166,14 +167,14 @@ class DrawerBody extends StatelessWidget {
                     onTap: () {
                       context
                           .read<AppPageCubit>()
-                          .changePage(pageType: AppPageType.MAIN);
+                          .changePage(pageType: AppPageType.main);
                       Navigator.pop(context);
                     },
                   ),
                   AppWidgets.rowIconText(
-                    isActive: pageType == AppPageType.CHARITY,
-                    icon: AppImageUtils.HISTORY,
-                    iconSelect: AppImageUtils.HISTORY2,
+                    isActive: pageType == AppPageType.charity,
+                    icon: AppImageUtils.history,
+                    iconSelect: AppImageUtils.history2,
                     text: LocaleKeys.my_services.tr(),
                     fontSize: 16.sp,
                     direction: true,
@@ -186,9 +187,9 @@ class DrawerBody extends StatelessWidget {
                     },
                   ),
                   AppWidgets.rowIconText(
-                    isActive: pageType == AppPageType.ORGANIZATIONS,
-                    icon: AppImageUtils.ORGANIZATION,
-                    iconSelect: AppImageUtils.ORGANIZATION2,
+                    isActive: pageType == AppPageType.organizations,
+                    icon: AppImageUtils.organization,
+                    iconSelect: AppImageUtils.organization2,
                     text: LocaleKeys.organizations.tr(),
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
@@ -198,14 +199,14 @@ class DrawerBody extends StatelessWidget {
                     onTap: () {
                       context
                           .read<AppPageCubit>()
-                          .changePage(pageType: AppPageType.ORGANIZATIONS);
+                          .changePage(pageType: AppPageType.organizations);
                       Navigator.pop(context);
                     },
                   ),
                   AppWidgets.rowIconText(
-                    isActive: pageType == AppPageType.RULES,
-                    icon: AppImageUtils.RULES,
-                    iconSelect: AppImageUtils.RULES2,
+                    isActive: pageType == AppPageType.rules,
+                    icon: AppImageUtils.rules,
+                    iconSelect: AppImageUtils.rules2,
                     text: LocaleKeys.project_rules,
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
@@ -215,14 +216,14 @@ class DrawerBody extends StatelessWidget {
                     onTap: () {
                       context
                           .read<AppPageCubit>()
-                          .changePage(pageType: AppPageType.RULES);
+                          .changePage(pageType: AppPageType.rules);
                       Navigator.pop(context);
                     },
                   ),
                   AppWidgets.rowIconText(
-                    isActive: pageType == AppPageType.FAQ,
-                    icon: AppImageUtils.FAQ,
-                    iconSelect: AppImageUtils.FAQ2,
+                    isActive: pageType == AppPageType.faq,
+                    icon: AppImageUtils.faq,
+                    iconSelect: AppImageUtils.faq2,
                     text: "FAQ",
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
@@ -232,14 +233,14 @@ class DrawerBody extends StatelessWidget {
                     onTap: () {
                       context
                           .read<AppPageCubit>()
-                          .changePage(pageType: AppPageType.FAQ);
+                          .changePage(pageType: AppPageType.faq);
                       Navigator.pop(context);
                     },
                   ),
                   AppWidgets.rowIconText(
-                    isActive: pageType == AppPageType.ABOUT,
-                    icon: AppImageUtils.ABOUT_US,
-                    iconSelect: AppImageUtils.ABOUT_US2,
+                    isActive: pageType == AppPageType.about,
+                    icon: AppImageUtils.aboutUs,
+                    iconSelect: AppImageUtils.aboutUs2,
                     text: LocaleKeys.about_us.tr(),
                     fontSize: 16.sp,
                     padding: EdgeInsets.symmetric(
@@ -249,7 +250,7 @@ class DrawerBody extends StatelessWidget {
                     onTap: () {
                       context
                           .read<AppPageCubit>()
-                          .changePage(pageType: AppPageType.ABOUT);
+                          .changePage(pageType: AppPageType.about);
                       Navigator.pop(context);
                     },
                   ),
@@ -277,16 +278,16 @@ class DrawerBody extends StatelessWidget {
                     onPress: () {
                       context
                           .read<AppPageCubit>()
-                          .changePage(pageType: AppPageType.SAVED);
+                          .changePage(pageType: AppPageType.saved);
                       Navigator.pop(context);
                     },
                     text: LocaleKeys.saved,
                     visibleIcon: true,
-                    color: AppColorUtils.GREEN_ACCENT2,
+                    color: AppColorUtils.greenAccent2,
                     fontWeight: FontWeight.w500,
-                    textColor: AppColorUtils.GREEN_TEXT,
+                    textColor: AppColorUtils.greenText,
                     textSize: 16.sp,
-                    addIcon: AppImageUtils.HEART,
+                    addIcon: AppImageUtils.heart,
                   ),
                 ),
                 Padding(
@@ -301,17 +302,17 @@ class DrawerBody extends StatelessWidget {
                     height: 44.h,
                     onPress: () {
                       context.read<AppPageCubit>().changePage(
-                            pageType: AppPageType.OPERATOR,
+                            pageType: AppPageType.operator,
                           );
                       Navigator.pop(context);
                     },
                     text: LocaleKeys.write_operator,
                     visibleIcon: true,
-                    color: AppColorUtils.BLUE_ACCENT1,
+                    color: AppColorUtils.blueAccent1,
                     fontWeight: FontWeight.w500,
-                    textColor: AppColorUtils.BLUE_PERCENT,
+                    textColor: AppColorUtils.bluePercent,
                     textSize: 16.sp,
-                    addIcon: AppImageUtils.HEADPHONE,
+                    addIcon: AppImageUtils.headphone,
                   ),
                 ),
                 Padding(
@@ -330,10 +331,10 @@ class DrawerBody extends StatelessWidget {
                           Stack(
                             alignment: Alignment.center,
                             children: [
-                              SvgPicture.asset(AppImageUtils.LOGOUT1),
+                              SvgPicture.asset(AppImageUtils.logout1),
                               Padding(
-                                padding: EdgeInsets.only(left: 10),
-                                child: SvgPicture.asset(AppImageUtils.LOGOUT2),
+                                padding: const EdgeInsets.only(left: 10),
+                                child: SvgPicture.asset(AppImageUtils.logout2),
                               ),
                             ],
                           ),
@@ -342,7 +343,7 @@ class DrawerBody extends StatelessWidget {
                           ),
                           AppWidgets.textLocale(
                             text: LocaleKeys.exit,
-                            color: AppColorUtils.BLACK,
+                            color: AppColorUtils.black,
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
                           )

@@ -39,20 +39,20 @@ class HttpService {
     String? token,
   }) async {
     try {
-      AppLoggerUtil.d("API: ${APIConst.API_URL + path!}");
+      AppLoggerUtil.d("API: ${APIConst.apiUrl + path!}");
       if (token != null) {
         return await _dio!.post(
-          APIConst.API_URL + path,
+          APIConst.apiUrl + path,
           options: Options(
             headers: {
               HttpHeaders.contentTypeHeader: "application/json",
-              'Authorization': 'Bearer ${token}',
+              'Authorization': 'Bearer $token',
             },
           ),
         );
       } else {
         return await _dio!.post(
-          APIConst.API_URL + path,
+          APIConst.apiUrl + path,
           data: jsonEncode(fields),
           options: Options(
             headers: headers,
@@ -77,10 +77,10 @@ class HttpService {
       if (url == null) {
         if (parameters == null) {
           if (token == null) {
-            return await _dio!.get(APIConst.API_URL + path!);
+            return await _dio!.get(APIConst.apiUrl + path!);
           } else {
             return await _dio!.get(
-              APIConst.API_URL + path!,
+              APIConst.apiUrl + path!,
               options: Options(
                 headers: {"Authorization": "Bearer $token"},
               ),
@@ -88,7 +88,7 @@ class HttpService {
           }
         }
         return await _dio!.get(
-          APIConst.API_URL + path!,
+          APIConst.apiUrl + path!,
           queryParameters: parameters,
         );
       } else {

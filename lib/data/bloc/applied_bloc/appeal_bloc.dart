@@ -13,7 +13,7 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
   AppealBloc()
       : phoneNumberFormatter =
             MaskTextInputFormatter(mask: "+### (##) ### ## ##"),
-        super(AppealState()) {
+        super(const AppealState()) {
     on<AppealNameChanged>(_onNameChanged);
     on<AppealPhoneChanged>(_onPhoneChanged);
     on<AppealTextChanged>(_onAppealTxtChanged);

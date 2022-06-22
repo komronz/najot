@@ -29,13 +29,13 @@ class User {
 
   String? genderToJson() {
     if (isMan == null) return null;
-    if (isMan == Gender.MAN) return "man";
+    if (isMan == Gender.man) return "man";
     return "woman";
   }
 
   static Gender? genderFromJson(String? value) {
     if (value == null) return null;
-    if (value == "man") return Gender.MAN;
-    return Gender.WOMAN;
+    if (value == "man") return Gender.man;
+    return Gender.woman;
   }
 }

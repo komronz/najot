@@ -28,8 +28,8 @@ class EditShowSuccess extends StatelessWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
           ),
-          margin: EdgeInsets.symmetric(horizontal: 20),
-          padding: EdgeInsets.symmetric(
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(
             vertical: 24,
           ),
           child: Column(
@@ -42,29 +42,29 @@ class EditShowSuccess extends StatelessWidget {
                 othersMarkers: [
                   MarkerText(
                     marker: "//",
-                    style: TextStyle(color: AppColorUtils.KRAUDFANDING),
+                    style: const TextStyle(color: AppColorUtils.kraudfanding),
                   )
                 ],
                 maxLines: 10,
                 height: 1.1,
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w600,
-                color: AppColorUtils.DARK3,
+                color: AppColorUtils.dark3,
               ).paddingSymmetric(horizontal: 54),
               AppWidgets.imageSvg(
-                path: AppImageUtils.IC_EARPHONES,
+                path: AppImageUtils.icEarphones,
                 height: 54,
                 width: 54,
                 fit: BoxFit.none,
               ).paddingOnly(top: 20),
               AppWidgets.appButton(
                 title: LocaleKeys.thank_you.tr(),
-                textColor: AppColorUtils.KRAUDFANDING,
+                textColor: AppColorUtils.kraudfanding,
                 onTap: () {
                   bloc.add(VolunteerSendBtn());
                   Navigator.pop(context);
                 },
-                color: Color(0xFFECFFFA),
+                color: const Color(0xFFECFFFA),
               ).paddingOnly(
                 top: 26,
                 left: 20,

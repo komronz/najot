@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
@@ -9,12 +10,11 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-import 'package:provider/src/provider.dart';
 
 class DrawerBodySecond extends StatelessWidget {
-  DrawerBodySecond({required this.state});
+  const DrawerBodySecond({Key? key, required this.state}) : super(key: key);
 
-  AppPageState state;
+  final AppPageState state;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class DrawerBodySecond extends StatelessWidget {
       width: 315.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: AppColorUtils.WHITE,
+        color: AppColorUtils.white,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,12 +32,12 @@ class DrawerBodySecond extends StatelessWidget {
             child: Container(
               width: 31,
               height: 34,
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: AppColorUtils.BACK_BUTTON,
+                color: AppColorUtils.backButton,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: SvgPicture.asset(AppImageUtils.BACK_ICON),
+              child: SvgPicture.asset(AppImageUtils.backIcon),
             ),
             onTap: () {
               context.read<AppPageCubit>().changeMenu(1);
@@ -51,15 +51,15 @@ class DrawerBodySecond extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             onPress: () {
               context.read<AppPageCubit>().changePage(
-                    pageType: AppPageType.ADD_PROJECT,
+                    pageType: AppPageType.addProject,
                   );
               Navigator.pop(context);
             },
             visibleIcon: true,
-            addIcon: AppImageUtils.PLUS,
+            addIcon: AppImageUtils.plus,
             text: LocaleKeys.add_project.tr(),
-            color: AppColorUtils.ADD_PROJECT_COLOR,
-            textColor: AppColorUtils.VOLONTYOR,
+            color: AppColorUtils.addProjectColor,
+            textColor: AppColorUtils.volontyor,
             fontWeight: FontWeight.w600,
             textSize: 16.sp,
           ).paddingOnly(
@@ -69,9 +69,9 @@ class DrawerBodySecond extends StatelessWidget {
             right: 20.w,
           ),
           AppWidgets.rowIconText(
-            isActive: pageType == AppPageType.PROJECT,
-            icon: AppImageUtils.PROJECT1,
-            iconSelect: AppImageUtils.PROJECT2,
+            isActive: pageType == AppPageType.project,
+            icon: AppImageUtils.project1,
+            iconSelect: AppImageUtils.project2,
             text: LocaleKeys.projects_and_ads.tr(),
             fontSize: 16.sp,
             padding: EdgeInsets.symmetric(
@@ -80,16 +80,16 @@ class DrawerBodySecond extends StatelessWidget {
             ),
             onTap: () {
               context.read<AppPageCubit>().changePage(
-                    pageType: AppPageType.PROJECT,
+                    pageType: AppPageType.project,
                   );
               Navigator.pop(context);
             },
           ),
           state.tobeVolunteer
               ? AppWidgets.rowIconText(
-                  isActive: pageType == AppPageType.VOLUNTEERING,
-                  icon: AppImageUtils.TOBE_VOLUNTEER,
-                  iconSelect: AppImageUtils.TOBE_VOLUNTEER2,
+                  isActive: pageType == AppPageType.volunteering,
+                  icon: AppImageUtils.tobeVolunteer,
+                  iconSelect: AppImageUtils.tobeVolunteer2,
                   text: LocaleKeys.my_volunteering.tr(),
                   fontSize: 16.sp,
                   padding: EdgeInsets.symmetric(
@@ -98,17 +98,17 @@ class DrawerBodySecond extends StatelessWidget {
                   ),
                   onTap: () {
                     context.read<AppPageCubit>().changePage(
-                          pageType: AppPageType.VOLUNTEERING,
+                          pageType: AppPageType.volunteering,
                         );
                     Navigator.pop(context);
                   },
                 )
-              : SizedBox(),
+              : const SizedBox(),
           state.tobeVolunteer
               ? AppWidgets.rowIconText(
-                  isActive: pageType == AppPageType.CHARITY_VOLUNTEER,
-                  icon: AppImageUtils.HISTORY,
-                  iconSelect: AppImageUtils.HISTORY2,
+                  isActive: pageType == AppPageType.charityVolunteer,
+                  icon: AppImageUtils.history,
+                  iconSelect: AppImageUtils.history2,
                   text: LocaleKeys.charity_history,
                   fontSize: 16.sp,
                   padding: EdgeInsets.symmetric(
@@ -117,15 +117,15 @@ class DrawerBodySecond extends StatelessWidget {
                   ),
                   onTap: () {
                     context.read<AppPageCubit>().changePage(
-                          pageType: AppPageType.CHARITY_VOLUNTEER,
+                          pageType: AppPageType.charityVolunteer,
                         );
                     Navigator.pop(context);
                   },
                 )
               : AppWidgets.rowIconText(
-                  isActive: pageType == AppPageType.CHARITY,
-                  icon: AppImageUtils.HISTORY,
-                  iconSelect: AppImageUtils.HISTORY2,
+                  isActive: pageType == AppPageType.charity,
+                  icon: AppImageUtils.history,
+                  iconSelect: AppImageUtils.history2,
                   text: LocaleKeys.charity_history,
                   fontSize: 16.sp,
                   padding: EdgeInsets.symmetric(
@@ -134,16 +134,16 @@ class DrawerBodySecond extends StatelessWidget {
                   ),
                   onTap: () {
                     context.read<AppPageCubit>().changePage(
-                          pageType: AppPageType.CHARITY,
+                          pageType: AppPageType.charity,
                         );
                     Navigator.pop(context);
                   },
                 ),
           state.tobeVolunteer
               ? AppWidgets.rowIconText(
-                  isActive: pageType == AppPageType.ORDERS,
-                  icon: AppImageUtils.PRODUCTS,
-                  iconSelect: AppImageUtils.PRODUCTS2,
+                  isActive: pageType == AppPageType.orders,
+                  icon: AppImageUtils.products,
+                  iconSelect: AppImageUtils.products2,
                   text: LocaleKeys.my_products,
                   fontSize: 16.sp,
                   padding: EdgeInsets.symmetric(
@@ -152,15 +152,15 @@ class DrawerBodySecond extends StatelessWidget {
                   ),
                   onTap: () {
                     context.read<AppPageCubit>().changePage(
-                          pageType: AppPageType.ORDERS_VOLUNTEER,
+                          pageType: AppPageType.ordersVolunteer,
                         );
                     Navigator.pop(context);
                   },
                 )
               : AppWidgets.rowIconText(
-                  isActive: pageType == AppPageType.ORDERS,
-                  icon: AppImageUtils.PRODUCTS,
-                  iconSelect: AppImageUtils.PRODUCTS2,
+                  isActive: pageType == AppPageType.orders,
+                  icon: AppImageUtils.products,
+                  iconSelect: AppImageUtils.products2,
                   text: LocaleKeys.my_products,
                   fontSize: 16.sp,
                   padding: EdgeInsets.symmetric(
@@ -169,7 +169,7 @@ class DrawerBodySecond extends StatelessWidget {
                   ),
                   onTap: () {
                     context.read<AppPageCubit>().changePage(
-                          pageType: AppPageType.ORDERS,
+                          pageType: AppPageType.orders,
                         );
                     Navigator.pop(context);
                   },

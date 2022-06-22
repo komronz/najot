@@ -17,10 +17,11 @@ class WaitingForAddingSuccess extends StatelessWidget {
   WaitingForAddingSuccess(
       {required this.model, required this.dateTime, Key? key})
       : super(key: key);
-  DateTime dateTime;
+  final DateTime dateTime;
+
   // DateTime _dateTime = DateTime.now();
-  TimeOfDay timeOfDay = TimeOfDay.now();
-  VolunteeringModel model;
+  final TimeOfDay timeOfDay = TimeOfDay.now();
+  final VolunteeringModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +29,9 @@ class WaitingForAddingSuccess extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: Container(
-          margin: EdgeInsets.all(20.0),
+          margin: const EdgeInsets.all(20.0),
           decoration: ShapeDecoration(
-            color: AppColors.WHITE,
+            color: AppColors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),
             ),
@@ -38,9 +39,8 @@ class WaitingForAddingSuccess extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                child: Image.asset('assets/images/success.png'),
-              ).paddingOnly(top: 24.h, bottom: 14.h),
+              Image.asset('assets/images/success.png')
+                  .paddingOnly(top: 24.h, bottom: 14.h),
               AppWidgets.textLocale(
                 textAlign: TextAlign.center,
                 text: LocaleKeys.note_successful_added,
@@ -48,44 +48,44 @@ class WaitingForAddingSuccess extends StatelessWidget {
                 othersMarkers: [
                   MarkerText(
                     marker: "//",
-                    style: TextStyle(color: AppColorUtils.KRAUDFANDING),
+                    style: const TextStyle(color: AppColorUtils.kraudfanding),
                   ),
                 ],
                 maxLines: 10,
                 height: 1.1,
                 fontSize: 20.sp,
                 fontWeight: FontWeight.w600,
-                color: AppColorUtils.DARK3,
+                color: AppColorUtils.dark3,
               ).paddingSymmetric(horizontal: 40),
               Container(
-                padding: EdgeInsets.symmetric(vertical: 13),
+                padding: const EdgeInsets.symmetric(vertical: 13),
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: AppColorUtils.GREEN_LIGHT,
+                  color: AppColorUtils.greenLight,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     AppWidgets.imageSvg(
-                      path: AppImageUtils.CALENDAR_RED,
-                      color: AppColorUtils.TEXT_COLOR,
+                      path: AppImageUtils.calendarRed,
+                      color: AppColorUtils.textColor,
                       height: 16,
                     ).paddingOnly(right: 5),
                     AppWidgets.textLocale(
-                      text: "${DateTimeUtil.dmy(dateTime, context.locale)}",
-                      color: AppColorUtils.TEXT_COLOR,
+                      text: DateTimeUtil.dmy(dateTime, context.locale),
+                      color: AppColorUtils.textColor,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
                     ).paddingOnly(right: 24.w),
                     AppWidgets.imageSvg(
-                      path: AppImageUtils.CLOCK,
-                      color: AppColorUtils.TEXT_COLOR,
+                      path: AppImageUtils.clock,
+                      color: AppColorUtils.textColor,
                       height: 16,
                     ).paddingOnly(right: 5),
                     AppWidgets.textLocale(
-                      text: "${DateTimeUtil.hhmm(dateTime, context.locale)}",
-                      color: AppColorUtils.TEXT_COLOR,
+                      text: DateTimeUtil.hhmm(dateTime, context.locale),
+                      color: AppColorUtils.textColor,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
                     ),
@@ -108,8 +108,8 @@ class WaitingForAddingSuccess extends StatelessWidget {
                   ),
                   SizedBox(height: 12.h),
                   AppWidgets.appButton(
-                    color: AppColorUtils.LIGHT_GRAY,
-                    textColor: AppColorUtils.BLACK,
+                    color: AppColorUtils.lightGray,
+                    textColor: AppColorUtils.black,
                     onTap: () {
                       NavigatorService.to.pop();
                     },

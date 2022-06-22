@@ -27,7 +27,7 @@ class KraufandingListWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           AppWidgets.imageSvg(
-            path: AppImageUtils.IMG_DOLLAR,
+            path: AppImageUtils.imgDollar,
             height: 70.w,
             width: 70.w,
             fit: BoxFit.none,
@@ -36,7 +36,7 @@ class KraufandingListWidget extends StatelessWidget {
             text: LocaleKeys.nothing_found_yet,
             fontSize: 18.sp,
             fontWeight: FontWeight.w600,
-            color: AppColorUtils.GRAY_4,
+            color: AppColorUtils.gray4,
             textAlign: TextAlign.center,
             maxLines: 2,
           ).paddingOnly(
@@ -48,7 +48,7 @@ class KraufandingListWidget extends StatelessWidget {
       );
     }
     return ListView.builder(
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) => KraufandingItemWidget(
         model: list[index],
         onTap: () {

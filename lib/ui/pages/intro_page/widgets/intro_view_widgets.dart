@@ -19,7 +19,7 @@ Widget viewOfOnePage(BuildContext context) {
     children: [
       AppWidgets.textLocale(
         text: LocaleKeys.skip,
-        color: AppColorUtils.TEXT_GREEN,
+        color: AppColorUtils.textGreen,
         fontSize: 13.sp,
         fontWeight: FontWeight.w400,
         textAlign: TextAlign.center,
@@ -27,17 +27,17 @@ Widget viewOfOnePage(BuildContext context) {
       GestureDetector(
         onTap: () {
           context.read<IntroCubit>().pageController.nextPage(
-              duration: Duration(milliseconds: 400),
+              duration: const Duration(milliseconds: 400),
               curve: Curves.easeInOutQuart);
         },
         child: Container(
           height: 40.w,
           width: 40.w,
-          child:
-              Icon(Icons.chevron_right, color: AppColorUtils.WHITE, size: 34.w),
           decoration: BoxDecoration(
-              color: AppColorUtils.PERCENT_COLOR,
+              color: AppColorUtils.percentColor,
               borderRadius: BorderRadius.circular(25.0)),
+          child:
+              Icon(Icons.chevron_right, color: AppColorUtils.white, size: 34.w),
         ),
       ),
     ],
@@ -50,7 +50,7 @@ Widget viewOfTwoPage(BuildContext context, IntroPageNextState state) {
     children: [
       AppWidgets.textLocale(
         text: LocaleKeys.skip,
-        color: AppColorUtils.TEXT_GREEN,
+        color: AppColorUtils.textGreen,
         fontSize: 13.sp,
         fontWeight: FontWeight.w400,
         textAlign: TextAlign.center,
@@ -61,33 +61,33 @@ Widget viewOfTwoPage(BuildContext context, IntroPageNextState state) {
             onTap: () {
               context.read<IntroCubit>().pageController.animateToPage(
                   state.currentIndex - 1,
-                  duration: Duration(milliseconds: 400),
+                  duration: const Duration(milliseconds: 400),
                   curve: Curves.easeInOutQuart);
             },
             child: Container(
               height: 40.w,
               width: 40.w,
-              child: Icon(Icons.chevron_left,
-                  color: AppColorUtils.WHITE, size: 34.w),
               decoration: BoxDecoration(
-                  color: AppColorUtils.PERCENT_COLOR,
+                  color: AppColorUtils.percentColor,
                   borderRadius: BorderRadius.circular(25.0)),
+              child: Icon(Icons.chevron_left,
+                  color: AppColorUtils.white, size: 34.w),
             ).paddingOnly(right: 15.w),
           ),
           GestureDetector(
             onTap: () {
               context.read<IntroCubit>().pageController.nextPage(
-                  duration: Duration(milliseconds: 400),
+                  duration: const Duration(milliseconds: 400),
                   curve: Curves.easeInOutQuart);
             },
             child: Container(
               height: 40.w,
               width: 40.w,
-              child: Icon(Icons.chevron_right,
-                  color: AppColorUtils.WHITE, size: 34.w),
               decoration: BoxDecoration(
-                  color: AppColorUtils.PERCENT_COLOR,
+                  color: AppColorUtils.percentColor,
                   borderRadius: BorderRadius.circular(25.0)),
+              child: Icon(Icons.chevron_right,
+                  color: AppColorUtils.white, size: 34.w),
             ),
           ),
         ],
@@ -104,24 +104,24 @@ Widget viewOfThreePage(BuildContext context, IntroPageNextState state) {
         onTap: () {
           context.read<IntroCubit>().pageController.animateToPage(
               state.currentIndex - 1,
-              duration: Duration(milliseconds: 400),
+              duration: const Duration(milliseconds: 400),
               curve: Curves.easeInOutQuart);
         },
         child: Container(
           height: 40.w,
           width: 40.w,
-          child:
-              Icon(Icons.chevron_left, color: AppColorUtils.WHITE, size: 34.w),
           decoration: BoxDecoration(
-              color: AppColorUtils.PERCENT_COLOR,
+              color: AppColorUtils.percentColor,
               borderRadius: BorderRadius.circular(25.0)),
+          child:
+              Icon(Icons.chevron_left, color: AppColorUtils.white, size: 34.w),
         ),
       ),
       Row(
         children: [
           AppWidgets.textLocale(
             text: LocaleKeys.str_registration,
-            color: AppColorUtils.TEXT_GREEN,
+            color: AppColorUtils.textGreen,
             fontSize: 15.sp,
             fontWeight: FontWeight.w600,
           ).paddingOnly(right: 15.w),
@@ -132,11 +132,11 @@ Widget viewOfThreePage(BuildContext context, IntroPageNextState state) {
             child: Container(
               height: 40.w,
               width: 40.w,
-              child: Icon(Icons.chevron_right,
-                  color: AppColorUtils.WHITE, size: 34.w),
               decoration: BoxDecoration(
-                  color: AppColorUtils.GREEN_APP,
+                  color: AppColorUtils.greenApp,
                   borderRadius: BorderRadius.circular(25.0)),
+              child: Icon(Icons.chevron_right,
+                  color: AppColorUtils.white, size: 34.w),
             ),
           ),
         ],
@@ -148,7 +148,7 @@ Widget viewOfThreePage(BuildContext context, IntroPageNextState state) {
 class IntroClipPathWidget extends StatelessWidget {
   final double height;
 
-  IntroClipPathWidget({required this.height});
+  const IntroClipPathWidget({Key? key, required this.height}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +157,7 @@ class IntroClipPathWidget extends StatelessWidget {
       child: Container(
         width: context.width,
         height: height,
-        color: AppColorUtils.GREEN_INTRO,
+        color: AppColorUtils.greenIntro,
       ),
     );
   }

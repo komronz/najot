@@ -22,93 +22,94 @@ class CharityItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        child: Container(
-          width: 160.w,
-          height: 267.w,
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            elevation: 1,
-            color: AppColorUtils.WHITE,
-            child: Column(
-              children: [
-                Expanded(
-                  child: Stack(
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(12)),
-                              child: CachedNetworkImage(
-                                placeholder: (context, url) => Center(
-                                  child: CircularProgressIndicator(),
-                                ),
-                                imageUrl: model.image!,
-                                errorWidget: (context, url, error) =>
-                                    Icon(Icons.error),
-                                fit: BoxFit.cover,
+      onTap: onTap,
+      child: SizedBox(
+        width: 160.w,
+        height: 267.w,
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          elevation: 1,
+          color: AppColorUtils.white,
+          child: Column(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Stack(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: ClipRRect(
+                            borderRadius: const BorderRadius.vertical(
+                                top: Radius.circular(12)),
+                            child: CachedNetworkImage(
+                              placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator(),
                               ),
+                              imageUrl: model.image!,
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
+                              fit: BoxFit.cover,
                             ),
                           ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(child: SizedBox()),
-                          InkWell(
-                            child: FavoriteButton(
-                              isFavorite: model.isFavorite!,
-                            ),
-                            onTap: () {},
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const Expanded(child: SizedBox()),
+                        InkWell(
+                          child: FavoriteButton(
+                            isFavorite: model.isFavorite!,
                           ),
-                        ],
-                      ).paddingAll(10)
-                    ],
-                  ),
-                  flex: 1,
+                          onTap: () {},
+                        ),
+                      ],
+                    ).paddingAll(10)
+                  ],
                 ),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      AppWidgets.text(
-                        text: model.title!,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w600,
-                        maxLines: 2,
-                      ),
-                      LinearPercentIndicator(
-                        animation: true,
-                        padding: EdgeInsets.all(0),
-                        lineHeight: 10.h,
-                        animationDuration: 2000,
-                        percent: model.progres! / 100,
-                        progressColor: AppColorUtils.PERCENT_COLOR,
-                        backgroundColor: AppColorUtils.PERCENT_COLOR2,
-                      ).paddingOnly(top: 12.w),
-                      AppWidgets.textLocale(
-                        text: LocaleKeys.done,
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w400,
-                        color: AppColorUtils.DARK_6,
-                      ).paddingOnly(top: 12.w),
-                      AppWidgets.text(
-                        text: "${model.progres.toString().split(".").first}%",
-                        fontWeight: FontWeight.w600,
-                        color: AppColorUtils.BLUE_PERCENT,
-                      ).paddingOnly(top: 5.w),
-                    ],
-                  ).paddingSymmetric(vertical: 14, horizontal: 12),
-                  flex: 1,
-                )
-              ],
-            ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppWidgets.text(
+                      text: model.title!,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w600,
+                      maxLines: 2,
+                    ),
+                    LinearPercentIndicator(
+                      animation: true,
+                      padding: const EdgeInsets.all(0),
+                      lineHeight: 10.h,
+                      animationDuration: 2000,
+                      percent: model.progres! / 100,
+                      progressColor: AppColorUtils.percentColor,
+                      backgroundColor: AppColorUtils.percentColor2,
+                    ).paddingOnly(top: 12.w),
+                    AppWidgets.textLocale(
+                      text: LocaleKeys.done,
+                      fontSize: 10.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColorUtils.dark6,
+                    ).paddingOnly(top: 12.w),
+                    AppWidgets.text(
+                      text: "${model.progres.toString().split(".").first}%",
+                      fontWeight: FontWeight.w600,
+                      color: AppColorUtils.bluePercent,
+                    ).paddingOnly(top: 5.w),
+                  ],
+                ).paddingSymmetric(vertical: 14, horizontal: 12),
+              )
+            ],
           ),
         ),
-        onTap: onTap);
+      ),
+    );
   }
 }

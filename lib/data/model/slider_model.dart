@@ -8,9 +8,9 @@ class SliderModel {
   bool like;
 
   static final List<SliderModel> list = [
-    SliderModel(AppImageUtils.Slider, "Lorem Ipsum is simple", false),
-    SliderModel(AppImageUtils.Slider, "Lorem Ipsum is simple", false),
-    SliderModel(AppImageUtils.Slider, "Lorem Ipsum is simple", false),
-    SliderModel(AppImageUtils.Slider, "Lorem Ipsum is simple", false),
+    SliderModel(AppImageUtils.slider, "Lorem Ipsum is simple", false),
+    SliderModel(AppImageUtils.slider, "Lorem Ipsum is simple", false),
+    SliderModel(AppImageUtils.slider, "Lorem Ipsum is simple", false),
+    SliderModel(AppImageUtils.slider, "Lorem Ipsum is simple", false),
   ];
 }

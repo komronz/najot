@@ -23,7 +23,8 @@ class AppTextField extends StatefulWidget {
   final bool autoFocus;
   final bool phoneNumberCode;
 
-  AppTextField({
+  const AppTextField({
+    Key? key,
     required this.hintText,
     required this.onChanged,
     required this.title,
@@ -39,10 +40,10 @@ class AppTextField extends StatefulWidget {
     this.hasTitle = true,
     this.autoFocus = false,
     this.phoneNumberCode = false,
-  });
+  }) : super(key: key);
 
   @override
-  _AppTextFieldState createState() => _AppTextFieldState();
+  State<StatefulWidget> createState() => _AppTextFieldState();
 }
 
 class _AppTextFieldState extends State<AppTextField> {
@@ -65,14 +66,15 @@ class _AppTextFieldState extends State<AppTextField> {
   @override
   Widget build(BuildContext context) {
     // FocusManager.instance.primaryFocus?.unfocus();
-    InputBorder _border = widget.hasError
+    InputBorder border = widget.hasError
         ? OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(width: 2, color: AppColorUtils.RED),
+            borderSide: const BorderSide(width: 2, color: AppColorUtils.red),
           )
         : OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(width: 2, color: AppColorUtils.BORDER_COLOR),
+            borderSide:
+                const BorderSide(width: 2, color: AppColorUtils.borderColor),
           );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,26 +85,26 @@ class _AppTextFieldState extends State<AppTextField> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   widget.isFill
-                      ? SizedBox()
+                      ? const SizedBox()
                       : AppWidgets.textLocale(
                           text: "*",
-                          color: AppColorUtils.RED,
+                          color: AppColorUtils.red,
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w400,
                         ),
                   AppWidgets.textLocale(
                     text: widget.title,
-                    color: AppColorUtils.DARK_4,
+                    color: AppColorUtils.dark4,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
                   ).paddingOnly(top: 4),
                 ],
               ).paddingOnly(bottom: 8)
-            : SizedBox(),
+            : const SizedBox(),
         Container(
           height: widget.height,
           decoration: BoxDecoration(
-            color: AppColorUtils.WHITE,
+            color: AppColorUtils.white,
             borderRadius: BorderRadius.circular(12),
           ),
           child: TextField(
@@ -117,25 +119,25 @@ class _AppTextFieldState extends State<AppTextField> {
             ),
             decoration: InputDecoration(
               // border: _border,
-              disabledBorder: _border,
-              focusedBorder: _border,
-              enabledBorder: _border,
-              contentPadding: EdgeInsets.all(14),
+              disabledBorder: border,
+              focusedBorder: border,
+              enabledBorder: border,
+              contentPadding: const EdgeInsets.all(14),
               hintText: widget.hintText,
               hintStyle: GoogleFonts.inter(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w400,
-                color: AppColorUtils.GRAY_4,
+                color: AppColorUtils.gray4,
               ),
               prefixIcon: widget.phoneNumberCode == true
                   ? Container(
-                      padding: EdgeInsets.only(left: 10),
+                      padding: const EdgeInsets.only(left: 10),
                       width: 60.w,
                       child: Center(
                         child: AppWidgets.text(
                           text: "+998",
                           fontSize: 15.sp,
-                          color: AppColorUtils.DARK2,
+                          color: AppColorUtils.dark2,
                         ),
                       ),
                     )

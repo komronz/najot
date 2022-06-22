@@ -19,23 +19,23 @@ class AppBarWithTitle extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColorUtils.BACKGROUND,
+      backgroundColor: AppColorUtils.background,
       elevation: 0,
       leading: InkWell(
+        onTap: onPress,
         child: Container(
           width: 31.w,
           height: 34.w,
           decoration: BoxDecoration(
-            color: AppColorUtils.BACK_BUTTON,
+            color: AppColorUtils.backButton,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Icon(
             Icons.arrow_back_ios_rounded,
-            color: AppColorUtils.IC_GREEN2,
+            color: AppColorUtils.icGreen2,
             size: 20.w,
           ),
         ),
-        onTap: onPress,
       ).paddingOnly(
         left: 24.w,
         top: 10.w,
@@ -44,15 +44,15 @@ class AppBarWithTitle extends StatelessWidget implements PreferredSizeWidget {
       title: AppWidgets.textLocale(
         text: title,
         fontWeight: FontWeight.w600,
-        color: AppColorUtils.BLACK,
+        color: AppColorUtils.black,
         fontSize: 20.sp,
         textAlign: TextAlign.center,
       ),
-      actions: action != null ? action : [SizedBox()],
+      actions: action ?? [const SizedBox()],
       centerTitle: true,
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

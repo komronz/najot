@@ -23,7 +23,7 @@ class VolunteeringItemsCharityList extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           AppWidgets.imageSvg(
-            path: AppImageUtils.ITEMS_ICON,
+            path: AppImageUtils.itemsIcon,
             height: 70.w,
             width: 70.w,
             fit: BoxFit.none,
@@ -32,7 +32,7 @@ class VolunteeringItemsCharityList extends StatelessWidget {
             text: LocaleKeys.nothing_found_yet,
             fontSize: 18.sp,
             fontWeight: FontWeight.w600,
-            color: AppColorUtils.GRAY_4,
+            color: AppColorUtils.gray4,
             textAlign: TextAlign.center,
             maxLines: 2,
           ).paddingOnly(
@@ -44,7 +44,7 @@ class VolunteeringItemsCharityList extends StatelessWidget {
       );
     }
     return ListView.builder(
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) => VolunteeringItemWidget(
         model: list[index],
         onTap: () {

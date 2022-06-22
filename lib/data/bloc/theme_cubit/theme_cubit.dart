@@ -9,10 +9,10 @@ class ThemeCubit extends HydratedCubit<ThemeState> {
   static ThemeCubit get to => GetIt.I<ThemeCubit>();
 
   static Future init() async {
-    GetIt.instance..registerSingleton<ThemeCubit>(ThemeCubit());
+    GetIt.instance.registerSingleton<ThemeCubit>(ThemeCubit());
   }
 
-  ThemeCubit() : super(ThemeState(themeMode: ThemeMode.light));
+  ThemeCubit() : super(const ThemeState(themeMode: ThemeMode.light));
 
   Future<void> setThemeMode(ThemeMode value) async {
     emit(state.copyWith(themeMode: value));

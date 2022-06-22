@@ -18,8 +18,8 @@ class VolunteerPassInfoDialog extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 24),
-          padding: EdgeInsets.all(24),
+          margin: const EdgeInsets.symmetric(horizontal: 24),
+          padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             color: Colors.white,
@@ -79,7 +79,7 @@ class VolunteerPassInfoDialog extends StatelessWidget {
                 children: [
                   AppWidgets.text(
                     text: "*",
-                    color: AppColorUtils.RED,
+                    color: AppColorUtils.red,
                   ),
                   Expanded(
                     child: AppWidgets.text(
@@ -89,15 +89,15 @@ class VolunteerPassInfoDialog extends StatelessWidget {
                       height: 1.3,
                       fontWeight: FontWeight.w500,
                       fontStyle: FontStyle.italic,
-                      color: AppColorUtils.GRAY_4,
+                      color: AppColorUtils.gray4,
                     ),
                   )
                 ],
               ).paddingOnly(top: 18),
               AppWidgets.appButton(
                 title: LocaleKeys.exit,
-                color: AppColorUtils.GREEN_ACCENT5,
-                textColor: AppColorUtils.BLACK,
+                color: AppColorUtils.greenAccent5,
+                textColor: AppColorUtils.black,
                 onTap: () {
                   Navigator.pop(context);
                 },

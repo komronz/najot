@@ -20,7 +20,7 @@ class UserUpdatePage extends StatelessWidget {
   final MyProfileUpdateBloc bloc;
   static const String routeName = "/userUpdatePage";
 
-  UserUpdatePage({
+  const UserUpdatePage({
     required this.bloc,
     Key? key,
   }) : super(key: key);
@@ -29,7 +29,7 @@ class UserUpdatePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        context.read<MyProfileUpdateBloc>().add(EditProfileChangePage(1));
+        context.read<MyProfileUpdateBloc>().add(const EditProfileChangePage(1));
         return Future(() => false);
       },
       child: GestureDetector(
@@ -43,12 +43,12 @@ class UserUpdatePage extends StatelessWidget {
               return Scaffold(
                 resizeToAvoidBottomInset: false,
                 appBar: AppBar(
-                  backgroundColor: AppColorUtils.BACKGROUND,
+                  backgroundColor: AppColorUtils.background,
                   titleSpacing: 0,
                   elevation: 0,
                   automaticallyImplyLeading: false,
                   title: Container(
-                    color: AppColorUtils.WAIT_COLOR,
+                    color: AppColorUtils.waitColor,
                     child: AppWidgets.appBarMenu(
                       title: LocaleKeys.edit_my_profile,
                       onTapMenu: () {
@@ -58,9 +58,9 @@ class UserUpdatePage extends StatelessWidget {
                       onTapIcon: () {
                         context
                             .read<MyProfileUpdateBloc>()
-                            .add(EditProfileChangePage(1));
+                            .add(const EditProfileChangePage(1));
                       },
-                      icon: AppImageUtils.REMOVE,
+                      icon: AppImageUtils.remove,
                     ),
                   ),
                 ),
@@ -69,72 +69,70 @@ class UserUpdatePage extends StatelessWidget {
                     Expanded(
                       child: SingleChildScrollView(
                         child: Container(
-                          padding: EdgeInsets.only(),
+                          padding: const EdgeInsets.only(),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: AppColorUtils.WHITE,
+                            color: AppColorUtils.white,
                           ),
                           child: Column(
                             children: [
-                              ShowPickerWidget(),
-                              Container(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    AppTextField(
-                                      isFill: bloc.state.name.isNotEmpty,
-                                      initialText: bloc.state.name,
-                                      hintText: "(abdumalik)",
-                                      onChanged: (v) {
-                                        bloc.add(FirstNameChanged(v));
-                                      },
-                                      title: LocaleKeys.name.tr(),
-                                    ).paddingOnly(bottom: 23.h),
-                                    AppTextField(
-                                      isFill: bloc.state.sureName.isNotEmpty,
-                                      initialText: bloc.state.sureName,
-                                      hintText: "(sapoqulov)",
-                                      onChanged: (v) {
-                                        bloc.add(LastNameChanged(v));
-                                      },
-                                      title: LocaleKeys.surname.tr(),
-                                    ).paddingOnly(bottom: 24.h),
-                                    Row(
-                                      children: [
-                                        UserUpdateAppRadioButton(
-                                          onChanged: (v) {
-                                            var gender = v == 1
-                                                ? Gender.MAN
-                                                : Gender.WOMAN;
-                                            bloc.add(GenderChanged(gender));
-                                          },
-                                        ).paddingOnly(top: 20),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                              const ShowPickerWidget(),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  AppTextField(
+                                    isFill: bloc.state.name.isNotEmpty,
+                                    initialText: bloc.state.name,
+                                    hintText: "(abdumalik)",
+                                    onChanged: (v) {
+                                      bloc.add(FirstNameChanged(v));
+                                    },
+                                    title: LocaleKeys.name.tr(),
+                                  ).paddingOnly(bottom: 23.h),
+                                  AppTextField(
+                                    isFill: bloc.state.sureName.isNotEmpty,
+                                    initialText: bloc.state.sureName,
+                                    hintText: "(sapoqulov)",
+                                    onChanged: (v) {
+                                      bloc.add(LastNameChanged(v));
+                                    },
+                                    title: LocaleKeys.surname.tr(),
+                                  ).paddingOnly(bottom: 24.h),
+                                  Row(
+                                    children: [
+                                      UserUpdateAppRadioButton(
+                                        onChanged: (v) {
+                                          var gender = v == 1
+                                              ? Gender.man
+                                              : Gender.woman;
+                                          bloc.add(GenderChanged(gender));
+                                        },
+                                      ).paddingOnly(top: 20),
+                                    ],
+                                  ),
+                                ],
                               ).paddingOnly(bottom: 24.h),
                               InkWell(
                                 onTap: () {
                                   bloc.add(SaveIn());
                                   context
                                       .read<MyProfileUpdateBloc>()
-                                      .add(EditProfileChangePage(1));
+                                      .add(const EditProfileChangePage(1));
                                 },
                                 child: Container(
                                   width: double.infinity,
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                     top: 10,
                                     bottom: 15,
                                   ),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(12),
-                                    color: AppColorUtils.PERCENT_COLOR,
+                                    color: AppColorUtils.percentColor,
                                   ),
                                   child: AppWidgets.textLocale(
                                     text: LocaleKeys.save,
                                     textAlign: TextAlign.center,
-                                    color: AppColorUtils.WHITE,
+                                    color: AppColorUtils.white,
                                     fontSize: 15.sp,
                                     fontWeight: FontWeight.w600,
                                   ),

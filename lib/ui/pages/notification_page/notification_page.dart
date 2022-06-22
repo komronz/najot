@@ -16,10 +16,10 @@ import '../../../data/services/navigator_service.dart';
 class NotificationPage extends StatefulWidget {
   static const String routeName = "/notificationPage";
 
-  NotificationPage({Key? key}) : super(key: key);
+  const NotificationPage({Key? key}) : super(key: key);
 
   @override
-  _NotificationPageState createState() => _NotificationPageState();
+  State<StatefulWidget> createState() => _NotificationPageState();
 }
 
 class _NotificationPageState extends State<NotificationPage> {
@@ -84,7 +84,8 @@ class _NotificationPageState extends State<NotificationPage> {
                   title: LocaleKeys.attention_hello_volunteer.tr(),
                   body: LocaleKeys.you_go_to_help.tr(),
                   payload: jsonEncode(state.cardList[index].toJson()),
-                  scheduledDate: DateTime.now().add(Duration(seconds: 10)));
+                  scheduledDate:
+                      DateTime.now().add(const Duration(seconds: 10)));
             },
           );
         }
@@ -95,7 +96,7 @@ class _NotificationPageState extends State<NotificationPage> {
               title: LocaleKeys.attention_hello_volunteer.tr(),
               body: LocaleKeys.you_go_to_help.tr(),
               payload: jsonEncode(state.cardList[index].toJson()),
-              scheduledDate: DateTime.now().add(Duration(seconds: 10)),
+              scheduledDate: DateTime.now().add(const Duration(seconds: 10)),
             );
           },
         );

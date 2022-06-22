@@ -6,7 +6,7 @@ class AppPageState extends Equatable {
   final bool tobeVolunteer;
 
   const AppPageState({
-    this.pageType = AppPageType.MAIN,
+    this.pageType = AppPageType.main,
     this.changeMenu = 1,
     this.tobeVolunteer = false,
   });
@@ -28,24 +28,24 @@ class AppPageState extends Equatable {
 }
 
 enum AppPageType {
-  MAIN,
-  CHARITY,
-  ORDERS,
-  RULES,
-  ORGANIZATIONS,
-  FAQ,
-  ABOUT,
-  PROFILE,
-  USERPROFILE,
-  VOLUNTEER,
-  OPERATOR,
-  SAVED,
-  PROJECT,
-  VOLUNTEERING,
-  ADD_PROJECT,
-  ORDERS_VOLUNTEER,
-  CHARITY_VOLUNTEER,
-  USER_UPDATE,
-  NUMBER,
-  DEFAULT,
+  main,
+  charity,
+  orders,
+  rules,
+  organizations,
+  faq,
+  about,
+  profile,
+  userprofile,
+  volunteer,
+  operator,
+  saved,
+  project,
+  volunteering,
+  addProject,
+  ordersVolunteer,
+  charityVolunteer,
+  userUpdate,
+  number,
+  defaultT,
 }

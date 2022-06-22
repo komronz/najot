@@ -12,13 +12,15 @@ import 'date_picker/i18n/date_picker_i18n.dart';
 import 'date_picker/widget/date_picker_widget.dart';
 
 class CustomTimePickerDialog extends StatefulWidget {
-  CustomTimePickerDialog({
+  const CustomTimePickerDialog({
     required this.title,
-  });
+    Key? key,
+  }) : super(key: key);
 
   final String title;
 
   @override
+  // ignore: library_private_types_in_public_api
   _CustomTimePickerDialogState createState() => _CustomTimePickerDialogState();
 }
 
@@ -40,14 +42,14 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
     return Stack(
       children: <Widget>[
         Container(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             top: 10,
             bottom: 10,
           ),
-          margin: EdgeInsets.only(top: 20),
+          margin: const EdgeInsets.only(top: 20),
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
-            color: AppColorUtils.BACK_AD,
+            color: AppColorUtils.backAd,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Column(
@@ -61,13 +63,13 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w500,
-                  color: AppColorUtils.GRAY_3,
+                  color: AppColorUtils.gray3,
                 ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40.w),
                 child: DatePickerWidget(
-                  locale: context.locale == Locale("uz", "UZ")
+                  locale: context.locale == const Locale("uz", "UZ")
                       ? DateTimePickerLocale.uz
                       : DateTimePickerLocale.ru,
                   firstDate: DateTime.now(),
@@ -81,12 +83,12 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                     // print(_date);
                   },
                   pickerTheme: DateTimePickerTheme(
-                    backgroundColor: AppColorUtils.DARK_4,
+                    backgroundColor: AppColorUtils.dark4,
                     itemTextStyle: TextStyle(
-                      color: AppColorUtils.WHITE,
+                      color: AppColorUtils.white,
                       fontSize: 16.sp,
                     ),
-                    dividerColor: AppColorUtils.DIVIDER_COLOR,
+                    dividerColor: AppColorUtils.dividerColor,
                   ),
                 ),
               ),
@@ -95,7 +97,7 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w500,
-                  color: AppColorUtils.WHITE,
+                  color: AppColorUtils.white,
                 ),
               ),
               TimePickerSpinner(
@@ -108,7 +110,7 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                 isForce2Digits: true,
                 highlightedTextStyle: TextStyle(
                   fontSize: 16.sp,
-                  color: AppColorUtils.WHITE,
+                  color: AppColorUtils.white,
                   decorationStyle: TextDecorationStyle.solid,
                   inherit: true,
                   fontWeight: FontWeight.w500,
@@ -142,7 +144,7 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                       _time.hour,
                       _time.minute,
                       _time.second,
-                    ).add(Duration(minutes: 30));
+                    ).add(const Duration(minutes: 30));
                     AppLoggerUtil.d(dateTime.toString());
                     // RootService.appBloc.orderBloc.add(
                     //   OrderDateTimeEvent(
@@ -155,8 +157,8 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                   text: LocaleKeys.executable_date.tr(),
                   height: 50,
                   width: MediaQuery.of(context).size.width,
-                  color: AppColorUtils.DARK_4,
-                  textColor: AppColorUtils.WHITE,
+                  color: AppColorUtils.dark4,
+                  textColor: AppColorUtils.white,
                   borderRadius: 10,
                 ),
               ),
@@ -210,9 +212,9 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                   text: LocaleKeys.save.tr(),
                   height: 50,
                   width: MediaQuery.of(context).size.width,
-                  textColor: AppColorUtils.WHITE,
+                  textColor: AppColorUtils.white,
                   borderRadius: 10,
-                  color: AppColorUtils.RED,
+                  color: AppColorUtils.red,
                 ),
               ),
             ],

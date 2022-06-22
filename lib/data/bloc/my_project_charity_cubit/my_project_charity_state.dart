@@ -1,8 +1,7 @@
 part of 'my_project_charity_cubit.dart';
 
-@immutable
 class MyProjectCharityState extends Equatable {
-  MyProjectCharityState(this.tabChange);
+  const MyProjectCharityState(this.tabChange);
 
   final int tabChange;
 

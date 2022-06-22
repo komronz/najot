@@ -20,7 +20,7 @@ import 'edit_show_success.dart';
 
 class AboutPage extends StatelessWidget {
   AboutPage({Key? key}) : super(key: key);
-  AppealBloc appealBloc = AppealBloc();
+  final AppealBloc appealBloc = AppealBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class AboutPage extends StatelessWidget {
           bloc: appealBloc,
           builder: (context, state) {
             return Scaffold(
-              backgroundColor: AppColorUtils.BACKGROUND,
+              backgroundColor: AppColorUtils.background,
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 backgroundColor: Colors.transparent,
@@ -41,7 +41,7 @@ class AboutPage extends StatelessWidget {
                   children: [
                     InkWell(
                       child: SvgPicture.asset(
-                        AppImageUtils.MENU,
+                        AppImageUtils.menu,
                         height: 35.w,
                         width: 35.w,
                       ),
@@ -61,7 +61,7 @@ class AboutPage extends StatelessWidget {
                         );
                       },
                       child: SvgPicture.asset(
-                        AppImageUtils.NOTIFICATION,
+                        AppImageUtils.notification,
                         height: 35.w,
                         width: 35.w,
                         fit: BoxFit.fill,
@@ -74,7 +74,7 @@ class AboutPage extends StatelessWidget {
                 child: Column(
                   children: [
                     AppWidgets.imageAsset(
-                      path: AppImageUtils.IMG_ABOUT,
+                      path: AppImageUtils.imgAbout,
                       width: context.width,
                     ).paddingOnly(top: 30, left: 20, right: 20),
                     AppWidgets.text(
@@ -83,14 +83,14 @@ class AboutPage extends StatelessWidget {
                       maxLines: 100,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w400,
-                      color: AppColorUtils.DARK3,
+                      color: AppColorUtils.dark3,
                       height: 1.5,
                     ).paddingSymmetric(horizontal: 20, vertical: 9),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AppWidgets.imageSvg(path: AppImageUtils.IC_LOCATION),
+                        AppWidgets.imageSvg(path: AppImageUtils.icLocation),
                         Expanded(
                           child: AppWidgets.text(
                             textAlign: TextAlign.start,
@@ -99,7 +99,7 @@ class AboutPage extends StatelessWidget {
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w600,
                             height: 1.2,
-                            color: AppColorUtils.KRAUDFANDING,
+                            color: AppColorUtils.kraudfanding,
                             maxLines: 10,
                           ).paddingOnly(left: 8),
                         )
@@ -107,7 +107,7 @@ class AboutPage extends StatelessWidget {
                     ).paddingSymmetric(horizontal: 20, vertical: 9),
                     Row(
                       children: [
-                        AppWidgets.imageSvg(path: AppImageUtils.IC_PHONE),
+                        AppWidgets.imageSvg(path: AppImageUtils.icPhone),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,7 +118,7 @@ class AboutPage extends StatelessWidget {
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w600,
                               height: 1.5,
-                              color: AppColorUtils.KRAUDFANDING,
+                              color: AppColorUtils.kraudfanding,
                               maxLines: 10,
                             ),
                             AppWidgets.text(
@@ -127,7 +127,7 @@ class AboutPage extends StatelessWidget {
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w600,
                               height: 1.2,
-                              color: AppColorUtils.KRAUDFANDING,
+                              color: AppColorUtils.kraudfanding,
                               maxLines: 10,
                             ),
                           ],
@@ -136,7 +136,7 @@ class AboutPage extends StatelessWidget {
                     ).paddingSymmetric(horizontal: 20, vertical: 9),
                     Container(
                       width: context.width,
-                      decoration: DecorationConst.DEC_WITH_SHADOW,
+                      decoration: DecorationConst.decWithShadow,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -144,7 +144,7 @@ class AboutPage extends StatelessWidget {
                             text: LocaleKeys.contact_us.tr(),
                             fontWeight: FontWeight.w600,
                             fontSize: 22.sp,
-                            color: AppColorUtils.DARK2,
+                            color: AppColorUtils.dark2,
                           ).paddingOnly(top: 24),
                           AppTextField(
                             isFill:
@@ -196,8 +196,8 @@ class AboutPage extends StatelessWidget {
                             textColor: Colors.white,
                             color:
                                 context.read<AppealBloc>().state.isNextBtnActive
-                                    ? AppColorUtils.PERCENT_COLOR
-                                    : AppColorUtils.GREEN_BTN,
+                                    ? AppColorUtils.percentColor
+                                    : AppColorUtils.greenBtn,
                           ).paddingSymmetric(vertical: 25),
                         ],
                       ).paddingOnly(

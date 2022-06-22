@@ -17,10 +17,10 @@ import 'package:super_rich_text/super_rich_text.dart';
 import '../verification_page/verification_page.dart';
 
 class LoginPage extends StatelessWidget {
-  LoginPage({Key? key}) : super(key: key);
+  const LoginPage({Key? key}) : super(key: key);
   static const String routeName = '/loginPage';
 
-  bool fullNumber = false;
+  final bool fullNumber = false;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class LoginPage extends StatelessWidget {
               VerificationPage.routeName,
               arguments: context.read<LoginBloc>(),
             );
-            context.read<LoginBloc>().add(LoginAuthSuccess(false));
+            context.read<LoginBloc>().add(const LoginAuthSuccess(false));
           }
           // else{
           //   NavigatorService.to.pushNamed(
@@ -48,7 +48,7 @@ class LoginPage extends StatelessWidget {
         },
         builder: (context, state) => Scaffold(
           body: SingleChildScrollView(
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -63,8 +63,8 @@ class LoginPage extends StatelessWidget {
                             NavigatorService.to.pop();
                           },
                           title: LocaleKeys.sign_in,
-                          color: AppColorUtils.GREEN_BACK_SPLASH,
-                          textColor: AppColorUtils.WHITE,
+                          color: AppColorUtils.greenBackSplash,
+                          textColor: AppColorUtils.white,
                         ),
                       ],
                     ).paddingOnly(top: 40.h),
@@ -90,12 +90,12 @@ class LoginPage extends StatelessWidget {
                 state.hasError
                     ? AppWidgets.starTextWidget(
                             text: "Telefon raqamni to'liq kiriting",
-                            color: AppColorUtils.RED)
+                            color: AppColorUtils.red)
                         .paddingOnly(left: 20)
-                    : SizedBox(),
+                    : const SizedBox(),
                 AppWidgets.appButton(
                   title: LocaleKeys.enter,
-                  color: AppColorUtils.GREEN_APP,
+                  color: AppColorUtils.greenApp,
                   onTap: () {
                     context.read<LoginBloc>().add(CheckPhoneNumber());
                   },
@@ -128,16 +128,16 @@ class LoginRegBtnWidget extends StatelessWidget {
                 text: LocaleKeys.you_not_registered.tr(),
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color: AppColorUtils.DARK_6,
+                color: AppColorUtils.dark6,
               ),
               AppWidgets.appButton(
                       title: LocaleKeys.str_registration,
                       onTap: onTap,
-                      color: AppColorUtils.BLUE)
+                      color: AppColorUtils.blue)
                   .paddingOnly(top: 10),
             ],
           ).paddingOnly(bottom: 100)
-        : SizedBox();
+        : const SizedBox();
   }
 }
 
@@ -159,7 +159,7 @@ class LoginErrorTextWidget extends StatelessWidget {
                 '*',
                 style: TextStyle(
                   fontSize: 14.sp,
-                  color: AppColorUtils.RED,
+                  color: AppColorUtils.red,
                 ),
               ),
               SizedBox(
@@ -169,14 +169,14 @@ class LoginErrorTextWidget extends StatelessWidget {
                   othersMarkers: [
                     MarkerText(
                       marker: LocaleKeys.phone_number.tr(),
-                      style: TextStyle(color: AppColorUtils.RED),
+                      style: const TextStyle(color: AppColorUtils.red),
                     ),
                   ],
                   text: LocaleKeys.information_not_found.tr(),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                   maxLines: 3,
-                  color: AppColorUtils.GRAY_4,
+                  color: AppColorUtils.gray4,
                   height: 1.2,
                 ),
               ),
@@ -186,14 +186,14 @@ class LoginErrorTextWidget extends StatelessWidget {
             right: 20,
             top: 8,
           )
-        : SizedBox();
+        : const SizedBox();
   }
 }
 
 class ClipPathWidget extends StatelessWidget {
   final double height;
 
-  ClipPathWidget({required this.height});
+  const ClipPathWidget({Key? key, required this.height}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -202,7 +202,7 @@ class ClipPathWidget extends StatelessWidget {
       child: Container(
         width: context.width,
         height: height,
-        color: AppColorUtils.GREEN_APP,
+        color: AppColorUtils.greenApp,
       ),
     );
   }

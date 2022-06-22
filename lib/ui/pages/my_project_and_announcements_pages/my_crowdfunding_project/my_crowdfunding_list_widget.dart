@@ -23,7 +23,7 @@ class MyCrowdfundingListWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           AppWidgets.imageSvg(
-            path: AppImageUtils.IMG_DOLLAR,
+            path: AppImageUtils.imgDollar,
             height: 70.w,
             width: 70.w,
             fit: BoxFit.none,
@@ -32,7 +32,7 @@ class MyCrowdfundingListWidget extends StatelessWidget {
             text: "Hozircha hech narsa topilmadi",
             fontSize: 18.sp,
             fontWeight: FontWeight.w600,
-            color: AppColorUtils.GRAY_4,
+            color: AppColorUtils.gray4,
             textAlign: TextAlign.center,
             maxLines: 2,
           ).paddingOnly(
@@ -49,9 +49,9 @@ class MyCrowdfundingListWidget extends StatelessWidget {
           GridView.count(
             shrinkWrap: true,
             crossAxisCount: 2,
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             childAspectRatio: 168 / 298,
-            padding: EdgeInsets.all(0),
+            padding: const EdgeInsets.all(0),
             reverse: false,
             children: List.generate(
               list.length,

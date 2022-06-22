@@ -26,15 +26,15 @@ class HiveService {
   }
 
   String getLang() {
-    return _box.get(_HiveKeys.LANG, defaultValue: "uz_UZ");
+    return _box.get(_HiveKeys.lang, defaultValue: "uz_UZ");
   }
 
   void setLang(Locale locale) {
-    _box.put(_HiveKeys.LANG, locale.toString());
+    _box.put(_HiveKeys.lang, locale.toString());
   }
 
   User? getUser() {
-    var user = _box.get(_HiveKeys.USER, defaultValue: null);
+    var user = _box.get(_HiveKeys.user, defaultValue: null);
     if (user != null) {
       return User.fromJson(json.decode(user));
     }
@@ -42,15 +42,15 @@ class HiveService {
   }
 
   void setUser(User user) {
-    _box.put(_HiveKeys.USER, json.encode(user.toJson()));
+    _box.put(_HiveKeys.user, json.encode(user.toJson()));
   }
 
   void deleteUser(User user) {
-    _box.delete(_HiveKeys.USER);
+    _box.delete(_HiveKeys.user);
   }
 }
 
 class _HiveKeys {
-  static const String LANG = "lang";
-  static const String USER = "user";
+  static const String lang = "lang";
+  static const String user = "user";
 }

@@ -18,12 +18,12 @@ class DateWidget extends StatelessWidget {
       children: [
         Icon(
           Icons.calendar_today_outlined,
-          color: AppColorUtils.BLUE_PERCENT,
+          color: AppColorUtils.bluePercent,
           size: 14.sp,
         ),
         AppWidgets.text(
           text: date,
-          color: AppColorUtils.BLUE_PERCENT,
+          color: AppColorUtils.bluePercent,
           fontWeight: FontWeight.w500,
           fontSize: 14.sp,
         ).paddingOnly(left: 6.w),

@@ -19,7 +19,7 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
 
   RegVolunteerBloc()
       : pageController = PageController(),
-        super(RegVolunteerState()) {
+        super(const RegVolunteerState()) {
     on<VolunteerFirstNameChanged>(_onFirstNameChanged);
     on<VolunteerLastNameChanged>(_onLastNameChanged);
     on<VolunteerAddressChanged>(_onAddressChanged);
@@ -133,11 +133,11 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
   Gender _gender(int gender) {
     switch (gender) {
       case 1:
-        return Gender.MAN;
+        return Gender.man;
       case 2:
-        return Gender.WOMAN;
+        return Gender.woman;
       default:
-        return Gender.MAN;
+        return Gender.man;
     }
   }
 

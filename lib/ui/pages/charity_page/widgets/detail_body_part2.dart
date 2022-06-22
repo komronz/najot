@@ -1,4 +1,4 @@
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -10,9 +10,9 @@ import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class DetailBodyPart2 extends StatelessWidget {
-  DetailBodyPart2({required this.cardModel});
+  const DetailBodyPart2({Key? key, required this.cardModel}) : super(key: key);
 
-  CardModel cardModel;
+  final CardModel cardModel;
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +34,12 @@ class DetailBodyPart2 extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.calendar_today_outlined,
-                      color: AppColorUtils.BLUE_PERCENT,
+                      color: AppColorUtils.bluePercent,
                       size: 14.sp,
                     ),
                     AppWidgets.text(
                       text: "25.02.2022",
-                      color: AppColorUtils.BLUE_PERCENT,
+                      color: AppColorUtils.bluePercent,
                       fontWeight: FontWeight.w500,
                       fontSize: 14.sp,
                     ).paddingOnly(left: 6.w),

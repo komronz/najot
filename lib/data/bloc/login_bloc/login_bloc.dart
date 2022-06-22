@@ -15,7 +15,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   LoginBloc()
       : phoneNumberFormatter = MaskTextInputFormatter(mask: "## ### ## ##"),
-        super(LoginState()) {
+        super(const LoginState()) {
     on<LoginFirstNameChanged>(_onFirstNameChanged);
     on<LoginLastNameChanged>(_onLastNameChanged);
     on<LoginAgreeChanged>(_onAgreeChanged);

@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -14,7 +14,8 @@ import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class ProductDetailPage extends StatelessWidget {
-  const ProductDetailPage({required this.productModel});
+  const ProductDetailPage({required this.productModel, Key? key})
+      : super(key: key);
 
   final ProductModel productModel;
   static const String routeName = "/productDetailPage";
@@ -23,7 +24,7 @@ class ProductDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: AppColorUtils.BACKGROUND,
+      backgroundColor: AppColorUtils.background,
       appBar: AppBarWithTitle(
         title: LocaleKeys.buy_product.tr(),
         onPress: () {
@@ -31,8 +32,8 @@ class ProductDetailPage extends StatelessWidget {
         },
       ),
       body: Container(
-        decoration: BoxDecoration(
-          color: AppColorUtils.WHITE,
+        decoration: const BoxDecoration(
+          color: AppColorUtils.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(11),
             topLeft: Radius.circular(11),
@@ -53,18 +54,18 @@ class ProductDetailPage extends StatelessWidget {
                         vertical: 18.w,
                       ),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.all(
+                        borderRadius: const BorderRadius.all(
                           Radius.circular(12),
                         ),
                         child: CachedNetworkImage(
                           imageUrl: productModel.imgUrl!,
                           fit: BoxFit.cover,
                           width: MediaQuery.of(context).size.width,
-                          placeholder: (context, url) => Center(
+                          placeholder: (context, url) => const Center(
                             child: CircularProgressIndicator(),
                           ),
                           errorWidget: (context, url, error) =>
-                              Icon(Icons.error),
+                              const Icon(Icons.error),
                         ),
                       ),
                     ),
@@ -72,7 +73,7 @@ class ProductDetailPage extends StatelessWidget {
                       text: LocaleKeys.project_name,
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
-                      color: AppColorUtils.DARK_6,
+                      color: AppColorUtils.dark6,
                     ).paddingOnly(
                       left: 20.w,
                       bottom: 3.w,
@@ -80,7 +81,7 @@ class ProductDetailPage extends StatelessWidget {
                     AppWidgets.text(
                       text: "Drenajni kuzatish uchun mo’jallangan moslama",
                       fontSize: 20.sp,
-                      color: AppColorUtils.DARK2,
+                      color: AppColorUtils.dark2,
                       fontWeight: FontWeight.w500,
                       maxLines: 2,
                     ).paddingSymmetric(horizontal: 20.w),
@@ -105,13 +106,13 @@ class ProductDetailPage extends StatelessWidget {
                               text: LocaleKeys.project_author,
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
-                              color: AppColorUtils.DARK_6,
+                              color: AppColorUtils.dark6,
                             ),
                             SizedBox(
                               width: 150.w,
                               child: AppWidgets.text(
                                 text: "Eshonov Fakhriyor",
-                                color: AppColorUtils.TEXT_GREEN2,
+                                color: AppColorUtils.textGreen2,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14.sp,
                               ).paddingOnly(top: 2.w),
@@ -128,7 +129,7 @@ class ProductDetailPage extends StatelessWidget {
                       text: LocaleKeys.about_product,
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
-                      color: AppColorUtils.DARK_6,
+                      color: AppColorUtils.dark6,
                     ).paddingOnly(
                       left: 20.w,
                       bottom: 3.w,
@@ -139,7 +140,7 @@ class ProductDetailPage extends StatelessWidget {
                       height: 1.5,
                       fontWeight: FontWeight.w500,
                       maxLines: 50,
-                      color: AppColorUtils.DARK2,
+                      color: AppColorUtils.dark2,
                     ).paddingSymmetric(horizontal: 20.w),
                     SizedBox(
                       height: 18.w,
@@ -151,11 +152,11 @@ class ProductDetailPage extends StatelessWidget {
                           text: LocaleKeys.prize_amount,
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w400,
-                          color: AppColorUtils.DARK_6,
+                          color: AppColorUtils.dark6,
                         ),
                         AppWidgets.textLocale(
                           text: LocaleKeys.date_implementation,
-                          color: AppColorUtils.DARK_6,
+                          color: AppColorUtils.dark6,
                           fontSize: 10.sp,
                           fontWeight: FontWeight.w400,
                         ),
@@ -166,17 +167,17 @@ class ProductDetailPage extends StatelessWidget {
                       children: [
                         AppWidgets.textLocale(
                           text: LocaleKeys.sum,
-                          args: ["${productModel.totalSum!}".tr()],
+                          args: [productModel.totalSum!.tr()],
                           fontWeight: FontWeight.w600,
                           fontSize: 16.sp,
-                          color: AppColorUtils.TEXT_GREEN,
+                          color: AppColorUtils.textGreen,
                         ),
                         Row(
                           children: [
-                            SvgPicture.asset(AppImageUtils.DATE),
+                            SvgPicture.asset(AppImageUtils.date),
                             AppWidgets.text(
                               text: productModel.date!,
-                              color: AppColorUtils.BLUE_PERCENT,
+                              color: AppColorUtils.bluePercent,
                               fontWeight: FontWeight.w600,
                               fontSize: 16.sp,
                             ).paddingOnly(left: 6.w),
@@ -194,14 +195,14 @@ class ProductDetailPage extends StatelessWidget {
               ),
             ),
             Container(
-              color: AppColorUtils.WHITE,
+              color: AppColorUtils.white,
               child: ButtonCard(
                 height: 48.w,
                 width: MediaQuery.of(context).size.width,
                 onPress: () {},
                 text: LocaleKeys.switch_amount.tr(),
-                color: AppColorUtils.PERCENT_COLOR,
-                textColor: AppColorUtils.WHITE,
+                color: AppColorUtils.percentColor,
+                textColor: AppColorUtils.white,
                 textSize: 16.sp,
               ).paddingOnly(
                 left: 20.w,

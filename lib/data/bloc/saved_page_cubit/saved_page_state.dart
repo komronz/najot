@@ -1,13 +1,12 @@
 part of 'saved_page_cubit.dart';
 
-@immutable
 class SavedPageState extends Equatable {
   final List<CardModel> crowdFoundingSavedList;
   final bool hasError;
   final bool hasConnection;
   final bool isLoading;
 
-  SavedPageState({
+  const SavedPageState({
     this.crowdFoundingSavedList = const [],
     this.hasError = false,
     this.hasConnection = true,
@@ -21,7 +20,8 @@ class SavedPageState extends Equatable {
     bool? isLoading,
   }) {
     return SavedPageState(
-      crowdFoundingSavedList: crowdFoundingSavedList ?? this.crowdFoundingSavedList,
+      crowdFoundingSavedList:
+          crowdFoundingSavedList ?? this.crowdFoundingSavedList,
       hasConnection: hasConnection ?? this.hasConnection,
       hasError: hasError ?? this.hasError,
       isLoading: isLoading ?? this.isLoading,

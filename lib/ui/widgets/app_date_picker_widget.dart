@@ -11,6 +11,7 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import 'app_widgets.dart';
 
+// ignore: must_be_immutable
 class AppDatePickerWidget extends StatelessWidget {
   AppDatePickerWidget({
     required this.selectFunction,
@@ -25,10 +26,10 @@ class AppDatePickerWidget extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: Container(
-          margin: EdgeInsets.all(20.0),
-          padding: EdgeInsets.all(15.0),
+          margin: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(15.0),
           decoration: ShapeDecoration(
-            color: AppColors.WHITE,
+            color: AppColors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),
             ),
@@ -46,7 +47,7 @@ class AppDatePickerWidget extends StatelessWidget {
                   AppWidgets.text(
                     text: LocaleKeys.select_date.tr(),
                     fontSize: 20.sp,
-                    color: AppColorUtils.DARK2,
+                    color: AppColorUtils.dark2,
                     fontWeight: FontWeight.w600,
                   ).paddingOnly(left: 8)
                 ],
@@ -54,7 +55,7 @@ class AppDatePickerWidget extends StatelessWidget {
                 top: 20,
                 bottom: 18,
               ),
-              Container(
+              SizedBox(
                 height: 280.h,
                 child: SfDateRangePicker(
                   onSelectionChanged: (dateRangePickerSelectionChangedArgs) {
@@ -69,12 +70,12 @@ class AppDatePickerWidget extends StatelessWidget {
                   view: DateRangePickerView.month,
                   monthViewSettings: DateRangePickerMonthViewSettings(
                     weekNumberStyle: DateRangePickerWeekNumberStyle(
-                      textStyle: TextStyle(color: AppColorUtils.RED),
-                      backgroundColor: AppColors.RED,
+                      textStyle: const TextStyle(color: AppColorUtils.red),
+                      backgroundColor: AppColors.red,
                     ),
                     viewHeaderStyle: DateRangePickerViewHeaderStyle(
                       textStyle: GoogleFonts.lato(
-                        color: AppColorUtils.DARK_6,
+                        color: AppColorUtils.dark6,
                         fontSize: 13.sp,
                         fontWeight: FontWeight.w400,
                       ),
@@ -82,20 +83,20 @@ class AppDatePickerWidget extends StatelessWidget {
                   ),
                   headerStyle: DateRangePickerHeaderStyle(
                     textStyle: GoogleFonts.lato(
-                      color: AppColors.BLACK,
+                      color: AppColors.black,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  monthCellStyle: DateRangePickerMonthCellStyle(
+                  monthCellStyle: const DateRangePickerMonthCellStyle(
                     textStyle: TextStyle(color: Colors.black),
                     todayTextStyle: TextStyle(color: Colors.black),
                   ),
-                  selectionColor: AppColorUtils.PERCENT_COLOR,
-                  yearCellStyle: DateRangePickerYearCellStyle(
+                  selectionColor: AppColorUtils.percentColor,
+                  yearCellStyle: const DateRangePickerYearCellStyle(
                       todayTextStyle: TextStyle(color: Colors.black)),
-                  todayHighlightColor: AppColorUtils.PERCENT_COLOR,
-                  startRangeSelectionColor: AppColorUtils.PERCENT_COLOR,
+                  todayHighlightColor: AppColorUtils.percentColor,
+                  startRangeSelectionColor: AppColorUtils.percentColor,
                   selectionShape: DateRangePickerSelectionShape.circle,
                 ),
               ),
@@ -103,15 +104,15 @@ class AppDatePickerWidget extends StatelessWidget {
                 children: [
                   Expanded(
                     child: AppWidgets.appButton(
-                      color: AppColorUtils.LIGHT_GRAY,
-                      textColor: AppColorUtils.BLACK,
+                      color: AppColorUtils.lightGray,
+                      textColor: AppColorUtils.black,
                       onTap: () {
                         NavigatorService.to.pop();
                       },
                       title: LocaleKeys.exit,
                     ).paddingOnly(top: 20.h),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 8,
                   ),
                   Expanded(

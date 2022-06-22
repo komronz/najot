@@ -25,16 +25,17 @@ class OrganizationItemDetailPageModel {
 }
 
 class OrganizationItemDetailPage extends StatelessWidget {
-  OrganizationItemDetailPage({required this.model});
+  const OrganizationItemDetailPage({Key? key, required this.model})
+      : super(key: key);
 
   static const String routeName = "/organizationItemDetailPage";
-  OrganizationItemDetailPageModel model;
+  final OrganizationItemDetailPageModel model;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColorUtils.BACKGROUND,
+        backgroundColor: AppColorUtils.background,
         titleSpacing: 0,
         elevation: 0,
         automaticallyImplyLeading: false,
@@ -47,8 +48,8 @@ class OrganizationItemDetailPage extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              decoration: BoxDecoration(
-                color: AppColorUtils.BACKGROUND,
+              decoration: const BoxDecoration(
+                color: AppColorUtils.background,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(11),
                   bottomRight: Radius.circular(11),
@@ -64,17 +65,18 @@ class OrganizationItemDetailPage extends StatelessWidget {
                       vertical: 18.w,
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(12),
                       ),
                       child: CachedNetworkImage(
                         imageUrl: model.model.image,
                         fit: BoxFit.cover,
                         width: MediaQuery.of(context).size.width,
-                        placeholder: (context, url) => Center(
+                        placeholder: (context, url) => const Center(
                           child: CircularProgressIndicator(),
                         ),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
                       ),
                     ),
                   ),
@@ -99,13 +101,13 @@ class OrganizationItemDetailPage extends StatelessWidget {
                             text: LocaleKeys.project_author,
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w400,
-                            color: AppColorUtils.DARK_6,
+                            color: AppColorUtils.dark6,
                           ),
                           SizedBox(
                             width: 150.w,
                             child: AppWidgets.text(
                               text: "Eshonov Fakhriyor",
-                              color: AppColorUtils.TEXT_GREEN2,
+                              color: AppColorUtils.textGreen2,
                               fontWeight: FontWeight.w600,
                               fontSize: 14.sp,
                             ).paddingOnly(top: 2.w),
@@ -118,7 +120,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
                     text: LocaleKeys.about_the_organization,
                     fontWeight: FontWeight.w600,
                     fontSize: 18.sp,
-                    color: AppColorUtils.DARK_1,
+                    color: AppColorUtils.dark1,
                   ).paddingOnly(
                     left: 20.w,
                     top: 12.w,
@@ -128,7 +130,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
                           text: model.model.title,
                           fontSize: 16.w,
                           fontWeight: FontWeight.w400,
-                          color: AppColorUtils.DARK3,
+                          color: AppColorUtils.dark3,
                           maxLines: 50,
                           height: 1.5.w)
                       .paddingSymmetric(horizontal: 20.w),
@@ -136,14 +138,14 @@ class OrganizationItemDetailPage extends StatelessWidget {
                     text: LocaleKeys.organizational_projects,
                     fontWeight: FontWeight.w600,
                     fontSize: 18.sp,
-                    color: AppColorUtils.DARK_1,
+                    color: AppColorUtils.dark1,
                   ).paddingOnly(
                     left: 20.w,
                     top: 12.w,
                     bottom: 10.w,
                   ),
                   SingleChildScrollView(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: List.generate(

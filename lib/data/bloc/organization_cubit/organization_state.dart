@@ -6,10 +6,10 @@ class OrganizationState extends Equatable {
   final bool checkBox;
   final bool saveHelp;
 
-  OrganizationState(
-      {required this.checkBox,this.list = const [],
+  const OrganizationState(
+      {required this.checkBox,
+      this.list = const [],
       this.tobeVolunteer = true,
-
       this.saveHelp = true});
 
   @override

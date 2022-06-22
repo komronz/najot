@@ -1,4 +1,4 @@
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -53,7 +53,7 @@ class _CharityPageState extends State<CharityPage>
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => cubit..Load(),
+      create: (context) => cubit..load(),
       child: BlocBuilder<CharityCubit, CharityState>(
         builder: (context, state) {
           return Scaffold(
@@ -63,7 +63,7 @@ class _CharityPageState extends State<CharityPage>
                 NavigatorService.to.pop();
               },
             ),
-            backgroundColor: AppColorUtils.BACKGROUND,
+            backgroundColor: AppColorUtils.background,
             body: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,10 +77,10 @@ class _CharityPageState extends State<CharityPage>
                         EdgeInsets.symmetric(horizontal: 18.w, vertical: 20.w),
                     width: context.width,
                     decoration: BoxDecoration(
-                      color: AppColorUtils.BACK_AD,
+                      color: AppColorUtils.backAd,
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: AppColorUtils.DIVIDER,
+                        color: AppColorUtils.divider,
                         width: 1,
                       ),
                     ),
@@ -106,8 +106,8 @@ class _CharityPageState extends State<CharityPage>
                               text: LocaleKeys.advertising.tr(),
                               width: 126.w,
                               height: 30.w,
-                              color: AppColorUtils.GREEN_APP,
-                              textColor: AppColorUtils.WHITE,
+                              color: AppColorUtils.greenApp,
+                              textColor: AppColorUtils.white,
                               fontWeight: FontWeight.w600,
                               textSize: 12.sp,
                             ).paddingOnly(top: 13)
@@ -131,7 +131,7 @@ class _CharityPageState extends State<CharityPage>
                   ),
                   SizedBox(
                     child: SingleChildScrollView(
-                      physics: BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: List.generate(state.list.length, (index) {
@@ -170,7 +170,7 @@ class _CharityPageState extends State<CharityPage>
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(11),
                         color: Colors.white,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             color: Color.fromRGBO(11, 191, 144, 0.02),
                             blurRadius: 11,
@@ -189,29 +189,30 @@ class _CharityPageState extends State<CharityPage>
                           TabBar(
                             controller: _tabController,
                             enableFeedback: true,
-                            labelColor: AppColorUtils.GREEN_APP,
-                            unselectedLabelColor: AppColorUtils.DARK_6,
+                            labelColor: AppColorUtils.greenApp,
+                            unselectedLabelColor: AppColorUtils.dark6,
                             unselectedLabelStyle: TextStyle(
                               fontSize: 14.sp,
                               fontWeight: FontWeight.w400,
                             ),
-                            labelStyle: TextStyle(
+                            labelStyle: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                             ),
-                            tabs: [
+                            tabs: const [
                               Text("Barchasi"),
                               Text("Mablag'"),
                               Text("Buyumlar"),
                             ],
                             isScrollable: true,
                             indicatorWeight: 4,
-                            indicatorColor: AppColorUtils.GREEN_APP,
+                            indicatorColor: AppColorUtils.greenApp,
                             indicatorSize: TabBarIndicatorSize.tab,
-                            padding: EdgeInsets.only(right: 10),
+                            padding: const EdgeInsets.only(right: 10),
                             indicatorPadding:
-                                EdgeInsets.only(right: 10, left: 10),
-                            labelPadding: EdgeInsets.only(right: 10, left: 10),
+                                const EdgeInsets.only(right: 10, left: 10),
+                            labelPadding:
+                                const EdgeInsets.only(right: 10, left: 10),
                           ).paddingOnly(left: 15, top: 8),
                           SizedBox(
                             height: 20.w,
@@ -221,9 +222,9 @@ class _CharityPageState extends State<CharityPage>
                               GridView.count(
                                 shrinkWrap: true,
                                 crossAxisCount: 2,
-                                physics: ClampingScrollPhysics(),
+                                physics: const ClampingScrollPhysics(),
                                 childAspectRatio: 160 / 267,
-                                padding: EdgeInsets.all(0),
+                                padding: const EdgeInsets.all(0),
                                 reverse: false,
                                 crossAxisSpacing: 8,
                                 mainAxisSpacing: 6,
@@ -258,9 +259,9 @@ class _CharityPageState extends State<CharityPage>
                               GridView.count(
                                 shrinkWrap: true,
                                 crossAxisCount: 2,
-                                physics: ClampingScrollPhysics(),
+                                physics: const ClampingScrollPhysics(),
                                 childAspectRatio: 160 / 267,
-                                padding: EdgeInsets.all(0),
+                                padding: const EdgeInsets.all(0),
                                 reverse: false,
                                 crossAxisSpacing: 8,
                                 mainAxisSpacing: 6,
@@ -295,9 +296,9 @@ class _CharityPageState extends State<CharityPage>
                               GridView.count(
                                 shrinkWrap: true,
                                 crossAxisCount: 2,
-                                physics: ClampingScrollPhysics(),
+                                physics: const ClampingScrollPhysics(),
                                 childAspectRatio: 160 / 267,
-                                padding: EdgeInsets.all(0),
+                                padding: const EdgeInsets.all(0),
                                 reverse: false,
                                 crossAxisSpacing: 8,
                                 mainAxisSpacing: 6,

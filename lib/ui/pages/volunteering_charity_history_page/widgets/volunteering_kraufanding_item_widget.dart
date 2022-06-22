@@ -20,12 +20,13 @@ class VolunteeringKraufandingItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: AppColorUtils.ITEM_CHARITY_COLOR,
+          color: AppColorUtils.itemCharityColor,
         ),
-        margin: EdgeInsets.only(
+        margin: const EdgeInsets.only(
           bottom: 12,
           left: 20,
           right: 20,
@@ -40,14 +41,14 @@ class VolunteeringKraufandingItemWidget extends StatelessWidget {
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
                     maxLines: 10,
-                    color: AppColorUtils.ITEM_CHARITY_TEXT2),
+                    color: AppColorUtils.itemCharityText2),
                 SizedBox(
                   width: 265.w,
                   child: AppWidgets.text(
                           text: model.title!,
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
-                          color: AppColorUtils.ITEM_CHARITY_TEXT,
+                          color: AppColorUtils.itemCharityText,
                           maxLines: 2)
                       .paddingOnly(top: 3),
                 ),
@@ -59,14 +60,14 @@ class VolunteeringKraufandingItemWidget extends StatelessWidget {
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w400,
                       maxLines: 10,
-                      color: AppColorUtils.ITEM_CHARITY_TEXT2,
+                      color: AppColorUtils.itemCharityText2,
                     ),
                     AppWidgets.textLocale(
                       text: LocaleKeys.date,
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w400,
                       maxLines: 10,
-                      color: AppColorUtils.ITEM_CHARITY_TEXT2,
+                      color: AppColorUtils.itemCharityText2,
                     ),
                   ],
                 ).paddingOnly(top: 12.w),
@@ -77,7 +78,7 @@ class VolunteeringKraufandingItemWidget extends StatelessWidget {
                       text: LocaleKeys.sum,
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w600,
-                      color: AppColorUtils.KRAUDFANDING,
+                      color: AppColorUtils.kraudfanding,
                       args: ["- ${model.currentSum!}"],
                     ),
                     DateWidget(date: model.createdDate!),
@@ -92,17 +93,16 @@ class VolunteeringKraufandingItemWidget extends StatelessWidget {
                 height: 31,
                 width: 30,
                 onTap: onTap,
-                iconWidget: Icon(
+                iconWidget: const Icon(
                   Icons.visibility_outlined,
                   size: 18,
                 ),
-                color: Color(0xFFE5FAF3),
+                color: const Color(0xFFE5FAF3),
               ),
             )
           ],
         ),
       ),
-      onTap: onTap,
     );
   }
 }

@@ -26,19 +26,19 @@ class EditVolunteerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => EditVolunteerBloc()..add(MyProfileLoad()),
+      create: (context) => EditVolunteerBloc()..add(const MyProfileLoad()),
       child: BlocConsumer<EditVolunteerBloc, EditVolunteerState>(
         listener: (context, state) {},
         builder: (context, state) {
           if (state.changePage == 1) {
             return Scaffold(
               appBar: AppBar(
-                backgroundColor: AppColorUtils.BACKGROUND,
+                backgroundColor: AppColorUtils.background,
                 titleSpacing: 0,
                 elevation: 0,
                 automaticallyImplyLeading: false,
                 title: Container(
-                  color: AppColorUtils.WAIT_COLOR,
+                  color: AppColorUtils.waitColor,
                   child: AppWidgets.appBarMenu(
                     title: LocaleKeys.my_profile.tr(),
                     onTapMenu: () {
@@ -48,236 +48,224 @@ class EditVolunteerPage extends StatelessWidget {
                     onTapIcon: () {
                       context
                           .read<EditVolunteerBloc>()
-                          .add(EditProfileChangePage(2));
+                          .add(const EditProfileChangePage(2));
                     },
-                    icon: AppImageUtils.EDIT,
+                    icon: AppImageUtils.edit,
                   ),
                 ),
               ),
               body: SingleChildScrollView(
                 child: Container(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     left: 19,
                     right: 20,
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
-                    color: AppColorUtils.WHITE,
+                    color: AppColorUtils.white,
                   ),
                   child: Column(
                     children: [
-                      ShowPickerWidget(),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            AppWidgets.textLocale(
-                              text: LocaleKeys.degree,
-                              textAlign: TextAlign.center,
-                              fontSize: 12.sp,
-                              color: AppColorUtils.GRAY_4,
-                              fontWeight: FontWeight.w400,
+                      const ShowPickerWidget(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AppWidgets.textLocale(
+                            text: LocaleKeys.degree,
+                            textAlign: TextAlign.center,
+                            fontSize: 12.sp,
+                            color: AppColorUtils.gray4,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(
+                              top: 1,
+                              bottom: 1,
+                              left: 5.w,
                             ),
-                            Container(
-                              padding: EdgeInsets.only(
-                                top: 1,
-                                bottom: 1,
-                                left: 5.w,
-                              ),
-                              child: InkWell(
-                                onTap: () {
-                                  NavigatorService.to
-                                      .pushNamed(UserDegreePage.routeName);
-                                },
-                                child: SvgPicture.asset(
-                                  AppImageUtils.FAQ,
-                                  color: AppColorUtils.GREEN_1,
-                                ),
+                            child: InkWell(
+                              onTap: () {
+                                NavigatorService.to
+                                    .pushNamed(UserDegreePage.routeName);
+                              },
+                              child: SvgPicture.asset(
+                                AppImageUtils.faq,
+                                color: AppColorUtils.green1,
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ).paddingOnly(bottom: 6.h),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(AppImageUtils.HANDS),
-                            Container(
-                              margin: EdgeInsets.only(left: 5),
-                              child: AppWidgets.textLocale(
-                                  text: LocaleKeys.volunteer,
-                                  color: AppColorUtils.TEXT_GREEN,
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w600),
-                            )
-                          ],
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(AppImageUtils.hands),
+                          Container(
+                            margin: const EdgeInsets.only(left: 5),
+                            child: AppWidgets.textLocale(
+                                text: LocaleKeys.volunteer,
+                                color: AppColorUtils.textGreen,
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w600),
+                          )
+                        ],
                       ).paddingOnly(bottom: 24.w),
-                      Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AppWidgets.textLocale(
+                                      text: LocaleKeys.phone_number,
+                                      color: AppColorUtils.dark4,
+                                      fontSize: 13.sp,
+                                      fontWeight: FontWeight.w400)
+                                  .paddingOnly(bottom: 8.w),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  AppWidgets.textLocale(
-                                          text: LocaleKeys.phone_number,
-                                          color: AppColorUtils.DARK_4,
-                                          fontSize: 13.sp,
-                                          fontWeight: FontWeight.w400)
-                                      .paddingOnly(bottom: 8.w),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        width: 283.w,
-                                        padding: EdgeInsets.only(left: 18),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(12),
-                                          color: AppColorUtils.GREEN_9,
-                                          border: Border.all(
-                                            width: 1,
-                                            color: AppColorUtils.BORDER,
-                                          ),
-                                        ),
-                                        child: TextField(
-                                          decoration: InputDecoration(
-                                            enabled: false,
-                                            hintText: state.phoneNumber,
-                                            border: InputBorder.none,
-                                            hintStyle: TextStyle(
-                                              color: AppColorUtils.REG_TEXT,
-                                              fontSize: 16.sp,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
+                                  Container(
+                                    width: 283.w,
+                                    padding: const EdgeInsets.only(left: 18),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      color: AppColorUtils.green9,
+                                      border: Border.all(
+                                        width: 1,
+                                        color: AppColorUtils.border,
+                                      ),
+                                    ),
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                        enabled: false,
+                                        hintText: state.phoneNumber,
+                                        border: InputBorder.none,
+                                        hintStyle: TextStyle(
+                                          color: AppColorUtils.regText,
+                                          fontSize: 16.sp,
+                                          fontWeight: FontWeight.w500,
                                         ),
                                       ),
-                                      InkWell(
-                                        onTap: () {
-                                          context
-                                              .read<EditVolunteerBloc>()
-                                              .add(EditProfileChangePage(3));
-                                        },
-                                        child: Container(
-                                          height: 33.w,
-                                          width: 33.w,
-                                          child: AppWidgets.imageSvg(
-                                            path: AppImageUtils.EDIT,
-                                          ),
-                                        ),
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      context
+                                          .read<EditVolunteerBloc>()
+                                          .add(const EditProfileChangePage(3));
+                                    },
+                                    child: SizedBox(
+                                      height: 33.w,
+                                      width: 33.w,
+                                      child: AppWidgets.imageSvg(
+                                        path: AppImageUtils.edit,
                                       ),
-                                    ],
+                                    ),
                                   ),
                                 ],
                               ),
-                            ),
-                            Divider(
-                              thickness: 2,
-                              color: AppColorUtils.GREEN_8,
-                            ).paddingSymmetric(vertical: 24.w),
-                            AppDisableTextField(
-                              isFill: false,
-                              hintText:
-                                  context.read<EditVolunteerBloc>().state.name,
-                              onChanged: (v) {},
-                              title: LocaleKeys.name.tr(),
-                            ).paddingOnly(bottom: 23.w),
-                            AppDisableTextField(
-                              isFill: false,
-                              hintText: context
-                                  .read<EditVolunteerBloc>()
-                                  .state
-                                  .sureName,
-                              onChanged: (v) {},
-                              title: LocaleKeys.surname.tr(),
-                            ).paddingOnly(bottom: 23.w),
-                            AppWidgets.textLocale(
-                              text: LocaleKeys.gender,
-                              color: AppColorUtils.DARK_4,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                            ).paddingOnly(bottom: 10.w),
-                            Row(
-                              children: [
-                                Container(
-                                  height: 48.h,
-                                  decoration: BoxDecoration(
-                                    color: AppColorUtils.REG_BACK,
-                                    borderRadius: BorderRadius.circular(12),
-                                    border: Border.all(
-                                      color: AppColorUtils.BORDER,
-                                      width: 1,
-                                    ),
+                            ],
+                          ),
+                          const Divider(
+                            thickness: 2,
+                            color: AppColorUtils.green8,
+                          ).paddingSymmetric(vertical: 24.w),
+                          AppDisableTextField(
+                            isFill: false,
+                            hintText:
+                                context.read<EditVolunteerBloc>().state.name,
+                            onChanged: (v) {},
+                            title: LocaleKeys.name.tr(),
+                          ).paddingOnly(bottom: 23.w),
+                          AppDisableTextField(
+                            isFill: false,
+                            hintText: context
+                                .read<EditVolunteerBloc>()
+                                .state
+                                .sureName,
+                            onChanged: (v) {},
+                            title: LocaleKeys.surname.tr(),
+                          ).paddingOnly(bottom: 23.w),
+                          AppWidgets.textLocale(
+                            text: LocaleKeys.gender,
+                            color: AppColorUtils.dark4,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                          ).paddingOnly(bottom: 10.w),
+                          Row(
+                            children: [
+                              Container(
+                                height: 48.h,
+                                decoration: BoxDecoration(
+                                  color: AppColorUtils.regBack,
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: AppColorUtils.border,
+                                    width: 1,
                                   ),
-                                  child: Row(
-                                    children: [
-                                      Radio(
-                                        activeColor: AppColorUtils.BORDER,
-                                        value: 1,
-                                        groupValue: 1,
-                                        onChanged: (v) {},
-                                      ),
-                                      AppWidgets.textLocale(
-                                        text: LocaleKeys.man,
-                                        color: AppColorUtils.REG_TEXT,
-                                        fontSize: 16.sp,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ],
-                                  ).paddingOnly(right: 18.w),
                                 ),
-                                Container(
-                                  height: 48.h,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: AppColorUtils.REG_BACK,
-                                    border: Border.all(
-                                      color: AppColorUtils.BORDER,
-                                      width: 1,
+                                child: Row(
+                                  children: [
+                                    Radio(
+                                      activeColor: AppColorUtils.border,
+                                      value: 1,
+                                      groupValue: 1,
+                                      onChanged: (v) {},
                                     ),
+                                    AppWidgets.textLocale(
+                                      text: LocaleKeys.man,
+                                      color: AppColorUtils.regText,
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ],
+                                ).paddingOnly(right: 18.w),
+                              ),
+                              Container(
+                                height: 48.h,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: AppColorUtils.regBack,
+                                  border: Border.all(
+                                    color: AppColorUtils.border,
+                                    width: 1,
                                   ),
-                                  child: Row(
-                                    children: [
-                                      Radio(
-                                        fillColor:
-                                            MaterialStateColor.resolveWith(
-                                                (states) =>
-                                                    AppColorUtils.BORDER),
-                                        value: 2,
-                                        groupValue: 0,
-                                        onChanged: (v) {},
-                                      ),
-                                      AppWidgets.textLocale(
-                                        text: LocaleKeys.woman,
-                                        color: AppColorUtils.REG_TEXT,
-                                        fontSize: 16.sp,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ],
-                                  ).paddingOnly(right: 18.w),
-                                ).paddingOnly(left: 20),
-                              ],
-                            ).paddingOnly(bottom: 23.w),
-                            AppDisableTextField(
-                              isFill: false,
-                              hintText: "25.08.2022",
-                              onChanged: (v) {},
-                              title: LocaleKeys.date_of_birth.tr(),
-                            ).paddingOnly(bottom: 23.w),
-                            AppDisableTextField(
-                              isFill: false,
-                              hintText:
-                                  "Farg'ona shahar, Farg'ona viloyati dsfd",
-                              onChanged: (v) {},
-                              title: LocaleKeys.address.tr(),
-                            ).paddingOnly(bottom: 23.w),
-                          ],
-                        ),
+                                ),
+                                child: Row(
+                                  children: [
+                                    Radio(
+                                      fillColor: MaterialStateColor.resolveWith(
+                                          (states) => AppColorUtils.border),
+                                      value: 2,
+                                      groupValue: 0,
+                                      onChanged: (v) {},
+                                    ),
+                                    AppWidgets.textLocale(
+                                      text: LocaleKeys.woman,
+                                      color: AppColorUtils.regText,
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ],
+                                ).paddingOnly(right: 18.w),
+                              ).paddingOnly(left: 20),
+                            ],
+                          ).paddingOnly(bottom: 23.w),
+                          AppDisableTextField(
+                            isFill: false,
+                            hintText: "25.08.2022",
+                            onChanged: (v) {},
+                            title: LocaleKeys.date_of_birth.tr(),
+                          ).paddingOnly(bottom: 23.w),
+                          AppDisableTextField(
+                            isFill: false,
+                            hintText: "Farg'ona shahar, Farg'ona viloyati dsfd",
+                            onChanged: (v) {},
+                            title: LocaleKeys.address.tr(),
+                          ).paddingOnly(bottom: 23.w),
+                        ],
                       ).paddingOnly(bottom: 24.h),
                     ],
                   ),
@@ -285,9 +273,9 @@ class EditVolunteerPage extends StatelessWidget {
               ),
             );
           } else if (state.changePage == 2) {
-            return UserUpdateVolunteerPage();
+            return const UserUpdateVolunteerPage();
           } else {
-            return NumberUpdateVolunteerPage();
+            return const NumberUpdateVolunteerPage();
           }
         },
       ),

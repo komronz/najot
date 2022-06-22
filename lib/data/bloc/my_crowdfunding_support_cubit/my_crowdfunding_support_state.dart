@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import '../../model/crowd_founding_model.dart';
 
 class MyCrowdfundingSupportState extends Equatable {
-  MyCrowdfundingSupportState(
+  const MyCrowdfundingSupportState(
       {required this.cardList,
       required this.isVisible,
       required this.widgetChange});
@@ -22,7 +22,7 @@ class MyCrowdfundingSupportState extends Equatable {
     bool? isVisible,
   }) {
     return MyCrowdfundingSupportState(
-      cardList: list ?? this.cardList,
+      cardList: list ?? cardList,
       widgetChange: widgetChange ?? this.widgetChange,
       isVisible: isVisible ?? this.isVisible,
     );

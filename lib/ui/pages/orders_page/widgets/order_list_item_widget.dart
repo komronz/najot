@@ -26,10 +26,10 @@ class OrdersItemsWidget extends StatelessWidget {
       margin: isLast ? EdgeInsets.only(bottom: 18.w) : null,
       width: context.width,
       decoration: BoxDecoration(
-        color: AppColorUtils.ITEM_ORDERS_CARD,
+        color: AppColorUtils.itemOrdersCard,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          color: AppColorUtils.ITEM_ORDERS_BORDER,
+          color: AppColorUtils.itemOrdersBorder,
           width: 1,
         ),
       ),
@@ -40,20 +40,20 @@ class OrdersItemsWidget extends StatelessWidget {
             text: LocaleKeys.project_name,
             fontSize: 10.sp,
             fontWeight: FontWeight.w400,
-            color: AppColorUtils.ITEM_ORDERS_TEXT2,
+            color: AppColorUtils.itemOrdersText2,
           ).paddingOnly(bottom: 3.w),
           AppWidgets.text(
             text: model.title!,
             fontSize: 14.sp,
             fontWeight: FontWeight.w500,
-            color: AppColorUtils.DARK2,
+            color: AppColorUtils.dark2,
             maxLines: 2,
           ),
           AppWidgets.textLocale(
             text: LocaleKeys.briefly_about_the_product,
             fontSize: 10.sp,
             fontWeight: FontWeight.w400,
-            color: AppColorUtils.ITEM_ORDERS_TEXT2,
+            color: AppColorUtils.itemOrdersText2,
           ).paddingOnly(top: 12.w, bottom: 3),
           AppWidgets.text(
             text:
@@ -62,7 +62,7 @@ class OrdersItemsWidget extends StatelessWidget {
             fontSize: 12.sp,
             fontWeight: FontWeight.w400,
             height: 1.3,
-            color: AppColorUtils.DARK2,
+            color: AppColorUtils.dark2,
             maxLines: 3,
           ),
           Row(
@@ -72,13 +72,13 @@ class OrdersItemsWidget extends StatelessWidget {
                 text: LocaleKeys.estimated_delivery.tr(),
                 fontSize: 10.sp,
                 fontWeight: FontWeight.w400,
-                color: AppColorUtils.ITEM_ORDERS_TEXT2,
+                color: AppColorUtils.itemOrdersText2,
               ),
               AppWidgets.textLocale(
                 text: LocaleKeys.product_amount,
                 fontSize: 10.sp,
                 fontWeight: FontWeight.w400,
-                color: AppColorUtils.ITEM_ORDERS_TEXT2,
+                color: AppColorUtils.itemOrdersText2,
               )
             ],
           ).paddingOnly(
@@ -92,7 +92,7 @@ class OrdersItemsWidget extends StatelessWidget {
               AppWidgets.textLocale(
                 text: LocaleKeys.sum,
                 args: [model.totalSum!],
-                color: AppColorUtils.KRAUDFANDING,
+                color: AppColorUtils.kraudfanding,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,
               ),
@@ -104,10 +104,10 @@ class OrdersItemsWidget extends StatelessWidget {
             fontWeight: FontWeight.w500,
             borderRadius: 10,
             onTap: () {},
-            color: AppColorUtils.ITEM_ORDERS_BUTTON,
+            color: AppColorUtils.itemOrdersButton,
             height: 38.w,
             width: 145.w,
-            icon: AppWidgets.imageSvg(path: AppImageUtils.IC_ORDERS_SUCCESS)
+            icon: AppWidgets.imageSvg(path: AppImageUtils.icOrdersSuccess)
                 .paddingOnly(right: 5),
           ).paddingOnly(top: 15.w),
         ],

@@ -1,12 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/comment_to_author_dialog.dart';
 import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/comments_widget.dart';
 import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/kraudfanding_applied_user_widget.dart';
@@ -17,14 +16,17 @@ import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/
 import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/payment_history_dialog.dart';
 import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/question_asked_widget.dart';
 import 'package:najot/ui/pages/crowd_founding_page_main/project_details/widgets/support_project_dialog.dart';
+import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class AboutProjectWidget extends StatefulWidget {
-  AboutProjectWidget({required this.cardModel});
+  const AboutProjectWidget({Key? key, required this.cardModel})
+      : super(key: key);
 
   final CardModel cardModel;
 
   @override
+  // ignore: library_private_types_in_public_api
   _AboutProjectWidgetState createState() => _AboutProjectWidgetState();
 }
 
@@ -56,7 +58,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
     return Column(
       children: [
         Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(11),
@@ -74,17 +76,18 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                       vertical: 18.w,
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(12),
                       ),
                       child: CachedNetworkImage(
                         imageUrl: widget.cardModel.image!,
                         fit: BoxFit.cover,
                         width: MediaQuery.of(context).size.width,
-                        placeholder: (context, url) => Center(
+                        placeholder: (context, url) => const Center(
                           child: CircularProgressIndicator(),
                         ),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
                       ),
                     ),
                   ),
@@ -96,20 +99,20 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                         showDialog(
                           context: context,
                           builder: (context) {
-                            return PaymentHistoryDialog();
+                            return const PaymentHistoryDialog();
                           },
                         );
                       },
                       child: Container(
                         height: 35.w,
                         width: 60.w,
-                        decoration: BoxDecoration(
-                          color: AppColorUtils.BLUE_PERCENT,
+                        decoration: const BoxDecoration(
+                          color: AppColorUtils.bluePercent,
                           borderRadius: BorderRadius.horizontal(
                             left: Radius.circular(12),
                           ),
                         ),
-                        child: Icon(
+                        child: const Icon(
                           Icons.monetization_on_outlined,
                           color: Colors.white,
                         ),
@@ -121,7 +124,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
               AppWidgets.text(
                 text: "Drenajni kuzatish uchun mo’jallangan moslama",
                 fontSize: 20.sp,
-                color: AppColorUtils.DARK2,
+                color: AppColorUtils.dark2,
                 fontWeight: FontWeight.w500,
                 maxLines: 2,
               ).paddingSymmetric(horizontal: 20.w),
@@ -131,7 +134,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                   showDialog(
                     context: context,
                     builder: (context) {
-                      return CommentToAuthorDialog();
+                      return const CommentToAuthorDialog();
                     },
                   );
                 },
@@ -154,12 +157,12 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                         children: [
                           Icon(
                             Icons.calendar_today_outlined,
-                            color: AppColorUtils.BLUE_PERCENT,
+                            color: AppColorUtils.bluePercent,
                             size: 14.sp,
                           ),
                           AppWidgets.text(
                             text: "25.02.2022",
-                            color: AppColorUtils.BLUE_PERCENT,
+                            color: AppColorUtils.bluePercent,
                             fontWeight: FontWeight.w500,
                             fontSize: 14.sp,
                           ).paddingOnly(left: 6.w),
@@ -181,7 +184,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
         Container(
           padding: EdgeInsets.symmetric(vertical: 20.w),
           decoration: BoxDecoration(
-              color: AppColorUtils.WHITE,
+              color: AppColorUtils.white,
               borderRadius: BorderRadius.circular(11.0)),
           child: DefaultTabController(
             initialIndex: 0,
@@ -191,8 +194,8 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                 TabBar(
                   controller: _tabController,
                   enableFeedback: true,
-                  labelColor: AppColorUtils.GREEN_APP,
-                  unselectedLabelColor: AppColorUtils.DARK_6,
+                  labelColor: AppColorUtils.greenApp,
+                  unselectedLabelColor: AppColorUtils.dark6,
                   unselectedLabelStyle: TextStyle(
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
@@ -229,11 +232,11 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                   ],
                   isScrollable: true,
                   indicatorWeight: 2,
-                  indicatorColor: AppColorUtils.GREEN_APP,
+                  indicatorColor: AppColorUtils.greenApp,
                   indicatorSize: TabBarIndicatorSize.tab,
-                  padding: EdgeInsets.only(right: 10),
-                  indicatorPadding: EdgeInsets.only(right: 10, left: 10),
-                  labelPadding: EdgeInsets.only(right: 10, left: 10),
+                  padding: const EdgeInsets.only(right: 10),
+                  indicatorPadding: const EdgeInsets.only(right: 10, left: 10),
+                  labelPadding: const EdgeInsets.only(right: 10, left: 10),
                 ).paddingOnly(left: 15.w, top: 8.w),
                 Container(
                   child: [
@@ -262,17 +265,17 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                         showDialog(
                           context: context,
                           builder: (context) {
-                            return SupportProjectDialog();
+                            return const SupportProjectDialog();
                           },
                         );
                       },
                       text: LocaleKeys.project_implementation.tr(),
                       height: 48.w,
                       width: 274.w,
-                      color: AppColorUtils.PERCENT_COLOR,
+                      color: AppColorUtils.percentColor,
                       textSize: 16.sp,
                       fontWeight: FontWeight.w600,
-                      textColor: AppColorUtils.WHITE,
+                      textColor: AppColorUtils.white,
                     ),
                     AppWidgets.favouriteButton(
                       select: widget.cardModel.isFavorite!,

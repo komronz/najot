@@ -1,7 +1,7 @@
 part of 'home_cubit.dart';
 
 class HomeState extends Equatable {
-  HomeState({
+  const HomeState({
     this.categories = const [],
     this.crudFunding = const [],
     this.volunteer = const [],

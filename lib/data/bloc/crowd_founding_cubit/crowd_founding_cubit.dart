@@ -9,10 +9,10 @@ class CrowdFoundingCubit extends Cubit<CrowdFoundingState> {
   static CrowdFoundingCubit get to => GetIt.I<CrowdFoundingCubit>();
 
   static Future init() async {
-    GetIt.instance..registerSingleton<CrowdFoundingCubit>(CrowdFoundingCubit());
+    GetIt.instance.registerSingleton<CrowdFoundingCubit>(CrowdFoundingCubit());
   }
 
   CrowdFoundingCubit() : super(CrowdFoundingState(cardList: CardModel.list));
 
-  Future CardItems() async {}
+  Future cardItems() async {}
 }

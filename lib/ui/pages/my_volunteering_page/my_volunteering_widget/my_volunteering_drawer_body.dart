@@ -26,17 +26,17 @@ class MyVolunteeringDrawerBody extends StatelessWidget {
       width: size.width * 0.75,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: AppColorUtils.WHITE,
+        color: AppColorUtils.white,
       ),
       child: Drawer(
-        child: Container(
+        child: SizedBox(
           height: size.height * 0.35,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               InkWell(
                 child: SvgPicture.asset(
-                  AppImageUtils.BACK_TO,
+                  AppImageUtils.backTo,
                   height: 35.w,
                   width: 35.w,
                 ).paddingOnly(
@@ -55,21 +55,21 @@ class MyVolunteeringDrawerBody extends StatelessWidget {
                 text: LocaleKeys.add_project,
                 width: double.infinity,
                 height: 44.w,
-                color: AppColorUtils.ADD_PROJECT_COLOR,
+                color: AppColorUtils.addProjectColor,
                 fontWeight: FontWeight.w600,
                 textSize: 16.sp,
-                textColor: AppColorUtils.BLUE_TEXT,
+                textColor: AppColorUtils.blueText,
                 visibleIcon: true,
-                addIcon: AppImageUtils.ADDING,
-                iconColor: AppColorUtils.BLUE_TEXT,
+                addIcon: AppImageUtils.adding,
+                iconColor: AppColorUtils.blueText,
               ).paddingOnly(
                 left: 20,
                 bottom: 24,
                 right: 20,
               ),
               AppWidgets.rowIconText(
-                iconSelect: AppImageUtils.MAIN,
-                icon: AppImageUtils.PROJECT,
+                iconSelect: AppImageUtils.main,
+                icon: AppImageUtils.project,
                 isActive: false,
                 text: LocaleKeys.projects_and_ads,
                 fontSize: 16.sp,
@@ -86,8 +86,8 @@ class MyVolunteeringDrawerBody extends StatelessWidget {
               ),
               AppWidgets.rowIconText(
                 isActive: true,
-                icon: AppImageUtils.HISTORY,
-                iconSelect: AppImageUtils.VOLUNTEER,
+                icon: AppImageUtils.history,
+                iconSelect: AppImageUtils.volunteer,
                 text: LocaleKeys.my_volunteering,
                 fontSize: 16.sp,
                 padding: EdgeInsets.symmetric(
@@ -104,8 +104,8 @@ class MyVolunteeringDrawerBody extends StatelessWidget {
                 },
               ),
               AppWidgets.rowIconText(
-                icon: AppImageUtils.HISTORY,
-                iconSelect: AppImageUtils.HISTORY2,
+                icon: AppImageUtils.history,
+                iconSelect: AppImageUtils.history2,
                 text: LocaleKeys.charity_history,
                 fontSize: 16.sp,
                 padding: EdgeInsets.symmetric(
@@ -122,8 +122,8 @@ class MyVolunteeringDrawerBody extends StatelessWidget {
                 },
               ),
               AppWidgets.rowIconText(
-                icon: AppImageUtils.PRODUCTS,
-                iconSelect: AppImageUtils.PRODUCTS2,
+                icon: AppImageUtils.products,
+                iconSelect: AppImageUtils.products2,
                 text: LocaleKeys.my_products,
                 fontSize: 16.sp,
                 padding: EdgeInsets.symmetric(

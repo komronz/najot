@@ -28,20 +28,21 @@ class OrganizationItemWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
         ),
         elevation: 1,
-        color: AppColorUtils.WHITE,
+        color: AppColorUtils.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            SizedBox(
               height: 140.w,
               child: ClipRRect(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+                borderRadius:
+                    const BorderRadius.vertical(top: Radius.circular(12)),
                 child: CachedNetworkImage(
-                  placeholder: (context, url) => Center(
+                  placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
                   ),
                   imageUrl: model.image,
-                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                   fit: BoxFit.cover,
                   width: 1.sw,
                 ),
@@ -65,12 +66,12 @@ class OrganizationItemWidget extends StatelessWidget {
                         text: LocaleKeys.number_of_projects,
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
-                        color: AppColorUtils.DARK_6,
+                        color: AppColorUtils.dark6,
                       ).paddingOnly(top: 12.w),
                       AppWidgets.text(
                         text: "${model.count}",
                         fontWeight: FontWeight.w600,
-                        color: AppColorUtils.BLUE_PERCENT,
+                        color: AppColorUtils.bluePercent,
                         fontSize: 14.sp,
                       ).paddingOnly(top: 5.w),
                     ],

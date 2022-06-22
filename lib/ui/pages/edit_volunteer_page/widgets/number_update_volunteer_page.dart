@@ -17,21 +17,37 @@ import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
 
-class NumberUpdateVolunteerPage extends StatelessWidget {
+class NumberUpdateVolunteerPage extends StatefulWidget {
   static const String routeName = "/numberUpdateVolunteerPage";
 
-  NumberUpdateVolunteerPage({Key? key}) : super(key: key);
-  bool isVisible = true;
-  User? user = HiveService.to.getUser();
+  const NumberUpdateVolunteerPage({Key? key}) : super(key: key);
+
+  @override
+  State<NumberUpdateVolunteerPage> createState() =>
+      _NumberUpdateVolunteerPageState();
+}
+
+class _NumberUpdateVolunteerPageState extends State<NumberUpdateVolunteerPage> {
+  final bool isVisible = true;
+
+  final User? user = HiveService.to.getUser();
+
   final maskFormatter = MaskTextInputFormatter(mask: '## ### ## ##');
-  TextEditingController numberController = TextEditingController();
+
+  final TextEditingController numberController = TextEditingController();
+
+  @override
+  void dispose() {
+    numberController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext con) {
     Size size = MediaQuery.of(con).size;
     return WillPopScope(
       onWillPop: () {
-        con.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
+        con.read<EditVolunteerBloc>().add(const EditProfileChangePage(1));
         return Future(() => false);
       },
       child: GestureDetector(
@@ -40,16 +56,16 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
         },
         child: BlocProvider(
           create: (BuildContext context) =>
-              EditVolunteerBloc()..add(MyProfileLoad()),
+              EditVolunteerBloc()..add(const MyProfileLoad()),
           child: SafeArea(
             child: Scaffold(
               appBar: AppBar(
-                backgroundColor: AppColorUtils.BACKGROUND,
+                backgroundColor: AppColorUtils.background,
                 titleSpacing: 0,
                 elevation: 0,
                 automaticallyImplyLeading: false,
                 title: Container(
-                  color: AppColorUtils.BACKGROUND,
+                  color: AppColorUtils.background,
                   child: AppWidgets.appBarMenu(
                     title: LocaleKeys.edit_my_profile.tr(),
                     onTapMenu: () {
@@ -59,13 +75,13 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                     onTapIcon: () {
                       con
                           .read<EditVolunteerBloc>()
-                          .add(EditProfileChangePage(1));
+                          .add(const EditProfileChangePage(1));
                     },
-                    icon: AppImageUtils.REMOVE,
+                    icon: AppImageUtils.remove,
                   ),
                 ),
               ),
-              backgroundColor: AppColorUtils.WHITE,
+              backgroundColor: AppColorUtils.white,
               body: BlocBuilder<EditVolunteerBloc, EditVolunteerState>(
                   builder: (context, state) {
                 return Column(
@@ -76,7 +92,7 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                           width: 375.w,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: AppColorUtils.WHITE,
+                            color: AppColorUtils.white,
                           ),
                           child: Column(
                             children: [
@@ -98,7 +114,7 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                   ),
                                   AppWidgets.textLocale(
                                     text: LocaleKeys.new_phone_number,
-                                    color: AppColorUtils.DARK_4,
+                                    color: AppColorUtils.dark4,
                                     fontSize: 14.sp,
                                     fontWeight: FontWeight.w400,
                                   ).paddingOnly(
@@ -106,8 +122,8 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                     bottom: 8.w,
                                   ),
                                   TextFormField(
-                                    style:
-                                        TextStyle(color: AppColorUtils.BLACK),
+                                    style: const TextStyle(
+                                        color: AppColorUtils.black),
                                     inputFormatters: [maskFormatter],
                                     controller: numberController,
                                     onChanged: (v) {
@@ -124,13 +140,14 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                     decoration:
                                         DecorationConst().inputDecoration(
                                       prefixIcon: Container(
-                                        padding: EdgeInsets.only(left: 10),
+                                        padding:
+                                            const EdgeInsets.only(left: 10),
                                         width: size.width * 0.2,
                                         child: Center(
                                           child: AppWidgets.text(
                                             text: "(+998)",
                                             fontSize: 16,
-                                            color: AppColorUtils.DARK_6,
+                                            color: AppColorUtils.dark6,
                                           ),
                                         ),
                                       ),
@@ -144,7 +161,8 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                 ],
                               ),
                               Container(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 width: double.infinity,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -166,7 +184,7 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                                   .state
                                                   .isVisible,
                                               child: Container(
-                                                padding: EdgeInsets.only(
+                                                padding: const EdgeInsets.only(
                                                     top: 10,
                                                     bottom: 13,
                                                     right: 10,
@@ -175,12 +193,12 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                                   borderRadius:
                                                       BorderRadius.circular(12),
                                                   color:
-                                                      AppColorUtils.BLUE_BUTTON,
+                                                      AppColorUtils.blueButton,
                                                 ),
                                                 child: AppWidgets.textLocale(
                                                     text: LocaleKeys.send_code,
                                                     textAlign: TextAlign.center,
-                                                    color: AppColorUtils.WHITE,
+                                                    color: AppColorUtils.white,
                                                     fontSize: 15.sp,
                                                     fontWeight:
                                                         FontWeight.w600),

@@ -12,13 +12,12 @@ import '../../../widgets/app_text_field.dart';
 import '../../../widgets/app_widgets.dart';
 
 class MyVolunteeringQuestionList extends StatefulWidget {
-  MyVolunteeringQuestionList({required this.cardModel, Key? key})
+  const MyVolunteeringQuestionList({required this.cardModel, Key? key})
       : super(key: key);
   final VolunteeringModel cardModel;
 
   @override
-  _MyVolunteeringQuestionListState createState() =>
-      _MyVolunteeringQuestionListState();
+  State<StatefulWidget> createState() => _MyVolunteeringQuestionListState();
 }
 
 bool isVisible = true;
@@ -37,9 +36,9 @@ class _MyVolunteeringQuestionListState
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           width: 1.w,
-          color: AppColorUtils.GRAY_3,
+          color: AppColorUtils.gray3,
         ),
-        color: AppColorUtils.GREEN_ACCENT4,
+        color: AppColorUtils.greenAccent4,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,20 +65,20 @@ class _MyVolunteeringQuestionListState
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
+                              width: 240.w,
                               child: AppWidgets.text(
                                 text: "Insoniyatiga aynan qanday foyda beradi",
-                                color: AppColorUtils.TEXT_GREEN2,
+                                color: AppColorUtils.textGreen2,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14.sp,
                                 maxLines: 2,
                               ).paddingOnly(top: 5.w),
-                              width: 240.w,
                             ),
                             AppWidgets.textLocale(
                               text: "Eshonov Fakhriyor",
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
-                              color: AppColorUtils.DARK_6,
+                              color: AppColorUtils.dark6,
                             ).paddingOnly(top: 3.w),
                           ],
                         ).paddingOnly(left: 10),
@@ -89,61 +88,59 @@ class _MyVolunteeringQuestionListState
                       text: widget.cardModel.infoModel![0].text!,
                       fontWeight: FontWeight.w400,
                       fontSize: 14.sp,
-                      color: AppColorUtils.TEXT_8,
+                      color: AppColorUtils.text8,
                       maxLines: 100,
                       height: 1.5,
                     ).paddingSymmetric(vertical: 10.w),
                     Visibility(
                         visible: !isVisible,
-                        child: Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Divider(
-                                thickness: 1,
-                                color: AppColorUtils.BLACK_12,
-                              ),
-                              AppWidgets.textLocale(
-                                text: LocaleKeys.your_answer,
-                                fontSize: 14.sp,
-                                color: AppColorUtils.TEXT_GREEN2,
-                                fontWeight: FontWeight.w600,
-                              ).paddingOnly(
-                                bottom: 3.w,
-                                top: 7.w,
-                              ),
-                              AppTextField(
-                                hintText: LocaleKeys.write_your_answer.tr(),
-                                onChanged: (v) {},
-                                title: "",
-                                hasTitle: false,
-                                height: 228.w,
-                                isMultiLine: true,
-                              ).paddingOnly(
-                                top: 12.w,
-                                bottom: 18.h,
-                              ),
-                              AppWidgets.appButton(
-                                title: LocaleKeys.send,
-                                height: 38.w,
-                                width: 152.w,
-                                onTap: () {
-                                  setState(() {
-                                    isVisible = true;
-                                  });
-                                },
-                              ).paddingOnly(bottom: 12.w),
-                            ],
-                          ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Divider(
+                              thickness: 1,
+                              color: AppColorUtils.black12,
+                            ),
+                            AppWidgets.textLocale(
+                              text: LocaleKeys.your_answer,
+                              fontSize: 14.sp,
+                              color: AppColorUtils.textGreen2,
+                              fontWeight: FontWeight.w600,
+                            ).paddingOnly(
+                              bottom: 3.w,
+                              top: 7.w,
+                            ),
+                            AppTextField(
+                              hintText: LocaleKeys.write_your_answer.tr(),
+                              onChanged: (v) {},
+                              title: "",
+                              hasTitle: false,
+                              height: 228.w,
+                              isMultiLine: true,
+                            ).paddingOnly(
+                              top: 12.w,
+                              bottom: 18.h,
+                            ),
+                            AppWidgets.appButton(
+                              title: LocaleKeys.send,
+                              height: 38.w,
+                              width: 152.w,
+                              onTap: () {
+                                setState(() {
+                                  isVisible = true;
+                                });
+                              },
+                            ).paddingOnly(bottom: 12.w),
+                          ],
                         )),
                     Visibility(
                       visible: isVisible,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Color(0xFFDFF8F3),
+                          color: const Color(0xFFDFF8F3),
                           borderRadius: BorderRadius.circular(8.0),
                           border: Border.all(
-                            color: AppColorUtils.BORDER_COLOR,
+                            color: AppColorUtils.borderColor,
                             width: 1,
                           ),
                         ),
@@ -155,7 +152,7 @@ class _MyVolunteeringQuestionListState
                           },
                           child: AppWidgets.textLocale(
                             text: LocaleKeys.write_an_answer,
-                            color: Color(0xFF024739),
+                            color: const Color(0xFF024739),
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
                           ).paddingOnly(
@@ -169,27 +166,25 @@ class _MyVolunteeringQuestionListState
                     ),
                   ],
                 )
-              : Container(
-                  child: Center(
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 30.w,
+              : Center(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 30.w,
+                      ),
+                      SvgPicture.asset(AppImageUtils.emptyQuestions),
+                      SizedBox(
+                        width: 200.sp,
+                        child: AppWidgets.textLocale(
+                          textAlign: TextAlign.center,
+                          text: LocaleKeys.questions_empty,
+                          color: AppColorUtils.dark4,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
+                          maxLines: 2,
                         ),
-                        SvgPicture.asset(AppImageUtils.EMPTY_QUESTIONS),
-                        SizedBox(
-                          width: 200.sp,
-                          child: AppWidgets.textLocale(
-                            textAlign: TextAlign.center,
-                            text: LocaleKeys.questions_empty,
-                            color: AppColorUtils.DARK_4,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w600,
-                            maxLines: 2,
-                          ),
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
                 ),
         ],

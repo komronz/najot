@@ -23,7 +23,7 @@ class PaymentHistoryDialog extends StatelessWidget {
         padding: EdgeInsets.all(20.w),
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
-          color: AppColorUtils.WHITE,
+          color: AppColorUtils.white,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
@@ -32,14 +32,14 @@ class PaymentHistoryDialog extends StatelessWidget {
             AppWidgets.textLocale(
               fontWeight: FontWeight.w600,
               fontSize: 20.sp,
-              color: AppColorUtils.DARK2,
+              color: AppColorUtils.dark2,
               textAlign: TextAlign.center,
               text: LocaleKeys.payment_history,
             ),
             AppWidgets.textLocale(
               fontWeight: FontWeight.w500,
               fontSize: 16.sp,
-              color: AppColorUtils.DARK_6,
+              color: AppColorUtils.dark6,
               textAlign: TextAlign.start,
               text: LocaleKeys.was_implementation,
             ).paddingOnly(
@@ -52,14 +52,14 @@ class PaymentHistoryDialog extends StatelessWidget {
                 AppWidgets.textLocale(
                   fontWeight: FontWeight.w500,
                   fontSize: 18.sp,
-                  color: AppColorUtils.DARK2,
+                  color: AppColorUtils.dark2,
                   textAlign: TextAlign.center,
                   text: LocaleKeys.summa,
                 ),
                 AppWidgets.textLocale(
                     fontWeight: FontWeight.w600,
                     fontSize: 18.sp,
-                    color: AppColorUtils.PERCENT_COLOR,
+                    color: AppColorUtils.percentColor,
                     textAlign: TextAlign.center,
                     text: LocaleKeys.sum,
                     args: ["1 000"]),
@@ -75,8 +75,8 @@ class PaymentHistoryDialog extends StatelessWidget {
               fontWeight: FontWeight.w500,
               height: 50.w,
               width: 296.w,
-              color: AppColorUtils.PERCENT_COLOR,
-              textColor: AppColorUtils.WHITE,
+              color: AppColorUtils.percentColor,
+              textColor: AppColorUtils.white,
               borderRadius: 10,
             ),
             SizedBox(
@@ -91,8 +91,8 @@ class PaymentHistoryDialog extends StatelessWidget {
               fontWeight: FontWeight.w500,
               height: 50.w,
               width: 296.w,
-              color: AppColorUtils.GREEN_ACCENT5,
-              textColor: AppColorUtils.BLACK,
+              color: AppColorUtils.greenAccent5,
+              textColor: AppColorUtils.black,
               borderRadius: 10,
             )
           ],

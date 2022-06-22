@@ -6,11 +6,12 @@ import 'package:najot/ui/pages/home_page/widget/slider_item_widget.dart';
 class CarouselSliderWidget extends StatelessWidget {
   final List<SliderList?> sliderList;
 
-  CarouselSliderWidget({required this.sliderList});
+  const CarouselSliderWidget({Key? key, required this.sliderList})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 220,
       child: Swiper(
         itemBuilder: (context, index) {

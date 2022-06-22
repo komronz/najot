@@ -27,11 +27,11 @@ class VolunteeringProjectWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        margin: EdgeInsets.only(right: 10, bottom: 10),
+        margin: const EdgeInsets.only(right: 10, bottom: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Color.fromRGBO(11, 191, 144, 0.08),
               blurRadius: 12,
@@ -44,22 +44,23 @@ class VolunteeringProjectWidget extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
+              flex: 1,
               child: Stack(
                 children: [
                   Row(
                     children: [
                       Expanded(
                         child: ClipRRect(
-                          borderRadius: BorderRadius.vertical(
+                          borderRadius: const BorderRadius.vertical(
                             top: Radius.circular(12),
                           ),
                           child: CachedNetworkImage(
-                            placeholder: (context, url) => Center(
+                            placeholder: (context, url) => const Center(
                               child: CircularProgressIndicator(),
                             ),
                             imageUrl: model.imgUrl!,
                             errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
+                                const Icon(Icons.error),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -68,9 +69,9 @@ class VolunteeringProjectWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              flex: 1,
             ),
             Expanded(
+              flex: 1,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -84,7 +85,7 @@ class VolunteeringProjectWidget extends StatelessWidget {
                     text: LocaleKeys.support_type,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
-                    color: AppColorUtils.DARK_6,
+                    color: AppColorUtils.dark6,
                   ).paddingOnly(
                     top: 11.h,
                     bottom: 3.h,
@@ -93,7 +94,7 @@ class VolunteeringProjectWidget extends StatelessWidget {
                     text: model.typeVolunteering!,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w600,
-                    color: AppColorUtils.GREEN_TEXT,
+                    color: AppColorUtils.greenText,
                   ).paddingOnly(
                     top: 3.w,
                     bottom: 11.h,
@@ -107,19 +108,19 @@ class VolunteeringProjectWidget extends StatelessWidget {
                   model.volunteerName == null
                       ? Row(
                           children: [
-                            Container(
+                            SizedBox(
                               width: 11.w,
                               height: 11.w,
-                              child: CircularProgressIndicator(
-                                color: AppColorUtils.ORANGE_1,
-                                backgroundColor: AppColorUtils.WHITE,
+                              child: const CircularProgressIndicator(
+                                color: AppColorUtils.orange1,
+                                backgroundColor: AppColorUtils.white,
                                 strokeWidth: 2,
                               ),
                             ).paddingOnly(right: 5),
                             AppWidgets.textLocale(
                               text: LocaleKeys.expected,
                               fontSize: 12.sp,
-                              color: AppColorUtils.ORANGE_1,
+                              color: AppColorUtils.orange1,
                               fontWeight: FontWeight.w600,
                             ),
                           ],
@@ -127,22 +128,22 @@ class VolunteeringProjectWidget extends StatelessWidget {
                       : Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.all(2),
+                              padding: const EdgeInsets.all(2),
                               height: 12.w,
                               width: 12.w,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
-                                color: AppColorUtils.GREEN_ACCENT1,
+                                color: AppColorUtils.greenAccent1,
                               ),
                               child: SvgPicture.asset(
-                                AppImageUtils.CHECK_SMALL,
-                                color: AppColorUtils.GREEN_TEXT_10,
+                                AppImageUtils.checkSmall,
+                                color: AppColorUtils.greenText10,
                               ).paddingAll(0.2),
                             ).paddingOnly(right: 5),
                             AppWidgets.textLocale(
                               text: model.volunteerName!,
                               fontSize: 12.sp,
-                              color: AppColorUtils.TEXT_GREEN,
+                              color: AppColorUtils.textGreen,
                               fontWeight: FontWeight.w600,
                             ),
                           ],
@@ -152,7 +153,6 @@ class VolunteeringProjectWidget extends StatelessWidget {
                 vertical: 14,
                 horizontal: 12,
               ),
-              flex: 1,
             )
           ],
         ),

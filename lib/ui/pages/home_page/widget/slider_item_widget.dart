@@ -7,7 +7,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 class SliderItem extends StatelessWidget {
   final SliderList sliderModel;
 
-  SliderItem({required this.sliderModel});
+  const SliderItem({Key? key, required this.sliderModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,30 +15,30 @@ class SliderItem extends StatelessWidget {
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsets.all(1),
+          padding: const EdgeInsets.all(1),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(24),
             child: CachedNetworkImage(
               imageUrl: sliderModel.cover!,
               placeholder: (context, url) =>
-                  Center(child: CircularProgressIndicator()),
+                  const Center(child: CircularProgressIndicator()),
               errorWidget: (context, url, error) => Image.asset(
-                AppImageUtils.Splash2,
+                AppImageUtils.splash2,
               ),
               width: MediaQuery.of(context).size.width,
               fit: BoxFit.cover,
             ),
           ),
         ),
-        Container(
+        SizedBox(
           width: size.width,
           child: Align(
               alignment: Alignment.bottomCenter,
-              child: Image.asset(AppImageUtils.SHADOW)),
+              child: Image.asset(AppImageUtils.shadow)),
         ),
         Container(
           width: size.width * 0.7,
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +49,7 @@ class SliderItem extends StatelessWidget {
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               AppWidgets.text(

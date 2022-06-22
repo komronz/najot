@@ -1,7 +1,7 @@
 part of 'crowd_founding_cubit.dart';
 
 class CrowdFoundingState extends Equatable {
-  CrowdFoundingState({required this.cardList});
+  const CrowdFoundingState({required this.cardList});
 
   final List<CardModel> cardList;
 
@@ -9,6 +9,6 @@ class CrowdFoundingState extends Equatable {
   List<Object?> get props => [cardList];
 
   CrowdFoundingState copyWith({List<CardModel>? list}) {
-    return CrowdFoundingState(cardList: list ?? this.cardList);
+    return CrowdFoundingState(cardList: list ?? cardList);
   }
 }

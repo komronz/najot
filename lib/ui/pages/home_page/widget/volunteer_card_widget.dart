@@ -12,14 +12,15 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../../data/services/navigator_service.dart';
 
 class VolunteerCardWidget extends StatelessWidget {
-  VolunteerCardWidget({required this.projectModel});
+  const VolunteerCardWidget({Key? key, required this.projectModel})
+      : super(key: key);
 
   final ProjectModel projectModel;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Container(
+      child: SizedBox(
         height: 300.w,
         width: 220.w,
         child: Stack(
@@ -29,12 +30,13 @@ class VolunteerCardWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
               ),
               elevation: 2,
-              color: AppColorUtils.WHITE,
+              color: AppColorUtils.white,
               child: Column(
                 children: [
                   Expanded(
+                    flex: 1,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(12),
                         topRight: Radius.circular(12),
                       ),
@@ -42,18 +44,18 @@ class VolunteerCardWidget extends StatelessWidget {
                         width: double.infinity,
                         imageUrl: projectModel.cover!,
                         errorWidget: (context, url, error) => Image.asset(
-                          AppImageUtils.Splash2,
+                          AppImageUtils.splash2,
                         ),
                         placeholder: (context, url) =>
-                            Center(child: CircularProgressIndicator()),
+                            const Center(child: CircularProgressIndicator()),
                         fit: BoxFit.cover,
                       ),
                     ),
-                    flex: 1,
                   ),
                   Expanded(
+                    flex: 1,
                     child: Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +74,7 @@ class VolunteerCardWidget extends StatelessWidget {
                                 text: LocaleKeys.help_type,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 10.sp,
-                                color: AppColorUtils.DARK6,
+                                color: AppColorUtils.dark6,
                               ),
                               SizedBox(
                                 height: 2.h,
@@ -81,7 +83,7 @@ class VolunteerCardWidget extends StatelessWidget {
                                   text: "Ovqat qilib berish",
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w600,
-                                  color: AppColorUtils.GREEN_TEXT),
+                                  color: AppColorUtils.greenText),
                             ],
                           ),
                           Column(
@@ -93,11 +95,11 @@ class VolunteerCardWidget extends StatelessWidget {
                                     text: LocaleKeys.executable_date,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 10.sp,
-                                    color: AppColorUtils.DARK6,
+                                    color: AppColorUtils.dark6,
                                   ),
                                   AppWidgets.text(
                                     text: "*",
-                                    color: AppColorUtils.RED,
+                                    color: AppColorUtils.red,
                                   )
                                 ],
                               ),
@@ -108,23 +110,22 @@ class VolunteerCardWidget extends StatelessWidget {
                                 text: "25.08.2022",
                                 fontSize: 14.sp,
                                 fontWeight: FontWeight.w600,
-                                color: AppColorUtils.BLUE_PERCENT,
+                                color: AppColorUtils.bluePercent,
                               )
                             ],
                           )
                         ],
                       ),
                     ),
-                    flex: 1,
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15),
               child: Align(
-                child: SvgPicture.asset(AppImageUtils.LIKE),
                 alignment: Alignment.topRight,
+                child: SvgPicture.asset(AppImageUtils.like),
               ),
             ),
           ],

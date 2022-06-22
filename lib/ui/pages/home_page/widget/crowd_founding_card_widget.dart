@@ -13,10 +13,11 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class KraudfandingCardWidget extends StatelessWidget {
-  KraudfandingCardWidget({
+  const KraudfandingCardWidget({
+    Key? key,
     required this.projectModel,
     required this.visible,
-  });
+  }) : super(key: key);
 
   final ProjectModel projectModel;
   final bool visible;
@@ -24,7 +25,7 @@ class KraudfandingCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Container(
+      child: SizedBox(
         height: 300.w,
         width: 220.w,
         child: Stack(
@@ -34,12 +35,13 @@ class KraudfandingCardWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
               ),
               elevation: 2,
-              color: AppColorUtils.WHITE,
+              color: AppColorUtils.white,
               child: Column(
                 children: [
                   Expanded(
+                    flex: 1,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(12),
                         topRight: Radius.circular(12),
                       ),
@@ -47,18 +49,18 @@ class KraudfandingCardWidget extends StatelessWidget {
                         width: double.infinity,
                         imageUrl: projectModel.cover!,
                         errorWidget: (context, url, error) => Image.asset(
-                          AppImageUtils.Splash2,
+                          AppImageUtils.splash2,
                         ),
                         placeholder: (context, url) =>
-                            Center(child: CircularProgressIndicator()),
+                            const Center(child: CircularProgressIndicator()),
                         fit: BoxFit.cover,
                       ),
                     ),
-                    flex: 1,
                   ),
                   Expanded(
+                    flex: 1,
                     child: Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -70,12 +72,12 @@ class KraudfandingCardWidget extends StatelessWidget {
                           ),
                           LinearPercentIndicator(
                             animation: true,
-                            padding: EdgeInsets.all(0),
+                            padding: const EdgeInsets.all(0),
                             lineHeight: 10.h,
                             animationDuration: 2000,
                             percent: 0.45,
-                            progressColor: AppColorUtils.PERCENT_COLOR,
-                            backgroundColor: AppColorUtils.PERCENT_COLOR2,
+                            progressColor: AppColorUtils.percentColor,
+                            backgroundColor: AppColorUtils.percentColor2,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -87,16 +89,16 @@ class KraudfandingCardWidget extends StatelessWidget {
                                     text: LocaleKeys.collected,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 10.sp,
-                                    color: AppColorUtils.DARK6,
+                                    color: AppColorUtils.dark6,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 2,
                                   ),
                                   AppWidgets.textLocale(
                                     text: LocaleKeys.sum,
                                     fontSize: 14.sp,
                                     fontWeight: FontWeight.w600,
-                                    color: AppColorUtils.GREEN_TEXT,
+                                    color: AppColorUtils.greenText,
                                     args: ["${projectModel.requiredFund}"],
                                   )
                                 ],
@@ -108,16 +110,16 @@ class KraudfandingCardWidget extends StatelessWidget {
                                     text: LocaleKeys.done,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 10.sp,
-                                    color: AppColorUtils.DARK6,
+                                    color: AppColorUtils.dark6,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 2,
                                   ),
                                   AppWidgets.text(
                                     text: "60%",
                                     fontSize: 14.sp,
                                     fontWeight: FontWeight.w600,
-                                    color: AppColorUtils.BLUE_PERCENT,
+                                    color: AppColorUtils.bluePercent,
                                   )
                                 ],
                               )
@@ -126,14 +128,13 @@ class KraudfandingCardWidget extends StatelessWidget {
                         ],
                       ),
                     ),
-                    flex: 1,
                   ),
                 ],
               ),
             ),
             Align(
-              child: SvgPicture.asset(AppImageUtils.LIKE),
               alignment: Alignment.topRight,
+              child: SvgPicture.asset(AppImageUtils.like),
             ).paddingAll(15),
             Visibility(
               visible: visible,
@@ -144,7 +145,7 @@ class KraudfandingCardWidget extends StatelessWidget {
                 borderRadius: 20,
                 height: 24.h,
                 width: 77.w,
-                textColor: AppColorUtils.GREEN_TEXT,
+                textColor: AppColorUtils.greenText,
                 textSize: 10.sp,
                 fontWeight: FontWeight.w400,
                 color: Colors.white54,

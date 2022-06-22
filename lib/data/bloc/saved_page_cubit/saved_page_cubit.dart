@@ -1,18 +1,17 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/charity_saved_service.dart';
 
 part 'saved_page_state.dart';
 
 class SavedPageCubit extends Cubit<SavedPageState> {
-  SavedPageCubit() : super(SavedPageState());
+  SavedPageCubit() : super(const SavedPageState());
   var service = CharitySavedService();
 
   Future loadHistory() async {
     emit(state.copyWith(isLoading: true));
-    await Future.delayed(Duration(seconds: 4));
+    await Future.delayed(const Duration(seconds: 4));
     try {
       // var charitySavedList = await service.getCharityList();
 

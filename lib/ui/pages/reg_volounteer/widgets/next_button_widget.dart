@@ -18,8 +18,7 @@ class NextButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var color =
-        isActive ? AppColorUtils.KRAUDFANDING : AppColorUtils.DISABLE_BC;
+    var color = isActive ? AppColorUtils.kraudfanding : AppColorUtils.disableBc;
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -39,9 +38,9 @@ class NextButtonWidget extends StatelessWidget {
           child: CircleAvatar(
             radius: 20,
             backgroundColor: color,
-            child: Icon(
+            child: const Icon(
               Icons.arrow_forward,
-              color: AppColorUtils.WHITE,
+              color: AppColorUtils.white,
             ),
           ),
         ),

@@ -15,7 +15,7 @@ import '../notification_page/notification_page.dart';
 class OrganizationPage extends StatelessWidget {
   OrganizationPage({Key? key}) : super(key: key);
   static const String routeName = "/organizationPage";
-  OrganizationCubit cubit = OrganizationCubit();
+  final OrganizationCubit cubit = OrganizationCubit();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class OrganizationPage extends StatelessWidget {
           builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            backgroundColor: AppColorUtils.BACKGROUND,
+            backgroundColor: AppColorUtils.background,
             titleSpacing: 0,
             elevation: 0,
             automaticallyImplyLeading: false,
@@ -40,18 +40,18 @@ class OrganizationPage extends StatelessWidget {
                   NotificationPage.routeName,
                 );
               },
-              icon: AppImageUtils.NOTIFICATION,
+              icon: AppImageUtils.notification,
             ),
           ),
           body: Container(
             padding: EdgeInsets.all(15.w),
-            color: AppColorUtils.BACKGROUND,
+            color: AppColorUtils.background,
             child: GridView.count(
               shrinkWrap: true,
               crossAxisCount: 2,
-              physics: ClampingScrollPhysics(),
+              physics: const ClampingScrollPhysics(),
               childAspectRatio: 160.w / 238.w,
-              padding: EdgeInsets.all(0),
+              padding: const EdgeInsets.all(0),
               reverse: false,
               crossAxisSpacing: 8,
               mainAxisSpacing: 6,

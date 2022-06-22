@@ -13,6 +13,7 @@ class UserUpdateAppRadioButton extends StatefulWidget {
       : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _AppRadioButtonState createState() => _AppRadioButtonState();
 }
 
@@ -35,7 +36,7 @@ class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
           text: LocaleKeys.gender,
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,
-          color: AppColorUtils.DARK_4,
+          color: AppColorUtils.dark4,
         ).paddingOnly(bottom: 10),
         Row(
           children: [
@@ -46,15 +47,15 @@ class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
                     color: _selection == 1
-                        ? AppColorUtils.KRAUDFANDING
-                        : AppColorUtils.DARK_6,
+                        ? AppColorUtils.kraudfanding
+                        : AppColorUtils.dark6,
                     width: 2,
                   ),
                 ),
                 child: Row(
                   children: [
                     Radio(
-                      activeColor: AppColorUtils.KRAUDFANDING,
+                      activeColor: AppColorUtils.kraudfanding,
                       value: 1,
                       groupValue: _selection,
                       onChanged: (v) => selectTime(v as int),
@@ -62,8 +63,8 @@ class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
                     AppWidgets.textLocale(
                       text: LocaleKeys.man,
                       color: _selection == 1
-                          ? AppColorUtils.KRAUDFANDING
-                          : AppColorUtils.DARK_6,
+                          ? AppColorUtils.kraudfanding
+                          : AppColorUtils.dark6,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                     ),
@@ -84,8 +85,8 @@ class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
                     color: _selection == 2
-                        ? AppColorUtils.KRAUDFANDING
-                        : AppColorUtils.DARK_6,
+                        ? AppColorUtils.kraudfanding
+                        : AppColorUtils.dark6,
                     width: 2,
                   ),
                 ),
@@ -93,8 +94,8 @@ class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
                   children: [
                     Radio(
                       activeColor: _selection == 2
-                          ? AppColorUtils.KRAUDFANDING
-                          : AppColorUtils.DARK_6,
+                          ? AppColorUtils.kraudfanding
+                          : AppColorUtils.dark6,
                       value: 2,
                       groupValue: _selection,
                       onChanged: (v) => selectTime(v as int),
@@ -102,8 +103,8 @@ class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
                     AppWidgets.textLocale(
                       text: LocaleKeys.woman,
                       color: _selection == 2
-                          ? AppColorUtils.KRAUDFANDING
-                          : AppColorUtils.DARK_6,
+                          ? AppColorUtils.kraudfanding
+                          : AppColorUtils.dark6,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                     ),

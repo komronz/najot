@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -14,7 +15,6 @@ import 'package:najot/ui/pages/reg_volounteer/widgets/volunteer_seccess_widget.d
 import 'package:najot/ui/widgets/app_date_picker_widget.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-import 'package:provider/src/provider.dart';
 
 import 'img_upload_widget.dart';
 
@@ -89,18 +89,18 @@ class View2 extends StatelessWidget {
                   text: LocaleKeys.upload_passport_photo.tr(),
                   fontWeight: FontWeight.w400,
                   fontSize: 14.sp,
-                  color: AppColorUtils.DARK_4,
+                  color: AppColorUtils.dark4,
                 ),
                 GestureDetector(
                   child: AppWidgets.imageSvg(
-                    path: AppImageUtils.IC_QUESTION,
+                    path: AppImageUtils.icQuestion,
                     width: 18.w,
                     height: 18.w,
                   ).paddingOnly(left: 6),
                   onTap: () {
                     showDialog(
                         context: context,
-                        builder: (context) => VolunteerPassInfoDialog());
+                        builder: (context) => const VolunteerPassInfoDialog());
                   },
                 )
               ],
@@ -126,7 +126,7 @@ class View2 extends StatelessWidget {
                     title: LocaleKeys.passport_information_page.tr(),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 12,
                 ),
                 Expanded(
@@ -134,7 +134,7 @@ class View2 extends StatelessWidget {
                     deleteImg: () {
                       context
                           .read<RegVolunteerBloc>()
-                          .add(VolunteerPageImgDeleted(null));
+                          .add(const VolunteerPageImgDeleted(null));
                     },
                     onTapImg: () {
                       NavigatorService.to.pushNamed(
@@ -157,7 +157,7 @@ class View2 extends StatelessWidget {
                   ? () async {
                       AppWidgets.showText(
                         text: LocaleKeys.next_page.tr(),
-                        duration: Duration(milliseconds: 800),
+                        duration: const Duration(milliseconds: 800),
                       );
                       await showDialog(
                         context: context,
@@ -169,14 +169,14 @@ class View2 extends StatelessWidget {
                   : () {
                       AppWidgets.showText(
                         text: LocaleKeys.fill_in_the_blanks.tr(),
-                        duration: Duration(milliseconds: 800),
+                        duration: const Duration(milliseconds: 800),
                       );
                     },
               color: bloc.state.sendBtnActive
-                  ? AppColorUtils.GREEN_APP
-                  : AppColorUtils.DISABLE_BC,
+                  ? AppColorUtils.greenApp
+                  : AppColorUtils.disableBc,
             ).paddingOnly(top: 20),
-            SizedBox(
+            const SizedBox(
               height: 20,
             )
           ],

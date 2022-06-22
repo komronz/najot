@@ -14,13 +14,13 @@ import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/volunteer_de
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class NewVolunteerCard extends StatelessWidget {
-  NewVolunteerCard({required this.cardModel});
+  const NewVolunteerCard({Key? key, required this.cardModel}) : super(key: key);
 
-  CardModel cardModel;
+  final CardModel cardModel;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 245.w,
       width: 162.w,
       child: Stack(
@@ -37,12 +37,13 @@ class NewVolunteerCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
               ),
               elevation: 2,
-              color: AppColorUtils.WHITE,
+              color: AppColorUtils.white,
               child: Column(
                 children: [
                   Expanded(
+                    flex: 1,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(12),
                         topRight: Radius.circular(12),
                       ),
@@ -50,18 +51,17 @@ class NewVolunteerCard extends StatelessWidget {
                         width: double.infinity,
                         imageUrl: cardModel.image!,
                         errorWidget: (context, url, error) => Image.asset(
-                          AppImageUtils.Splash2,
+                          AppImageUtils.splash2,
                         ),
                         placeholder: (context, url) =>
-                            Center(child: CircularProgressIndicator()),
+                            const Center(child: CircularProgressIndicator()),
                         fit: BoxFit.cover,
                       ),
                     ),
-                    flex: 1,
                   ),
                   Container(
                     height: 105.w,
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -80,16 +80,16 @@ class NewVolunteerCard extends StatelessWidget {
                               text: LocaleKeys.help_type,
                               fontWeight: FontWeight.w400,
                               fontSize: 10.sp,
-                              color: AppColorUtils.DARK6,
+                              color: AppColorUtils.dark6,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 2,
                             ),
                             AppWidgets.text(
                               text: "Ovqat qilib berish va uy tozalash",
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w600,
-                              color: AppColorUtils.GREEN_TEXT,
+                              color: AppColorUtils.greenText,
                             )
                           ],
                         )
@@ -105,16 +105,16 @@ class NewVolunteerCard extends StatelessWidget {
               context.read<VolunteerCubit>().changeLike(cardModel: cardModel);
             },
             child: Align(
-              child: Container(
+              alignment: Alignment.topRight,
+              child: SizedBox(
                 width: 24.w,
                 height: 24.w,
                 child: SvgPicture.asset(
                   cardModel.isFavorite!
-                      ? AppImageUtils.UNLIKE
-                      : AppImageUtils.LIKE,
+                      ? AppImageUtils.unlike
+                      : AppImageUtils.like,
                 ),
               ),
-              alignment: Alignment.topRight,
             ).paddingAll(15),
           ),
         ],

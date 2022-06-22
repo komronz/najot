@@ -30,14 +30,14 @@ class MyCrowdfundingProductPage extends StatelessWidget {
 
   Widget _buildBody(MyProductsState state, BuildContext context) {
     if (state.isLoading) {
-      return Center(child: CircularProgressIndicator());
+      return const Center(child: CircularProgressIndicator());
     } else if (state.hasError) {
       return Center(
-        child: AppWidgets.imageSvg(path: AppImageUtils.IMG_WAIT),
+        child: AppWidgets.imageSvg(path: AppImageUtils.imgWait),
       );
     }
     return Container(
-      decoration: DecorationConst.DEC_WITH_SHADOW,
+      decoration: DecorationConst.decWithShadow,
       height: context.height,
       width: context.width,
       child: buildList(state),
@@ -49,13 +49,13 @@ class MyCrowdfundingProductPage extends StatelessWidget {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          AppWidgets.imageSvg(path: AppImageUtils.IMG_ORDERS_EMPTY),
+          AppWidgets.imageSvg(path: AppImageUtils.imgOrdersEmpty),
           AppWidgets.textLocale(
             text: LocaleKeys.not_purchased_product,
             maxLines: 2,
             textAlign: TextAlign.center,
             fontWeight: FontWeight.w600,
-            color: AppColorUtils.GRAY_4,
+            color: AppColorUtils.gray4,
           ).paddingOnly(top: 16.w),
         ],
       ).paddingOnly(

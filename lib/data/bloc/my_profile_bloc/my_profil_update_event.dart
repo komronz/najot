@@ -6,12 +6,11 @@ abstract class MyProfileUpdateEvent extends Equatable {
 }
 
 class EditProfileChangePage extends MyProfileUpdateEvent {
-  EditProfileChangePage(this.changePage);
+  const EditProfileChangePage(this.changePage);
 
   final int changePage;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [changePage];
 }
 
@@ -65,7 +64,7 @@ class LastNameChanged extends MyProfileUpdateEvent {
 class GenderChanged extends MyProfileUpdateEvent {
   final Gender isMan;
 
-  GenderChanged(this.isMan);
+  const GenderChanged(this.isMan);
 
   @override
   List<Object?> get props => [isMan];
@@ -74,7 +73,7 @@ class GenderChanged extends MyProfileUpdateEvent {
 class PageChanged extends MyProfileUpdateEvent {
   final bool isVisible;
 
-  PageChanged(this.isVisible);
+  const PageChanged(this.isVisible);
 
   @override
   List<Object?> get props => [isVisible];
@@ -83,7 +82,7 @@ class PageChanged extends MyProfileUpdateEvent {
 class PageNext extends MyProfileUpdateEvent {
   final bool isNext;
 
-  PageNext(this.isNext);
+  const PageNext(this.isNext);
 
   @override
   List<Object?> get props => [isNext];

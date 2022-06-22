@@ -11,10 +11,10 @@ class AppPageCubit extends Cubit<AppPageState> {
   static AppPageCubit get to => GetIt.I<AppPageCubit>();
 
   static Future init() async {
-    GetIt.instance..registerSingleton<AppPageCubit>(AppPageCubit());
+    GetIt.instance.registerSingleton<AppPageCubit>(AppPageCubit());
   }
 
-  AppPageCubit() : super(AppPageState());
+  AppPageCubit() : super(const AppPageState());
 
   void load(AppPageType pageType) {
     emit(state.copyWith(

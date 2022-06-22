@@ -1,4 +1,4 @@
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/config/const/decoration_const.dart';
@@ -31,7 +31,7 @@ class KraudfandingPriceWidget extends StatelessWidget {
                 AppWidgets.starTextWidget(text: LocaleKeys.need_summa.tr()),
                 AppWidgets.textLocale(
                     text: LocaleKeys.sum,
-                    color: Color(0xFF043F3B),
+                    color: const Color(0xFF043F3B),
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
                     args: ["100 000"]).paddingOnly(top: 3.w),
@@ -44,11 +44,11 @@ class KraudfandingPriceWidget extends StatelessWidget {
                   text: LocaleKeys.announcement_day,
                   fontWeight: FontWeight.w400,
                   fontSize: 10.sp,
-                  color: AppColorUtils.DARK_6,
+                  color: AppColorUtils.dark6,
                 ),
                 AppWidgets.text(
                   text: "25.08.2022",
-                  color: AppColorUtils.TEXT_GREEN2,
+                  color: AppColorUtils.textGreen2,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ).paddingOnly(top: 3.w),
@@ -58,7 +58,7 @@ class KraudfandingPriceWidget extends StatelessWidget {
         ).paddingSymmetric(horizontal: 20),
         Container(
           width: context.width,
-          color: AppColorUtils.GREEN_BACK,
+          color: AppColorUtils.greenBack,
           child: Column(
             children: [
               Row(
@@ -66,13 +66,13 @@ class KraudfandingPriceWidget extends StatelessWidget {
                 children: [
                   AppWidgets.textLocale(
                     text: LocaleKeys.collected,
-                    color: AppColorUtils.DARK_6,
+                    color: AppColorUtils.dark6,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
                   ),
                   AppWidgets.textLocale(
                     text: LocaleKeys.done,
-                    color: AppColorUtils.DARK_6,
+                    color: AppColorUtils.dark6,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
                   ),
@@ -85,12 +85,12 @@ class KraudfandingPriceWidget extends StatelessWidget {
                     text: LocaleKeys.sum,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
-                    color: AppColorUtils.GREEN_TEXT,
+                    color: AppColorUtils.greenText,
                     args: ["1 000 000"],
                   ),
                   AppWidgets.text(
                     text: "${"60"} %",
-                    color: AppColorUtils.BLUE_PERCENT,
+                    color: AppColorUtils.bluePercent,
                     fontWeight: FontWeight.w500,
                     fontSize: 16.sp,
                   ),
@@ -98,12 +98,12 @@ class KraudfandingPriceWidget extends StatelessWidget {
               ).paddingOnly(top: 3),
               LinearPercentIndicator(
                 animation: true,
-                padding: EdgeInsets.all(0),
+                padding: const EdgeInsets.all(0),
                 lineHeight: 10.h,
                 animationDuration: 2000,
                 percent: 60 / 100,
-                progressColor: AppColorUtils.PERCENT_COLOR,
-                backgroundColor: AppColorUtils.WHITE,
+                progressColor: AppColorUtils.percentColor,
+                backgroundColor: AppColorUtils.white,
               ).paddingOnly(top: 10.w),
             ],
           ).paddingSymmetric(
@@ -112,7 +112,7 @@ class KraudfandingPriceWidget extends StatelessWidget {
           ),
         ).paddingOnly(top: 12.w),
         Container(
-          decoration: DecorationConst.DEC_WITH_SHADOW,
+          decoration: DecorationConst.decWithShadow,
         )
       ],
     );

@@ -32,17 +32,18 @@ class ImgUploadWidget extends StatelessWidget {
         DottedBorder(
           borderType: BorderType.RRect,
           strokeWidth: 1,
-          radius: Radius.circular(12),
-          color: AppColorUtils.DOT_COLOR,
+          radius: const Radius.circular(12),
+          color: AppColorUtils.dotColor,
           child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
+            borderRadius: const BorderRadius.all(Radius.circular(12)),
             child: img != null
                 ? GestureDetector(
+                    onTap: onTapImg,
                     child: Hero(
                       tag: img!.path,
                       child: Stack(
                         children: [
-                          Container(
+                          SizedBox(
                             height: 114.w,
                             width: double.infinity,
                             child: AppWidgets.imageFile(path: img!.path),
@@ -53,30 +54,29 @@ class ImgUploadWidget extends StatelessWidget {
                             child: AppWidgets.iconButton(
                               onTap: deleteImg,
                               iconWidget: AppWidgets.imageSvg(
-                                path: AppImageUtils.IC_BASKET,
+                                path: AppImageUtils.icBasket,
                               ).paddingAll(5),
                             ),
                           )
                         ],
                       ),
                     ),
-                    onTap: onTapImg,
                   )
                 : Container(
                     height: 114.w,
-                    color: AppColorUtils.WHITE,
+                    color: AppColorUtils.white,
                     child: Center(
                       child: ClipOval(
                         child: Material(
-                          color: AppColorUtils.PERCENT_COLOR,
+                          color: AppColorUtils.percentColor,
                           child: InkWell(
-                            splashColor: AppColorUtils.DISABLE_BC,
+                            splashColor: AppColorUtils.disableBc,
                             onTap: uploadBtn,
                             child: SizedBox(
                               width: 35.w,
                               height: 35.w,
                               child: AppWidgets.imageSvg(
-                                path: AppImageUtils.IC_UPLOAD,
+                                path: AppImageUtils.icUpload,
                                 fit: BoxFit.none,
                               ),
                             ),
@@ -91,13 +91,13 @@ class ImgUploadWidget extends StatelessWidget {
             ? Row(
                 children: [
                   AppWidgets.imageSvg(
-                    path: AppImageUtils.IC_SUCCESS,
+                    path: AppImageUtils.icSuccess,
                     width: 12,
                     height: 12,
                   ),
                   AppWidgets.textLocale(
                     text: LocaleKeys.uploaded,
-                    color: AppColorUtils.SUCCESS_GREEN,
+                    color: AppColorUtils.successGreen,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,
                     fontStyle: FontStyle.italic,
@@ -109,7 +109,7 @@ class ImgUploadWidget extends StatelessWidget {
                 children: [
                   AppWidgets.text(
                     text: '*',
-                    color: AppColorUtils.RED,
+                    color: AppColorUtils.red,
                     fontSize: 13.sp,
                     fontWeight: FontWeight.w400,
                     height: 1.5,
@@ -119,7 +119,7 @@ class ImgUploadWidget extends StatelessWidget {
                       text: title,
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
-                      color: AppColorUtils.GRAY_4,
+                      color: AppColorUtils.gray4,
                       maxLines: 2,
                       fontStyle: FontStyle.italic,
                       height: 1.5,

@@ -9,9 +9,8 @@ class MyCharitySupportListCubit extends Cubit<MyCharitySupportListState> {
       GetIt.I<MyCharitySupportListCubit>();
 
   static Future init() async {
-    GetIt.I
-      ..registerSingleton<MyCharitySupportListCubit>(
-          MyCharitySupportListCubit());
+    GetIt.I.registerSingleton<MyCharitySupportListCubit>(
+        MyCharitySupportListCubit());
   }
 
   MyCharitySupportListCubit()

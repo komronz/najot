@@ -22,7 +22,7 @@ class FaqPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => FaqCubit()..getFaqList(),
       child: Scaffold(
-        backgroundColor: AppColorUtils.BACKGROUND,
+        backgroundColor: AppColorUtils.background,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           titleSpacing: 0,
@@ -32,7 +32,7 @@ class FaqPage extends StatelessWidget {
             children: [
               InkWell(
                 child: SvgPicture.asset(
-                  AppImageUtils.MENU,
+                  AppImageUtils.menu,
                   height: 35.w,
                   width: 35.w,
                 ),
@@ -52,7 +52,7 @@ class FaqPage extends StatelessWidget {
                   );
                 },
                 child: SvgPicture.asset(
-                  AppImageUtils.NOTIFICATION,
+                  AppImageUtils.notification,
                   height: 35.w,
                   width: 35.w,
                 ),
@@ -64,7 +64,7 @@ class FaqPage extends StatelessWidget {
           child: Column(
             children: [
               AppWidgets.imageSvg(
-                path: AppImageUtils.FAQ_IMG,
+                path: AppImageUtils.faqImg,
                 width: context.width,
                 height: 336.w,
               ).paddingSymmetric(
@@ -83,11 +83,11 @@ class FaqPage extends StatelessWidget {
 
   Widget buildBody(FaqState state) {
     if (state.hasLoading) {
-      return Center(
+      return const Center(
         child: CircularProgressIndicator(),
       );
     } else if (state.hasError) {
-      return Center(
+      return const Center(
         child: Icon(Icons.error),
       );
     } else {

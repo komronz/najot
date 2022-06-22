@@ -24,12 +24,13 @@ class CharityItemProjectWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: onTap,
       child: Container(
-        margin: EdgeInsets.only(right: 10),
+        margin: const EdgeInsets.only(right: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Color.fromRGBO(11, 191, 144, 0.08),
               blurRadius: 12,
@@ -42,22 +43,23 @@ class CharityItemProjectWidget extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
+              flex: 1,
               child: Stack(
                 children: [
                   Row(
                     children: [
                       Expanded(
                         child: ClipRRect(
-                          borderRadius: BorderRadius.vertical(
+                          borderRadius: const BorderRadius.vertical(
                             top: Radius.circular(12),
                           ),
                           child: CachedNetworkImage(
-                            placeholder: (context, url) => Center(
+                            placeholder: (context, url) => const Center(
                               child: CircularProgressIndicator(),
                             ),
                             imageUrl: model.imgUrl!,
                             errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
+                                const Icon(Icons.error),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -66,9 +68,9 @@ class CharityItemProjectWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              flex: 1,
             ),
             Expanded(
+              flex: 1,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -82,13 +84,13 @@ class CharityItemProjectWidget extends StatelessWidget {
                     text: LocaleKeys.support_type,
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
-                    color: AppColorUtils.DARK_6,
+                    color: AppColorUtils.dark6,
                   ).paddingOnly(top: 11.h, bottom: 3.h),
                   AppWidgets.text(
                     text: model.typeOfHelp!,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w600,
-                    color: AppColorUtils.GREEN_TEXT,
+                    color: AppColorUtils.greenText,
                   ).paddingOnly(top: 3.w, bottom: 11.h),
                   AppWidgets.starTextWidget(
                     text: LocaleKeys.volunteering.tr(),
@@ -99,19 +101,19 @@ class CharityItemProjectWidget extends StatelessWidget {
                   model.volunteerName == null
                       ? Row(
                           children: [
-                            Container(
+                            SizedBox(
                               width: 11.w,
                               height: 11.w,
-                              child: CircularProgressIndicator(
+                              child: const CircularProgressIndicator(
                                 color: Color(0xFFE8B811),
-                                backgroundColor: AppColorUtils.WHITE,
+                                backgroundColor: AppColorUtils.white,
                                 strokeWidth: 2,
                               ),
                             ).paddingOnly(right: 5),
                             AppWidgets.textLocale(
                               text: LocaleKeys.expected,
                               fontSize: 12.sp,
-                              color: Color(0xFFE8B811),
+                              color: const Color(0xFFE8B811),
                               fontWeight: FontWeight.w600,
                             ),
                           ],
@@ -119,34 +121,32 @@ class CharityItemProjectWidget extends StatelessWidget {
                       : Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.all(2),
+                              padding: const EdgeInsets.all(2),
                               height: 12.w,
                               width: 12.w,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
-                                color: Color(0xFFE8FEF2),
+                                color: const Color(0xFFE8FEF2),
                               ),
                               child: SvgPicture.asset(
-                                AppImageUtils.CHECK_SMALL,
-                                color: Color(0xFF038D69),
+                                AppImageUtils.checkSmall,
+                                color: const Color(0xFF038D69),
                               ).paddingAll(0.2),
                             ).paddingOnly(right: 5),
                             AppWidgets.textLocale(
                               text: model.volunteerName!,
                               fontSize: 12.sp,
-                              color: AppColorUtils.TEXT_GREEN,
+                              color: AppColorUtils.textGreen,
                               fontWeight: FontWeight.w600,
                             ),
                           ],
                         ),
                 ],
               ).paddingSymmetric(vertical: 14, horizontal: 12),
-              flex: 1,
             )
           ],
         ),
       ),
-      onTap: onTap,
     );
   }
 }

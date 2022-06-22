@@ -1,11 +1,11 @@
 part of 'volonteer_detail_cubit.dart';
 
 class VolunteerDetailState extends Equatable {
-  VolunteerDetailState(
-      {
-      required this.checkBox,
-        this.tobeVolunteer = true,
-      this.saveHelp = true,});
+  const VolunteerDetailState({
+    required this.checkBox,
+    this.tobeVolunteer = true,
+    this.saveHelp = true,
+  });
 
   final bool tobeVolunteer;
   final bool checkBox;

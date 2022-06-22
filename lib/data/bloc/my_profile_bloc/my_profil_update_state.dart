@@ -23,7 +23,7 @@ class MyProfileUpdateState extends Equatable {
       this.sureName = '',
       this.imageUrl = '',
       this.phoneNumber = '',
-      this.isMan = Gender.MAN,
+      this.isMan = Gender.man,
       this.isSavedBtn = false,
       this.nameFill = false,
       this.phoneNumberFill = false,

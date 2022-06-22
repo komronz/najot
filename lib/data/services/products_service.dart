@@ -8,7 +8,7 @@ class ProductsService {
         date: "25.08.2022",
         imgUrl:
             "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",
-        project_name: "Drenajni kuzatish uchun mo’jallangan moslama",
+        projectName: "Drenajni kuzatish uchun mo’jallangan moslama",
         title: "Lorem Ipsum is simply dummy text of the printing and"
             " typesetting industry. Lorem Ipsum has been the industry's "
             "standard dummy text ever since the 1500s, when an unknown"

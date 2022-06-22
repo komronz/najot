@@ -14,10 +14,9 @@ class IntroCubit extends Cubit<IntroState> {
   int currentIndex = 0;
 
   @override
-  Future<Function> close() async {
-    return () {
-      pageController.dispose();
-    };
+  Future<void> close() {
+    pageController.dispose();
+    return super.close();
   }
 
   void changePageNext(int page) {

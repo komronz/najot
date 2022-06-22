@@ -104,7 +104,7 @@ class VolunteerPageImgUploaded extends RegVolunteerEvent {
 class VolunteerPageImgDeleted extends RegVolunteerEvent {
   final XFile? file;
 
-  VolunteerPageImgDeleted(this.file);
+  const VolunteerPageImgDeleted(this.file);
 
   @override
   List<Object?> get props => [file];

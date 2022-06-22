@@ -32,12 +32,12 @@ class MyCharityItemPriceWidget extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.calendar_today_outlined,
-                      color: AppColorUtils.BLUE_PERCENT,
+                      color: AppColorUtils.bluePercent,
                       size: 14.sp,
                     ),
                     AppWidgets.text(
                       text: model.collectedDate!,
-                      color: AppColorUtils.BLUE_PERCENT,
+                      color: AppColorUtils.bluePercent,
                       fontWeight: FontWeight.w500,
                       fontSize: 14.sp,
                     ).paddingOnly(left: 6.w),
@@ -52,11 +52,11 @@ class MyCharityItemPriceWidget extends StatelessWidget {
                   text: LocaleKeys.day_of_the_announcement,
                   fontWeight: FontWeight.w400,
                   fontSize: 10.sp,
-                  color: AppColorUtils.DARK_6,
+                  color: AppColorUtils.dark6,
                 ),
                 AppWidgets.text(
                   text: model.createdDate!,
-                  color: AppColorUtils.TEXT_GREEN2,
+                  color: AppColorUtils.textGreen2,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ).paddingOnly(top: 5.w),
@@ -72,7 +72,7 @@ class MyCharityItemPriceWidget extends StatelessWidget {
             ).paddingOnly(bottom: 5.w),
             AppWidgets.textLocale(
               text: model.typeOfHelp!,
-              color: AppColorUtils.KRAUDFANDING,
+              color: AppColorUtils.kraudfanding,
               fontWeight: FontWeight.w600,
               fontSize: 14.sp,
             ).paddingOnly(bottom: 12.w),
@@ -80,11 +80,11 @@ class MyCharityItemPriceWidget extends StatelessWidget {
               text: LocaleKeys.address,
               fontWeight: FontWeight.w400,
               fontSize: 10.sp,
-              color: AppColorUtils.DARK_6,
+              color: AppColorUtils.dark6,
             ),
             AppWidgets.textLocale(
               text: "Toshkent Shahar, Mirobod tumani, A Qodiriy 48",
-              color: AppColorUtils.BLUE_TEXT,
+              color: AppColorUtils.blueText,
               maxLines: 2,
               fontWeight: FontWeight.w600,
               fontSize: 14.sp,
@@ -93,7 +93,7 @@ class MyCharityItemPriceWidget extends StatelessWidget {
               right: 60.w,
               bottom: 12.w,
             ),
-            Divider(
+            const Divider(
               thickness: 2,
             ),
           ],

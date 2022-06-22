@@ -28,15 +28,16 @@ class AppDatePicker extends StatelessWidget {
           text: title,
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,
-          color: AppColorUtils.DARK_4,
+          color: AppColorUtils.dark4,
           hasStar: text != null ? false : true,
         ).paddingOnly(bottom: 8),
         GestureDetector(
+          onTap: onTap,
           child: Container(
             height: 50,
             decoration: BoxDecoration(
               border: Border.all(
-                color: AppColorUtils.BORDER_COLOR,
+                color: AppColorUtils.borderColor,
                 width: 2,
               ),
               borderRadius: BorderRadius.circular(12),
@@ -45,16 +46,16 @@ class AppDatePicker extends StatelessWidget {
                 ? Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.calendar_today_sharp,
-                        color: AppColorUtils.KRAUDFANDING,
+                        color: AppColorUtils.kraudfanding,
                         size: 22,
                       ).paddingOnly(left: 20),
                       AppWidgets.text(
                         text: LocaleKeys.select.tr(),
                         fontWeight: FontWeight.w500,
                         fontSize: 16.sp,
-                        color: AppColorUtils.KRAUDFANDING,
+                        color: AppColorUtils.kraudfanding,
                       ).paddingOnly(left: 15),
                     ],
                   )
@@ -68,7 +69,6 @@ class AppDatePicker extends StatelessWidget {
                     ],
                   ),
           ),
-          onTap: onTap,
         ),
       ],
     ).paddingSymmetric(

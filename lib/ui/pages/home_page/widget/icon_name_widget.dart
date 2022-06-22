@@ -4,20 +4,22 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class IconAndName extends StatelessWidget {
-  IconAndName(
-      {required this.icon,
-      required this.text,
-      required this.onTap,
-      this.color = Colors.black,
-      this.fontWeight = FontWeight.w500,
-      this.fontsize = 18});
+  const IconAndName({
+    Key? key,
+    required this.icon,
+    required this.text,
+    required this.onTap,
+    this.color = Colors.black,
+    this.fontWeight = FontWeight.w500,
+    this.fontsize = 18,
+  }) : super(key: key);
 
-  String icon;
-  String text;
-  Color color;
-  double fontsize;
-  FontWeight fontWeight;
-  VoidCallback onTap;
+  final String icon;
+  final String text;
+  final Color color;
+  final double fontsize;
+  final FontWeight fontWeight;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {

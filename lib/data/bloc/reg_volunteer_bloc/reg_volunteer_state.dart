@@ -17,11 +17,11 @@ class RegVolunteerState extends Equatable {
   final bool waitVolunteer;
   final MaskTextInputFormatter? inputFormatter;
 
-  RegVolunteerState(
+  const RegVolunteerState(
       {this.firstName = '',
       this.lastName = '',
       this.address = '',
-      this.gender = Gender.MAN,
+      this.gender = Gender.man,
       this.birthDate,
       this.isActiveNextBtn = false,
       this.serial = '',
@@ -88,4 +88,4 @@ class RegVolunteerState extends Equatable {
       ];
 }
 
-enum Gender { MAN, WOMAN }
+enum Gender { man, woman }

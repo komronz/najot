@@ -24,11 +24,11 @@ import '../saved_page/saved_page.dart';
 import '../volunteering_charity_history_page/volunteering_charity_history_page.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({required this.appPageType});
+  HomePage({Key? key, required this.appPageType}) : super(key: key);
 
-  AppPageType appPageType;
+  final AppPageType appPageType;
   static const String routeName = "/homePage";
-  AppPageCubit cubit = AppPageCubit();
+  final AppPageCubit cubit = AppPageCubit();
 
   static GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
 
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
       child: BlocBuilder<AppPageCubit, AppPageState>(
         builder: (context, state) {
           return Scaffold(
-              // backgroundColor: AppColorUtils.BACKGROUND,
+              // backgroundColor: AppColorUtils.background,
               key: globalKey,
               drawer: state.changeMenu == 1
                   ? DrawerBody(state: state)
@@ -52,41 +52,41 @@ class HomePage extends StatelessWidget {
 
   Widget buildBody(AppPageState state) {
     switch (state.pageType) {
-      case AppPageType.MAIN:
+      case AppPageType.main:
         return MainPage();
-      case AppPageType.FAQ:
-        return FaqPage();
-      case AppPageType.RULES:
-        return RulesPage();
-      case AppPageType.ABOUT:
+      case AppPageType.faq:
+        return const FaqPage();
+      case AppPageType.rules:
+        return const RulesPage();
+      case AppPageType.about:
         return AboutPage();
-      case AppPageType.PROFILE:
-        return EditVolunteerPage();
-      case AppPageType.USERPROFILE:
-        return MyProfilePage();
-      case AppPageType.VOLUNTEER:
-        return RegVolunteer();
-      case AppPageType.CHARITY:
-        return CharityHistoryPage();
-      case AppPageType.CHARITY_VOLUNTEER:
-        return VolunteeringCharityHistoryPage();
-      case AppPageType.OPERATOR:
-        return OperatorPage();
-      case AppPageType.ORDERS:
-        return OrdersPage();
-      case AppPageType.ORDERS_VOLUNTEER:
-        return MyProductsPage();
-      case AppPageType.SAVED:
-        return SavedPage();
-      case AppPageType.ORGANIZATIONS:
+      case AppPageType.profile:
+        return const EditVolunteerPage();
+      case AppPageType.userprofile:
+        return const MyProfilePage();
+      case AppPageType.volunteer:
+        return const RegVolunteer();
+      case AppPageType.charity:
+        return const CharityHistoryPage();
+      case AppPageType.charityVolunteer:
+        return const VolunteeringCharityHistoryPage();
+      case AppPageType.operator:
+        return const OperatorPage();
+      case AppPageType.orders:
+        return const OrdersPage();
+      case AppPageType.ordersVolunteer:
+        return const MyProductsPage();
+      case AppPageType.saved:
+        return const SavedPage();
+      case AppPageType.organizations:
         return OrganizationPage();
-      case AppPageType.PROJECT:
-        return MyProjectAndAnnouncementsPages();
-      case AppPageType.VOLUNTEERING:
-        return MyVolunteeringPage();
-      case AppPageType.ADD_PROJECT:
-        return AddingProjectPage();
-      case AppPageType.NUMBER:
+      case AppPageType.project:
+        return const MyProjectAndAnnouncementsPages();
+      case AppPageType.volunteering:
+        return const MyVolunteeringPage();
+      case AppPageType.addProject:
+        return const AddingProjectPage();
+      case AppPageType.number:
         return NumberUpdatePage();
       default:
         return Container();

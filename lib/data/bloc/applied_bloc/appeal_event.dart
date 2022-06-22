@@ -7,7 +7,7 @@ abstract class AppealEvent extends Equatable {
 class AppealNameChanged extends AppealEvent {
   final String name;
 
-  AppealNameChanged(this.name);
+  const AppealNameChanged(this.name);
 
   @override
   List<Object?> get props => [name];
@@ -16,7 +16,7 @@ class AppealNameChanged extends AppealEvent {
 class AppealPhoneChanged extends AppealEvent {
   final String phone;
 
-  AppealPhoneChanged(this.phone);
+  const AppealPhoneChanged(this.phone);
 
   @override
   List<Object?> get props => [phone];
@@ -25,7 +25,7 @@ class AppealPhoneChanged extends AppealEvent {
 class AppealTextChanged extends AppealEvent {
   final String appeal;
 
-  AppealTextChanged(this.appeal);
+  const AppealTextChanged(this.appeal);
 
   @override
   List<Object?> get props => [appeal];

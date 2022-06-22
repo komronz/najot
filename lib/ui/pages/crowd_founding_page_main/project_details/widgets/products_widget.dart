@@ -1,4 +1,4 @@
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -6,27 +6,27 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/pages/crowd_founding_page_main/project_details/product_datail_page/product_detail_page.dart';
+import 'package:najot/ui/pages/home_page/widget/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class ProductsWidget extends StatelessWidget {
-  ProductsWidget({required this.cardModel});
+  const ProductsWidget({Key? key, required this.cardModel}) : super(key: key);
 
-  CardModel cardModel;
+  final CardModel cardModel;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColorUtils.WHITE,
+      color: AppColorUtils.white,
       child: Column(
         children: [
           RichText(
             text: TextSpan(children: [
-              TextSpan(
+              const TextSpan(
                 text: "*",
                 style: TextStyle(
-                  color: AppColorUtils.RED,
+                  color: AppColorUtils.red,
                 ),
               ),
               TextSpan(
@@ -34,7 +34,7 @@ class ProductsWidget extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w400,
-                  color: AppColorUtils.DARK2,
+                  color: AppColorUtils.dark2,
                 ),
               ),
             ]),
@@ -50,10 +50,10 @@ class ProductsWidget extends StatelessWidget {
                   padding: EdgeInsets.all(18.w),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    color: AppColorUtils.GREEN_ACCENT4,
+                    color: AppColorUtils.greenAccent4,
                     border: Border.all(
                       width: 2,
-                      color: AppColorUtils.DIVIDER,
+                      color: AppColorUtils.divider,
                     ),
                   ),
                   child: Column(
@@ -62,7 +62,7 @@ class ProductsWidget extends StatelessWidget {
                         children: [
                           AppWidgets.text(
                             text: "500 000",
-                            color: AppColorUtils.SMS_BTN3,
+                            color: AppColorUtils.smsBtn3,
                             fontWeight: FontWeight.w600,
                             fontSize: 20.sp,
                           ),
@@ -71,7 +71,7 @@ class ProductsWidget extends StatelessWidget {
                           ),
                           AppWidgets.textLocale(
                             text: LocaleKeys.toSum,
-                            color: AppColorUtils.SMS_BTN3,
+                            color: AppColorUtils.smsBtn3,
                             fontWeight: FontWeight.w600,
                             fontSize: 14.sp,
                           ),
@@ -83,7 +83,7 @@ class ProductsWidget extends StatelessWidget {
                       AppWidgets.text(
                         text: cardModel.productModel![index]!.title!,
                         maxLines: 10,
-                        color: AppColorUtils.DARK3,
+                        color: AppColorUtils.dark3,
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
                       ),
@@ -98,7 +98,7 @@ class ProductsWidget extends StatelessWidget {
                           ),
                           AppWidgets.textLocale(
                             text: LocaleKeys.bought,
-                            color: AppColorUtils.DARK_6,
+                            color: AppColorUtils.dark6,
                             fontSize: 10.sp,
                             fontWeight: FontWeight.w400,
                           ),
@@ -109,7 +109,7 @@ class ProductsWidget extends StatelessWidget {
                         children: [
                           AppWidgets.text(
                             text: "25.02.2022",
-                            color: AppColorUtils.TEXT_GREEN2,
+                            color: AppColorUtils.textGreen2,
                             fontWeight: FontWeight.w600,
                             fontSize: 16.sp,
                           ).paddingOnly(left: 6.w),
@@ -131,8 +131,8 @@ class ProductsWidget extends StatelessWidget {
                               arguments: cardModel.productModel![index]);
                         },
                         text: LocaleKeys.buy.tr(),
-                        color: AppColorUtils.PERCENT_COLOR,
-                        textColor: AppColorUtils.WHITE,
+                        color: AppColorUtils.percentColor,
+                        textColor: AppColorUtils.white,
                         textSize: 16.sp,
                       )
                     ],

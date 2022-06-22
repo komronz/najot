@@ -10,33 +10,53 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../data/localization/locale_keys.g.dart';
 
-class VerificationPage extends StatelessWidget {
-  VerificationPage({required this.loginBloc});
+class VerificationPage extends StatefulWidget {
+  const VerificationPage({Key? key, required this.loginBloc}) : super(key: key);
 
   static const String routeName = '/verificationPage';
-  LoginBloc loginBloc;
+  final LoginBloc loginBloc;
+
+  @override
+  State<VerificationPage> createState() => _VerificationPageState();
+}
+
+class _VerificationPageState extends State<VerificationPage> {
+  late final TextEditingController _pinPutController;
+  late final FocusNode _pinPutFocusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _pinPutController = TextEditingController();
+    _pinPutFocusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _pinPutController.dispose();
+    _pinPutFocusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _pinPutController = TextEditingController();
-    final FocusNode _pinPutFocusNode = FocusNode();
-
     return WillPopScope(
       onWillPop: () async {
-        loginBloc.add(CheckPhoneNumberChanged(false));
+        widget.loginBloc.add(const CheckPhoneNumberChanged(false));
         return true;
       },
       child: Scaffold(
-        backgroundColor: AppColorUtils.BACKGROUND,
+        backgroundColor: AppColorUtils.background,
         body: BlocBuilder<LoginBloc, LoginState>(
-            bloc: loginBloc,
+            bloc: widget.loginBloc,
             builder: (context, state) {
               return SingleChildScrollView(
                 child: Column(
                   children: [
                     AppWidgets.appBarWidget(
                       onTap: () {
-                        loginBloc.add(CheckPhoneNumberChanged(false));
+                        widget.loginBloc
+                            .add(const CheckPhoneNumberChanged(false));
                         NavigatorService.to.pop();
                       },
                       title: LocaleKeys.personal_information,
@@ -48,7 +68,7 @@ class VerificationPage extends StatelessWidget {
                           text: LocaleKeys.enter_6_digit_code,
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          args: ["${state.phone}"],
+                          args: [(state.phone)],
                           maxLines: 3,
                         ).paddingSymmetric(horizontal: 40.w),
                         PinPutWidget(
@@ -62,7 +82,7 @@ class VerificationPage extends StatelessWidget {
                           onPressed: () {},
                           child: AppWidgets.textLocale(
                               text: LocaleKeys.send_again,
-                              color: AppColorUtils.TEXT_BLUE,
+                              color: AppColorUtils.textBlue,
                               fontWeight: FontWeight.w600,
                               fontSize: 16,
                               textAlign: TextAlign.center),
@@ -79,7 +99,7 @@ class VerificationPage extends StatelessWidget {
                           title: "Boshqa raqam kiritish",
                           onTap: () {},
                           color: Colors.transparent,
-                          textColor: AppColorUtils.TEXT_GREEN,
+                          textColor: AppColorUtils.textGreen,
                         ).paddingOnly(
                           top: 10.h,
                           left: 20,

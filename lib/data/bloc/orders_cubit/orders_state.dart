@@ -7,7 +7,7 @@ class OrdersState extends Equatable {
   final bool hasConnection;
   final bool isLoading;
 
-  OrdersState({
+  const OrdersState({
     this.list = const [],
     this.hasError = false,
     this.hasConnection = true,

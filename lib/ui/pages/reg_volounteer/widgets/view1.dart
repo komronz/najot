@@ -70,7 +70,7 @@ class View1 extends StatelessWidget {
         NextButtonWidget(
           onTap: () {
             bloc.pageController.nextPage(
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               curve: Curves.easeInOutSine,
             );
           },

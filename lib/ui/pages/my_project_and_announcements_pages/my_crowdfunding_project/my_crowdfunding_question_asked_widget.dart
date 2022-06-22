@@ -10,7 +10,7 @@ import '../../../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_supp
 import 'my_crowdfunding_question_list.dart';
 
 class MyCrowdfundingQuestionsAskedWidget extends StatefulWidget {
-  MyCrowdfundingQuestionsAskedWidget({
+  const MyCrowdfundingQuestionsAskedWidget({
     required this.cardModel,
     required this.cubit,
     Key? key,
@@ -19,7 +19,7 @@ class MyCrowdfundingQuestionsAskedWidget extends StatefulWidget {
   final MyCrowdfundingSupportCubit cubit;
 
   @override
-  _MyCrowdfundingQuestionsAskedWidgetState createState() =>
+  State<StatefulWidget> createState() =>
       _MyCrowdfundingQuestionsAskedWidgetState();
 }
 
@@ -38,7 +38,7 @@ class _MyCrowdfundingQuestionsAskedWidgetState
           },
           child: Container(
             decoration: BoxDecoration(
-              color: AppColorUtils.GREEN_ACCENT8,
+              color: AppColorUtils.greenAccent8,
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Row(
@@ -46,7 +46,7 @@ class _MyCrowdfundingQuestionsAskedWidgetState
               children: [
                 AppWidgets.textLocale(
                   text: "Javob berilganlar",
-                  color: AppColorUtils.GREEN_TEXT_1,
+                  color: AppColorUtils.greenText1,
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w500,
                 ).paddingOnly(
@@ -56,8 +56,8 @@ class _MyCrowdfundingQuestionsAskedWidgetState
                   right: 15.w,
                 ),
                 AppWidgets.imageSvg(
-                  path: AppImageUtils.RIGHT_DIRECTION,
-                  color: AppColorUtils.GREEN_TEXT_1,
+                  path: AppImageUtils.rightDirection,
+                  color: AppColorUtils.greenText1,
                   height: 15.w,
                 ).paddingOnly(right: 15.w),
               ],

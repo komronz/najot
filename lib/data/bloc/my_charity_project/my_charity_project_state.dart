@@ -8,13 +8,14 @@ class MyProjectAndAnnouncementsPagesState extends Equatable {
   final bool hasConnection;
   final bool isLoading;
 
-  MyProjectAndAnnouncementsPagesState(
-      {this.charityList = const [],
-      this.crowdFoundingList = const [],
-      this.volunteeringList = const [],
-      this.hasError = false,
-      this.hasConnection = true,
-      this.isLoading = false,});
+  const MyProjectAndAnnouncementsPagesState({
+    this.charityList = const [],
+    this.crowdFoundingList = const [],
+    this.volunteeringList = const [],
+    this.hasError = false,
+    this.hasConnection = true,
+    this.isLoading = false,
+  });
 
   MyProjectAndAnnouncementsPagesState copyWith({
     List<CharityModel>? charityList,

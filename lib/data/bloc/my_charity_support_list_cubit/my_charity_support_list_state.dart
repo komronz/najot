@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import '../../model/charity_model.dart';
 
 class MyCharitySupportListState extends Equatable {
-  MyCharitySupportListState(
+  const MyCharitySupportListState(
       {required this.cardList, required this.widgetChange});
 
   final List<CharityModel> cardList;
@@ -18,7 +18,7 @@ class MyCharitySupportListState extends Equatable {
     bool? widgetChange,
   }) {
     return MyCharitySupportListState(
-      cardList: list ?? this.cardList,
+      cardList: list ?? cardList,
       widgetChange: widgetChange ?? this.widgetChange,
     );
   }

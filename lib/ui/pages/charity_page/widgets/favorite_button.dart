@@ -19,11 +19,11 @@ class FavoriteButton extends StatelessWidget {
             width: 24.w,
             height: 24.w,
             decoration: BoxDecoration(
-              color: AppColorUtils.PURPLE,
+              color: AppColorUtils.purple,
               borderRadius: BorderRadius.circular(2),
             ),
             child: AppWidgets.imageSvg(
-              path: AppImageUtils.UNLIKE,
+              path: AppImageUtils.unlike,
               fit: BoxFit.none,
             ),
           )
@@ -31,11 +31,11 @@ class FavoriteButton extends StatelessWidget {
             width: 24.w,
             height: 24.w,
             decoration: BoxDecoration(
-              color: AppColorUtils.IC_GREEN,
+              color: AppColorUtils.icGreen,
               borderRadius: BorderRadius.circular(2),
             ),
             child: AppWidgets.imageSvg(
-              path: AppImageUtils.IC_FAVORITE_ADD,
+              path: AppImageUtils.icFavoriteAdd,
               fit: BoxFit.none,
             ),
           );

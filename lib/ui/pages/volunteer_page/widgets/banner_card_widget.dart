@@ -1,4 +1,4 @@
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -21,8 +21,8 @@ class BannerCard extends StatelessWidget {
       padding: EdgeInsets.all(10.w),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: AppColorUtils.BACK_AD,
-          border: Border.all(width: 1, color: AppColorUtils.DIVIDER)),
+          color: AppColorUtils.backAd,
+          border: Border.all(width: 1, color: AppColorUtils.divider)),
       child: Row(
         children: [
           SizedBox(
@@ -35,7 +35,7 @@ class BannerCard extends StatelessWidget {
                 AppWidgets.text(
                     text: "Lorem Ipsum is simply dummy "
                         "text of the printing and ?",
-                    color: AppColorUtils.GRAY_4,
+                    color: AppColorUtils.gray4,
                     fontSize: 12,
                     maxLines: 2),
                 Column(
@@ -43,7 +43,7 @@ class BannerCard extends StatelessWidget {
                   children: [
                     AppWidgets.text(
                       text: LocaleKeys.we_to_you.tr(),
-                      color: AppColorUtils.BLACK,
+                      color: AppColorUtils.black,
                       fontSize: 14,
                       maxLines: 1,
                       fontWeight: FontWeight.w300,
@@ -53,7 +53,7 @@ class BannerCard extends StatelessWidget {
                     ),
                     AppWidgets.text(
                       text: LocaleKeys.we_help.tr(),
-                      color: AppColorUtils.GREEN_TEXT,
+                      color: AppColorUtils.greenText,
                       fontSize: 16,
                       maxLines: 1,
                       fontWeight: FontWeight.w600,
@@ -67,13 +67,13 @@ class BannerCard extends StatelessWidget {
                   text: LocaleKeys.advertising.tr(),
                   fontWeight: FontWeight.w600,
                   textSize: 12.sp,
-                  textColor: AppColorUtils.WHITE,
-                  color: AppColorUtils.PERCENT_COLOR,
+                  textColor: AppColorUtils.white,
+                  color: AppColorUtils.percentColor,
                 )
               ],
             ).paddingAll(7.w),
           ),
-          SvgPicture.asset(AppImageUtils.HELPER)
+          SvgPicture.asset(AppImageUtils.helper)
         ],
       ),
     );

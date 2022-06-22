@@ -24,12 +24,13 @@ class CharityCashWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: onTap,
       child: Container(
-        margin: EdgeInsets.only(right: 10),
+        margin: const EdgeInsets.only(right: 10),
         decoration: BoxDecoration(
-          color: AppColorUtils.WHITE,
+          color: AppColorUtils.white,
           borderRadius: BorderRadius.circular(12),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Color.fromRGBO(11, 191, 144, 0.08),
               blurRadius: 12,
@@ -42,22 +43,23 @@ class CharityCashWidget extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
+              flex: 1,
               child: Stack(
                 children: [
                   Row(
                     children: [
                       Expanded(
                         child: ClipRRect(
-                          borderRadius: BorderRadius.vertical(
+                          borderRadius: const BorderRadius.vertical(
                             top: Radius.circular(12),
                           ),
                           child: CachedNetworkImage(
-                            placeholder: (context, url) => Center(
+                            placeholder: (context, url) => const Center(
                               child: CircularProgressIndicator(),
                             ),
                             imageUrl: model.imgUrl!,
                             errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
+                                const Icon(Icons.error),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -66,9 +68,9 @@ class CharityCashWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              flex: 1,
             ),
             Expanded(
+              flex: 1,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -84,7 +86,7 @@ class CharityCashWidget extends StatelessWidget {
                         text: LocaleKeys.done,
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
-                        color: AppColorUtils.DARK_6,
+                        color: AppColorUtils.dark6,
                       ).paddingOnly(
                         right: 5.w,
                       ),
@@ -92,7 +94,7 @@ class CharityCashWidget extends StatelessWidget {
                         fontSize: 12.h,
                         text: "${model.percent.toString().split(".").first}%",
                         fontWeight: FontWeight.w600,
-                        color: AppColorUtils.BLUE_PERCENT,
+                        color: AppColorUtils.bluePercent,
                       ),
                     ],
                   ).paddingOnly(
@@ -100,12 +102,12 @@ class CharityCashWidget extends StatelessWidget {
                   ),
                   LinearPercentIndicator(
                     animation: true,
-                    padding: EdgeInsets.all(0),
+                    padding: const EdgeInsets.all(0),
                     lineHeight: 6.h,
                     animationDuration: 2000,
                     percent: model.percent! / 100,
-                    progressColor: AppColorUtils.PERCENT_COLOR,
-                    backgroundColor: AppColorUtils.PERCENT_COLOR2,
+                    progressColor: AppColorUtils.percentColor,
+                    backgroundColor: AppColorUtils.percentColor2,
                   ).paddingOnly(
                     top: 8.w,
                     bottom: 10.h,
@@ -122,13 +124,13 @@ class CharityCashWidget extends StatelessWidget {
                   Row(
                     children: [
                       AppWidgets.imageSvg(
-                        path: AppImageUtils.CALENDAR_RED,
-                        color: AppColorUtils.BLUE_TEXT,
+                        path: AppImageUtils.calendarRed,
+                        color: AppColorUtils.blueText,
                         height: 11.w,
                       ).paddingOnly(right: 2),
                       AppWidgets.textLocale(
                         text: ": ${model.collectedDate!}",
-                        color: AppColorUtils.BLUE_TEXT,
+                        color: AppColorUtils.blueText,
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w500,
                       ),
@@ -136,12 +138,10 @@ class CharityCashWidget extends StatelessWidget {
                   ),
                 ],
               ).paddingSymmetric(vertical: 14, horizontal: 12),
-              flex: 1,
             )
           ],
         ),
       ),
-      onTap: onTap,
     );
   }
 }

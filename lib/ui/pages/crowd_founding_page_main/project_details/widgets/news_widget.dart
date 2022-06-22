@@ -28,7 +28,7 @@ class NewsWidget extends StatelessWidget {
             ),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: AppColorUtils.GREEN_ACCENT4),
+                color: AppColorUtils.greenAccent4),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -56,7 +56,7 @@ class NewsWidget extends StatelessWidget {
                               width: 150.w,
                               child: AppWidgets.text(
                                 text: "Eshonov Fakhriyor",
-                                color: AppColorUtils.TEXT_GREEN2,
+                                color: AppColorUtils.textGreen2,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14.sp,
                               ),
@@ -67,13 +67,13 @@ class NewsWidget extends StatelessWidget {
                                   text: LocaleKeys.project_author,
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w400,
-                                  color: AppColorUtils.DARK_6,
+                                  color: AppColorUtils.dark6,
                                 ).paddingOnly(right: 65.w),
                                 AppWidgets.text(
                                   text: "25.08.2022 18:19",
                                   fontSize: 10.sp,
                                   fontWeight: FontWeight.w500,
-                                  color: AppColorUtils.BLUE_PERCENT,
+                                  color: AppColorUtils.bluePercent,
                                 )
                               ],
                             ).paddingOnly(top: 5),
@@ -87,7 +87,7 @@ class NewsWidget extends StatelessWidget {
                   text: cardModel.infoModel![0].title!,
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w600,
-                  color: AppColorUtils.BLACK,
+                  color: AppColorUtils.black,
                 ).paddingOnly(
                   bottom: 7.w,
                   top: 18.w,
@@ -97,48 +97,47 @@ class NewsWidget extends StatelessWidget {
                     text: cardModel.infoModel![0].text!,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
-                    color: AppColorUtils.TEXT_GREY2,
+                    color: AppColorUtils.textGrey2,
                     maxLines: 40),
                 SizedBox(
                   height: 18.w,
                 ),
-                Container(
+                SizedBox(
                   height: 229.w,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.all(
+                    borderRadius: const BorderRadius.all(
                       Radius.circular(12),
                     ),
                     child: CachedNetworkImage(
                       imageUrl: cardModel.image!,
                       fit: BoxFit.cover,
                       width: MediaQuery.of(context).size.width,
-                      placeholder: (context, url) => Center(
+                      placeholder: (context, url) => const Center(
                         child: CircularProgressIndicator(),
                       ),
-                      errorWidget: (context, url, error) => Icon(Icons.error),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
                     ),
                   ),
                 ),
               ],
             ),
           )
-        : Container(
-            child: Center(
-              child: Column(
-                children: [
-                  SvgPicture.asset(AppImageUtils.NEWS),
-                  SizedBox(
-                    width: 200.sp,
-                    child: AppWidgets.textLocale(
-                        textAlign: TextAlign.center,
-                        text: LocaleKeys.news_empty,
-                        color: AppColorUtils.DARK_4,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w600,
-                        maxLines: 2),
-                  )
-                ],
-              ),
+        : Center(
+            child: Column(
+              children: [
+                SvgPicture.asset(AppImageUtils.news),
+                SizedBox(
+                  width: 200.sp,
+                  child: AppWidgets.textLocale(
+                      textAlign: TextAlign.center,
+                      text: LocaleKeys.news_empty,
+                      color: AppColorUtils.dark4,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w600,
+                      maxLines: 2),
+                )
+              ],
             ),
           );
   }

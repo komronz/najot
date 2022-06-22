@@ -19,33 +19,33 @@ class ItemCharityWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(12),
-      margin: EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.all(12),
+      margin: const EdgeInsets.only(top: 10),
       width: 335.w,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             width: 1,
-            color: AppColorUtils.GRAY_3,
+            color: AppColorUtils.gray3,
           )),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
+          SizedBox(
             width: double.infinity,
             height: 278.w,
             child: ClipRRect(
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(12),
               ),
               child: CachedNetworkImage(
                 imageUrl: model.imgUrl!,
                 fit: BoxFit.cover,
                 width: MediaQuery.of(context).size.width,
-                placeholder: (context, url) => Center(
+                placeholder: (context, url) => const Center(
                   child: CircularProgressIndicator(),
                 ),
-                errorWidget: (context, url, error) => Icon(Icons.error),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
           ).paddingOnly(bottom: 12),
@@ -53,7 +53,7 @@ class ItemCharityWidget extends StatelessWidget {
             text: model.title!,
             fontSize: 18.sp,
             fontWeight: FontWeight.w500,
-            color: AppColorUtils.DARK2,
+            color: AppColorUtils.dark2,
             maxLines: 2,
           ).paddingOnly(
             bottom: 18,
@@ -64,7 +64,7 @@ class ItemCharityWidget extends StatelessWidget {
                   text: LocaleKeys.item_type,
                   fontSize: 10.sp,
                   fontWeight: FontWeight.w400,
-                  color: AppColorUtils.GRAY_4)
+                  color: AppColorUtils.gray4)
               .paddingOnly(
             bottom: 4,
             right: 6,
@@ -72,7 +72,7 @@ class ItemCharityWidget extends StatelessWidget {
           ),
           AppWidgets.textLocale(
             text: model.typeVolunteering!,
-            color: AppColorUtils.GREEN_TEXT,
+            color: AppColorUtils.greenText,
             fontSize: 14.sp,
             fontWeight: FontWeight.w600,
           ).paddingOnly(
@@ -92,11 +92,11 @@ class ItemCharityWidget extends StatelessWidget {
                       text: LocaleKeys.address,
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w400,
-                      color: AppColorUtils.GRAY_4,
+                      color: AppColorUtils.gray4,
                     ).paddingOnly(bottom: 4),
                     AppWidgets.textLocale(
                       text: model.address!,
-                      color: AppColorUtils.BLUE_TEXT,
+                      color: AppColorUtils.blueText,
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w500,
                       maxLines: 2,
@@ -115,7 +115,7 @@ class ItemCharityWidget extends StatelessWidget {
                                 text: LocaleKeys.executable_date,
                                 fontSize: 9.sp,
                                 fontWeight: FontWeight.w400,
-                                color: AppColorUtils.GRAY_4)
+                                color: AppColorUtils.gray4)
                             .paddingOnly(
                           bottom: 4,
                         ),
@@ -138,12 +138,12 @@ class ItemCharityWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           AppWidgets.imageSvg(
-                            path: AppImageUtils.CALENDAR_RED,
+                            path: AppImageUtils.calendarRed,
                             height: 12.sp,
                           ).paddingOnly(right: 5),
                           AppWidgets.textLocale(
                             text: model.completedDate!,
-                            color: AppColorUtils.RED,
+                            color: AppColorUtils.red,
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w500,
                           ),
@@ -163,7 +163,7 @@ class ItemCharityWidget extends StatelessWidget {
                   text: LocaleKeys.phone_number,
                   fontSize: 10.sp,
                   fontWeight: FontWeight.w400,
-                  color: AppColorUtils.GRAY_4)
+                  color: AppColorUtils.gray4)
               .paddingOnly(
             bottom: 4,
             right: 6,
@@ -176,13 +176,13 @@ class ItemCharityWidget extends StatelessWidget {
                 height: 40.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: AppColorUtils.ADD_PROJECT_COLOR,
+                  color: AppColorUtils.addProjectColor,
                 ),
                 child: Row(
                   children: [
                     AppWidgets.imageSvg(
-                      path: AppImageUtils.IC_PHONE,
-                      color: AppColorUtils.BLUE_TEXT,
+                      path: AppImageUtils.icPhone,
+                      color: AppColorUtils.blueText,
                     ).paddingOnly(right: 5),
                     AppWidgets.text(
                       text: model.mobileNumber!,
@@ -198,23 +198,23 @@ class ItemCharityWidget extends StatelessWidget {
                 children: [
                   model.isDone!
                       ? Container(
-                          padding: EdgeInsets.all(2),
+                          padding: const EdgeInsets.all(2),
                           height: 14.w,
                           width: 14.w,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
-                            color: AppColorUtils.GREEN_ACCENT1,
+                            color: AppColorUtils.greenAccent1,
                           ),
                           child: SvgPicture.asset(
-                            AppImageUtils.CHECK_SMALL,
-                            color: AppColorUtils.GREEN_TEXT_10,
+                            AppImageUtils.checkSmall,
+                            color: AppColorUtils.greenText10,
                           ),
                         ).paddingOnly(right: 6)
-                      : SizedBox(),
+                      : const SizedBox(),
                   model.isDone!
                       ? AppWidgets.imageSvg(
-                          path: AppImageUtils.NOTIFICATION_GREY)
-                      : AppWidgets.imageSvg(path: AppImageUtils.NOTIFICATION),
+                          path: AppImageUtils.notificationGrey)
+                      : AppWidgets.imageSvg(path: AppImageUtils.notification),
                 ],
               ),
             ],

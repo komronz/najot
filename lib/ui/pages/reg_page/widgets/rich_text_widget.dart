@@ -17,15 +17,15 @@ class RichTextWidget extends StatelessWidget {
         text: TextSpan(
           text: LocaleKeys.i_am.tr(),
           style: TextStyle(
-            color: AppColorUtils.BLACK,
+            color: AppColorUtils.black,
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
           ),
           children: [
             TextSpan(
               text: LocaleKeys.project_conditions.tr(),
-              style: TextStyle(
-                color: AppColorUtils.GREEN_APP,
+              style: const TextStyle(
+                color: AppColorUtils.greenApp,
                 decoration: TextDecoration.underline,
               ),
             ),

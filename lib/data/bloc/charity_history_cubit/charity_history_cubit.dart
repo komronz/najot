@@ -7,12 +7,12 @@ import 'package:najot/data/services/charity_history_service.dart';
 part 'charity_history_state.dart';
 
 class CharityHistoryCubit extends Cubit<CharityHistoryState> {
-  CharityHistoryCubit() : super(CharityHistoryState());
+  CharityHistoryCubit() : super(const CharityHistoryState());
   var service = CharityHistoryService();
 
   Future loadHistory() async {
     emit(state.copyWith(isLoading: true));
-    await Future.delayed(Duration(seconds: 4));
+    await Future.delayed(const Duration(seconds: 4));
     try {
       var charityList = await service.getCharityList();
 
@@ -38,11 +38,11 @@ class CharityHistoryCubit extends Cubit<CharityHistoryState> {
     if (text.isEmpty) {
       emit(state.copyWith(charityList: charityList));
     } else {
-      charityList!.forEach((element) {
+      for (var element in charityList!) {
         if (element.title!.toUpperCase().contains(text.toUpperCase())) {
           list.add(element);
         }
-      });
+      }
       emit(state.copyWith(charityList: list));
     }
   }

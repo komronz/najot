@@ -1,3 +1,3 @@
 class APIConst {
-  static const String API_URL = "";
+  static const String apiUrl = "";
 }

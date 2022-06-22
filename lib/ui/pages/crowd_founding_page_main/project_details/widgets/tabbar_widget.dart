@@ -5,16 +5,13 @@ import 'package:najot/data/bloc/crowd_founding_detail_cubit/crowd_founding_detai
 import 'package:najot/data/utils/app_color_utils.dart';
 
 class TabBarWidget extends StatelessWidget {
-  TabBarWidget(
-    this._controller,
-    this.title1,
-    this.title2,
-  );
+  const TabBarWidget(this._controller, this.title1, this.title2, {Key? key})
+      : super(key: key);
 
   static int index = 0;
-  TabController _controller;
-  String title1;
-  String title2;
+  final TabController _controller;
+  final String title1;
+  final String title2;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +20,7 @@ class TabBarWidget extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-              color: AppColorUtils.WHITE,
+              color: AppColorUtils.white,
               borderRadius: BorderRadius.circular(11.0)),
           alignment: Alignment.center,
           child: DefaultTabController(
@@ -31,21 +28,21 @@ class TabBarWidget extends StatelessWidget {
             length: 2,
             child: Container(
               height: 46.w,
-              padding: EdgeInsets.all(3),
+              padding: const EdgeInsets.all(3),
               margin: EdgeInsets.symmetric(
                 horizontal: 20.w,
               ),
               decoration: BoxDecoration(
-                  color: AppColorUtils.BACKGROUND,
+                  color: AppColorUtils.background,
                   borderRadius: BorderRadius.circular(30),
                   border: Border.all(
                     width: 1,
-                    color: AppColorUtils.DIVIDER,
+                    color: AppColorUtils.divider,
                   )),
               child: TabBar(
                 controller: _controller,
-                unselectedLabelColor: AppColorUtils.GREEN_TAB,
-                labelColor: AppColorUtils.WHITE,
+                unselectedLabelColor: AppColorUtils.greenTab,
+                labelColor: AppColorUtils.white,
                 onTap: (i) {
                   if (i == 0) {
                     context.read<CrowdFoundingDetailCubit>().tabChange(0);
@@ -55,7 +52,7 @@ class TabBarWidget extends StatelessWidget {
                 },
                 indicator: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: AppColorUtils.PERCENT_COLOR,
+                  color: AppColorUtils.percentColor,
                 ),
                 tabs: [
                   Tab(

@@ -21,7 +21,8 @@ class CharityItem2Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        child: Container(
+        onTap: onTap,
+        child: SizedBox(
           width: 160.w,
           height: 267.w,
           child: Card(
@@ -29,25 +30,26 @@ class CharityItem2Widget extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
             ),
             elevation: 1,
-            color: AppColorUtils.WHITE,
+            color: AppColorUtils.white,
             child: Column(
               children: [
                 Expanded(
+                  flex: 1,
                   child: Stack(
                     children: [
                       Row(
                         children: [
                           Expanded(
                             child: ClipRRect(
-                              borderRadius: BorderRadius.vertical(
+                              borderRadius: const BorderRadius.vertical(
                                   top: Radius.circular(12)),
                               child: CachedNetworkImage(
-                                placeholder: (context, url) => Center(
+                                placeholder: (context, url) => const Center(
                                   child: CircularProgressIndicator(),
                                 ),
                                 imageUrl: model.image!,
                                 errorWidget: (context, url, error) =>
-                                    Icon(Icons.error),
+                                    const Icon(Icons.error),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -56,7 +58,7 @@ class CharityItem2Widget extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Expanded(child: SizedBox()),
+                          const Expanded(child: SizedBox()),
                           InkWell(
                             child: FavoriteButton(
                               isFavorite: model.isFavorite!,
@@ -67,9 +69,9 @@ class CharityItem2Widget extends StatelessWidget {
                       ).paddingAll(10)
                     ],
                   ),
-                  flex: 1,
                 ),
                 Expanded(
+                  flex: 1,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,24 +89,22 @@ class CharityItem2Widget extends StatelessWidget {
                             text: LocaleKeys.item_type,
                             fontSize: 10.sp,
                             fontWeight: FontWeight.w400,
-                            color: AppColorUtils.DARK_6,
+                            color: AppColorUtils.dark6,
                           ).paddingOnly(top: 12.w),
                           AppWidgets.text(
                             text: "Oyoq kiyim",
                             fontWeight: FontWeight.w600,
-                            color: AppColorUtils.TEXT_GREEN,
+                            color: AppColorUtils.textGreen,
                             fontSize: 12.sp,
                           ).paddingOnly(top: 5.w),
                         ],
                       )
                     ],
                   ).paddingSymmetric(vertical: 14, horizontal: 12),
-                  flex: 1,
                 )
               ],
             ),
           ),
-        ),
-        onTap: onTap);
+        ));
   }
 }

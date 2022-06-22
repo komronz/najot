@@ -11,6 +11,6 @@ class SmsModel {
 }
 
 enum SmsType {
-  USER,
-  OPERATOR,
+  user,
+  operator,
 }

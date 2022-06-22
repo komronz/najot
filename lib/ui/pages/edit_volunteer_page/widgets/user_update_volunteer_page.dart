@@ -17,7 +17,7 @@ import 'edit_view2.dart';
 class UserUpdateVolunteerPage extends StatelessWidget {
   static const String routeName = "/userUpdateVolunteerPage";
 
-  UserUpdateVolunteerPage({
+  const UserUpdateVolunteerPage({
     Key? key,
   }) : super(key: key);
 
@@ -25,7 +25,7 @@ class UserUpdateVolunteerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        context.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
+        context.read<EditVolunteerBloc>().add(const EditProfileChangePage(1));
         return Future(() => false);
       },
       child: GestureDetector(
@@ -40,12 +40,12 @@ class UserUpdateVolunteerPage extends StatelessWidget {
               return Scaffold(
                 resizeToAvoidBottomInset: false,
                 appBar: AppBar(
-                  backgroundColor: AppColorUtils.BACKGROUND,
+                  backgroundColor: AppColorUtils.background,
                   titleSpacing: 0,
                   elevation: 0,
                   automaticallyImplyLeading: false,
                   title: Container(
-                    color: AppColorUtils.WAIT_COLOR,
+                    color: AppColorUtils.waitColor,
                     child: AppWidgets.appBarMenu(
                       title: LocaleKeys.edit_my_profile,
                       onTapMenu: () {
@@ -55,39 +55,35 @@ class UserUpdateVolunteerPage extends StatelessWidget {
                       onTapIcon: () {
                         context
                             .read<EditVolunteerBloc>()
-                            .add(EditProfileChangePage(1));
+                            .add(const EditProfileChangePage(1));
                       },
-                      icon: AppImageUtils.REMOVE,
+                      icon: AppImageUtils.remove,
                     ),
                   ),
                 ),
                 body: Container(
                   // padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  decoration: DecorationConst.DEC_WITH_SHADOW,
+                  decoration: DecorationConst.decWithShadow,
                   child: Column(
                     children: [
-                      Container(
-                        child: SmoothPageIndicator(
-                          controller:
-                              context.read<RegVolunteerBloc>().pageController,
-                          count: 2,
-                          effect: WormEffect(
-                            dotColor: AppColorUtils.INDICATOR,
-                            activeDotColor: AppColorUtils.GREEN_APP,
-                          ),
+                      SmoothPageIndicator(
+                        controller:
+                            context.read<RegVolunteerBloc>().pageController,
+                        count: 2,
+                        effect: const WormEffect(
+                          dotColor: AppColorUtils.indicator,
+                          activeDotColor: AppColorUtils.greenApp,
                         ),
                       ).paddingOnly(top: 18),
                       Expanded(
-                        child: Container(
-                          child: PageView(
-                            physics: NeverScrollableScrollPhysics(),
-                            controller:
-                                context.read<RegVolunteerBloc>().pageController,
-                            children: [
-                              EditView1(),
-                              EditView2(),
-                            ],
-                          ),
+                        child: PageView(
+                          physics: const NeverScrollableScrollPhysics(),
+                          controller:
+                              context.read<RegVolunteerBloc>().pageController,
+                          children: [
+                            const EditView1(),
+                            EditView2(),
+                          ],
                         ),
                       )
                     ],

@@ -23,11 +23,13 @@ import 'my_charity_item_author_widget.dart';
 import 'my_charity_item_price_widget.dart';
 
 class AboutMyCharityItemProjectWidget extends StatefulWidget {
-  const AboutMyCharityItemProjectWidget({required this.model});
+  const AboutMyCharityItemProjectWidget({Key? key, required this.model})
+      : super(key: key);
 
   final CharityModel model;
 
   @override
+  // ignore: library_private_types_in_public_api
   _AboutMyCharityItemProjectWidgetState createState() =>
       _AboutMyCharityItemProjectWidgetState();
 }
@@ -69,7 +71,7 @@ class _AboutMyCharityItemProjectWidgetState
             children: [
               Container(
                 width: context.width,
-                decoration: DecorationConst.DEC_WITH_SHADOW,
+                decoration: DecorationConst.decWithShadow,
                 child: Column(
                   children: [
                     Stack(
@@ -82,11 +84,11 @@ class _AboutMyCharityItemProjectWidgetState
                             child: CachedNetworkImage(
                               imageUrl: widget.model.imgUrl!,
                               fit: BoxFit.cover,
-                              placeholder: (context, url) => Center(
+                              placeholder: (context, url) => const Center(
                                 child: CircularProgressIndicator(),
                               ),
                               errorWidget: (context, url, error) =>
-                                  Icon(Icons.error),
+                                  const Icon(Icons.error),
                             ),
                           ).paddingSymmetric(vertical: 20.w),
                         ),
@@ -95,8 +97,7 @@ class _AboutMyCharityItemProjectWidgetState
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               InkWell(
-                                child:
-                                    SvgPicture.asset(AppImageUtils.TRASH_RED),
+                                child: SvgPicture.asset(AppImageUtils.trashRed),
                                 // onTap: () {
                                 //   showDialog(
                                 //     context: context,
@@ -108,7 +109,7 @@ class _AboutMyCharityItemProjectWidgetState
                               ).paddingOnly(right: 12.w),
                               InkWell(
                                 child:
-                                    SvgPicture.asset(AppImageUtils.EDIT_GREEN),
+                                    SvgPicture.asset(AppImageUtils.editGreen),
                                 // onTap: () {
                                 //   showDialog(
                                 //     context: context,
@@ -127,7 +128,7 @@ class _AboutMyCharityItemProjectWidgetState
                       text: widget.model.title!,
                       fontWeight: FontWeight.w500,
                       fontSize: 20.sp,
-                      color: AppColorUtils.DARK2,
+                      color: AppColorUtils.dark2,
                       maxLines: 10,
                     ),
                     MyCharityItemPriceWidget(model: widget.model).paddingOnly(
@@ -145,12 +146,12 @@ class _AboutMyCharityItemProjectWidgetState
                               ),
                               Row(
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width: 14.w,
                                     height: 14.w,
-                                    child: CircularProgressIndicator(
-                                      color: AppColorUtils.ORANGE_1,
-                                      backgroundColor: AppColorUtils.WHITE,
+                                    child: const CircularProgressIndicator(
+                                      color: AppColorUtils.orange1,
+                                      backgroundColor: AppColorUtils.white,
                                       strokeWidth: 2,
                                     ),
                                   ).paddingOnly(
@@ -159,7 +160,7 @@ class _AboutMyCharityItemProjectWidgetState
                                   AppWidgets.textLocale(
                                     text: LocaleKeys.expected,
                                     fontSize: 14.sp,
-                                    color: AppColorUtils.ORANGE_1,
+                                    color: AppColorUtils.orange1,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ],
@@ -188,7 +189,7 @@ class _AboutMyCharityItemProjectWidgetState
                         vertical: 20.w,
                       ),
                       decoration: BoxDecoration(
-                          color: AppColorUtils.WHITE,
+                          color: AppColorUtils.white,
                           borderRadius: BorderRadius.circular(11.0)),
                       child: DefaultTabController(
                         initialIndex: 0,
@@ -205,8 +206,8 @@ class _AboutMyCharityItemProjectWidgetState
                               },
                               controller: _tabController,
                               enableFeedback: true,
-                              labelColor: AppColorUtils.GREEN_APP,
-                              unselectedLabelColor: AppColorUtils.DARK_6,
+                              labelColor: AppColorUtils.greenApp,
+                              unselectedLabelColor: AppColorUtils.dark6,
                               unselectedLabelStyle: TextStyle(
                                 fontSize: 14.sp,
                                 fontWeight: FontWeight.w400,
@@ -244,7 +245,7 @@ class _AboutMyCharityItemProjectWidgetState
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(50),
-                                          color: AppColorUtils.RED,
+                                          color: AppColorUtils.red,
                                         ),
                                       ).paddingOnly(left: 3.w, top: 2.w),
                                     )
@@ -259,14 +260,14 @@ class _AboutMyCharityItemProjectWidgetState
                               ],
                               isScrollable: true,
                               indicatorWeight: 2,
-                              indicatorColor: AppColorUtils.GREEN_APP,
+                              indicatorColor: AppColorUtils.greenApp,
                               indicatorSize: TabBarIndicatorSize.tab,
-                              padding: EdgeInsets.only(right: 10),
-                              indicatorPadding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(right: 10),
+                              indicatorPadding: const EdgeInsets.only(
                                 right: 10,
                                 left: 10,
                               ),
-                              labelPadding: EdgeInsets.only(
+                              labelPadding: const EdgeInsets.only(
                                 right: 10,
                                 left: 10,
                               ),
@@ -328,7 +329,7 @@ class _AboutMyCharityItemProjectWidgetState
                       ),
                     )
                   : Container(
-                      color: AppColorUtils.WHITE,
+                      color: AppColorUtils.white,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -337,12 +338,12 @@ class _AboutMyCharityItemProjectWidgetState
                               width: 31.w,
                               height: 34.w,
                               decoration: BoxDecoration(
-                                color: AppColorUtils.BACK_BUTTON,
+                                color: AppColorUtils.backButton,
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Icon(
                                 Icons.arrow_back_ios_rounded,
-                                color: AppColorUtils.IC_GREEN2,
+                                color: AppColorUtils.icGreen2,
                                 size: 20.w,
                               ),
                             ),
@@ -363,7 +364,7 @@ class _AboutMyCharityItemProjectWidgetState
                             ),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12),
-                              color: AppColorUtils.GREEN_ACCENT4,
+                              color: AppColorUtils.greenAccent4,
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -392,24 +393,24 @@ class _AboutMyCharityItemProjectWidgetState
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   SizedBox(
+                                                    width: 240.w,
                                                     child: AppWidgets.text(
                                                       text: LocaleKeys
                                                           .how_humanity_benefits
                                                           .tr(),
                                                       color: AppColorUtils
-                                                          .TEXT_GREEN2,
+                                                          .textGreen2,
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       fontSize: 14.sp,
                                                       maxLines: 2,
                                                     ).paddingOnly(top: 5.w),
-                                                    width: 240.w,
                                                   ),
                                                   AppWidgets.textLocale(
                                                     text: "Eshonov Fakhriyor",
                                                     fontSize: 12.sp,
                                                     fontWeight: FontWeight.w400,
-                                                    color: AppColorUtils.DARK_6,
+                                                    color: AppColorUtils.dark6,
                                                   ).paddingOnly(top: 3.w),
                                                 ],
                                               ).paddingOnly(left: 10),
@@ -420,17 +421,17 @@ class _AboutMyCharityItemProjectWidgetState
                                                 .model.infoModel![0].text!,
                                             fontWeight: FontWeight.w400,
                                             fontSize: 14.sp,
-                                            color: AppColorUtils.TEXT_GREY2,
+                                            color: AppColorUtils.textGrey2,
                                             maxLines: 100,
                                             height: 1.5,
                                           ).paddingSymmetric(vertical: 15.w),
-                                          Divider(
+                                          const Divider(
                                             thickness: 1,
-                                            color: AppColorUtils.BLACK_12,
+                                            color: AppColorUtils.black12,
                                           ),
                                           AppWidgets.text(
                                             text: LocaleKeys.your_answer.tr(),
-                                            color: AppColorUtils.TEXT_GREEN2,
+                                            color: AppColorUtils.textGreen2,
                                             fontWeight: FontWeight.w600,
                                             fontSize: 14.sp,
                                           ).paddingOnly(top: 20.w),
@@ -439,35 +440,33 @@ class _AboutMyCharityItemProjectWidgetState
                                                 .model.infoModel![0].text!,
                                             fontWeight: FontWeight.w400,
                                             fontSize: 14.sp,
-                                            color: AppColorUtils.TEXT_GREY2,
+                                            color: AppColorUtils.textGrey2,
                                             maxLines: 100,
                                             height: 1.5,
                                           ).paddingSymmetric(vertical: 15.w),
                                         ],
                                       )
-                                    : Container(
-                                        child: Center(
-                                          child: Column(
-                                            children: [
-                                              SizedBox(
-                                                height: 30.w,
+                                    : Center(
+                                        child: Column(
+                                          children: [
+                                            SizedBox(
+                                              height: 30.w,
+                                            ),
+                                            SvgPicture.asset(
+                                                AppImageUtils.emptyQuestions),
+                                            SizedBox(
+                                              width: 200.sp,
+                                              child: AppWidgets.textLocale(
+                                                textAlign: TextAlign.center,
+                                                text:
+                                                    LocaleKeys.questions_empty,
+                                                color: AppColorUtils.dark4,
+                                                fontSize: 14.sp,
+                                                fontWeight: FontWeight.w600,
+                                                maxLines: 2,
                                               ),
-                                              SvgPicture.asset(AppImageUtils
-                                                  .EMPTY_QUESTIONS),
-                                              SizedBox(
-                                                width: 200.sp,
-                                                child: AppWidgets.textLocale(
-                                                  textAlign: TextAlign.center,
-                                                  text: LocaleKeys
-                                                      .questions_empty,
-                                                  color: AppColorUtils.DARK_4,
-                                                  fontSize: 14.sp,
-                                                  fontWeight: FontWeight.w600,
-                                                  maxLines: 2,
-                                                ),
-                                              )
-                                            ],
-                                          ),
+                                            )
+                                          ],
                                         ),
                                       ),
                               ],

@@ -5,7 +5,7 @@ class LanguageItem extends Equatable {
   final String languageLocaleKey;
   final Locale locale;
 
-  LanguageItem({
+  const LanguageItem({
     required this.languageLocaleKey,
     required this.locale,
   });

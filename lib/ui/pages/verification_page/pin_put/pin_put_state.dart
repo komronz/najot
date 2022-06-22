@@ -9,13 +9,13 @@ class AlwaysDisabledFocusNode extends FocusNode {
 
 extension on ThemeData {
   InputDecoration get hiddenPinputDecoration {
-    final hiddenTextStyle = TextStyle(
+    const hiddenTextStyle = TextStyle(
       color: Colors.transparent,
       fontSize: 0,
       height: 0,
     );
 
-    return InputDecoration(
+    return const InputDecoration(
       border: InputBorder.none,
       contentPadding: EdgeInsets.zero,
       counterText: '',
@@ -61,7 +61,7 @@ class PinPutState extends State<PinPut>
 
     if (widget.withCursor) {
       _cursorAnimationController = AnimationController(
-          vsync: this, duration: Duration(milliseconds: 500));
+          vsync: this, duration: const Duration(milliseconds: 500));
       _cursorAnimation = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
           curve: Curves.linear, parent: _cursorAnimationController!));
 
@@ -101,9 +101,8 @@ class PinPutState extends State<PinPut>
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState appLifecycleState) {
-    if (appLifecycleState == AppLifecycleState.resumed ||
-        widget.checkClipboard) {
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed || widget.checkClipboard) {
       _checkClipboard();
     }
   }
@@ -286,7 +285,7 @@ class PinPutState extends State<PinPut>
       case PinAnimationType.slide:
         return SlideTransition(
           position: Tween<Offset>(
-            begin: widget.slideTransitionBeginOffset ?? Offset(0.8, 0),
+            begin: widget.slideTransitionBeginOffset ?? const Offset(0.8, 0),
             end: Offset.zero,
           ).animate(animation as Animation<double>),
           child: child,

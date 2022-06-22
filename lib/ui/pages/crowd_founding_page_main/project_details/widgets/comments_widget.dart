@@ -1,4 +1,4 @@
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -9,7 +9,7 @@ import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class CommentsWidget extends StatefulWidget {
-  CommentsWidget({required this.cardModel});
+  const CommentsWidget({Key? key, required this.cardModel}) : super(key: key);
 
   final CardModel cardModel;
 
@@ -34,7 +34,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
           ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            color: AppColorUtils.GREEN_ACCENT4,
+            color: AppColorUtils.greenAccent4,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,19 +57,19 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
+                        width: 220.w,
                         child: AppWidgets.text(
                           text: LocaleKeys.great_project.tr(),
-                          color: AppColorUtils.TEXT_GREEN2,
+                          color: AppColorUtils.textGreen2,
                           fontWeight: FontWeight.w600,
                           fontSize: 14.sp,
                         ),
-                        width: 220.w,
                       ),
                       AppWidgets.text(
                         text: "Eshonov Fakhriyor",
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
-                        color: AppColorUtils.DARK_6,
+                        color: AppColorUtils.dark6,
                       ).paddingOnly(top: 5.w),
                     ],
                   ).paddingOnly(left: 10),
@@ -79,27 +79,28 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                 text: widget.cardModel.infoModel![0].text!,
                 fontWeight: FontWeight.w400,
                 fontSize: 14.sp,
-                color: AppColorUtils.TEXT_GREY2,
+                color: AppColorUtils.textGrey2,
                 maxLines: 100,
                 height: 1.5,
               ).paddingSymmetric(vertical: 15.w),
             ],
           ),
         ),
-        Divider(
+        const Divider(
           thickness: 1,
-          color: AppColorUtils.BLACK_12,
+          color: AppColorUtils.black12,
         ),
         AppWidgets.textLocale(
           text: LocaleKeys.writing_comment,
           fontSize: 14.sp,
           fontWeight: FontWeight.w600,
-          color: AppColorUtils.TEXT_GREEN2,
+          color: AppColorUtils.textGreen2,
         ).paddingSymmetric(vertical: 8.w),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
+              width: 270.w,
               child: AppTextField(
                 onChanged: (v) {
                   if (v != "") {
@@ -116,25 +117,24 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                 hasTitle: false,
                 hintText: LocaleKeys.comment_title.tr(),
               ),
-              width: 270.w,
             ),
             Material(
               child: Ink(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: hasTextTitle == false || hasTextComment == false
-                      ? AppColorUtils.DISABLE_BC
-                      : AppColorUtils.PERCENT_COLOR,
+                      ? AppColorUtils.disableBc
+                      : AppColorUtils.percentColor,
                 ),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(25),
                   onTap: () {},
-                  child: Container(
+                  child: SizedBox(
                     height: 46.w,
                     width: 46.w,
-                    child: Icon(
+                    child: const Icon(
                       Icons.arrow_upward,
-                      color: AppColorUtils.WHITE,
+                      color: AppColorUtils.white,
                     ),
                   ),
                 ),

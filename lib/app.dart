@@ -11,11 +11,13 @@ import 'data/bloc/language_cubit/language_cubit.dart';
 import 'data/services/navigator_service.dart';
 
 class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(375, 812),
-      builder: () => BlocListener<LanguageCubit, LanguageState>(
+      designSize: const Size(375, 812),
+      builder: (context, child) => BlocListener<LanguageCubit, LanguageState>(
         bloc: LanguageCubit.to,
         listener: (context, state) {
           context.setLocale(state.locale);
@@ -32,7 +34,7 @@ class App extends StatelessWidget {
           localizationsDelegates: context.localizationDelegates,
           builder: BotToastInit(),
           home: HomePage(
-            appPageType: AppPageType.MAIN,
+            appPageType: AppPageType.main,
           ),
           navigatorObservers: [
             BotToastNavigatorObserver(),

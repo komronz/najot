@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/data/bloc/crowd_founding_cubit/crowd_founding_cubit.dart';
 import 'package:najot/data/bloc/crowd_founding_detail_cubit/crowd_founding_detail_cubit.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
@@ -15,11 +14,12 @@ import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 
 class ProjectDetailsPage extends StatefulWidget {
-  ProjectDetailsPage({required this.cardModel});
+  const ProjectDetailsPage({required this.cardModel, Key? key})
+      : super(key: key);
 
   static const String routeName = "/projectDetailsPage";
   static int tabChange = 0;
-  CardModel cardModel;
+  final CardModel cardModel;
 
   @override
   State<ProjectDetailsPage> createState() => _ProjectDetailsPageState();
@@ -55,7 +55,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
     return BlocProvider(
       create: (context) => cubit,
       child: Scaffold(
-        backgroundColor: AppColorUtils.BACKGROUND,
+        backgroundColor: AppColorUtils.background,
         appBar: AppBarWithTitle(
           title: LocaleKeys.about_project.tr(),
           onPress: () {
@@ -65,12 +65,12 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
         body: BlocBuilder<CrowdFoundingDetailCubit, CrowdFoundingDetailState>(
           builder: (context, state) {
             return SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   Container(
                     padding: EdgeInsets.only(top: 18.w),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(11),

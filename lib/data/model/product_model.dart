@@ -1,6 +1,6 @@
 class ProductModel {
   String? title;
-  String? project_name;
+  String? projectName;
   String? imgUrl;
   String? author;
   String? totalSum;
@@ -14,5 +14,5 @@ class ProductModel {
       this.totalSum,
       this.applied,
       this.date,
-      this.project_name});
+      this.projectName});
 }

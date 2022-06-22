@@ -58,8 +58,13 @@ class ItemScrollPhysics extends ScrollPhysics {
     final double target =
         _getTargetPixels(position as ScrollPosition, tolerance, velocity);
     if (target != position.pixels) {
-      return ScrollSpringSimulation(spring, position.pixels, target, velocity,
-          tolerance: tolerance,);
+      return ScrollSpringSimulation(
+        spring,
+        position.pixels,
+        target,
+        velocity,
+        tolerance: tolerance,
+      );
     }
     return null;
   }
@@ -86,7 +91,7 @@ class TimePickerSpinner extends StatefulWidget {
   final bool isForce2Digits;
   final TimePickerCallback? onTimeChange;
 
-  TimePickerSpinner(
+  const TimePickerSpinner(
       {Key? key,
       this.time,
       this.minutesInterval = 1,
@@ -104,6 +109,7 @@ class TimePickerSpinner extends StatefulWidget {
       : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _TimePickerSpinnerState createState() => _TimePickerSpinnerState();
 }
 
@@ -124,9 +130,9 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
 
   /// default settings
   TextStyle defaultHighlightTextStyle =
-      TextStyle(fontSize: 32, color: Colors.black);
+      const TextStyle(fontSize: 32, color: Colors.black);
   TextStyle defaultNormalTextStyle =
-      TextStyle(fontSize: 32, color: Colors.black54);
+      const TextStyle(fontSize: 32, color: Colors.black54);
   double defaultItemHeight = 60;
   double defaultItemWidth = 45;
   double defaultSpacing = 20;
@@ -135,15 +141,11 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
   /// getter
 
   TextStyle? _getHighlightedTextStyle() {
-    return widget.highlightedTextStyle != null
-        ? widget.highlightedTextStyle
-        : defaultHighlightTextStyle;
+    return widget.highlightedTextStyle ?? defaultHighlightTextStyle;
   }
 
   TextStyle? _getNormalTextStyle() {
-    return widget.normalTextStyle != null
-        ? widget.normalTextStyle
-        : defaultNormalTextStyle;
+    return widget.normalTextStyle ?? defaultNormalTextStyle;
   }
 
   int _getHourCount() {
@@ -159,19 +161,19 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
   }
 
   double? _getItemHeight() {
-    return widget.itemHeight != null ? widget.itemHeight : defaultItemHeight;
+    return widget.itemHeight ?? defaultItemHeight;
   }
 
   double? _getItemWidth() {
-    return widget.itemWidth != null ? widget.itemWidth : defaultItemWidth;
+    return widget.itemWidth ?? defaultItemWidth;
   }
 
   double? _getSpacing() {
-    return widget.spacing != null ? widget.spacing : defaultSpacing;
+    return widget.spacing ?? defaultSpacing;
   }
 
   AlignmentGeometry? _getAlignment() {
-    return widget.alignment != null ? widget.alignment : defaultAlignment;
+    return widget.alignment ?? defaultAlignment;
   }
 
   bool isLoop(int value) {
@@ -193,7 +195,7 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
 
   @override
   void initState() {
-    currentTime = widget.time == null ? DateTime.now() : widget.time;
+    currentTime = widget.time ?? DateTime.now();
 
     currentSelectedHourIndex =
         (currentTime!.hour % (widget.is24HourMode ? 24 : 12)) + _getHourCount();
@@ -307,7 +309,7 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
   }
 
   Widget spacer() {
-    return Container(
+    return SizedBox(
       width: _getSpacing(),
       height: _getItemHeight()! * 3,
     );
@@ -327,7 +329,7 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
     /// flutter: Another exception was thrown: 'package:flutter/src/widgets/scrollable.dart': Failed assertion: line 469 pos 12: '_hold == null || _drag == null': is not true.
     /// maybe later we can find out why this error is happening
 
-    Widget _spinner = NotificationListener<ScrollNotification>(
+    Widget spinner = NotificationListener<ScrollNotification>(
       onNotification: (scrollNotification) {
         if (scrollNotification is UserScrollNotification) {
           if (scrollNotification.direction.toString() ==
@@ -406,11 +408,11 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
 
     return Stack(
       children: <Widget>[
-        Positioned.fill(child: _spinner),
-        Padding(
+        Positioned.fill(child: spinner),
+        const Padding(
           padding: EdgeInsets.only(top: 40),
           child: Divider(
-            color: AppColorUtils.DIVIDER_COLOR,
+            color: AppColorUtils.dividerColor,
             height: 1,
             thickness: 2,
           ),
@@ -421,10 +423,10 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
                 color: Colors.black.withOpacity(0),
               ))
             : Container(),
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(top: 80),
           child: Divider(
-            color: AppColorUtils.DIVIDER_COLOR,
+            color: AppColorUtils.dividerColor,
             height: 1,
             thickness: 2,
           ),
@@ -434,7 +436,7 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
   }
 
   Widget apSpinner() {
-    Widget _spinner = NotificationListener<ScrollNotification>(
+    Widget spinner = NotificationListener<ScrollNotification>(
       onNotification: (scrollNotification) {
         if (scrollNotification is UserScrollNotification) {
           if (scrollNotification.direction.toString() ==
@@ -478,7 +480,7 @@ class _TimePickerSpinnerState extends State<TimePickerSpinner> {
 
     return Stack(
       children: <Widget>[
-        Positioned.fill(child: _spinner),
+        Positioned.fill(child: spinner),
         isAPScrolling ? Positioned.fill(child: Container()) : Container()
       ],
     );

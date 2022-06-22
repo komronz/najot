@@ -19,7 +19,7 @@ class RulesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColorUtils.BACKGROUND,
+      backgroundColor: AppColorUtils.background,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
@@ -30,7 +30,7 @@ class RulesPage extends StatelessWidget {
           children: [
             InkWell(
               child: SvgPicture.asset(
-                AppImageUtils.MENU,
+                AppImageUtils.menu,
                 height: 35.w,
                 width: 35.w,
               ),
@@ -50,7 +50,7 @@ class RulesPage extends StatelessWidget {
                 );
               },
               child: SvgPicture.asset(
-                AppImageUtils.NOTIFICATION,
+                AppImageUtils.notification,
                 height: 35.w,
                 width: 35.w,
                 fit: BoxFit.fill,
@@ -63,7 +63,7 @@ class RulesPage extends StatelessWidget {
         child: Column(
           children: [
             AppWidgets.imageSvg(
-              path: AppImageUtils.IMG_RULES,
+              path: AppImageUtils.imgRules,
               width: context.width,
               height: 295.w,
             ).paddingOnly(
@@ -79,7 +79,7 @@ class RulesPage extends StatelessWidget {
                   children: [
                     AppWidgets.text(
                       text: LocaleKeys.general_rules.tr(),
-                      color: AppColorUtils.BLACK,
+                      color: AppColorUtils.black,
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w600,
                     ).paddingOnly(top: 20),
@@ -89,7 +89,7 @@ class RulesPage extends StatelessWidget {
                       maxLines: 100,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w400,
-                      color: AppColorUtils.DARK3,
+                      color: AppColorUtils.dark3,
                       height: 1.2,
                     ).paddingOnly(top: 10),
                   ],

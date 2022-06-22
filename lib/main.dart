@@ -38,13 +38,13 @@ Future runMainApp() async {
   runApp(
     EasyLocalization(
       path: 'assets/langs',
-      supportedLocales: [
+      supportedLocales: const [
         Locale("uz", "UZ"),
         Locale("ru", "RU"),
         Locale("en", "EN"),
       ],
-      fallbackLocale: Locale('uz', 'UZ'),
-      child: App(),
+      fallbackLocale: const Locale('uz', 'UZ'),
+      child: const App(),
     ),
   );
 }

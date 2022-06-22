@@ -9,7 +9,7 @@ import 'package:logger/logger.dart';
 /// ```
 class AppLoggerUtil {
   /// [Logger] ni instanci.
-  static Logger _logger = Logger(
+  static final Logger _logger = Logger(
     printer: PrettyPrinter(),
   );
 

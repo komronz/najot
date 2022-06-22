@@ -23,7 +23,7 @@ class KraufandingSavedListWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           AppWidgets.imageSvg(
-            path: AppImageUtils.BIG_HEART,
+            path: AppImageUtils.bigHeart,
             height: 70.w,
             width: 70.w,
             fit: BoxFit.none,
@@ -32,7 +32,7 @@ class KraufandingSavedListWidget extends StatelessWidget {
             text: LocaleKeys.nothing_found_yet,
             fontSize: 18.sp,
             fontWeight: FontWeight.w600,
-            color: AppColorUtils.GRAY_4,
+            color: AppColorUtils.gray4,
           ).paddingOnly(top: 20),
         ],
       );
@@ -40,9 +40,9 @@ class KraufandingSavedListWidget extends StatelessWidget {
     return GridView.count(
       shrinkWrap: true,
       crossAxisCount: 2,
-      physics: ClampingScrollPhysics(),
+      physics: const ClampingScrollPhysics(),
       childAspectRatio: 160 / 267,
-      padding: EdgeInsets.all(0),
+      padding: const EdgeInsets.all(0),
       reverse: false,
       crossAxisSpacing: 8,
       mainAxisSpacing: 6,

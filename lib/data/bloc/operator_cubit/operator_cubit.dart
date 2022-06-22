@@ -13,13 +13,13 @@ class OperatorCubit extends Cubit<OperatorState> {
   OperatorCubit()
       : textController = TextEditingController(),
         controller = ScrollController(),
-        super(OperatorState());
+        super(const OperatorState());
   var service = SmsService();
 
   Future load() async {
     try {
       emit(state.copyWith(isLoading: true));
-      await Future.delayed(Duration(seconds: 3));
+      await Future.delayed(const Duration(seconds: 3));
       var list = await service.getSmsList();
       emit(state.copyWith(list: list, isLoading: false));
     } catch (e) {
@@ -31,7 +31,7 @@ class OperatorCubit extends Cubit<OperatorState> {
     List<SmsModel> list = List.from(state.list);
     list.add(
       SmsModel(
-        type: SmsType.USER,
+        type: SmsType.user,
         text: textController.text,
         dateTime: DateTime.now(),
       ),

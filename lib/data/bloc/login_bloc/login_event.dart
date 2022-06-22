@@ -25,7 +25,7 @@ class LoginLastNameChanged extends LoginEvent {
 class LoginPhoneChanged extends LoginEvent {
   final String phone;
 
-  LoginPhoneChanged(this.phone);
+  const LoginPhoneChanged(this.phone);
 
   @override
   List<Object?> get props => [phone];
@@ -44,7 +44,7 @@ class LoginSignUp extends LoginEvent {
 class LoginAgreeChanged extends LoginEvent {
   final bool isAgree;
 
-  LoginAgreeChanged(this.isAgree);
+  const LoginAgreeChanged(this.isAgree);
 
   @override
   List<Object?> get props => [isAgree];
@@ -53,7 +53,7 @@ class LoginAgreeChanged extends LoginEvent {
 class LoginAuthSuccess extends LoginEvent {
   final bool authSuccess;
 
-  LoginAuthSuccess(this.authSuccess);
+  const LoginAuthSuccess(this.authSuccess);
 
   @override
   List<Object?> get props => [authSuccess];
@@ -67,7 +67,7 @@ class CheckPhoneNumber extends LoginEvent {
 class CheckPhoneNumberChanged extends LoginEvent {
   final bool check;
 
-  CheckPhoneNumberChanged(this.check);
+  const CheckPhoneNumberChanged(this.check);
 
   @override
   // TODO: implement props

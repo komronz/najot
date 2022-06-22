@@ -32,7 +32,7 @@ class SavedPage extends StatelessWidget {
               children: [
                 InkWell(
                   child: SvgPicture.asset(
-                    AppImageUtils.MENU,
+                    AppImageUtils.menu,
                     height: 35.w,
                     width: 35.w,
                   ),
@@ -52,7 +52,7 @@ class SavedPage extends StatelessWidget {
                     );
                   },
                   child: SvgPicture.asset(
-                    AppImageUtils.NOTIFICATION,
+                    AppImageUtils.notification,
                     height: 35.w,
                     width: 35.w,
                     fit: BoxFit.fill,
@@ -72,20 +72,18 @@ class SavedPage extends StatelessWidget {
     SavedPageState state,
   ) {
     if (state.isLoading) {
-      return Center(
+      return const Center(
         child: CircularProgressIndicator(),
       );
     } else if (state.hasError) {
       return Center(
-        child: AppWidgets.imageSvg(path: AppImageUtils.IMG_WAIT),
+        child: AppWidgets.imageSvg(path: AppImageUtils.imgWait),
       );
     }
-    return Container(
-      child: ListView(
-        children: [
-          KraufandingSavedListWidget(list: state.crowdFoundingSavedList)
-        ],
-      ),
+    return ListView(
+      children: [
+        KraufandingSavedListWidget(list: state.crowdFoundingSavedList)
+      ],
     ).paddingAll(15);
   }
 }

@@ -9,12 +9,13 @@ part 'volunteering_charity_history_state.dart';
 
 class VolunteeringCharityHistoryCubit
     extends Cubit<VolunteeringCharityHistoryState> {
-  VolunteeringCharityHistoryCubit() : super(VolunteeringCharityHistoryState());
+  VolunteeringCharityHistoryCubit()
+      : super(const VolunteeringCharityHistoryState());
   var service = CharityHistoryService();
 
   Future loadHistory() async {
     emit(state.copyWith(isLoading: true));
-    await Future.delayed(Duration(seconds: 4));
+    await Future.delayed(const Duration(seconds: 4));
     try {
       ///TODO cardmodelni kraufanding modelga o'zgartirish
       /// TODO: WARNING: crowdFounding
@@ -42,11 +43,11 @@ class VolunteeringCharityHistoryCubit
     if (text.isEmpty) {
       emit(state.copyWith(charityList: charityList));
     } else {
-      charityList!.forEach((element) {
+      for (var element in charityList!) {
         if (element.title!.toUpperCase().contains(text.toUpperCase())) {
           list.add(element);
         }
-      });
+      }
       emit(state.copyWith(charityList: list));
     }
   }
