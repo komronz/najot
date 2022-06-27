@@ -1,19 +1,14 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:najot/data/model/about_us_model.dart';
-import 'package:najot/data/model/auth_model/token_model.dart';
 import 'package:najot/data/services/about_us_service.dart';
-
 part 'appeal_event.dart';
-
 part 'applied_state.dart';
 
 class AppealBloc extends Bloc<AppealEvent, AppealState> {
   final MaskTextInputFormatter phoneNumberFormatter;
-
   AppealBloc(): phoneNumberFormatter = MaskTextInputFormatter(mask: "+### (##) ### ## ##"),super(AppealState()) {
     on<AppealNameChanged>(_onNameChanged);
     on<AppealPhoneChanged>(_onPhoneChanged);
@@ -21,33 +16,24 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
     on<AppealBtnEvent>(_onBtnPressed);
     on<SendDateEvent>(_onBtnSend);
   }
-
   final AboutUsService aboutUsService=AboutUsService();
-  Future _onNameChanged(
-    AppealNameChanged event,
-    Emitter<AppealState> emit,
-  ) async {
+  Future _onNameChanged(AppealNameChanged event, Emitter<AppealState> emit,) async {
     emit(
       state.copyWith(
         firstName: event.name,
         firstNameFill: _isNotEmpty(event.name),
         isNextBtnActive: _nextBtnActive(
-          event.name,
-          state.content,
-          state.phoneNumber,
+          event.name, state.content, state.phoneNumber,
         ),
       ),
     );
   }
-
   bool _isNotEmpty(String value) {
     return value.trim().isNotEmpty;
   }
   bool _isEmpty(String value) {
     return value.trim().isEmpty;
   }
-
-
   bool _nextBtnActive(
     String firstName,
     String appealText,
@@ -60,7 +46,6 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
     }
     return false;
   }
-
   Future _onPhoneChanged(AppealPhoneChanged event, Emitter<AppealState> emit) async {
     emit(
       state.copyWith(
@@ -74,7 +59,6 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
       ),
     );
   }
-
   Future _onAppealTxtChanged(
     AppealTextChanged event,
     Emitter<AppealState> emit,
@@ -92,7 +76,6 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
 
     );
   }
-
   Future _onBtnPressed(
     AppealBtnEvent event,
     Emitter<AppealState> emit,
@@ -102,7 +85,6 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
           phoneNumber: "",
           content: ""
       ),
-
     );
   }
   Future _onBtnSend(
@@ -110,6 +92,7 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
       Emitter<AppealState> emit,
       ) async {
     AboutUs? aboutUs =await aboutUsService.postModel(state.name, state.phoneNumber, state.content);
+    print(aboutUs!.phoneNumber);
     if(aboutUs !=null){
       emit(state.copyWith(isLoading: true));
     }else{

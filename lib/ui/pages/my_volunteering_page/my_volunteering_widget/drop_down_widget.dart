@@ -12,7 +12,7 @@ class DropDownWidget extends StatelessWidget {
   DropDownWidget(
       {required this.items, required this.title, required this.hasTitle,required this.onChange, this.isEmpty = false, this.selectValue, Key? key,})
       : super(key: key);
-  final List<String> items;
+  final List<String>? items;
   final bool isEmpty;
   final bool hasTitle;
   final String title;
@@ -69,7 +69,7 @@ class DropDownWidget extends StatelessWidget {
               ],
             ),
             items: items
-                .map((item) =>
+                !.map((item) =>
                 DropdownMenuItem<String>(
                   value: item,
                   child: Text(

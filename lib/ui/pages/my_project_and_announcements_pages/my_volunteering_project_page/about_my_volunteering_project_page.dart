@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/my_volunteering_project_cubit/my_volunteering_project_cubit.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/my_volunteering_author_widget.dart';
 import 'package:najot/ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/my_volunteering_delete_project_dialog.dart';
@@ -31,7 +32,7 @@ class AboutMyVolunteeringItemProjectWidget extends StatefulWidget {
 
   const AboutMyVolunteeringItemProjectWidget({required this.model});
 
-  final VolunteeringModel model;
+  final ProjectModel model;
 
   @override
   _AboutMyVolunteeringItemProjectWidgetState createState() =>
@@ -92,7 +93,7 @@ class _AboutMyVolunteeringItemProjectWidgetState
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(11),
                               child: CachedNetworkImage(
-                                imageUrl: widget.model.imgUrl!,
+                                imageUrl: widget.model.coverUrl!,
                                 fit: BoxFit.cover,
                                 placeholder: (context, url) => Center(
                                   child: CircularProgressIndicator(),
@@ -106,22 +107,22 @@ class _AboutMyVolunteeringItemProjectWidgetState
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                AppWidgets.appButton(
-                                  color: AppColorUtils.BLUE,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                  width: 128.w,
-                                  height: 36.w,
-                                  textColor: AppColorUtils.WHITE,
-                                  title: LocaleKeys.used,
-                                  borderRadius: 12,
-                                  onTap: () {
-                                    NavigatorService.to.pushReplacementNamed(
-                                        MyVolunteeringSupportListPage.routeName,
-                                        arguments: state.cardList);
-                                  },
-                                  icon: SvgPicture.asset(AppImageUtils.USERS),
-                                ).paddingOnly(right: 17.w),
+                                // AppWidgets.appButton(
+                                //   color: AppColorUtils.BLUE,
+                                //   fontSize: 12,
+                                //   fontWeight: FontWeight.w600,
+                                //   width: 128.w,
+                                //   height: 36.w,
+                                //   textColor: AppColorUtils.WHITE,
+                                //   title: LocaleKeys.used,
+                                //   borderRadius: 12,
+                                //   onTap: () {
+                                //     NavigatorService.to.pushReplacementNamed(
+                                //         MyVolunteeringSupportListPage.routeName,
+                                //         arguments: state.cardList);
+                                //   },
+                                //   icon: SvgPicture.asset(AppImageUtils.USERS),
+                                // ).paddingOnly(right: 17.w),
                                 InkWell(
                                   child:
                                   SvgPicture.asset(AppImageUtils.TRASH_RED),
@@ -163,7 +164,7 @@ class _AboutMyVolunteeringItemProjectWidgetState
                         top: 18.w,
                         bottom: 12.w,
                       ),
-                      widget.model.volunteerName == null
+                      widget.model.owner == null
                           ? Column(
                         children: [
                           AppWidgets.starTextWidget(
@@ -295,18 +296,22 @@ class _AboutMyVolunteeringItemProjectWidgetState
                         ).paddingOnly(left: 15.w, top: 8.w),
                         Container(
                           child: [
-                            MyVolunteeringMoreWidget(
-                              cardModel: widget.model,
-                            ),
-                            MyVolunteeringNewsWidget(
-                              cardModel: widget.model,
-                            ),
-                            MyVolunteeringQuestionsAskedWidget(
-                              cardModel: widget.model, cubit: cubit,
-                            ),
-                            MyVolunteeringCommentsWidget(
-                              cardModel: widget.model,
-                            )
+                            Container(),
+                            Container(),
+                            Container(),
+                            Container(),
+                            // MyVolunteeringMoreWidget(
+                            //   cardModel: widget.model,
+                            // ),
+                            // MyVolunteeringNewsWidget(
+                            //   cardModel: widget.model,
+                            // ),
+                            // MyVolunteeringQuestionsAskedWidget(
+                            //   cardModel: widget.model, cubit: cubit,
+                            // ),
+                            // MyVolunteeringCommentsWidget(
+                            //   cardModel: widget.model,
+                            // )
                           ][_tabController.index],
                         ).paddingOnly(
                           top: 20.w,
@@ -375,7 +380,7 @@ class _AboutMyVolunteeringItemProjectWidgetState
                                         shape: BoxShape.circle,
                                         image: DecorationImage(
                                             image: NetworkImage(
-                                              widget.model.imgUrl!,
+                                              widget.model.coverUrl!,
                                             ),
                                             fit: BoxFit.cover),
                                       ),
@@ -408,8 +413,7 @@ class _AboutMyVolunteeringItemProjectWidgetState
                                   ],
                                 ),
                                 AppWidgets.text(
-                                  text: widget
-                                      .model.infoModel![0].text!,
+                                  text: "widget.model.infoModel![0].text!",
                                   fontWeight: FontWeight.w400,
                                   fontSize: 14.sp,
                                   color: AppColorUtils.TEXT_GREY2,
@@ -427,8 +431,7 @@ class _AboutMyVolunteeringItemProjectWidgetState
                                   fontSize: 14.sp,
                                 ).paddingOnly(top: 20.w),
                                 AppWidgets.text(
-                                  text: widget
-                                      .model.infoModel![0].text!,
+                                  text: "widget.model.infoModel![0].text!",
                                   fontWeight: FontWeight.w400,
                                   fontSize: 14.sp,
                                   color: AppColorUtils.TEXT_GREY2,

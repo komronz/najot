@@ -44,7 +44,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
           ),
         ),
         body: BlocBuilder<OrganizationCubit, OrganizationState>(
-          bloc: model.cubit,
+          bloc: model.cubit..findProject(model.model.id!),
           builder: (context, state){
            return SingleChildScrollView(
               child: Column(
@@ -113,7 +113,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
                                         color: AppColorUtils.TEXT_GREEN2,
                                         fontWeight: FontWeight.w600,
                                         fontSize: 14.sp,
-                                      ).paddingOnly(top: 2.w, right: 5.w),
+                                      ).paddingOnly(top: 6.w, right: 5.w),
                                       AppWidgets.text(
                                         text: model.model.founder!.lastName!,
                                         color: AppColorUtils.TEXT_GREEN2,
@@ -160,36 +160,36 @@ class OrganizationItemDetailPage extends StatelessWidget {
                           scrollDirection: Axis.horizontal,
                           child: Row(
                             children: List.generate(
-                              model.cubit.state.project!.projectModel!.length,
+                              model.cubit.state.project?.results?.length??0,
                               (index) {
-                                if (state.project!.projectModel![index].organization != null) {
+                                if (state.project!.results![index].organization != null) {
                                   return CharityItemWidget(
                                     onTap: () {
                                       NavigatorService.to.pushNamed(
                                         CharityFullPage.routName,
-                                        arguments: state.project!.projectModel![index],
+                                        arguments: state.project!.results![index],
                                       );
                                     },
-                                    model: state.project!.projectModel![index],
-                                  ).paddingOnly(left: 10);
+                                    model: state.project!.results![index],
+                                  ).paddingOnly(left: 20.w);
                                 } else {
                                   return CharityItem2Widget(
-                                    model: state.project!.projectModel![index],
+                                    model: state.project!.results![index],
                                     onTap: () {
                                       NavigatorService.to.pushNamed(
                                         OrganizationCharityItemWidget.routName,
                                         arguments: OrganizationCharityItemModel(
-                                          cardModel: state.project!.projectModel![index],
+                                          cardModel: state.project!.results![index],
                                           cubit: model.cubit,
                                         ),
                                       );
                                     },
-                                  ).paddingOnly(left: 10);
+                                  ).paddingOnly(left: 20.w);
                                 }
                               },
                             ),
                           ),
-                        )
+                        ).paddingOnly(bottom:10.w)
                       ],
                     ),
                   ),

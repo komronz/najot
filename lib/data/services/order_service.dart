@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/oreder_model.dart';
+import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/root_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 
@@ -17,7 +18,8 @@ class OrderService{
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/ru/product/",
-          token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU1NzA2MjQ2LCJpYXQiOjE2NTUxMDE0NDYsImp0aSI6IjJkMGZhMmVhNTAyMzQ2NDJiODM0YjdiN2E0NmE3OTM1IiwidXNlcl9pZCI6NH0.dnnXkBJMgusAePSK7jAOpTf-i9YurF8PIqBErrmtEbc"
+        token: HiveService.to.getToken(),
+
       );
       if (response.statusCode == 200) {
         final OrderModel responseModel =

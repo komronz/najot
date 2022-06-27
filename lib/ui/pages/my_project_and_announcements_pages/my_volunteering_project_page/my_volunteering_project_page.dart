@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/model/volunteer_model.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -9,7 +10,7 @@ import 'package:najot/ui/pages/my_project_and_announcements_pages/my_volunteerin
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class MyVolunteeringProjectPage extends StatelessWidget {
-  final List<VolunteeringModel> list;
+  final RootProjectModel? list;
 
   const MyVolunteeringProjectPage({
     required this.list,
@@ -18,7 +19,7 @@ class MyVolunteeringProjectPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (list.isEmpty) {
+    if (list==null) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -54,9 +55,9 @@ class MyVolunteeringProjectPage extends StatelessWidget {
             padding: EdgeInsets.all(0),
             reverse: false,
             children: List.generate(
-              list.length,
+              list!.results!.length,
                   (index) => VolunteeringProjectWidget(
-                model: list[index], onTap: () {
+                model: list!.results![index], onTap: () {
 
                   },
               ),

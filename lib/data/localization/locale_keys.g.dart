@@ -252,5 +252,6 @@ abstract class  LocaleKeys {
   static const card_number = 'card_number';
   static const be_save = 'be_save';
   static const user = 'user';
+  static const project_successful_added = 'project_successful_added';
 
 }

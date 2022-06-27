@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/project_model.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/project_details_widgets.dart';
 
 import '../../../../../data/utils/app_color_utils.dart';
 
@@ -22,7 +21,7 @@ class MoreWidget extends StatelessWidget {
       children: [
       Column(
         mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           margin: EdgeInsets.only(top: 18.h),
@@ -51,7 +50,6 @@ class MoreWidget extends StatelessWidget {
     ).paddingSymmetric(horizontal: 20.w),
         Container(
           padding: EdgeInsets.symmetric(
-            horizontal: 20.w,
             vertical: 10.w,
           ),
           height: 218.w,
@@ -71,6 +69,6 @@ class MoreWidget extends StatelessWidget {
           ),
         ),
       ],
-    );
+    ).paddingSymmetric(horizontal: 20.w,);
   }
 }

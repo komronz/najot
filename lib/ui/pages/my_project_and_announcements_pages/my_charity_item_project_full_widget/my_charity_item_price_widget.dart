@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/model/project_model.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/model/charity_model.dart';
@@ -8,7 +10,7 @@ import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
 
 class MyCharityItemPriceWidget extends StatelessWidget {
-  final CharityModel model;
+  final ProjectModel model;
 
   const MyCharityItemPriceWidget({
     required this.model,
@@ -17,6 +19,8 @@ class MyCharityItemPriceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var createdAt= DateTime.parse(model.createdAt!);
+    var deadlineAt= DateTime.parse(model.deadline!);
     return Column(
       children: [
         Row(
@@ -36,7 +40,7 @@ class MyCharityItemPriceWidget extends StatelessWidget {
                       size: 14.sp,
                     ),
                     AppWidgets.text(
-                      text: model.collectedDate!,
+                      text: DateFormat("dd.MM.yyyy").format(deadlineAt),
                       color: AppColorUtils.BLUE_PERCENT,
                       fontWeight: FontWeight.w500,
                       fontSize: 14.sp,
@@ -55,7 +59,7 @@ class MyCharityItemPriceWidget extends StatelessWidget {
                   color: AppColorUtils.DARK_6,
                 ),
                 AppWidgets.text(
-                  text: model.createdDate!,
+                  text: DateFormat("dd.MM.yyyy").format(createdAt),
                   color: AppColorUtils.TEXT_GREEN2,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
@@ -71,7 +75,7 @@ class MyCharityItemPriceWidget extends StatelessWidget {
               text: LocaleKeys.item_type,
             ).paddingOnly(bottom: 5.w),
             AppWidgets.textLocale(
-              text: model.typeOfHelp!,
+              text: model.helpType??"",
               color: AppColorUtils.KRAUDFANDING,
               fontWeight: FontWeight.w600,
               fontSize: 14.sp,

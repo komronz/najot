@@ -1,26 +1,26 @@
 part of 'my_charity_project_cubit.dart';
 
 class MyProjectAndAnnouncementsPagesState extends Equatable {
-  final List<CharityModel> charityList;
-  final List<KraufandingModel> kraufandingList;
-  final List<VolunteeringModel> volunteeringList;
+  final RootProjectModel? charityList;
+  final RootProjectModel? kraufandingList;
+  final RootProjectModel? volunteeringList;
   final bool hasError;
   final bool hasConnection;
   final bool isLoading;
 
   MyProjectAndAnnouncementsPagesState({
-    this.charityList = const [],
-    this.kraufandingList = const [],
-    this.volunteeringList = const [],
+    this.charityList,
+    this.kraufandingList,
+    this.volunteeringList,
     this.hasError = false,
     this.hasConnection = true,
     this.isLoading = false
   });
 
   MyProjectAndAnnouncementsPagesState copyWith({
-    List<CharityModel>? charityList,
-    List<KraufandingModel>? kraufandingList,
-    List<VolunteeringModel>? volunteeringList,
+    RootProjectModel? charityList,
+    RootProjectModel? kraufandingList,
+    RootProjectModel? volunteeringList,
     bool? hasError,
     bool? hasConnection,
     bool? isLoading,
@@ -37,7 +37,7 @@ class MyProjectAndAnnouncementsPagesState extends Equatable {
 
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
     charityList,
     kraufandingList,
     volunteeringList,

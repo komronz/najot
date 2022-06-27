@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 
 part 'notification_state.dart';

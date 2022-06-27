@@ -32,7 +32,7 @@ class _NotificationPageState extends State<NotificationPage> {
     super.initState();
 
   }
-  void listenNotifications() =>
+   void listenNotifications() =>
       NotificationApi.onNotification.stream.listen(onClickNotification);
 
   void onClickNotification(String? payload) {
@@ -81,7 +81,7 @@ class _NotificationPageState extends State<NotificationPage> {
                   title:LocaleKeys.attention_hello_volunteer.tr(),
                   body: LocaleKeys.you_go_to_help.tr(),
                   payload: jsonEncode(state.cardList[index].toJson()),
-                  scheduledDate: DateTime.now().add(Duration(seconds: 10))
+                  scheduledDate: DateTime(2022,06,26,18,36,59)
               );
             },
           );
@@ -94,7 +94,7 @@ class _NotificationPageState extends State<NotificationPage> {
               title:LocaleKeys.attention_hello_volunteer.tr(),
               body: LocaleKeys.you_go_to_help.tr(),
               payload: jsonEncode(state.cardList[index].toJson()),
-              scheduledDate: DateTime.now().add(Duration(seconds: 10)),
+                scheduledDate: DateTime(2022,06,26,18,36,59)
             );
           },
         );

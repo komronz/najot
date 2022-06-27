@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/charity_model.dart';
+import 'package:najot/data/model/volunteer_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -10,7 +11,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'my_charity_project_type_of_page.dart';
 
 class MyCharityProjectList extends StatelessWidget {
-  final List<CharityModel> list;
+  final RootProjectModel? list;
 
   const MyCharityProjectList({
     required this.list,
@@ -19,7 +20,7 @@ class MyCharityProjectList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (list.isEmpty) {
+    if (list==null) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -55,9 +56,9 @@ class MyCharityProjectList extends StatelessWidget {
             padding: EdgeInsets.all(0),
             reverse: false,
             children: List.generate(
-              list.length,
+              list!.results!.length,
               (index) => MyCharityProjectTypeOfPage(
-                charityModel: list[index],
+                charityModel: list!.results![index],
               ),
             ),
           ),

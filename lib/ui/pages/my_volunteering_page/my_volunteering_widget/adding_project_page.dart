@@ -11,6 +11,7 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/add_project_show_success.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -38,56 +39,58 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
     "organization",
   ];
   AddProjectBloc addProjectBloc = AddProjectBloc();
+  Key _key=Key("");
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => addProjectBloc,
-      child: BlocBuilder<AddProjectBloc, AddProjectState>(
-        bloc: addProjectBloc,
-        builder: (context, state) {
-          return Scaffold(
-            appBar: AppBar(
-              automaticallyImplyLeading: false,
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              titleSpacing: 0,
-              title: Builder(
-                builder: (context) => Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        HomePage.globalKey.currentState!.openDrawer();
-                      },
-                      child: SvgPicture.asset(
-                        AppImageUtils.MENU,
-                        height: 35.w,
-                        width: 35.w,
-                      ),
-                    ),
-                    AppWidgets.textLocale(
-                      text: LocaleKeys.volunteering,
-                      fontSize: 26.sp,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        NavigatorService.to
-                            .pushNamed(NotificationPage.routeName);
-                      },
-                      child: SvgPicture.asset(
-                        AppImageUtils.NOTIFICATION,
-                        height: 35.w,
-                        width: 35.w,
-                        fit: BoxFit.fill,
-                      ),
-                    )
-                  ],
-                ).paddingSymmetric(horizontal: 20.w),
-              ),
-            ),
-            body: SingleChildScrollView(
+      child: Scaffold(
+        key: UniqueKey(),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          titleSpacing: 0,
+          title: Builder(
+            builder: (context) => Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: () {
+                    HomePage.globalKey.currentState!.openDrawer();
+                  },
+                  child: SvgPicture.asset(
+                    AppImageUtils.MENU,
+                    height: 35.w,
+                    width: 35.w,
+                  ),
+                ),
+                AppWidgets.textLocale(
+                  text: LocaleKeys.volunteering,
+                  fontSize: 26.sp,
+                  fontWeight: FontWeight.w600,
+                ),
+                InkWell(
+                  onTap: () {
+                    NavigatorService.to
+                        .pushNamed(NotificationPage.routeName);
+                  },
+                  child: SvgPicture.asset(
+                    AppImageUtils.NOTIFICATION,
+                    height: 35.w,
+                    width: 35.w,
+                    fit: BoxFit.fill,
+                  ),
+                )
+              ],
+            ).paddingSymmetric(horizontal: 20.w),
+          ),
+        ),
+        body: BlocBuilder<AddProjectBloc, AddProjectState>(
+          bloc: addProjectBloc,
+          builder: (context, state) {
+            return SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -106,6 +109,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                   ).paddingSymmetric(horizontal: 20.w),
                   DropDownWidget(
                     items: projectName,
+                    key: _key,
                     hasTitle: true,
                     title: LocaleKeys.who_joining_project.tr(),
                     isEmpty: context.read<AddProjectBloc>().state.whoAddFill,
@@ -121,6 +125,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                   AppTextField(
                     isFill: context.read<AddProjectBloc>().state.nameFill,
                     hintText: LocaleKeys.enter_project_name.tr(),
+                    key: _key,
                     onChanged: (v) {
                       context
                           .read<AddProjectBloc>()
@@ -130,22 +135,25 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                   ).paddingOnly(bottom: 18.w),
                   DropDownWidget(
                     items: projectType,
+                    key: _key,
                     hasTitle: true,
                     title: LocaleKeys.project_or_announcement_type.tr(),
                     isEmpty: context.read<AddProjectBloc>().state.typeFill,
                     selectValue: context.read<AddProjectBloc>().state.type,
                     onChange: (v) {
-                          context
-                              .read<AddProjectBloc>()
-                              .add(AddProjectTypeChanged(v));
+                      context
+                          .read<AddProjectBloc>()
+                          .add(AddProjectTypeChanged(v));
                     },
                   ).paddingOnly(
                     bottom: 18.w,
                   ),
                   AppTextField(
                     isFill:
-                        context.read<AddProjectBloc>().state.descriptionFill,
+                    context.read<AddProjectBloc>().state.descriptionFill,
                     isMultiLine: true,
+                    key: _key,
+
                     height: 145.w,
                     hintText: LocaleKeys.write_short_card.tr(),
                     onChanged: (v) {
@@ -158,11 +166,15 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                   ),
                   AppWidgets.appButton(
                     title: LocaleKeys.send,
-                    onTap: () {
-                      addProjectBloc.add(SendDateEvent());
-                      NavigatorService.to.pushNamedAndRemoveUntil(
-                          HomePage.routeName,
-                          arguments: AppPageType.VOLUNTEERING);
+                    onTap: () async {
+                      _key=UniqueKey();
+                      await showDialog(
+                        context: context,
+                        builder: (context) =>
+                            AddProjectShowSuccessSend(
+                              addProjectBloc: addProjectBloc,
+                            ),
+                      );
                     },
                     textColor: Colors.white,
                     color: context.read<AddProjectBloc>().state.isBtnActive
@@ -173,9 +185,9 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                   ),
                 ],
               ).paddingSymmetric(horizontal: 20.w),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

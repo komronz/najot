@@ -1,26 +1,21 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
-import 'package:najot/data/bloc/applied_bloc/appeal_bloc.dart';
+import 'package:najot/data/bloc/add_project_bloc/add_project_bloc.dart';
+import 'package:najot/data/bloc/add_project_bloc/add_project_event.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/services/navigator_service.dart';
-import 'package:najot/ui/pages/main_page/main_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
-import '../../../data/bloc/applied_bloc/appeal_bloc.dart';
 
-class EditShowSuccessSend extends StatelessWidget {
-
-  const EditShowSuccessSend({
-    required this.appealBloc,
+class AddProjectShowSuccessSend extends StatelessWidget {
+  const AddProjectShowSuccessSend({
+    required this.addProjectBloc,
     Key? key,
   }) : super(key: key);
-
-  final AppealBloc appealBloc;
+  final AddProjectBloc addProjectBloc;
 
 
   @override
@@ -43,7 +38,7 @@ class EditShowSuccessSend extends StatelessWidget {
               AppWidgets.text(
                 textAlign: TextAlign.center,
                 text:
-                LocaleKeys.successful_send.tr(),
+                LocaleKeys.project_successful_added.tr(),
                 richText: true,
                 othersMarkers: [
                   MarkerText(
@@ -53,29 +48,29 @@ class EditShowSuccessSend extends StatelessWidget {
                 ],
                 maxLines: 10,
                 height: 1.3,
-                fontSize: 18.sp,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.w600,
                 color: AppColorUtils.DARK3,
               ).paddingSymmetric(horizontal: 54),
               AppWidgets.imageSvg(
-                path: AppImageUtils.IC_EARPHONES,
-                height: 54,
-                width: 54,
+                path: AppImageUtils.SUCCESS,
+                height: 100.w,
+                width: 100.w,
                 fit: BoxFit.none,
               ).paddingOnly(top: 20),
               AppWidgets.appButton(
                 title: LocaleKeys.thank_you.tr(),
                 textColor: AppColorUtils.KRAUDFANDING,
                 onTap: () {
-                  appealBloc.add(SendDateEvent());
-                  appealBloc.add(AppealBtnEvent());
+                  addProjectBloc.add(SendDateEvent());
+                  addProjectBloc.add(AddProjectBtnEvent());
                   Navigator.pop(context);
                   },
                 color: Color(0xFFECFFFA),
               ).paddingOnly(
-                top: 26,
-                left: 20,
-                right: 20,
+                top: 26.w,
+                left: 25.w,
+                right: 25.w,
               ),
             ],
           ),

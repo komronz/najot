@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
@@ -18,13 +19,15 @@ class MyCrowdfundingList extends StatelessWidget {
   MyCrowdfundingList(
       {required this.cardModel, required this.visible, Key? key, required this.onTap})
       : super(key: key);
-  final KraufandingModel cardModel;
+  final ProjectModel cardModel;
   final bool visible;
   final VoidCallback onTap;
 
 
   @override
   Widget build(BuildContext context) {
+    var createdAt= DateTime.parse(cardModel.createdAt!);
+
     return InkWell(
       child: Container(
         margin: EdgeInsets.only(right: 10, bottom: 10),
@@ -53,7 +56,7 @@ class MyCrowdfundingList extends StatelessWidget {
                       ),
                       child: CachedNetworkImage(
                         width: double.infinity,
-                        imageUrl: cardModel.imgUrl!,
+                        imageUrl: cardModel.coverUrl!,
                         errorWidget: (context, url, error) => Image.asset(
                           AppImageUtils.Splash2,
                         ),
@@ -90,7 +93,7 @@ class MyCrowdfundingList extends StatelessWidget {
                                 color: AppColorUtils.DARK6,
                               ).paddingOnly(right: 5.w),
                               AppWidgets.text(
-                                text: "60%",
+                                text: "${cardModel.percent}%",
                                 fontSize: 14.sp,
                                 fontWeight: FontWeight.w600,
                                 color: AppColorUtils.BLUE_PERCENT,
@@ -103,7 +106,7 @@ class MyCrowdfundingList extends StatelessWidget {
                               animation: true,
                               padding: EdgeInsets.all(0),
                               animationDuration: 2000,
-                              percent: 0.60,
+                              percent: cardModel.percent!/100,
                               progressColor: AppColorUtils.PERCENT_COLOR,
                               backgroundColor: AppColorUtils.PERCENT_COLOR2,
                             ),
@@ -117,7 +120,7 @@ class MyCrowdfundingList extends StatelessWidget {
                                 size: 12.sp,
                               ),
                               AppWidgets.text(
-                                text: cardModel.createdDate!,
+                                text: DateFormat("dd.MM.yyyy").format(createdAt),
                                 color: AppColorUtils.BLUE_PERCENT,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12.sp,

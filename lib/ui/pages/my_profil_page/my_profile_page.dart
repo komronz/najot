@@ -135,10 +135,7 @@ class MyProfilePage extends StatelessWidget {
                                     ).paddingOnly(bottom: 23.h),
                                     AppDisableTextField(
                                       isFill: false,
-                                      hintText: context
-                                          .read<MyProfileUpdateBloc>()
-                                          .state
-                                          .sureName,
+                                      hintText: context.read<MyProfileUpdateBloc>().state.sureName,
                                       onChanged: (v) {},
                                       title: LocaleKeys.surname.tr(),
                                     ).paddingOnly(bottom: 23.h),

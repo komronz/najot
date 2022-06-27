@@ -7,7 +7,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comments_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/more_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/news_widget.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
 
 import '../../../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_cubit.dart';
 import '../../../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_state.dart';
@@ -32,7 +37,7 @@ class MyCrowdfundingAboutWidget extends StatefulWidget {
 
   const MyCrowdfundingAboutWidget({required this.model});
 
-  final KraufandingModel model;
+  final ProjectModel model;
 
   @override
   _AboutMyCharityProjectWidgetState createState() =>
@@ -67,6 +72,7 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
 
   @override
   Widget build(BuildContext context) {
+    var createdAt= DateTime.parse(widget.model.deadline!);
     return BlocProvider(
       create: (context)=>cubit,
       child: BlocBuilder<MyCrowdfundingSupportCubit, MyCrowdfundingSupportState>(
@@ -94,7 +100,7 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(11),
                                 child: CachedNetworkImage(
-                                  imageUrl: widget.model.imgUrl!,
+                                  imageUrl: widget.model.coverUrl!,
                                   fit: BoxFit.cover,
                                   placeholder: (context, url) => Center(
                                     child: CircularProgressIndicator(),
@@ -108,22 +114,22 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  AppWidgets.appButton(
-                                    color: AppColorUtils.BLUE,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    width: 128.w,
-                                    height: 36.w,
-                                    textColor: AppColorUtils.WHITE,
-                                    title: LocaleKeys.used,
-                                    borderRadius: 12,
-                                    onTap: () {
-                                      NavigatorService.to.pushReplacementNamed(
-                                          MyCrowdfundingSupportPage.routeName,
-                                          arguments: state.cardList);
-                                    },
-                                    icon: SvgPicture.asset(AppImageUtils.USERS),
-                                  ).paddingOnly(right: 17.w),
+                                  // AppWidgets.appButton(
+                                  //   color: AppColorUtils.BLUE,
+                                  //   fontSize: 12,
+                                  //   fontWeight: FontWeight.w600,
+                                  //   width: 128.w,
+                                  //   height: 36.w,
+                                  //   textColor: AppColorUtils.WHITE,
+                                  //   title: LocaleKeys.used,
+                                  //   borderRadius: 12,
+                                  //   onTap: () {
+                                  //     NavigatorService.to.pushReplacementNamed(
+                                  //         MyCrowdfundingSupportPage.routeName,
+                                  //         arguments: state.cardList);
+                                  //   },
+                                  //   icon: SvgPicture.asset(AppImageUtils.USERS),
+                                  // ).paddingOnly(right: 17.w),
                                   InkWell(
                                     child: SvgPicture.asset(
                                         AppImageUtils.TRASH_RED),
@@ -181,7 +187,7 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                       size: 14.sp,
                                     ),
                                     AppWidgets.text(
-                                      text: "25.02.2022",
+                                      text: DateFormat("dd.MM.yyyy").format(createdAt),
                                       color: AppColorUtils.BLUE_PERCENT,
                                       fontWeight: FontWeight.w500,
                                       fontSize: 14.sp,
@@ -301,19 +307,23 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                 ),
                                 Container(
                                   child: [
-                                    MyCrowdfundingMoreWidget(
-                                      cardModel: widget.model,
-                                    ),
-                                    MyCrowdfundingNewsWidget(
-                                      cardModel: widget.model,
-                                    ).paddingAll(20.w),
+                                    MoreWidget(cardModel: widget.model),
+                                    NewsWidget(cardModel: widget.model),
                                     MyCrowdfundingQuestionsAskedWidget(
                                       cardModel: widget.model,
                                       cubit: cubit,
                                     ).paddingAll(20.w),
-                                    MyCrowdfundingCommentsWidget(
+                                    CommentsWidget(cardModel: widget.model),
+                                    // MyCrowdfundingMoreWidget(
+                                    //   cardModel: widget.model,
+                                    // ),
+                                    MyCrowdfundingNewsWidget(
                                       cardModel: widget.model,
-                                    ).paddingAll(20.w)
+                                    ).paddingAll(20.w),
+
+                                    // MyCrowdfundingCommentsWidget(
+                                    //   cardModel: widget.model,
+                                    // ).paddingAll(20.w)
                                   ][_tabController.index],
                                 ),
                               ],
@@ -375,7 +385,7 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                                       shape: BoxShape.circle,
                                                       image: DecorationImage(
                                                           image: NetworkImage(
-                                                            widget.model.imgUrl!,
+                                                            widget.model.coverUrl!,
                                                           ),
                                                           fit: BoxFit.cover),
                                                     ),
@@ -408,8 +418,7 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                                 ],
                                               ),
                                               AppWidgets.text(
-                                                text: widget
-                                                    .model.infoModel![0].text!,
+                                                text: "widget.model.infoModel![0].text!",
                                                 fontWeight: FontWeight.w400,
                                                 fontSize: 14.sp,
                                                 color: AppColorUtils.TEXT_GREY2,
@@ -427,8 +436,7 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                                 fontSize: 14.sp,
                                               ).paddingOnly(top: 20.w),
                                               AppWidgets.text(
-                                                text: widget
-                                                    .model.infoModel![0].text!,
+                                                text: "widget.model.infoModel![0].text!",
                                                 fontWeight: FontWeight.w400,
                                                 fontSize: 14.sp,
                                                 color: AppColorUtils.TEXT_GREY2,

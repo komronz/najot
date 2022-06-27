@@ -14,14 +14,14 @@ class AboutUs {
   AboutUs.fromJson(Map<String, dynamic> json) {
     id = json['id']?.toInt();
     name = json['name']?.toString();
-    phoneNumber = json['phone_number']?.toString();
+    phoneNumber = json['phone']?.toString();
     content = json['content']?.toString();
   }
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['id'] = id;
     data['name'] = name;
-    data['phone_number'] = phoneNumber;
+    data['phone'] = phoneNumber;
     data['content'] = content;
     return data;
   }
