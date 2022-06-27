@@ -27,8 +27,7 @@ class CrowdfundingState extends Equatable {
         tabChange
       ];
 
-  CrowdfundingState copyWith(
-      {RootProjectModel? crowdfundingModel,
+  CrowdfundingState copyWith({RootProjectModel? crowdfundingModel,
       RootProjectModel? tabProjects,
       bool? loading,
       bool? tabLoading,

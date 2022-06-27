@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/about_my_volunteering_project_page.dart';
 import '../../../../data/services/navigator_service.dart';
@@ -13,7 +14,7 @@ import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
 
 class VolunteeringProjectWidget extends StatelessWidget {
-  final VolunteeringModel model;
+  final ProjectModel model;
   final VoidCallback onTap;
 
   const VolunteeringProjectWidget({
@@ -56,7 +57,7 @@ class VolunteeringProjectWidget extends StatelessWidget {
                             placeholder: (context, url) => Center(
                               child: CircularProgressIndicator(),
                             ),
-                            imageUrl: model.imgUrl!,
+                            imageUrl: model.coverUrl!,
                             errorWidget: (context, url, error) =>
                                 Icon(Icons.error),
                             fit: BoxFit.cover,
@@ -89,7 +90,7 @@ class VolunteeringProjectWidget extends StatelessWidget {
                     bottom: 3.h,
                   ),
                   AppWidgets.text(
-                    text: model.typeVolunteering!,
+                    text: model.helpType!,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.GREEN_TEXT,
@@ -103,7 +104,7 @@ class VolunteeringProjectWidget extends StatelessWidget {
                   ).paddingOnly(
                     bottom: 3.h,
                   ),
-                  model.volunteerName == null
+                  model.owner == null
                       ? Row(
                           children: [
                             Container(
@@ -139,7 +140,7 @@ class VolunteeringProjectWidget extends StatelessWidget {
                               ).paddingAll(0.2),
                             ).paddingOnly(right: 5),
                             AppWidgets.textLocale(
-                              text: model.volunteerName!,
+                              text: model.owner!.lastName!,
                               fontSize: 12.sp,
                               color: AppColorUtils.TEXT_GREEN,
                               fontWeight: FontWeight.w600,

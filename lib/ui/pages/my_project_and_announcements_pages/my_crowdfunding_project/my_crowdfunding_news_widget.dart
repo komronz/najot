@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -18,7 +19,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final KraufandingModel cardModel;
+  final ProjectModel cardModel;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
-                                        image: NetworkImage(cardModel.imgUrl!),
+                                        image: NetworkImage(cardModel.coverUrl!),
                                         fit: BoxFit.cover),
                                   ),
                                 ),
@@ -89,7 +90,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                           ],
                         ),
                         AppWidgets.text(
-                                text: cardModel.infoModel![0].title!,
+                                text: "cardModel.infoModel![0].title!",
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w600,
                                 color: AppColorUtils.BLACK)
@@ -99,7 +100,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                         ),
                         AppWidgets.text(
                             height: 1.5,
-                            text: cardModel.infoModel![0].text!,
+                            text: "cardModel.infoModel![0].text!",
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w600,
                             color: AppColorUtils.TEXT_GREY2,
@@ -114,7 +115,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                               Radius.circular(12),
                             ),
                             child: CachedNetworkImage(
-                              imageUrl: cardModel.imgUrl!,
+                              imageUrl: cardModel.coverUrl!,
                               fit: BoxFit.cover,
                               width: MediaQuery.of(context).size.width,
                               placeholder: (context, url) => Center(

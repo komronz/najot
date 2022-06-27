@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -9,22 +10,16 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_cubit.dart';
 import 'my_crowdfunding_question_list.dart';
 
-class MyCrowdfundingQuestionsAskedWidget extends StatefulWidget {
+class MyCrowdfundingQuestionsAskedWidget extends StatelessWidget {
   MyCrowdfundingQuestionsAskedWidget({
     required this.cardModel,
     required this.cubit,
     Key? key,
   }) : super(key: key);
-  final KraufandingModel cardModel;
+  final ProjectModel cardModel;
   final MyCrowdfundingSupportCubit cubit;
 
-  @override
-  _MyCrowdfundingQuestionsAskedWidgetState createState() =>
-      _MyCrowdfundingQuestionsAskedWidgetState();
-}
 
-class _MyCrowdfundingQuestionsAskedWidgetState
-    extends State<MyCrowdfundingQuestionsAskedWidget> {
   bool isVisible = true;
 
   @override
@@ -34,7 +29,7 @@ class _MyCrowdfundingQuestionsAskedWidgetState
       children: [
         InkWell(
           onTap: () {
-            widget.cubit.widgetChange(true);
+            cubit.widgetChange(true);
           },
           child: Container(
             decoration: BoxDecoration(
@@ -66,9 +61,9 @@ class _MyCrowdfundingQuestionsAskedWidgetState
         ),
         Column(
           children: List.generate(
-            widget.cubit.state.cardList.length,
+            cubit.state.cardList.length,
             (index) => MyCrowdfundingQuestionList(
-              cardModel: widget.cubit.state.cardList[index],
+              cardModel: cubit.state.cardList[index],
             ),
           ),
         ),

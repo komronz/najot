@@ -43,7 +43,6 @@ class CrowdfundingCubit extends Cubit<CrowdfundingState> {
   Future tabChange(int id) async{
     emit(state.copyWith(tabLoading: true));
     var tabProjects=await crowdfundingService.getProjectsById(id);
-
       if(tabProjects!=null){
         await Future.delayed(Duration(seconds: 1));
         emit(state.copyWith(tabProjects: tabProjects));

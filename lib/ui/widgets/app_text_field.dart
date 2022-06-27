@@ -21,12 +21,14 @@ class AppTextField extends StatefulWidget {
   final double? height;
   final bool hasTitle;
   final bool autoFocus;
+  final Key? key;
   final bool phoneNumberCode;
 
   AppTextField({
     required this.hintText,
     required this.onChanged,
     required this.title,
+    this.key,
     this.isMultiLine = false,
     this.inputFormatter,
     this.textInputType,

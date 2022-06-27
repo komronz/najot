@@ -1,7 +1,3 @@
-
-
-
-
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/categories_model.dart';
@@ -20,8 +16,6 @@ class CrowdfundingService{
   static int length=0;
 
   Future<RootProjectModel?> getCrowdfundingModel() async {
-
-
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/ru/project/?type=CF",

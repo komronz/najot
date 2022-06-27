@@ -18,7 +18,7 @@ class NewsWidget extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final ProjectModel cardModel;
+  final ProjectModel? cardModel;
 
   @override
   Widget build(BuildContext context) {

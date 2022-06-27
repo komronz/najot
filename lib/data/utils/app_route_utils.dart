@@ -238,13 +238,13 @@ class AppRouteUtils {
       case MyCharityItemFullPage.routeName:
         return MaterialPageRoute(
           builder: (context) => MyCharityItemFullPage(
-            cardModel: settings.arguments as CharityModel,
+            cardModel: settings.arguments as ProjectModel,
           ),
         );
       case AboutMyVolunteeringItemProjectWidget.routeName:
         return MaterialPageRoute(
           builder: (context) => AboutMyVolunteeringItemProjectWidget(
-            model: settings.arguments as VolunteeringModel,
+            model: settings.arguments as ProjectModel,
           ),
         );
       case MyVolunteeringSupportListPage.routeName:
@@ -274,7 +274,7 @@ class AppRouteUtils {
       case MyCrowdfundingAboutWidget.routeName:
         return MaterialPageRoute(
           builder: (context) => MyCrowdfundingAboutWidget(
-            model: settings.arguments as KraufandingModel,
+            model: settings.arguments as ProjectModel,
           ),
         );
       case VolunteeringCharityFullPage.routName:

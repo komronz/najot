@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:najot/data/model/charity_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 
@@ -9,7 +10,7 @@ import 'charity_cash_widget.dart';
 import 'charity_item_project_widget.dart';
 
 class MyCharityProjectTypeOfPage extends StatelessWidget {
-  final CharityModel charityModel;
+  final ProjectModel charityModel;
 
   const MyCharityProjectTypeOfPage({required this.charityModel, Key? key})
       : super(key: key);
@@ -18,7 +19,7 @@ class MyCharityProjectTypeOfPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColorUtils.WHITE,
-      body: charityModel.typeOfCharity == "cash"
+      body: charityModel.type == "VL"
           ? CharityCashWidget(
               model: charityModel,
               onTap: () {

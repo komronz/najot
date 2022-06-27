@@ -126,7 +126,6 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                     isFill: context.read<AddProjectBloc>().state.nameFill,
                     hintText: LocaleKeys.enter_project_name.tr(),
                     key: _key,
-
                     onChanged: (v) {
                       context
                           .read<AddProjectBloc>()
@@ -137,7 +136,6 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                   DropDownWidget(
                     items: projectType,
                     key: _key,
-
                     hasTitle: true,
                     title: LocaleKeys.project_or_announcement_type.tr(),
                     isEmpty: context.read<AddProjectBloc>().state.typeFill,

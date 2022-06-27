@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/charity_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../data/utils/app_color_utils.dart';
@@ -12,7 +13,7 @@ import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
 
 class CharityCashWidget extends StatelessWidget {
-  final CharityModel model;
+  final ProjectModel model;
   final VoidCallback onTap;
 
   const CharityCashWidget({
@@ -55,7 +56,7 @@ class CharityCashWidget extends StatelessWidget {
                             placeholder: (context, url) => Center(
                               child: CircularProgressIndicator(),
                             ),
-                            imageUrl: model.imgUrl!,
+                            imageUrl: model.coverUrl!,
                             errorWidget: (context, url, error) =>
                                 Icon(Icons.error),
                             fit: BoxFit.cover,
@@ -127,7 +128,7 @@ class CharityCashWidget extends StatelessWidget {
                         height: 11.w,
                       ).paddingOnly(right: 2),
                       AppWidgets.textLocale(
-                        text: ": ${model.collectedDate!}",
+                        text: ": ${model.modifiedAt!}",
                         color: AppColorUtils.BLUE_TEXT,
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w500,

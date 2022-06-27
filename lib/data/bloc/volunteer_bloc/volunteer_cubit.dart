@@ -41,7 +41,7 @@ class VolunteerCubit extends Cubit<VolunteerState> {
       await Future.delayed(Duration(seconds: 2));
       emit(state.copyWith(loading: false));
       emit(state.copyWith(
-        list: volunteerModel.projectModel,
+        list: volunteerModel.results!,
         checkBox: false,
         tobeVolunteer: Volunteer.tobeVolunteer,
       ));

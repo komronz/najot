@@ -67,7 +67,7 @@ class _CharityPageState extends State<CharityPage>
       body: BlocBuilder<CharityCubit, CharityState>(
         bloc: CharityCubit.to,
         builder: (context, state) {
-          List<ProjectModel> list = state.charityModel!.projectModel!;
+          List<ProjectModel> list = state.charityModel!.results!;
           if (state.loading == true) {
             return Center(
               child: CircularProgressIndicator(),
@@ -243,9 +243,9 @@ class _CharityPageState extends State<CharityPage>
                                 crossAxisSpacing: 8,
                                 mainAxisSpacing: 6,
                                 children: List.generate(
-                                    state.tabProjects!.projectModel!.length,
+                                    state.tabProjects!.results!.length,
                                     (index) {
-                                  if (state.tabProjects!.projectModel![index]
+                                  if (state.tabProjects!.results![index]
                                           .requiredFund !=
                                       null) {
                                     return CharityItemWidget(
@@ -253,7 +253,7 @@ class _CharityPageState extends State<CharityPage>
                                         NavigatorService.to.pushNamed(
                                           CharityFullPage.routName,
                                           arguments: state.tabProjects!
-                                              .projectModel![index],
+                                              .results![index],
                                         );
                                       },
                                       model: list[index],
@@ -266,7 +266,7 @@ class _CharityPageState extends State<CharityPage>
                                           CharityFullPage2.routName,
                                           arguments: CharityFullModel(
                                             cardModel: state.tabProjects!
-                                                .projectModel![index],
+                                                .results![index],
                                             cubit: CharityCubit.to,
                                           ),
                                         );

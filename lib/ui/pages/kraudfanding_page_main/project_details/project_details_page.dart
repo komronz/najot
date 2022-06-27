@@ -61,7 +61,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
 
   @override
   Widget build(BuildContext context) {
-    ProductCubit productCubit =ProductCubit();
+    ProductCubit productCubit = ProductCubit();
     return MultiBlocProvider(
       providers: [
         BlocProvider<ProductCubit>(

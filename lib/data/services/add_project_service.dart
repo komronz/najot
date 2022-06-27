@@ -2,8 +2,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/add_project.dart';
-import 'package:najot/data/model/auth_model/login_end_model.dart';
-import 'package:najot/data/model/auth_model/user.dart';
+
 import 'package:najot/data/services/http_service.dart';
 import 'package:najot/data/services/root_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
@@ -27,7 +26,6 @@ class AddProjectService {
     try {
       final _path = "https://api.najot.uz/ru/add-project/";
       final body = {
-        "user": "1",
         "who_add": whoAdd,
         "name": name,
         "type": type,

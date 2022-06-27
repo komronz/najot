@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/charity_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -14,7 +15,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../../data/utils/app_image_utils.dart';
 
 class MyCharityItemAuthorWidget extends StatelessWidget {
-  final CharityModel model;
+  final ProjectModel model;
   final VoidCallback onTap;
 
   const MyCharityItemAuthorWidget({
@@ -37,7 +38,7 @@ class MyCharityItemAuthorWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                    image: NetworkImage(model.imgUrl!), fit: BoxFit.cover),
+                    image: NetworkImage(model.coverUrl!), fit: BoxFit.cover),
               ),
             ),
             Column(
@@ -66,7 +67,7 @@ class MyCharityItemAuthorWidget extends StatelessWidget {
                       ).paddingAll(0.3),
                     ).paddingOnly(right: 5),
                     AppWidgets.textLocale(
-                      text: model.volunteerName!,
+                      text: model.owner!.firstName!,
                       fontSize: 14.sp,
                       color: AppColorUtils.TEXT_GREEN,
                       fontWeight: FontWeight.w600,

@@ -1,13 +1,15 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
 
 class MyVolunteeringInfoWidget extends StatelessWidget {
-  final VolunteeringModel model;
+  final ProjectModel model;
 
   const MyVolunteeringInfoWidget({
     required this.model,
@@ -16,6 +18,9 @@ class MyVolunteeringInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var createdAt= DateTime.parse(model.createdAt!);
+    var deadline= DateTime.parse(model.deadline!);
+
     return Column(
       children: [
         Row(
@@ -35,7 +40,7 @@ class MyVolunteeringInfoWidget extends StatelessWidget {
                       size: 14.sp,
                     ),
                     AppWidgets.text(
-                      text: model.collectedDate!,
+                      text: DateFormat("dd.MM.yyyy").format(deadline),
                       color: AppColorUtils.BLUE_PERCENT,
                       fontWeight: FontWeight.w500,
                       fontSize: 14.sp,
@@ -54,7 +59,7 @@ class MyVolunteeringInfoWidget extends StatelessWidget {
                   color: AppColorUtils.DARK_6,
                 ),
                 AppWidgets.text(
-                  text: model.createdDate!,
+                  text: DateFormat("dd.MM.yyyy").format(createdAt),
                   color: Color(0xFF043F3B),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
@@ -71,7 +76,7 @@ class MyVolunteeringInfoWidget extends StatelessWidget {
               text: LocaleKeys.help_type,
             ).paddingOnly(bottom: 5.w),
             AppWidgets.textLocale(
-              text: model.typeVolunteering!,
+              text: model.helpType??"",
               color: AppColorUtils.KRAUDFANDING,
               fontWeight: FontWeight.w600,
               fontSize: 14.sp,

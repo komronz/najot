@@ -6,13 +6,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/charity_model.dart';
+import 'package:najot/data/model/project_model.dart';
 
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
 
 class CharityItemProjectWidget extends StatelessWidget {
-  final CharityModel model;
+  final ProjectModel model;
   final VoidCallback onTap;
 
   const CharityItemProjectWidget({
@@ -55,7 +56,7 @@ class CharityItemProjectWidget extends StatelessWidget {
                             placeholder: (context, url) => Center(
                               child: CircularProgressIndicator(),
                             ),
-                            imageUrl: model.imgUrl!,
+                            imageUrl: model.coverUrl!,
                             errorWidget: (context, url, error) =>
                                 Icon(Icons.error),
                             fit: BoxFit.cover,
@@ -85,7 +86,7 @@ class CharityItemProjectWidget extends StatelessWidget {
                     color: AppColorUtils.DARK_6,
                   ).paddingOnly(top: 11.h, bottom: 3.h),
                   AppWidgets.text(
-                    text: model.typeOfHelp!,
+                    text: model.helpType??"",
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.GREEN_TEXT,
@@ -96,7 +97,7 @@ class CharityItemProjectWidget extends StatelessWidget {
                   ).paddingOnly(
                     bottom: 3.h,
                   ),
-                  model.volunteerName==null
+                  model.owner==null
                       ? Row(
                     children: [
                       Container(
@@ -132,7 +133,7 @@ class CharityItemProjectWidget extends StatelessWidget {
                         ).paddingAll(0.2),
                       ).paddingOnly(right: 5),
                       AppWidgets.textLocale(
-                        text: model.volunteerName!,
+                        text: model.owner!.firstName!,
                         fontSize: 12.sp,
                         color: AppColorUtils.TEXT_GREEN,
                         fontWeight: FontWeight.w600,

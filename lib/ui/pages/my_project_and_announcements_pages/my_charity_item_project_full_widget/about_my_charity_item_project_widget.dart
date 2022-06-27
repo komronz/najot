@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/model/project_model.dart';
 import '../../../../data/bloc/my_charity_support_list_cubit/my_charity_support_list_cubit.dart';
 import '../../../../data/bloc/my_charity_support_list_cubit/my_charity_support_list_state.dart';
 import '../../../../data/config/const/decoration_const.dart';
@@ -24,7 +25,7 @@ import 'my_charity_item_price_widget.dart';
 class AboutMyCharityItemProjectWidget extends StatefulWidget {
   const AboutMyCharityItemProjectWidget({required this.model});
 
-  final CharityModel model;
+  final ProjectModel model;
 
   @override
   _AboutMyCharityItemProjectWidgetState createState() =>
@@ -79,7 +80,7 @@ class _AboutMyCharityItemProjectWidgetState
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(11),
                             child: CachedNetworkImage(
-                              imageUrl: widget.model.imgUrl!,
+                              imageUrl: widget.model.coverUrl!,
                               fit: BoxFit.cover,
                               placeholder: (context, url) => Center(
                                 child: CircularProgressIndicator(),
@@ -133,7 +134,7 @@ class _AboutMyCharityItemProjectWidgetState
                       top: 18.w,
                       bottom: 12.w,
                     ),
-                    widget.model.volunteerName == null
+                    widget.model.owner == null
                         ? Column(
                             children: [
                               AppWidgets.starTextWidget(
@@ -275,19 +276,23 @@ class _AboutMyCharityItemProjectWidgetState
                             ),
                             Container(
                               child: [
-                                MyCharityMoreWidget(
-                                  cardModel: widget.model,
-                                ),
-                                MyCharityNewsWidget(
-                                  cardModel: widget.model,
-                                ).paddingAll(20.w),
-                                MyCharityQuestionsAskedWidget(
-                                  cardModel: widget.model,
-                                  cubit: cubit,
-                                ).paddingAll(20.w),
-                                MyCharityCommentsWidget(
-                                  cardModel: widget.model,
-                                ).paddingAll(20.w)
+                                Container(),
+                                Container(),
+                                Container(),
+                                Container(),
+                                // MyCharityMoreWidget(
+                                //   cardModel: widget.model,
+                                // ),
+                                // MyCharityNewsWidget(
+                                //   cardModel: widget.model,
+                                // ).paddingAll(20.w),
+                                // MyCharityQuestionsAskedWidget(
+                                //   cardModel: widget.model,
+                                //   cubit: cubit,
+                                // ).paddingAll(20.w),
+                                // MyCharityCommentsWidget(
+                                //   cardModel: widget.model,
+                                // ).paddingAll(20.w)
                               ][_tabController.index],
                             ),
                             SizedBox(
@@ -381,7 +386,7 @@ class _AboutMyCharityItemProjectWidgetState
                                                   shape: BoxShape.circle,
                                                   image: DecorationImage(
                                                       image: NetworkImage(
-                                                        widget.model.imgUrl!,
+                                                        widget.model.coverUrl!,
                                                       ),
                                                       fit: BoxFit.cover),
                                                 ),
@@ -414,8 +419,7 @@ class _AboutMyCharityItemProjectWidgetState
                                             ],
                                           ),
                                           AppWidgets.text(
-                                            text: widget
-                                                .model.infoModel![0].text!,
+                                            text: "widget.model.infoModel![0].text!",
                                             fontWeight: FontWeight.w400,
                                             fontSize: 14.sp,
                                             color: AppColorUtils.TEXT_GREY2,
@@ -433,8 +437,7 @@ class _AboutMyCharityItemProjectWidgetState
                                             fontSize: 14.sp,
                                           ).paddingOnly(top: 20.w),
                                           AppWidgets.text(
-                                            text: widget
-                                                .model.infoModel![0].text!,
+                                            text: "widget.model.infoModel![0].text!",
                                             fontWeight: FontWeight.w400,
                                             fontSize: 14.sp,
                                             color: AppColorUtils.TEXT_GREY2,

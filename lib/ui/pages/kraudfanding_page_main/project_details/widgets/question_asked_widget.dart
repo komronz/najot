@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -15,7 +16,7 @@ class QuestionsAskedWidget extends StatelessWidget {
     required this.cardModel,
   }) : super(key: key);
 
-  final CardModel cardModel;
+  final ProjectModel cardModel;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class QuestionsAskedWidget extends StatelessWidget {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                             image: NetworkImage(
-                              cardModel.image!,
+                              cardModel.coverUrl!,
                             ),
                             fit: BoxFit.cover),
                       ),
@@ -71,7 +72,7 @@ class QuestionsAskedWidget extends StatelessWidget {
                   ],
                 ),
                 AppWidgets.text(
-                  text: cardModel.infoModel![0].text!,
+                  text: "cardModel.infoModel![0].text!",
                   fontWeight: FontWeight.w400,
                   fontSize: 14.sp,
                   color: AppColorUtils.TEXT_GREY2,
@@ -89,7 +90,7 @@ class QuestionsAskedWidget extends StatelessWidget {
                   color: AppColorUtils.TEXT_GREEN2,
                 ).paddingSymmetric(vertical: 8.w),
                 AppWidgets.text(
-                  text: cardModel.infoModel![0].text!,
+                  text: "cardModel.infoModel![0].text!",
                   fontWeight: FontWeight.w400,
                   fontSize: 14.sp,
                   color: AppColorUtils.TEXT_GREY2,
