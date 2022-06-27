@@ -1,4 +1,3 @@
-import 'package:najot/data/model/news_model.dart';
 
 import 'categories_model.dart';
 
@@ -124,6 +123,31 @@ class Category2 {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['title'] = this.title;
+    return data;
+  }
+}
+
+class Author {
+  int? id;
+  String? firstName;
+  String? lastName;
+  String? photo;
+
+  Author({this.id, this.firstName, this.lastName, this.photo});
+
+  Author.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    firstName = json['first_name'];
+    lastName = json['last_name'];
+    photo = json['photo'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['first_name'] = this.firstName;
+    data['last_name'] = this.lastName;
+    data['photo'] = this.photo;
     return data;
   }
 }

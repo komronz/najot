@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -16,6 +17,14 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/pa
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_help_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
+
+import '../../../../../data/bloc/project_data_cubit/project_data_cubit.dart';
+import '../../../kraudfanding_page_main/project_details/widgets/comment_to_author_dialog.dart';
+import '../../../kraudfanding_page_main/project_details/widgets/comments_widget.dart';
+import '../../../kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
+import '../../../kraudfanding_page_main/project_details/widgets/more_widget.dart';
+import '../../../kraudfanding_page_main/project_details/widgets/news_widget.dart';
+import '../../../kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
 
 class AboutProjectVolunteerWidget extends StatefulWidget {
   AboutProjectVolunteerWidget({
@@ -36,6 +45,7 @@ class AboutProjectVolunteerWidget extends StatefulWidget {
 class _AboutProjectVolunteerWidgetState
     extends State<AboutProjectVolunteerWidget> with TickerProviderStateMixin {
   late TabController _tabController;
+  ProjectDataCubit cubitData = ProjectDataCubit();
 
   @override
   void dispose() {
@@ -56,12 +66,10 @@ class _AboutProjectVolunteerWidgetState
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
-    var modifiedAt= DateTime.parse(widget.cardModel.modifiedAt!);
-    var createdAt= DateTime.parse(widget.cardModel.createdAt!);
-
+    var modifiedAt = DateTime.parse(widget.cardModel.modifiedAt!);
+    var createdAt = DateTime.parse(widget.cardModel.createdAt!);
 
     return Column(
       children: [
@@ -136,10 +144,20 @@ class _AboutProjectVolunteerWidgetState
                 fontWeight: FontWeight.w500,
                 maxLines: 2,
               ).paddingSymmetric(horizontal: 20.w),
-              // KraudfandingAuthorWidget(
-              //   model: widget.cardModel,
-              //   onTap: () {},
-              // ).paddingOnly(top: 15.w),
+              KraudfandingAuthorWidget(
+                model: widget.cardModel,
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return CommentToAuthorDialog(
+                        cubit: cubitData,
+                        projectModel: widget.cardModel,
+                      );
+                    },
+                  );
+                },
+              ).paddingOnly(top: 15.w),
               SizedBox(height: 12.w),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -176,7 +194,7 @@ class _AboutProjectVolunteerWidgetState
                         color: AppColorUtils.DARK_6,
                       ),
                       AppWidgets.text(
-                        text:  DateFormat("dd.MM.yyyy").format(createdAt),
+                        text: DateFormat("dd.MM.yyyy").format(createdAt),
                         color: Color(0xFF043F3B),
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w600,
@@ -209,7 +227,7 @@ class _AboutProjectVolunteerWidgetState
                 bottom: 3.w,
               ),
               AppWidgets.text(
-                      text: widget.cardModel.address??"",
+                      text: widget.cardModel.address ?? "",
                       fontSize: 14.w,
                       fontWeight: FontWeight.w500,
                       color: AppColorUtils.TEXT_BLUE2,
@@ -280,25 +298,27 @@ class _AboutProjectVolunteerWidgetState
                   indicatorPadding: EdgeInsets.only(right: 10, left: 10),
                   labelPadding: EdgeInsets.only(right: 10, left: 10),
                 ).paddingOnly(left: 15.w, top: 8.w),
-                Container(
-                  child: [
-                    Container(),
-                    Container(),
-                    Container(),
-                    Container(),
-                    // MoreWidget(
-                    //   cardModel: widget.cardModel,
-                    // ),
-                    // NewsWidget(
-                    //   cardModel: widget.cardModel,
-                    // ).paddingAll(20.w),
-                    // QuestionsAskedWidget(
-                    //   cardModel: widget.cardModel,
-                    // ).paddingAll(20.w),
-                    // CommentsWidget(
-                    //   cardModel: widget.cardModel,
-                    // ).paddingAll(20.w)
-                  ][_tabController.index],
+                BlocBuilder<ProjectDataCubit, ProjectDataState>(
+                  bloc: cubitData..load(widget.cardModel.id!),
+                  builder: (contextData, stateData) {
+                    return Container(
+                      child: [
+                        MoreWidget(
+                          cardModel: widget.cardModel,
+                        ),
+                        NewsWidget(
+                          cubit: cubitData,
+                        ).paddingAll(20.w),
+                        QuestionsAnswerWidget(
+                          cubit: cubitData,
+                        ).paddingAll(20.w),
+                        CommentsWidget(
+                          cubit: cubitData,
+                          projectModel: widget.cardModel,
+                        ).paddingAll(20.w)
+                      ][_tabController.index],
+                    );
+                  },
                 ),
                 SizedBox(
                   height: 10.w,

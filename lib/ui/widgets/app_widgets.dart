@@ -127,7 +127,6 @@ class AppWidgets {
   }
 
   static Widget circleImages({
-    required String image,
     required int count
 
   }) {
@@ -149,14 +148,15 @@ class AppWidgets {
               ),
             ),
             Container(
-              margin:
-              EdgeInsets.only(left: 8.w),
+              padding:  EdgeInsets.only(left: 8.w),
               height: 25.w,
               width: 25.w,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: NetworkImage(image),
+                  image: AssetImage(
+                      AppImageUtils
+                          .DEF_PERSON),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -176,19 +176,7 @@ class AppWidgets {
                 ),
               ),
             ),
-            Container(
-              margin:
-              EdgeInsets.only(left: 24.w),
-              height: 25.w,
-              width: 25.w,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: NetworkImage(image),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+
           ],
         ),
         AppWidgets.text(

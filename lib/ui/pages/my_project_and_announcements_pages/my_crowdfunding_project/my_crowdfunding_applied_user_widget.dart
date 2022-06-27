@@ -25,7 +25,7 @@ class MyCrowdfundingAppliedUserWidget extends StatelessWidget {
           fontWeight: FontWeight.w400,
         ),
         AppWidgets.circleImages(
-          image: model.imgUrl!,
+
           count: 100,
         ).paddingOnly(top: 3)
       ],

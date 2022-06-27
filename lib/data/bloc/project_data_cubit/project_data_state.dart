@@ -1,23 +1,41 @@
 part of 'project_data_cubit.dart';
 
+class ProjectDataState extends Equatable {
+  ProjectDataState(
+      {this.newsData = const [],
+      this.questionsData = const [],
+      this.commentsData = const [],
+      this.errorQuestion = false,
+      });
 
- class ProjectDataState  extends Equatable{
+  final List<NewsData> newsData;
+  final List<QuestionsData> questionsData;
+  final List<CommentsData> commentsData;
+  final bool errorQuestion;
 
-  ProjectDataState({this.newsModel});
-
-  final NewsModel? newsModel;
 
   @override
   // TODO: implement props
-  List<Object?> get props => [newsModel];
+  List<Object?> get props => [
+        newsData,
+        questionsData,
+        commentsData,
+        errorQuestion
 
+      ];
 
   ProjectDataState copyWith({
-  NewsModel? newsModel
- }){
-   return ProjectDataState(
-    newsModel: newsModel ?? this.newsModel,
-   );
-  }
- }
+    List<NewsData>? newsData,
+    List<QuestionsData>? questionsData,
+    List<CommentsData>? commentsData,
+    bool? errorQuestion,
+  }) {
+    return ProjectDataState(
+      newsData: newsData ?? this.newsData,
+      questionsData: questionsData ?? this.questionsData,
+      commentsData: commentsData ?? this.commentsData,
+      errorQuestion: errorQuestion ?? this.errorQuestion,
 
+    );
+  }
+}

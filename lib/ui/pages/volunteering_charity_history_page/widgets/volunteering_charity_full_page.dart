@@ -243,7 +243,8 @@ class _VolunteeringCharityFullPageState extends State<VolunteeringCharityFullPag
                                   showDialog(
                                     context: context,
                                     builder: (context) {
-                                      return SupportProjectDialog();
+                                      return Container();
+                                      // return SupportProjectDialog(projectModel: widget.model.,);
                                     },
                                   );
                                 },

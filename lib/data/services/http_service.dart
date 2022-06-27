@@ -12,7 +12,7 @@ import '../utils/app_logger_util.dart';
 
 class HttpService {
   Dio? _dio;
-
+static HttpService get to=> GetIt.I<HttpService>();
   static Future init() async {
     final getIt = GetIt.instance;
     getIt.registerSingleton<HttpService>(HttpService());
