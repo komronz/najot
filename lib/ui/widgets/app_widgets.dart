@@ -279,12 +279,9 @@ class AppWidgets {
     );
   }
 
- static Widget selectLangWidget(
-      BuildContext context,
-      VoidCallback onTap,
-      ) {
+ static Widget selectLangWidget(BuildContext context, VoidCallback onTap) {
     return InkWell(
-      onTap: onTap,
+      onTap: onTap, 
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 10.w),
         height: 44.w,
@@ -571,13 +568,17 @@ class AppWidgets {
         color: color,
         placeholder: (context, url){
           return Center(
+            widthFactor: 20,
+              heightFactor: 20,
               child: CircularProgressIndicator(),
             );
         },
         errorWidget: (context, url, error ){
-          return ColoredBox(
+          return Container(
               color: Colors.black12,
-            child: CircularProgressIndicator()
+            child: Container(
+
+            )
           );
         }
       ),

@@ -38,6 +38,8 @@ class AboutPage extends StatelessWidget {
             create: (context) =>AboutCubit()..getAboutList(),
         )
       ],
+
+
       child: Scaffold(
         key: UniqueKey(),
       backgroundColor: AppColorUtils.BACKGROUND,
@@ -192,9 +194,7 @@ class AboutPage extends StatelessWidget {
                         hintText: "(abdumalik)",
                         initialText: state.name,
                         onChanged: (v) {
-                          context
-                              .read<AppealBloc>()
-                              .add(AppealNameChanged(v));
+                          context.read<AppealBloc>().add(AppealNameChanged(v));
                         },
                         title: LocaleKeys.name.tr(),
                       ).paddingOnly(top: 18),

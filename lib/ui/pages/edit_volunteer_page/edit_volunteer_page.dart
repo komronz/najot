@@ -180,9 +180,7 @@ class EditVolunteerPage extends StatelessWidget {
                               thickness: 2,
                               color: AppColorUtils.GREEN_8,
                             ).paddingSymmetric(vertical: 24.w),
-                            AppWidgets.selectLangWidget(
-                              context,
-                              () {
+                            AppWidgets.selectLangWidget(context, () {
                                 NavigatorService.to.pushNamed(ChooseLangPage.routeName);
                               },
                             ),
