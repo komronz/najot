@@ -66,7 +66,13 @@ class EditVolunteerPage extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      ShowPickerWidget(),
+                      ShowPickerWidget(
+                        image: AppImageUtils.USERADD,
+                        width: 130,
+                        height: 130,
+                        color: AppColorUtils.WHITE,
+                        imageSelect: (v) {},
+                      ),
                       Container(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -180,8 +186,11 @@ class EditVolunteerPage extends StatelessWidget {
                               thickness: 2,
                               color: AppColorUtils.GREEN_8,
                             ).paddingSymmetric(vertical: 24.w),
-                            AppWidgets.selectLangWidget(context, () {
-                                NavigatorService.to.pushNamed(ChooseLangPage.routeName);
+                            AppWidgets.selectLangWidget(
+                              context,
+                              () {
+                                NavigatorService.to
+                                    .pushNamed(ChooseLangPage.routeName);
                               },
                             ),
                             Divider(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/kraufanding_model.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -26,8 +25,7 @@ class MyCrowdfundingAppliedUserWidget extends StatelessWidget {
           fontWeight: FontWeight.w400,
         ),
         AppWidgets.circleImages(
-          image: model.coverUrl!,
-          count: 100,
+          count:  model.investorsCount!,
         ).paddingOnly(top: 3)
       ],
     );

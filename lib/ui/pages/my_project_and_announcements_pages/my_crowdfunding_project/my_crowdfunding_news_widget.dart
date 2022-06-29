@@ -1,35 +1,46 @@
+
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:najot/data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/kraufanding_model.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/my_profil_page/my_profile_widget/show_picker_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-import '../../../widgets/app_text_field.dart';
+import '../../../../data/config/const/decoration_const.dart';
 
 class MyCrowdfundingNewsWidget extends StatelessWidget {
-  const MyCrowdfundingNewsWidget({
+  MyCrowdfundingNewsWidget({
     required this.cardModel,
+    required this.cubit,
     Key? key,
   }) : super(key: key);
 
   final ProjectModel cardModel;
+  final MyCrowdfundingSupportCubit cubit;
+  final TextEditingController title = TextEditingController();
+  final TextEditingController content = TextEditingController();
+  File? image;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Column(
-          children: [
-            false
-                ? Container(
+        cubit.state.newsData.isNotEmpty
+            ? Column(
+                children: List.generate(
+                  cubit.state.newsData.length,
+                  (index) => Container(
                     padding: EdgeInsets.only(
                       top: 12.w,
                       left: 12.w,
@@ -53,7 +64,8 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
-                                        image: NetworkImage(cardModel.coverUrl!),
+                                        image: NetworkImage(cubit.state
+                                            .newsData[index].user!.photo!),
                                         fit: BoxFit.cover),
                                   ),
                                 ),
@@ -65,44 +77,49 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                                     SizedBox(
                                       width: 150.w,
                                       child: AppWidgets.text(
-                                        text: "Eshonov Fakhriyor",
+                                        text:
+                                            "${cubit.state.newsData[index].user!.firstName!} ${cubit.state.newsData[index].user!.lastName!}",
                                         color: AppColorUtils.TEXT_GREEN2,
                                         fontWeight: FontWeight.w600,
                                         fontSize: 14.sp,
                                       ),
                                     ),
-                                    AppWidgets.textLocale(
-                                      text: LocaleKeys.project_author,
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w400,
-                                      color: AppColorUtils.DARK_6,
-                                    ).paddingOnly(top: 5.w),
+                                    Row(
+                                      children: [
+                                        AppWidgets.textLocale(
+                                          text: LocaleKeys.project_author,
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.w400,
+                                          color: AppColorUtils.DARK_6,
+                                        ).paddingOnly(right: 65.w),
+                                        AppWidgets.text(
+                                          text: "25.08.2022 18:19",
+                                          fontSize: 10.sp,
+                                          fontWeight: FontWeight.w500,
+                                          color: AppColorUtils.BLUE_PERCENT,
+                                        )
+                                      ],
+                                    ).paddingOnly(top: 5),
                                   ],
                                 ).paddingOnly(left: 10),
                               ],
                             ),
-                            AppWidgets.text(
-                                    text: "25.08.2022 18:19",
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColorUtils.BLUE_PERCENT)
-                                .paddingOnly(bottom: 10.w),
                           ],
                         ),
                         AppWidgets.text(
-                                text: "cardModel.infoModel![0].title!",
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                                color: AppColorUtils.BLACK)
-                            .paddingOnly(
+                          text: cubit.state.newsData[index].title ?? "",
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w600,
+                          color: AppColorUtils.BLACK,
+                        ).paddingOnly(
                           bottom: 7.w,
                           top: 18.w,
                         ),
                         AppWidgets.text(
                             height: 1.5,
-                            text: "cardModel.infoModel![0].text!",
+                            text: cubit.state.newsData[index].content!,
                             fontSize: 14.sp,
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w400,
                             color: AppColorUtils.TEXT_GREY2,
                             maxLines: 40),
                         SizedBox(
@@ -115,7 +132,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                               Radius.circular(12),
                             ),
                             child: CachedNetworkImage(
-                              imageUrl: cardModel.coverUrl!,
+                              imageUrl: cubit.state.newsData[index].cover!,
                               fit: BoxFit.cover,
                               width: MediaQuery.of(context).size.width,
                               placeholder: (context, url) => Center(
@@ -128,96 +145,140 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                         ),
                       ],
                     ),
-                  )
-                : Container(
-                    child: Column(
-                      children: [
-                        Center(
-                          child: Column(
-                            children: [
-                              SvgPicture.asset(AppImageUtils.NEWS)
-                                  .paddingOnly(bottom: 11.h),
-                              SizedBox(
-                                width: 200.sp,
-                                child: AppWidgets.textLocale(
-                                  textAlign: TextAlign.center,
-                                  text: LocaleKeys.news_empty,
-                                  color: AppColorUtils.DARK_6,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w600,
-                                  maxLines: 2,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ).paddingOnly(top: 52.h, bottom: 98.h),
-                      ],
-                    ),
                   ),
-          ],
-        ),
-        Column(
-          children: [
-            AppWidgets.textLocale(
-              text: LocaleKeys.add_news,
-              fontSize: 18.sp,
-              color: AppColorUtils.TEXT_GREEN2,
-              fontWeight: FontWeight.w600,
-            ),
-          ],
+                ),
+              )
+            : Container(
+                child: Column(
+                  children: [
+                    Center(
+                      child: Column(
+                        children: [
+                          SvgPicture.asset(AppImageUtils.NEWS)
+                              .paddingOnly(bottom: 11.h),
+                          SizedBox(
+                            width: 200.sp,
+                            child: AppWidgets.textLocale(
+                              textAlign: TextAlign.center,
+                              text: LocaleKeys.news_empty,
+                              color: AppColorUtils.DARK_6,
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w600,
+                              maxLines: 2,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ).paddingOnly(top: 52.h, bottom: 98.h),
+                  ],
+                ),
+              ),
+        AppWidgets.textLocale(
+          text: LocaleKeys.add_news,
+          fontSize: 18.sp,
+          color: AppColorUtils.TEXT_GREEN2,
+          fontWeight: FontWeight.w600,
         ).paddingOnly(
           left: 12.w,
-          bottom: 12.h,
-          top: 12.h,
+
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
-              child: AppTextField(
-                title: '',
-                hasTitle: false,
-                hintText: LocaleKeys.comment_title.tr(),
-                onChanged: (String value) {},
-              ),
               width: 270.w,
-            ),
-            Material(
-              child: Ink(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColorUtils.PERCENT_COLOR,
+              height: 46.w,
+              child: TextField(
+                controller: title,
+                expands: true,
+                textAlignVertical: TextAlignVertical.top,
+                maxLines: null,
+                enabled: true,
+                style: GoogleFonts.inter(
+                  fontSize: 15.sp,
                 ),
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(25),
-                  onTap: () {},
-                  child: Container(
-                    height: 46.w,
-                    width: 46.w,
-                    child: SvgPicture.asset(
-                      AppImageUtils.IC_UPLOAD,
-                      color: AppColorUtils.WHITE,
-                    ).paddingAll(10),
+                decoration: InputDecoration(
+                  // border: _border,
+                  disabledBorder: DecorationConst.INPUT_BORDER,
+                  focusedBorder: DecorationConst.INPUT_BORDER,
+                  enabledBorder: DecorationConst.INPUT_BORDER,
+                  contentPadding: EdgeInsets.all(14),
+                  hintText: LocaleKeys.comment_title.tr(),
+                  hintStyle: GoogleFonts.inter(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w500,
+                    color: AppColorUtils.GRAY_4,
                   ),
                 ),
+                keyboardType: TextInputType.multiline,
               ),
-            )
+            ),
+            ShowPickerWidget(
+              width: 46,
+              height: 46,
+              image: AppImageUtils.IC_UPLOAD,
+              color: AppColorUtils.PERCENT_COLOR,
+              padding: 10,
+              imageSelect: (v) {
+                print(v);
+                image=v;
+              },
+            ),
+            // Material(
+            //   child: Ink(
+            //     decoration: BoxDecoration(
+            //       shape: BoxShape.circle,
+            //       color: AppColorUtils.PERCENT_COLOR,
+            //     ),
+            //     child: InkWell(
+            //       borderRadius: BorderRadius.circular(25),
+            //       onTap: () {},
+            //       child: Container(
+            //         height: 46.w,
+            //         width: 46.w,
+            //         child: SvgPicture.asset(
+            //           AppImageUtils.IC_UPLOAD,
+            //           color: AppColorUtils.WHITE,
+            //         ).paddingAll(10),
+            //       ),
+            //     ),
+            //   ),
+            // )
           ],
         ),
-        AppTextField(
-          hintText: LocaleKeys.write_your_comment.tr(),
-          onChanged: (v) {},
-          title: "",
-          hasTitle: false,
-          height: 170.w,
-          isMultiLine: true,
-        ).paddingOnly(
-          top: 12.w,
-          bottom: 18.h,
-        ),
+        SizedBox(
+          height: 170,
+          child: TextField(
+            controller: content,
+            expands: true,
+            textAlignVertical: TextAlignVertical.top,
+            maxLines: null,
+            enabled: true,
+            style: GoogleFonts.inter(
+              fontSize: 15.sp,
+            ),
+            decoration: InputDecoration(
+              // border: _border,
+              disabledBorder: DecorationConst.INPUT_BORDER,
+              focusedBorder: DecorationConst.INPUT_BORDER,
+              enabledBorder: DecorationConst.INPUT_BORDER,
+              contentPadding: EdgeInsets.all(14),
+              hintText: LocaleKeys.write_your_comment.tr(),
+              hintStyle: GoogleFonts.inter(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w500,
+                color: AppColorUtils.GRAY_4,
+              ),
+            ),
+            keyboardType: TextInputType.multiline,
+          ),
+        ).paddingOnly(top: 12.w, bottom: 12.w),
         AppWidgets.appButton(
           title: LocaleKeys.send,
-          onTap: () {},
+          onTap: () {
+            print(image);
+            cubit.postNews(cardModel.id!, title.text, content.text, image!);
+          },
         ),
       ],
     );

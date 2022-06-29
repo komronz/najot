@@ -11,10 +11,12 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 class CharityItem2Widget extends StatelessWidget {
   final ProjectModel model;
   final VoidCallback onTap;
+  final VoidCallback onTapLike;
 
   const CharityItem2Widget({
     required this.model,
     required this.onTap,
+    required this.onTapLike,
     Key? key,
   }) : super(key: key);
 
@@ -63,7 +65,7 @@ class CharityItem2Widget extends StatelessWidget {
                           child: FavoriteButton(
                             isFavorite: true,
                           ),
-                          onTap: () {},
+                          onTap: onTapLike,
                         ),
                       ],
                     ).paddingAll(10)

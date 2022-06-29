@@ -5,6 +5,7 @@ import 'package:najot/data/services/root_service.dart';
 
 import '../model/volunteer_model.dart';
 import '../utils/app_logger_util.dart';
+import 'hive_service.dart';
 
 class CharityService{
 
@@ -19,7 +20,9 @@ class CharityService{
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/ru/project/?type=CH&page_size=15",
+          token: HiveService.to.getToken()
       );
+
 
       if (response.statusCode == 200) {
         final RootProjectModel responseModel =

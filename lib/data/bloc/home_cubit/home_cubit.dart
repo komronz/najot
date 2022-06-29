@@ -21,7 +21,9 @@ class HomeCubit extends Cubit<HomeState> {
   Future getModel() async {
     var mainModel = await mainService.getModel();
 
+
     if(mainModel!=null){
+      print(mainModel.crowdfunding![0].isFavourite);
       emit(state.copyWith(
         categories: mainModel.categories,
         crudFunding: mainModel.crowdfunding,
@@ -33,7 +35,14 @@ class HomeCubit extends Cubit<HomeState> {
     }else{
 
     }
-
-
   }
+
+      Future changeLike(int id) async{
+          var changeLike= await mainService.changeLike(id);
+          if(changeLike!=null){
+            print(1);
+            getModel();
+          }
+      }
+
 }

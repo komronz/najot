@@ -14,10 +14,12 @@ class VolunteerCardWidget extends StatelessWidget {
   VolunteerCardWidget({
     required this.projectModel,
     required this.onTap,
+    required this.onTapLike,
   });
 
   final ProjectModel projectModel;
   final VoidCallback onTap;
+  final VoidCallback onTapLike;
 
   @override
   Widget build(BuildContext context) {
@@ -126,9 +128,14 @@ class VolunteerCardWidget extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.all(15),
-              child: Align(
-                child: SvgPicture.asset(AppImageUtils.LIKE),
-                alignment: Alignment.topRight,
+              child: InkWell(
+                onTap: onTapLike,
+                child: Align(
+                  child: projectModel.isFavourite!
+                      ? SvgPicture.asset(AppImageUtils.LIKE)
+                      : SvgPicture.asset(AppImageUtils.UNLIKE),
+                  alignment: Alignment.topRight,
+                ),
               ),
             ),
           ],

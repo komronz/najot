@@ -17,15 +17,20 @@ class HomeState extends Equatable {
 
   @override
   // TODO: implement props
-  List<Object?> get props => [categories];
+  List<Object?> get props => [
+        categories,
+        crudFunding,
+        volunteer,
+        charity,
+        slider,
+      ];
 
   HomeState copyWith({
     List<Categories>? categories,
-     List<ProjectModel>? crudFunding,
-     List<ProjectModel>? volunteer,
-     List<ProjectModel>? charity,
-     List<SliderList>? slider,
-
+    List<ProjectModel>? crudFunding,
+    List<ProjectModel>? volunteer,
+    List<ProjectModel>? charity,
+    List<SliderList>? slider,
   }) {
     return HomeState(
       categories: categories ?? this.categories,

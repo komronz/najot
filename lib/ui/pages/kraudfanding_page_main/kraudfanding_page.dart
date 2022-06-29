@@ -92,11 +92,11 @@ class _CrowdfundingPageState extends State<CrowdfundingPage>
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: List.generate(
-                        state.crowdfundingModel!.results!.length,
+                        state.crowdfundingModel.length,
                         (index) => KraudfandingMiniCardWidget(
                           cubit: CrowdfundingCubit.to,
                           cardModel:
-                              state.crowdfundingModel!.results![index],
+                              state.crowdfundingModel[index],
                           visible: true,
                         ).paddingOnly(left: 10.w),
                       ),
@@ -183,12 +183,11 @@ class _CrowdfundingPageState extends State<CrowdfundingPage>
                                       crossAxisSpacing: 8,
                                       mainAxisSpacing: 6,
                                       children: List.generate(
-                                        state.tabProjects!.results!.length,
+                                        state.tabProjects.length,
                                         (index) => KraudfandingMiniCardWidget(
                                           cubit: CrowdfundingCubit.to,
                                           visible: true,
-                                          cardModel: state.tabProjects!
-                                              .results![index],
+                                          cardModel: state.tabProjects[index],
                                         ),
                                       ),
                                     ),

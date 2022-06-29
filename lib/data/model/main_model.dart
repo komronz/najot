@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:najot/data/model/project_model.dart';
 
-class MainModel {
+class MainModel extends Equatable{
   List<Categories>? categories;
   List<ProjectModel>? crowdfunding;
   List<ProjectModel>? volunteering;
@@ -67,6 +68,10 @@ class MainModel {
     }
     return data;
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [categories,crowdfunding,charity,volunteering,slider];
 }
 
 class Categories {

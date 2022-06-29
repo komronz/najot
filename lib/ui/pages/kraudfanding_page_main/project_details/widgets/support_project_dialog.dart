@@ -95,7 +95,8 @@ class SupportProjectDialog extends StatelessWidget {
                             text: projectModel.cardNumber!,
                             color: AppColorUtils.KRAUDFANDING,
                             fontSize: 18.sp,
-                            fontWeight: FontWeight.w600)
+                            fontWeight: FontWeight.w600,
+                        )
                       ],
                     ),
                   ),

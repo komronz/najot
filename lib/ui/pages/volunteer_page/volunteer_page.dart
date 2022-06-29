@@ -14,15 +14,14 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 
 class VolunteerPage extends StatelessWidget {
-  VolunteerPage() ;
-
+  VolunteerPage();
 
   static const String routeName = '/volunteer';
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
@@ -36,7 +35,7 @@ class VolunteerPage extends StatelessWidget {
         body: BlocBuilder<VolunteerCubit, VolunteerState>(
           bloc: VolunteerCubit.to,
           builder: (context, state) {
-            if(state.loading==false){
+            if (state.loading == false) {
               return SafeArea(
                 child: SingleChildScrollView(
                   child: Column(
@@ -51,10 +50,10 @@ class VolunteerPage extends StatelessWidget {
                         vertical: 20.w,
                       ),
                       AppWidgets.textLocale(
-                          text: LocaleKeys.new_add,
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w600,
-                          color: AppColorUtils.DARK2)
+                              text: LocaleKeys.new_add,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w600,
+                              color: AppColorUtils.DARK2)
                           .paddingOnly(left: 15.w, bottom: 7.w),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -62,7 +61,7 @@ class VolunteerPage extends StatelessWidget {
                         child: Row(
                           children: List.generate(
                             state.list.length,
-                                (index) => Container(
+                            (index) => Container(
                               margin: EdgeInsets.only(left: 10.w),
                               child: NewVolunteerCard(
                                 onTap: () {
@@ -75,16 +74,17 @@ class VolunteerPage extends StatelessWidget {
                                   );
                                 },
                                 cardModel: state.list[index],
+                                cubit: VolunteerCubit.to,
                               ),
                             ),
                           ),
                         ),
                       ),
                       AppWidgets.textLocale(
-                          text: LocaleKeys.all,
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w600,
-                          color: AppColorUtils.DARK2)
+                              text: LocaleKeys.all,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w600,
+                              color: AppColorUtils.DARK2)
                           .paddingOnly(
                         left: 15.w,
                         top: 15.w,
@@ -102,7 +102,8 @@ class VolunteerPage extends StatelessWidget {
                         crossAxisCount: 2,
                         children: List.generate(
                           state.list.length,
-                              (index) => NewVolunteerCard(
+                          (index) => NewVolunteerCard(
+                            cubit: VolunteerCubit.to,
                             onTap: () {
                               NavigatorService.to.pushNamed(
                                 VolunteerDetailPage.routeName,
@@ -120,7 +121,7 @@ class VolunteerPage extends StatelessWidget {
                   ),
                 ),
               );
-            }else{
+            } else {
               return Container(
                 child: Center(
                   child: CircularProgressIndicator(),
