@@ -160,7 +160,7 @@ class AttentionNote extends StatelessWidget {
                       color: AppColorUtils.SMS_BTN2,
                       textColor: AppColorUtils.KRAUDFANDING,
                       onTap: () {
-                        NavigatorService.to.pop();
+                        Navigator.of(context, rootNavigator: true).pop();
                       },
                       title: LocaleKeys.notes.tr(),
                       fontSize: 16.sp,

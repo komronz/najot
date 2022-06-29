@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/model/volunteer_donate_model.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
@@ -21,7 +22,7 @@ class WaitingForAddingSuccess extends StatelessWidget {
   DateTime dateTime;
   DateTime _dateTime = DateTime.now();
   TimeOfDay timeOfDay = TimeOfDay.now();
-  VolunteeringModel model;
+  VolunteerDonateResults model;
 
   @override
   Widget build(BuildContext context) {

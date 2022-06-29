@@ -66,26 +66,26 @@ class _NotificationPageState extends State<NotificationPage> {
   }
 
   Widget _buildBody(NotificationState state, BuildContext context) {
+
     return ListView.builder(
       shrinkWrap: true,
-      reverse: true,
       itemBuilder: (context, index) {
-        if (index == state.cardList.length -1) {
-          return MyNoteWidget(
-            model: state.cardList[index],
-            isLast: state.isRead,
-            index: index,
-            onTap: (){
-              context.read<NotificationCubit>().isRead(widget.isRead);
-              NotificationApi.showNotification(
-                  title:LocaleKeys.attention_hello_volunteer.tr(),
-                  body: LocaleKeys.you_go_to_help.tr(),
-                  payload: jsonEncode(state.cardList[index].toJson()),
-                  scheduledDate: DateTime(2022,06,26,18,36,59)
-              );
-            },
-          );
-        }
+        // if (index == state.cardList.length -1) {
+        //   return MyNoteWidget(
+        //     model: state.cardList[index],
+        //     isLast: state.isRead,
+        //     index: index,
+        //     onTap: (){
+        //       context.read<NotificationCubit>().isRead(widget.isRead);
+        //       NotificationApi.showNotification(
+        //           title:LocaleKeys.attention_hello_volunteer.tr(),
+        //           body: LocaleKeys.you_go_to_help.tr(),
+        //           payload: jsonEncode(state.cardList[index].toJson()),
+        //           scheduledDate: DateTime.parse(state.cardList[index].createdDate??""),
+        //       );
+        //     },
+        //   );
+        // }
         return MyNoteWidget(
           model: state.cardList[index],
           index: index,
@@ -94,7 +94,7 @@ class _NotificationPageState extends State<NotificationPage> {
               title:LocaleKeys.attention_hello_volunteer.tr(),
               body: LocaleKeys.you_go_to_help.tr(),
               payload: jsonEncode(state.cardList[index].toJson()),
-                scheduledDate: DateTime(2022,06,26,18,36,59)
+                scheduledDate: DateTime.parse(state.cardList[index].createdDate??""),
             );
           },
         );

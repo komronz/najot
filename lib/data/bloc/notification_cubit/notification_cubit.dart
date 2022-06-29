@@ -19,6 +19,15 @@ class NotificationCubit extends Cubit<NotificationState> {
   void isRead(bool vol) {
     emit(state.copyWith(isRead: vol));
   }
+  Future delete(int index) async{
+    List<VolunteeringModel>? list = List.from(state.cardList);
+    for (var i = 0; i < list.length; i++){
+      if(list[i] == index) {
+      }
+    }
+    list.removeAt(index);
+    emit(state.copyWith(list:list));
+  }
 
   void dateChange(DateTime dateTime, int index) {
     List<VolunteeringModel>? list = List.from(state.cardList);

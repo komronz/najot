@@ -172,7 +172,11 @@ class MyNoteWidget extends StatelessWidget {
                       showDialog(
                         context: context,
                         builder: (context) {
-                          return NotificationDeleteWidget();
+                          return NotificationDeleteWidget(
+                            index: index,
+                            cubit: cubit,
+                          );
+
                         },
                       );
                     },
