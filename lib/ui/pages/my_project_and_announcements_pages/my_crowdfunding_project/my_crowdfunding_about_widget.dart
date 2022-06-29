@@ -9,15 +9,11 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comments_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/more_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/news_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
 
 import '../../../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_cubit.dart';
 import '../../../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_state.dart';
 import '../../../../data/config/const/decoration_const.dart';
-import '../../../../data/model/kraufanding_model.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_bar_with_title.dart';
@@ -26,11 +22,9 @@ import '../my_charity_project_full_widget/my_charity_delete_project_dialog.dart'
 import '../my_charity_project_full_widget/my_charity_edit_project_dialog.dart';
 import 'my_crowdfunding_applied_user_widget.dart';
 import 'my_crowdfunding_comments_widget.dart';
-import 'my_crowdfunding_more_widget.dart';
 import 'my_crowdfunding_news_widget.dart';
 import 'my_crowdfunding_price_widget.dart';
 import 'my_crowdfunding_question_asked_widget.dart';
-import 'my_crowdfunding_support_page.dart';
 
 class MyCrowdfundingAboutWidget extends StatefulWidget {
   static const String routeName = "/myCrowdfundingAboutWidget";
@@ -67,14 +61,12 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
       setState(() {});
     }
   }
-
   bool selected = true;
-
   @override
   Widget build(BuildContext context) {
     var createdAt= DateTime.parse(widget.model.deadline!);
     return BlocProvider(
-      create: (context)=>cubit,
+      create: (context)=>cubit..load(widget.model.id!),
       child: BlocBuilder<MyCrowdfundingSupportCubit, MyCrowdfundingSupportState>(
         builder: (context, state) {
           return Scaffold(
@@ -308,22 +300,20 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                 Container(
                                   child: [
                                     MoreWidget(cardModel: widget.model),
-                                    NewsWidget(cardModel: widget.model),
+                                    MyCrowdfundingNewsWidget(
+                                      cardModel: widget.model,
+                                      cubit: cubit,
+                                    ).paddingAll(20.w),
                                     MyCrowdfundingQuestionsAskedWidget(
                                       cardModel: widget.model,
                                       cubit: cubit,
                                     ).paddingAll(20.w),
-                                    CommentsWidget(cardModel: widget.model),
                                     // MyCrowdfundingMoreWidget(
                                     //   cardModel: widget.model,
                                     // ),
-                                    MyCrowdfundingNewsWidget(
+                                    MyCrowdfundingCommentsWidget(
                                       cardModel: widget.model,
-                                    ).paddingAll(20.w),
-
-                                    // MyCrowdfundingCommentsWidget(
-                                    //   cardModel: widget.model,
-                                    // ).paddingAll(20.w)
+                                    ).paddingAll(20.w)
                                   ][_tabController.index],
                                 ),
                               ],

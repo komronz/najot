@@ -2,15 +2,15 @@
 
 class CrowdfundingState extends Equatable {
   CrowdfundingState(
-      {this.crowdfundingModel,
+      {this.crowdfundingModel=const [],
       this.loading = false,
       this.tabLoading = false,
       this.category = const [],
-      this.tabProjects,
+      this.tabProjects=const [],
         this.tabChange=0});
 
-  final RootProjectModel? crowdfundingModel;
-  final RootProjectModel? tabProjects;
+  final List<ProjectModel> crowdfundingModel;
+  final List<ProjectModel> tabProjects;
   final bool loading;
   final bool tabLoading;
   final int tabChange;
@@ -27,8 +27,9 @@ class CrowdfundingState extends Equatable {
         tabChange
       ];
 
-  CrowdfundingState copyWith({RootProjectModel? crowdfundingModel,
-      RootProjectModel? tabProjects,
+  CrowdfundingState copyWith({
+    List<ProjectModel>? crowdfundingModel,
+    List<ProjectModel>? tabProjects,
       bool? loading,
       bool? tabLoading,
         int? tabChange,

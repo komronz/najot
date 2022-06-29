@@ -5,6 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/model/news_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:clipboard/clipboard.dart';
@@ -13,9 +15,9 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/Mi
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class SupportProjectDialog extends StatelessWidget {
-  const SupportProjectDialog({
-    Key? key,
-  }) : super(key: key);
+  SupportProjectDialog({required this.projectModel});
+
+  ProjectModel projectModel;
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +55,8 @@ class SupportProjectDialog extends StatelessWidget {
                 SizedBox(
                   width: 10,
                 ),
-                AppWidgets.text(
-                    text: "Karta raqami",
+                AppWidgets.textLocale(
+                    text: LocaleKeys.card_number.tr(),
                     fontSize: 16.sp,
                     color: AppColorUtils.DARK_6,
                     fontWeight: FontWeight.w400),
@@ -70,13 +72,10 @@ class SupportProjectDialog extends StatelessWidget {
                   color: AppColorUtils.GREEN_ACCENT5,
                 ),
                 child: InkWell(
-                  onTap: (){
-                    FlutterClipboard.copy("8600 1500 8300 1234");
-                    Fluttertoast.showToast(
-                        msg: "Saqlandi",  // message
-                        toastLength: Toast.LENGTH_SHORT, // length
-                        gravity: ToastGravity.BOTTOM,    // location
-                                     // duration
+                  onTap: () {
+                    FlutterClipboard.copy(projectModel.cardNumber!);
+                    AppWidgets.showText(
+                      text: LocaleKeys.be_save.tr(),
                     );
                   },
                   borderRadius: BorderRadius.circular(12),
@@ -84,18 +83,19 @@ class SupportProjectDialog extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     height: 48.w,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-
+                      borderRadius: BorderRadius.circular(12),
                     ),
                     child: Row(
                       children: [
                         SvgPicture.asset(AppImageUtils.UZCARD),
-                        SizedBox(width: 10.w,),
+                        SizedBox(
+                          width: 10.w,
+                        ),
                         AppWidgets.text(
-                          text: "8600 1500 8300 1234",
-                          color: AppColorUtils.KRAUDFANDING,
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w600
+                            text: projectModel.cardNumber!,
+                            color: AppColorUtils.KRAUDFANDING,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w600,
                         )
                       ],
                     ),

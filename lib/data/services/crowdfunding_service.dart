@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/categories_model.dart';
+import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/root_service.dart';
 
 import '../model/volunteer_model.dart';
@@ -19,6 +20,7 @@ class CrowdfundingService{
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/ru/project/?type=CF",
+        token: HiveService.to.getToken()
       );
       if (response.statusCode == 200) {
         final RootProjectModel responseModel =
@@ -64,6 +66,7 @@ class CrowdfundingService{
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/ru/project/?type=CF&category=${id}&page_size=15",
+          token: HiveService.to.getToken()
       );
 
       if (response.statusCode == 200) {

@@ -5,6 +5,7 @@ import 'dart:io';
 // 📦 Package imports:
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import '../config/const/api_const.dart';
@@ -12,7 +13,7 @@ import '../utils/app_logger_util.dart';
 
 class HttpService {
   Dio? _dio;
-
+static HttpService get to=> GetIt.I<HttpService>();
   static Future init() async {
     final getIt = GetIt.instance;
     getIt.registerSingleton<HttpService>(HttpService());
@@ -31,6 +32,41 @@ class HttpService {
     }
   }
 
+  Future<Response?> postFile({
+    String? path,
+    FormData? formData,
+    Map<String, dynamic>? headers,
+    String? token,
+  }) async {
+    try {
+      AppLoggerUtil.d("API: ${APIConst.API_URL + path!}");
+      if (token != null) {
+        return await _dio!.post(
+          path,
+          data: formData,
+          options: Options(
+            headers: {
+              HttpHeaders.contentTypeHeader: "multipart/from-data",
+              'Authorization': 'Bearer ${token}',
+            },
+          ),
+        );
+      } else {
+        return await _dio!.post(
+          APIConst.API_URL + path,
+          data: formData,
+          options: Options(
+            headers: headers,
+          ),
+        );
+      }
+    } on DioError catch (e) {
+      return e.response;
+    } catch (e) {
+      AppLoggerUtil.e(e.toString());
+      return null;
+    }
+  }
   // ignore: missing_return
   Future<Response?> post({
     String? path,

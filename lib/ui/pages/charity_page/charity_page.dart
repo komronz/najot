@@ -153,6 +153,9 @@ class _CharityPageState extends State<CharityPage>
                                   arguments: list[index],
                                 );
                               },
+                              onTapLike: () {
+                                CharityCubit.to.changeLike(list[index].id!);
+                              },
                             ).paddingOnly(left: 10.w);
                           } else {
                             return CharityItem2Widget(
@@ -166,6 +169,9 @@ class _CharityPageState extends State<CharityPage>
                                 );
                               },
                               model: list[index],
+                              onTapLike: () {
+                                CharityCubit.to.changeLike(list[index].id!);
+                              },
                             ).paddingOnly(left: 10.w);
                           }
                         }),
@@ -228,55 +234,63 @@ class _CharityPageState extends State<CharityPage>
                           ),
                           state.tabLoading
                               ? Center(
-                            child: CircularProgressIndicator(),
-                          ).paddingSymmetric(vertical: 50.w)
-                              :Container(
-                            child: List.generate(
-                              state.category.length,
-                              (index) => GridView.count(
-                                shrinkWrap: true,
-                                crossAxisCount: 2,
-                                physics: ClampingScrollPhysics(),
-                                childAspectRatio: 160 / 267,
-                                padding: EdgeInsets.all(0),
-                                reverse: false,
-                                crossAxisSpacing: 8,
-                                mainAxisSpacing: 6,
-                                children: List.generate(
-                                    state.tabProjects!.results!.length,
-                                    (index) {
-                                  if (state.tabProjects!.results![index]
-                                          .requiredFund !=
-                                      null) {
-                                    return CharityItemWidget(
-                                      onTap: () {
-                                        NavigatorService.to.pushNamed(
-                                          CharityFullPage.routName,
-                                          arguments: state.tabProjects!
-                                              .results![index],
-                                        );
-                                      },
-                                      model: list[index],
-                                    );
-                                  } else {
-                                    return CharityItem2Widget(
-                                      model: list[index],
-                                      onTap: () {
-                                        NavigatorService.to.pushNamed(
-                                          CharityFullPage2.routName,
-                                          arguments: CharityFullModel(
-                                            cardModel: state.tabProjects!
-                                                .results![index],
-                                            cubit: CharityCubit.to,
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  }
-                                }),
-                              ),
-                            )[_tabController.index],
-                          ).paddingSymmetric(horizontal: 15.w),
+                                  child: CircularProgressIndicator(),
+                                ).paddingSymmetric(vertical: 50.w)
+                              : Container(
+                                  child: List.generate(
+                                    state.category.length,
+                                    (index) => GridView.count(
+                                      shrinkWrap: true,
+                                      crossAxisCount: 2,
+                                      physics: ClampingScrollPhysics(),
+                                      childAspectRatio: 160 / 267,
+                                      padding: EdgeInsets.all(0),
+                                      reverse: false,
+                                      crossAxisSpacing: 8,
+                                      mainAxisSpacing: 6,
+                                      children: List.generate(
+                                          state.tabProjects!.results!.length,
+                                          (index) {
+                                        if (state.tabProjects!.results![index]
+                                                .requiredFund !=
+                                            null) {
+                                          return CharityItemWidget(
+                                            onTap: () {
+                                              NavigatorService.to.pushNamed(
+                                                CharityFullPage.routName,
+                                                arguments: state.tabProjects!
+                                                    .results![index],
+                                              );
+                                            },
+                                            model: list[index],
+                                            onTapLike: () {
+                                              CharityCubit.to
+                                                  .changeLike(list[index].id!);
+                                            },
+                                          );
+                                        } else {
+                                          return CharityItem2Widget(
+                                            model: list[index],
+                                            onTap: () {
+                                              NavigatorService.to.pushNamed(
+                                                CharityFullPage2.routName,
+                                                arguments: CharityFullModel(
+                                                  cardModel: state.tabProjects!
+                                                      .results![index],
+                                                  cubit: CharityCubit.to,
+                                                ),
+                                              );
+                                            },
+                                            onTapLike: () {
+                                              CharityCubit.to
+                                                  .changeLike(list[index].id!);
+                                            },
+                                          );
+                                        }
+                                      }),
+                                    ),
+                                  )[_tabController.index],
+                                ).paddingSymmetric(horizontal: 15.w),
                         ],
                       ),
                     ).paddingOnly(top: 18.w),

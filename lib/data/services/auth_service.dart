@@ -72,7 +72,6 @@ class AuthService {
         fields: body,
         headers: headers,
       );
-      print(response!.statusCode);
       if (response != null) {
         if (response.statusCode == 200) {
           final TokenModel tokenModel=

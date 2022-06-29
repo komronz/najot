@@ -111,12 +111,17 @@ class KraudfandingMiniCardWidget extends StatelessWidget {
                 ],
               ),
             ),
-            Align(
-              child: SvgPicture.asset(
-                true ? AppImageUtils.LIKE : AppImageUtils.UNLIKE,
-              ),
-              alignment: Alignment.topRight,
-            ).paddingAll(12.w),
+            InkWell(
+              onTap: (){
+                cubit.changeLike(cardModel.id!);
+              },
+              child: Align(
+                child: cardModel.isFavourite!
+                    ? SvgPicture.asset(AppImageUtils.LIKE)
+                    : SvgPicture.asset(AppImageUtils.UNLIKE),
+                alignment: Alignment.topRight,
+              ).paddingAll(12.w),
+            ),
             Visibility(
               visible: visible,
               child: ButtonCard(

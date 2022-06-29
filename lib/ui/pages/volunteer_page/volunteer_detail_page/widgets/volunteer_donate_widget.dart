@@ -1,6 +1,8 @@
+import 'package:clipboard/clipboard.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
@@ -9,6 +11,8 @@ import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/MixTextWidget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/text_field_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+
+import '../../../../../data/utils/app_image_utils.dart';
 
 class VolunteerDonateWidget extends StatelessWidget {
   VolunteerDonateWidget({required this.cardModel});
@@ -32,8 +36,7 @@ class VolunteerDonateWidget extends StatelessWidget {
             bottom: 3.w,
           ),
           AppWidgets.text(
-                  text: "Lorem Ipsum is simply dummy text of the printing "
-                      "and typesetting industry. Lorem Ipsum has been",
+                  text: cardModel.title??"",
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColorUtils.DARK2,
@@ -51,24 +54,53 @@ class VolunteerDonateWidget extends StatelessWidget {
                   color: AppColorUtils.DARK_6)
               .paddingSymmetric(horizontal: 20.w),
           AppWidgets.circleImages(
-            image: cardModel.coverUrl!,
-            count: 100,
+            count: cardModel.investorsCount!,
           ).paddingSymmetric(horizontal: 20.w),
           AppWidgets.textLocale(
-            fontWeight: FontWeight.w400,
-            fontSize: 16.sp,
-            color: AppColorUtils.DARK_6,
-            textAlign: TextAlign.center,
-            text: LocaleKeys.enter_amount,
-          ).paddingSymmetric(
-            vertical: 10.w,
-            horizontal: 20.w,
-          ),
-          TextFieldWidget(
-            hintText: "500 000 ${LocaleKeys.som.tr()}",
-            onChanged: (v) {},
-            title: '',
-          ).paddingSymmetric(horizontal: 20.w),
+              text: LocaleKeys.card_number.tr(),
+              fontSize: 16.sp,
+              color: AppColorUtils.DARK_6,
+              fontWeight: FontWeight.w400).paddingOnly(left: 20.w),
+          Material(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Ink(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: AppColorUtils.GREEN_ACCENT5,
+              ),
+              child: InkWell(
+                onTap: () {
+                  FlutterClipboard.copy(cardModel.cardNumber!);
+                  AppWidgets.showText(
+                    text: LocaleKeys.be_save.tr(),
+                  );
+                },
+                borderRadius: BorderRadius.circular(12),
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  height: 48.w,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(AppImageUtils.UZCARD),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      AppWidgets.text(
+                          text: cardModel.cardNumber!,
+                          color: AppColorUtils.KRAUDFANDING,
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w600)
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ).paddingSymmetric(horizontal: 20.w,vertical: 10),
           MixTextWidget().paddingSymmetric(
             vertical: 12.w,
             horizontal: 20.w,

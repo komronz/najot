@@ -54,7 +54,7 @@
   "ask_question": "Savol berish",
   "author_write_question": "Muallifga savol yozish",
   "title_question": "Savol sarlavhasi",
-  "write_question": "Savol yozing",
+  "write_question": "Savolingizni yozing",
   "products": "Mahsulotlar",
   "buy_use_product": "Sotib olingan mahsulotlar summasi shu loyiha rivojiga ishlatilinadi.",
   "toSum": "so'mga",
@@ -229,7 +229,7 @@
   "document_must_be_clear": "1. Xujjat rasmi tiniq sifatda bo’lishi shart",
   "both_sides_uploaded": "2. Xujjatni ikki tomoni yuklanishi kerak (ma’lumotlar sahifasi va ro’yxatga olingan mazil sahifasi)",
   "uploaded_by_owner": "3. Xujjatni rasmini o’z egasi yuklashi shart (moderatorlar tomonidan tekshiriladi)",
-  "document_must_uzbekistan.": "4. Xujjat O’zbekiston Respublikasiga tegishli bo’lishi kerak.",
+  "document_must_uzbekistan": "4. Xujjat O’zbekiston Respublikasiga tegishli bo’lishi kerak.",
   "can_upload_id_card": "5. ID- Kartani ham yuklashingiz mumkin",
   "not_load_driver_license": "6. Haydovchikil guvohnomasini yuklash mumkin emas",
   "project_guarantees_document": "Najot.uz lohiyasi, xujjatingiz ommaga tarqalmasligiga kafolat beriadi!",
@@ -247,6 +247,9 @@
   "successful_send": "//Muvoffaqiyatli yuborildi! //Tez orada Moderatorlar siz bilan aloqaga chiqishadi.",
   "who_joining_project": "Loyihani kim qo’shmoqda?",
   "organization": "Tashkilot",
+  "comments_empty": "Hozircha izohlar yo'q",
+  "card_number": "Karta raqami",
+  "be_save": "Saqlandi",
   "user": "Foydalanuvchi",
   "project_successful_added": "Loyiha //muvaffaqiyatli// qo'shildi"
 }

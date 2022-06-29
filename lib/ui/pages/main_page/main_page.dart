@@ -35,14 +35,13 @@ class MainPage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<HomeCubit>(
-          create: (BuildContext context) => homeCubit..getModel(),
+          create: (BuildContext context) => homeCubit,
         ),
-
       ],
       child: Scaffold(
         body: BlocBuilder<HomeCubit, HomeState>(
+          bloc: homeCubit..getModel(),
           builder: (context, state) {
-
             return Container(
               color: AppColorUtils.BACKGROUND,
               child: Column(
@@ -123,7 +122,6 @@ class MainPage extends StatelessWidget {
                                       fontsize: 14.sp,
                                       color: AppColorUtils.CHARITY,
                                       onTap: () {
-
                                         NavigatorService.to.pushNamed(
                                           CharityPage.routeName,
                                         );
@@ -157,11 +155,17 @@ class MainPage extends StatelessWidget {
                                           onTap: () {
                                             NavigatorService.to.pushNamed(
                                               ProjectDetailsPage.routeName,
-                                              arguments: CrowdfundingDetailModel(
+                                              arguments:
+                                                  CrowdfundingDetailModel(
                                                 cubit: CrowdfundingCubit.to,
-                                                cardModel: state.crudFunding[index],
+                                                cardModel:
+                                                    state.crudFunding[index],
                                               ),
                                             );
+                                          },
+                                          onTapLike: () {
+                                            homeCubit.changeLike(
+                                                state.crudFunding[index].id!);
                                           },
                                         ),
                                       ),
@@ -199,6 +203,10 @@ class MainPage extends StatelessWidget {
                                             );
                                           },
                                           projectModel: state.volunteer[index],
+                                          onTapLike: () {
+                                            homeCubit.changeLike(
+                                                state.volunteer[index].id!);
+                                          },
                                         ),
                                       ),
                                     ),
@@ -230,11 +238,17 @@ class MainPage extends StatelessWidget {
                                           onTap: () {
                                             NavigatorService.to.pushNamed(
                                               ProjectDetailsPage.routeName,
-                                              arguments: CrowdfundingDetailModel(
+                                              arguments:
+                                                  CrowdfundingDetailModel(
                                                 cubit: CrowdfundingCubit.to,
                                                 cardModel: state.charity[index],
                                               ),
                                             );
+                                          },
+                                          onTapLike: () {
+                                            homeCubit.changeLike(
+                                                state.charity[index].id!);
+                                            homeCubit.getModel();
                                           },
                                         ),
                                       ),

@@ -6,13 +6,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class MyCrowdfundingCommentsWidget extends StatefulWidget {
    MyCrowdfundingCommentsWidget({required this.cardModel}) ;
-   final KraufandingModel cardModel;
+   final ProjectModel cardModel;
 
   @override
   State<MyCrowdfundingCommentsWidget> createState() => _MyCharityCommentsWidgetState();
@@ -53,7 +54,7 @@ class _MyCharityCommentsWidgetState extends State<MyCrowdfundingCommentsWidget> 
                       image: DecorationImage(
                           image: NetworkImage(
                             widget.cardModel
-                                .imgUrl!,
+                                .cover!,
                           ),
                           fit: BoxFit.cover),
                     ),
@@ -90,7 +91,7 @@ class _MyCharityCommentsWidgetState extends State<MyCrowdfundingCommentsWidget> 
               ),
               AppWidgets.text(
                 text: widget.cardModel
-                    .infoModel![0].text!,
+                .title!,
                 fontWeight: FontWeight.w400,
                 fontSize: 14.sp,
                 color:

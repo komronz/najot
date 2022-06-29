@@ -17,6 +17,7 @@ class MoreWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+
       children: [
       Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -36,7 +37,7 @@ class MoreWidget extends StatelessWidget {
         SizedBox(height: 6.h),
         Container(
           child: Text(
-            cardModel.title!,
+            cardModel.content!,
             style: TextStyle(
                 fontSize: 14.sp,
                 color: AppColorUtils.DARK3,
@@ -46,7 +47,7 @@ class MoreWidget extends StatelessWidget {
           ),
         ),
       ],
-    ),
+    ).paddingSymmetric(horizontal: 20.w),
         Container(
           padding: EdgeInsets.symmetric(
             vertical: 10.w,

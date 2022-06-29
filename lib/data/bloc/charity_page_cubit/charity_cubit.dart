@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/services/charity_saved_service.dart';
+import 'package:najot/data/services/main_service.dart';
 
 import '../../model/categories_model.dart';
 import '../../model/volunteer_model.dart';
@@ -20,8 +21,8 @@ class CharityCubit extends Cubit<CharityState> {
     CharityCubit.to.load();
   }
   CharityCubit() : super(CharityState());
-
   CharityService charityService = CharityService();
+  MainService mainService=MainService();
 
   Future load() async {
     var charityModel = await charityService.getCharityModel();
@@ -44,7 +45,6 @@ class CharityCubit extends Cubit<CharityState> {
   Future tabChange(int id) async{
     emit(state.copyWith(tabLoading: true));
     var tabProjects=await charityService.getProjectsById(id);
-
     if(tabProjects!=null){
       await Future.delayed(Duration(seconds: 1));
       emit(state.copyWith(tabProjects: tabProjects));
@@ -62,5 +62,11 @@ class CharityCubit extends Cubit<CharityState> {
   Future onChangeSave(bool v) async {
     var list = await CharitySavedService().getCharityList();
     emit(state.copyWith(saveHelp: v));
+  }
+  Future changeLike(int id) async{
+    var changeLike= await mainService.changeLike(id);
+    if(changeLike!=null){
+      load();
+    }
   }
 }

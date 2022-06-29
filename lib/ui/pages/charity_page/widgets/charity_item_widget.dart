@@ -10,16 +10,19 @@ import 'package:najot/ui/pages/charity_page/widgets/favorite_button.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
+import '../../../../data/bloc/charity_page_cubit/charity_cubit.dart';
 import '../../../../data/model/project_model.dart';
 
 class CharityItemWidget extends StatelessWidget {
   final ProjectModel model;
   final VoidCallback onTap;
+  final VoidCallback onTapLike;
 
 
   const CharityItemWidget({
     required this.model,
     required this.onTap,
+    required this.onTapLike,
 
     Key? key,
   }) : super(key: key);
@@ -67,9 +70,9 @@ class CharityItemWidget extends StatelessWidget {
                         Expanded(child: SizedBox()),
                         InkWell(
                           child: FavoriteButton(
-                            isFavorite: true,
+                            isFavorite: model.isFavourite!,
                           ),
-                          onTap: () {},
+                          onTap: onTapLike
                         ),
                       ],
                     ).paddingAll(10)

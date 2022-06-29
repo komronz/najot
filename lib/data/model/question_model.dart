@@ -1,26 +1,28 @@
-class NewsModel {
+import 'news_model.dart';
+
+class QuestionModel {
   Links? links;
   int? currentPageNumber;
   int? totalPages;
   int? count;
-  List<NewsData>? results;
+  List<QuestionsData>? results;
 
-  NewsModel(
+  QuestionModel(
       {this.links,
         this.currentPageNumber,
         this.totalPages,
         this.count,
         this.results});
 
-  NewsModel.fromJson(Map<String, dynamic> json) {
+  QuestionModel.fromJson(Map<String, dynamic> json) {
     links = json['links'] != null ? new Links.fromJson(json['links']) : null;
     currentPageNumber = json['current_page_number'];
     totalPages = json['total_pages'];
     count = json['count'];
     if (json['results'] != null) {
-      results = <NewsData>[];
+      results = <QuestionsData>[];
       json['results'].forEach((v) {
-        results!.add(new NewsData.fromJson(v));
+        results!.add(new QuestionsData.fromJson(v));
       });
     }
   }
@@ -40,50 +42,37 @@ class NewsModel {
   }
 }
 
-class Links {
-  String? next;
-  String? previous;
 
-  Links({this.next, this.previous});
 
-  Links.fromJson(Map<String, dynamic> json) {
-    next = json['next'];
-    previous = json['previous'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['next'] = this.next;
-    data['previous'] = this.previous;
-    return data;
-  }
-}
-
-class NewsData {
+class QuestionsData {
   int? id;
-  Project? project;
   String? title;
   String? content;
-  String? cover;
+  List<Answers>? answers;
+  int? project;
   String? createdAt;
   User? user;
 
-  NewsData(
+  QuestionsData(
       {this.id,
-        this.project,
         this.title,
         this.content,
-        this.cover,
+        this.answers,
+        this.project,
         this.createdAt,
         this.user});
 
-  NewsData.fromJson(Map<String, dynamic> json) {
+  QuestionsData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    project =
-    json['project'] != null ? new Project.fromJson(json['project']) : null;
     title = json['title'];
     content = json['content'];
-    cover = json['cover'];
+    if (json['answers'] != null) {
+      answers = <Answers>[];
+      json['answers'].forEach((v) {
+        answers!.add(new Answers.fromJson(v));
+      });
+    }
+    project = json['project'];
     createdAt = json['created_at'];
     user = json['user'] != null ? new User.fromJson(json['user']) : null;
   }
@@ -91,12 +80,12 @@ class NewsData {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    if (this.project != null) {
-      data['project'] = this.project!.toJson();
-    }
     data['title'] = this.title;
     data['content'] = this.content;
-    data['cover'] = this.cover;
+    if (this.answers != null) {
+      data['answers'] = this.answers!.map((v) => v.toJson()).toList();
+    }
+    data['project'] = this.project;
     data['created_at'] = this.createdAt;
     if (this.user != null) {
       data['user'] = this.user!.toJson();
@@ -105,46 +94,34 @@ class NewsData {
   }
 }
 
-class Project {
+class Answers {
   int? id;
-  String? title;
+  int? question;
+  String? content;
+  String? createdAt;
+  User? user;
 
-  Project({this.id, this.title});
+  Answers({this.id, this.question, this.content, this.createdAt, this.user});
 
-  Project.fromJson(Map<String, dynamic> json) {
+  Answers.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    title = json['title'];
+    question = json['question'];
+    content = json['content'];
+    createdAt = json['created_at'];
+    user = json['user'] != null ? new User.fromJson(json['user']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    data['title'] = this.title;
+    data['question'] = this.question;
+    data['content'] = this.content;
+    data['created_at'] = this.createdAt;
+    if (this.user != null) {
+      data['user'] = this.user!.toJson();
+    }
     return data;
   }
 }
 
-class User {
-  int? id;
-  String? firstName;
-  String? lastName;
-  String? photo;
 
-  User({this.id, this.firstName, this.lastName, this.photo});
-
-  User.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    firstName = json['first_name'];
-    lastName = json['last_name'];
-    photo = json['photo'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['first_name'] = this.firstName;
-    data['last_name'] = this.lastName;
-    data['photo'] = this.photo;
-    return data;
-  }
-}

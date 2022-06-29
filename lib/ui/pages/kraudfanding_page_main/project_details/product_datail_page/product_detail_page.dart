@@ -105,11 +105,16 @@ class ProductDetailPage extends StatelessWidget {
                           height: 50.w,
                           width: 50.w,
                           decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              image: NetworkImage("productModel.imgUrl!"),
-                              fit: BoxFit.cover,
+                              shape: BoxShape.circle,
+                              color: Colors.black12),
+                          child: CachedNetworkImage(
+                            imageUrl: model.products.author!.photo!,
+                            fit: BoxFit.cover,
+                            placeholder: (context, url) => Center(
+                              child: CircularProgressIndicator(),
                             ),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.person),
                           ),
                         ),
                         Column(
@@ -125,7 +130,7 @@ class ProductDetailPage extends StatelessWidget {
                             SizedBox(
                               width: 150.w,
                               child: AppWidgets.text(
-                                text: "Eshonov Fakhriyor",
+                                text: "${model.products.author!.lastName} ${model.products.author!.firstName}",
                                 color: AppColorUtils.TEXT_GREEN2,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14.sp,

@@ -2,9 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:najot/data/bloc/volunteer_bloc/volunteer_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
+import 'package:najot/data/services/volunteer_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -13,10 +15,12 @@ class NewVolunteerCard extends StatelessWidget {
   NewVolunteerCard({
     required this.cardModel,
     required this.onTap,
+    required this.cubit,
   });
 
   ProjectModel cardModel;
   VoidCallback onTap;
+  VolunteerCubit cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -96,17 +100,15 @@ class NewVolunteerCard extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              // context.read<VolunteerCubit>().changeLike(cardModel: cardModel);
+              cubit.changeLike(cardModel.id!);
             },
             child: Align(
               child: Container(
                 width: 24.w,
                 height: 24.w,
-                child: SvgPicture.asset(
-                  false
-                      ? AppImageUtils.UNLIKE
-                      : AppImageUtils.LIKE,
-                ),
+                child: cardModel.isFavourite!
+                    ? SvgPicture.asset(AppImageUtils.LIKE)
+                    : SvgPicture.asset(AppImageUtils.UNLIKE),
               ),
               alignment: Alignment.topRight,
             ).paddingAll(15),

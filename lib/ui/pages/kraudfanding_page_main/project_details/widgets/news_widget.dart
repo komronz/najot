@@ -14,22 +14,18 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 
 class NewsWidget extends StatelessWidget {
   const NewsWidget({
-    required this.cardModel,
+    required this.cubit,
     Key? key,
   }) : super(key: key);
 
-  final ProjectModel? cardModel;
+  final ProjectDataCubit cubit;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProjectDataCubit, ProjectDataState>(
-      bloc: ProjectDataCubit()
-        ..load(1),
-      builder: (BuildContext context, state) {
-        return true
+        return cubit.state.newsData.isNotEmpty
             ? Column(
           children: List.generate(
-            state.newsModel!.results!.length,
+            cubit.state.newsData.length,
                 (index) =>
               Container(
                 padding: EdgeInsets.only(
@@ -55,7 +51,7 @@ class NewsWidget extends StatelessWidget {
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
-                                    image: NetworkImage(state.newsModel!.results![index].author!.photo!),
+                                    image: NetworkImage(cubit.state.newsData[index].user!.photo!),
                                     fit: BoxFit.cover),
                               ),
                             ),
@@ -66,7 +62,7 @@ class NewsWidget extends StatelessWidget {
                                 SizedBox(
                                   width: 150.w,
                                   child: AppWidgets.text(
-                                    text:  state.newsModel!.results![index].author!.firstName!,
+                                    text:  "${cubit.state.newsData[index].user!.firstName!} ${cubit.state.newsData[index].user!.lastName!}",
                                     color: AppColorUtils.TEXT_GREEN2,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 14.sp,
@@ -96,7 +92,7 @@ class NewsWidget extends StatelessWidget {
                       ],
                     ),
                     AppWidgets.text(
-                      text: state.newsModel!.results![index].title!,
+                      text: cubit.state.newsData[index].title??"",
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
                       color: AppColorUtils.BLACK,)
@@ -106,7 +102,7 @@ class NewsWidget extends StatelessWidget {
                     ),
                     AppWidgets.text(
                         height: 1.5,
-                        text:  state.newsModel!.results![index].content!,
+                        text:  cubit.state.newsData[index].content!,
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColorUtils.TEXT_GREY2,
@@ -121,7 +117,7 @@ class NewsWidget extends StatelessWidget {
                           Radius.circular(12),
                         ),
                         child: CachedNetworkImage(
-                          imageUrl:  state.newsModel!.results![index].image!,
+                          imageUrl:  cubit.state.newsData[index].cover!,
                           fit: BoxFit.cover,
                           width: MediaQuery
                               .of(context)
@@ -159,7 +155,6 @@ class NewsWidget extends StatelessWidget {
             ),
           ),
         );
-      },
-    );
+
   }
 }

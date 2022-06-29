@@ -34,8 +34,7 @@ class App extends StatelessWidget {
           localizationsDelegates: context.localizationDelegates,
           builder: BotToastInit(),
            // home: LanguagePage(),
-          home: AuthPage(),
-          // HomePage(appPageType: AppPageType.MAIN),
+          home: HomePage(appPageType: AppPageType.MAIN),
           navigatorObservers: [
             BotToastNavigatorObserver(),
           ],

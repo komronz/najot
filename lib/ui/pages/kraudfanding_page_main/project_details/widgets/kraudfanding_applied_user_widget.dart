@@ -26,7 +26,6 @@ class KraudfandingAppliedUserWidgets extends StatelessWidget {
           fontWeight: FontWeight.w400,
         ),
         AppWidgets.circleImages(
-          image: model.cover!,
           count: model.investorsCount!,
         ).paddingOnly(top: 3)
       ],
