@@ -3,12 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/charity_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../../data/utils/app_color_utils.dart';
 
 class MyCharityAppliedUserWidget extends StatelessWidget {
-  final CharityModel model;
+  final ProjectModel model;
 
   const MyCharityAppliedUserWidget({required this.model,Key? key}) : super(key: key);
 

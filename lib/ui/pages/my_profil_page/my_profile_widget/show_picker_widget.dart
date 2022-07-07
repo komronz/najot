@@ -14,15 +14,16 @@ import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_image_utils.dart';
 
 class ShowPickerWidget extends StatefulWidget {
-  ShowPickerWidget({
-    required this.width,
-    required this.height,
-    required this.image,
-    required this.color,
-    required this.imageSelect,
-     this.radius=75,
-     this.padding=0
-});
+  ShowPickerWidget(
+      {required this.width,
+      required this.height,
+      required this.image,
+      required this.color,
+      required this.imageSelect,
+        this.imageFile,
+      this.radius = 75,
+      this.padding = 0});
+
   final double width;
   final double height;
   final String image;
@@ -30,6 +31,7 @@ class ShowPickerWidget extends StatefulWidget {
   final double radius;
   final double padding;
   final Function imageSelect;
+  final File? imageFile;
 
   @override
   _ShowPickerPageState createState() => _ShowPickerPageState();
@@ -44,7 +46,10 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
       if (image == null) return;
       // final imageTemporary=File(image.path);
       final imagePermanent = await saveImagePermanently(image.path);
-      setState(() => this.image = imagePermanent);
+      await widget.imageSelect(imagePermanent);
+      setState(() {
+        this.image = imagePermanent;
+      });
     } on PlatformException catch (e) {
       print('Failed to pick image: $e');
     }
@@ -68,12 +73,11 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
             borderRadius: BorderRadius.circular(widget.radius),
             color: widget.color,
           ),
-          child: image != null
+          child: widget.imageFile != null
               ? Container(
                   child: ClipRRect(
                     child: Image.file(
-                      image!,
-
+                      widget.imageFile!,
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.circular(widget.radius),
@@ -82,7 +86,7 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
               : SvgPicture.asset(
                   widget.image,
                 ).paddingAll(widget.padding),
-        ).paddingOnly(top: 25, bottom: 4),
+        ),
       ),
       onTap: () {
         _showPicker(context);
@@ -104,7 +108,6 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
                     onTap: () {
                       pickImage(ImageSource.gallery);
                       Navigator.of(context).pop();
-                      widget.imageSelect(image);
                     }),
                 ListTile(
                   leading: const Icon(Icons.photo_camera),
@@ -112,7 +115,6 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
                   onTap: () {
                     pickImage(ImageSource.camera);
                     Navigator.of(context).pop();
-                    widget.imageSelect(image);
                   },
                 ),
               ],

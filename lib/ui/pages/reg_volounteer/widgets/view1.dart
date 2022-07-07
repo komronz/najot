@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
@@ -20,23 +21,23 @@ class View1 extends StatelessWidget {
     return Column(
       children: [
         AppTextField(
-          hintText: "Abdumalik",
+          hintText: "",
           initialText: bloc.state.firstName,
           onChanged: (v) {
             bloc.add(VolunteerFirstNameChanged(v));
           },
           isFill: bloc.state.firstName.isNotEmpty,
           title: LocaleKeys.name_passport,
-        ).paddingOnly(top: 18),
+        ).paddingSymmetric(horizontal: 20.w),
         AppTextField(
-          hintText: "Sapokulov",
+          hintText: "",
           initialText: bloc.state.lastName,
           onChanged: (v) {
             bloc.add(VolunteerLastNameChanged(v));
           },
           title: LocaleKeys.name_passport,
           isFill: bloc.state.lastName.isNotEmpty,
-        ).paddingOnly(top: 24),
+        ).paddingSymmetric(horizontal: 20.w,vertical: 10.w),
         AppTextField(
           hintText: LocaleKeys.enter_the_address.tr(),
           initialText: bloc.state.address,
@@ -45,13 +46,13 @@ class View1 extends StatelessWidget {
           },
           title:LocaleKeys.address,
           isFill: bloc.state.address.isNotEmpty,
-        ).paddingOnly(top: 24),
+        ).paddingSymmetric(horizontal: 20.w),
         AppRadioButton(
           initial: bloc.state.gender,
           onChanged: (v) {
             bloc.add(VolunteerGenderChanged(v));
           },
-        ).paddingOnly(top: 20, left: 20),
+        ).paddingOnly(top: 20.w, left: 20.w),
         AppDatePicker(
           title: LocaleKeys.your_date_of_birth.tr(),
           onTap: () async {
@@ -75,7 +76,7 @@ class View1 extends StatelessWidget {
             );
           },
           isActive: bloc.state.isActiveNextBtn,
-        ).paddingOnly(right: 20)
+        ).paddingOnly(right: 20.w)
       ],
     );
   }

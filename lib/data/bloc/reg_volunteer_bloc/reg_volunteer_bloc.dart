@@ -5,6 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:najot/data/services/volunteer_profile_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -16,6 +17,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
   final maskFormatterSerial = MaskTextInputFormatter(mask: 'AA');
   final maskFormatterPasNumber = MaskTextInputFormatter(mask: '#######');
   final maskFormatter = MaskTextInputFormatter();
+   VolunteerProfileService service=VolunteerProfileService();
+
 
 
   RegVolunteerBloc()
@@ -35,6 +38,15 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     on<VolunteerSendBtn>(_onSendBtnPressed);
     on<VolunteerPageImgDeleted>(_onPageImgDeleted);
     on<VolunteerPassImgDeleted>(_onPassImgDeleted);
+    on<PostVolunteerData>(_onPostVolunteerData);
+  }
+
+  Future _onPostVolunteerData(
+      PostVolunteerData event,
+      Emitter<RegVolunteerState> emit,
+      ) async{
+
+
   }
 
   Future _onFirstNameChanged(

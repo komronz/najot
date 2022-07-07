@@ -16,7 +16,7 @@ class CrowdfundingCubit extends Cubit<CrowdfundingState> {
 
   static Future init() async {
     GetIt.instance..registerSingleton<CrowdfundingCubit>(CrowdfundingCubit());
-    CrowdfundingCubit.to.load();
+    await CrowdfundingCubit.to.load();
   }
   CrowdfundingCubit() : super(CrowdfundingState());
   CrowdfundingService crowdfundingService = CrowdfundingService();
@@ -44,6 +44,17 @@ class CrowdfundingCubit extends Cubit<CrowdfundingState> {
     }
   }
 
+  Future SearchChange(String v)async{
+    emit(state.copyWith(searchProgress: true));
+    var getSearch = await crowdfundingService.getProjectsByName(v);
+    if(getSearch != null){
+      emit(state.copyWith(searchProjects: getSearch.results));
+    }
+    emit(state.copyWith(searchChange: v));
+    emit(state.copyWith(searchProgress: false));
+
+
+  }
   Future tabChange(int id) async{
     emit(state.copyWith(tabLoading: true));
     var tabProjects=await crowdfundingService.getProjectsById(id);

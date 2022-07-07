@@ -114,3 +114,8 @@ class VolunteerSendBtn extends RegVolunteerEvent {
   @override
   List<Object?> get props => [];
 }
+
+class PostVolunteerData extends RegVolunteerEvent {
+  @override
+  List<Object?> get props => [];
+}

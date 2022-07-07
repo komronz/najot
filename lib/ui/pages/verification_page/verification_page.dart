@@ -7,23 +7,22 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/verification_page/widgets/pin_put_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+import 'package:pinput/pinput.dart';
 
 import '../../../data/bloc/app_page_cubit/app_page_cubit.dart';
 import '../../../data/localization/locale_keys.g.dart';
 import '../home_page/home_page.dart';
 
-class VerificationPage extends StatelessWidget {
+class VerificationPage extends StatelessWidget with SmartAuth {
   VerificationPage({required this.loginBloc});
 
   static const String routeName = '/verificationPage';
   LoginBloc loginBloc;
 
-
   @override
   Widget build(BuildContext context) {
     final TextEditingController _pinPutController = TextEditingController();
     final FocusNode _pinPutFocusNode = FocusNode();
-
 
     return WillPopScope(
       onWillPop: () async {
@@ -33,21 +32,23 @@ class VerificationPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColorUtils.BACKGROUND,
         body: BlocConsumer<LoginBloc, LoginState>(
-          listener: (context,state){
-            if(state.loginSuccess){
-              NavigatorService.to.pushNamedAndRemoveUntil(
-                HomePage.routeName,
-                arguments: AppPageType.MAIN,
-              );
-            }
-          },
+            listener: (context, state) {
+              if (state.loginSuccess) {
+                NavigatorService.to.pushNamedAndRemoveUntil(
+                  HomePage.routeName,
+                  arguments: AppPageType.MAIN,
+                );
+              }
+            },
             bloc: loginBloc,
             builder: (context, state) {
               return SingleChildScrollView(
                 child: Column(
                   children: [
                     AppWidgets.appBarWidget(
-                      onTap: () {
+                      onTap: () async {
+                        var signature = await getAppSignature();
+                        print(signature);
                         loginBloc.add(CheckPhoneNumberChanged(0));
                         NavigatorService.to.pop();
                       },
@@ -67,25 +68,35 @@ class VerificationPage extends StatelessWidget {
                           pinPutFocusNode: _pinPutFocusNode,
                           pinPutController: _pinPutController,
                         ).paddingOnly(top: 20),
-                        AppWidgets.starTextWidget(
-                                text: "Kod notug'ri kiritilgan", fontSize: 12.w)
-                            .paddingOnly(left: 120.w),
+                        state.codeError
+                            ? AppWidgets.starTextWidget(
+                                    text: "Kod notug'ri kiritilgan",
+                                    fontSize: 12.w,
+                        )
+                                .paddingOnly(left: 120.w, top: 10)
+                            : SizedBox(),
                         TextButton(
                           onPressed: () {},
                           child: AppWidgets.textLocale(
-                              text: LocaleKeys.send_again,
-                              color: AppColorUtils.TEXT_BLUE,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16,
-                              textAlign: TextAlign.center),
+                            text: LocaleKeys.send_again,
+                            color: AppColorUtils.TEXT_BLUE,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                         AppWidgets.appButton(
                           title: LocaleKeys.next,
                           onTap: () {
-                            int a=int.parse(_pinPutController.text.toString());
-                            loginBloc.add(
-                              LoginEnd(a),
-                            );
+                            if(_pinPutController.text.isNotEmpty){
+                              int a = int.parse(_pinPutController.text.toString());
+                              loginBloc.add(
+                                LoginEnd(a),
+                              );
+                            }else{
+                              AppWidgets.showText(text: "tasdiqlash kodini kiriting");
+                            }
+
                           },
                         ).paddingOnly(
                           top: 100.h,

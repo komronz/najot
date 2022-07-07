@@ -17,7 +17,7 @@ class MoreWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
       Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -47,7 +47,7 @@ class MoreWidget extends StatelessWidget {
           ),
         ),
       ],
-    ).paddingSymmetric(horizontal: 20.w),
+    ),
         Container(
           padding: EdgeInsets.symmetric(
             vertical: 10.w,

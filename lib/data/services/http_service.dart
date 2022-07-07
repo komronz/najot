@@ -46,7 +46,7 @@ static HttpService get to=> GetIt.I<HttpService>();
           data: formData,
           options: Options(
             headers: {
-              HttpHeaders.contentTypeHeader: "multipart/from-data",
+              "Content-Type": "multipart/from-data",
               'Authorization': 'Bearer ${token}',
             },
           ),

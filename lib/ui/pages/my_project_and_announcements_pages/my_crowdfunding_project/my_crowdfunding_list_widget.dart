@@ -19,7 +19,7 @@ class MyCrowdfundingListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (list==null) {
+    if (list == null) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -56,8 +56,10 @@ class MyCrowdfundingListWidget extends StatelessWidget {
             reverse: false,
             children: List.generate(
               list!.results!.length,
-                  (index) => MyCrowdfundingList(
-                    cardModel: list!.results![index], visible: true, onTap: () {  },
+              (index) => MyCrowdfundingList(
+                cardModel: list!.results![index],
+                visible: true,
+                onTap: () {},
               ),
             ),
           ),
@@ -66,7 +68,6 @@ class MyCrowdfundingListWidget extends StatelessWidget {
         left: 20,
         top: 10,
         right: 10,
-
       ),
     );
   }

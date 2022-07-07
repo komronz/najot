@@ -29,7 +29,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
   final MyCrowdfundingSupportCubit cubit;
   final TextEditingController title = TextEditingController();
   final TextEditingController content = TextEditingController();
-  File? image;
+
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,9 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
             ? Column(
                 children: List.generate(
                   cubit.state.newsData.length,
-                  (index) => Container(
+                  (index) {
+                    var createdAt= DateTime.parse(cubit.state.newsData[index].createdAt!);
+                    return Container(
                     padding: EdgeInsets.only(
                       top: 12.w,
                       left: 12.w,
@@ -62,11 +64,16 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                                   height: 50.w,
                                   width: 50.w,
                                   decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                        image: NetworkImage(cubit.state
-                                            .newsData[index].user!.photo!),
-                                        fit: BoxFit.cover),
+                                      shape: BoxShape.circle, color: Colors.black12),
+                                  child: CachedNetworkImage(
+                                    imageUrl: cubit.state
+                                        .newsData[index].user!.photo!,
+                                    fit: BoxFit.cover,
+                                    placeholder: (context, url) => Center(
+                                      child: CircularProgressIndicator(),
+                                    ),
+                                    errorWidget: (context, url, error) =>
+                                        Icon(Icons.person),
                                   ),
                                 ),
                                 Column(
@@ -93,7 +100,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                                           color: AppColorUtils.DARK_6,
                                         ).paddingOnly(right: 65.w),
                                         AppWidgets.text(
-                                          text: "25.08.2022 18:19",
+                                          text: DateFormat("dd.MM.yyyy hh:mm").format(createdAt),
                                           fontSize: 10.sp,
                                           fontWeight: FontWeight.w500,
                                           color: AppColorUtils.BLUE_PERCENT,
@@ -145,7 +152,8 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                         ),
                       ],
                     ),
-                  ),
+                  ).paddingOnly(bottom: 10.w);
+                  }
                 ),
               )
             : Container(
@@ -179,8 +187,8 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
           color: AppColorUtils.TEXT_GREEN2,
           fontWeight: FontWeight.w600,
         ).paddingOnly(
-          left: 12.w,
-
+          top: 10.w,
+          bottom: 5.w
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -220,30 +228,10 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
               color: AppColorUtils.PERCENT_COLOR,
               padding: 10,
               imageSelect: (v) {
-                print(v);
-                image=v;
-              },
+                cubit.saveFile(v);
+              }, imageFile: cubit.state.file,
             ),
-            // Material(
-            //   child: Ink(
-            //     decoration: BoxDecoration(
-            //       shape: BoxShape.circle,
-            //       color: AppColorUtils.PERCENT_COLOR,
-            //     ),
-            //     child: InkWell(
-            //       borderRadius: BorderRadius.circular(25),
-            //       onTap: () {},
-            //       child: Container(
-            //         height: 46.w,
-            //         width: 46.w,
-            //         child: SvgPicture.asset(
-            //           AppImageUtils.IC_UPLOAD,
-            //           color: AppColorUtils.WHITE,
-            //         ).paddingAll(10),
-            //       ),
-            //     ),
-            //   ),
-            // )
+
           ],
         ),
         SizedBox(
@@ -275,9 +263,15 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
         ).paddingOnly(top: 12.w, bottom: 12.w),
         AppWidgets.appButton(
           title: LocaleKeys.send,
-          onTap: () {
-            print(image);
-            cubit.postNews(cardModel.id!, title.text, content.text, image!);
+          onTap: () async{
+            if(title.text!=""&&content.text!=""&&cubit.state.file!=null){
+              cubit.postNews(cardModel.id!, title.text, content.text,cubit.state.file!);
+              cubit.state.file=null;
+              cubit.load(cardModel.id!);
+            }else{
+              return AppWidgets.showText(text: "Parametirlarni to'liq kiriting");
+            }
+
           },
         ),
       ],

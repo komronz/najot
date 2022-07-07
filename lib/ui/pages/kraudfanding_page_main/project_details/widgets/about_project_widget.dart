@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/bloc/kraudfanding_cubit/kraud_fanding_cubit.dart';
 import 'package:najot/data/bloc/project_data_cubit/project_data_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
@@ -19,13 +20,18 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/pa
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../../../../data/bloc/home_cubit/home_cubit.dart';
 import 'more_widget.dart';
 import 'news_widget.dart';
 
 class AboutProjectWidget extends StatefulWidget {
-  AboutProjectWidget({required this.cardModel});
+  AboutProjectWidget({
+    required this.cardModel,
+    required this.cubit,
+  });
 
   final ProjectModel cardModel;
+  final CrowdfundingCubit cubit;
 
   @override
   _AboutProjectWidgetState createState() => _AboutProjectWidgetState();
@@ -34,6 +40,7 @@ class AboutProjectWidget extends StatefulWidget {
 class _AboutProjectWidgetState extends State<AboutProjectWidget>
     with TickerProviderStateMixin {
   late TabController _tabController;
+   late bool like;
 
   @override
   void dispose() {
@@ -43,6 +50,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
 
   @override
   void initState() {
+    like=widget.cardModel.isFavourite!;
     _tabController = TabController(length: 4, vsync: this);
     _tabController.addListener(_handleTabSelection);
     super.initState();
@@ -294,11 +302,17 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                             textColor: AppColorUtils.WHITE,
                           ),
                           AppWidgets.favouriteButton(
-                            select: true,
+                            select: like,
                             height: 48.w,
                             width: 48.w,
-                            onTap: () {},
-                          ),
+                            onTap: () async{
+                              await widget.cubit.changeLike(widget.cardModel.id!);
+                              setState(() {
+                                like=!like;
+                              });
+                              await HomeCubit.to.getModel();
+                            },
+                          )
                         ],
                       ).paddingSymmetric(horizontal: 20.w),
                     ],

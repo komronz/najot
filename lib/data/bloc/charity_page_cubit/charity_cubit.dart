@@ -5,6 +5,7 @@ import 'package:najot/data/services/charity_saved_service.dart';
 import 'package:najot/data/services/main_service.dart';
 
 import '../../model/categories_model.dart';
+import '../../model/project_model.dart';
 import '../../model/volunteer_model.dart';
 import '../../services/charity_service.dart';
 import '../../utils/app_logger_util.dart';
@@ -18,7 +19,7 @@ class CharityCubit extends Cubit<CharityState> {
 
   static Future init() async {
     GetIt.instance..registerSingleton<CharityCubit>(CharityCubit());
-    CharityCubit.to.load();
+    await CharityCubit.to.load();
   }
   CharityCubit() : super(CharityState());
   CharityService charityService = CharityService();
@@ -42,6 +43,17 @@ class CharityCubit extends Cubit<CharityState> {
     }
   }
 
+  Future searchChange(String v)async{
+    emit(state.copyWith(searchProgress: true));
+    var getSearch = await charityService.getProjectsByName(v);
+    if(getSearch != null){
+      emit(state.copyWith(searchProjects: getSearch.results));
+    }
+    emit(state.copyWith(searchChange: v));
+    emit(state.copyWith(searchProgress: false));
+
+
+  }
   Future tabChange(int id) async{
     emit(state.copyWith(tabLoading: true));
     var tabProjects=await charityService.getProjectsById(id);

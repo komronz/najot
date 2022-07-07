@@ -11,6 +11,7 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/ta
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_donate_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 
+import '../../../../data/bloc/home_cubit/home_cubit.dart';
 import 'widgets/about_project_volunteer_widget.dart';
 
 class VolunteerDetailModel {
@@ -63,7 +64,8 @@ class _AboutAnnouncementPageState extends State<VolunteerDetailPage>
       backgroundColor: AppColorUtils.BACKGROUND,
       appBar: AppBarWithTitle(
         title: LocaleKeys.about_project.tr(),
-        onPress: () {
+        onPress: () async{
+          await HomeCubit.to.getModel();
           NavigatorService.to.pop();
         },
       ),
@@ -96,7 +98,6 @@ class _AboutAnnouncementPageState extends State<VolunteerDetailPage>
                   child: [
                     AboutProjectVolunteerWidget(
                       cardModel: widget.model.cardModel,
-                      state: state,
                       cubit: widget.model.cubit,
                     ),
                     VolunteerDonateWidget(

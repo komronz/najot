@@ -240,5 +240,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       AppWidgets.isLoading(false);
     }
     AppWidgets.isLoading(false);
+    emit(state.copyWith(codeError: true));
   }
 }

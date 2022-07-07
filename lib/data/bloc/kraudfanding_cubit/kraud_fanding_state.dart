@@ -7,13 +7,19 @@ class CrowdfundingState extends Equatable {
       this.tabLoading = false,
       this.category = const [],
       this.tabProjects=const [],
+      this.searchProjects=const [],
+        this.searchProgress=false,
+        this.searchChange="",
         this.tabChange=0});
 
   final List<ProjectModel> crowdfundingModel;
   final List<ProjectModel> tabProjects;
+   List<ProjectModel> searchProjects;
+  final bool searchProgress;
   final bool loading;
   final bool tabLoading;
   final int tabChange;
+  final String searchChange;
   final List<TabCategories> category;
 
   @override
@@ -24,15 +30,21 @@ class CrowdfundingState extends Equatable {
         category,
         tabProjects,
         tabLoading,
+    searchProjects,
+    searchProgress,
+    searchChange,
         tabChange
       ];
 
   CrowdfundingState copyWith({
     List<ProjectModel>? crowdfundingModel,
     List<ProjectModel>? tabProjects,
+    List<ProjectModel>? searchProjects,
       bool? loading,
       bool? tabLoading,
+      bool? searchProgress,
         int? tabChange,
+    String? searchChange,
       List<TabCategories>? category}) {
     return CrowdfundingState(
       crowdfundingModel: crowdfundingModel ?? this.crowdfundingModel,
@@ -41,6 +53,9 @@ class CrowdfundingState extends Equatable {
       tabLoading: tabLoading ?? this.tabLoading,
       category: category ?? this.category,
       tabChange: tabChange ?? this.tabChange,
+      searchProjects: searchProjects ?? this.searchProjects,
+      searchChange: searchChange ?? this.searchChange,
+      searchProgress: searchProgress ?? this.searchProgress,
     );
   }
 }

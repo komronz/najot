@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/charity_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 
 import '../../../../../data/services/navigator_service.dart';
@@ -15,7 +16,7 @@ class MyCharityProjectFullPage extends StatefulWidget {
 
   static const String routeName = "/myCharityProjectFullPage";
   static int tabChange = 0;
-  CharityModel cardModel;
+  ProjectModel cardModel;
 
   @override
   State<MyCharityProjectFullPage> createState() => _MyCharityProjectFullPageState();

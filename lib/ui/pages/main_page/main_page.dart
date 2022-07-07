@@ -28,7 +28,7 @@ import '../volunteer_page/volunteer_detail_page/volunteer_detail_page.dart';
 class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);
   static const String routeName = "/homePage";
-  HomeCubit homeCubit = HomeCubit();
+  HomeCubit homeCubit = HomeCubit.to;
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +97,8 @@ class MainPage extends StatelessWidget {
                                       fontsize: 14.sp,
                                       color: AppColorUtils.KRAUDFANDING,
                                       onTap: () {
-                                        // print(state.categories[0].name!);
+                                        CrowdfundingCubit.to.state.searchProjects=[];
+                                        VolunteerCubit.to.state.searchChange="";
                                         NavigatorService.to.pushNamed(
                                           CrowdfundingPage.routeName,
                                         );
@@ -110,6 +111,8 @@ class MainPage extends StatelessWidget {
                                       fontsize: 14.sp,
                                       color: AppColorUtils.VOLONTYOR,
                                       onTap: () {
+                                        VolunteerCubit.to.state.searchProjects=[];
+                                        VolunteerCubit.to.state.searchChange="";
                                         NavigatorService.to.pushNamed(
                                           VolunteerPage.routeName,
                                         );
@@ -122,6 +125,8 @@ class MainPage extends StatelessWidget {
                                       fontsize: 14.sp,
                                       color: AppColorUtils.CHARITY,
                                       onTap: () {
+                                        CharityCubit.to.state.searchProjects=[];
+                                        CharityCubit.to.state.searchChange="";
                                         NavigatorService.to.pushNamed(
                                           CharityPage.routeName,
                                         );

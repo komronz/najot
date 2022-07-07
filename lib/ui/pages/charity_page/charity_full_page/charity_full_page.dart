@@ -8,6 +8,7 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/ui/pages/charity_page/charity_full_page/charity_full_page2.dart';
 import 'package:najot/ui/pages/charity_page/widgets/detail_body_part2.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comment_to_author_dialog.dart';
@@ -17,6 +18,7 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/su
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../../../data/bloc/home_cubit/home_cubit.dart';
 import '../../../../data/bloc/project_data_cubit/project_data_cubit.dart';
 import '../../../../data/model/project_model.dart';
 import '../../kraudfanding_page_main/project_details/widgets/comments_widget.dart';
@@ -24,12 +26,14 @@ import '../../kraudfanding_page_main/project_details/widgets/more_widget.dart';
 import '../../kraudfanding_page_main/project_details/widgets/news_widget.dart';
 import '../../kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
 
+
+
 class CharityFullPage extends StatefulWidget {
-  CharityFullPage({required this.cardModel});
+  CharityFullPage({required this.model});
 
   static const String routName = 'charityFullPage';
   static int tabChange = 0;
-  ProjectModel cardModel;
+  CharityFullModel model;
 
   @override
   State<CharityFullPage> createState() => _CharityFullPageState();
@@ -40,6 +44,7 @@ class _CharityFullPageState extends State<CharityFullPage>
   late TabController _controller;
 
   CharityCubit cubit = CharityCubit();
+  late bool like;
   ProjectDataCubit cubitData = ProjectDataCubit();
 
   @override
@@ -50,6 +55,8 @@ class _CharityFullPageState extends State<CharityFullPage>
 
   @override
   void initState() {
+    print(widget.model.cardModel.title);
+    like=widget.model.cardModel.isFavourite!;
     _controller = TabController(length: 4, vsync: this);
     _controller.addListener(_handleTabSelection);
     super.initState();
@@ -69,7 +76,8 @@ class _CharityFullPageState extends State<CharityFullPage>
         backgroundColor: AppColorUtils.BACKGROUND,
         appBar: AppBarWithTitle(
           title: LocaleKeys.about_project.tr(),
-          onPress: () {
+          onPress: () async{
+           await HomeCubit.to.getModel();
             NavigatorService.to.pop();
           },
         ),
@@ -102,7 +110,7 @@ class _CharityFullPageState extends State<CharityFullPage>
                                     Radius.circular(12),
                                   ),
                                   child: CachedNetworkImage(
-                                    imageUrl: widget.cardModel.coverUrl!,
+                                    imageUrl: widget.model.cardModel.coverUrl!,
                                     fit: BoxFit.cover,
                                     width: MediaQuery.of(context).size.width,
                                     placeholder: (context, url) => Center(
@@ -144,28 +152,28 @@ class _CharityFullPageState extends State<CharityFullPage>
                             ],
                           ),
                           AppWidgets.text(
-                            text: widget.cardModel.title!,
+                            text: widget.model.cardModel.title!,
                             fontSize: 20.sp,
                             color: AppColorUtils.DARK2,
                             fontWeight: FontWeight.w500,
                             maxLines: 2,
                           ).paddingSymmetric(horizontal: 20.w),
                           KraudfandingAuthorWidget(
-                            model: widget.cardModel,
+                            model: widget.model.cardModel,
                             onTap: () {
                               showDialog(
                                 context: context,
                                 builder: (context) {
                                   return CommentToAuthorDialog(
                                     cubit: cubitData,
-                                    projectModel: widget.cardModel,
+                                    projectModel: widget.model.cardModel,
                                   );
                                 },
                               );
                             },
                           ).paddingOnly(top: 15.w),
                           SizedBox(height: 12.w),
-                          DetailBodyPart2(cardModel: widget.cardModel)
+                          DetailBodyPart2(cardModel: widget.model.cardModel)
                         ],
                       ),
                     ),
@@ -232,12 +240,12 @@ class _CharityFullPageState extends State<CharityFullPage>
                                   EdgeInsets.only(right: 10, left: 10),
                             ).paddingOnly(left: 15.w, top: 8.w),
                             BlocBuilder<ProjectDataCubit, ProjectDataState>(
-                              bloc: cubitData..load(widget.cardModel.id!),
+                              bloc: cubitData..load(widget.model.cardModel.id!),
                               builder: (contextData, stateData) {
                                 return Container(
                                   child: [
                                     MoreWidget(
-                                      cardModel: widget.cardModel,
+                                      cardModel: widget.model.cardModel,
                                     ),
                                     NewsWidget(
                                       cubit: cubitData,
@@ -247,7 +255,7 @@ class _CharityFullPageState extends State<CharityFullPage>
                                     ).paddingAll(20.w),
                                     CommentsWidget(
                                       cubit: cubitData,
-                                      projectModel: widget.cardModel,
+                                      projectModel: widget.model.cardModel,
                                     ).paddingAll(20.w)
                                   ][_controller.index],
                                 );
@@ -265,7 +273,7 @@ class _CharityFullPageState extends State<CharityFullPage>
                                       context: context,
                                       builder: (context) {
                                         return SupportProjectDialog(
-                                          projectModel: widget.cardModel,
+                                          projectModel: widget.model.cardModel,
                                         );
                                       },
                                     );
@@ -282,7 +290,13 @@ class _CharityFullPageState extends State<CharityFullPage>
                                   select: true,
                                   height: 48.w,
                                   width: 48.w,
-                                  onTap: () {},
+                                  onTap: () async{
+                                    await widget.model.cubit.changeLike(widget.model.cardModel.id!);
+                                    setState(() {
+                                      like=!like;
+                                    });
+                                    await HomeCubit.to.getModel();
+                                  },
                                 )
                               ],
                             ).paddingSymmetric(horizontal: 20.w),

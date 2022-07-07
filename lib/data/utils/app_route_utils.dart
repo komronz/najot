@@ -102,7 +102,7 @@ class AppRouteUtils {
       case CharityFullPage.routName:
         return MaterialPageRoute(
           builder: (context) => CharityFullPage(
-            cardModel: settings.arguments as ProjectModel,
+            model: settings.arguments as CharityFullModel,
           ),
         );
       case CharityFullPage2.routName:
@@ -226,7 +226,7 @@ class AppRouteUtils {
       case MyCharityProjectFullPage.routeName:
         return MaterialPageRoute(
           builder: (context) => MyCharityProjectFullPage(
-            cardModel: settings.arguments as CharityModel,
+            cardModel: settings.arguments as ProjectModel,
           ),
         );
       case MyCharitySupportListPage.routeName:
