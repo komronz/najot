@@ -27,7 +27,6 @@ class DIService {
     await CharityCubit.init();
     await VolunteerCubit.init();
     await NotificationCubit.init();
-    await WidgetsFlutterBinding.ensureInitialized();
 
   }
 }

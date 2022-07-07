@@ -39,6 +39,8 @@ class NotificationApi {
       android: AndroidNotificationDetails('channel id', 'channel name',
           channelDescription: "channel description",
           importance: Importance.max,
+          fullScreenIntent: true,
+          autoCancel: true,
           playSound: true),
       iOS: IOSNotificationDetails(),
     );
