@@ -31,7 +31,6 @@ class VolunteerDonateService{
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/ru/volunteer-donate/?type=CH&page_size=15",
         token: HiveService.to.getToken(),
-
       );
       if (response.statusCode == 200) {
         final VolunteerDonate responseModel =

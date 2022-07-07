@@ -218,7 +218,7 @@ class TimePikerCharity extends StatelessWidget {
                             Navigator.pop(con);
                             Navigator.pop(context);
 
-                          },
+                          }, time: _time,
                         ),
                       );
                     },

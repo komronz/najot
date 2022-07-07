@@ -15,12 +15,14 @@ import '../../../widgets/app_widgets.dart';
 class ItemAddingSuccess extends StatelessWidget {
   ItemAddingSuccess({
     required this.dateTime,
+    required this.time,
     required this.back,
     required this.goto,
   }) ;
   DateTime dateTime;
   VoidCallback goto;
   VoidCallback back;
+  DateTime time;
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +86,7 @@ class ItemAddingSuccess extends StatelessWidget {
                       height: 16,
                     ).paddingOnly(right: 5),
                     AppWidgets.textLocale(
-                      text: "${DateTimeUtil.hhmm(dateTime, context.locale)}",
+                      text: "${DateTimeUtil.hhmm(time, context.locale)}",
                       color: AppColorUtils.TEXT_COLOR,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,

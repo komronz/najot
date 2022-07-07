@@ -4,6 +4,7 @@ import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/bloc/login_bloc/login_bloc.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
+import 'package:najot/data/model/volunteer_db_model.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/ui/pages/about_page/about_page.dart';
 import 'package:najot/ui/pages/auth_page/auth_page.dart';
@@ -268,7 +269,7 @@ class AppRouteUtils {
       case AttentionNote.routeName:
         return MaterialPageRoute(
           builder: (context) => AttentionNote(
-            model: settings.arguments as VolunteeringModel,
+            model: settings.arguments as VolunteerDbModel,
           ),
         );
       case MyCrowdfundingAboutWidget.routeName:

@@ -3,7 +3,7 @@ part of 'notification_cubit.dart';
 class NotificationState extends Equatable {
   NotificationState({this.cardList=const [], this.isRead=true});
 
-  final List<VolunteeringModel> cardList;
+  final List<VolunteerDbModel> cardList;
   late final bool isRead;
 
 
@@ -13,7 +13,7 @@ class NotificationState extends Equatable {
 
 
   NotificationState copyWith({
-    List<VolunteeringModel>? list,
+    List<VolunteerDbModel>? list,
     bool? isRead
   }) {
     return NotificationState(
@@ -21,4 +21,11 @@ class NotificationState extends Equatable {
         isRead: isRead ?? this.isRead
     );
   }
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is MyVolunteeringState &&
+              runtimeType == other.runtimeType &&
+              cardList == other.cardList&&
+              isRead==other.isDone;
 }

@@ -17,9 +17,10 @@ import '../../../widgets/app_widgets.dart';
 class WaitingForAddingSuccess extends StatelessWidget {
 
   WaitingForAddingSuccess(
-      {required this.model, required this.dateTime, Key? key})
+      {required this.model, required this.dateTime, required this.time, Key? key})
       : super(key: key);
   DateTime dateTime;
+  DateTime time;
   DateTime _dateTime = DateTime.now();
   TimeOfDay timeOfDay = TimeOfDay.now();
   VolunteerDonateResults model;
@@ -86,7 +87,7 @@ class WaitingForAddingSuccess extends StatelessWidget {
                       height: 16,
                     ).paddingOnly(right: 5),
                     AppWidgets.textLocale(
-                      text: "${DateTimeUtil.hhmm(dateTime, context.locale)}",
+                      text: "${DateTimeUtil.hhmm(time, context.locale)}",
                       color: AppColorUtils.TEXT_COLOR,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,

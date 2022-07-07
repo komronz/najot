@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
+import 'package:najot/data/model/volunteer_db_model.dart';
 import 'package:najot/ui/pages/about_page/about_page.dart';
 import 'package:najot/ui/pages/charity_history_page/charity_history_page.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/edit_volunteer_page.dart';
@@ -9,6 +12,8 @@ import 'package:najot/ui/pages/home_page/widget/drawer_body_second.dart';
 import 'package:najot/ui/pages/home_page/widget/drawer_body_widget.dart';
 import 'package:najot/ui/pages/main_page/main_page.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_page.dart';
+import 'package:najot/ui/pages/notification_page/widget/attension_note.dart';
+import 'package:najot/ui/pages/notification_page/widget/notification_api.dart';
 import 'package:najot/ui/pages/operator_page/operator_page.dart';
 import 'package:najot/ui/pages/orders_page/orders_page.dart';
 import 'package:najot/ui/pages/organization_page/organization_page.dart';
@@ -23,24 +28,50 @@ import '../my_volunteering_page/my_volunteering_widget/adding_project_page.dart'
 import '../saved_page/saved_page.dart';
 import '../volunteering_charity_history_page/volunteering_charity_history_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({ required this.appPageType});
 
   AppPageType appPageType;
   static const String routeName = "/homePage";
-  AppPageCubit cubit = AppPageCubit();
-
   static final GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  AppPageCubit cubit = AppPageCubit();
+  @override
+  void initState(){
+    // TODO: implement initState
+    super.initState();
+    listenNotifications();
+  }
+  void listenNotifications() =>
+      NotificationApi.onNotification.stream.listen(onClickNotification);
+  void onClickNotification(dynamic payload) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AttentionNote(
+          model: VolunteerDbModel.fromJson(
+            jsonDecode(payload!),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => cubit..load(appPageType),
+      create: (BuildContext context) => cubit..load(widget.appPageType),
       child: BlocBuilder<AppPageCubit, AppPageState>(
         builder: (context, state) {
           return Scaffold(
             // backgroundColor: AppColorUtils.BACKGROUND,
-            key: globalKey,
+            key: HomePage.globalKey,
             drawer: state.changeMenu==1
                 ? DrawerBody(state: state)
                 : DrawerBodySecond(state: state),

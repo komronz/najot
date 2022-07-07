@@ -35,6 +35,7 @@ class WaitingForDatePickerWidget extends StatelessWidget {
   DateTime _time = DateTime.now();
   @override
   Widget build(BuildContext context) {
+    var createdAt = DateTime.parse(model.project!.modifiedAt!);
     return BlocBuilder<MyVolunteeringCubit, MyVolunteeringState>(
       bloc: cubit,
         builder: (context, state)=>Center(
@@ -85,7 +86,7 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                                 height: 16,
                               ).paddingOnly(right: 5),
                               AppWidgets.textLocale(
-                                text: "${DateTimeUtil.dmy(DateTime.now(), context.locale)}",
+                                text: DateFormat("dd.MM.yyyy").format(createdAt),
                                 color: AppColorUtils.BLUE_TEXT,
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.w500,
@@ -150,6 +151,7 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                             spacing: 15.sp,
                             itemHeight: 40,
                             onTimeChange: (time) {
+                              _time=time;
                               // setState(
                               //       () {
                               //     _time = DateTime(
@@ -180,7 +182,7 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                             dateFormat: "dd-MMMM-yyyy",
                             onChange: (DateTime newDate, _) {
                               _date = newDate;
-                              // print(_date);
+                              print(_date);
                             },
                             pickerTheme: DateTimePickerTheme(
                               backgroundColor: AppColorUtils.WHITE,
@@ -207,13 +209,20 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                     children: [
                       AppWidgets.appButton(
                         onTap: () async {
-                          cubit.openFaqItem(index);
-                          print(model.project!.isDone!);
+                          var dateTime = DateTime(
+                            _date.year,
+                            _date.month,
+                            _date.day,
+                            _time.hour,
+                            _time.minute,
+                          );
+                          // cubit.openFaqItem(index);
+                          cubit.addDbVolunteer(index,dateTime,);
                           NavigatorService.to.pop();
                           await showDialog(
                             context: context,
                             builder: (context) => WaitingForAddingSuccess(
-                              model: model, dateTime: _date,
+                              model: model, dateTime: _date, time: _time,
                             ),
                           );
                         },

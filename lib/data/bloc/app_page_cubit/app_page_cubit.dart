@@ -12,6 +12,7 @@ class AppPageCubit extends Cubit<AppPageState> {
 
   static Future init() async {
     GetIt.instance..registerSingleton<AppPageCubit>(AppPageCubit());
+
   }
 
   AppPageCubit() : super(AppPageState());

@@ -151,6 +151,7 @@ class ItemCharityDatePickerWidget extends StatelessWidget {
                               spacing: 15.sp,
                               itemHeight: 40,
                               onTimeChange: (time) {
+                                _time=time;
                                 // setState(
                                 //       () {
                                 //     _time = DateTime(
@@ -206,13 +207,20 @@ class ItemCharityDatePickerWidget extends StatelessWidget {
                       children: [
                         AppWidgets.appButton(
                           onTap: () async {
-                            cubit.openItem(index);
-                            print(model.project!.isDone!);
+                            var dateTime = DateTime(
+                              _date.year,
+                              _date.month,
+                              _date.day,
+                              _time.hour,
+                              _time.minute,
+                            );
+                            // cubit.openItem(index);
+                            cubit.addDbVolunteerItem(index, dateTime);
                             NavigatorService.to.pop();
                             await showDialog(
                               context: context,
                               builder: (context) => ItemAddingSuccess(
-                                dateTime: _date,
+                                dateTime: _date, time: _time,
                                 back: () {
                                   Navigator.pop(context);
                                 },

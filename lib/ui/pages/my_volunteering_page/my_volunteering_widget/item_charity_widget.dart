@@ -18,16 +18,22 @@ import 'item_charity_date_picker_widget.dart';
 class ItemCharityWidget extends StatelessWidget {
   final VolunteerDonateResults model;
   final MyVolunteeringCubit cubit;
- final int index;
+  final int index;
 
+  ItemCharityWidget({
+    required this.model,
+    required this.index,
+    required this.cubit,
+    Key? key
+  })
+      : super(key: key);
 
-  ItemCharityWidget({required this.model, Key? key, required this.index, required this.cubit}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var createdAt= DateTime.parse(model.project!.modifiedAt!);
+    var createdAt = DateTime.parse(model.project!.modifiedAt!);
     return BlocBuilder<MyVolunteeringCubit, MyVolunteeringState>(
-      bloc: cubit,
-        builder: (context, state){
+        bloc: cubit,
+        builder: (context, state) {
           return Container(
             padding: EdgeInsets.all(12),
             margin: EdgeInsets.only(top: 10),
@@ -71,17 +77,17 @@ class ItemCharityWidget extends StatelessWidget {
                   left: 6,
                 ),
                 AppWidgets.starTextWidget(
-                    text: LocaleKeys.item_type,
-                    fontSize: 10.sp,
-                    fontWeight: FontWeight.w400,
-                    color: AppColorUtils.GRAY_4)
+                        text: LocaleKeys.item_type,
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w400,
+                        color: AppColorUtils.GRAY_4)
                     .paddingOnly(
                   bottom: 4,
                   right: 6,
                   left: 6,
                 ),
                 AppWidgets.textLocale(
-                  text: model.project?.helpType??"",
+                  text: model.project?.helpType ?? "",
                   color: AppColorUtils.GREEN_TEXT,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
@@ -122,10 +128,10 @@ class ItemCharityWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               AppWidgets.starTextWidget(
-                                  text: LocaleKeys.executable_date,
-                                  fontSize: 9.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColorUtils.GRAY_4)
+                                      text: LocaleKeys.executable_date,
+                                      fontSize: 9.sp,
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColorUtils.GRAY_4)
                                   .paddingOnly(
                                 bottom: 4,
                               ),
@@ -135,7 +141,8 @@ class ItemCharityWidget extends StatelessWidget {
                             onTap: () async {
                               await showDialog(
                                 context: context,
-                                builder: (context) => ItemCharityDatePickerWidget(
+                                builder: (context) =>
+                                    ItemCharityDatePickerWidget(
                                   selectFunction: (dateTime) {
                                     // print(dateTime.toUtc().toString());
                                     // bloc.add(VolunteerBirthDateSelected(dateTime));
@@ -143,8 +150,6 @@ class ItemCharityWidget extends StatelessWidget {
                                   model: model,
                                   index: index,
                                   cubit: cubit,
-
-
                                 ),
                               );
                             },
@@ -156,7 +161,8 @@ class ItemCharityWidget extends StatelessWidget {
                                   height: 12.sp,
                                 ).paddingOnly(right: 5),
                                 AppWidgets.textLocale(
-                                  text: DateFormat("dd.MM.yyyy").format(createdAt),
+                                  text: DateFormat("dd.MM.yyyy")
+                                      .format(createdAt),
                                   color: AppColorUtils.RED,
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w500,
@@ -174,10 +180,10 @@ class ItemCharityWidget extends StatelessWidget {
                   left: 6,
                 ),
                 AppWidgets.starTextWidget(
-                    text: LocaleKeys.phone_number,
-                    fontSize: 10.sp,
-                    fontWeight: FontWeight.w400,
-                    color: AppColorUtils.GRAY_4)
+                        text: LocaleKeys.phone_number,
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w400,
+                        color: AppColorUtils.GRAY_4)
                     .paddingOnly(
                   bottom: 4,
                   right: 6,
@@ -212,23 +218,24 @@ class ItemCharityWidget extends StatelessWidget {
                       children: [
                         model.project!.isDone!
                             ? Container(
-                          padding: EdgeInsets.all(2),
-                          height: 14.w,
-                          width: 14.w,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: AppColorUtils.GREEN_ACCENT1,
-                          ),
-                          child: SvgPicture.asset(
-                            AppImageUtils.CHECK_SMALL,
-                            color: AppColorUtils.GREEN_TEXT_10,
-                          ),
-                        ).paddingOnly(right: 6)
+                                padding: EdgeInsets.all(2),
+                                height: 14.w,
+                                width: 14.w,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: AppColorUtils.GREEN_ACCENT1,
+                                ),
+                                child: SvgPicture.asset(
+                                  AppImageUtils.CHECK_SMALL,
+                                  color: AppColorUtils.GREEN_TEXT_10,
+                                ),
+                              ).paddingOnly(right: 6)
                             : SizedBox(),
                         model.project!.isDone!
                             ? AppWidgets.imageSvg(
-                            path: AppImageUtils.NOTIFICATION_GREY)
-                            : AppWidgets.imageSvg(path: AppImageUtils.NOTIFICATION),
+                                path: AppImageUtils.NOTIFICATION_GREY)
+                            : AppWidgets.imageSvg(
+                                path: AppImageUtils.NOTIFICATION),
                       ],
                     ),
                   ],
@@ -240,7 +247,6 @@ class ItemCharityWidget extends StatelessWidget {
               ],
             ),
           );
-        }
-    );
+        });
   }
 }
