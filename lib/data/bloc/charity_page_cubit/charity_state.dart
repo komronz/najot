@@ -13,7 +13,6 @@ class CharityState extends Equatable {
   final bool saveHelp;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [list, tobeVolunteer, checkBox, saveHelp];
 
   CharityState copyWith({

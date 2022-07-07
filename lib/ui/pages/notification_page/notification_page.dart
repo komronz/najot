@@ -25,7 +25,6 @@ class NotificationPage extends StatefulWidget {
 class _NotificationPageState extends State<NotificationPage> {
   @override
   void initState() {
-    // TODO: implement initState
     NotificationApi.init(initScheduled: true);
     listenNotifications();
     super.initState();

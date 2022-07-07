@@ -4,15 +4,14 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
+import 'package:najot/data/bloc/my_profile_bloc/my_profile_update_state.dart';
+import 'package:najot/data/model/user.dart';
 import 'package:najot/data/services/hive_service.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/data/utils/app_utils.dart';
+import 'package:najot/ui/widgets/app_widgets.dart';
 
-import '../../../ui/widgets/app_widgets.dart';
-import '../../model/user.dart';
-import '../../utils/app_logger_util.dart';
-
-part 'my_profil_update_event.dart';
+part 'my_profile_update_event.dart';
 
 class MyProfileUpdateBloc
     extends Bloc<MyProfileUpdateEvent, MyProfileUpdateState> {
@@ -31,7 +30,6 @@ class MyProfileUpdateBloc
     on<PageNext>(_onPageNext);
     on<SendCode>(_sendCode);
     on<EditProfileChangePage>(_onChangeEditProfile);
-
     on<ImagePickers>(_onImagePicker);
     on<SaveIn>(_saveIn);
   }
@@ -75,8 +73,8 @@ class MyProfileUpdateBloc
     AppWidgets.isLoading(true);
     if (imagePicker != null) {
       emit(state.copyWith(userImgPath: imagePicker));
-      AppWidgets.isLoading(false);
     }
+    AppWidgets.isLoading(false);
   }
 
   Future _onImageChanged(
@@ -147,11 +145,12 @@ class MyProfileUpdateBloc
   ) async {
     if (_isNotEmpty(state.name) && _isNotEmpty(state.sureName)) {
       var user = User(
-          imageUrl: state.imageUrl,
-          firstName: state.name,
-          lastName: state.sureName,
-          isMan: state.isMan,
-          phone: state.phoneNumber);
+        imageUrl: state.imageUrl,
+        firstName: state.name,
+        lastName: state.sureName,
+        isMan: state.isMan,
+        phone: state.phoneNumber,
+      );
       HiveService.to.setUser(user);
       AppWidgets.showText(text: 'Success');
       emit(state.copyWith(hasError: false));

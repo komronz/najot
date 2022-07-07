@@ -5,6 +5,13 @@ import 'package:najot/data/model/crowd_founding_model.dart';
 import 'my_crowdfunding_support_state.dart';
 
 class MyCrowdfundingSupportCubit extends Cubit<MyCrowdfundingSupportState> {
+  MyCrowdfundingSupportCubit()
+      : super(MyCrowdfundingSupportState(
+          cardList: CrowdFoundingModel.list,
+          widgetChange: false,
+          isVisible: true,
+        ));
+
   static MyCrowdfundingSupportCubit get to =>
       GetIt.I<MyCrowdfundingSupportCubit>();
 
@@ -12,12 +19,6 @@ class MyCrowdfundingSupportCubit extends Cubit<MyCrowdfundingSupportState> {
     GetIt.I.registerSingleton<MyCrowdfundingSupportCubit>(
         MyCrowdfundingSupportCubit());
   }
-
-  MyCrowdfundingSupportCubit()
-      : super(MyCrowdfundingSupportState(
-            cardList: CrowdFoundingModel.list,
-            widgetChange: false,
-            isVisible: true));
 
   void widgetChange(bool v) {
     emit(state.copyWith(widgetChange: v));

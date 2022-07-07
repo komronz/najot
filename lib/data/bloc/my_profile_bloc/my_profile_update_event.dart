@@ -1,6 +1,5 @@
-part of 'my_profil_update_bloc.dart';
+part of 'my_profile_update_bloc.dart';
 
-@immutable
 abstract class MyProfileUpdateEvent extends Equatable {
   const MyProfileUpdateEvent();
 }

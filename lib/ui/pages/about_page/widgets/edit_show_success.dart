@@ -7,9 +7,9 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
-import '../../../../data/utils/app_color_utils.dart';
-import '../../../../data/utils/app_image_utils.dart';
-import '../../../data/bloc/applied_bloc/appeal_bloc.dart';
+import '../../../../../data/utils/app_color_utils.dart';
+import '../../../../../data/utils/app_image_utils.dart';
+import '../../../../data/bloc/applied_bloc/appeal_bloc.dart';
 
 class EditShowSuccessSend extends StatelessWidget {
   const EditShowSuccessSend({

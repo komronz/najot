@@ -132,7 +132,7 @@ class CharityHistoryPage extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: [
-                  KraufandingListWidget(list: state.kraufandingList),
+                  KraufandingListWidget(list: state.crowdFoundingList),
                   CharityListWidget(list: state.charityList)
                 ],
               ),

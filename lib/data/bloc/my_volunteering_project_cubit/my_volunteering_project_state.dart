@@ -8,7 +8,6 @@ class MyVolunteeringProjectState extends Equatable {
   final bool widgetChange;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [cardList, widgetChange];
 
   MyVolunteeringProjectState copyWith({

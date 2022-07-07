@@ -16,7 +16,6 @@ class HomeState extends Equatable {
   final List<SliderList> slider;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [categories];
 
   HomeState copyWith({

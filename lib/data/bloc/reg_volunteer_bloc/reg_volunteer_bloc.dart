@@ -12,11 +12,6 @@ part 'reg_volunteer_event.dart';
 part 'reg_volunteer_state.dart';
 
 class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
-  final PageController pageController;
-  final maskFormatterSerial = MaskTextInputFormatter(mask: 'AA');
-  final maskFormatterPasNumber = MaskTextInputFormatter(mask: '#######');
-  final maskFormatter = MaskTextInputFormatter();
-
   RegVolunteerBloc()
       : pageController = PageController(),
         super(const RegVolunteerState()) {
@@ -35,6 +30,12 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     on<VolunteerPageImgDeleted>(_onPageImgDeleted);
     on<VolunteerPassImgDeleted>(_onPassImgDeleted);
   }
+
+  final PageController pageController;
+  final maskFormatterSerial = MaskTextInputFormatter(mask: 'AA');
+  final maskFormatterPasNumber = MaskTextInputFormatter(mask: '#######');
+
+  final maskFormatter = MaskTextInputFormatter();
 
   Future _onFirstNameChanged(
     VolunteerFirstNameChanged event,
@@ -342,6 +343,6 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
         serialNumber: state.serialNumber,
       ),
     );
-    AppLoggerUtil.i('deled');
+    AppLoggerUtil.i('deleted');
   }
 }

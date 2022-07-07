@@ -6,7 +6,6 @@ class MyVolunteeringState extends Equatable {
   final List<VolunteeringModel> cardList;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [cardList];
 
   MyVolunteeringState copyWith({List<VolunteeringModel>? list}) {

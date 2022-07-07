@@ -6,7 +6,6 @@ class NotificationState extends Equatable {
   final List<VolunteeringModel> cardList;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [cardList];
 
   NotificationState copyWith({List<VolunteeringModel>? list}) {

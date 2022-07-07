@@ -13,7 +13,6 @@ class OrganizationState extends Equatable {
       this.saveHelp = true});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         list,
         tobeVolunteer,

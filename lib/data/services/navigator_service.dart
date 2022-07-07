@@ -9,7 +9,7 @@ class NavigatorService {
   static NavigatorService get to => GetIt.I<NavigatorService>();
 
   static Future init() async {
-    final getIt = GetIt.instance
+    final getIt = GetIt.I
       ..registerSingleton<NavigatorService>(NavigatorService());
     await getIt<NavigatorService>().create();
   }

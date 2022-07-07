@@ -17,8 +17,6 @@ class VolunteeringCharityHistoryCubit
     emit(state.copyWith(isLoading: true));
     await Future.delayed(const Duration(seconds: 4));
     try {
-      ///TODO cardmodelni kraufanding modelga o'zgartirish
-      /// TODO: WARNING: crowdFounding
       var crowdFoundingList = await service.getCrowdFoundingList();
       var charityList = await service.getCharityList();
       var itemsCharity = await service.getItemsList();

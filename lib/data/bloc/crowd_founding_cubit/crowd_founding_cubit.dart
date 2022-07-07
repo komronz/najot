@@ -8,11 +8,11 @@ part 'crowd_founding_state.dart';
 class CrowdFoundingCubit extends Cubit<CrowdFoundingState> {
   static CrowdFoundingCubit get to => GetIt.I<CrowdFoundingCubit>();
 
-  static Future init() async {
-    GetIt.instance.registerSingleton<CrowdFoundingCubit>(CrowdFoundingCubit());
-  }
-
   CrowdFoundingCubit() : super(CrowdFoundingState(cardList: CardModel.list));
+
+  static Future init() async {
+    GetIt.I.registerSingleton<CrowdFoundingCubit>(CrowdFoundingCubit());
+  }
 
   Future cardItems() async {}
 }

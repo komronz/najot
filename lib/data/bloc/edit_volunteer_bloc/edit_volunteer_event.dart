@@ -1,6 +1,5 @@
 part of 'edit_volunteer_bloc.dart';
 
-@immutable
 abstract class EditVolunteerEvent extends Equatable {
   const EditVolunteerEvent();
 }

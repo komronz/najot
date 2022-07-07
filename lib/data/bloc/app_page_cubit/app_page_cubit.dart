@@ -11,21 +11,29 @@ class AppPageCubit extends Cubit<AppPageState> {
   static AppPageCubit get to => GetIt.I<AppPageCubit>();
 
   static Future init() async {
-    GetIt.instance.registerSingleton<AppPageCubit>(AppPageCubit());
+    GetIt.I.registerSingleton<AppPageCubit>(AppPageCubit());
   }
 
   AppPageCubit() : super(const AppPageState());
 
   void load(AppPageType pageType) {
-    emit(state.copyWith(
-      pageType: pageType,
-      changeMenu: 1,
-      tobeVolunteer: Volunteer.tobeVolunteer,
-    ));
+    emit(
+      state.copyWith(
+        pageType: pageType,
+        changeMenu: 1,
+        tobeVolunteer: Volunteer.tobeVolunteer,
+      ),
+    );
   }
 
-  Future changePage({required AppPageType pageType}) async {
-    emit(state.copyWith(pageType: pageType));
+  Future changePage({
+    required AppPageType pageType,
+  }) async {
+    emit(
+      state.copyWith(
+        pageType: pageType,
+      ),
+    );
     AppLoggerUtil.i(pageType.toString());
   }
 

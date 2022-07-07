@@ -70,6 +70,5 @@ class CheckPhoneNumberChanged extends LoginEvent {
   const CheckPhoneNumberChanged(this.check);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }

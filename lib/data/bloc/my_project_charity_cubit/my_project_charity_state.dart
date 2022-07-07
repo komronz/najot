@@ -6,7 +6,6 @@ class MyProjectCharityState extends Equatable {
   final int tabChange;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [tabChange];
 
   MyProjectCharityState copyWith({int? tabChange}) {

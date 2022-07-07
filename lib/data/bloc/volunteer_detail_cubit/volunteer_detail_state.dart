@@ -1,4 +1,4 @@
-part of 'volonteer_detail_cubit.dart';
+part of 'volunteer_detail_cubit.dart';
 
 class VolunteerDetailState extends Equatable {
   const VolunteerDetailState({
@@ -12,7 +12,6 @@ class VolunteerDetailState extends Equatable {
   final bool saveHelp;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [tobeVolunteer, checkBox, saveHelp];
 
   VolunteerDetailState copyWith({

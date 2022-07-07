@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/data/bloc/volonteer_detail_cubit/volonteer_detail_cubit.dart';
+import 'package:najot/data/bloc/volunteer_detail_cubit/volunteer_detail_cubit.dart';
 import 'package:najot/data/custom_time_picker/date_picker/date_picker_theme.dart';
 import 'package:najot/data/custom_time_picker/date_picker/i18n/date_picker_i18n.dart';
 import 'package:najot/data/custom_time_picker/date_picker/widget/date_picker_widget.dart';
@@ -25,7 +25,7 @@ class TimePikerVolunteer extends StatelessWidget {
   DateTime _date = DateTime.now();
   final DateTime _time = DateTime.now();
   final CardModel model;
-  final VolonteerDetailCubit cubit;
+  final VolunteerDetailCubit cubit;
   final BuildContext con;
 
   @override

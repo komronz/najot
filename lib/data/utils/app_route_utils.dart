@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/bloc/login_bloc/login_bloc.dart';
-import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
+import 'package:najot/data/bloc/my_profile_bloc/my_profile_update_bloc.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/crowd_founding_model.dart';
 import 'package:najot/data/model/product_model.dart';

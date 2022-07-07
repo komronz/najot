@@ -13,7 +13,6 @@ class MyCrowdfundingSupportState extends Equatable {
   final bool isVisible;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [cardList, isVisible, widgetChange];
 
   MyCrowdfundingSupportState copyWith({

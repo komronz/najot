@@ -1,7 +1,7 @@
 import 'package:najot/data/model/card_model.dart';
 
 class CharitySavedService {
-  Future<List<CardModel>?>? getKraufandingList() async {
+  Future<List<CardModel>?>? getCrowdFoundingList() async {
     var model = CardModel.kraufanding(
         "1",
         "https://i.pinimg.com/originals/e8/8d/83/e88d83f2b1f35aaaca76096455712f42.png",

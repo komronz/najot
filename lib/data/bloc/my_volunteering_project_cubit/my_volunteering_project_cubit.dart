@@ -6,6 +6,12 @@ import 'package:najot/data/model/volunteering_model.dart';
 part 'my_volunteering_project_state.dart';
 
 class MyVolunteeringProjectCubit extends Cubit<MyVolunteeringProjectState> {
+  MyVolunteeringProjectCubit()
+      : super(MyVolunteeringProjectState(
+          cardList: VolunteeringModel.list,
+          widgetChange: false,
+        ));
+
   static MyVolunteeringProjectCubit get to =>
       GetIt.I<MyVolunteeringProjectCubit>();
 
@@ -13,12 +19,6 @@ class MyVolunteeringProjectCubit extends Cubit<MyVolunteeringProjectState> {
     GetIt.I.registerSingleton<MyVolunteeringProjectCubit>(
         MyVolunteeringProjectCubit());
   }
-
-  MyVolunteeringProjectCubit()
-      : super(MyVolunteeringProjectState(
-          cardList: VolunteeringModel.list,
-          widgetChange: false,
-        ));
 
   void widgetChange(bool v) {
     emit(state.copyWith(widgetChange: v));

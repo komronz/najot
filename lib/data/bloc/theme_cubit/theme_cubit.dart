@@ -6,13 +6,13 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 part 'theme_state.dart';
 
 class ThemeCubit extends HydratedCubit<ThemeState> {
+  ThemeCubit() : super(const ThemeState(themeMode: ThemeMode.light));
+
   static ThemeCubit get to => GetIt.I<ThemeCubit>();
 
   static Future init() async {
-    GetIt.instance.registerSingleton<ThemeCubit>(ThemeCubit());
+    GetIt.I.registerSingleton<ThemeCubit>(ThemeCubit());
   }
-
-  ThemeCubit() : super(const ThemeState(themeMode: ThemeMode.light));
 
   Future<void> setThemeMode(ThemeMode value) async {
     emit(state.copyWith(themeMode: value));

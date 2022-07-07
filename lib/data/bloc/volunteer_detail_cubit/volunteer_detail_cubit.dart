@@ -2,10 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:najot/data/services/volunteer_service.dart';
 
-part 'volonteer_detail_state.dart';
+part 'volunteer_detail_state.dart';
 
-class VolonteerDetailCubit extends Cubit<VolunteerDetailState> {
-  VolonteerDetailCubit()
+class VolunteerDetailCubit extends Cubit<VolunteerDetailState> {
+  VolunteerDetailCubit()
       : super(VolunteerDetailState(
           checkBox: false,
           tobeVolunteer: Volunteer.tobeVolunteer,

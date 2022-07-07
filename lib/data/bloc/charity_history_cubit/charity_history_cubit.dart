@@ -16,13 +16,12 @@ class CharityHistoryCubit extends Cubit<CharityHistoryState> {
     try {
       var charityList = await service.getCharityList();
 
-      /// TODO: WARNING: crowdFounding
       var crowdFounding = await service.getCrowdFoundingList();
 
       emit(
         state.copyWith(
           charityList: charityList,
-          kraufandingList: crowdFounding,
+          crowdFoundingList: crowdFounding,
           isLoading: false,
         ),
       );
@@ -36,7 +35,11 @@ class CharityHistoryCubit extends Cubit<CharityHistoryState> {
     var charityList = await service.getCharityList();
 
     if (text.isEmpty) {
-      emit(state.copyWith(charityList: charityList));
+      emit(
+        state.copyWith(
+          charityList: charityList,
+        ),
+      );
     } else {
       for (var element in charityList!) {
         if (element.title!.toUpperCase().contains(text.toUpperCase())) {

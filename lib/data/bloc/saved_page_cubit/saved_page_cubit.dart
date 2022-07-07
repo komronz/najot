@@ -15,12 +15,11 @@ class SavedPageCubit extends Cubit<SavedPageState> {
     try {
       // var charitySavedList = await service.getCharityList();
 
-      ///TODO cardmodelni kraufanding modelga o'zgartirish
-      var kraufandingSavedList = await service.getKraufandingList();
+      var crowdFoundingSavedList = await service.getCrowdFoundingList();
 
       emit(
         state.copyWith(
-          crowdFoundingSavedList: kraufandingSavedList,
+          crowdFoundingSavedList: crowdFoundingSavedList,
           isLoading: false,
         ),
       );

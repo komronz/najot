@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
-import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
+import 'package:najot/data/bloc/my_profile_bloc/my_profile_update_bloc.dart';
+import 'package:najot/data/bloc/my_profile_bloc/my_profile_update_state.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';

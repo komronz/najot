@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/data/bloc/volonteer_detail_cubit/volonteer_detail_cubit.dart';
+import 'package:najot/data/bloc/volunteer_detail_cubit/volunteer_detail_cubit.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
@@ -28,7 +28,7 @@ class _AboutAnnouncementPageState extends State<VolunteerDetailPage>
     with TickerProviderStateMixin {
   late TabController _controller;
 
-  VolonteerDetailCubit cubit = VolonteerDetailCubit();
+  VolunteerDetailCubit cubit = VolunteerDetailCubit();
 
   @override
   void dispose() {
@@ -61,7 +61,7 @@ class _AboutAnnouncementPageState extends State<VolunteerDetailPage>
             NavigatorService.to.pop();
           },
         ),
-        body: BlocBuilder<VolonteerDetailCubit, VolunteerDetailState>(
+        body: BlocBuilder<VolunteerDetailCubit, VolunteerDetailState>(
           builder: (context, state) {
             return SingleChildScrollView(
               physics: const BouncingScrollPhysics(),

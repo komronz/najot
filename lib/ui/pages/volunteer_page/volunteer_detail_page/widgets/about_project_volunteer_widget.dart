@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:najot/data/bloc/volonteer_detail_cubit/volonteer_detail_cubit.dart';
+import 'package:najot/data/bloc/volunteer_detail_cubit/volunteer_detail_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
@@ -32,7 +32,7 @@ class AboutProjectVolunteerWidget extends StatefulWidget {
 
   final CardModel cardModel;
   final VolunteerDetailState state;
-  final VolonteerDetailCubit cubit;
+  final VolunteerDetailCubit cubit;
 
   @override
   State<StatefulWidget> createState() => _AboutProjectVolunteerWidgetState();

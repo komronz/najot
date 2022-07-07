@@ -20,8 +20,7 @@ class CustomTimePickerDialog extends StatefulWidget {
   final String title;
 
   @override
-  // ignore: library_private_types_in_public_api
-  _CustomTimePickerDialogState createState() => _CustomTimePickerDialogState();
+  State<StatefulWidget> createState() => _CustomTimePickerDialogState();
 }
 
 class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {

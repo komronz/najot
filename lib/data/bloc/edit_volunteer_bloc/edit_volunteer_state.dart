@@ -16,21 +16,22 @@ class EditVolunteerState extends Equatable {
   final XFile? userImgPath;
   final int changePage;
 
-  const EditVolunteerState(
-      {this.name = '',
-      this.sureName = '',
-      this.imageUrl = '',
-      this.phoneNumber = '',
-      this.isMan = Gender.man,
-      this.isSavedBtn = false,
-      this.nameFill = false,
-      this.phoneNumberFill = false,
-      this.sureNameFill = false,
-      this.isVisible = true,
-      this.nextPage = false,
-      this.hasError = false,
-      this.userImgPath,
-      this.changePage = 1});
+  const EditVolunteerState({
+    this.name = '',
+    this.sureName = '',
+    this.imageUrl = '',
+    this.phoneNumber = '',
+    this.isMan = Gender.man,
+    this.isSavedBtn = false,
+    this.nameFill = false,
+    this.phoneNumberFill = false,
+    this.sureNameFill = false,
+    this.isVisible = true,
+    this.nextPage = false,
+    this.hasError = false,
+    this.userImgPath,
+    this.changePage = 1,
+  });
 
   @override
   List<Object?> get props => [

@@ -13,7 +13,7 @@ class HomeCubit extends Cubit<HomeState> {
   MainService mainService = MainService();
 
   static Future init() async {
-    GetIt.instance.registerSingleton<HomeCubit>(HomeCubit());
+    GetIt.I.registerSingleton<HomeCubit>(HomeCubit());
   }
 
   HomeCubit() : super(const HomeState());

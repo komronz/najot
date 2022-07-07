@@ -72,8 +72,8 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
     AppWidgets.isLoading(true);
     if (imagePicker != null) {
       emit(state.copyWith(userImgPath: imagePicker));
-      AppWidgets.isLoading(false);
     }
+    AppWidgets.isLoading(false);
   }
 
   Future _onImageChanged(
@@ -144,11 +144,12 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
   ) async {
     if (_isNotEmpty(state.name) && _isNotEmpty(state.sureName)) {
       var user = User(
-          imageUrl: state.imageUrl,
-          firstName: state.name,
-          lastName: state.sureName,
-          isMan: state.isMan,
-          phone: state.phoneNumber);
+        imageUrl: state.imageUrl,
+        firstName: state.name,
+        lastName: state.sureName,
+        isMan: state.isMan,
+        phone: state.phoneNumber,
+      );
       HiveService.to.setUser(user);
       AppWidgets.showText(text: 'Success');
       emit(state.copyWith(hasError: false));
