@@ -10,11 +10,13 @@ import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_cubit.dart';
 import 'my_charity_success_send_question_dialog.dart';
 
-class MyCharityEditProjectDialog extends StatelessWidget {
-  const MyCharityEditProjectDialog({Key? key}) : super(key: key);
+class MyEditProjectDialog extends StatelessWidget {
+   MyEditProjectDialog({ required this.cubit})  ;
 
+  MyCrowdfundingSupportCubit cubit;
   @override
   Widget build(BuildContext context) {
     return Dialog(

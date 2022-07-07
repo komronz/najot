@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:najot/data/bloc/charity_page_cubit/charity_cubit.dart';
+import 'package:najot/data/bloc/home_cubit/home_cubit.dart';
 import 'package:najot/data/bloc/project_data_cubit/project_data_cubit.dart';
 import 'package:najot/data/bloc/project_data_cubit/project_data_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -53,6 +54,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
     with TickerProviderStateMixin {
   late TabController _controller;
   ProjectDataCubit cubitData = ProjectDataCubit();
+  late bool like;
 
   @override
   void dispose() {
@@ -62,6 +64,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
 
   @override
   void initState() {
+    like=widget.helpModel.cardModel.isFavourite!;
     _controller = TabController(length: 4, vsync: this);
     _controller.addListener(_handleTabSelection);
     super.initState();
@@ -79,7 +82,8 @@ class _CharityFullPageState extends State<CharityFullPage2>
       backgroundColor: AppColorUtils.BACKGROUND,
       appBar: AppBarWithTitle(
         title: LocaleKeys.about_project.tr(),
-        onPress: () {
+        onPress: () async{
+          await HomeCubit.to.getModel();
           NavigatorService.to.pop();
         },
       ),
@@ -329,10 +333,16 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                         textColor: AppColorUtils.WHITE,
                                       ),
                                       AppWidgets.favouriteButton(
-                                        select: true,
+                                        select: like,
                                         height: 48.w,
                                         width: 48.w,
-                                        onTap: () {},
+                                        onTap: () async{
+                                          await widget.helpModel.cubit.changeLike(widget.helpModel.cardModel.id!);
+                                          setState(() {
+                                            like=!like;
+                                          });
+                                          await HomeCubit.to.getModel();
+                                        },
                                       )
                                     ],
                                   ).paddingSymmetric(horizontal: 20.w),

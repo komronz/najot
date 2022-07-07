@@ -29,16 +29,17 @@ class CharityItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      child: Container(
-        width: 160.w,
-        height: 267.w,
-        child: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-          elevation: 1,
-          color: AppColorUtils.WHITE,
+    return Container(
+      width: 160.w,
+      height: 267.w,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        elevation: 1,
+        color: AppColorUtils.WHITE,
+        child: InkWell(
+          onTap: onTap,
           child: Column(
             children: [
               Expanded(
@@ -120,7 +121,6 @@ class CharityItemWidget extends StatelessWidget {
           ),
         ),
       ),
-      onTap: onTap
     );
   }
 }

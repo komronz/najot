@@ -19,7 +19,6 @@ class MyCrowdfundingQuestionsAskedWidget extends StatelessWidget {
   final ProjectModel cardModel;
   final MyCrowdfundingSupportCubit cubit;
 
-
   bool isVisible = true;
 
   @override
@@ -61,9 +60,11 @@ class MyCrowdfundingQuestionsAskedWidget extends StatelessWidget {
         ),
         Column(
           children: List.generate(
-            cubit.state.cardList.length,
+            cubit.state.questionData.length,
             (index) => MyCrowdfundingQuestionList(
-              cardModel: cubit.state.cardList[index],
+              index: index,
+              cubit: cubit,
+              projectModel: cardModel,
             ),
           ),
         ),

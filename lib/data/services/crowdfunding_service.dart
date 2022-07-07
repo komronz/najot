@@ -84,5 +84,28 @@ class CrowdfundingService{
     }
   }
 
+  Future<RootProjectModel?> getProjectsByName(String name) async {
+
+    try {
+      final Response response = await RootService.httpService.get(
+          url: "https://api.najot.uz/ru/project/?type=CF&search=${name}",
+          token: HiveService.to.getToken()
+      );
+
+      if (response.statusCode == 200) {
+        final RootProjectModel responseModel =
+        RootProjectModel.fromJson(
+          response.data,
+        );
+        return responseModel;
+      } else {
+        AppLoggerUtil.e("-----------------");
+        return null;
+      }
+    } catch (e) {
+      return null;
+    }
+  }
+
 
 }

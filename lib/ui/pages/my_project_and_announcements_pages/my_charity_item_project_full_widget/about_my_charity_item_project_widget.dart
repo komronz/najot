@@ -7,8 +7,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/project_model.dart';
+import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/more_widget.dart';
+import 'package:najot/ui/pages/my_project_and_announcements_pages/my_crowdfunding_project/my_crowdfunding_about_widget.dart';
 import '../../../../data/bloc/my_charity_support_list_cubit/my_charity_support_list_cubit.dart';
 import '../../../../data/bloc/my_charity_support_list_cubit/my_charity_support_list_state.dart';
+import '../../../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_cubit.dart';
+import '../../../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_state.dart';
 import '../../../../data/config/const/decoration_const.dart';
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/model/charity_model.dart';
@@ -16,9 +20,15 @@ import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
 import '../my_charity_project_full_widget/my_charity_comments_widget.dart';
+import '../my_charity_project_full_widget/my_charity_delete_project_dialog.dart';
+import '../my_charity_project_full_widget/my_charity_edit_project_dialog.dart';
 import '../my_charity_project_full_widget/my_charity_more_widget.dart';
 import '../my_charity_project_full_widget/my_charity_news_widget.dart';
 import '../my_charity_project_full_widget/my_charity_question_asked_widget.dart';
+import '../my_crowdfunding_project/my_crowdfunding_comments_widget.dart';
+import '../my_crowdfunding_project/my_crowdfunding_more_widget.dart';
+import '../my_crowdfunding_project/my_crowdfunding_news_widget.dart';
+import '../my_crowdfunding_project/my_crowdfunding_question_asked_widget.dart';
 import 'my_charity_item_author_widget.dart';
 import 'my_charity_item_price_widget.dart';
 
@@ -36,7 +46,7 @@ class _AboutMyCharityItemProjectWidgetState
     extends State<AboutMyCharityItemProjectWidget>
     with TickerProviderStateMixin {
   late TabController _tabController;
-  MyCharitySupportListCubit cubit = MyCharitySupportListCubit();
+  MyCrowdfundingSupportCubit cubit = MyCrowdfundingSupportCubit();
 
   @override
   void dispose() {
@@ -62,8 +72,9 @@ class _AboutMyCharityItemProjectWidgetState
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => cubit,
-      child: BlocBuilder<MyCharitySupportListCubit, MyCharitySupportListState>(
+      create: (context) => cubit..load(widget.model.id!),
+      child:
+          BlocBuilder<MyCrowdfundingSupportCubit, MyCrowdfundingSupportState>(
         builder: (context, state) {
           return Column(
             children: [
@@ -97,26 +108,31 @@ class _AboutMyCharityItemProjectWidgetState
                               InkWell(
                                 child:
                                     SvgPicture.asset(AppImageUtils.TRASH_RED),
-                                // onTap: () {
-                                //   showDialog(
-                                //     context: context,
-                                //     builder: (context) {
-                                //       return MyCharityDeleteProjectDialog();
-                                //     },
-                                //   );
-                                // },
+                                onTap: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return MyDeleteProjectDialog(
+                                        cubit: cubit,
+                                        projectModel: widget.model,
+                                      );
+                                    },
+                                  );
+                                },
                               ).paddingOnly(right: 12.w),
                               InkWell(
                                 child:
                                     SvgPicture.asset(AppImageUtils.EDIT_GREEN),
-                                // onTap: () {
-                                //   showDialog(
-                                //     context: context,
-                                //     builder: (context) {
-                                //       return MyCharityEditProjectDialog();
-                                //     },
-                                //   );
-                                // },
+                                onTap: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return MyEditProjectDialog(
+                                        cubit: cubit,
+                                      );
+                                    },
+                                  );
+                                },
                               ),
                             ],
                           ),
@@ -276,23 +292,21 @@ class _AboutMyCharityItemProjectWidgetState
                             ),
                             Container(
                               child: [
-                                Container(),
-                                Container(),
-                                Container(),
-                                Container(),
-                                // MyCharityMoreWidget(
-                                //   cardModel: widget.model,
-                                // ),
-                                // MyCharityNewsWidget(
-                                //   cardModel: widget.model,
-                                // ).paddingAll(20.w),
-                                // MyCharityQuestionsAskedWidget(
-                                //   cardModel: widget.model,
-                                //   cubit: cubit,
-                                // ).paddingAll(20.w),
-                                // MyCharityCommentsWidget(
-                                //   cardModel: widget.model,
-                                // ).paddingAll(20.w)
+                                MoreWidget(
+                                  cardModel: widget.model,
+                                ),
+                                MyCrowdfundingNewsWidget(
+                                  cubit: cubit,
+                                  cardModel: widget.model,
+                                ).paddingAll(20.w),
+                                MyCrowdfundingQuestionsAskedWidget(
+                                  cardModel: widget.model,
+                                  cubit: cubit,
+                                ).paddingAll(20.w),
+                                MyCrowdfundingCommentsWidget(
+                                  projectModel: widget.model,
+                                  cubit: cubit,
+                                ).paddingAll(20.w)
                               ][_tabController.index],
                             ),
                             SizedBox(
@@ -331,152 +345,7 @@ class _AboutMyCharityItemProjectWidgetState
                         ),
                       ),
                     )
-                  : Container(
-                      color: AppColorUtils.WHITE,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          InkWell(
-                            child: Container(
-                              width: 31.w,
-                              height: 34.w,
-                              decoration: BoxDecoration(
-                                color: AppColorUtils.BACK_BUTTON,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Icon(
-                                Icons.arrow_back_ios_rounded,
-                                color: AppColorUtils.IC_GREEN2,
-                                size: 20.w,
-                              ),
-                            ),
-                            onTap: () {
-                              cubit.widgetChange(false);
-                            },
-                          ).paddingOnly(
-                            left: 20.w,
-                            top: 18.w,
-                            bottom: 18.w,
-                          ),
-                          Container(
-                            margin: EdgeInsets.symmetric(horizontal: 20.w),
-                            padding: EdgeInsets.only(
-                              top: 12.w,
-                              left: 12.w,
-                              right: 12.w,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: AppColorUtils.GREEN_ACCENT4,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                true
-                                    ? Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Container(
-                                                height: 50.w,
-                                                width: 50.w,
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  image: DecorationImage(
-                                                      image: NetworkImage(
-                                                        widget.model.coverUrl!,
-                                                      ),
-                                                      fit: BoxFit.cover),
-                                                ),
-                                              ),
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  SizedBox(
-                                                    child: AppWidgets.text(
-                                                      text:
-                                                          LocaleKeys.how_humanity_benefits.tr(),
-                                                      color: AppColorUtils
-                                                          .TEXT_GREEN2,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize: 14.sp,
-                                                      maxLines: 2,
-                                                    ).paddingOnly(top: 5.w),
-                                                    width: 240.w,
-                                                  ),
-                                                  AppWidgets.textLocale(
-                                                    text: "Eshonov Fakhriyor",
-                                                    fontSize: 12.sp,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: AppColorUtils.DARK_6,
-                                                  ).paddingOnly(top: 3.w),
-                                                ],
-                                              ).paddingOnly(left: 10),
-                                            ],
-                                          ),
-                                          AppWidgets.text(
-                                            text: "widget.model.infoModel![0].text!",
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 14.sp,
-                                            color: AppColorUtils.TEXT_GREY2,
-                                            maxLines: 100,
-                                            height: 1.5,
-                                          ).paddingSymmetric(vertical: 15.w),
-                                          Divider(
-                                            thickness: 1,
-                                            color: AppColorUtils.BLACK_12,
-                                          ),
-                                          AppWidgets.text(
-                                            text: LocaleKeys.your_answer.tr(),
-                                            color: AppColorUtils.TEXT_GREEN2,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 14.sp,
-                                          ).paddingOnly(top: 20.w),
-                                          AppWidgets.text(
-                                            text: "widget.model.infoModel![0].text!",
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 14.sp,
-                                            color: AppColorUtils.TEXT_GREY2,
-                                            maxLines: 100,
-                                            height: 1.5,
-                                          ).paddingSymmetric(vertical: 15.w),
-                                        ],
-                                      )
-                                    : Container(
-                                        child: Center(
-                                          child: Column(
-                                            children: [
-                                              SizedBox(
-                                                height: 30.w,
-                                              ),
-                                              SvgPicture.asset(AppImageUtils
-                                                  .EMPTY_QUESTIONS),
-                                              SizedBox(
-                                                width: 200.sp,
-                                                child: AppWidgets.textLocale(
-                                                  textAlign: TextAlign.center,
-                                                  text: LocaleKeys
-                                                      .questions_empty,
-                                                  color: AppColorUtils.DARK_4,
-                                                  fontSize: 14.sp,
-                                                  fontWeight: FontWeight.w600,
-                                                  maxLines: 2,
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                  : AnswersWidget(cubit: cubit, model: widget.model),
             ],
           );
         },

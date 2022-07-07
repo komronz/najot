@@ -11,6 +11,7 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/pr
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/tabbar_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 
+import '../../../../data/bloc/home_cubit/home_cubit.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 
@@ -39,7 +40,6 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
     with TickerProviderStateMixin {
   late TabController _controller;
 
-
   @override
   void dispose() {
     _controller.dispose();
@@ -67,22 +67,18 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
         BlocProvider<ProductCubit>(
           create: (context) => productCubit..load(),
         ),
-        BlocProvider<CrowdfundingCubit>(
-          create: (context) => widget.model.cubit,
-        ),
       ],
       child: Scaffold(
         backgroundColor: AppColorUtils.BACKGROUND,
         appBar: AppBarWithTitle(
           title: LocaleKeys.about_project.tr(),
-          onPress: () {
-
-            // widget.model.cubit..load();
+          onPress: () async{
+            await HomeCubit.to.getModel();
             NavigatorService.to.pop();
           },
         ),
         body: BlocBuilder<CrowdfundingCubit, CrowdfundingState>(
-          bloc: widget.model.cubit,
+          bloc: CrowdfundingCubit.to,
           builder: (context, state) {
             return SingleChildScrollView(
               physics: BouncingScrollPhysics(),
@@ -98,22 +94,25 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
                       ),
                     ),
                     child: TabBarWidget(
-                      _controller,
-                      LocaleKeys.about_project.tr(),
-                      LocaleKeys.products.tr(),
-                        (int i){
-                          if (i == 0) {
-                            widget.model.cubit.detailTabChange(0);
-                          } else {
-                            widget.model.cubit.detailTabChange(1);
-                          }
-                        }
-                    ),
+                        _controller,
+                        LocaleKeys.about_project.tr(),
+                        LocaleKeys.products.tr(), (int i) {
+                      if (i == 0) {
+                        widget.model.cubit.detailTabChange(0);
+                      } else {
+                        widget.model.cubit.detailTabChange(1);
+                      }
+                    }),
                   ),
                   Container(
                     child: [
-                      AboutProjectWidget(cardModel: widget.model.cardModel),
-                      ProductsWidget(cubit: productCubit,)
+                      AboutProjectWidget(
+                        cardModel: widget.model.cardModel,
+                        cubit: widget.model.cubit,
+                      ),
+                      ProductsWidget(
+                        cubit: productCubit,
+                      )
                     ][_controller.index],
                   )
                 ],

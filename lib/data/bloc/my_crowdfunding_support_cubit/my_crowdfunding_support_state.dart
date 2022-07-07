@@ -1,46 +1,56 @@
+
+import 'dart:io';
+
 import 'package:equatable/equatable.dart';
+import 'package:najot/data/model/comments_model.dart';
 import 'package:najot/data/model/news_model.dart';
+import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/model/question_model.dart';
 import '../../model/kraufanding_model.dart';
 
 class MyCrowdfundingSupportState extends Equatable {
   MyCrowdfundingSupportState({
-    required this.cardList,
     required this.isVisible,
     required this.widgetChange,
      this.newsData=const [],
      this.questionData= const [],
+     this.commentsData= const [],
+     this.file,
   });
 
-  final List<KraufandingModel> cardList;
   final bool widgetChange;
   final bool isVisible;
+    File? file;
   final List<NewsData> newsData;
   final List<QuestionsData> questionData;
+  final List<CommentsData> commentsData;
 
   @override
   // TODO: implement props
   List<Object?> get props => [
-        cardList,
         isVisible,
         widgetChange,
         newsData,
-    questionData
+    file,
+    questionData,
+    commentsData
       ];
 
   MyCrowdfundingSupportState copyWith({
-    List<KraufandingModel>? list,
     bool? widgetChange,
     bool? isVisible,
     List<NewsData>? newsData,
     List<QuestionsData>? questionData,
+    List<CommentsData>? commentsData,
+    File? file
   }) {
     return MyCrowdfundingSupportState(
-      cardList: list ?? this.cardList,
       widgetChange: widgetChange ?? this.widgetChange,
       isVisible: isVisible ?? this.isVisible,
       newsData: newsData ?? this.newsData,
       questionData: questionData ?? this.questionData,
+      file: file ?? this.file,
+      commentsData: commentsData ?? this.commentsData,
     );
   }
 }

@@ -11,6 +11,7 @@ class LoginState extends Equatable {
   final bool isNextBtnActive;
   final bool signBtnActive;
   final bool hasError;
+  final bool codeError;
   final bool authSuccess;
   final bool loginSuccess;
   final bool registerSuccess;
@@ -29,6 +30,7 @@ class LoginState extends Equatable {
     this.phoneFill = false,
     this.signBtnActive = false,
     this.hasError = false,
+    this.codeError = false,
     this.authSuccess = false,
     this.loginSuccess = false,
     this.registerSuccess = false,
@@ -49,6 +51,7 @@ class LoginState extends Equatable {
         phoneFill,
         signBtnActive,
         hasError,
+    codeError,
     authSuccess,
     checkPhoneNumber,
     codeToken,
@@ -68,6 +71,7 @@ class LoginState extends Equatable {
     bool? phoneFill,
     bool? signBtnActive,
     bool? hasError,
+    bool? codeError,
     bool? authSuccess,
     bool? loginSuccess,
     bool? registerSuccess,
@@ -87,6 +91,7 @@ class LoginState extends Equatable {
       phoneFill: phoneFill ?? this.phoneFill,
       signBtnActive: signBtnActive ?? this.signBtnActive,
       hasError: hasError ?? this.hasError,
+      codeError: codeError ?? this.codeError,
       authSuccess: authSuccess ?? this.authSuccess,
       checkPhoneNumber: checkPhoneNumber ?? this.checkPhoneNumber,
       codeToken: codeToken ?? this.codeToken,

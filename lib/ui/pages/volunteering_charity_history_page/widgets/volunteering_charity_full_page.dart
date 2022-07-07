@@ -126,9 +126,9 @@ class _VolunteeringCharityFullPageState extends State<VolunteeringCharityFullPag
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      MyCharityAppliedUserWidget(
-                        model: widget.model,
-                      ),
+                      // MyCharityAppliedUserWidget(
+                      //   model: widget.model,
+                      // ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

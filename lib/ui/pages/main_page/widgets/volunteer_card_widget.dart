@@ -128,14 +128,14 @@ class VolunteerCardWidget extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.all(15),
-              child: InkWell(
-                onTap: onTapLike,
-                child: Align(
+              child: Align(
+                child: InkWell(
+                  onTap: onTapLike,
                   child: projectModel.isFavourite!
                       ? SvgPicture.asset(AppImageUtils.LIKE)
                       : SvgPicture.asset(AppImageUtils.UNLIKE),
-                  alignment: Alignment.topRight,
                 ),
+                alignment: Alignment.topRight,
               ),
             ),
           ],

@@ -16,7 +16,7 @@ class VolunteerCubit extends Cubit<VolunteerState> {
 
   static Future init() async {
     GetIt.instance..registerSingleton<VolunteerCubit>(VolunteerCubit());
-    VolunteerCubit.to.load();
+    await VolunteerCubit.to.load();
   }
   VolunteerCubit() : super(VolunteerState());
   VolunteerProjectService service= VolunteerProjectService();
@@ -27,6 +27,18 @@ class VolunteerCubit extends Cubit<VolunteerState> {
     if(changeLike!=null){
       load();
     }
+  }
+
+  Future searchChange(String v)async{
+    emit(state.copyWith(searchProgress: true));
+    var getSearch = await service.getProjectsByName(v);
+    if(getSearch != null){
+      emit(state.copyWith(searchProjects: getSearch.results));
+    }
+    emit(state.copyWith(searchChange: v));
+    emit(state.copyWith(searchProgress: false));
+
+
   }
 
   Future load() async {

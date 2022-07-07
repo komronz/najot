@@ -18,6 +18,7 @@ import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volu
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
+import '../../../../../data/bloc/home_cubit/home_cubit.dart';
 import '../../../../../data/bloc/project_data_cubit/project_data_cubit.dart';
 import '../../../kraudfanding_page_main/project_details/widgets/comment_to_author_dialog.dart';
 import '../../../kraudfanding_page_main/project_details/widgets/comments_widget.dart';
@@ -29,12 +30,10 @@ import '../../../kraudfanding_page_main/project_details/widgets/question_asked_w
 class AboutProjectVolunteerWidget extends StatefulWidget {
   AboutProjectVolunteerWidget({
     required this.cardModel,
-    required this.state,
     required this.cubit,
   });
 
   final ProjectModel cardModel;
-  final VolunteerState state;
   final VolunteerCubit cubit;
 
   @override
@@ -45,6 +44,7 @@ class AboutProjectVolunteerWidget extends StatefulWidget {
 class _AboutProjectVolunteerWidgetState
     extends State<AboutProjectVolunteerWidget> with TickerProviderStateMixin {
   late TabController _tabController;
+ late bool like;
   ProjectDataCubit cubitData = ProjectDataCubit();
 
   @override
@@ -55,6 +55,7 @@ class _AboutProjectVolunteerWidgetState
 
   @override
   void initState() {
+    like=widget.cardModel.isFavourite!;
     _tabController = TabController(length: 4, vsync: this);
     _tabController.addListener(_handleTabSelection);
     super.initState();
@@ -70,6 +71,7 @@ class _AboutProjectVolunteerWidgetState
   Widget build(BuildContext context) {
     var modifiedAt = DateTime.parse(widget.cardModel.modifiedAt!);
     var createdAt = DateTime.parse(widget.cardModel.createdAt!);
+
 
     return Column(
       children: [
@@ -323,11 +325,11 @@ class _AboutProjectVolunteerWidgetState
                 SizedBox(
                   height: 10.w,
                 ),
-                widget.state.saveHelp
+                widget.cubit.state.saveHelp
                     ? Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          widget.state.tobeVolunteer
+                          widget.cubit.state.tobeVolunteer
                               ? SizedBox()
                               : AppWidgets.text(
                                   text: LocaleKeys.tobe_volunteer.tr(),
@@ -357,7 +359,7 @@ class _AboutProjectVolunteerWidgetState
                             children: [
                               ButtonCard(
                                 onPress: () {
-                                  if (widget.state.tobeVolunteer == true) {
+                                  if (widget.cubit.state.tobeVolunteer == true) {
                                     NavigatorService.to.pushNamed(
                                       VolunteerHelpWidget.routeName,
                                       arguments: VolunteerHelpModel(
@@ -374,7 +376,7 @@ class _AboutProjectVolunteerWidgetState
                                 text: LocaleKeys.help.tr(),
                                 height: 48.w,
                                 width: 274.w,
-                                color: widget.state.tobeVolunteer
+                                color: widget.cubit.state.tobeVolunteer
                                     ? AppColorUtils.PERCENT_COLOR
                                     : AppColorUtils.DISABLE_BC,
                                 textSize: 16.sp,
@@ -382,10 +384,17 @@ class _AboutProjectVolunteerWidgetState
                                 textColor: AppColorUtils.WHITE,
                               ),
                               AppWidgets.favouriteButton(
-                                select: true,
+                                select: like,
                                 height: 48.w,
                                 width: 48.w,
-                                onTap: () {},
+                                onTap: () async{
+                                  await widget.cubit.changeLike(widget.cardModel.id!);
+                                 setState(() {
+                                   like=!like;
+                                 });
+                                  await HomeCubit.to.getModel();
+
+                                },
                               )
                             ],
                           ).paddingSymmetric(horizontal: 20.w),

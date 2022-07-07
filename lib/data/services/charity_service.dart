@@ -66,6 +66,7 @@ class CharityService{
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/ru/project/?type=CH&category=${id}&page_size=15",
+        token: HiveService.to.getToken()
       );
 
       if (response.statusCode == 200) {
@@ -85,5 +86,27 @@ class CharityService{
     }
   }
 
+  Future<RootProjectModel?> getProjectsByName(String name) async {
+
+    try {
+      final Response response = await RootService.httpService.get(
+          url: "https://api.najot.uz/ru/project/?type=CH&search=${name}",
+          token: HiveService.to.getToken()
+      );
+
+      if (response.statusCode == 200) {
+        final RootProjectModel responseModel =
+        RootProjectModel.fromJson(
+          response.data,
+        );
+        return responseModel;
+      } else {
+        AppLoggerUtil.e("-----------------");
+        return null;
+      }
+    } catch (e) {
+      return null;
+    }
+  }
 
 }

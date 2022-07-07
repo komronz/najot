@@ -8,7 +8,10 @@ class CharityState extends Equatable {
       this.category = const [],
       this.tabProjects,
       this.tobeVolunteer = true,
-       this.checkBox=false,
+      this.checkBox = false,
+      this.searchProjects = const [],
+      this.searchProgress = false,
+      this.searchChange = "",
       this.saveHelp = true});
 
   final RootProjectModel? charityModel;
@@ -19,6 +22,9 @@ class CharityState extends Equatable {
   final bool tobeVolunteer;
   final bool checkBox;
   final bool saveHelp;
+  List<ProjectModel> searchProjects;
+  final bool searchProgress;
+  String searchChange;
 
   @override
   // TODO: implement props
@@ -31,17 +37,23 @@ class CharityState extends Equatable {
         loading,
         tabProjects,
         charityModel,
+        searchProjects,
+        searchProjects,
+        searchChange,
       ];
 
   CharityState copyWith({
     RootProjectModel? charityModel,
     RootProjectModel? tabProjects,
-     bool? loading,
-     bool? tabLoading,
-     List<TabCategories>? category,
+    bool? loading,
+    bool? tabLoading,
+    List<TabCategories>? category,
     bool? tobeVolunteer,
     bool? checkBox,
     bool? saveHelp,
+    List<ProjectModel>? searchProjects,
+    String? searchChange,
+    bool? searchProgress,
   }) {
     return CharityState(
       charityModel: charityModel ?? this.charityModel,
@@ -52,6 +64,9 @@ class CharityState extends Equatable {
       tobeVolunteer: tobeVolunteer ?? this.tobeVolunteer,
       checkBox: checkBox ?? this.checkBox,
       saveHelp: saveHelp ?? this.saveHelp,
+      searchProjects: searchProjects ?? this.searchProjects,
+      searchChange: searchChange ?? this.searchChange,
+      searchProgress: searchProgress ?? this.searchProgress,
     );
   }
 }
