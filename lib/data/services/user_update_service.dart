@@ -1,16 +1,12 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:najot/data/model/add_project.dart';
+import 'package:najot/data/model/auth_model/user.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/http_service.dart';
 import 'package:najot/data/services/root_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
-
-import '../model/auth_model/login_end_model.dart';
-
-class UserUpdateService{
+class UserUpdateService {
   final HttpService _httpService = RootService.httpService;
 
   static Future init() async {
@@ -18,41 +14,38 @@ class UserUpdateService{
     getIt.registerSingleton<UserUpdateService>(UserUpdateService());
   }
 
-  Future<UserModel?> postModel(
-      String phone,
-      String firstName,
-      String lastName,
-      String gender,
-      String photo,
-      String status,
-      bool isVolunteer,
-      ) async {
+  Future<bool?> postModel(
+    String phone,
+    String firstName,
+    String lastName,
+    String gender,
+    File photo,
+    String status,
+    bool isVolunteer,
+  ) async {
     try {
       final _path = "https://api.najot.uz/ru/users/me/";
-      final body = {
+      String file1 = photo.path.split('/').last;
+      FormData formData = FormData.fromMap({
         "phone": phone,
         "first_name": firstName,
         "last_name": lastName,
         "gender": gender,
-        "photo": photo,
+        "photo": await MultipartFile.fromFile(photo.path, filename: file1),
         "status": status,
         "is_volunteer": isVolunteer,
-      };
-      final headers = {HttpHeaders.contentTypeHeader: "application/json"};
-      Response? response = await _httpService.post(
+      });
+      final headers = {HttpHeaders.contentTypeHeader: "multipart/from-data"};
+      var response = await _httpService.postFile(
         path: _path,
-        fields: body,
-        token: HiveService.to.getToken(),
+        formData: formData,
         headers: headers,
+        token: HiveService.to.getToken(),
       );
-
       if (response != null) {
-        if (response.statusCode == 201) {
-          AppLoggerUtil.i(UserModel.fromJson(response.data).toString());
-          return UserModel.fromJson(response.data);
-        } else if (response.statusCode == 401) {
-          return null;
-        } else if (response.statusCode! >= 500) {
+        if (response.statusCode == 200) {
+          return true;
+        }else{
           return null;
         }
       } else {
@@ -62,6 +55,28 @@ class UserUpdateService{
       AppLoggerUtil.e("$e");
       return null;
     }
-    return null;
   }
+
+  Future<User?> getUserModel() async {
+    try {
+      final Response response = await RootService.httpService.get(
+          url: "https://api.najot.uz/ru/users/me/",
+          token: HiveService.to.getToken()
+      );
+
+      if (response.statusCode == 200) {
+        final User userModel =
+        User.fromJson(
+          response.data,);
+
+        return userModel;
+      } else {
+        AppLoggerUtil.e("-----------------");
+        return null;
+      }
+    } catch (e) {
+      return null;
+    }
+  }
+
 }

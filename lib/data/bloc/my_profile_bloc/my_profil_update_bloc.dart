@@ -94,7 +94,7 @@ class MyProfileUpdateBloc
       Emitter<MyProfileUpdateState> emit,) async {
     emit(
       state.copyWith(
-        name: event.name,
+        firstName: event.name,
         nameFill: _isNotEmpty(event.name),
       ),
     );
@@ -103,7 +103,7 @@ class MyProfileUpdateBloc
   Future _onPhoneChanged(PhoneChanged event,
       Emitter<MyProfileUpdateState> emit) async {
     emit(state.copyWith(
-      phoneNumber: event.phoneNumber,
+      phone: event.phoneNumber,
       phoneNumberFill: _isNotEmpty(event.phoneNumber),
     ),
     );
@@ -122,7 +122,7 @@ class MyProfileUpdateBloc
       Emitter<MyProfileUpdateState> emit,) async {
     emit(
       state.copyWith(
-        sureName: event.sureName,
+        lastName: event.sureName,
         sureNameFill: _isNotEmpty(event.sureName),
       ),
     );
@@ -133,33 +133,21 @@ class MyProfileUpdateBloc
         .trim()
         .isNotEmpty;
   }
-
   UserUpdateService userUpdateService = UserUpdateService();
 
   Future _saveIn(SaveIn event,
       Emitter<MyProfileUpdateState> emit,) async {
-    if (_isNotEmpty(state.name) && _isNotEmpty(state.sureName)) {
-      UserModel? userModel = await userUpdateService.postModel(
-          state.phoneNumber,
-          state.name,
-          state.sureName,
+      var user = await userUpdateService.postModel(
+          state.phone,
+          state.firstName,
+          state.lastName,
           state.gender,
-          state.userImgPath.toString(),
-          state.sureNameFill.toString(),
-          state.sureNameFill,
+          state.userImgPath!,
+          state.status,
+          state.isVolunteer,
       );
-      // var user = User(
-      //     imageUrl: state.imageUrl,
-      //     firstName: state.name,
-      //     lastName: state.sureName,
-      //     isMan: state.isMan,
-      //     phone: state.phoneNumber
-      // );
-      // HiveService.to.setUser(user);
-      AppWidgets.showText(text: 'Success');
+      if (user!=null) {
       emit(state.copyWith(hasError: false));
-      AppLoggerUtil.i(userModel!.toJson().toString());
-      add(MyProfileLoad());
     } else {
       emit(state.copyWith(hasError: true));
     }
@@ -167,15 +155,15 @@ class MyProfileUpdateBloc
 
   Future _loadProfile(MyProfileLoad event,
       Emitter<MyProfileUpdateState> emit,) async {
-    var user = HiveService.to.getUser();
+    var user =  await userUpdateService.getUserModel();
     if (user != null) {
       emit(
         state.copyWith(
           imageUrl: user.photo,
-          name: user.firstName,
-          sureName: user.lastName,
+          firstName: user.firstName,
+          lastName: user.lastName,
           gender: user.gender,
-          phoneNumber: user.phone,
+          phone: user.phone,
         ),
       );
     } else {
@@ -185,13 +173,13 @@ class MyProfileUpdateBloc
 
   Future _sendCode(SendCode event,
       Emitter<MyProfileUpdateState> emit,) async {
-    if (_isNotEmpty(state.phoneNumber)) {
+    if (_isNotEmpty(state.phone)) {
       var user = User(
         photo: state.imageUrl,
-        firstName: state.name,
-        lastName: state.sureName,
+        firstName: state.firstName,
+        lastName: state.lastName,
         gender: state.gender,
-        phone: state.phoneNumber,
+        phone: state.phone,
       );
       HiveService.to.setUser(user);
       AppWidgets.showText(text: 'Success');
