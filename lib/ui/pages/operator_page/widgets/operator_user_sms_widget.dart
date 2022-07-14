@@ -2,13 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/model/operator_model.dart';
 import 'package:najot/data/model/sms_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/date_time_util.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class OperatorUserSmsWidget extends StatelessWidget {
-  final SmsModel model;
+  final OperatorModelResults model;
 
   const OperatorUserSmsWidget({
     required this.model,
@@ -17,7 +18,7 @@ class OperatorUserSmsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = calculateWidth(model.text!);
+    var width = calculateWidth(model.content??"");
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -35,7 +36,7 @@ class OperatorUserSmsWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               AppWidgets.text(
-                text: model.text!,
+                text: model.content??"",
                 maxLines: 100,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
@@ -44,7 +45,7 @@ class OperatorUserSmsWidget extends StatelessWidget {
               ),
               AppWidgets.text(
                 text: DateTimeUtil.dmy(
-                  model.dateTime!,
+                  DateTime.now(),
                   context.locale,
                 ),
                 fontSize: 10.sp,

@@ -212,7 +212,7 @@ class OperatorPage extends StatelessWidget {
 
   Widget buildList(BuildContext context, OperatorState state) {
     var list = state.list;
-    if (list.isEmpty) {
+    if (list!.isEmpty) {
       return SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -242,17 +242,17 @@ class OperatorPage extends StatelessWidget {
       controller: context.read<OperatorCubit>().controller,
       physics: BouncingScrollPhysics(),
       itemBuilder: (context, index) {
-        if (list[index].type! == SmsType.OPERATOR) {
+        if (list[index]!.isClient!=true) {
           return OperatorSmsWidget(
-            model: list[index],
+            model: list[index]!,
           );
         } else {
           return OperatorUserSmsWidget(
-            model: list[index],
+            model: list[index]!,
           );
         }
       },
-      itemCount: state.list.length,
+      itemCount: state.list!.length,
     );
   }
 }
