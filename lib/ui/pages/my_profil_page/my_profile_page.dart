@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -73,7 +74,17 @@ class MyProfilePage extends StatelessWidget {
                               Container(
                                 width: 107.w,
                                 height: 107.h,
-                                child: SvgPicture.asset(AppImageUtils.USER),
+                                child: CachedNetworkImage(
+                                  placeholder: (context, url)=>Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                  height: double.infinity,
+                                  width: double.infinity,
+                                  imageUrl: state.imageUrl,
+                                  errorWidget: (context, url, error) =>
+                                      Icon(Icons.error),
+                                  fit: BoxFit.cover,
+                                ),
                               ).paddingOnly(
                                 top: 25.h,
                                 bottom: 12.h,
@@ -131,13 +142,13 @@ class MyProfilePage extends StatelessWidget {
                                       hintText: context
                                           .read<MyProfileUpdateBloc>()
                                           .state
-                                          .name,
+                                          .firstName,
                                       onChanged: (v) {},
                                       title: LocaleKeys.name.tr(),
                                     ).paddingOnly(bottom: 23.h),
                                     AppDisableTextField(
                                       isFill: false,
-                                      hintText: context.read<MyProfileUpdateBloc>().state.sureName,
+                                      hintText: context.read<MyProfileUpdateBloc>().state.lastName,
                                       onChanged: (v) {},
                                       title: LocaleKeys.surname.tr(),
                                     ).paddingOnly(bottom: 23.h),
@@ -145,7 +156,7 @@ class MyProfilePage extends StatelessWidget {
                                       initial: context
                                           .read<MyProfileUpdateBloc>()
                                           .state
-                                          .gender??"",
+                                          .gender,
                                     ).paddingOnly(top: 20),
                                   ],
                                 ),
@@ -187,7 +198,7 @@ class MyProfilePage extends StatelessWidget {
                                                 hintText: context
                                                     .read<MyProfileUpdateBloc>()
                                                     .state
-                                                    .phoneNumber,
+                                                    .phone,
                                                 border: InputBorder.none,
                                                 hintStyle: TextStyle(
                                                   color: AppColorUtils.GRAY_4,

@@ -6,11 +6,11 @@ import 'package:najot/data/utils/app_utils.dart';
 
 
 class MyProfileUpdateState extends Equatable {
-  final String name;
-  final String sureName;
+  final String firstName;
+  final String lastName;
   final String imageUrl;
-  final String phoneNumber;
-  final String? gender;
+  final String phone;
+  final String gender;
   final String status;
   final bool isVolunteer;
   final bool isSavedBtn;
@@ -25,11 +25,11 @@ class MyProfileUpdateState extends Equatable {
 
 
   const MyProfileUpdateState({
-    this.name = '',
-    this.sureName = '',
+    this.firstName = '',
+    this.lastName = '',
     this.imageUrl = '',
-    this.phoneNumber='',
-    this.gender,
+    this.phone='',
+    this.gender="",
     this.status = "",
     this.isSavedBtn = false,
     this.nameFill = false,
@@ -45,10 +45,10 @@ class MyProfileUpdateState extends Equatable {
 
   @override
   List<Object?> get props => [
-        name,
-        sureName,
+        firstName,
+        lastName,
         imageUrl,
-        phoneNumber,
+         phone,
         gender,
         status,
         isSavedBtn,
@@ -65,10 +65,10 @@ class MyProfileUpdateState extends Equatable {
       ];
 
   MyProfileUpdateState copyWith({
-    String? name,
-    String? sureName,
+    String? firstName,
+    String? lastName,
     String? imageUrl,
-    String? phoneNumber,
+    String? phone,
     bool? phoneNumberFill,
     String? gender,
     String? status,
@@ -84,10 +84,10 @@ class MyProfileUpdateState extends Equatable {
     int? changePage
   }) {
     return MyProfileUpdateState(
-      name: name ?? this.name,
-      sureName: sureName ?? this.sureName,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
       imageUrl: imageUrl ?? this.imageUrl,
-      phoneNumber: phoneNumber ?? this.phoneNumber,
+      phone: phone ?? this.phone,
       phoneNumberFill: phoneNumberFill ?? this.phoneNumberFill,
       gender: gender ?? this.gender,
       status: status?? this.status,
