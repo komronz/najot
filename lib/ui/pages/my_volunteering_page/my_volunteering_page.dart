@@ -21,13 +21,14 @@ import 'my_volunteering_widget/waiting_for_widget.dart';
 class MyVolunteeringPage extends StatelessWidget {
   static const String routeName = '/myVolunteeringPage';
 
-  const MyVolunteeringPage({Key? key}) : super(key: key);
-
+  MyVolunteeringPage({Key? key}) : super(key: key);
+  MyVolunteeringCubit cubit=MyVolunteeringCubit();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MyVolunteeringCubit(),
+      create: (context) => cubit,
       child: BlocBuilder<MyVolunteeringCubit, MyVolunteeringState>(
+        bloc: cubit..load(),
         builder: (context, state) => Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
@@ -124,6 +125,8 @@ class MyVolunteeringPage extends StatelessWidget {
                       state.cardList.length,
                       (index) => WaitingForWidget(
                         model: state.cardList[index],
+                        index: index,
+                        cubit: cubit,
                       ),
                     ),
                   ),
@@ -134,9 +137,13 @@ class MyVolunteeringPage extends StatelessWidget {
                     padding: EdgeInsets.all(0),
                     reverse: false,
                     children: List.generate(
-                      state.cardList.length,
+                      state.itemList.length,
                       (index) => ItemCharityWidget(
-                        model: state.cardList[index],
+                        model: state.itemList[index],
+                        index: index,
+                        cubit: cubit,
+
+
                       ),
                     ),
                   ),

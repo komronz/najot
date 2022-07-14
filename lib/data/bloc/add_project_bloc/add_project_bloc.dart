@@ -5,8 +5,7 @@ import 'package:najot/data/model/add_project.dart';
 import 'package:najot/data/services/add_project_service.dart';
 
 class AddProjectBloc extends Bloc<AddProjectEvent, AddProjectState> {
-
-  AddProjectBloc(): super(AddProjectState()) {
+  AddProjectBloc() : super(AddProjectState()) {
     on<AddProjectNameChanged>(_onNameChanged);
     on<AddProjectTypeChanged>(_onTypeChanged);
     on<AddProjectDescriptionChanged>(_onDescriptionChanged);
@@ -15,42 +14,39 @@ class AddProjectBloc extends Bloc<AddProjectEvent, AddProjectState> {
     on<SendDateEvent>(_onBtnSend);
   }
 
-  final AddProjectService addProjectService=AddProjectService();
+  final AddProjectService addProjectService = AddProjectService();
+
   Future _onNameChanged(
-      AddProjectNameChanged event,
-      Emitter<AddProjectState> emit,
-      ) async {
+    AddProjectNameChanged event,
+    Emitter<AddProjectState> emit,
+  ) async {
     emit(
       state.copyWith(
         name: event.name,
         nameFill: _isNotEmpty(event.name),
         isBtnActive: _nextBtnActive(
-          event.name,
-          state.type,
-          state.whoAdd,
-          state.description
-        ),
+            event.name, state.type, state.whoAdd, state.description),
       ),
     );
   }
 
   bool _isNotEmpty(String? value) {
-    if(value!=null){
+    if (value != null) {
       return value.trim().isNotEmpty;
     }
-   return true;
+    return true;
   }
+
   bool _isEmpty(String value) {
     return value.trim().isEmpty;
   }
 
-
   bool _nextBtnActive(
-      String name,
-      String? type,
-      String? whoAdd,
-      String description,
-      ) {
+    String name,
+    String? type,
+    String? whoAdd,
+    String description,
+  ) {
     if (_isNotEmpty(name) &&
         _isNotEmpty(type) &&
         _isNotEmpty(description) &&
@@ -61,82 +57,74 @@ class AddProjectBloc extends Bloc<AddProjectEvent, AddProjectState> {
   }
 
   Future _onTypeChanged(
-      AddProjectTypeChanged event,
-      Emitter<AddProjectState> emit,
-      ) async {
+    AddProjectTypeChanged event,
+    Emitter<AddProjectState> emit,
+  ) async {
     emit(
       state.copyWith(
         type: event.type,
         typeFill: _isNotEmpty(event.type),
         isBtnActive: _nextBtnActive(
-            state.name,
-            event.type,
-            state.whoAdd,
-            state.description
-        ),
+            state.name, event.type, state.whoAdd, state.description),
       ),
     );
   }
 
   Future _onDescriptionChanged(
-      AddProjectDescriptionChanged event,
-      Emitter<AddProjectState> emit,
-      ) async {
+    AddProjectDescriptionChanged event,
+    Emitter<AddProjectState> emit,
+  ) async {
     emit(
       state.copyWith(
         description: event.description,
         descriptionFill: _isNotEmpty(event.description),
         isBtnActive: _nextBtnActive(
-            state.name,
-            state.type,
-            state.whoAdd,
-            event.description
-        ),
+            state.name, state.type, state.whoAdd, event.description),
       ),
-
     );
   }
+
   Future _onAddWhoChanged(
-      AddProjectAddWhoChanged event,
-      Emitter<AddProjectState> emit,
-      ) async {
+    AddProjectAddWhoChanged event,
+    Emitter<AddProjectState> emit,
+  ) async {
     emit(
       state.copyWith(
         whoAdd: event.addWho,
         whoAddFill: _isNotEmpty(event.addWho),
         isBtnActive: _nextBtnActive(
-            state.name,
-            state.type,
-            event.addWho,
-            state.description
+          state.name,
+          state.type,
+          event.addWho,
+          state.description,
         ),
       ),
-
     );
   }
 
   Future _onBtnPressed(
-      AddProjectBtnEvent event,
-      Emitter<AddProjectState> emit,
-      ) async {
+    AddProjectBtnEvent event,
+    Emitter<AddProjectState> emit,
+  ) async {
     emit(
-      AddProjectState(
-          name: "",
-          description: ""
-      ),
-
+      AddProjectState(name: "", description: ""),
     );
   }
+
   Future _onBtnSend(
-      SendDateEvent event,
-      Emitter<AddProjectState> emit,
-      ) async {
-    AddProjectModel? addProjectModel =await addProjectService.postModel(state.whoAdd!,
-        state.name, state.type!, state.description,);
+    SendDateEvent event,
+    Emitter<AddProjectState> emit,
+  ) async {
+    AddProjectModel? addProjectModel = await addProjectService.postModel(
+      state.whoAdd!,
+      state.name,
+      state.type!,
+      state.description,
+    );
     print(addProjectModel);
-    if(addProjectModel !=null){
+    if (addProjectModel != null) {
       emit(state.copyWith(isLoading: true));
-    }else{
+    } else {
       emit(state.copyWith(hasError: true));
     }
   }

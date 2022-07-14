@@ -221,6 +221,7 @@ class TimePickerOrganization extends StatelessWidget {
                             Navigator.pop(context);
 
                           },
+                          time: _time,
                         ),
                       );
                     },

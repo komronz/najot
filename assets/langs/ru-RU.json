@@ -250,6 +250,10 @@
     "card_number": "Номер карты",
     "be_save": "Сохранено",
     "user": "Пользователь",
+    "try_again": "Попробуй снова",
     "project_successful_added": "Проект // успешно // добавлено",
-    "try_again": "Попробуй снова"
+    "delete_profile": "Удалить профиль",
+    "request_sent_successful": "Запрос //отправлен // временно",
+    "profile_will_be_deleted": "Ваш профиль скоро будет удален, будьте здоровы"
+
 }

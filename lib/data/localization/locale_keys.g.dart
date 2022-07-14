@@ -254,5 +254,8 @@ abstract class  LocaleKeys {
   static const user = 'user';
   static const project_successful_added = 'project_successful_added';
   static const try_again = 'try_again';
+  static const delete_profile = 'delete_profile';
+  static const request_sent_successful = 'request_sent_successful';
+  static const profile_will_be_deleted = 'profile_will_be_deleted';
 
 }

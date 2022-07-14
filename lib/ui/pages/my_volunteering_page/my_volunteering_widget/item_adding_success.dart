@@ -12,16 +12,23 @@ import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
 
-class ItemAddingSuccess extends StatelessWidget {
+class ItemAddingSuccess extends StatefulWidget {
   ItemAddingSuccess({
     required this.dateTime,
+    required this.time,
     required this.back,
     required this.goto,
   }) ;
   DateTime dateTime;
   VoidCallback goto;
   VoidCallback back;
+  DateTime time;
 
+  @override
+  State<ItemAddingSuccess> createState() => _ItemAddingSuccessState();
+}
+
+class _ItemAddingSuccessState extends State<ItemAddingSuccess> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -73,7 +80,7 @@ class ItemAddingSuccess extends StatelessWidget {
                       height: 16,
                     ).paddingOnly(right: 5),
                     AppWidgets.textLocale(
-                      text: "${DateTimeUtil.dmy(dateTime, context.locale)}",
+                      text: "${DateTimeUtil.dmy(widget.dateTime, context.locale)}",
                       color: AppColorUtils.TEXT_COLOR,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
@@ -84,7 +91,7 @@ class ItemAddingSuccess extends StatelessWidget {
                       height: 16,
                     ).paddingOnly(right: 5),
                     AppWidgets.textLocale(
-                      text: "${DateTimeUtil.hhmm(dateTime, context.locale)}",
+                      text: "${DateTimeUtil.hhmm(widget.time, context.locale)}",
                       color: AppColorUtils.TEXT_COLOR,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
@@ -100,7 +107,7 @@ class ItemAddingSuccess extends StatelessWidget {
               Column(
                 children: [
                   AppWidgets.appButton(
-                    onTap: goto,
+                    onTap: widget.goto,
                     title: LocaleKeys.jump_to_note,
                     fontSize: 16.sp,
                   ),
@@ -108,7 +115,7 @@ class ItemAddingSuccess extends StatelessWidget {
                   AppWidgets.appButton(
                     color: AppColorUtils.LIGHT_GRAY,
                     textColor: AppColorUtils.BLACK,
-                    onTap: back,
+                    onTap: widget.back,
                     title: LocaleKeys.exit,
                     fontSize: 16.sp,
                   ),

@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/notification_cubit/notification_cubit.dart';
 import 'package:najot/data/custom_time_picker/flutter_time_picker_spinner.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/model/volunteer_db_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
@@ -33,7 +34,7 @@ class NotificationEdit extends StatelessWidget {
   final int index;
   DateTime _date = DateTime.now();
   DateTime _time = DateTime.now();
-  VolunteeringModel model;
+  VolunteerDbModel model;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder(
@@ -217,7 +218,7 @@ class NotificationEdit extends StatelessWidget {
                               _time.hour,
                               _time.minute,
                             );
-                            cubit.dateChange(dateTime, index);
+                            cubit.dateChange(index, dateTime);
                             NavigatorService.to.pop();
                             await showDialog(
                               context: context,

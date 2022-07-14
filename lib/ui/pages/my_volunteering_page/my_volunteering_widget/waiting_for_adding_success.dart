@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/model/volunteer_donate_model.dart';
 import 'package:najot/data/styles/app_colors.dart';
+import 'package:najot/ui/pages/notification_page/notification_page.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
 import '../../../../data/model/volunteering_model.dart';
@@ -15,13 +17,14 @@ import '../../../widgets/app_widgets.dart';
 
 class WaitingForAddingSuccess extends StatelessWidget {
 
-  WaitingForAddingSuccess(
-      {required this.model, required this.dateTime, Key? key})
+   WaitingForAddingSuccess(
+      {required this.model, required this.dateTime, required this.time, Key? key})
       : super(key: key);
   DateTime dateTime;
+  DateTime time;
   DateTime _dateTime = DateTime.now();
   TimeOfDay timeOfDay = TimeOfDay.now();
-  VolunteeringModel model;
+  VolunteerDonateResults model;
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +88,7 @@ class WaitingForAddingSuccess extends StatelessWidget {
                       height: 16,
                     ).paddingOnly(right: 5),
                     AppWidgets.textLocale(
-                      text: "${DateTimeUtil.hhmm(dateTime, context.locale)}",
+                      text: "${DateTimeUtil.hhmm(time, context.locale)}",
                       color: AppColorUtils.TEXT_COLOR,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
@@ -102,7 +105,7 @@ class WaitingForAddingSuccess extends StatelessWidget {
                 children: [
                   AppWidgets.appButton(
                     onTap: () {
-                      NavigatorService.to.pop();
+                      NavigatorService.to.pushReplacementNamed(NotificationPage.routeName);
                     },
                     title: LocaleKeys.jump_to_note,
                     fontSize: 16.sp,

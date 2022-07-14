@@ -7,6 +7,7 @@ import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/app_disable_text_field.dart';
+import 'package:najot/ui/pages/my_profil_page/my_profile_widget/profile_delete_dialog.dart';
 
 import '../../../data/localization/locale_keys.g.dart';
 import '../../../data/services/navigator_service.dart';
@@ -23,13 +24,14 @@ import 'my_profile_widget/my_profile_radio_button.dart';
 class MyProfilePage extends StatelessWidget {
   static const String routeName = "/myProfilePage";
 
-  const MyProfilePage({Key? key}) : super(key: key);
-
+  MyProfilePage({Key? key}) : super(key: key);
+  MyProfileUpdateBloc myProfileUpdateBloc=MyProfileUpdateBloc();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MyProfileUpdateBloc()..add(MyProfileLoad()),
+      create: (context) => myProfileUpdateBloc..add(MyProfileLoad()),
       child: BlocConsumer<MyProfileUpdateBloc, MyProfileUpdateState>(
+        bloc: myProfileUpdateBloc,
           listener: (context, state) {},
           builder: (context, state) {
             if (state.changePage == 1) {
@@ -143,7 +145,7 @@ class MyProfilePage extends StatelessWidget {
                                       initial: context
                                           .read<MyProfileUpdateBloc>()
                                           .state
-                                          .isMan,
+                                          .gender,
                                     ).paddingOnly(top: 20),
                                   ],
                                 ),
@@ -227,6 +229,19 @@ class MyProfilePage extends StatelessWidget {
                                 () {
                                   NavigatorService.to
                                       .pushNamed(ChooseLangPage.routeName);
+                                },
+                              ),
+                              AppWidgets.deleteProfile(
+                                context,
+                                    () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return ProfileDeleteDialog(
+                                            myProfileUpdateBloc: myProfileUpdateBloc,
+                                          );
+                                        },
+                                      );
                                 },
                               ),
                             ],

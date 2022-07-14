@@ -5,7 +5,7 @@ class EditVolunteerState extends Equatable {
   final String sureName;
   final String imageUrl;
   final String phoneNumber;
-  final Gender isMan;
+  final String gender;
   final bool isSavedBtn;
   final bool nameFill;
   final bool sureNameFill;
@@ -21,7 +21,7 @@ class EditVolunteerState extends Equatable {
     this.sureName = '',
     this.imageUrl = '',
     this.phoneNumber='',
-    this.isMan = Gender.MAN,
+    this.gender = "",
     this.isSavedBtn = false,
     this.nameFill = false,
     this.phoneNumberFill=false,
@@ -39,7 +39,7 @@ class EditVolunteerState extends Equatable {
     sureName,
     imageUrl,
     phoneNumber,
-    isMan,
+    gender,
     isSavedBtn,
     nameFill,
     sureNameFill,
@@ -57,7 +57,7 @@ class EditVolunteerState extends Equatable {
     String? imageUrl,
     String? phoneNumber,
     bool? phoneNumberFill,
-    Gender? isMan,
+    String? gender,
     bool? isSavedBtn,
     bool? nameFill,
     bool? sureNameFill,
@@ -74,7 +74,7 @@ class EditVolunteerState extends Equatable {
       imageUrl: imageUrl ?? this.imageUrl,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       phoneNumberFill: phoneNumberFill ?? this.phoneNumberFill,
-      isMan: isMan ?? this.isMan,
+      gender: gender ?? this.gender,
       isSavedBtn: isSavedBtn ?? this.isSavedBtn,
       nameFill: nameFill ?? this.nameFill,
       sureNameFill: sureNameFill ?? this.sureNameFill,

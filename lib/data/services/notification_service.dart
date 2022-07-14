@@ -5,38 +5,59 @@ import 'package:rxdart/rxdart.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 
-class NotificationApi {
-  static final _notifications = FlutterLocalNotificationsPlugin();
-  static final onNotification = BehaviorSubject<String?>();
+class NotificationService {
+  static final BehaviorSubject onNotification = BehaviorSubject<String?>();
+  static late final FlutterLocalNotificationsPlugin _notifications;
+   static Future requestPermissions() async{
+     await _notifications
+        .resolvePlatformSpecificImplementation<
+        IOSFlutterLocalNotificationsPlugin>()
+        ?.requestPermissions(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
+    await _notifications
+        .resolvePlatformSpecificImplementation<
+        MacOSFlutterLocalNotificationsPlugin>()
+        ?.requestPermissions(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
+  }
 
-  static Future _notificationDetails() async {
+  static Future notificationDetails() async {
     return NotificationDetails(
       android: AndroidNotificationDetails('channel id', 'channel name',
           channelDescription: "channel description",
           importance: Importance.max,
+          fullScreenIntent: true,
+          autoCancel: true,
           playSound: true),
       iOS: IOSNotificationDetails(),
     );
   }
 
   static Future init({bool initScheduled = true}) async {
-    final android = AndroidInitializationSettings("@drawable/najot_logo");
-    final iOS = IOSInitializationSettings();
-    final setting = InitializationSettings(android: android, iOS: iOS);
-
-    await _notifications.initialize(setting,
+    _notifications = FlutterLocalNotificationsPlugin();
+    final AndroidInitializationSettings android = AndroidInitializationSettings("@drawable/najot_logo");
+    final IOSInitializationSettings iOS = IOSInitializationSettings();
+    final InitializationSettings setting = InitializationSettings(android: android, iOS: iOS);
+    await _notifications.initialize(
+        setting,
         onSelectNotification: (payload) async {
       onNotification.add(payload);
     });
     if (initScheduled) {
       tz.initializeTimeZones();
-      final locationName = await FlutterNativeTimezone.getLocalTimezone();
+      final String locationName = await FlutterNativeTimezone.getLocalTimezone();
       tz.setLocalLocation(tz.getLocation(locationName));
     }
   }
 
   static Future showNotification({
-    required DateTime scheduledDate,
+    DateTime? scheduledDate,
     int? id,
     String? title,
     String? body,
@@ -47,14 +68,14 @@ class NotificationApi {
         title,
         body,
         _scheduleDaily(DateTime(
-          scheduledDate.year,
+          scheduledDate!.year,
           scheduledDate.month,
           scheduledDate.day,
           scheduledDate.hour,
           scheduledDate.minute,
           scheduledDate.second,
         )),
-        await _notificationDetails(),
+        await notificationDetails(),
         payload: payload,
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:
@@ -69,9 +90,12 @@ class NotificationApi {
     final scheduledDate = tz.TZDateTime(tz.local, time.year, time.month,
         time.day, time.hour, time.minute, time.second);
     return scheduledDate.isBefore(now)
-        ? scheduledDate.add(Duration(minutes: 1))
+        ? scheduledDate.add(Duration(seconds: 0))
         : scheduledDate;
   }
+  static void cancel(int id) => _notifications.cancel(id);
+  static void cancelAll(int id) => _notifications.cancelAll();
+
 // static tz.TZDateTime _scheduleWeekly(Time time,{required List<int> days}){
 //   tz.TZDateTime scheduledDate=_scheduleDaily(time);
 //   while(!days.contains(scheduledDate.weekday)){

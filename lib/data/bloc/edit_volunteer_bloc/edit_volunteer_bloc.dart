@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:najot/data/model/auth_model/login_end_model.dart';
 import 'package:najot/data/model/auth_model/user.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
@@ -100,7 +99,7 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
       Emitter<EditVolunteerState> emit,) async {
     emit(
       state.copyWith(
-        isMan: event.isMan,
+        gender: event.gender,
       ),
     );
   }
@@ -124,9 +123,11 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
   Future _saveIn(SaveIn event,
       Emitter<EditVolunteerState> emit,) async {
     if (_isNotEmpty(state.name) && _isNotEmpty(state.sureName)) {
-      var user = UserModel(
+      var user = User(
+          photo: state.imageUrl,
           firstName: state.name,
           lastName: state.sureName,
+          gender: state.gender,
           phone: state.phoneNumber
       );
       HiveService.to.setUser(user);
@@ -145,8 +146,10 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
     if (user != null) {
       emit(
         state.copyWith(
+          imageUrl: user.photo,
           name: user.firstName,
           sureName: user.lastName,
+          gender: user.gender,
           phoneNumber: user.phone,
         ),
       );
@@ -158,9 +161,11 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
   Future _sendCode(SendCode event,
       Emitter<EditVolunteerState> emit,) async {
     if (_isNotEmpty(state.phoneNumber)) {
-      var user = UserModel(
+      var user = User(
+        photo: state.imageUrl,
         firstName: state.name,
         lastName: state.sureName,
+        gender: state.gender,
         phone: state.phoneNumber,
       );
       HiveService.to.setUser(user);

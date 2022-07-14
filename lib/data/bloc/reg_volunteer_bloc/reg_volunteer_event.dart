@@ -86,7 +86,7 @@ class VolunteerGiveDateSelected extends RegVolunteerEvent {
   List<Object?> get props => [giveDate];
 }
 
-class VolunteerPassImgUploaded extends RegVolunteerEvent {
+class  VolunteerPassImgUploaded extends RegVolunteerEvent {
   @override
   List<Object?> get props => [];
 }

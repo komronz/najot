@@ -145,6 +145,7 @@ class TimePikerVolunteer extends StatelessWidget {
                         spacing: 15.sp,
                         itemHeight: 40,
                         onTimeChange: (time) {
+                          _time=time;
                           // setState(
                           //       () {
                           //     _time = DateTime(
@@ -223,7 +224,7 @@ class TimePikerVolunteer extends StatelessWidget {
                             cubit.loading();
                             Navigator.pop(context);
 
-                          },
+                          }, time: _time,
                         ),
                       );
                     },

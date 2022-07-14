@@ -1,12 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/model/volunteer_db_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/notification_page/notification_page.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
 import '../../../../data/bloc/app_page_cubit/app_page_cubit.dart';
@@ -16,14 +19,8 @@ import '../../home_page/home_page.dart';
 
 class AttentionNote extends StatelessWidget {
   static const String routeName = "/attentionNote";
-
   AttentionNote({required this.model, Key? key}) : super(key: key);
-  DateTime _date = DateTime.now();
-  DateTime _time = DateTime.now();
-  final VolunteeringModel model;
-
-
-  // VolunteeringModel model;
+  final VolunteerDbModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +96,7 @@ class AttentionNote extends StatelessWidget {
                             height: 16,
                           ).paddingOnly(right: 5.w),
                           AppWidgets.textLocale(
-                            text: model.completedDate!,
+                            text: DateFormat("dd.MM.yyyy").format(DateTime.parse(model.deadLine!)),
                             color: AppColorUtils.BLUE_PERCENT,
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
@@ -126,7 +123,7 @@ class AttentionNote extends StatelessWidget {
                         color: AppColorUtils.DARK_6,
                       ),
                       AppWidgets.textLocale(
-                        text: model.typeVolunteering!,
+                        text: model.helpType??"",
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
                         color: AppColorUtils.KRAUDFANDING,
@@ -141,15 +138,15 @@ class AttentionNote extends StatelessWidget {
                 ).paddingOnly(
                   bottom: 18.w,
                 ),
-
                 Column(
                   children: [
                     AppWidgets.appButton(
                       onTap: () {
-                        NavigatorService.to.pushNamedAndRemoveUntil(
-                          HomePage.routeName,
-                          arguments: AppPageType.VOLUNTEERING,
-                        );
+                        NavigatorService.to.pop();
+                        // NavigatorService.to.pushNamed(
+                        //   HomePage.routeName,
+                        //   arguments: AppPageType.VOLUNTEERING,
+                        // );
                       },
                       title: LocaleKeys.my_volunteering.tr(),
                       fontSize: 16.sp,
@@ -160,7 +157,7 @@ class AttentionNote extends StatelessWidget {
                       color: AppColorUtils.SMS_BTN2,
                       textColor: AppColorUtils.KRAUDFANDING,
                       onTap: () {
-                        NavigatorService.to.pop();
+                        NavigatorService.to.pushReplacementNamed(NotificationPage.routeName);
                       },
                       title: LocaleKeys.notes.tr(),
                       fontSize: 16.sp,

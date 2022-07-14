@@ -3,6 +3,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:najot/data/model/volunteer_model.dart';
+import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/root_service.dart';
 
 import '../bloc/language_cubit/language_cubit.dart';

@@ -1,6 +1,4 @@
 import 'dart:io';
-
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -9,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
@@ -330,6 +328,52 @@ class AppWidgets {
       ).paddingOnly(bottom: 24.w),
     );
   }
+ static Widget deleteProfile(BuildContext context, VoidCallback onTap) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
+        height: 44.w,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: AppColorUtils.PINK),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row().paddingOnly(left: 50.w),
+            Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(3.w),
+                  child: SvgPicture.asset(
+                    AppImageUtils.TRASH,
+                    height: 16.w,
+                    alignment: Alignment.topCenter,
+                    color: AppColors.RED,
+                  ),
+                ),
+                SizedBox(
+                  width: 8.w,
+                ),
+                AppWidgets.text(
+                  text: LocaleKeys.delete_profile.tr(),
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColorUtils.RED,
+                ).paddingOnly(top: 5.w),
+              ],
+            ),
+            SizedBox(
+              width: 15.w,
+            ),
+            Icon(Icons.chevron_right)
+          ],
+        ),
+      ).paddingOnly(bottom: 24.w),
+    );
+  }
+
+
 
   static Widget appBarMenu({required String title,
     required VoidCallback onTapMenu,

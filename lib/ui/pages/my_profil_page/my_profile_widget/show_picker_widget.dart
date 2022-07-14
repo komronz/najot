@@ -54,7 +54,6 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
       print('Failed to pick image: $e');
     }
   }
-
   Future<File> saveImagePermanently(String imagePath) async {
     final directory = await getApplicationDocumentsDirectory();
     final name = basename(imagePath);
@@ -77,7 +76,7 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
               ? Container(
                   child: ClipRRect(
                     child: Image.file(
-                      widget.imageFile!,
+                      widget.imageFile! as File,
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.circular(widget.radius),
@@ -94,7 +93,7 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
     );
   }
 
-  _showPicker(context) {
+  void _showPicker(context) {
     showModalBottomSheet(
         context: context,
         builder: (BuildContext bc) {
