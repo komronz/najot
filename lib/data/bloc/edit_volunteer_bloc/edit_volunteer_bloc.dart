@@ -5,7 +5,9 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/model/auth_model/user.dart';
+import 'package:najot/data/model/volunteer_profile_model.dart';
 import 'package:najot/data/services/hive_service.dart';
+import 'package:najot/data/services/volunteer_profile_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/data/utils/app_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -36,6 +38,7 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
     on<SaveIn>(_saveIn);
   }
 
+  VolunteerProfileService service = VolunteerProfileService();
   Future _onChangeEditProfile(EditProfileChangePage event,
       Emitter<EditVolunteerState> emit,)async{
     emit(state.copyWith(changePage: event.changePage));
@@ -143,15 +146,10 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
   Future _loadProfile(MyProfileLoad event,
       Emitter<EditVolunteerState> emit,) async {
     var user = HiveService.to.getUser();
+    var volunteer = await service.getVolunteer();
     if (user != null) {
       emit(
-        state.copyWith(
-          imageUrl: user.photo,
-          name: user.firstName,
-          sureName: user.lastName,
-          gender: user.gender,
-          phoneNumber: user.phone,
-        ),
+        state.copyWith(volunteer: volunteer),
       );
     } else {
       AppLoggerUtil.e('User null ');
@@ -160,7 +158,7 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
 
   Future _sendCode(SendCode event,
       Emitter<EditVolunteerState> emit,) async {
-    if (_isNotEmpty(state.phoneNumber)) {
+    if (state.phoneNumber.length==12) {
       var user = User(
         photo: state.imageUrl,
         firstName: state.name,
@@ -173,7 +171,6 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
       emit(state.copyWith(hasError: false, isVisible: true));
       AppLoggerUtil.i(user.toJson().toString());
       emit(state.copyWith(isVisible: false));
-      await Future.delayed(Duration(seconds: 3));
       emit(state.copyWith(nextPage: true));
       add(MyProfileLoad());
     } else {

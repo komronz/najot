@@ -1,5 +1,6 @@
 
 
+import 'auth_model/user.dart';
 import 'news_model.dart';
 
 class CommentsModel {

@@ -22,7 +22,7 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
 
   NumberUpdateVolunteerPage({Key? key}) : super(key: key);
   bool isVisible = true;
-  UserModel? user = HiveService.to.getUser();
+  User? user = HiveService.to.getUser();
   final maskFormatter = MaskTextInputFormatter(mask: '## ### ## ##');
   TextEditingController numberController = TextEditingController();
 
@@ -134,10 +134,15 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                     ),
                                     cursorColor: Colors.black,
                                   ).paddingOnly(
-                                    bottom: 23.w,
+                                    bottom: 3.w,
                                     left: 20.w,
                                     right: 20.w,
                                   ),
+                                  state.hasError ? AppWidgets.starTextWidget(
+                                      text: "Telefon raqamni to'g'ri kiriting",
+                                      color: AppColorUtils.RED
+                                  ).paddingOnly(left: 20) : SizedBox(),
+                                  SizedBox(height: 15.w,)
 
                                 ],
                               ),
@@ -148,17 +153,16 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(height: 8.w),
-                                    InkWell(
+                                    context
+                                        .read<EditVolunteerBloc>()
+                                        .state
+                                        .isVisible? InkWell(
                                       onTap: () {
                                         context
                                             .read<EditVolunteerBloc>()
                                             .add(SendCode());
                                       },
-                                      child: context
-                                              .read<EditVolunteerBloc>()
-                                              .state
-                                              .isVisible
-                                          ? Visibility(
+                                      child: Visibility(
                                               visible: context
                                                   .read<EditVolunteerBloc>()
                                                   .state
@@ -182,10 +186,10 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                                     fontWeight: FontWeight.w600),
                                               ),
                                             )
-                                          : NumberUpdating(
-                                              state: state,
-                                              con: con,
-                                            ),
+                                    )
+                                        : NumberUpdating(
+                                      state: state,
+                                      con: con,
                                     ),
                                   ],
                                 ),

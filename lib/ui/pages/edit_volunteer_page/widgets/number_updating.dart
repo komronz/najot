@@ -7,15 +7,19 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/edit_volunteer_page/widgets/pinput_number_change.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+import 'package:pinput/pinput.dart';
 import 'package:provider/src/provider.dart';
 
 class NumberUpdating extends StatelessWidget {
-  NumberUpdating({required this.state,required this.con});
+  NumberUpdating({required this.state, required this.con});
 
   EditVolunteerState state;
   BuildContext con;
+  final TextEditingController _pinPutController = TextEditingController();
+  final FocusNode _pinPutFocusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -33,25 +37,14 @@ class NumberUpdating extends StatelessWidget {
                 width: 2,
               ),
             ),
-            child: !state.nextPage
-                ? AppWidgets.textLocale(
-                    text: "1 2 3 4 5 6",
-                    textAlign: TextAlign.center,
-                    color: AppColorUtils.GRAY_4,
-                    fontSize: 15.sp,
-                    fontWeight: FontWeight.w600,
-                  )
-                : Container(
-                    width: 150,
+            child:  Container(
+                    width: 150.w,
                     child: Row(
                       children: [
-                        AppWidgets.textLocale(
-                                text: "1 2 3 4 5 6",
-                                textAlign: TextAlign.center,
-                                color: AppColorUtils.GREEN_2,
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w600)
-                            .paddingOnly(right: 10),
+                        PinPutNumberChangeWidget(
+                          pinPutFocusNode: _pinPutFocusNode,
+                          pinPutController: _pinPutController,
+                        ).paddingOnly(right: 10),
                         SvgPicture.asset(AppImageUtils.CHECK),
                       ],
                     ),
@@ -68,31 +61,24 @@ class NumberUpdating extends StatelessWidget {
             color: AppColorUtils.PERCENT_COLOR,
             onPress: () {
               con.read<EditVolunteerBloc>().add(EditProfileChangePage(1));
-              con.read<EditVolunteerBloc>().add(MyProfileLoad()
-              );
-
+              con.read<EditVolunteerBloc>().add(MyProfileLoad());
             },
             text: LocaleKeys.confirmation.tr(),
           ).paddingOnly(bottom: 18.w),
-          state.nextPage
-              ? SizedBox()
-              : InkWell(
-                  onTap: () {
-                    // NavigatorService.to
-                    //     .pushNamed(NumberUpdateVolunteerPage.routeName);
-                  },
-                  child: Container(
-                    child: AppWidgets.textLocale(
-                      text: LocaleKeys.send_again.tr(),
-                      color: AppColorUtils.BlUE_2,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ).paddingOnly(left: 120.w),
-                ),
+          ButtonCard(
+            textSize: 16.sp,
+            fontWeight: FontWeight.w500,
+            textColor: AppColorUtils.BlUE_2,
+            borderRadius: 12,
+            height: 48.w,
+            width: 1.sw,
+            color: AppColorUtils.WHITE,
+            onPress: () {
+            },
+            text: LocaleKeys.send_again.tr(),
+          ).paddingSymmetric(horizontal: 70.w),
         ],
       ),
     );
-
   }
 }

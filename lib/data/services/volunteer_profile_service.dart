@@ -4,11 +4,13 @@ import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/model/news_model.dart';
+import 'package:najot/data/model/volunteer_profile_model.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/http_service.dart';
 import 'package:najot/data/services/root_service.dart';
 
 import '../bloc/language_cubit/language_cubit.dart';
+import '../model/auth_model/user.dart';
 import '../utils/app_logger_util.dart';
 
 class VolunteerProfileService {
@@ -25,6 +27,44 @@ class VolunteerProfileService {
           response.data,
         );
         return responseModel;
+      } else {
+        AppLoggerUtil.e("-----------------");
+        return null;
+      }
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<User?> getUser() async {
+    try {
+      final Response response = await RootService.httpService.get(
+          url: "https://api.najot.uz/ru/users/me/",
+          token: HiveService.to.getToken());
+      if (response.statusCode == 200) {
+        final User user = User.fromJson(
+          response.data,
+        );
+        return user;
+      } else {
+        AppLoggerUtil.e("-----------------");
+        return null;
+      }
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<VolunteerProfileModel?> getVolunteer() async {
+    try {
+      final Response response = await RootService.httpService.get(
+          url: "https://api.najot.uz/ru/users/valunteer-profile/me/",
+          token: HiveService.to.getToken());
+      if (response.statusCode == 200) {
+        final VolunteerProfileModel user = VolunteerProfileModel.fromJson(
+          response.data,
+        );
+        return user;
       } else {
         AppLoggerUtil.e("-----------------");
         return null;

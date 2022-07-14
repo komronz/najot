@@ -24,7 +24,7 @@ class NumberUpdatePage extends StatelessWidget {
 
   NumberUpdatePage({Key? key}) : super(key: key);
   bool isVisible = true;
-  UserModel? user = HiveService.to.getUser();
+  User? user = HiveService.to.getUser();
 
 
   @override

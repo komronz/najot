@@ -14,7 +14,7 @@ class RegVolunteerState extends Equatable {
   final XFile? passportImgPath;
   final XFile? pageImgPath;
   final bool sendBtnActive;
-  final bool waitVolunteer;
+  final User? user;
   final bool postSuccess;
   final MaskTextInputFormatter? inputFormatter;
 
@@ -32,7 +32,7 @@ class RegVolunteerState extends Equatable {
     this.passportImgPath,
     this.pageImgPath,
     this.sendBtnActive = false,
-    this.waitVolunteer = false,
+    this.user,
     this.postSuccess = false,
     this.inputFormatter
   });
@@ -51,7 +51,7 @@ class RegVolunteerState extends Equatable {
     XFile? passportImgPath,
     XFile? pageImgPath,
     bool? sendBtnActive,
-    bool? waitVolunteer,
+    User? user,
     bool? postSuccess,
     MaskTextInputFormatter? inputFormatter
   }) {
@@ -69,7 +69,7 @@ class RegVolunteerState extends Equatable {
       serial: serial ?? this.serial,
       serialNumber: serialNumber ?? this.serialNumber,
       sendBtnActive: sendBtnActive ?? this.sendBtnActive,
-      waitVolunteer: waitVolunteer ?? this.waitVolunteer,
+      user: user ?? this.user,
       postSuccess: postSuccess ?? this.postSuccess,
       inputFormatter: inputFormatter ?? this.inputFormatter,
     );
@@ -89,7 +89,7 @@ class RegVolunteerState extends Equatable {
         givenDate,
         pageImgPath,
         passportImgPath,
-        waitVolunteer,
+    user,
     inputFormatter
       ];
 }

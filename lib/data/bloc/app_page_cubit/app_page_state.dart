@@ -4,27 +4,35 @@ class AppPageState extends Equatable {
   final AppPageType pageType;
   final int changeMenu;
   final bool tobeVolunteer;
+  final User? user;
 
-  const AppPageState({
-     this.pageType=AppPageType.MAIN,
-     this.changeMenu=1,
-     this.tobeVolunteer=false,
-  });
+  const AppPageState(
+      {this.pageType = AppPageType.MAIN,
+      this.changeMenu = 1,
+      this.tobeVolunteer = false,
+      this.user});
 
   AppPageState copyWith({
     AppPageType? pageType,
     int? changeMenu,
     bool? tobeVolunteer,
+    User? user,
   }) {
     return AppPageState(
       pageType: pageType ?? this.pageType,
       changeMenu: changeMenu ?? this.changeMenu,
       tobeVolunteer: tobeVolunteer ?? this.tobeVolunteer,
+      user: user ?? this.user,
     );
   }
 
   @override
-  List<Object?> get props => [pageType, changeMenu,tobeVolunteer];
+  List<Object?> get props => [
+        pageType,
+        changeMenu,
+        tobeVolunteer,
+        user,
+      ];
 }
 
 enum AppPageType {
@@ -49,5 +57,4 @@ enum AppPageType {
   NUMBER,
   NOTIFICATION,
   DEFAULT,
-
 }

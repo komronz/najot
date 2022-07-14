@@ -49,8 +49,8 @@ class DrawerBody extends StatelessWidget {
                         child: Row(
                           children: [
                             Container(
-                              width: 66.w,
-                              height: 66.w,
+                              width: 55.w,
+                              height: 55.w,
                               child: CircleAvatar(
                                 backgroundColor: AppColorUtils.LEFT_MENU_BACK,
                                 child: SvgPicture.asset(AppImageUtils.USER),
@@ -80,7 +80,7 @@ class DrawerBody extends StatelessWidget {
                                         horizontal: 5.w,
                                       ),
                                       child: AppWidgets.text(
-                                        text: state.tobeVolunteer
+                                        text: state.user!.isVolunteer!
                                             ? LocaleKeys.volunteer.tr()
                                             : LocaleKeys.normal_user.tr(),
                                         color: AppColorUtils.BLUE_PERCENT,
@@ -128,7 +128,7 @@ class DrawerBody extends StatelessWidget {
                     height: 1,
                     thickness: 1,
                   ),
-                  state.tobeVolunteer
+                  state.user!.isVolunteer!
                       ? SizedBox()
                       : ButtonCard(
                           onPress: () {

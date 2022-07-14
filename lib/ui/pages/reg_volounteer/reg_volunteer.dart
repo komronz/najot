@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/context_extension.dart';
@@ -27,10 +28,12 @@ class RegVolunteer extends StatefulWidget {
 
 class _RegVolunteerState extends State<RegVolunteer>
     with SingleTickerProviderStateMixin {
+
+  RegVolunteerBloc bloc= RegVolunteerBloc();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RegVolunteerBloc(),
+      create: (context) => bloc..add(VolunteerLoad()),
       child: Scaffold(
         backgroundColor: AppColorUtils.BACKGROUND,
         appBar: AppBar(
@@ -65,9 +68,11 @@ class _RegVolunteerState extends State<RegVolunteer>
           ).paddingSymmetric(horizontal: 20),
         ),
         body: BlocConsumer<RegVolunteerBloc, RegVolunteerState>(
+          bloc: bloc,
           listener: (context, state) {},
           builder: (context, state) {
-            if (state.waitVolunteer) {
+            print(state.user);
+            if (AppPageCubit.to.state.user!.status=="CHECKING") {
               return buildWaitBody(context);
             }
             return buildBody(context);

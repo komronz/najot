@@ -4,7 +4,12 @@ part of 'reg_volunteer_bloc.dart';
 abstract class RegVolunteerEvent extends Equatable {
   const RegVolunteerEvent();
 }
+class VolunteerLoad extends RegVolunteerEvent {
 
+
+  @override
+  List<Object?> get props => [];
+}
 class VolunteerFirstNameChanged extends RegVolunteerEvent {
   final String firstName;
 

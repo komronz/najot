@@ -11,6 +11,8 @@ import 'package:najot/data/services/volunteer_profile_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../model/auth_model/user.dart';
+
 part 'reg_volunteer_event.dart';
 
 part 'reg_volunteer_state.dart';
@@ -41,7 +43,20 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     on<VolunteerPageImgDeleted>(_onPageImgDeleted);
     on<VolunteerPassImgDeleted>(_onPassImgDeleted);
     on<PostVolunteerData>(_onPostVolunteerData);
+    on<VolunteerLoad>(_onVolunteerLoad);
   }
+
+
+  Future _onVolunteerLoad(VolunteerLoad event,
+      Emitter<RegVolunteerState> emit,) async {
+    var user = await service.getUser();
+    if(user !=null){
+      emit(state.copyWith(user: user));
+    }
+
+
+  }
+
 
   Future _onPostVolunteerData(PostVolunteerData event,
       Emitter<RegVolunteerState> emit,) async {
@@ -291,14 +306,12 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
 
   Future _onSendBtnPressed(VolunteerSendBtn event,
       Emitter<RegVolunteerState> emit,) async {
-    emit(state.copyWith(waitVolunteer: true));
   }
 
   Future _onPageImgDeleted(VolunteerPageImgDeleted event,
       Emitter<RegVolunteerState> emit,) async {
     emit(
       RegVolunteerState(
-        waitVolunteer: state.waitVolunteer,
         address: state.address,
         birthDate: state.birthDate,
         firstName: state.firstName,
@@ -321,7 +334,6 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
       Emitter<RegVolunteerState> emit,) async {
     emit(
       RegVolunteerState(
-        waitVolunteer: state.waitVolunteer,
         address: state.address,
         birthDate: state.birthDate,
         firstName: state.firstName,

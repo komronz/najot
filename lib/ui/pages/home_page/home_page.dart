@@ -43,7 +43,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  AppPageCubit cubit = AppPageCubit();
   @override
   void initState(){
     // TODO: implement initState
@@ -70,7 +69,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => cubit..load(widget.appPageType),
+      create: (BuildContext context) => AppPageCubit.to..load(widget.appPageType),
       child: BlocBuilder<AppPageCubit, AppPageState>(
         builder: (context, state) {
           return Scaffold(
