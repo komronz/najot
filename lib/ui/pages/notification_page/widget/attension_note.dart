@@ -9,7 +9,7 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/notification_page/widget/notification_api.dart';
+import 'package:najot/ui/pages/notification_page/notification_page.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
 import '../../../../data/bloc/app_page_cubit/app_page_cubit.dart';
@@ -138,15 +138,15 @@ class AttentionNote extends StatelessWidget {
                 ).paddingOnly(
                   bottom: 18.w,
                 ),
-
                 Column(
                   children: [
                     AppWidgets.appButton(
                       onTap: () {
-                        NavigatorService.to.pushNamedAndRemoveUntil(
-                          HomePage.routeName,
-                          arguments: AppPageType.VOLUNTEERING,
-                        );
+                        NavigatorService.to.pop();
+                        // NavigatorService.to.pushNamed(
+                        //   HomePage.routeName,
+                        //   arguments: AppPageType.VOLUNTEERING,
+                        // );
                       },
                       title: LocaleKeys.my_volunteering.tr(),
                       fontSize: 16.sp,
@@ -157,7 +157,7 @@ class AttentionNote extends StatelessWidget {
                       color: AppColorUtils.SMS_BTN2,
                       textColor: AppColorUtils.KRAUDFANDING,
                       onTap: () {
-                        NavigatorService.to.pop();
+                        NavigatorService.to.pushReplacementNamed(NotificationPage.routeName);
                       },
                       title: LocaleKeys.notes.tr(),
                       fontSize: 16.sp,

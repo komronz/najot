@@ -5,16 +5,9 @@ import 'package:rxdart/rxdart.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 
-class NotificationApi {
-  static final NotificationApi _notificationService =
-  NotificationApi._internal();
-  factory NotificationApi() {
-    return _notificationService;
-  }
-  NotificationApi._internal();
+class NotificationService {
   static final BehaviorSubject onNotification = BehaviorSubject<String?>();
-  static final FlutterLocalNotificationsPlugin _notifications =
-  FlutterLocalNotificationsPlugin();
+  static late final FlutterLocalNotificationsPlugin _notifications;
    static Future requestPermissions() async{
      await _notifications
         .resolvePlatformSpecificImplementation<
@@ -34,7 +27,7 @@ class NotificationApi {
     );
   }
 
-  static Future _notificationDetails() async {
+  static Future notificationDetails() async {
     return NotificationDetails(
       android: AndroidNotificationDetails('channel id', 'channel name',
           channelDescription: "channel description",
@@ -47,6 +40,7 @@ class NotificationApi {
   }
 
   static Future init({bool initScheduled = true}) async {
+    _notifications = FlutterLocalNotificationsPlugin();
     final AndroidInitializationSettings android = AndroidInitializationSettings("@drawable/najot_logo");
     final IOSInitializationSettings iOS = IOSInitializationSettings();
     final InitializationSettings setting = InitializationSettings(android: android, iOS: iOS);
@@ -63,7 +57,7 @@ class NotificationApi {
   }
 
   static Future showNotification({
-    required DateTime scheduledDate,
+    DateTime? scheduledDate,
     int? id,
     String? title,
     String? body,
@@ -74,14 +68,14 @@ class NotificationApi {
         title,
         body,
         _scheduleDaily(DateTime(
-          scheduledDate.year,
+          scheduledDate!.year,
           scheduledDate.month,
           scheduledDate.day,
           scheduledDate.hour,
           scheduledDate.minute,
           scheduledDate.second,
         )),
-        await _notificationDetails(),
+        await notificationDetails(),
         payload: payload,
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:

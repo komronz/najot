@@ -251,5 +251,8 @@
   "card_number": "Karta raqami",
   "be_save": "Saqlandi",
   "user": "Foydalanuvchi",
-  "project_successful_added": "Loyiha //muvaffaqiyatli// qo'shildi"
+  "project_successful_added": "Loyiha //muvaffaqiyatli// qo'shildi",
+  "delete_profile": "Profilni o'chirish",
+  "request_sent_successful": "So’rov //muavvaqiyatli// yuborildi",
+  "profile_will_be_deleted": "Tez orada profilingiz o’chiriladi, salomat bo’ling"
 }

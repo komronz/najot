@@ -57,12 +57,12 @@ class LastNameChanged extends MyProfileUpdateEvent {
   List<Object?> get props => [sureName];
 }
 class GenderChanged extends MyProfileUpdateEvent {
-  final Gender isMan;
+  final String gender;
 
-  GenderChanged(this.isMan);
+  GenderChanged(this.gender);
 
   @override
-  List<Object?> get props => [isMan];
+  List<Object?> get props => [gender];
 }
 class PageChanged extends MyProfileUpdateEvent {
   final bool isVisible;
@@ -93,6 +93,13 @@ class SendCode extends MyProfileUpdateEvent {
 class ImagePickers extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [];
+}
+class SaveImagePickers extends MyProfileUpdateEvent {
+  final File userImgPath;
+  SaveImagePickers(this.userImgPath);
+
+  @override
+  List<Object?> get props => [userImgPath];
 }
 
 

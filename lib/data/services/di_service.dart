@@ -7,7 +7,7 @@ import 'package:najot/data/bloc/language_cubit/language_cubit.dart';
 import 'package:najot/data/bloc/notification_cubit/notification_cubit.dart';
 import 'package:najot/data/bloc/theme_cubit/theme_cubit.dart';
 import 'package:najot/data/bloc/volunteer_bloc/volunteer_cubit.dart';
-import 'package:najot/ui/pages/notification_page/widget/notification_api.dart';
+import 'package:najot/data/services/notification_service.dart';
 
 import 'db_service.dart';
 
@@ -15,8 +15,9 @@ class DIService {
   static Future<void> init() async {
     // Services
     await DBService.init();
-    await NotificationApi.init(initScheduled: true);
-    await NotificationApi.requestPermissions();
+    await NotificationService.init(initScheduled: true);
+
+
 
     // BloCs
     await LanguageCubit.init();

@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.najot">
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
    <application
         android:label="Najot"
        android:name="${applicationName}"
@@ -40,5 +40,8 @@
            android:name="com.dexterous.flutterlocalnotifications.ForegroundService"
            android:exported="false"
            android:stopWithTask="false"/>
+       <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"><intent-filter>
+           <action android:name="android.intent.action.BOOT_COMPLETED"/></intent-filter></receiver>
+       <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
     </application>
 </manifest>

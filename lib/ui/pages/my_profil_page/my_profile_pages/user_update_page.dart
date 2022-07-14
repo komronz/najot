@@ -55,9 +55,7 @@ class UserUpdatePage extends StatelessWidget {
                       },
                       visibleIcon: true,
                       onTapIcon: () {
-                        context
-                            .read<MyProfileUpdateBloc>()
-                            .add(EditProfileChangePage(1));
+                        bloc.add(EditProfileChangePage(1));
                       },
                       icon: AppImageUtils.REMOVE,
                     ),
@@ -79,7 +77,12 @@ class UserUpdatePage extends StatelessWidget {
                                 width: 130,
                                 image: AppImageUtils.USERADD,
                                 height: 130,
-                                color: AppColorUtils.WHITE, imageSelect: (v){},
+                                color: AppColorUtils.WHITE,
+                                imageSelect: (v){
+                                  bloc
+                                      .add(SaveImagePickers(v));
+                              },
+                                imageFile: state.userImgPath,
                               ),
                               Container(
                                 child: Column(
@@ -110,7 +113,7 @@ class UserUpdatePage extends StatelessWidget {
                                             var gender = v == 1
                                                 ? Gender.MAN
                                                 : Gender.WOMAN;
-                                            bloc.add(GenderChanged(gender));
+                                            bloc.add(GenderChanged(gender.toString()));
                                           },
                                         ).paddingOnly(top: 20),
                                       ],

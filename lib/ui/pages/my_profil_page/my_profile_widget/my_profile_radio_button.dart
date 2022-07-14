@@ -7,7 +7,7 @@ import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 
 class MyProfileRadioButton extends StatelessWidget {
-  final Gender initial;
+  final String initial;
 
   const MyProfileRadioButton({
     required this.initial,

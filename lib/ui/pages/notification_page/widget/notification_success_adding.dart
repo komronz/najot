@@ -1,9 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/styles/app_colors.dart';
+import 'package:najot/ui/pages/home_page/home_page.dart';
+import 'package:najot/ui/pages/notification_page/notification_page.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
 import '../../../../data/services/navigator_service.dart';
@@ -99,7 +102,10 @@ class NotificationSuccessAdding extends StatelessWidget {
                 children: [
                   AppWidgets.appButton(
                     onTap: () {
-                      NavigatorService.to.pop();
+                      NavigatorService.to.pushReplacementNamed(NotificationPage.routeName);
+                      // NavigatorService.to.pushNamed(
+                      //       HomePage.routeName,
+                      //       arguments: AppPageType.NOTIFICATION,);
                     },
                     title: LocaleKeys.jump_to_note,
                     fontSize: 16.sp,

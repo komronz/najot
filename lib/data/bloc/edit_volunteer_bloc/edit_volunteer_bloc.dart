@@ -99,7 +99,7 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
       Emitter<EditVolunteerState> emit,) async {
     emit(
       state.copyWith(
-        isMan: event.isMan,
+        gender: event.gender,
       ),
     );
   }
@@ -124,10 +124,10 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
       Emitter<EditVolunteerState> emit,) async {
     if (_isNotEmpty(state.name) && _isNotEmpty(state.sureName)) {
       var user = User(
-          imageUrl: state.imageUrl,
+          photo: state.imageUrl,
           firstName: state.name,
           lastName: state.sureName,
-          isMan: state.isMan,
+          gender: state.gender,
           phone: state.phoneNumber
       );
       HiveService.to.setUser(user);
@@ -146,10 +146,10 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
     if (user != null) {
       emit(
         state.copyWith(
-          imageUrl: user.imageUrl,
+          imageUrl: user.photo,
           name: user.firstName,
           sureName: user.lastName,
-          isMan: user.isMan,
+          gender: user.gender,
           phoneNumber: user.phone,
         ),
       );
@@ -162,10 +162,10 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
       Emitter<EditVolunteerState> emit,) async {
     if (_isNotEmpty(state.phoneNumber)) {
       var user = User(
-        imageUrl: state.imageUrl,
+        photo: state.imageUrl,
         firstName: state.name,
         lastName: state.sureName,
-        isMan: state.isMan,
+        gender: state.gender,
         phone: state.phoneNumber,
       );
       HiveService.to.setUser(user);

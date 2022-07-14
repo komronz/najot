@@ -114,6 +114,7 @@ class AppColorUtils {
   static const Color WHITE_GREEN5= Color(0xFFECFFFA);
   static const Color WHITE_GREEN8= Color(0xFF007A58);
   static const Color LANG_BACK= Color(0xFFF3FBF9);
+  static const Color PINK= Color(0xFFFBF3F3);
 
 
 

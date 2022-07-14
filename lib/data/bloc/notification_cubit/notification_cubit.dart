@@ -10,7 +10,6 @@ import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/model/volunteer_db_model.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/data/services/db_service.dart';
-import 'package:najot/ui/pages/notification_page/widget/notification_api.dart';
 
 import '../../localization/locale_keys.g.dart';
 
@@ -27,7 +26,6 @@ class NotificationCubit extends Cubit<NotificationState> {
 
   NotificationCubit() : super(NotificationState());
   final DBService dbService=DBService();
-  final NotificationApi notificationApi=NotificationApi();
 
 
   void isRead(bool vol) {
@@ -44,7 +42,6 @@ class NotificationCubit extends Cubit<NotificationState> {
     volunteerDbModel.id=box.id;
     volunteerDbModel.modifiedAt=dateTime.toString();
     dbService.updateVolunteer(volunteerDbModel);
-    print(volunteerDbModel.modifiedAt);
     getList();
   }
   Future getList()async{

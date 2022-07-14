@@ -217,7 +217,7 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                             _time.minute,
                           );
                           // cubit.openFaqItem(index);
-                          cubit.addDbVolunteer(index,dateTime,);
+                          cubit.addDbVolunteer(index,dateTime);
                           NavigatorService.to.pop();
                           await showDialog(
                             context: context,

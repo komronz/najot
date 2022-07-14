@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:equatable/equatable.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/utils/app_utils.dart';
@@ -8,7 +10,7 @@ class MyProfileUpdateState extends Equatable {
   final String sureName;
   final String imageUrl;
   final String phoneNumber;
-  final Gender isMan;
+  final String gender;
   final bool isSavedBtn;
   final bool nameFill;
   final bool sureNameFill;
@@ -16,7 +18,7 @@ class MyProfileUpdateState extends Equatable {
   final bool isVisible;
   final bool hasError;
   final bool nextPage;
-  final XFile? userImgPath;
+  final File? userImgPath;
   final int changePage;
 
 
@@ -25,7 +27,7 @@ class MyProfileUpdateState extends Equatable {
     this.sureName = '',
     this.imageUrl = '',
     this.phoneNumber='',
-    this.isMan = Gender.MAN,
+    this.gender = "",
     this.isSavedBtn = false,
     this.nameFill = false,
     this.phoneNumberFill=false,
@@ -43,7 +45,7 @@ class MyProfileUpdateState extends Equatable {
         sureName,
         imageUrl,
         phoneNumber,
-        isMan,
+        gender,
         isSavedBtn,
         nameFill,
         sureNameFill,
@@ -62,7 +64,7 @@ class MyProfileUpdateState extends Equatable {
     String? imageUrl,
     String? phoneNumber,
     bool? phoneNumberFill,
-    Gender? isMan,
+    String? gender,
     bool? isSavedBtn,
     bool? nameFill,
     bool? sureNameFill,
@@ -70,7 +72,7 @@ class MyProfileUpdateState extends Equatable {
     bool? sendBtnActive,
     bool? isVisible,
     bool? nextPage,
-    XFile? userImgPath,
+    File? userImgPath,
     int? changePage
   }) {
     return MyProfileUpdateState(
@@ -79,7 +81,7 @@ class MyProfileUpdateState extends Equatable {
       imageUrl: imageUrl ?? this.imageUrl,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       phoneNumberFill: phoneNumberFill ?? this.phoneNumberFill,
-      isMan: isMan ?? this.isMan,
+      gender: gender ?? this.gender,
       isSavedBtn: isSavedBtn ?? this.isSavedBtn,
       nameFill: nameFill ?? this.nameFill,
       sureNameFill: sureNameFill ?? this.sureNameFill,

@@ -11,6 +11,7 @@ import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/item_adding_success.dart';
+import 'package:najot/ui/pages/notification_page/notification_page.dart';
 import '../../../../data/custom_time_picker/date_picker/date_picker_theme.dart';
 import '../../../../data/custom_time_picker/date_picker/i18n/date_picker_i18n.dart';
 import '../../../../data/custom_time_picker/date_picker/widget/date_picker_widget.dart';
@@ -225,7 +226,7 @@ class ItemCharityDatePickerWidget extends StatelessWidget {
                                   Navigator.pop(context);
                                 },
                                 goto: () {
-                                  Navigator.pop(context);
+                                  NavigatorService.to.pushReplacementNamed(NotificationPage.routeName);
                                 },
                               ),
                             );

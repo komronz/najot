@@ -47,6 +47,7 @@ enum AppPageType {
   CHARITY_VOLUNTEER,
   USER_UPDATE,
   NUMBER,
+  NOTIFICATION,
   DEFAULT,
 
 }

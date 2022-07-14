@@ -59,12 +59,12 @@ class LastNameChanged extends EditVolunteerEvent {
   List<Object?> get props => [sureName];
 }
 class GenderChanged extends EditVolunteerEvent {
-  final Gender isMan;
+  final String gender;
 
-  GenderChanged(this.isMan);
+  GenderChanged(this.gender);
 
   @override
-  List<Object?> get props => [isMan];
+  List<Object?> get props => [gender];
 }
 class PageChanged extends EditVolunteerEvent {
   final bool isVisible;
