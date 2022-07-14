@@ -133,20 +133,19 @@ class MyProfileUpdateBloc
         .trim()
         .isNotEmpty;
   }
-
   UserUpdateService userUpdateService = UserUpdateService();
 
   Future _saveIn(SaveIn event,
       Emitter<MyProfileUpdateState> emit,) async {
     if (_isNotEmpty(state.name) && _isNotEmpty(state.sureName)) {
-      UserModel? userModel = await userUpdateService.postModel(
+      bool? user = await userUpdateService.postModel(
           state.phoneNumber,
           state.name,
           state.sureName,
-          state.gender,
-          state.userImgPath.toString(),
-          state.sureNameFill.toString(),
-          state.sureNameFill,
+          state.gender!,
+          state.userImgPath!,
+          state.status,
+          state.isVolunteer,
       );
       // var user = User(
       //     imageUrl: state.imageUrl,
@@ -158,7 +157,7 @@ class MyProfileUpdateBloc
       // HiveService.to.setUser(user);
       AppWidgets.showText(text: 'Success');
       emit(state.copyWith(hasError: false));
-      AppLoggerUtil.i(userModel!.toJson().toString());
+      // AppLoggerUtil.i(user!.toJson().toString());
       add(MyProfileLoad());
     } else {
       emit(state.copyWith(hasError: true));

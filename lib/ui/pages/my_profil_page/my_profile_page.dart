@@ -145,7 +145,7 @@ class MyProfilePage extends StatelessWidget {
                                       initial: context
                                           .read<MyProfileUpdateBloc>()
                                           .state
-                                          .gender,
+                                          .gender??"",
                                     ).paddingOnly(top: 20),
                                   ],
                                 ),

@@ -10,7 +10,9 @@ class MyProfileUpdateState extends Equatable {
   final String sureName;
   final String imageUrl;
   final String phoneNumber;
-  final String gender;
+  final String? gender;
+  final String status;
+  final bool isVolunteer;
   final bool isSavedBtn;
   final bool nameFill;
   final bool sureNameFill;
@@ -27,7 +29,8 @@ class MyProfileUpdateState extends Equatable {
     this.sureName = '',
     this.imageUrl = '',
     this.phoneNumber='',
-    this.gender = "",
+    this.gender,
+    this.status = "",
     this.isSavedBtn = false,
     this.nameFill = false,
     this.phoneNumberFill=false,
@@ -35,6 +38,7 @@ class MyProfileUpdateState extends Equatable {
     this.isVisible=true,
     this.nextPage=false,
     this.hasError = false,
+    this.isVolunteer=false,
     this.userImgPath,
     this.changePage=1
   });
@@ -46,9 +50,11 @@ class MyProfileUpdateState extends Equatable {
         imageUrl,
         phoneNumber,
         gender,
+        status,
         isSavedBtn,
         nameFill,
         sureNameFill,
+        isVolunteer,
         hasError,
         userImgPath,
         phoneNumberFill,
@@ -65,7 +71,9 @@ class MyProfileUpdateState extends Equatable {
     String? phoneNumber,
     bool? phoneNumberFill,
     String? gender,
+    String? status,
     bool? isSavedBtn,
+    bool? isVolunteer,
     bool? nameFill,
     bool? sureNameFill,
     bool? hasError,
@@ -82,10 +90,12 @@ class MyProfileUpdateState extends Equatable {
       phoneNumber: phoneNumber ?? this.phoneNumber,
       phoneNumberFill: phoneNumberFill ?? this.phoneNumberFill,
       gender: gender ?? this.gender,
+      status: status?? this.status,
       isSavedBtn: isSavedBtn ?? this.isSavedBtn,
       nameFill: nameFill ?? this.nameFill,
       sureNameFill: sureNameFill ?? this.sureNameFill,
       isVisible: isVisible ?? this.isVisible,
+      isVolunteer: isVolunteer ?? this.isVolunteer,
       nextPage: nextPage ?? this.nextPage,
       hasError: hasError ?? this.hasError,
       userImgPath: userImgPath ?? this.userImgPath,
