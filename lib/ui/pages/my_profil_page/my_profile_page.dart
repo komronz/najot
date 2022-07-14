@@ -258,7 +258,7 @@ class MyProfilePage extends StatelessWidget {
                 ),
               );
             } else if (state.changePage == 2) {
-              return UserUpdatePage(bloc: myProfileUpdateBloc);
+              return UserUpdatePage(bloc: MyProfileUpdateBloc());
             } else {
               return NumberUpdatePage();
             }

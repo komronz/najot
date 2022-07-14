@@ -35,6 +35,7 @@ class MyProfileUpdateBloc
     on<SendCode>(_sendCode);
     on<EditProfileChangePage>(_onChangeEditProfile);
     on<SaveImagePickers>(_saveImagePickers);
+
     on<ImagePickers>(_onImagePicker);
     on<SaveIn>(_saveIn);
   }
