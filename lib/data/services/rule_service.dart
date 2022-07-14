@@ -5,6 +5,7 @@ import 'package:najot/data/model/rule_page_model.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/root_service.dart';
 
+import '../bloc/language_cubit/language_cubit.dart';
 import '../utils/app_logger_util.dart';
 import 'http_service.dart';
 
@@ -20,7 +21,7 @@ class RuleService{
   Future<MainRuleModel?> getRulePageModel() async {
     try {
       final Response response = await RootService.httpService.get(
-          url: "https://api.najot.uz/ru/rule/",
+          url: "https://api.najot.uz/${LanguageCubit.getLang()}/rule/",
         token: HiveService.to.getToken(),
 
       );

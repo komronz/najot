@@ -47,8 +47,6 @@ class VerificationPage extends StatelessWidget with SmartAuth {
                   children: [
                     AppWidgets.appBarWidget(
                       onTap: () async {
-                        var signature = await getAppSignature();
-                        print(signature);
                         loginBloc.add(CheckPhoneNumberChanged(0));
                         NavigatorService.to.pop();
                       },
@@ -75,8 +73,14 @@ class VerificationPage extends StatelessWidget with SmartAuth {
                         )
                                 .paddingOnly(left: 120.w, top: 10)
                             : SizedBox(),
-                        TextButton(
-                          onPressed: () {},
+                        state.sendCodeDuration
+                            ?CircularProgressIndicator().paddingOnly(top: 10)
+                            :TextButton(
+                          onPressed: () {
+
+                            loginBloc.add(CheckPhoneNumberChanged(0));
+                            loginBloc.add(ResendCode());
+                          },
                           child: AppWidgets.textLocale(
                             text: LocaleKeys.send_again,
                             color: AppColorUtils.TEXT_BLUE,

@@ -1,24 +1,26 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/volunteer_profile_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 part 'reg_volunteer_event.dart';
+
 part 'reg_volunteer_state.dart';
 
 class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
-   final PageController pageController;
+  final PageController pageController;
   final maskFormatterSerial = MaskTextInputFormatter(mask: 'AA');
   final maskFormatterPasNumber = MaskTextInputFormatter(mask: '#######');
   final maskFormatter = MaskTextInputFormatter();
-   VolunteerProfileService service=VolunteerProfileService();
-
+  VolunteerProfileService service = VolunteerProfileService();
 
 
   RegVolunteerBloc()
@@ -41,18 +43,29 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     on<PostVolunteerData>(_onPostVolunteerData);
   }
 
-  Future _onPostVolunteerData(
-      PostVolunteerData event,
-      Emitter<RegVolunteerState> emit,
-      ) async{
+  Future _onPostVolunteerData(PostVolunteerData event,
+      Emitter<RegVolunteerState> emit,) async {
+    var postVolunteerData =await service.postVolunteerData(
+      HiveService.to.getUser()!.firstName!,
+      HiveService.to.getUser()!.lastName!,
+      state.address,
+      "${state.gender}",
+      state.birthDate!,
+      state.serial,
+      state.serialNumber,
+      state.givenAddress,
+      state.givenDate!,
+      state.pageImgPath!,
+      state.passportImgPath!,);
 
-
+    if(postVolunteerData != null){
+      print(postVolunteerData);
+          emit(state.copyWith(postSuccess: true));
+    }
   }
 
-  Future _onFirstNameChanged(
-    VolunteerFirstNameChanged event,
-    Emitter<RegVolunteerState> emit,
-  ) async {
+  Future _onFirstNameChanged(VolunteerFirstNameChanged event,
+      Emitter<RegVolunteerState> emit,) async {
     emit(
       state.copyWith(
         firstName: event.firstName,
@@ -66,15 +79,12 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     );
   }
 
-  bool _isNextButtonActive(
-    String firstName,
-    String lastName,
-    String address,
-    DateTime? dateTime,
-  ) {
-    if (_isNotEmpty(firstName) &&
-        _isNotEmpty(lastName) &&
-        _isNotEmpty(address) &&
+  bool _isNextButtonActive(String firstName,
+      String lastName,
+      String address,
+      DateTime? dateTime,) {
+    if (
+    _isNotEmpty(address) &&
         dateTime != null) {
       return true;
     }
@@ -85,10 +95,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     return v.isNotEmpty;
   }
 
-  Future _onLastNameChanged(
-    VolunteerLastNameChanged event,
-    Emitter<RegVolunteerState> emit,
-  ) async {
+  Future _onLastNameChanged(VolunteerLastNameChanged event,
+      Emitter<RegVolunteerState> emit,) async {
     emit(
       state.copyWith(
         lastName: event.lastName,
@@ -102,10 +110,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     );
   }
 
-  Future _onAddressChanged(
-    VolunteerAddressChanged event,
-    Emitter<RegVolunteerState> emit,
-  ) async {
+  Future _onAddressChanged(VolunteerAddressChanged event,
+      Emitter<RegVolunteerState> emit,) async {
     emit(
       state.copyWith(
         address: event.address,
@@ -119,10 +125,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     );
   }
 
-  Future _onBirthDateSelected(
-    VolunteerBirthDateSelected event,
-    Emitter<RegVolunteerState> emit,
-  ) async {
+  Future _onBirthDateSelected(VolunteerBirthDateSelected event,
+      Emitter<RegVolunteerState> emit,) async {
     emit(
       state.copyWith(
         birthDate: event.birthDate,
@@ -136,10 +140,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     );
   }
 
-  Future _onGenderChanged(
-    VolunteerGenderChanged event,
-    Emitter<RegVolunteerState> emit,
-  ) async {
+  Future _onGenderChanged(VolunteerGenderChanged event,
+      Emitter<RegVolunteerState> emit,) async {
     emit(state.copyWith(gender: _gender(event.gender)));
   }
 
@@ -154,10 +156,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     }
   }
 
-  Future _onSerialChanged(
-    VolunteerSerialChanged event,
-    Emitter<RegVolunteerState> emit,
-  ) async {
+  Future _onSerialChanged(VolunteerSerialChanged event,
+      Emitter<RegVolunteerState> emit,) async {
     emit(
       state.copyWith(
         serial: event.serial,
@@ -174,14 +174,12 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     );
   }
 
-  bool _sendBtnActive(
-    String serial,
-    String serialNum,
-    String giveAdd,
-    DateTime? giveDate,
-    XFile? passPage,
-    XFile? regPage,
-  ) {
+  bool _sendBtnActive(String serial,
+      String serialNum,
+      String giveAdd,
+      DateTime? giveDate,
+      XFile? passPage,
+      XFile? regPage,) {
     if (_isNotEmpty(serial) &&
         _isNotEmpty(serialNum) &&
         _isNotEmpty(giveAdd) &&
@@ -193,10 +191,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     return false;
   }
 
-  Future _onSerialNumberChanged(
-    VolunteerSerialNumberChanged event,
-    Emitter<RegVolunteerState> emit,
-  ) async {
+  Future _onSerialNumberChanged(VolunteerSerialNumberChanged event,
+      Emitter<RegVolunteerState> emit,) async {
     emit(
       state.copyWith(
         serialNumber: event.serialNumber,
@@ -213,10 +209,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     );
   }
 
-  Future _onGiveAddressChanged(
-    VolunteerGiveAddressChanged event,
-    Emitter<RegVolunteerState> emit,
-  ) async {
+  Future _onGiveAddressChanged(VolunteerGiveAddressChanged event,
+      Emitter<RegVolunteerState> emit,) async {
     emit(
       state.copyWith(
         givenAddress: event.giveAddress,
@@ -232,10 +226,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     );
   }
 
-  Future _onGiveDateSelected(
-    VolunteerGiveDateSelected event,
-    Emitter<RegVolunteerState> emit,
-  ) async {
+  Future _onGiveDateSelected(VolunteerGiveDateSelected event,
+      Emitter<RegVolunteerState> emit,) async {
     emit(
       state.copyWith(
         givenDate: event.giveDate,
@@ -251,10 +243,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     );
   }
 
-  Future _onPageImgUploaded(
-    VolunteerPageImgUploaded event,
-    Emitter<RegVolunteerState> emit,
-  ) async {
+  Future _onPageImgUploaded(VolunteerPageImgUploaded event,
+      Emitter<RegVolunteerState> emit,) async {
     XFile? imagePicker = await ImagePicker().pickImage(
       source: ImageSource.gallery,
     );
@@ -275,10 +265,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     }
   }
 
-  Future _onPassImgUploaded(
-    VolunteerPassImgUploaded event,
-    Emitter<RegVolunteerState> emit,
-  ) async {
+  Future _onPassImgUploaded(VolunteerPassImgUploaded event,
+      Emitter<RegVolunteerState> emit,) async {
     XFile? imagePicker = await ImagePicker().pickImage(
       source: ImageSource.gallery,
     );
@@ -301,17 +289,13 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     }
   }
 
-  Future _onSendBtnPressed(
-    VolunteerSendBtn event,
-    Emitter<RegVolunteerState> emit,
-  ) async {
+  Future _onSendBtnPressed(VolunteerSendBtn event,
+      Emitter<RegVolunteerState> emit,) async {
     emit(state.copyWith(waitVolunteer: true));
   }
 
-  Future _onPageImgDeleted(
-    VolunteerPageImgDeleted event,
-    Emitter<RegVolunteerState> emit,
-  ) async {
+  Future _onPageImgDeleted(VolunteerPageImgDeleted event,
+      Emitter<RegVolunteerState> emit,) async {
     emit(
       RegVolunteerState(
         waitVolunteer: state.waitVolunteer,
@@ -333,10 +317,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
     AppLoggerUtil.i(state.toString());
   }
 
-  Future _onPassImgDeleted(
-    VolunteerPassImgDeleted event,
-    Emitter<RegVolunteerState> emit,
-  ) async {
+  Future _onPassImgDeleted(VolunteerPassImgDeleted event,
+      Emitter<RegVolunteerState> emit,) async {
     emit(
       RegVolunteerState(
         waitVolunteer: state.waitVolunteer,

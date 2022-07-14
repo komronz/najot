@@ -4,6 +4,7 @@ import 'package:najot/data/model/faq_model.dart';
 import 'package:najot/data/services/http_service.dart';
 import 'package:najot/data/services/root_service.dart';
 
+import '../bloc/language_cubit/language_cubit.dart';
 import '../utils/app_logger_util.dart';
 
 class FaqService {
@@ -16,7 +17,7 @@ class FaqService {
   Future<MainFaqModel?> getModel() async {
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://api.najot.uz/en/faq/",
+        url: "https://api.najot.uz/${LanguageCubit.getLang()}/faq/",
       );
       if (response.statusCode == 200) {
         final MainFaqModel responseModel = MainFaqModel.fromJson(response.data['results']);

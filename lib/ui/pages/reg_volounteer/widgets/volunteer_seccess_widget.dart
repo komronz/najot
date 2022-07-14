@@ -61,7 +61,6 @@ class VolunteerSuccessWidget extends StatelessWidget {
                 title: LocaleKeys.thank_you,
                 textColor: AppColorUtils.KRAUDFANDING,
                 onTap: () {
-                  bloc.add(VolunteerSendBtn());
                   Navigator.pop(context);
                 },
                 color: AppColorUtils.WHITE_GREEN5,

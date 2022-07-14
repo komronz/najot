@@ -11,6 +11,7 @@ import 'package:najot/ui/widgets/app_text_field.dart';
 
 import '../../../../data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import '../../../../data/localization/locale_keys.g.dart';
+import '../../../../data/model/auth_model/login_end_model.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
@@ -23,7 +24,7 @@ class NumberUpdatePage extends StatelessWidget {
 
   NumberUpdatePage({Key? key}) : super(key: key);
   bool isVisible = true;
-  User? user = HiveService.to.getUser();
+  UserModel? user = HiveService.to.getUser();
 
 
   @override

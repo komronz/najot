@@ -26,7 +26,7 @@ import '../my_crowdfunding_project/my_crowdfunding_news_widget.dart';
 import '../my_crowdfunding_project/my_crowdfunding_question_asked_widget.dart';
 import 'my_charity_applied_user_widget.dart';
 import 'my_charity_comments_widget.dart';
-import 'my_charity_delete_project_dialog.dart';
+import 'my_delete_project_dialog.dart';
 import 'my_charity_edit_project_dialog.dart';
 import 'my_charity_more_widget.dart';
 import 'my_charity_news_widget.dart';

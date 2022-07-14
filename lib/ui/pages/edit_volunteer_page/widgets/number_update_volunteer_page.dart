@@ -12,6 +12,7 @@ import 'package:najot/ui/pages/edit_volunteer_page/widgets/number_updating.dart'
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/app_disable_text_field.dart';
 import '../../../../data/localization/locale_keys.g.dart';
+import '../../../../data/model/auth_model/login_end_model.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
@@ -21,7 +22,7 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
 
   NumberUpdateVolunteerPage({Key? key}) : super(key: key);
   bool isVisible = true;
-  User? user = HiveService.to.getUser();
+  UserModel? user = HiveService.to.getUser();
   final maskFormatter = MaskTextInputFormatter(mask: '## ### ## ##');
   TextEditingController numberController = TextEditingController();
 

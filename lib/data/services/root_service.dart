@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:najot/data/services/crowdfunding_service.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/http_service.dart';
+import 'package:najot/data/services/network_connection_service.dart';
 import 'package:najot/data/services/order_service.dart';
 import 'package:najot/data/services/organization_service.dart';
 import 'package:najot/data/services/product_service.dart';
@@ -26,6 +27,7 @@ class RootService {
   Future initServices() async {
     await StorageService.init();
     await NavigatorService.init();
+    await NetworkConnectionService.init();
     await HiveService.init();
     await HttpService.init();
     await AboutUsService.init();
@@ -38,6 +40,7 @@ class RootService {
   }
   static HttpService get httpService => _getIt.get<HttpService>();
   static HiveService get hiveService => _getIt.get<HiveService>();
+  static NetworkConnectionService get networkConnectionService => _getIt.get<NetworkConnectionService>();
   static AboutUsService get aboutService => _getIt.get<AboutUsService>();
   static OrderService get orderService => _getIt.get<OrderService>();
   static OrganizationService get organizationService => _getIt.get<OrganizationService>();

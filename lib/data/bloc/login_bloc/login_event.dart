@@ -70,6 +70,11 @@ List<Object?> get props => [];
 }
 
 
+class ResendCode extends LoginEvent {
+  @override
+  List<Object?> get props => [];
+}
+
 
 class CheckPhoneNumberChanged extends LoginEvent {
   final int check;

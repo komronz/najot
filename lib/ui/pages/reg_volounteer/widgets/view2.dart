@@ -155,17 +155,16 @@ class View2 extends StatelessWidget {
             AppWidgets.appButton(
               title: LocaleKeys.send,
               onTap: bloc.state.sendBtnActive
-                  ? () async {
-                      AppWidgets.showText(
-                        text: LocaleKeys.next_page.tr(),
-                        duration: Duration(milliseconds: 800),
-                      );
-                      await showDialog(
-                        context: context,
-                        builder: (ctx) => VolunteerSuccessWidget(
-                          bloc: context.read<RegVolunteerBloc>(),
-                        ),
-                      );
+                  ? () {
+                      bloc.add(PostVolunteerData());
+                         showDialog(
+                          context: context,
+                          builder: (ctx) => VolunteerSuccessWidget(
+                            bloc: context.read<RegVolunteerBloc>(),
+                          ),
+                        );
+
+
                     }
                   : () {
                       AppWidgets.showText(

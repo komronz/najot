@@ -34,19 +34,20 @@ class HiveService {
     _box.put(_HiveKeys.LANG, locale.toString());
   }
 
-  User? getUser() {
+  UserModel? getUser() {
     var user = _box.get(_HiveKeys.USER, defaultValue: null);
     if(user!=null){
-      return User.fromJson(json.decode(user));
+      return UserModel.fromJson(json.decode(user));
     }
     return user;
   }
 
-  void setUser(User user) {
+  void setUser(UserModel user) {
     _box.put(_HiveKeys.USER, json.encode(user.toJson()));
   }
 
-  void deleteUser(User user){
+
+  void deleteUser(UserModel user){
     _box.delete(_HiveKeys.USER);
   }
   //token

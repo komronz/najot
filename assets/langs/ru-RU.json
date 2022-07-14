@@ -250,5 +250,6 @@
     "card_number": "Номер карты",
     "be_save": "Сохранено",
     "user": "Пользователь",
-    "project_successful_added": "Проект // успешно // добавлено"
+    "project_successful_added": "Проект // успешно // добавлено",
+    "try_again": "Попробуй снова"
 }

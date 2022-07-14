@@ -5,6 +5,10 @@ import 'package:najot/data/model/main_model.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/main_service.dart';
 
+import '../charity_page_cubit/charity_cubit.dart';
+import '../kraudfanding_cubit/kraud_fanding_cubit.dart';
+import '../volunteer_bloc/volunteer_cubit.dart';
+
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -17,27 +21,30 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   HomeCubit() : super(HomeState());
-
+  var internetConnection;
   Future getModel() async {
+     internetConnection = await MainService().checkInternetConnection();
+    emit(state.copyWith(internetConnection: internetConnection ));
     var mainModel = await mainService.getModel();
+      if(mainModel!=null){
+        emit(state.copyWith(
+          categories: mainModel.categories,
+          crudFunding: mainModel.crowdfunding,
+          volunteer: mainModel.volunteering,
+          charity: mainModel.charity,
+          slider: mainModel.slider,
+        ));
+
+      }else{
+
+      }
 
 
-    if(mainModel!=null){
-      print(mainModel.crowdfunding![0].isFavourite);
-      emit(state.copyWith(
-        categories: mainModel.categories,
-        crudFunding: mainModel.crowdfunding,
-        volunteer: mainModel.volunteering,
-        charity: mainModel.charity,
-        slider: mainModel.slider,
-      ));
-
-    }else{
-
-    }
   }
 
       Future changeLike(int id) async{
+        internetConnection = await MainService().checkInternetConnection();
+        emit(state.copyWith(internetConnection: internetConnection));
           var changeLike= await mainService.changeLike(id);
           if(changeLike!=null){
             print(1);

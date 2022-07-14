@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:najot/data/model/auth_model/token_model.dart';
 import 'package:najot/data/model/auth_model/user.dart';
+import 'package:najot/data/model/blocked_model.dart';
 import 'package:najot/data/services/auth_service.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/navigator_service.dart';
@@ -34,6 +35,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<CheckPhoneNumberChanged>(_checkPhoneNumberChanged);
     on<LoginAuthSuccess>(_onAuthSuccess);
     on<Registration>(_registration);
+    on<ResendCode>(_resendCode);
   }
 
   final AuthService authService = AuthService();
@@ -183,11 +185,21 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       if (checkPhoneNumber != null) {
         AppWidgets.isLoading(true);
         if (checkPhoneNumber.isExists == true) {
-          var codeToken =
-              await authService.registration(state.phone, "string", "string");
-          emit(state.copyWith(codeToken: codeToken!.token));
-          emit(state.copyWith(checkPhoneNumber: 1));
-          AppWidgets.isLoading(false);
+          var codeToken = await authService.registration(state.phone, "string", "string");
+          if(codeToken is TokenModel){
+            emit(state.copyWith(codeToken: codeToken.token));
+            emit(state.copyWith(checkPhoneNumber: 1));
+            AppWidgets.isLoading(false);
+          }
+          if(codeToken is BlockedModel){
+            int a=codeToken.retryAfter!~/3600;
+            int b=(codeToken.retryAfter!-a*3600)~/60;
+            emit(state.copyWith(blockedTime: codeToken.retryAfter));
+            AppWidgets.isLoading(false);
+            AppWidgets.showText(text: "Raqamingiz ${a} soat ${b} minutga bloklangan!");
+
+          }
+
         } else {
           emit(state.copyWith(checkPhoneNumber: -1));
           AppWidgets.isLoading(false);
@@ -197,6 +209,25 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       }
     } else {
       emit(state.copyWith(hasError: true));
+    }
+  }
+
+  Future _resendCode(
+      ResendCode event,
+      Emitter<LoginState> emit,
+      ) async {
+    emit(state.copyWith(sendCodeDuration: true));
+    var codeToken = await authService.resendCode(
+     state.codeToken
+    );
+    if (codeToken == true) {
+      emit(state.copyWith(sendCodeDuration: false));
+
+    } else {
+      emit(state.copyWith(sendCodeDuration: false));
+      AppWidgets.showText(text: "Raqamingiz 24 soatga bloklandi!");
+
+
     }
   }
 
@@ -211,7 +242,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       state.firstName,
       state.lastName,
     );
-    if (codeToken != null) {
+    if (codeToken != null&&codeToken==TokenModel) {
       emit(state.copyWith(codeToken: codeToken.token));
       emit(state.copyWith(registerSuccess: true));
       AppWidgets.isLoading(false);
@@ -235,6 +266,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     );
 
     if (loginEndModel != null) {
+      HiveService.to.setUser(loginEndModel.user!);
       HiveService.to.setToken(loginEndModel.access!);
       emit(state.copyWith(loginSuccess: true));
       AppWidgets.isLoading(false);

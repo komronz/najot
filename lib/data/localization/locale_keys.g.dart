@@ -253,5 +253,6 @@ abstract class  LocaleKeys {
   static const be_save = 'be_save';
   static const user = 'user';
   static const project_successful_added = 'project_successful_added';
+  static const try_again = 'try_again';
 
 }

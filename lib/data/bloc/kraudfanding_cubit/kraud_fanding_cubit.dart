@@ -16,14 +16,16 @@ class CrowdfundingCubit extends Cubit<CrowdfundingState> {
 
   static Future init() async {
     GetIt.instance..registerSingleton<CrowdfundingCubit>(CrowdfundingCubit());
-    await CrowdfundingCubit.to.load();
   }
   CrowdfundingCubit() : super(CrowdfundingState());
   CrowdfundingService crowdfundingService = CrowdfundingService();
   MainService mainService=MainService();
   List<RootProjectModel> rootList= [];
+  var internetConnection;
 
   Future load() async {
+    internetConnection = await MainService().checkInternetConnection();
+    emit(state.copyWith(internetConnection: internetConnection));
     var crowdfundingModel = await crowdfundingService.getCrowdfundingModel();
     var categories = await crowdfundingService.getCategoriesModel();
     var list= categories!.results![0];
@@ -31,7 +33,6 @@ class CrowdfundingCubit extends Cubit<CrowdfundingState> {
 
 
     if (crowdfundingModel != null&&tabProjects!= null ) {
-      print(crowdfundingModel.results![0].isFavourite);
       emit(state.copyWith(loading: false));
       emit(state.copyWith(
         crowdfundingModel: crowdfundingModel.results,
@@ -56,15 +57,22 @@ class CrowdfundingCubit extends Cubit<CrowdfundingState> {
 
   }
   Future tabChange(int id) async{
+    internetConnection = await MainService().checkInternetConnection();
+    emit(state.copyWith(internetConnection: internetConnection));
     emit(state.copyWith(tabLoading: true));
     var tabProjects=await crowdfundingService.getProjectsById(id);
       if(tabProjects!=null){
         await Future.delayed(Duration(seconds: 1));
         emit(state.copyWith(tabProjects: tabProjects.results));
         emit(state.copyWith(tabLoading: false));
+      }else{
+        emit(state.copyWith(tabProjects: []));
+        emit(state.copyWith(tabLoading: false));
       }
   }
   Future changeLike(int id) async{
+    internetConnection = await MainService().checkInternetConnection();
+    emit(state.copyWith(internetConnection: internetConnection));
     var changeLike= await mainService.changeLike(id);
     if(changeLike!=null){
       load();

@@ -2,8 +2,9 @@ import 'dart:io';
 
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/auth_model/login_end_model.dart';
+import 'package:najot/data/model/blocked_model.dart';
 import 'package:najot/data/services/root_service.dart';
-
+import '../bloc/language_cubit/language_cubit.dart';
 import '../model/auth_model/token_model.dart';
 import '../utils/app_logger_util.dart';
 import 'http_service.dart';
@@ -22,7 +23,7 @@ class AuthService {
 
   ) async {
     try {
-      final path = 'https://api.najot.uz/ru/auth/check-phone/';
+      final path = 'https://api.najot.uz/${LanguageCubit.getLang()}/auth/check-phone/';
       final body = {
         "phone": formatNumber(phone),
       };
@@ -32,8 +33,6 @@ class AuthService {
         fields: body,
         headers: headers,
       );
-      print(response!.statusCode);
-      print(phone);
       if (response != null) {
         if (response.statusCode == 200) {
           final ConfirmNumberModel confirmNumberModel=
@@ -53,14 +52,14 @@ class AuthService {
     return null;
   }
 
-  Future<TokenModel?> registration(
+  Future<dynamic> registration(
       String phone,
       String firstName,
       String lastName
 
       ) async {
     try {
-      final path = 'https://api.najot.uz/ru/auth/login-start/';
+      final path = 'https://api.najot.uz/${LanguageCubit.getLang()}/auth/login-start/';
       final body = {
         "phone": formatNumber(phone),
         "first_name": firstName,
@@ -72,6 +71,7 @@ class AuthService {
         fields: body,
         headers: headers,
       );
+      print(response!.statusCode);
       if (response != null) {
         if (response.statusCode == 200) {
           final TokenModel tokenModel=
@@ -79,6 +79,47 @@ class AuthService {
           AppLoggerUtil.i(TokenModel.fromJson(response.data).token.toString());
           return tokenModel;
         }
+        if (response.statusCode == 429) {
+          final BlockedModel blockedModel=
+          BlockedModel.fromJson(response.data);
+          AppLoggerUtil.i(TokenModel.fromJson(response.data).token.toString());
+          return blockedModel;
+        }
+      } else {
+        return null;
+      }
+    } catch (e) {
+      AppLoggerUtil.e("$e");
+      return null;
+    }
+    return null;
+  }
+
+  Future<bool?> resendCode(
+      String codeToken,
+
+      ) async {
+    try {
+      final path = 'https://api.najot.uz/${LanguageCubit.getLang()}/auth/resend-code/';
+      final body = {
+        "code_token": codeToken,
+
+      };
+      final headers = {HttpHeaders.contentTypeHeader: "application/json"};
+      var response = await _httpService.post(
+        path: path,
+        fields: body,
+        headers: headers,
+      );
+      if (response != null) {
+        if (response.statusCode == 200) {
+
+          return true;
+        }
+        if(response.statusCode == 403){
+          return false;
+        }
+
       } else {
         return null;
       }
@@ -96,7 +137,7 @@ class AuthService {
 
       ) async {
     try {
-      final path = 'https://api.najot.uz/ru/auth/login-end/';
+      final path = 'https://api.najot.uz/${LanguageCubit.getLang()}/auth/login-end/';
       final body = {
         "code": code,
         "code_token": codeToken

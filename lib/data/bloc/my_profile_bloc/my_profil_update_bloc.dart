@@ -4,6 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
+import 'package:najot/data/model/auth_model/login_end_model.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/utils/app_utils.dart';
 import '../../../ui/widgets/app_widgets.dart';
@@ -134,11 +135,9 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
     Emitter<MyProfileUpdateState> emit,
   ) async {
     if (_isNotEmpty(state.name) && _isNotEmpty(state.sureName)) {
-      var user = User(
-        imageUrl: state.imageUrl,
+      var user = UserModel(
         firstName: state.name,
         lastName: state.sureName,
-        isMan: state.isMan,
         phone: state.phoneNumber
       );
       HiveService.to.setUser(user);
@@ -159,10 +158,8 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
     if (user != null) {
       emit(
         state.copyWith(
-          imageUrl: user.imageUrl,
           name: user.firstName,
           sureName: user.lastName,
-          isMan: user.isMan,
           phoneNumber: user.phone,
         ),
       );
@@ -176,11 +173,9 @@ class MyProfileUpdateBloc extends Bloc<MyProfileUpdateEvent, MyProfileUpdateStat
     Emitter<MyProfileUpdateState> emit,
   ) async {
     if (_isNotEmpty(state.phoneNumber)) {
-      var user = User(
-        imageUrl: state.imageUrl,
+      var user = UserModel(
         firstName: state.name,
         lastName: state.sureName,
-        isMan: state.isMan,
         phone: state.phoneNumber,
       );
       HiveService.to.setUser(user);

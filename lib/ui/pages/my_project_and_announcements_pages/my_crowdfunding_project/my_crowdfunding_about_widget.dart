@@ -18,7 +18,7 @@ import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_bar_with_title.dart';
 import '../../../widgets/app_widgets.dart';
-import '../my_charity_project_full_widget/my_charity_delete_project_dialog.dart';
+import '../my_charity_project_full_widget/my_delete_project_dialog.dart';
 import '../my_charity_project_full_widget/my_charity_edit_project_dialog.dart';
 import 'my_crowdfunding_applied_user_widget.dart';
 import 'my_crowdfunding_comments_widget.dart';
