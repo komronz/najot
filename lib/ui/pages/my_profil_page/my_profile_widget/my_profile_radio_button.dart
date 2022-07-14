@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -16,12 +17,12 @@ class MyProfileRadioButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _selection = initial == Gender.MAN ? 1 : 2;
+    var _selection = initial == Gender.MAN.toString() ? 1 : 2;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AppWidgets.text(
-          text: LocaleKeys.gender,
+          text: LocaleKeys.gender.tr(),
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,
           color: AppColorUtils.DARK_4,

@@ -89,7 +89,7 @@ class NumberUpdatePage extends StatelessWidget {
                                     initialText: context
                                         .read<MyProfileUpdateBloc>()
                                         .state
-                                        .phoneNumber,
+                                        .phone,
                                     hintText: "+998",
                                     onChanged: (v) {
                                       context

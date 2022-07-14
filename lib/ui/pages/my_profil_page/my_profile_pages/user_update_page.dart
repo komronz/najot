@@ -55,7 +55,7 @@ class UserUpdatePage extends StatelessWidget {
                       },
                       visibleIcon: true,
                       onTapIcon: () {
-                        bloc.add(EditProfileChangePage(1));
+                        context.read<MyProfileUpdateBloc>().add(EditProfileChangePage(1));
                       },
                       icon: AppImageUtils.REMOVE,
                     ),
@@ -74,23 +74,22 @@ class UserUpdatePage extends StatelessWidget {
                           child: Column(
                             children: [
                               ShowPickerWidget(
-                                width: 130,
+                                width: 150,
+                                height: 150,
                                 image: AppImageUtils.USERADD,
-                                height: 130,
                                 color: AppColorUtils.WHITE,
                                 imageSelect: (v){
-                                  bloc
-                                      .add(SaveImagePickers(v));
+                                  bloc.add(SaveImagePickers(v));
                               },
                                 imageFile: state.userImgPath,
-                              ),
+                              ).paddingOnly(top:15.w),
                               Container(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     AppTextField(
-                                      isFill: bloc.state.name.isNotEmpty,
-                                      initialText: bloc.state.name,
+                                      isFill: bloc.state.firstName.isNotEmpty,
+                                      initialText: bloc.state.firstName,
                                       hintText: "(abdumalik)",
                                       onChanged: (v) {
                                         bloc.add(FirstNameChanged(v));
@@ -98,8 +97,8 @@ class UserUpdatePage extends StatelessWidget {
                                       title: LocaleKeys.name.tr(),
                                     ).paddingOnly(bottom: 23.h),
                                     AppTextField(
-                                      isFill: bloc.state.sureName.isNotEmpty,
-                                      initialText: bloc.state.sureName,
+                                      isFill: bloc.state.lastName.isNotEmpty,
+                                      initialText: bloc.state.lastName,
                                       hintText: "(sapoqulov)",
                                       onChanged: (v) {
                                         bloc.add(LastNameChanged(v));
@@ -111,9 +110,9 @@ class UserUpdatePage extends StatelessWidget {
                                         UserUpdateAppRadioButton(
                                           onChanged: (v) {
                                             var gender = v == 1
-                                                ? Gender.MAN
-                                                : Gender.WOMAN;
-                                            bloc.add(GenderChanged(gender.toString()));
+                                                ? Gender.MAN.toString()
+                                                : Gender.WOMAN.toString();
+                                            bloc.add(GenderChanged(gender));
                                           },
                                         ).paddingOnly(top: 20),
                                       ],
