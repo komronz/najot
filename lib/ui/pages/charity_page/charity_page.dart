@@ -164,10 +164,7 @@ class _CharityPageState extends State<CharityPage>
                                             onTap: () {
                                               NavigatorService.to.pushNamed(
                                                 CharityFullPage.routName,
-                                                arguments: CharityFullModel(
-                                                  cardModel: list[index],
-                                                  cubit: CharityCubit.to,
-                                                ),
+                                                arguments: list[index]
                                               );
                                             },
                                             onTapLike: () {
@@ -180,10 +177,7 @@ class _CharityPageState extends State<CharityPage>
                                             onTap: () {
                                               NavigatorService.to.pushNamed(
                                                 CharityFullPage2.routName,
-                                                arguments: CharityFullModel(
-                                                  cardModel: list[index],
-                                                  cubit: CharityCubit.to,
-                                                ),
+                                                arguments: list[index]
                                               );
                                             },
                                             model: list[index],
@@ -293,12 +287,9 @@ class _CharityPageState extends State<CharityPage>
                                                                 .pushNamed(
                                                               CharityFullPage
                                                                   .routName,
-                                                              arguments: CharityFullModel(
-                                                                cardModel: state
-                                                                    .tabProjects!
-                                                                    .results![index],
-                                                                cubit: CharityCubit.to,
-                                                              ),
+                                                              arguments: state
+                                                                  .tabProjects!
+                                                                  .results![index],
                                                             );
                                                           },
                                                           model: list[index],
@@ -318,14 +309,9 @@ class _CharityPageState extends State<CharityPage>
                                                               CharityFullPage2
                                                                   .routName,
                                                               arguments:
-                                                                  CharityFullModel(
-                                                                cardModel: state
-                                                                    .tabProjects!
-                                                                    .results![index],
-                                                                cubit:
-                                                                    CharityCubit
-                                                                        .to,
-                                                              ),
+                                                              state
+                                                                  .tabProjects!
+                                                                  .results![index],
                                                             );
                                                           },
                                                           onTapLike: () {

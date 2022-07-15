@@ -19,7 +19,7 @@ class OrganizationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => cubit..load(),
+      create: (context) => OrganizationCubit.to..load(),
       child: BlocBuilder<OrganizationCubit, OrganizationState>(
           builder: (context, state) {
             return Scaffold(

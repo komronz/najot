@@ -20,33 +20,39 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/qu
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
+import '../../../../data/bloc/project_data_cubit/project_data_cubit.dart';
+import '../../kraudfanding_page_main/project_details/widgets/comment_to_author_dialog.dart';
+import '../../kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
 import 'organization_help_widget.dart';
 
-class OrganizationCharityItemModel {
+class OrganizationItemModel {
   ProjectModel cardModel;
-  OrganizationCubit cubit;
+  int id;
 
-  OrganizationCharityItemModel({
+  OrganizationItemModel({
     required this.cardModel,
-    required this.cubit,
+    required this.id
   });
 }
 
-class OrganizationCharityItemWidget extends StatefulWidget {
-  OrganizationCharityItemWidget({required this.helpModel});
+class OrganizationItemWidget extends StatefulWidget {
+  OrganizationItemWidget({required this.helpModel});
 
   static const String routName = '/organizationItemDetailPage2';
   static int tabChange = 0;
-  OrganizationCharityItemModel helpModel;
+  OrganizationItemModel helpModel;
+
 
   @override
-  State<OrganizationCharityItemWidget> createState() =>
-      _OrganizationCharityItemWidgetState();
+  State<OrganizationItemWidget> createState() =>
+      _OrganizationItemWidgetState();
 }
 
-class _OrganizationCharityItemWidgetState
-    extends State<OrganizationCharityItemWidget> with TickerProviderStateMixin {
+class _OrganizationItemWidgetState
+    extends State<OrganizationItemWidget> with TickerProviderStateMixin {
   late TabController _controller;
+  late bool like;
+  ProjectDataCubit cubitData = ProjectDataCubit();
 
   @override
   void dispose() {
@@ -56,6 +62,7 @@ class _OrganizationCharityItemWidgetState
 
   @override
   void initState() {
+    like = widget.helpModel.cardModel.isFavourite!;
     _controller = TabController(length: 4, vsync: this);
     _controller.addListener(_handleTabSelection);
     super.initState();
@@ -78,7 +85,7 @@ class _OrganizationCharityItemWidgetState
         },
       ),
       body: BlocBuilder<OrganizationCubit, OrganizationState>(
-        bloc: widget.helpModel.cubit,
+        bloc: OrganizationCubit.to,
         builder: (context, state) {
           return SingleChildScrollView(
               physics: BouncingScrollPhysics(),
@@ -155,17 +162,20 @@ class _OrganizationCharityItemWidgetState
                           fontWeight: FontWeight.w500,
                           maxLines: 2,
                         ).paddingSymmetric(horizontal: 20.w),
-                        // KraudfandingAuthorWidget(
-                        //   model: widget.helpModel.cardModel,
-                        //   onTap: () {
-                        //     showDialog(
-                        //       context: context,
-                        //       builder: (context) {
-                        //         return CommentToAuthorDialog();
-                        //       },
-                        //     );
-                        //   },
-                        // ).paddingOnly(top: 15.w),
+                        KraudfandingAuthorWidget(
+                          model: widget.helpModel.cardModel,
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return CommentToAuthorDialog(
+                                  cubit: cubitData,
+                                  projectModel: widget.helpModel.cardModel,
+                                );
+                              },
+                            );
+                          },
+                        ).paddingOnly(top: 15.w),
                         SizedBox(height: 12.w),
                         // DetailBodyPart1(cardModel: widget.helpModel.cardModel)
                       ],
@@ -240,25 +250,27 @@ class _OrganizationCharityItemWidgetState
                             left: 15.w,
                             top: 8.w,
                           ),
-                          Container(
-                            child: [
-                              Container(),
-                              Container(),
-                              Container(),
-                              Container(),
-                              // MoreWidget(
-                              //   cardModel: widget.helpModel.cardModel,
-                              // ),
-                              // NewsWidget(
-                              //   cardModel: widget.helpModel.cardModel,
-                              // ).paddingAll(20.w),
-                              // QuestionsAskedWidget(
-                              //   cardModel: widget.helpModel.cardModel,
-                              // ).paddingAll(20.w),
-                              // CommentsWidget(
-                              //   cardModel: widget.helpModel.cardModel,
-                              // ).paddingAll(20.w)
-                            ][_controller.index],
+                          BlocBuilder<ProjectDataCubit, ProjectDataState>(
+                            bloc: cubitData..load(widget.helpModel.cardModel.id!),
+                            builder: (contextData, stateData) {
+                              return Container(
+                                child: [
+                                  MoreWidget(
+                                    cardModel: widget.helpModel.cardModel,
+                                  ),
+                                  NewsWidget(
+                                    cubit: cubitData,
+                                  ).paddingAll(20.w),
+                                  QuestionsAnswerWidget(
+                                    cubit: cubitData,
+                                  ).paddingAll(20.w),
+                                  CommentsWidget(
+                                    cubit: cubitData,
+                                    projectModel: widget.helpModel.cardModel,
+                                  ).paddingAll(20.w)
+                                ][_controller.index],
+                              );
+                            },
                           ),
                           SizedBox(
                             height: 10.w,
@@ -307,7 +319,7 @@ class _OrganizationCharityItemWidgetState
                                                     OrganizationHelpModel(
                                                   cardModel: widget
                                                       .helpModel.cardModel,
-                                                  cubit: widget.helpModel.cubit,
+                                                  cubit: OrganizationCubit.to,
                                                 ),
                                               );
                                             } else {
@@ -327,10 +339,16 @@ class _OrganizationCharityItemWidgetState
                                           textColor: AppColorUtils.WHITE,
                                         ),
                                         AppWidgets.favouriteButton(
-                                          select: true,
+                                          select: like,
                                           height: 48.w,
                                           width: 48.w,
-                                          onTap: () {},
+                                          onTap: () async{
+                                            await OrganizationCubit.to.changeLike(widget.helpModel.cardModel.id!);
+                                            setState(() {
+                                              like=!like;
+                                            });
+                                            await OrganizationCubit.to.findProject(widget.helpModel.id);
+                                          },
                                         )
                                       ],
                                     ).paddingSymmetric(horizontal: 20.w),

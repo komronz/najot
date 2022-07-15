@@ -23,7 +23,6 @@ class OrganizationService{
         url: "https://api.najot.uz/organization/",
         token: HiveService.to.getToken(),
       );
-      print(response.statusCode);
       if (response.statusCode == 200) {
         final OrganizationModel responseModel =
         OrganizationModel.fromJson(
