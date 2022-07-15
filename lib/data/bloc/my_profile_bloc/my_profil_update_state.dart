@@ -5,6 +5,7 @@ class MyProfileUpdateState extends Equatable {
   final String lastName;
   final String imageUrl;
   final String phone;
+  final String newPhone;
   final String? gender;
   final String status;
   final bool isVolunteer;
@@ -25,6 +26,7 @@ class MyProfileUpdateState extends Equatable {
     this.lastName = '',
     this.imageUrl = '',
     this.phone='',
+    this.newPhone='',
     this.gender,
     this.status = "",
     this.isSavedBtn = false,
@@ -58,7 +60,8 @@ class MyProfileUpdateState extends Equatable {
         nextPage,
         isVisible,
         changePage,
-    codeToken
+    codeToken,
+    newPhone
 
       ];
 
@@ -67,6 +70,7 @@ class MyProfileUpdateState extends Equatable {
     String? lastName,
     String? imageUrl,
     String? phone,
+    String? newPhone,
     bool? phoneNumberFill,
     String? gender,
     String? status,
@@ -87,6 +91,7 @@ class MyProfileUpdateState extends Equatable {
       lastName: lastName ?? this.lastName,
       imageUrl: imageUrl ?? this.imageUrl,
       phone: phone ?? this.phone,
+      newPhone: newPhone ?? this.newPhone,
       phoneNumberFill: phoneNumberFill ?? this.phoneNumberFill,
       gender: gender ?? this.gender,
       status: status?? this.status,

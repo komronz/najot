@@ -20,20 +20,32 @@ import '../../home_page/home_page.dart';
 import '../my_profile_widget/app_disable_text_field.dart';
 import '../my_profile_widget/number_updating.dart';
 
-class NumberUpdatePage extends StatelessWidget {
+class NumberUpdatePage extends StatefulWidget {
   static const String routeName = "/numberUpdatePage";
 
   NumberUpdatePage({Key? key}) : super(key: key);
+
+  @override
+  State<NumberUpdatePage> createState() => _NumberUpdatePageState();
+}
+
+class _NumberUpdatePageState extends State<NumberUpdatePage> {
   bool isVisible = true;
+
   User? user = HiveService.to.getUser();
+
   final maskFormatter = MaskTextInputFormatter(mask: '## ### ## ##');
-  final TextEditingController numberController= TextEditingController();
+
+  final TextEditingController numberController = TextEditingController();
+
+  bool hasError = false;
 
   @override
   Widget build(BuildContext con) {
     Size size = MediaQuery.of(con).size;
     return BlocProvider(
-        create: (BuildContext context)=> MyProfileUpdateBloc()..add(MyProfileLoad()),
+      create: (BuildContext context) =>
+          MyProfileUpdateBloc()..add(MyProfileLoad()),
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
@@ -59,96 +71,111 @@ class NumberUpdatePage extends StatelessWidget {
           backgroundColor: AppColorUtils.WHITE,
           body: BlocBuilder<MyProfileUpdateBloc, MyProfileUpdateState>(
               builder: (context, state) {
-                return Column(
-                  children: [
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: Container(
-                          width: 375.w,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: AppColorUtils.WHITE,
-                          ),
-                          child: Column(
+            return Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Container(
+                      width: 375.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: AppColorUtils.WHITE,
+                      ),
+                      child: Column(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  AppDisableTextField(
-                                    isFill: false,
-                                    hintText: user == null
-                                        ? user.toString()
-                                        : user!.phone.toString(),
-                                    onChanged: (v) {},
-                                    title: LocaleKeys.phone_number,
-                                  ).paddingOnly(
-                                    bottom: 23.h,
-                                    top: 20.h,
-                                  ),
-                                  AppWidgets.textLocale(
-                                    text: LocaleKeys.new_phone_number,
-                                    color: AppColorUtils.DARK_4,
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ).paddingOnly(
-                                    bottom: 8.w,
-                                  ),
-                                  TextFormField(
-                                    style: TextStyle(color: AppColorUtils.BLACK),
-                                    inputFormatters: [maskFormatter],
-                                    controller: numberController,
-                                    onChanged: (v) {
-                                      context
-                                          .read<MyProfileUpdateBloc>()
-                                          .add(PhoneChanged(v));
-                                    },
-                                    keyboardType: TextInputType.number,
-                                    validator: (value) {
-                                      return null;
+                              AppDisableTextField(
+                                isFill: false,
+                                hintText: user == null
+                                    ? user.toString()
+                                    : user!.phone.toString(),
+                                onChanged: (v) {},
+                                title: LocaleKeys.phone_number,
+                              ).paddingOnly(
+                                bottom: 23.h,
+                                top: 20.h,
+                              ),
+                              AppWidgets.textLocale(
+                                text: LocaleKeys.new_phone_number,
+                                color: AppColorUtils.DARK_4,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w400,
+                              ).paddingOnly(
+                                bottom: 8.w,
+                              ),
+                              TextFormField(
+                                style: TextStyle(color: AppColorUtils.BLACK),
+                                inputFormatters: [maskFormatter],
+                                controller: numberController,
+                                onChanged: (v) {
+                                  context
+                                      .read<MyProfileUpdateBloc>()
+                                      .add(PhoneChanged(v));
+                                },
+                                keyboardType: TextInputType.number,
+                                validator: (value) {
+                                  return null;
 
-                                      // return AppValidator.validateNumber(
-                                      //     value!);
-                                    },
-                                    decoration: DecorationConst().inputDecoration(
-                                      prefixIcon: Container(
-                                        padding: EdgeInsets.only(left: 10),
-                                        width: size.width * 0.2,
-                                        child: Center(
-                                          child: AppWidgets.text(
-                                            text: "(+998)",
-                                            fontSize: 16,
-                                            color: AppColorUtils.DARK_6,
-                                          ),
-                                        ),
+                                  // return AppValidator.validateNumber(
+                                  //     value!);
+                                },
+                                decoration: DecorationConst().inputDecoration(
+                                  prefixIcon: Container(
+                                    padding: EdgeInsets.only(left: 10),
+                                    width: size.width * 0.2,
+                                    child: Center(
+                                      child: AppWidgets.text(
+                                        text: "(+998)",
+                                        fontSize: 16,
+                                        color: AppColorUtils.DARK_6,
                                       ),
                                     ),
-                                    cursorColor: Colors.black,
                                   ),
-                                  state.hasError ? AppWidgets.starTextWidget(
-                                      text: "Telefon raqamni to'g'ri kiriting",
-                                      color: AppColorUtils.RED
-                                  ) : SizedBox(),
-                                  SizedBox(height: 20.w,)
-                                ],
-                              ).paddingOnly(
-                                left: 20.w,
-                                right: 20.w,
+                                ),
+                                cursorColor: Colors.black,
                               ),
-                              Container(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
-                                width: double.infinity,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(height: 8.h),
-                                    context
+                              hasError
+                                  ? AppWidgets.starTextWidget(
+                                      text: "Telefon raqamni to'g'ri kiriting",
+                                      color: AppColorUtils.RED)
+                                  : SizedBox(),
+                              SizedBox(
+                                height: 20.w,
+                              )
+                            ],
+                          ).paddingOnly(
+                            left: 20.w,
+                            right: 20.w,
+                          ),
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            width: double.infinity,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 8.h),
+                                context
                                         .read<MyProfileUpdateBloc>()
                                         .state
-                                        .isVisible? InkWell(
+                                        .isVisible
+                                    ? InkWell(
                                         onTap: () {
-                                          context
-                                              .read<MyProfileUpdateBloc>()
-                                              .add(SendCode());
+                                          if(numberController.text.length==12){
+                                            setState((){
+                                              hasError=false;
+                                            });
+                                            context
+                                                .read<MyProfileUpdateBloc>()
+                                                .add(SendCode(
+                                                numberController.text));
+                                          }else{
+                                            setState((){
+                                              hasError=true;
+                                            });
+                                          }
+
                                         },
                                         child: Visibility(
                                           visible: context
@@ -163,7 +190,7 @@ class NumberUpdatePage extends StatelessWidget {
                                                 left: 10),
                                             decoration: BoxDecoration(
                                               borderRadius:
-                                              BorderRadius.circular(12),
+                                                  BorderRadius.circular(12),
                                               color: AppColorUtils.BLUE_BUTTON,
                                             ),
                                             child: AppWidgets.textLocale(
@@ -173,23 +200,59 @@ class NumberUpdatePage extends StatelessWidget {
                                                 fontSize: 15.sp,
                                                 fontWeight: FontWeight.w600),
                                           ),
-                                        )
-                                    )
-                                        : NumberUpdating(
-                                      state: state,
-                                      con: con,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                                        ),
+                                )
+                                    : NumberUpdating(
+                                        state: state,
+                                        con: con,
+                                        number: numberController.text,
+                                        confirmation: (v) {
+                                          if (numberController.text.length ==
+                                              12) {
+                                            setState((){
+                                              hasError=false;
+                                            });
+                                            con
+                                                .read<MyProfileUpdateBloc>()
+                                                .add(ChangeNumber(
+                                                  int.parse(v),
+                                                  numberController.text,
+                                                ));
+                                          } else {
+                                            setState(() {
+                                              hasError = true;
+                                            });
+                                          }
+                                        },
+                                        resend: () {
+                                          if (numberController.text.length == 12) {
+                                            setState((){
+                                              hasError=false;
+                                            });
+                                            con
+                                                .read<MyProfileUpdateBloc>()
+                                                .add(SendCode(
+                                                  numberController.text,
+                                                ));
+                                          } else {
+                                            setState(() {
+                                              hasError = true;
+                                            });
+                                          }
+                                        },
+                                      ),
+                              ],
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
-                  ],
-                );
-              }),
+                  ),
+                ),
+              ],
+            );
+          },
+          ),
         ),
       ),
     );

@@ -14,10 +14,19 @@ import '../../edit_volunteer_page/widgets/pinput_number_change.dart';
 import '../../main_page/widgets/button_card_widget.dart';
 
 class NumberUpdating extends StatelessWidget {
-  NumberUpdating({required this.state, required this.con});
+  NumberUpdating({
+    required this.state,
+    required this.con,
+    required this.number,
+    required this.confirmation,
+    required this.resend
+  });
 
   MyProfileUpdateState state;
   BuildContext con;
+  String number;
+  Function confirmation;
+  VoidCallback resend;
   final TextEditingController _pinPutController = TextEditingController();
   final FocusNode _pinPutFocusNode = FocusNode();
 
@@ -37,7 +46,7 @@ class NumberUpdating extends StatelessWidget {
                 width: 2,
               ),
             ),
-            child:  Container(
+            child: Container(
               width: 150.w,
               child: Row(
                 children: [
@@ -59,9 +68,8 @@ class NumberUpdating extends StatelessWidget {
             height: 48.w,
             width: 1.sw,
             color: AppColorUtils.PERCENT_COLOR,
-            onPress: () {
-              con.read<MyProfileUpdateBloc>().add(ChangeNumber(int.parse(_pinPutController.text)));
-
+            onPress: (){
+              confirmation(_pinPutController.text);
             },
             text: LocaleKeys.confirmation.tr(),
           ).paddingOnly(bottom: 18.w),
@@ -73,9 +81,7 @@ class NumberUpdating extends StatelessWidget {
             height: 48.w,
             width: 1.sw,
             color: AppColorUtils.WHITE,
-            onPress: () {
-              con.read<MyProfileUpdateBloc>().add(SendCode());
-            },
+            onPress: resend,
             text: LocaleKeys.send_again.tr(),
           ).paddingSymmetric(horizontal: 70.w),
         ],

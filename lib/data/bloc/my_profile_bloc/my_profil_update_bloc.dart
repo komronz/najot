@@ -35,9 +35,9 @@ class MyProfileUpdateBloc
     on<SendCode>(_sendCode);
     on<EditProfileChangePage>(_onChangeEditProfile);
     on<SaveImagePickers>(_saveImagePickers);
-
     on<ImagePickers>(_onImagePicker);
     on<SaveIn>(_saveIn);
+    on<ChangeNumber>(_changeNumber);
   }
 
   Future _onChangeEditProfile(EditProfileChangePage event,
@@ -103,7 +103,7 @@ class MyProfileUpdateBloc
   Future _onPhoneChanged(PhoneChanged event,
       Emitter<MyProfileUpdateState> emit) async {
     emit(state.copyWith(
-      phone: event.phoneNumber,
+      newPhone: event.phoneNumber,
       phoneNumberFill: _isNotEmpty(event.phoneNumber),
     ),
     );
@@ -141,7 +141,7 @@ class MyProfileUpdateBloc
           state.phone,
           state.firstName,
           state.lastName,
-          state.gender,
+          state.gender!,
           state.userImgPath!,
           state.status,
           state.isVolunteer,
@@ -180,16 +180,15 @@ class MyProfileUpdateBloc
       state.codeToken,
       event.code,
     );
-    if(state.phone==12){
+
       if(changeNumber !=null){
-        add(EditProfileChangePage(1));
+        print("lalaku");
         add(MyProfileLoad());
+        add(EditProfileChangePage(1));
       }else{
         AppWidgets.showText(text: "Xato kod terildi!");
       }
-    }else{
-      emit(state.copyWith(hasError: true));
-    }
+
 
   }
 
@@ -197,20 +196,16 @@ class MyProfileUpdateBloc
     SendCode event,
     Emitter<MyProfileUpdateState> emit,
   ) async {
-    if (state.phone.length == 12) {
-      var response = await userUpdateService.postNumber(state.phone);
+    print(event.number);
+      var response = await userUpdateService.postNumber(event.number);
       if (response != null) {
         emit(state.copyWith(codeToken: response.code));
-        emit(state.copyWith(hasError: false, isVisible: true));
+        emit(state.copyWith(isVisible: true));
         emit(state.copyWith(isVisible: false));
-        add(MyProfileLoad());
       }else{
         AppWidgets.showText(text: "Bu raqam registratsiyadan o'tgan");
       }
-    } else {
-      AppWidgets.showText(text: 'fail');
-      emit(state.copyWith(hasError: true));
-    }
+
   }
 
   Future deletePost(String reason) async {
