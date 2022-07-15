@@ -158,7 +158,7 @@ class EditVolunteerBloc extends Bloc<EditVolunteerEvent, EditVolunteerState> {
 
   Future _sendCode(SendCode event,
       Emitter<EditVolunteerState> emit,) async {
-    if (state.phoneNumber.length==12) {
+    if (state.phoneNumber.length==9) {
       var user = User(
         photo: state.imageUrl,
         firstName: state.name,

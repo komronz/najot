@@ -85,6 +85,12 @@ class SaveIn extends MyProfileUpdateEvent {
   @override
   List<Object?> get props => [];
 }
+class ChangeNumber extends MyProfileUpdateEvent {
+  ChangeNumber(this.code);
+    int code;
+  @override
+  List<Object?> get props => [];
+}
 class SendCode extends MyProfileUpdateEvent {
 
   @override

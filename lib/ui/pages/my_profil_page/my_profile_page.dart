@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -100,6 +101,7 @@ class MyProfilePage extends StatelessWidget {
                                       color: AppColorUtils.GRAY_4,
                                       fontWeight: FontWeight.w400,
                                     ),
+                                    SizedBox(width: 5,),
                                     Container(
                                       padding:
                                           EdgeInsets.only(top: 1, bottom: 1),
@@ -117,7 +119,21 @@ class MyProfilePage extends StatelessWidget {
                                   ],
                                 ),
                               ).paddingOnly(bottom: 6.h),
-                              Container(
+                             true
+                                 ?Row(
+                               mainAxisAlignment: MainAxisAlignment.center,
+                               children: [
+                                 SvgPicture.asset(AppImageUtils.HANDS),
+                                 Container(
+                                   margin: EdgeInsets.only(left: 5),
+                                   child: AppWidgets.textLocale(
+                                       text: LocaleKeys.volunteer,
+                                       color: AppColorUtils.TEXT_GREEN,
+                                       fontSize: 16.sp,
+                                       fontWeight: FontWeight.w600),
+                                 )
+                               ],
+                             ): Container(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [

@@ -18,10 +18,10 @@ import 'package:flutter_switch/flutter_switch.dart';
 class DrawerBody extends StatelessWidget {
   DrawerBody({
     required this.state,
-
   });
 
   AppPageState state;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -109,20 +109,14 @@ class DrawerBody extends StatelessWidget {
                           ),
                         ),
                         onTap: () {
-                          if (state.tobeVolunteer) {
-                            context.read<AppPageCubit>().changePage(pageType: AppPageType.PROFILE);
-                            Navigator.pop(context);
-                          } else {
-                            context.read<AppPageCubit>().changePage(pageType: AppPageType.USERPROFILE);
-                            Navigator.pop(context);
-                          }
+                          context.read<AppPageCubit>().changePage(
+                                pageType: AppPageType.USERPROFILE,
+                              );
+                          Navigator.pop(context);
                         },
                       )
-
                     ],
                   ),
-
-
                   Divider(
                     color: AppColorUtils.DIVIDER,
                     height: 1,
@@ -255,8 +249,10 @@ class DrawerBody extends StatelessWidget {
                     showOnOff: true,
                     value: state.tobeVolunteer,
                     onToggle: (v) {
-                      Volunteer.tobeVolunteer=!Volunteer.tobeVolunteer;
-                      context.read<AppPageCubit>().changeVolunteer(Volunteer.tobeVolunteer);
+                      Volunteer.tobeVolunteer = !Volunteer.tobeVolunteer;
+                      context
+                          .read<AppPageCubit>()
+                          .changeVolunteer(Volunteer.tobeVolunteer);
                     },
                   ),
                 ],
@@ -265,7 +261,6 @@ class DrawerBody extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.w),
                   child: ButtonCard(

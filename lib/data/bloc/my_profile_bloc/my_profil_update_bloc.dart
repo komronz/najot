@@ -22,7 +22,7 @@ class MyProfileUpdateBloc
   final MyProfileService myProfileService = MyProfileService();
 
   MyProfileUpdateBloc()
-      : pageController=PageController(),
+      : pageController = PageController(),
         super(MyProfileUpdateState()) {
     on<MyProfileLoad>(_loadProfile);
     on<ImageChanged>(_onImageChanged);
@@ -35,24 +35,29 @@ class MyProfileUpdateBloc
     on<SendCode>(_sendCode);
     on<EditProfileChangePage>(_onChangeEditProfile);
     on<SaveImagePickers>(_saveImagePickers);
-
     on<ImagePickers>(_onImagePicker);
     on<SaveIn>(_saveIn);
+    on<ChangeNumber>(_changeNumber);
   }
 
-  Future _onChangeEditProfile(EditProfileChangePage event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _onChangeEditProfile(
+    EditProfileChangePage event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(state.copyWith(changePage: event.changePage));
   }
 
-  Future _saveImagePickers(SaveImagePickers event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _saveImagePickers(
+    SaveImagePickers event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(state.copyWith(userImgPath: event.userImgPath));
   }
 
-
-  Future _onPageChanged(PageChanged event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _onPageChanged(
+    PageChanged event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         isVisible: event.isVisible,
@@ -60,8 +65,10 @@ class MyProfileUpdateBloc
     );
   }
 
-  Future _onPageNext(PageNext event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _onPageNext(
+    PageNext event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         nextPage: event.isNext,
@@ -69,8 +76,10 @@ class MyProfileUpdateBloc
     );
   }
 
-  Future _onImagePicker(ImagePickers event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _onImagePicker(
+    ImagePickers event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     File? imagePicker = (await ImagePicker().pickImage(
       source: ImageSource.gallery,
     )) as File?;
@@ -81,8 +90,10 @@ class MyProfileUpdateBloc
     }
   }
 
-  Future _onImageChanged(ImageChanged event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _onImageChanged(
+    ImageChanged event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         imageUrl: event.imageUrl,
@@ -90,8 +101,10 @@ class MyProfileUpdateBloc
     );
   }
 
-  Future _onNameChanged(FirstNameChanged event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _onNameChanged(
+    FirstNameChanged event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         firstName: event.name,
@@ -100,17 +113,20 @@ class MyProfileUpdateBloc
     );
   }
 
-  Future _onPhoneChanged(PhoneChanged event,
-      Emitter<MyProfileUpdateState> emit) async {
-    emit(state.copyWith(
-      phone: event.phoneNumber,
-      phoneNumberFill: _isNotEmpty(event.phoneNumber),
-    ),
+  Future _onPhoneChanged(
+      PhoneChanged event, Emitter<MyProfileUpdateState> emit) async {
+    emit(
+      state.copyWith(
+        phone: event.phoneNumber,
+        phoneNumberFill: _isNotEmpty(event.phoneNumber),
+      ),
     );
   }
 
-  Future _onGenderChanged(GenderChanged event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _onGenderChanged(
+    GenderChanged event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         gender: event.gender,
@@ -118,8 +134,10 @@ class MyProfileUpdateBloc
     );
   }
 
-  Future _onLastNameChanged(LastNameChanged event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _onLastNameChanged(
+    LastNameChanged event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         lastName: event.sureName,
@@ -129,33 +147,36 @@ class MyProfileUpdateBloc
   }
 
   bool _isNotEmpty(String value) {
-    return value
-        .trim()
-        .isNotEmpty;
+    return value.trim().isNotEmpty;
   }
+
   UserUpdateService userUpdateService = UserUpdateService();
 
-  Future _saveIn(SaveIn event,
-      Emitter<MyProfileUpdateState> emit,) async {
-      var user = await userUpdateService.postModel(
-          state.phone,
-          state.firstName,
-          state.lastName,
-          state.gender,
-          state.userImgPath!,
-          state.status,
-          state.isVolunteer,
-      );
-      if (user!=null) {
+  Future _saveIn(
+    SaveIn event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
+    var user = await userUpdateService.postModel(
+      state.phone,
+      state.firstName,
+      state.lastName,
+      state.gender,
+      state.userImgPath!,
+      state.status,
+      state.isVolunteer,
+    );
+    if (user != null) {
       emit(state.copyWith(hasError: false));
     } else {
       emit(state.copyWith(hasError: true));
     }
   }
 
-  Future _loadProfile(MyProfileLoad event,
-      Emitter<MyProfileUpdateState> emit,) async {
-    var user =  await userUpdateService.getUserModel();
+  Future _loadProfile(
+    MyProfileLoad event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
+    var user = await userUpdateService.getUserModel();
     if (user != null) {
       emit(
         state.copyWith(
@@ -171,26 +192,42 @@ class MyProfileUpdateBloc
     }
   }
 
-  Future _sendCode(SendCode event,
-      Emitter<MyProfileUpdateState> emit,) async {
-    if (_isNotEmpty(state.phone)) {
-      var user = User(
-        photo: state.imageUrl,
-        firstName: state.firstName,
-        lastName: state.lastName,
-        gender: state.gender,
-        phone: state.phone,
-      );
-      HiveService.to.setUser(user);
-      AppWidgets.showText(text: 'Success');
-      emit(state.copyWith(hasError: false, isVisible: true));
-      AppLoggerUtil.i(user.toJson().toString());
-      emit(state.copyWith(isVisible: false));
-      await Future.delayed(Duration(seconds: 3));
-      emit(state.copyWith(nextPage: true));
-      add(MyProfileLoad());
+  Future _changeNumber(
+    ChangeNumber event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
+    var changeNumber = await userUpdateService.changeNumber(
+      state.codeToken,
+      event.code,
+    );
+    if(state.phone==12){
+      if(changeNumber !=null){
+        add(EditProfileChangePage(1));
+        add(MyProfileLoad());
+      }else{
+        AppWidgets.showText(text: "Xato kod terildi!");
+      }
+    }else{
+      emit(state.copyWith(hasError: true));
+    }
+
+  }
+
+  Future _sendCode(
+    SendCode event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
+    if (state.phone.length == 12) {
+      var response = await userUpdateService.postNumber(state.phone);
+      if (response != null) {
+        emit(state.copyWith(codeToken: response.code));
+        emit(state.copyWith(hasError: false, isVisible: true));
+        emit(state.copyWith(isVisible: false));
+        add(MyProfileLoad());
+      }else{
+        AppWidgets.showText(text: "Bu raqam registratsiyadan o'tgan");
+      }
     } else {
-      AppWidgets.showText(text: 'fail');
       emit(state.copyWith(hasError: true));
     }
   }

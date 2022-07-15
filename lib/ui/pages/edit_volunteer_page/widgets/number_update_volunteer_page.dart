@@ -8,7 +8,6 @@ import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/auth_model/user.dart';
 import 'package:najot/data/services/hive_service.dart';
-import 'package:najot/ui/pages/edit_volunteer_page/widgets/number_updating.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/app_disable_text_field.dart';
 import '../../../../data/localization/locale_keys.g.dart';
@@ -16,6 +15,7 @@ import '../../../../data/model/auth_model/login_end_model.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
+import '../../my_profil_page/my_profile_widget/number_updating.dart';
 
 class NumberUpdateVolunteerPage extends StatelessWidget {
   static const String routeName = "/numberUpdateVolunteerPage";
@@ -186,11 +186,11 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                                     fontWeight: FontWeight.w600),
                                               ),
                                             )
-                                    )
-                                        : NumberUpdating(
-                                      state: state,
-                                      con: con,
-                                    ),
+                                    ):SizedBox()
+                                    //     : NumberUpdating(
+                                    //   state: state,
+                                    //   con: con,
+                                    // ),
                                   ],
                                 ),
                               ),
