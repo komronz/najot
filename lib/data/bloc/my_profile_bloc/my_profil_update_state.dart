@@ -1,16 +1,11 @@
 import 'dart:io';
-
 import 'package:equatable/equatable.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:najot/data/utils/app_utils.dart';
-
-
 class MyProfileUpdateState extends Equatable {
   final String firstName;
   final String lastName;
   final String imageUrl;
   final String phone;
-  final String gender;
+  final String? gender;
   final String status;
   final bool isVolunteer;
   final bool isSavedBtn;
@@ -30,7 +25,7 @@ class MyProfileUpdateState extends Equatable {
     this.lastName = '',
     this.imageUrl = '',
     this.phone='',
-    this.gender="",
+    this.gender,
     this.status = "",
     this.isSavedBtn = false,
     this.nameFill = false,
@@ -50,7 +45,7 @@ class MyProfileUpdateState extends Equatable {
         firstName,
         lastName,
         imageUrl,
-         phone,
+        phone,
         gender,
         status,
         isSavedBtn,

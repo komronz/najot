@@ -74,15 +74,15 @@ class UserUpdatePage extends StatelessWidget {
                           child: Column(
                             children: [
                               ShowPickerWidget(
-                                width: 130,
+                                width: 150,
+                                height: 150,
                                 image: AppImageUtils.USERADD,
-                                height: 130,
                                 color: AppColorUtils.WHITE,
                                 imageSelect: (v){
                                   bloc.add(SaveImagePickers(v));
                               },
                                 imageFile: state.userImgPath,
-                              ),
+                              ).paddingOnly(top:15.w),
                               Container(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -113,6 +113,7 @@ class UserUpdatePage extends StatelessWidget {
                                                 ? Gender.MAN.toString()
                                                 : Gender.WOMAN.toString();
                                             bloc.add(GenderChanged(gender.toString()));
+
                                           },
                                         ).paddingOnly(top: 20),
                                       ],
@@ -123,7 +124,6 @@ class UserUpdatePage extends StatelessWidget {
                               InkWell(
                                 onTap: () {
                                   bloc.add(SaveIn());
-                                  bloc.add(MyProfileLoad());
                                   context
                                       .read<MyProfileUpdateBloc>()
                                       .add(EditProfileChangePage(1));

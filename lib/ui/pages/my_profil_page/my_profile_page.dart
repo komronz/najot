@@ -31,9 +31,9 @@ class MyProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => myProfileUpdateBloc..add(MyProfileLoad()),
+      create: (context) => myProfileUpdateBloc,
       child: BlocConsumer<MyProfileUpdateBloc, MyProfileUpdateState>(
-        bloc: myProfileUpdateBloc,
+        bloc: myProfileUpdateBloc..add(MyProfileLoad()),
           listener: (context, state) {},
           builder: (context, state) {
             if (state.changePage == 1) {
@@ -50,12 +50,7 @@ class MyProfilePage extends StatelessWidget {
                         context
                             .read<MyProfileUpdateBloc>()
                             .add(EditProfileChangePage(2));
-                        // NavigatorService.to.pushNamed(UserUpdatePage.routeName,
-                        //     arguments: context.read<MyProfileUpdateBloc>());
-                        // NavigatorService.to.pushNamedAndRemoveUntil(
-                        //   HomePage.routeName,
-                        //   arguments: AppPageType.USER_UPDATE,
-                        // );
+
                       },
                       icon: AppImageUtils.EDIT,
                     ).paddingOnly(top: 10),
@@ -73,18 +68,19 @@ class MyProfilePage extends StatelessWidget {
                           child: Column(
                             children: [
                               Container(
-                                width: 107.w,
-                                height: 107.h,
-                                child: CachedNetworkImage(
-                                  placeholder: (context, url)=>Center(
-                                    child: CircularProgressIndicator(),
+                                width: 130.w,
+                                height: 130.w,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(100),
+                                  child: CachedNetworkImage(
+                                    placeholder: (context, url)=>Center(
+                                      child: CircularProgressIndicator(),
+                                    ),
+                                    imageUrl: state.imageUrl,
+                                    errorWidget: (context, url, error) =>
+                                        SvgPicture.asset(AppImageUtils.USER),
+                                    fit: BoxFit.cover,
                                   ),
-                                  height: double.infinity,
-                                  width: double.infinity,
-                                  imageUrl: state.imageUrl,
-                                  errorWidget: (context, url, error) =>
-                                      Icon(Icons.error),
-                                  fit: BoxFit.cover,
                                 ),
                               ).paddingOnly(
                                 top: 25.h,
@@ -155,8 +151,7 @@ class MyProfilePage extends StatelessWidget {
                                   children: [
                                     AppDisableTextField(
                                       isFill: false,
-                                      hintText: context
-                                          .read<MyProfileUpdateBloc>()
+                                      hintText: myProfileUpdateBloc
                                           .state
                                           .firstName,
                                       onChanged: (v) {},
@@ -164,15 +159,14 @@ class MyProfilePage extends StatelessWidget {
                                     ).paddingOnly(bottom: 23.h),
                                     AppDisableTextField(
                                       isFill: false,
-                                      hintText: context.read<MyProfileUpdateBloc>().state.lastName,
+                                      hintText: myProfileUpdateBloc.state.lastName,
                                       onChanged: (v) {},
                                       title: LocaleKeys.surname.tr(),
                                     ).paddingOnly(bottom: 23.h),
                                     MyProfileRadioButton(
-                                      initial: context
-                                          .read<MyProfileUpdateBloc>()
+                                      initial: myProfileUpdateBloc
                                           .state
-                                          .gender,
+                                          .gender??"",
                                     ).paddingOnly(top: 20),
                                   ],
                                 ),
@@ -280,7 +274,7 @@ class MyProfilePage extends StatelessWidget {
                 ),
               );
             } else if (state.changePage == 2) {
-              return UserUpdatePage(bloc: MyProfileUpdateBloc());
+              return UserUpdatePage(bloc: myProfileUpdateBloc);
             } else {
               return NumberUpdatePage();
             }
