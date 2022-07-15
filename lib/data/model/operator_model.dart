@@ -31,19 +31,24 @@ class OperatorModelResultsUser {
 }
 
 class OperatorModelResults {
+
+
   int? id;
+  String? file;
   String? content;
   OperatorModelResultsUser? user;
   bool? isClient;
 
   OperatorModelResults({
     this.id,
+    this.file,
     this.content,
     this.user,
     this.isClient,
   });
   OperatorModelResults.fromJson(Map<String, dynamic> json) {
     id = json['id']?.toInt();
+    file = json['file']?.toString();
     content = json['content']?.toString();
     user = (json['user'] != null) ? OperatorModelResultsUser.fromJson(json['user']) : null;
     isClient = json['is_client'];
@@ -51,6 +56,7 @@ class OperatorModelResults {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['id'] = id;
+    data['file'] = file;
     data['content'] = content;
     if (user != null) {
       data['user'] = user!.toJson();
@@ -61,6 +67,7 @@ class OperatorModelResults {
 }
 
 class OperatorModelLinks {
+
   String? next;
   String? previous;
 
@@ -81,6 +88,7 @@ class OperatorModelLinks {
 }
 
 class OperatorModel {
+
   OperatorModelLinks? links;
   int? currentPageNumber;
   int? totalPages;

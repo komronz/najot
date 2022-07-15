@@ -2,7 +2,7 @@ part of 'operator_cubit.dart';
 
 class OperatorState extends Equatable {
   final List<OperatorModelResults?>? list;
-  // final List<OperatorModelResults?>? listPost;
+  final File? userImgPath;
   final bool hasError;
   final bool hasConnection;
   final String sendSmsTxt;
@@ -10,8 +10,8 @@ class OperatorState extends Equatable {
 
   OperatorState({
     this.list = const [],
-    // this.listPost = const [],
     this.hasError = false,
+    this.userImgPath,
     this.hasConnection = true,
     this.isLoading = false,
     this.sendSmsTxt = "",
@@ -19,7 +19,7 @@ class OperatorState extends Equatable {
 
   OperatorState copyWith({
     List<OperatorModelResults?>? list,
-    // List<OperatorModelResults?>? listPost,
+    File? userImgPath,
     bool? hasError,
     bool? hasConnection,
     bool? isLoading,
@@ -27,7 +27,7 @@ class OperatorState extends Equatable {
   }) {
     return OperatorState(
       list: list ?? this.list,
-      // listPost: listPost ?? this.listPost,
+      userImgPath: userImgPath??this.userImgPath,
       hasConnection: hasConnection ?? this.hasConnection,
       hasError: hasError ?? this.hasError,
       isLoading: isLoading ?? this.isLoading,
@@ -39,7 +39,7 @@ class OperatorState extends Equatable {
   // TODO: implement props
   List<Object?> get props => [
         list,
-        // listPost,
+        userImgPath,
         hasError,
         hasConnection,
         isLoading,

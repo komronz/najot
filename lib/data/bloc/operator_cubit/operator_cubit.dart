@@ -1,10 +1,10 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:najot/data/model/operator_model.dart';
-import 'package:najot/data/model/sms_model.dart';
 import 'package:najot/data/services/operator_service.dart';
-
 part 'operator_state.dart';
 
 class OperatorCubit extends Cubit<OperatorState> {
@@ -28,22 +28,22 @@ class OperatorCubit extends Cubit<OperatorState> {
     }
   }
 
-  Future sendSms(String content) async {
-    var operatorModel=await operatorService.postModel(content);
+  Future sendSms(String content, File file) async {
+    var operatorModel=await operatorService.postModel(content,file);
     if(operatorModel!=null){
       print("Posted");
     }
-    // List<OperatorModelResults> list = List.from(state.list!);
-    // list.add(
-    //   OperatorModelResults(
-    //     content: textController.text,
-    //     // dateTime: DateTime.now(),
-    //   ),
-    // );
+    List<OperatorModelResults> list = List.from(state.list!);
+    list.add(
+      OperatorModelResults(
+        content: textController.text,
+        // dateTime: DateTime.now(),
+      ),
+    );
+    emit(state.copyWith(
+      list: list,
+    ));
     textController.clear();
-    // emit(state.copyWith(
-    //   list: list,
-    // ));
     controller.jumpTo(controller.position.maxScrollExtent + 100);
   }
 

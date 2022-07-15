@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,13 +23,16 @@ import 'widgets/operator_sms_widget.dart';
 import 'widgets/operator_user_sms_widget.dart';
 
 class OperatorPage extends StatelessWidget {
-  const OperatorPage({Key? key}) : super(key: key);
+   OperatorPage({Key? key}) : super(key: key);
+  OperatorCubit operatorCubit= OperatorCubit();
+   TextEditingController content = TextEditingController();
 
-  @override
+   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => OperatorCubit()..load(),
+      create: (context) => operatorCubit,
       child: BlocBuilder<OperatorCubit, OperatorState>(
+        bloc: operatorCubit..load(),
         builder: (context, state) => Scaffold(
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(70),
@@ -73,7 +78,7 @@ class OperatorPage extends StatelessWidget {
                         await showDialog(
                           context: context,
                           builder: (ctx) => OperatorClearSmsWidget(
-                            cubit: context.read<OperatorCubit>(),
+                            cubit: operatorCubit,
                           ),
                         );
                       },
@@ -127,8 +132,7 @@ class OperatorPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: TextField(
-                          controller:
-                              context.read<OperatorCubit>().textController,
+                          controller: context.read<OperatorCubit>().textController,
                           expands: true,
                           textAlignVertical: TextAlignVertical.top,
                           maxLines: null,
@@ -151,7 +155,7 @@ class OperatorPage extends StatelessWidget {
                           ),
                           keyboardType: TextInputType.multiline,
                           onChanged: (v) {
-                            // context.read<OperatorCubit>().writeSms(v);
+                            context.read<OperatorCubit>().writeSms(v);
                           },
                         ),
                       ),
@@ -175,9 +179,8 @@ class OperatorPage extends StatelessWidget {
                                 .textController
                                 .text
                                 .isNotEmpty) {
-                              context
-                                  .read<OperatorCubit>()
-                                  .sendSms(state.sendSmsTxt);
+                              context.read<OperatorCubit>()
+                                  .sendSms(state.sendSmsTxt,state.userImgPath!,);
                             }
                           },
                           icon: Icon(
@@ -239,10 +242,10 @@ class OperatorPage extends StatelessWidget {
     }
 
     return ListView.builder(
-      controller: context.read<OperatorCubit>().controller,
+      controller: operatorCubit.controller,
       physics: BouncingScrollPhysics(),
       itemBuilder: (context, index) {
-        if (list[index]!.isClient!=true) {
+        if (list[index]!.isClient==true) {
           return OperatorSmsWidget(
             model: list[index]!,
           );

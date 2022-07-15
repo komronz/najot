@@ -35,26 +35,32 @@ class OperatorService{
       return null;
     }
   }
-  Future<bool?> postModel(
+  Future<OperatorModelResults?> postModel(
       String content,
+      File file,
       ) async {
     try {
       final _path = "https://api.najot.uz/ru/operator-chat/";
-      final body = {
+      String file1 = file.path.split('/').last;
+      FormData formData = FormData.fromMap({
         "content": content,
-      };
-      final headers = {HttpHeaders.contentTypeHeader: "application/json"};
-      var response = await httpService.post(
+        "file": await MultipartFile.fromFile(file.path, filename: file1),
+      });
+      final headers = {HttpHeaders.contentTypeHeader: "multipart/from-data"};
+      var response = await httpService.postFile(
         path: _path,
-        fields: body,
+        formData: formData,
         headers: headers,
         token: HiveService.to.getToken(),
       );
-
       if (response != null) {
-        print(response.statusCode);
         if (response.statusCode == 201) {
-          return true;
+          AppLoggerUtil.i(OperatorModelResults.fromJson(response.data).toString());
+          return OperatorModelResults.fromJson(response.data);
+        } else if (response.statusCode == 401) {
+          return null;
+        } else if (response.statusCode! >= 500) {
+          return null;
         }
       } else {
         return null;
