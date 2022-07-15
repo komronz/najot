@@ -5,15 +5,10 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
-import 'package:najot/data/model/auth_model/login_end_model.dart';
-import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/my_profile_service.dart';
 import 'package:najot/data/services/user_update_service.dart';
-import 'package:najot/data/utils/app_utils.dart';
 import '../../../ui/widgets/app_widgets.dart';
-import '../../model/auth_model/user.dart';
 import '../../utils/app_logger_util.dart';
-
 part 'my_profil_update_event.dart';
 
 class MyProfileUpdateBloc
@@ -180,11 +175,10 @@ class MyProfileUpdateBloc
       state.codeToken,
       event.code,
     );
-
       if(changeNumber !=null){
-        print("lalaku");
         add(MyProfileLoad());
         add(EditProfileChangePage(1));
+        emit(state.copyWith(isVisible: true));
       }else{
         AppWidgets.showText(text: "Xato kod terildi!");
       }

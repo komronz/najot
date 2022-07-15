@@ -1,12 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-
-import '../../../../data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
@@ -16,14 +13,12 @@ import '../../main_page/widgets/button_card_widget.dart';
 class NumberUpdating extends StatelessWidget {
   NumberUpdating({
     required this.state,
-    required this.con,
     required this.number,
     required this.confirmation,
     required this.resend
   });
 
   MyProfileUpdateState state;
-  BuildContext con;
   String number;
   Function confirmation;
   VoidCallback resend;

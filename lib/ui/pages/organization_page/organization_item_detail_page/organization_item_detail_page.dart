@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/organization_cubit/organization_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/organization_model.dart';
+import 'package:najot/ui/pages/organization_page/organization_item_detail_page/organization_item_widget2.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/services/navigator_service.dart';
@@ -13,15 +14,15 @@ import '../../../widgets/app_widgets.dart';
 import '../../charity_page/charity_full_page/charity_full_page.dart';
 import '../../charity_page/widgets/charity_item2_widget.dart';
 import '../../charity_page/widgets/charity_item_widget.dart';
-import 'organization_charity_item_widget.dart';
+import 'organization_item_widget.dart';
 
 class OrganizationItemDetailPageModel {
   final OrganizationModelResults model;
-  final OrganizationCubit cubit;
+
 
   OrganizationItemDetailPageModel({
     required this.model,
-    required this.cubit,
+
   });
 }
 
@@ -47,7 +48,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
         ),
       ),
       body: BlocBuilder<OrganizationCubit, OrganizationState>(
-        bloc: model.cubit..findProject(model.model.id!),
+        bloc: OrganizationCubit.to..findProject(model.model.id!),
         builder: (context, state) {
           return SingleChildScrollView(
             child: Column(
@@ -163,34 +164,46 @@ class OrganizationItemDetailPage extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: List.generate(
-                            model.cubit.state.project?.results?.length ?? 0,
+                            OrganizationCubit.to.state.project?.results?.length ?? 0,
                             (index) {
                               if (state.project!.results![index].organization !=
                                   null) {
                                 return CharityItemWidget(
                                   onTap: () {
                                     NavigatorService.to.pushNamed(
-                                      CharityFullPage.routName,
-                                      arguments: state.project!.results![index],
+                                      OrganizationItemWidget2.routName,
+                                      arguments: OrganizationItemModel(
+                                        cardModel: state.project!.results![index],
+                                        id: model.model.id!,
+                                      ),
                                     );
                                   },
                                   model: state.project!.results![index],
-                                  onTapLike: () {},
+                                  onTapLike: () {
+                                    print(state.project!.results![index].isFavourite);
+                                  }
+                                  //   OrganizationCubit.to.changeLike(
+                                  //       state.project!.results![index].id!);
+                                  //   OrganizationCubit.to.findProject(model.model.id!);
+                                  // },
                                 ).paddingOnly(left: 20.w);
                               } else {
                                 return CharityItem2Widget(
                                   model: state.project!.results![index],
                                   onTap: () {
                                     NavigatorService.to.pushNamed(
-                                      OrganizationCharityItemWidget.routName,
-                                      arguments: OrganizationCharityItemModel(
-                                        cardModel:
-                                            state.project!.results![index],
-                                        cubit: model.cubit,
+                                      OrganizationItemWidget.routName,
+                                      arguments: OrganizationItemModel(
+                                        cardModel: state.project!.results![index],
+                                        id: model.model.id!,
                                       ),
                                     );
                                   },
-                                  onTapLike: () {},
+                                  onTapLike: () {
+                                    OrganizationCubit.to.changeLike(
+                                        state.project!.results![index].id!);
+                                    OrganizationCubit.to.findProject(model.model.id!);
+                                  },
                                 ).paddingOnly(left: 20.w);
                               }
                             },

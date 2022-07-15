@@ -85,7 +85,6 @@ class OrganizationItemWidget extends StatelessWidget {
         NavigatorService.to.pushNamed(
           OrganizationItemDetailPage.routeName,
           arguments: OrganizationItemDetailPageModel(
-            cubit: cubit,
             model: model,
           ),
         );

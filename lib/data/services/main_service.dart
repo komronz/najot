@@ -53,6 +53,7 @@ class MainService {
       var response = await _httpService.post(
           path: path, headers: headers, token: HiveService.to.getToken());
       if (response != null) {
+        print(response.statusCode);
         if (response.statusCode == 201) {
           return true;
         } else if (response.statusCode == 200) {

@@ -14,7 +14,7 @@ class FavoriteButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return isFavorite
+    return !isFavorite
         ? Container(
       width: 24.w,
       height: 24.w,

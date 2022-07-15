@@ -22,6 +22,7 @@ import 'package:najot/ui/pages/loading_page/loading_page.dart';
 import 'package:najot/ui/pages/login_page/login_page.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_page.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/adding_project_page.dart';
+import 'package:najot/ui/pages/organization_page/organization_item_detail_page/organization_item_widget2.dart';
 import 'package:najot/ui/pages/reg_page/reg_page.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/img_view.dart';
 import 'package:najot/ui/pages/verification_page/verification_page.dart';
@@ -47,7 +48,7 @@ import '../../ui/pages/my_project_and_announcements_pages/my_volunteering_projec
 import '../../ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/my_volunteering_support_list_page.dart';
 import '../../ui/pages/notification_page/notification_page.dart';
 import '../../ui/pages/notification_page/widget/attension_note.dart';
-import '../../ui/pages/organization_page/organization_item_detail_page/organization_charity_item_widget.dart';
+import '../../ui/pages/organization_page/organization_item_detail_page/organization_item_widget.dart';
 import '../../ui/pages/organization_page/organization_item_detail_page/organization_help_widget.dart';
 import '../../ui/pages/organization_page/organization_item_detail_page/organization_item_detail_page.dart';
 import '../../ui/pages/volunteering_charity_history_page/volunteering_charity_history_page.dart';
@@ -103,13 +104,13 @@ class AppRouteUtils {
       case CharityFullPage.routName:
         return MaterialPageRoute(
           builder: (context) => CharityFullPage(
-            model: settings.arguments as CharityFullModel,
+            model: settings.arguments as ProjectModel,
           ),
         );
       case CharityFullPage2.routName:
         return MaterialPageRoute(
           builder: (context) => CharityFullPage2(
-            helpModel: settings.arguments as CharityFullModel,
+            helpModel: settings.arguments as ProjectModel,
           ),
         );
       case CharityHelpWidget.routeName:
@@ -125,18 +126,16 @@ class AppRouteUtils {
           ),
         );
 
-
-
       case OrganizationItemDetailPage.routeName:
         return MaterialPageRoute(
           builder: (context) => OrganizationItemDetailPage(
             model: settings.arguments as OrganizationItemDetailPageModel,
           ),
         );
-      case OrganizationCharityItemWidget.routName:
+      case OrganizationItemWidget.routName:
         return MaterialPageRoute(
-          builder: (context) => OrganizationCharityItemWidget(
-            helpModel: settings.arguments as OrganizationCharityItemModel,
+          builder: (context) => OrganizationItemWidget(
+            helpModel: settings.arguments as OrganizationItemModel,
           ),
         );
       case ProductDetailPage.routeName:
@@ -153,8 +152,7 @@ class AppRouteUtils {
         );
       case CrowdfundingPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => CrowdfundingPage(
-          ),
+          builder: (context) => CrowdfundingPage(),
         );
       case VolunteerDetailPage.routeName:
         return MaterialPageRoute(
@@ -162,17 +160,21 @@ class AppRouteUtils {
             model: settings.arguments as VolunteerDetailModel,
           ),
         );
+      case OrganizationItemWidget2.routName:
+        return MaterialPageRoute(
+          builder: (context) => OrganizationItemWidget2(
+            model: settings.arguments as OrganizationItemModel,
+          ),
+        );
       case VolunteerPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => VolunteerPage(
-          ),
+          builder: (context) => VolunteerPage(),
         );
       case CharityPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => CharityPage(
-          ),
+          builder: (context) => CharityPage(),
         );
-       case MyProfilePage.routeName:
+      case MyProfilePage.routeName:
         return MaterialPageRoute(
           builder: (context) => MyProfilePage(),
         );
@@ -187,7 +189,9 @@ class AppRouteUtils {
         );
       case NumberUpdatePage.routeName:
         return MaterialPageRoute(
-          builder: (context) => NumberUpdatePage(),
+          builder: (context) => NumberUpdatePage(
+            bloc: settings.arguments as MyProfileUpdateBloc,
+          ),
         );
       case EditVolunteerPage.routeName:
         return MaterialPageRoute(
@@ -294,7 +298,6 @@ class AppRouteUtils {
         return MaterialPageRoute(
           builder: (context) => AboutPage(),
         );
-
     }
     return null;
   }

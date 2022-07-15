@@ -44,7 +44,7 @@ class CharityFullPage2 extends StatefulWidget {
 
   static const String routName = 'charityFullPage2';
   static int tabChange = 0;
-  CharityFullModel helpModel;
+  ProjectModel helpModel;
 
   @override
   State<CharityFullPage2> createState() => _CharityFullPageState();
@@ -64,7 +64,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
 
   @override
   void initState() {
-    like=widget.helpModel.cardModel.isFavourite!;
+    like=widget.helpModel.isFavourite!;
     _controller = TabController(length: 4, vsync: this);
     _controller.addListener(_handleTabSelection);
     super.initState();
@@ -88,10 +88,9 @@ class _CharityFullPageState extends State<CharityFullPage2>
         },
       ),
       body: BlocBuilder<CharityCubit, CharityState>(
-        bloc: widget.helpModel.cubit,
+        bloc: CharityCubit.to,
         builder: (context, state) {
-          var charityCubit = widget.helpModel.cubit;
-          var project = widget.helpModel.cardModel;
+          var project = widget.helpModel;
           return SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Column(
@@ -119,7 +118,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                 Radius.circular(12),
                               ),
                               child: CachedNetworkImage(
-                                imageUrl: widget.helpModel.cardModel.coverUrl!,
+                                imageUrl: widget.helpModel.coverUrl!,
                                 fit: BoxFit.cover,
                                 width: MediaQuery.of(context).size.width,
                                 placeholder: (context, url) => Center(
@@ -161,28 +160,28 @@ class _CharityFullPageState extends State<CharityFullPage2>
                         ],
                       ),
                       AppWidgets.text(
-                        text: widget.helpModel.cardModel.title ?? "",
+                        text: widget.helpModel.title ?? "",
                         fontSize: 20.sp,
                         color: AppColorUtils.DARK2,
                         fontWeight: FontWeight.w500,
                         maxLines: 2,
                       ).paddingSymmetric(horizontal: 20.w),
                       KraudfandingAuthorWidget(
-                        model: widget.helpModel.cardModel,
+                        model: widget.helpModel,
                         onTap: () {
                           showDialog(
                             context: context,
                             builder: (context) {
                               return CommentToAuthorDialog(
                                 cubit: cubitData,
-                                projectModel: widget.helpModel.cardModel,
+                                projectModel: widget.helpModel,
                               );
                             },
                           );
                         },
                       ).paddingOnly(top: 15.w),
                       SizedBox(height: 12.w),
-                      DetailBodyPart1(cardModel: widget.helpModel.cardModel)
+                      DetailBodyPart1(cardModel: widget.helpModel)
                     ],
                   ),
                 ),
@@ -312,8 +311,8 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                               CharityHelpWidget.routeName,
                                               arguments: CharityHelpModel(
                                                 cardModel:
-                                                    widget.helpModel.cardModel,
-                                                cubit: widget.helpModel.cubit,
+                                                    widget.helpModel,
+                                                cubit: CharityCubit.to,
                                               ),
                                             );
                                           } else {
@@ -337,7 +336,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                         height: 48.w,
                                         width: 48.w,
                                         onTap: () async{
-                                          await widget.helpModel.cubit.changeLike(widget.helpModel.cardModel.id!);
+                                          await CharityCubit.to.changeLike(widget.helpModel.id!);
                                           setState(() {
                                             like=!like;
                                           });

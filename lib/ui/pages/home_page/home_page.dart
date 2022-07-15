@@ -116,8 +116,6 @@ class _HomePageState extends State<HomePage> {
         return MyVolunteeringPage();
       case AppPageType.ADD_PROJECT:
         return AddingProjectPage();
-      case AppPageType.NUMBER:
-        return NumberUpdatePage();
       case AppPageType.NOTIFICATION:
         return NotificationPage();
         default:

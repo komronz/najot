@@ -64,6 +64,8 @@ class UserUpdateService {
       int code,
       ) async {
     try {
+      print(codeToken);
+      print(code);
       final path = 'https://api.najot.uz/ru/users/me/confirm-change-phone';
       final body = {
         "code_token": codeToken,

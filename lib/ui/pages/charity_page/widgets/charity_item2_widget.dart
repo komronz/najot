@@ -63,7 +63,7 @@ class CharityItem2Widget extends StatelessWidget {
                         Expanded(child: SizedBox()),
                         InkWell(
                           child: FavoriteButton(
-                            isFavorite: true,
+                            isFavorite: model.isFavourite!,
                           ),
                           onTap: onTapLike,
                         ),

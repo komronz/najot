@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/charity_page_cubit/charity_cubit.dart';
+import 'package:najot/data/bloc/organization_cubit/organization_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
@@ -14,12 +15,11 @@ import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/co
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/payment_history_dialog.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
+import 'package:najot/ui/pages/organization_page/organization_item_detail_page/organization_item_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-
 import '../../../../data/bloc/home_cubit/home_cubit.dart';
 import '../../../../data/bloc/project_data_cubit/project_data_cubit.dart';
-import '../../../../data/model/project_model.dart';
 import '../../kraudfanding_page_main/project_details/widgets/comments_widget.dart';
 import '../../kraudfanding_page_main/project_details/widgets/more_widget.dart';
 import '../../kraudfanding_page_main/project_details/widgets/news_widget.dart';
@@ -27,18 +27,18 @@ import '../../kraudfanding_page_main/project_details/widgets/question_asked_widg
 
 
 
-class CharityFullPage extends StatefulWidget {
-  CharityFullPage({required this.model});
+class OrganizationItemWidget2 extends StatefulWidget {
+  OrganizationItemWidget2({required this.model});
 
-  static const String routName = 'charityFullPage';
+  static const String routName = '/organizationItemWidget2';
   static int tabChange = 0;
-  ProjectModel model;
+  OrganizationItemModel model;
 
   @override
-  State<CharityFullPage> createState() => _CharityFullPageState();
+  State<OrganizationItemWidget2> createState() => _OrganizationItemWidget2State();
 }
 
-class _CharityFullPageState extends State<CharityFullPage>
+class _OrganizationItemWidget2State extends State<OrganizationItemWidget2>
     with TickerProviderStateMixin {
   late TabController _controller;
 
@@ -54,7 +54,8 @@ class _CharityFullPageState extends State<CharityFullPage>
 
   @override
   void initState() {
-    like=widget.model.isFavourite!;
+    print(widget.model.cardModel.isFavourite!);
+    like = widget.model.cardModel.isFavourite!;
     _controller = TabController(length: 4, vsync: this);
     _controller.addListener(_handleTabSelection);
     super.initState();
@@ -75,7 +76,7 @@ class _CharityFullPageState extends State<CharityFullPage>
         appBar: AppBarWithTitle(
           title: LocaleKeys.about_project.tr(),
           onPress: () async{
-           await HomeCubit.to.getModel();
+            await HomeCubit.to.getModel();
             NavigatorService.to.pop();
           },
         ),
@@ -108,7 +109,7 @@ class _CharityFullPageState extends State<CharityFullPage>
                                     Radius.circular(12),
                                   ),
                                   child: CachedNetworkImage(
-                                    imageUrl: widget.model.coverUrl!,
+                                    imageUrl: widget.model.cardModel.coverUrl!,
                                     fit: BoxFit.cover,
                                     width: MediaQuery.of(context).size.width,
                                     placeholder: (context, url) => Center(
@@ -150,28 +151,28 @@ class _CharityFullPageState extends State<CharityFullPage>
                             ],
                           ),
                           AppWidgets.text(
-                            text: widget.model.title!,
+                            text: widget.model.cardModel.title!,
                             fontSize: 20.sp,
                             color: AppColorUtils.DARK2,
                             fontWeight: FontWeight.w500,
                             maxLines: 2,
                           ).paddingSymmetric(horizontal: 20.w),
                           KraudfandingAuthorWidget(
-                            model: widget.model,
+                            model: widget.model.cardModel,
                             onTap: () {
                               showDialog(
                                 context: context,
                                 builder: (context) {
                                   return CommentToAuthorDialog(
                                     cubit: cubitData,
-                                    projectModel: widget.model,
+                                    projectModel: widget.model.cardModel,
                                   );
                                 },
                               );
                             },
                           ).paddingOnly(top: 15.w),
                           SizedBox(height: 12.w),
-                          DetailBodyPart2(cardModel: widget.model)
+                          DetailBodyPart2(cardModel: widget.model.cardModel)
                         ],
                       ),
                     ),
@@ -233,17 +234,17 @@ class _CharityFullPageState extends State<CharityFullPage>
                               indicatorSize: TabBarIndicatorSize.tab,
                               padding: EdgeInsets.only(right: 10),
                               indicatorPadding:
-                                  EdgeInsets.only(right: 10, left: 10),
+                              EdgeInsets.only(right: 10, left: 10),
                               labelPadding:
-                                  EdgeInsets.only(right: 10, left: 10),
+                              EdgeInsets.only(right: 10, left: 10),
                             ).paddingOnly(left: 15.w, top: 8.w),
                             BlocBuilder<ProjectDataCubit, ProjectDataState>(
-                              bloc: cubitData..load(widget.model.id!),
+                              bloc: cubitData..load(widget.model.cardModel.id!),
                               builder: (contextData, stateData) {
                                 return Container(
                                   child: [
                                     MoreWidget(
-                                      cardModel: widget.model,
+                                      cardModel: widget.model.cardModel,
                                     ),
                                     NewsWidget(
                                       cubit: cubitData,
@@ -253,7 +254,7 @@ class _CharityFullPageState extends State<CharityFullPage>
                                     ).paddingAll(20.w),
                                     CommentsWidget(
                                       cubit: cubitData,
-                                      projectModel: widget.model,
+                                      projectModel: widget.model.cardModel,
                                     ).paddingAll(20.w)
                                   ][_controller.index],
                                 );
@@ -271,7 +272,7 @@ class _CharityFullPageState extends State<CharityFullPage>
                                       context: context,
                                       builder: (context) {
                                         return SupportProjectDialog(
-                                          projectModel: widget.model,
+                                          projectModel: widget.model.cardModel,
                                         );
                                       },
                                     );
@@ -285,15 +286,16 @@ class _CharityFullPageState extends State<CharityFullPage>
                                   textColor: AppColorUtils.WHITE,
                                 ),
                                 AppWidgets.favouriteButton(
-                                  select: true,
+                                  select: like,
                                   height: 48.w,
                                   width: 48.w,
                                   onTap: () async{
-                                    await CharityCubit.to.changeLike(widget.model.id!);
+                                    print(like);
+                                    await OrganizationCubit.to.changeLike(widget.model.cardModel.id!);
                                     setState(() {
                                       like=!like;
                                     });
-                                    await HomeCubit.to.getModel();
+                                    await OrganizationCubit.to.findProject(widget.model.id);
                                   },
                                 )
                               ],
