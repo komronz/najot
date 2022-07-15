@@ -229,7 +229,8 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
               padding: 10,
               imageSelect: (v) {
                 cubit.saveFile(v);
-              }, imageFile: cubit.state.file,
+              },
+              imageFile: cubit.state.file,
             ),
 
           ],

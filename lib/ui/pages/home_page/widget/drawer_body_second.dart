@@ -86,7 +86,7 @@ class DrawerBodySecond extends StatelessWidget {
               Navigator.pop(context);
             },
           ),
-          state.tobeVolunteer
+          state.user!.isVolunteer!
           ? AppWidgets.rowIconText(
             isActive: pageType == AppPageType.VOLUNTEERING,
             icon: AppImageUtils.TOBE_VOLUNTEER,

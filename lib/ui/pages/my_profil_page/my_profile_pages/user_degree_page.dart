@@ -32,7 +32,7 @@ class UserDegreePage extends StatelessWidget {
                     child: InkWell(
                       child: SvgPicture.asset(AppImageUtils.BACK_TO),
                       onTap: () {
-                        NavigatorService.to.pushNamed(MyProfilePage.routeName);
+                        Navigator.pop(context);
                       },
                     ),
                   ),

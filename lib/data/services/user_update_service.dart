@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive/hive.dart';
 import 'package:najot/data/model/auth_model/user.dart';
+import 'package:najot/data/model/number_change_model.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/http_service.dart';
 import 'package:najot/data/services/root_service.dart';
@@ -57,6 +59,68 @@ class UserUpdateService {
     }
   }
 
+  Future<bool?> changeNumber(
+      String codeToken,
+      int code,
+      ) async {
+    try {
+      final path = 'https://api.najot.uz/ru/users/me/confirm-change-phone';
+      final body = {
+        "code_token": codeToken,
+        "code": code
+      };
+      final headers = {HttpHeaders.contentTypeHeader: "application/json"};
+      var response = await _httpService.post(
+          path: path,
+          fields: body,
+          headers: headers,
+          token: HiveService.to.getToken()
+      );
+      if (response != null) {
+        if (response.statusCode == 200) {
+
+          return true;
+        }
+      } else {
+        return null;
+      }
+    } catch (e) {
+      AppLoggerUtil.e("$e");
+      return null;
+    }
+    return null;
+  }
+
+  Future<NumberChangeModel?> postNumber(
+      String phone,
+      ) async {
+    try {
+      final path = 'https://api.najot.uz/ru/users/me/change-phone';
+      final body = {
+        "phone": formatNumber(phone),
+      };
+      final headers = {HttpHeaders.contentTypeHeader: "application/json"};
+      var response = await _httpService.post(
+        path: path,
+        fields: body,
+        headers: headers,
+        token: HiveService.to.getToken()
+      );
+      if (response != null) {
+        if (response.statusCode == 200) {
+          final NumberChangeModel code=
+          NumberChangeModel.fromJson(response.data);
+          return code;
+        }
+      } else {
+        return null;
+      }
+    } catch (e) {
+      AppLoggerUtil.e("$e");
+      return null;
+    }
+    return null;
+  }
   Future<User?> getUserModel() async {
     try {
       final Response response = await RootService.httpService.get(
@@ -78,5 +142,8 @@ class UserUpdateService {
       return null;
     }
   }
-
+  String formatNumber(String number) {
+    var text = number.replaceAll(RegExp(r'\D()'), '');
+    return "998${text}";
+  }
 }

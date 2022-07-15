@@ -7,7 +7,6 @@ import 'package:najot/data/model/volunteer_db_model.dart';
 import 'package:najot/data/services/notification_api_service.dart';
 import 'package:najot/ui/pages/about_page/about_page.dart';
 import 'package:najot/ui/pages/charity_history_page/charity_history_page.dart';
-import 'package:najot/ui/pages/edit_volunteer_page/edit_volunteer_page.dart';
 import 'package:najot/ui/pages/faq_page/faq_page.dart';
 import 'package:najot/ui/pages/home_page/widget/drawer_body_second.dart';
 import 'package:najot/ui/pages/home_page/widget/drawer_body_widget.dart';
@@ -20,8 +19,6 @@ import 'package:najot/ui/pages/orders_page/orders_page.dart';
 import 'package:najot/ui/pages/organization_page/organization_page.dart';
 import 'package:najot/ui/pages/reg_volounteer/reg_volunteer.dart';
 import 'package:najot/ui/pages/rules_page/rules_page.dart';
-import 'package:rxdart/rxdart.dart';
-
 import '../my_products_page/my_products_page.dart';
 import '../my_profil_page/my_profile_pages/number_update_page.dart';
 import '../my_project_and_announcements_pages/my_project_and_announcements_pages.dart';
@@ -43,7 +40,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  AppPageCubit cubit = AppPageCubit();
   @override
   void initState(){
     // TODO: implement initState
@@ -70,7 +66,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => cubit..load(widget.appPageType),
+      create: (BuildContext context) => AppPageCubit.to..load(widget.appPageType),
       child: BlocBuilder<AppPageCubit, AppPageState>(
         builder: (context, state) {
           return Scaffold(
@@ -96,8 +92,6 @@ class _HomePageState extends State<HomePage> {
         return RulesPage();
       case AppPageType.ABOUT:
         return AboutPage();
-      case AppPageType.PROFILE:
-        return EditVolunteerPage();
       case AppPageType.USERPROFILE:
         return MyProfilePage();
       case AppPageType.VOLUNTEER:

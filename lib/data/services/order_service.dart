@@ -5,6 +5,7 @@ import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/root_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 
+import '../bloc/language_cubit/language_cubit.dart';
 import 'http_service.dart';
 
 class OrderService{
@@ -17,7 +18,7 @@ class OrderService{
   Future<OrderModel?> getModel() async {
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://api.najot.uz/ru/product/",
+        url: "https://api.najot.uz/${LanguageCubit.getLang()}/product/",
         token: HiveService.to.getToken(),
 
       );

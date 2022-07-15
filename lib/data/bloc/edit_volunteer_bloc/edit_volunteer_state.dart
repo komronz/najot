@@ -15,6 +15,7 @@ class EditVolunteerState extends Equatable {
   final bool nextPage;
   final XFile? userImgPath;
   final int changePage;
+  final VolunteerProfileModel? volunteer;
 
   const EditVolunteerState({
     this.name = '',
@@ -30,7 +31,8 @@ class EditVolunteerState extends Equatable {
     this.nextPage=false,
     this.hasError = false,
     this.userImgPath,
-    this.changePage=1
+    this.changePage=1,
+    this.volunteer
   });
 
   @override
@@ -48,7 +50,8 @@ class EditVolunteerState extends Equatable {
     phoneNumberFill,
     nextPage,
     isVisible,
-    changePage
+    changePage,
+    volunteer
   ];
 
   EditVolunteerState copyWith({
@@ -66,7 +69,8 @@ class EditVolunteerState extends Equatable {
     bool? isVisible,
     bool? nextPage,
     XFile? userImgPath,
-    int? changePage
+    int? changePage,
+    VolunteerProfileModel? volunteer
   }) {
     return EditVolunteerState(
       name: name ?? this.name,
@@ -83,6 +87,7 @@ class EditVolunteerState extends Equatable {
       hasError: hasError ?? this.hasError,
       userImgPath: userImgPath ?? this.userImgPath,
       changePage: changePage ?? this.changePage,
+      volunteer: volunteer ?? this.volunteer,
     );
   }
 }

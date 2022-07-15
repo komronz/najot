@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/categories_model.dart';
 import 'package:najot/data/services/root_service.dart';
 
+import '../bloc/language_cubit/language_cubit.dart';
 import '../model/volunteer_model.dart';
 import '../utils/app_logger_util.dart';
 import 'hive_service.dart';
@@ -19,7 +20,7 @@ class CharityService{
   Future<RootProjectModel?> getCharityModel() async {
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://api.najot.uz/ru/project/?type=CH&page_size=15",
+        url: "https://api.najot.uz/${LanguageCubit.getLang()}/project/?type=CH&page_size=15",
           token: HiveService.to.getToken()
       );
 
@@ -42,7 +43,7 @@ class CharityService{
 
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://api.najot.uz/ru/categories/?type=CH",
+        url: "https://api.najot.uz/${LanguageCubit.getLang()}/categories/?type=CH",
       );
 
       if (response.statusCode == 200) {
@@ -65,7 +66,7 @@ class CharityService{
 
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://api.najot.uz/ru/project/?type=CH&category=${id}&page_size=15",
+        url: "https://api.najot.uz/${LanguageCubit.getLang()}/project/?type=CH&category=${id}&page_size=15",
         token: HiveService.to.getToken()
       );
 
@@ -90,7 +91,7 @@ class CharityService{
 
     try {
       final Response response = await RootService.httpService.get(
-          url: "https://api.najot.uz/ru/project/?type=CH&search=${name}",
+          url: "https://api.najot.uz/${LanguageCubit.getLang()}/project/?type=CH&search=${name}",
           token: HiveService.to.getToken()
       );
 

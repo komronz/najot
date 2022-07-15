@@ -46,6 +46,7 @@ class HiveService {
     _box.put(_HiveKeys.USER, json.encode(user.toJson()));
   }
 
+
   void deleteUser(User user){
     _box.delete(_HiveKeys.USER);
   }

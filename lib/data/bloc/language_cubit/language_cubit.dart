@@ -30,6 +30,10 @@ class LanguageCubit extends HydratedCubit<LanguageState> {
   }
 
 
+  static String getLang(){
+    var locale = LanguageCubit.to.state.locale==Locale("uz","UZ")?"uz":"ru";
+    return locale;
+  }
 
   final List<LanguageItem> languages = [
     LanguageItem(

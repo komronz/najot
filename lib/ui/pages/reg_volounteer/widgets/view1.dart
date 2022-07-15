@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/app_date_picker.dart';
 import 'package:najot/ui/widgets/app_date_picker_widget.dart';
 import 'package:najot/ui/widgets/app_radio_button.dart';
@@ -22,7 +23,8 @@ class View1 extends StatelessWidget {
       children: [
         AppTextField(
           hintText: "",
-          initialText: bloc.state.firstName,
+          enabled: false,
+          initialText: HiveService.to.getUser()!.firstName!,
           onChanged: (v) {
             bloc.add(VolunteerFirstNameChanged(v));
           },
@@ -31,7 +33,8 @@ class View1 extends StatelessWidget {
         ).paddingSymmetric(horizontal: 20.w),
         AppTextField(
           hintText: "",
-          initialText: bloc.state.lastName,
+          enabled: false,
+          initialText: HiveService.to.getUser()!.lastName!,
           onChanged: (v) {
             bloc.add(VolunteerLastNameChanged(v));
           },

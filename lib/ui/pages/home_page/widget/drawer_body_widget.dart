@@ -18,10 +18,10 @@ import 'package:flutter_switch/flutter_switch.dart';
 class DrawerBody extends StatelessWidget {
   DrawerBody({
     required this.state,
-
   });
 
   AppPageState state;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -49,8 +49,8 @@ class DrawerBody extends StatelessWidget {
                         child: Row(
                           children: [
                             Container(
-                              width: 66.w,
-                              height: 66.w,
+                              width: 55.w,
+                              height: 55.w,
                               child: CircleAvatar(
                                 backgroundColor: AppColorUtils.LEFT_MENU_BACK,
                                 child: SvgPicture.asset(AppImageUtils.USER),
@@ -80,7 +80,7 @@ class DrawerBody extends StatelessWidget {
                                         horizontal: 5.w,
                                       ),
                                       child: AppWidgets.text(
-                                        text: state.tobeVolunteer
+                                        text: state.user!.isVolunteer!
                                             ? LocaleKeys.volunteer.tr()
                                             : LocaleKeys.normal_user.tr(),
                                         color: AppColorUtils.BLUE_PERCENT,
@@ -109,26 +109,20 @@ class DrawerBody extends StatelessWidget {
                           ),
                         ),
                         onTap: () {
-                          if (state.tobeVolunteer) {
-                            context.read<AppPageCubit>().changePage(pageType: AppPageType.PROFILE);
-                            Navigator.pop(context);
-                          } else {
-                            context.read<AppPageCubit>().changePage(pageType: AppPageType.USERPROFILE);
-                            Navigator.pop(context);
-                          }
+                          context.read<AppPageCubit>().changePage(
+                                pageType: AppPageType.USERPROFILE,
+                              );
+                          Navigator.pop(context);
                         },
                       )
-
                     ],
                   ),
-
-
                   Divider(
                     color: AppColorUtils.DIVIDER,
                     height: 1,
                     thickness: 1,
                   ),
-                  state.tobeVolunteer
+                  state.user!.isVolunteer!
                       ? SizedBox()
                       : ButtonCard(
                           onPress: () {
@@ -255,8 +249,10 @@ class DrawerBody extends StatelessWidget {
                     showOnOff: true,
                     value: state.tobeVolunteer,
                     onToggle: (v) {
-                      Volunteer.tobeVolunteer=!Volunteer.tobeVolunteer;
-                      context.read<AppPageCubit>().changeVolunteer(Volunteer.tobeVolunteer);
+                      Volunteer.tobeVolunteer = !Volunteer.tobeVolunteer;
+                      context
+                          .read<AppPageCubit>()
+                          .changeVolunteer(Volunteer.tobeVolunteer);
                     },
                   ),
                 ],
@@ -265,7 +261,6 @@ class DrawerBody extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.w),
                   child: ButtonCard(

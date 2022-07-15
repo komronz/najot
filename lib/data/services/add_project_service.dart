@@ -7,6 +7,7 @@ import 'package:najot/data/services/http_service.dart';
 import 'package:najot/data/services/root_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 
+import '../bloc/language_cubit/language_cubit.dart';
 import 'hive_service.dart';
 
 class AddProjectService {
@@ -24,7 +25,7 @@ class AddProjectService {
     String description,
   ) async {
     try {
-      final _path = "https://api.najot.uz/ru/add-project/";
+      final _path = "https://api.najot.uz/${LanguageCubit.getLang()}/add-project/";
       final body = {
         "who_add": whoAdd,
         "name": name,

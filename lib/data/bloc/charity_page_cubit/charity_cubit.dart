@@ -19,7 +19,6 @@ class CharityCubit extends Cubit<CharityState> {
 
   static Future init() async {
     GetIt.instance..registerSingleton<CharityCubit>(CharityCubit());
-    await CharityCubit.to.load();
   }
   CharityCubit() : super(CharityState());
   CharityService charityService = CharityService();

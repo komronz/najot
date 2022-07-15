@@ -55,7 +55,6 @@ class _CharityFullPageState extends State<CharityFullPage>
 
   @override
   void initState() {
-    print(widget.model.cardModel.title);
     like=widget.model.cardModel.isFavourite!;
     _controller = TabController(length: 4, vsync: this);
     _controller.addListener(_handleTabSelection);

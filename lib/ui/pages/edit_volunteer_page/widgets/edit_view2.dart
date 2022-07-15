@@ -173,12 +173,9 @@ class EditView2 extends StatelessWidget {
           AppWidgets.appButton(
             title: LocaleKeys.send.tr(),
             onTap: bloc.state.sendBtnActive
-                ? () async {
-                    AppWidgets.showText(
-                      text: LocaleKeys.next_page.tr(),
-                      duration: Duration(milliseconds: 800),
-                    );
-                    await showDialog(
+                ? () {
+              bloc.add(PostVolunteerData());
+                     showDialog(
                         context: context,
                         builder: (ctx) => EditShowSuccess(
                               bloc: context.read<RegVolunteerBloc>(),

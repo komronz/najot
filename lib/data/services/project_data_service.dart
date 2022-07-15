@@ -9,6 +9,7 @@ import 'package:najot/data/services/http_service.dart';
 import 'package:najot/data/services/root_service.dart';
 import 'package:http_parser/http_parser.dart';
 
+import '../bloc/language_cubit/language_cubit.dart';
 import '../utils/app_logger_util.dart';
 
 class ProjectDataService {
@@ -17,7 +18,7 @@ class ProjectDataService {
   Future<NewsModel?> getNewsById(int id) async {
     try {
       final Response response = await RootService.httpService.get(
-          url: "https://api.najot.uz/ru/news/?project__id=${id}",
+          url: "https://api.najot.uz/${LanguageCubit.getLang()}/news/?project__id=${id}",
           token: HiveService.to.getToken());
       print(response.statusCode);
       if (response.statusCode == 200) {

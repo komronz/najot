@@ -5,6 +5,7 @@ class CrowdfundingState extends Equatable {
       {this.crowdfundingModel=const [],
       this.loading = false,
       this.tabLoading = false,
+      this.internetConnection = false,
       this.category = const [],
       this.tabProjects=const [],
       this.searchProjects=const [],
@@ -18,6 +19,7 @@ class CrowdfundingState extends Equatable {
   final bool searchProgress;
   final bool loading;
   final bool tabLoading;
+  final bool internetConnection;
   final int tabChange;
   final String searchChange;
   final List<TabCategories> category;
@@ -33,7 +35,8 @@ class CrowdfundingState extends Equatable {
     searchProjects,
     searchProgress,
     searchChange,
-        tabChange
+        tabChange,
+    internetConnection
       ];
 
   CrowdfundingState copyWith({
@@ -43,6 +46,7 @@ class CrowdfundingState extends Equatable {
       bool? loading,
       bool? tabLoading,
       bool? searchProgress,
+      bool? internetConnection,
         int? tabChange,
     String? searchChange,
       List<TabCategories>? category}) {
@@ -52,6 +56,7 @@ class CrowdfundingState extends Equatable {
       loading: loading ?? this.loading,
       tabLoading: tabLoading ?? this.tabLoading,
       category: category ?? this.category,
+      internetConnection: internetConnection ?? this.internetConnection,
       tabChange: tabChange ?? this.tabChange,
       searchProjects: searchProjects ?? this.searchProjects,
       searchChange: searchChange ?? this.searchChange,

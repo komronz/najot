@@ -5,6 +5,8 @@ import 'package:najot/data/model/about_us_model.dart';
 import 'package:najot/data/services/http_service.dart';
 import 'package:najot/data/services/root_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
+
+import '../bloc/language_cubit/language_cubit.dart';
 class AboutUsService{
   final HttpService _httpService= RootService.httpService;
 
@@ -18,7 +20,7 @@ class AboutUsService{
       String phoneNumber,
       String content) async {
     try {
-      final _path = "https://api.najot.uz/en/contact/";
+      final _path = "https://api.najot.uz/${LanguageCubit.getLang()}/contact/";
       final body = {
         "name": name,
         "phone": formatNumber(phoneNumber),

@@ -35,9 +35,9 @@ class MyProfileUpdateBloc
     on<SendCode>(_sendCode);
     on<EditProfileChangePage>(_onChangeEditProfile);
     on<SaveImagePickers>(_saveImagePickers);
-
     on<ImagePickers>(_onImagePicker);
     on<SaveIn>(_saveIn);
+    on<ChangeNumber>(_changeNumber);
   }
 
   Future _onChangeEditProfile(EditProfileChangePage event,
@@ -103,7 +103,7 @@ class MyProfileUpdateBloc
   Future _onPhoneChanged(PhoneChanged event,
       Emitter<MyProfileUpdateState> emit) async {
     emit(state.copyWith(
-      phone: event.phoneNumber,
+      newPhone: event.phoneNumber,
       phoneNumberFill: _isNotEmpty(event.phoneNumber),
     ),
     );
@@ -152,7 +152,6 @@ class MyProfileUpdateBloc
     } else {
       emit(state.copyWith(hasError: true));
     }
-
   }
 
   Future _loadProfile(MyProfileLoad event,
@@ -173,28 +172,40 @@ class MyProfileUpdateBloc
     }
   }
 
-  Future _sendCode(SendCode event,
-      Emitter<MyProfileUpdateState> emit,) async {
-    if (_isNotEmpty(state.phone)) {
-      var user = User(
-        photo: state.imageUrl,
-        firstName: state.firstName,
-        lastName: state.lastName,
-        gender: state.gender,
-        phone: state.phone,
-      );
-      HiveService.to.setUser(user);
-      AppWidgets.showText(text: 'Success');
-      emit(state.copyWith(hasError: false, isVisible: true));
-      AppLoggerUtil.i(user.toJson().toString());
-      emit(state.copyWith(isVisible: false));
-      await Future.delayed(Duration(seconds: 3));
-      emit(state.copyWith(nextPage: true));
-      add(MyProfileLoad());
-    } else {
-      AppWidgets.showText(text: 'fail');
-      emit(state.copyWith(hasError: true));
-    }
+  Future _changeNumber(
+    ChangeNumber event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
+    var changeNumber = await userUpdateService.changeNumber(
+      state.codeToken,
+      event.code,
+    );
+
+      if(changeNumber !=null){
+        print("lalaku");
+        add(MyProfileLoad());
+        add(EditProfileChangePage(1));
+      }else{
+        AppWidgets.showText(text: "Xato kod terildi!");
+      }
+
+
+  }
+
+  Future _sendCode(
+    SendCode event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
+    print(event.number);
+      var response = await userUpdateService.postNumber(event.number);
+      if (response != null) {
+        emit(state.copyWith(codeToken: response.code));
+        emit(state.copyWith(isVisible: true));
+        emit(state.copyWith(isVisible: false));
+      }else{
+        AppWidgets.showText(text: "Bu raqam registratsiyadan o'tgan");
+      }
+
   }
 
   Future deletePost(String reason) async {

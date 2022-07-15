@@ -16,7 +16,6 @@ class VolunteerCubit extends Cubit<VolunteerState> {
 
   static Future init() async {
     GetIt.instance..registerSingleton<VolunteerCubit>(VolunteerCubit());
-    await VolunteerCubit.to.load();
   }
   VolunteerCubit() : super(VolunteerState());
   VolunteerProjectService service= VolunteerProjectService();

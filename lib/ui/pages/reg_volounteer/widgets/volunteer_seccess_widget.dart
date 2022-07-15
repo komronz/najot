@@ -6,6 +6,7 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
+import '../../../../data/bloc/app_page_cubit/app_page_cubit.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 
@@ -61,7 +62,7 @@ class VolunteerSuccessWidget extends StatelessWidget {
                 title: LocaleKeys.thank_you,
                 textColor: AppColorUtils.KRAUDFANDING,
                 onTap: () {
-                  bloc.add(VolunteerSendBtn());
+                  AppPageCubit.to.load(AppPageType.VOLUNTEER);
                   Navigator.pop(context);
                 },
                 color: AppColorUtils.WHITE_GREEN5,

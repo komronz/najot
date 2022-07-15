@@ -4,6 +4,7 @@ import 'package:najot/data/model/categories_model.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/root_service.dart';
 
+import '../bloc/language_cubit/language_cubit.dart';
 import '../model/volunteer_model.dart';
 import '../utils/app_logger_util.dart';
 
@@ -19,7 +20,7 @@ class CrowdfundingService{
   Future<RootProjectModel?> getCrowdfundingModel() async {
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://api.najot.uz/ru/project/?type=CF",
+        url: "https://api.najot.uz/${LanguageCubit.getLang()}/project/?type=CF",
         token: HiveService.to.getToken()
       );
       if (response.statusCode == 200) {
@@ -41,7 +42,7 @@ class CrowdfundingService{
 
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://api.najot.uz/ru/categories/?type=CF",
+        url: "https://api.najot.uz/${LanguageCubit.getLang()}/categories/?type=CF",
       );
       print(response.statusCode);
 
@@ -65,7 +66,7 @@ class CrowdfundingService{
 
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://api.najot.uz/ru/project/?type=CF&category=${id}&page_size=15",
+        url: "https://api.najot.uz/${LanguageCubit.getLang()}/project/?type=CF&category=${id}&page_size=15",
           token: HiveService.to.getToken()
       );
 
@@ -88,7 +89,7 @@ class CrowdfundingService{
 
     try {
       final Response response = await RootService.httpService.get(
-          url: "https://api.najot.uz/ru/project/?type=CF&search=${name}",
+          url: "https://api.najot.uz/${LanguageCubit.getLang()}/project/?type=CF&search=${name}",
           token: HiveService.to.getToken()
       );
 

@@ -15,9 +15,11 @@ class LoginState extends Equatable {
   final bool authSuccess;
   final bool loginSuccess;
   final bool registerSuccess;
+  final bool sendCodeDuration;
   final int checkPhoneNumber;
   final String codeToken;
   final int code;
+  final int blockedTime;
 
   const LoginState({
     this.firstName = '',
@@ -34,9 +36,11 @@ class LoginState extends Equatable {
     this.authSuccess = false,
     this.loginSuccess = false,
     this.registerSuccess = false,
+    this.sendCodeDuration = false,
     this.checkPhoneNumber=0,
     this.codeToken = "",
     this.code=0,
+    this.blockedTime=0,
   });
 
   @override
@@ -57,7 +61,9 @@ class LoginState extends Equatable {
     codeToken,
     code,
     loginSuccess,
-    registerSuccess
+    registerSuccess,
+    blockedTime,
+    sendCodeDuration
       ];
 
   LoginState copyWith({
@@ -75,9 +81,11 @@ class LoginState extends Equatable {
     bool? authSuccess,
     bool? loginSuccess,
     bool? registerSuccess,
+    bool? sendCodeDuration,
     int? checkPhoneNumber,
     String? codeToken,
     int? code,
+    int? blockedTime,
 
   }) {
     return LoginState(
@@ -98,6 +106,8 @@ class LoginState extends Equatable {
       code: code ?? this.code,
       loginSuccess: loginSuccess ?? this.loginSuccess,
       registerSuccess: registerSuccess ?? this.registerSuccess,
+      blockedTime: blockedTime ?? this.blockedTime,
+      sendCodeDuration: sendCodeDuration ?? this.sendCodeDuration,
     );
   }
 }
