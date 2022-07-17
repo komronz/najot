@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/model/operator_model.dart';
 import 'package:najot/data/services/operator_service.dart';
+import 'package:najot/ui/widgets/app_widgets.dart';
 part 'operator_state.dart';
 
 class OperatorCubit extends Cubit<OperatorState> {
@@ -21,34 +23,38 @@ class OperatorCubit extends Cubit<OperatorState> {
     var sms = await operatorService.getModel();
     try {
       emit(state.copyWith(isLoading: true));
-      await Future.delayed(Duration(seconds: 3));
+      emit(state.copyWith(list: sms!.results!, isLoading: false));
+    } catch (e) {
+      emit(state.copyWith(hasError: true, isLoading: false));
+    }
+  }
+  Future loads() async {
+    var sms = await operatorService.getModel();
+    try {
+      emit(state.copyWith(isLoading: true));
       emit(state.copyWith(list: sms!.results!, isLoading: false));
     } catch (e) {
       emit(state.copyWith(hasError: true, isLoading: false));
     }
   }
 
-  Future sendSms(String content, File file) async {
-    var operatorModel=await operatorService.postModel(content,file);
+  Future sendSms(File? file, String content,) async {
+    var operatorModel=await operatorService.postModel(file,content,);
     if(operatorModel!=null){
-      print("Posted");
+      saveImage(null);
+      textController.clear();
+      controller.jumpTo(controller.position.maxScrollExtent + 100);
+      print(state.userImgPath);
+      loads();
     }
-    List<OperatorModelResults> list = List.from(state.list!);
-    list.add(
-      OperatorModelResults(
-        content: textController.text,
-        // dateTime: DateTime.now(),
-      ),
-    );
-    emit(state.copyWith(
-      list: list,
-    ));
-    textController.clear();
-    controller.jumpTo(controller.position.maxScrollExtent + 100);
+
   }
 
   Future writeSms(String v) async {
     emit(state.copyWith(sendSmsTxt: v));
+  }
+   void saveImage(File? imagePicker) {
+    emit(state.copyWith(userImgPath: imagePicker));
   }
 
   Future deleteSmsList() async {

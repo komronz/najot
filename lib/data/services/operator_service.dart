@@ -35,17 +35,25 @@ class OperatorService{
       return null;
     }
   }
-  Future<OperatorModelResults?> postModel(
+  Future<bool?> postModel(
+      File? file,
       String content,
-      File file,
       ) async {
     try {
       final _path = "https://api.najot.uz/ru/operator-chat/";
-      String file1 = file.path.split('/').last;
-      FormData formData = FormData.fromMap({
-        "content": content,
-        "file": await MultipartFile.fromFile(file.path, filename: file1),
-      });
+      FormData formData;
+      if(file!=null){
+        String file1 = file.path.split('/').last;
+         formData = FormData.fromMap({
+          "content": content,
+          "file": await MultipartFile.fromFile(file.path, filename: file1),
+        });
+      }else{
+        formData = FormData.fromMap({
+          "content": content,
+        });
+      }
+
       final headers = {HttpHeaders.contentTypeHeader: "multipart/from-data"};
       var response = await httpService.postFile(
         path: _path,
@@ -55,21 +63,19 @@ class OperatorService{
       );
       if (response != null) {
         if (response.statusCode == 201) {
-          AppLoggerUtil.i(OperatorModelResults.fromJson(response.data).toString());
-          return OperatorModelResults.fromJson(response.data);
-        } else if (response.statusCode == 401) {
-          return null;
-        } else if (response.statusCode! >= 500) {
+          // AppLoggerUtil.i(OperatorModelResults.fromJson(response.data).toString());
+          return true;
+            // OperatorModelResults.fromJson(response.data);
+        } else{
           return null;
         }
-      } else {
+        } else {
         return null;
       }
     } catch (e) {
       AppLoggerUtil.e("$e");
       return null;
     }
-    return null;
   }
 
 
