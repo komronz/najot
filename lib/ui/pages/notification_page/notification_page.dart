@@ -21,6 +21,7 @@ class NotificationPage extends StatelessWidget {
           appBar: AppBarWithTitle(
             title: LocaleKeys.note.tr(),
             onPress: () {
+
               NavigatorService.to.pop();
             },
           ),

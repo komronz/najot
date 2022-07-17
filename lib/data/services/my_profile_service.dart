@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:najot/data/bloc/language_cubit/language_cubit.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/http_service.dart';
 import 'package:najot/data/services/root_service.dart';
@@ -9,7 +10,7 @@ class MyProfileService{
   Future<bool?> postDeleteBYId(String reason) async {
     HttpService _httpService = RootService.httpService;
     try {
-      final path = 'https://api.najot.uz/ru/users/delete-profile/';
+      final path = 'https://api.najot.uz/${LanguageCubit.getLang()}/users/delete-profile/';
       final body = {
         "reason": reason
       };

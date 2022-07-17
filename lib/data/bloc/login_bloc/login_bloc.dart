@@ -5,6 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/auth_model/token_model.dart';
 import 'package:najot/data/model/auth_model/user.dart';
 import 'package:najot/data/model/blocked_model.dart';
@@ -225,7 +226,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
     } else {
       emit(state.copyWith(sendCodeDuration: false));
-      AppWidgets.showText(text: "Raqamingiz 24 soatga bloklandi!");
+      AppWidgets.showText(text: LocaleKeys.number_been_blocked.tr());
 
 
     }

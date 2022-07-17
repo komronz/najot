@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/charity_page_cubit/charity_cubit.dart';
+import 'package:najot/data/bloc/crowdFounding_cubit/kraud_fanding_cubit.dart';
 import 'package:najot/data/bloc/home_cubit/home_cubit.dart';
-import 'package:najot/data/bloc/language_cubit/language_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/hive_service.dart';
@@ -12,19 +12,17 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/crowdfunding_page.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/project_details_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/main_page/widgets/carousel_slider_widget.dart';
+import 'package:najot/ui/pages/main_page/widgets/crowdfunding_card_widget.dart';
 import 'package:najot/ui/pages/main_page/widgets/icon_name_widget.dart';
-import 'package:najot/ui/pages/main_page/widgets/kraudfanding_card_widget.dart';
 import 'package:najot/ui/pages/main_page/widgets/volunteer_card_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_page.dart';
 import 'package:najot/ui/widgets/app_error_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-
-import '../../../data/bloc/kraudfanding_cubit/kraud_fanding_cubit.dart';
 import '../../../data/bloc/volunteer_bloc/volunteer_cubit.dart';
-import '../kraudfanding_page_main/project_details/project_details_page.dart';
 import '../notification_page/notification_page.dart';
 import '../volunteer_page/volunteer_detail_page/volunteer_detail_page.dart';
 
@@ -162,7 +160,7 @@ class MainPage extends StatelessWidget {
                                          state.crudFunding.length,
                                              (index) => Container(
                                            margin: EdgeInsets.only(left: 10.w),
-                                           child: KraudfandingCardWidget(
+                                           child: CrowdfundingCardWidget(
                                              projectModel:
                                              state.crudFunding[index],
                                              visible: true,
@@ -246,7 +244,7 @@ class MainPage extends StatelessWidget {
                                          state.charity.length,
                                              (index) => Container(
                                            margin: EdgeInsets.only(left: 10.w),
-                                           child: KraudfandingCardWidget(
+                                           child: CrowdfundingCardWidget(
                                              projectModel: state.charity[index],
                                              visible: false,
                                              onTap: () {

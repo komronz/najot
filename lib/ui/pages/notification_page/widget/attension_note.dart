@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
@@ -11,11 +10,7 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/notification_page/notification_page.dart';
 import 'package:super_rich_text/super_rich_text.dart';
-
-import '../../../../data/bloc/app_page_cubit/app_page_cubit.dart';
-import '../../../../data/model/volunteering_model.dart';
 import '../../../widgets/app_widgets.dart';
-import '../../home_page/home_page.dart';
 
 class AttentionNote extends StatelessWidget {
   static const String routeName = "/attentionNote";

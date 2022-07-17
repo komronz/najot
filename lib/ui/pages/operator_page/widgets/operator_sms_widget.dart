@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/operator_model.dart';
 import 'package:najot/data/model/sms_model.dart';
@@ -20,15 +22,55 @@ class OperatorSmsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var width = OperatorUserSmsWidget.calculateWidth(model.content??"");
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        InkWell(
+          onTap: (){
+            showDialog(
+              barrierDismissible: false,
+              context: context,
+              builder: (context) {
+                return GestureDetector(
+                  child: InteractiveViewer(
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.network(model.file!, fit: BoxFit.contain,).paddingAll(15.w)
+                        ,
+                      ),
+                    ),
+                  ).paddingAll(10.w),
+                  onTap: (){
+                    Navigator.pop(context);
+                  },
+
+                );
+              },
+            );
+          },
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: model.file==null?Container():Container(
+              width: 250.w,
+              height: 250.w,
+              child: CachedNetworkImage(
+                placeholder: (context, url)=>Center(
+                  child: CircularProgressIndicator(),
+                ),
+                imageUrl: model.file??"",
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ).paddingOnly(bottom: 5.w),
         Container(
           padding: EdgeInsets.symmetric(
             vertical: 15,
             horizontal: 20,
           ),
-          width: width,
+          width: width.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             color: AppColorUtils.SMS_OPERATOR,
@@ -59,4 +101,6 @@ class OperatorSmsWidget extends StatelessWidget {
       ],
     ).paddingOnly(left: 18, bottom: 18, top: 18);
   }
+
 }
+

@@ -254,6 +254,18 @@
     "project_successful_added": "Проект // успешно // добавлено",
     "delete_profile": "Удалить профиль",
     "request_sent_successful": "Запрос //отправлен // временно",
-    "profile_will_be_deleted": "Ваш профиль скоро будет удален, будьте здоровы"
+    "profile_will_be_deleted": "Ваш профиль скоро будет удален, будьте здоровы",
+    "enter_correct_phone_number": "Введите правильный номер телефона",
+    "donation": "Пожертвование",
+    "enter_info": "Введите информацию",
+    "code_entered_incorrectly": "Код был введен неправильно",
+    "enter_confirmation_code": "Введите код подтверждения",
+    "number_been_blocked": "Ваш номер заблокирован на 24 часа!",
+    "wrong_code_entered": "Был введен неверный код!",
+    "number_is_registered": "Этот номер зарегистрирован"
+
+
+
+
 
 }

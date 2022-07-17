@@ -131,7 +131,7 @@ class _NumberUpdatePageState extends State<NumberUpdatePage> {
                                 ),
                                 hasError
                                     ? AppWidgets.starTextWidget(
-                                    text: "Telefon raqamni to'g'ri kiriting",
+                                    text: LocaleKeys.enter_correct_phone_number.tr(),
                                     color: AppColorUtils.RED)
                                     : SizedBox(),
                                 SizedBox(

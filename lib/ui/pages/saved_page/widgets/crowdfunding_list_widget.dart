@@ -6,15 +6,15 @@ import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/favorites-add_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/saved_page/widgets/charity_kraufanding.dart';
+import 'package:najot/ui/pages/saved_page/widgets/charity_crowdfunding.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../../data/bloc/favorite-add_cubit/favorite_add_cubit.dart';
 
-class KraufandingSavedListWidget extends StatelessWidget {
+class CrowdfundingSavedListWidget extends StatelessWidget {
   final FavoriteAddCubit cubit;
 
-  const KraufandingSavedListWidget({
+  const CrowdfundingSavedListWidget({
     required this.cubit,
     Key? key,
   }) : super(key: key);
@@ -51,7 +51,7 @@ class KraufandingSavedListWidget extends StatelessWidget {
       mainAxisSpacing: 6,
       children: List.generate(
         cubit.state.list.length,
-        (index) => CharityKraufanding(
+        (index) => CharityCrowdfunding(
           favouriteModel: cubit.state.list[index],
         ),
       ),

@@ -6,13 +6,41 @@ class OrganizationState extends Equatable {
   final bool tobeVolunteer;
   final bool checkBox;
   final bool saveHelp;
+  final bool hasError;
+  final bool hasConnection;
+  final bool hasLoading;
 
   OrganizationState(
       {required this.checkBox,
       this.list = const [],
       this.project,
       this.tobeVolunteer = true,
+      this.hasError = false,
+      this.hasConnection = true,
+      this.hasLoading = false,
       this.saveHelp = true});
+
+  OrganizationState copyWith({
+    List<OrganizationModelResults>? list,
+    RootProjectModel? project,
+    bool? tobeVolunteer,
+    bool? checkBox,
+    bool? saveHelp,
+    bool? hasError,
+    bool? hasConnection,
+    bool? hasLoading,
+  }) {
+    return OrganizationState(
+      checkBox: checkBox ?? this.checkBox,
+      saveHelp: saveHelp ?? this.saveHelp,
+      project: project ?? this.project,
+      tobeVolunteer: tobeVolunteer ?? this.tobeVolunteer,
+      hasError: hasError ?? this.hasError,
+      hasLoading: hasLoading ?? this.hasLoading,
+      hasConnection: hasConnection ?? this.hasConnection,
+      list: list ?? this.list,
+    );
+  }
 
   @override
   // TODO: implement props
@@ -22,21 +50,8 @@ class OrganizationState extends Equatable {
         project,
         checkBox,
         saveHelp,
+        hasError,
+        hasConnection,
+        hasLoading,
       ];
-
-  OrganizationState copyWith({
-    List<OrganizationModelResults>? list,
-    RootProjectModel? project,
-    bool? tobeVolunteer,
-    bool? checkBox,
-    bool? saveHelp,
-  }) {
-    return OrganizationState(
-      list: list ?? this.list,
-      project: project ?? this.project,
-      tobeVolunteer: tobeVolunteer ?? this.tobeVolunteer,
-      checkBox: checkBox ?? this.checkBox,
-      saveHelp: saveHelp ?? this.saveHelp,
-    );
-  }
 }

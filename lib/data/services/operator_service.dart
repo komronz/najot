@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:najot/data/bloc/language_cubit/language_cubit.dart';
 import 'package:najot/data/model/operator_model.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/http_service.dart';
@@ -18,7 +19,7 @@ class OperatorService{
   Future<OperatorModel?> getModel() async {
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://api.najot.uz/ru/operator-chat/",
+        url: "https://api.najot.uz/${LanguageCubit.getLang()}/operator-chat/",
         token: HiveService.to.getToken(),
       );
       if (response.statusCode == 200) {
@@ -35,17 +36,25 @@ class OperatorService{
       return null;
     }
   }
-  Future<OperatorModelResults?> postModel(
+  Future<bool?> postModel(
+      File? file,
       String content,
-      File file,
       ) async {
     try {
-      final _path = "https://api.najot.uz/ru/operator-chat/";
-      String file1 = file.path.split('/').last;
-      FormData formData = FormData.fromMap({
-        "content": content,
-        "file": await MultipartFile.fromFile(file.path, filename: file1),
-      });
+      final _path = "https://api.najot.uz/${LanguageCubit.getLang()}/operator-chat/";
+      FormData formData;
+      if(file!=null){
+        String file1 = file.path.split('/').last;
+         formData = FormData.fromMap({
+          "content": content,
+          "file": await MultipartFile.fromFile(file.path, filename: file1),
+        });
+      }else{
+        formData = FormData.fromMap({
+          "content": content,
+        });
+      }
+
       final headers = {HttpHeaders.contentTypeHeader: "multipart/from-data"};
       var response = await httpService.postFile(
         path: _path,
@@ -55,21 +64,19 @@ class OperatorService{
       );
       if (response != null) {
         if (response.statusCode == 201) {
-          AppLoggerUtil.i(OperatorModelResults.fromJson(response.data).toString());
-          return OperatorModelResults.fromJson(response.data);
-        } else if (response.statusCode == 401) {
-          return null;
-        } else if (response.statusCode! >= 500) {
+          // AppLoggerUtil.i(OperatorModelResults.fromJson(response.data).toString());
+          return true;
+            // OperatorModelResults.fromJson(response.data);
+        } else{
           return null;
         }
-      } else {
+        } else {
         return null;
       }
     } catch (e) {
       AppLoggerUtil.e("$e");
       return null;
     }
-    return null;
   }
 
 

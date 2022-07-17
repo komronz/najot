@@ -7,11 +7,11 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/charity_history_page/widgets/date_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-class VolunteeringKraufandingItemWidget extends StatelessWidget {
+class VolunteeringCrowdfundingItemWidget extends StatelessWidget {
   final KraufandingModel model;
   final VoidCallback onTap;
 
-  const VolunteeringKraufandingItemWidget({
+  const VolunteeringCrowdfundingItemWidget({
     required this.onTap,
     required this.model,
     Key? key,

@@ -18,10 +18,9 @@ class FavoriteAddCubit extends Cubit<FavoriteAddState> {
     GetIt.instance..registerSingleton<FavoriteAddCubit>(FavoriteAddCubit());
   }
 
-
   Future getFavoriteAddList() async {
-    var favoriteAddAllModel = await favoriteAddService.getModel();
     emit(state.copyWith(hasLoading: true, hasError: false,));
+    var favoriteAddAllModel = await favoriteAddService.getModel();
     if(favoriteAddAllModel!=null){
       emit(state.copyWith(hasLoading: false, list: favoriteAddAllModel.results));
     }else{

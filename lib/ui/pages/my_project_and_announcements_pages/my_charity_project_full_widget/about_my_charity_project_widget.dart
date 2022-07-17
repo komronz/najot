@@ -10,28 +10,19 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_support_list_page.dart';
-import '../../../../data/bloc/my_charity_support_list_cubit/my_charity_support_list_cubit.dart';
-import '../../../../data/bloc/my_charity_support_list_cubit/my_charity_support_list_state.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/more_widget.dart';
 import '../../../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_cubit.dart';
 import '../../../../data/config/const/decoration_const.dart';
-import '../../../../data/model/charity_model.dart';
-import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
-import '../../kraudfanding_page_main/project_details/widgets/more_widget.dart';
 import '../my_crowdfunding_project/my_crowdfunding_about_widget.dart';
 import '../my_crowdfunding_project/my_crowdfunding_comments_widget.dart';
 import '../my_crowdfunding_project/my_crowdfunding_news_widget.dart';
 import '../my_crowdfunding_project/my_crowdfunding_question_asked_widget.dart';
 import 'my_charity_applied_user_widget.dart';
-import 'my_charity_comments_widget.dart';
-import 'my_delete_project_dialog.dart';
 import 'my_charity_edit_project_dialog.dart';
-import 'my_charity_more_widget.dart';
-import 'my_charity_news_widget.dart';
 import 'my_charity_price_widget.dart';
-import 'my_charity_question_asked_widget.dart';
+import 'my_delete_project_dialog.dart';
 
 class AboutMyCharityProjectWidget extends StatefulWidget {
   const AboutMyCharityProjectWidget({required this.model});
@@ -60,15 +51,12 @@ class _AboutMyCharityProjectWidgetState
     _tabController.addListener(_handleTabSelection);
     super.initState();
   }
-
   _handleTabSelection() {
     if (_tabController.indexIsChanging) {
       setState(() {});
     }
   }
-
   bool selected = true;
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

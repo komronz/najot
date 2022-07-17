@@ -12,8 +12,8 @@ import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-class KraudfandingCardWidget extends StatelessWidget {
-  KraudfandingCardWidget({
+class CrowdfundingCardWidget extends StatelessWidget {
+  CrowdfundingCardWidget({
     required this.projectModel,
     required this.visible,
     required this.onTap,

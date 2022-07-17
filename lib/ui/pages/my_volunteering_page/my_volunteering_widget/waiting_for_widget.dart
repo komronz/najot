@@ -131,37 +131,21 @@ class WaitingForWidget extends StatelessWidget {
                             ),
                           ],
                         ),
-                        InkWell(
-                          onTap: () async {
-                            await showDialog(
-                              context: context,
-                              builder: (context) => WaitingForDatePickerWidget(
-                                selectFunction: (dateTime) {
-                                  // print(dateTime.toUtc().toString());
-                                  // bloc.add(VolunteerBirthDateSelected(dateTime));
-                                },
-                                index: index,
-                                model: model,
-                                cubit: cubit,
-                              ),
-                            );
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              AppWidgets.imageSvg(
-                                path: AppImageUtils.CALENDAR_RED,
-                                height: 12.sp,
-                              ).paddingOnly(right: 5),
-                              AppWidgets.textLocale(
-                                text:
-                                    DateFormat("dd.MM.yyyy").format(createdAt),
-                                color: AppColorUtils.RED,
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ],
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            AppWidgets.imageSvg(
+                              path: AppImageUtils.CALENDAR_RED,
+                              height: 12.sp,
+                            ).paddingOnly(right: 5),
+                            AppWidgets.textLocale(
+                              text:
+                                  DateFormat("dd.MM.yyyy").format(createdAt),
+                              color: AppColorUtils.RED,
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -226,9 +210,27 @@ class WaitingForWidget extends StatelessWidget {
                           : SizedBox(),
                       model.project!.isDone!
                           ? AppWidgets.imageSvg(
-                              path: AppImageUtils.NOTIFICATION_GREY)
-                          : AppWidgets.imageSvg(
-                              path: AppImageUtils.NOTIFICATION),
+                              path: AppImageUtils.NOTIFICATION_GREY,
+                      )
+                          :
+                      InkWell(
+                          onTap: () async {
+                            await showDialog(
+                              context: context,
+                              builder: (context) => WaitingForDatePickerWidget(
+                                selectFunction: (dateTime) {
+                                  // print(dateTime.toUtc().toString());
+                                  // bloc.add(VolunteerBirthDateSelected(dateTime));
+                                },
+                                index: index,
+                                model: model,
+                                cubit: cubit,
+                              ),
+                            );
+                          },
+                        child: AppWidgets.imageSvg(
+                                path: AppImageUtils.NOTIFICATION,),
+                      ),
                     ],
                   ),
                 ],

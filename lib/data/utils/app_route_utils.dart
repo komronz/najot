@@ -11,17 +11,20 @@ import 'package:najot/ui/pages/auth_page/auth_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_full_page/charity_full_page.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
 import 'package:najot/ui/pages/counter_page/counter_page.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/crowdfunding_page.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/product_datail_page/product_detail_page.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/project_details_page.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/edit_volunteer_page.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/widgets/choose_lang.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/widgets/number_update_volunteer_page.dart';
 import 'package:najot/ui/pages/edit_volunteer_page/widgets/user_update_volunteer_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/intro_page/intro_page.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/product_datail_page/product_detail_page.dart';
 import 'package:najot/ui/pages/loading_page/loading_page.dart';
 import 'package:najot/ui/pages/login_page/login_page.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_page.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/adding_project_page.dart';
+import 'package:najot/ui/pages/operator_page/operator_page.dart';
 import 'package:najot/ui/pages/organization_page/organization_item_detail_page/organization_item_widget2.dart';
 import 'package:najot/ui/pages/reg_page/reg_page.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/img_view.dart';
@@ -31,8 +34,6 @@ import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volu
 import 'package:najot/ui/pages/volunteer_page/volunteer_page.dart';
 import '../../ui/pages/charity_page/charity_full_page/charity_full_page2.dart';
 import '../../ui/pages/charity_page/widgets/charity_help_widget.dart';
-import '../../ui/pages/kraudfanding_page_main/kraudfanding_page.dart';
-import '../../ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
 import '../../ui/pages/my_products_page/my_products_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/number_update_page.dart';
@@ -297,6 +298,10 @@ class AppRouteUtils {
       case AboutPage.routeName:
         return MaterialPageRoute(
           builder: (context) => AboutPage(),
+        );
+      case OperatorPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => OperatorPage(),
         );
     }
     return null;

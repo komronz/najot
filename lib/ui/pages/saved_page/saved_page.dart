@@ -5,9 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/bloc/favorite-add_cubit/favorite_add_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/pages/saved_page/widgets/kraufanding_list_widget.dart';
+import 'package:najot/ui/pages/saved_page/widgets/crowdfunding_list_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-
 import '../../../data/localization/locale_keys.g.dart';
 import '../../../data/services/navigator_service.dart';
 import '../../../data/utils/app_image_utils.dart';
@@ -64,8 +63,7 @@ class SavedPage extends StatelessWidget {
 
     );
   }
-  Widget _buildBody(BuildContext context, FavoriteAddState state,
-      ) {
+  Widget _buildBody(BuildContext context, FavoriteAddState state) {
     if (state.hasLoading) {
       return Center(
         child: CircularProgressIndicator(),
@@ -78,7 +76,7 @@ class SavedPage extends StatelessWidget {
     return Container(
         child: ListView(
         children: [
-          KraufandingSavedListWidget(cubit: context.read<FavoriteAddCubit>(),)
+          CrowdfundingSavedListWidget(cubit: context.read<FavoriteAddCubit>(),)
         ],
     ),
     ).paddingAll(15);

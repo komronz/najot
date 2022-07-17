@@ -10,14 +10,11 @@ import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
-import 'package:najot/ui/pages/my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_applied_user_widget.dart';
 import 'package:najot/ui/pages/my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_more_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-
 import '../../../../data/bloc/my_charity_support_list_cubit/my_charity_support_list_cubit.dart';
-import '../../kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
 import '../../my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_comments_widget.dart';
 import '../../my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_news_widget.dart';
 import '../../my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_question_asked_widget.dart';

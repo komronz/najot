@@ -9,8 +9,7 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/more_widget.dart';
-
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/more_widget.dart';
 import '../../../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_cubit.dart';
 import '../../../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_state.dart';
 import '../../../../data/config/const/decoration_const.dart';
@@ -468,7 +467,7 @@ class AnswersWidget extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           AppWidgets.text(
-                                            text: "Sizning javobingiz",
+                                            text: LocaleKeys.your_answer.tr(),
                                             color: AppColorUtils.TEXT_GREEN2,
                                             fontWeight: FontWeight.w600,
                                             fontSize: 14.sp,

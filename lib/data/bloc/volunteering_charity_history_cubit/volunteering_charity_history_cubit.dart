@@ -18,14 +18,14 @@ class VolunteeringCharityHistoryCubit extends Cubit<VolunteeringCharityHistorySt
 
       ///TODO cardmodelni kraufanding modelga o'zgartirish
       /// TODO: WARNING: crowdFounding
-      var kraufandingList = await service.getKraufandingList();
+      var crowdFoundingList = await service.getKraufandingList();
       var charityList = await service.getCharityList();
       var itemsCharity = await service.getItemsList();
 
       emit(
         state.copyWith(
           charityList: charityList,
-          kraufandingList: kraufandingList,
+          kraufandingList: crowdFoundingList,
           itemsCharity: itemsCharity,
           isLoading: false,
         ),

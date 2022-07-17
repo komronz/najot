@@ -39,7 +39,7 @@ class VolunteerProfileService {
   Future<User?> getUser() async {
     try {
       final Response response = await RootService.httpService.get(
-          url: "https://api.najot.uz/ru/users/me/",
+          url: "https://api.najot.uz/${LanguageCubit.getLang()}/users/me/",
           token: HiveService.to.getToken());
       if (response.statusCode == 200) {
         final User user = User.fromJson(

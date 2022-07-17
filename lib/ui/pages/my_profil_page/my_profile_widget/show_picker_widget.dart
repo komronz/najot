@@ -44,7 +44,6 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
     try {
       final image = await ImagePicker().pickImage(source: source);
       if (image == null) return;
-      // final imageTemporary=File(image.path);
       final imagePermanent = await saveImagePermanently(image.path);
       await widget.imageSelect(imagePermanent);
       setState(() {
@@ -76,7 +75,7 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
               ? Container(
                   child: ClipRRect(
                     child: Image.file(
-                      widget.imageFile! as File,
+                      widget.imageFile!,
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.circular(widget.radius),

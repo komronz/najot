@@ -41,28 +41,40 @@ class OrganizationPage extends StatelessWidget {
                   icon: AppImageUtils.NOTIFICATION,
                 ),
               ),
-              body: Container(
-                 padding: EdgeInsets.all(15.w),
-                color: AppColorUtils.BACKGROUND,
-                child: GridView.count(
-                  shrinkWrap: true,
-                  crossAxisCount: 2,
-                  physics: ClampingScrollPhysics(),
-                  childAspectRatio: 160.w / 238.w,
-                  padding: EdgeInsets.all(0),
-                  reverse: false,
-                  crossAxisSpacing: 8,
-                  mainAxisSpacing: 6,
-                  children: List.generate(state.list.length, (index) {
-                    return OrganizationItemWidget(
-                      model: state.list[index],
-                      cubit: cubit,
-                    );
-                  }),
-                ),
-              ),
+              body: _buildBody(context, state),
             );
           }),
+    );
+  }
+  Widget _buildBody(BuildContext context, OrganizationState state){
+    if (state.hasLoading) {
+      return Center(
+        child: CircularProgressIndicator(),
+      );
+    } else if (state.hasError) {
+      return Center(
+        child: AppWidgets.imageSvg(path: AppImageUtils.IMG_WAIT),
+      );
+    }
+    return  Container(
+      padding: EdgeInsets.all(15.w),
+      color: AppColorUtils.BACKGROUND,
+      child: GridView.count(
+        shrinkWrap: true,
+        crossAxisCount: 2,
+        physics: ClampingScrollPhysics(),
+        childAspectRatio: 160.w / 238.w,
+        padding: EdgeInsets.all(0),
+        reverse: false,
+        crossAxisSpacing: 8,
+        mainAxisSpacing: 6,
+        children: List.generate(state.list.length, (index) {
+          return OrganizationItemWidget(
+            model: state.list[index],
+            cubit: cubit,
+          );
+        }),
+      ),
     );
   }
 }

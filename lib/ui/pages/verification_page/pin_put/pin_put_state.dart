@@ -10,7 +10,7 @@ class AlwaysDisabledFocusNode extends FocusNode {
 }
 
 extension on ThemeData {
-  InputDecoration get hiddenPinputDecoration {
+  InputDecoration get hiddenPinPutDecoration {
     final hiddenTextStyle = TextStyle(
       color: Colors.transparent,
       fontSize: 0,
@@ -168,7 +168,7 @@ class PinPutState extends State<PinPut>
       maxLength: widget.fieldsCount,
       scrollPadding: EdgeInsets.zero,
       decoration:
-          widget.inputDecoration ?? Theme.of(context).hiddenPinputDecoration,
+          widget.inputDecoration ?? Theme.of(context).hiddenPinPutDecoration,
       style: textStyle.copyWith(color: Colors.transparent),
     );
   }

@@ -208,7 +208,7 @@ class _CommentsWidgetState extends State<MyCrowdfundingCommentsWidget> {
                       hasTextTitle=false;
                       hasTextComment=false;
                     } else {
-                      AppWidgets.showText(text: "Ma'lumot kiriting");
+                      AppWidgets.showText(text: LocaleKeys.enter_info.tr());
                     }
                   },
                   child: Container(

@@ -10,9 +10,6 @@ import '../bloc/language_cubit/language_cubit.dart';
 import '../utils/app_logger_util.dart';
 
 class ProductService{
-
-
-
   Future<ProductModel?> getProductsModel() async {
 
     try {

@@ -118,7 +118,7 @@ class MyDeleteProjectDialog extends StatelessWidget {
                         },
                       );
                     }else{
-                      AppWidgets.showText(text: "Sababni yozing");
+                      AppWidgets.showText(text: LocaleKeys.write_the_reason.tr());
                     }
 
                   },

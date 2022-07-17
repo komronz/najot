@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
@@ -20,7 +19,6 @@ import 'package:najot/ui/pages/organization_page/organization_page.dart';
 import 'package:najot/ui/pages/reg_volounteer/reg_volunteer.dart';
 import 'package:najot/ui/pages/rules_page/rules_page.dart';
 import '../my_products_page/my_products_page.dart';
-import '../my_profil_page/my_profile_pages/number_update_page.dart';
 import '../my_project_and_announcements_pages/my_project_and_announcements_pages.dart';
 import '../my_volunteering_page/my_volunteering_page.dart';
 import '../my_volunteering_page/my_volunteering_widget/adding_project_page.dart';
@@ -118,7 +116,7 @@ class _HomePageState extends State<HomePage> {
         return AddingProjectPage();
       case AppPageType.NOTIFICATION:
         return NotificationPage();
-        default:
+           default:
         return Container();
     }
   }

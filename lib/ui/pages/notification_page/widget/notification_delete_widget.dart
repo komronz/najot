@@ -79,10 +79,11 @@ class NotificationDeleteWidget extends StatelessWidget {
                   ButtonCard(
                     onPress: () {
                       cubit.delete(index,model);
-                      NavigatorService.to.pushNamed(
-                        HomePage.routeName,
-                        arguments: AppPageType.VOLUNTEERING,
-                      );
+                      NavigatorService.to.pop();
+                      // NavigatorService.to.pushNamed(
+                      //   HomePage.routeName,
+                      //   arguments: AppPageType.VOLUNTEERING,
+                      // );
 
                     },
                     text: LocaleKeys.yes,

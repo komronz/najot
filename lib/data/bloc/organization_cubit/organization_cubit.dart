@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/organization_model.dart';
@@ -25,10 +26,16 @@ class OrganizationCubit extends Cubit<OrganizationState> {
   MainService mainService = MainService();
 
   Future load() async{
+      emit(state.copyWith(hasLoading: true, hasError: false));
     var organizationModel=await organizationService.getModel();
-    if(organizationModel != null){
-      emit(state.copyWith(list: organizationModel.results));
+    try{
+      if(organizationModel != null){
+        emit(state.copyWith(list: organizationModel.results,hasLoading: false));
+      }
+    }catch (e){
+      emit(state.copyWith(hasError: true, hasLoading: false));
     }
+      emit(state.copyWith(hasLoading: false, hasError: false));
 
   }
   void onTapCheckBox(bool v) {

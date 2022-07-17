@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/my_profile_service.dart';
 import 'package:najot/data/services/user_update_service.dart';
 import '../../../ui/widgets/app_widgets.dart';
@@ -180,7 +182,7 @@ class MyProfileUpdateBloc
         add(EditProfileChangePage(1));
         emit(state.copyWith(isVisible: true));
       }else{
-        AppWidgets.showText(text: "Xato kod terildi!");
+        AppWidgets.showText(text: LocaleKeys.wrong_code_entered.tr());
       }
 
 
@@ -197,7 +199,7 @@ class MyProfileUpdateBloc
         emit(state.copyWith(isVisible: true));
         emit(state.copyWith(isVisible: false));
       }else{
-        AppWidgets.showText(text: "Bu raqam registratsiyadan o'tgan");
+        AppWidgets.showText(text: LocaleKeys.number_is_registered.tr());
       }
 
   }

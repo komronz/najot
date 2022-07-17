@@ -7,14 +7,14 @@ import 'package:najot/data/model/kraufanding_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
-import 'package:najot/ui/pages/volunteering_charity_history_page/widgets/volunteering_kraufanding_item_widget.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/project_details_page.dart';
+import 'package:najot/ui/pages/volunteering_charity_history_page/widgets/volunteering_crowdfunding_item_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-class VolunteeringKraufandingListWidget extends StatelessWidget {
+class VolunteeringCrowdfundingListWidget extends StatelessWidget {
   final List<KraufandingModel> list;
 
-  const VolunteeringKraufandingListWidget({
+  const VolunteeringCrowdfundingListWidget({
     required this.list,
     Key? key,
   }) : super(key: key);
@@ -44,7 +44,7 @@ class VolunteeringKraufandingListWidget extends StatelessWidget {
     }
     return ListView.builder(
       physics: BouncingScrollPhysics(),
-      itemBuilder: (context, index) => VolunteeringKraufandingItemWidget(
+      itemBuilder: (context, index) => VolunteeringCrowdfundingItemWidget(
         model: list[index],
         onTap: () {
           var model = CardModel(

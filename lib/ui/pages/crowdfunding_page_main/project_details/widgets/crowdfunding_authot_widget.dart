@@ -8,11 +8,11 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-class KraudfandingAuthorWidget extends StatelessWidget {
+class CrowdfundingAuthorWidget extends StatelessWidget {
   final ProjectModel model;
   final VoidCallback onTap;
 
-  const KraudfandingAuthorWidget({
+  const CrowdfundingAuthorWidget({
     required this.model,
     required this.onTap,
     Key? key,

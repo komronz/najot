@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
+import 'package:najot/data/bloc/language_cubit/language_cubit.dart';
 import 'package:najot/data/model/auth_model/user.dart';
 import 'package:najot/data/model/number_change_model.dart';
 import 'package:najot/data/services/hive_service.dart';
@@ -26,7 +27,7 @@ class UserUpdateService {
     bool isVolunteer,
   ) async {
     try {
-      final _path = "https://api.najot.uz/ru/users/me/";
+      final _path = "https://api.najot.uz/${LanguageCubit.getLang()}/users/me/";
       String file1 = photo.path.split('/').last;
       FormData formData = FormData.fromMap({
         "phone": phone,

@@ -12,10 +12,10 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-class KraudfandingPriceWidget extends StatelessWidget {
+class CrowdfundingPriceWidget extends StatelessWidget {
   final ProjectModel model;
 
-  const KraudfandingPriceWidget({
+  const CrowdfundingPriceWidget({
     required this.model,
     Key? key,
   }) : super(key: key);
