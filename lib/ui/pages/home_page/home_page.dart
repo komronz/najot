@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/model/volunteer_db_model.dart';
-import 'package:najot/data/services/notification_service.dart';
+import 'package:najot/data/services/notification_api_service.dart';
 import 'package:najot/ui/pages/about_page/about_page.dart';
 import 'package:najot/ui/pages/charity_history_page/charity_history_page.dart';
 import 'package:najot/ui/pages/faq_page/faq_page.dart';
@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void listenNotifications() =>
-      NotificationService.onNotification.stream.listen(onClickNotification);
+      NotificationApiService.onNotification.stream.listen(onClickNotification);
 
   Future onClickNotification(dynamic payload) async{
     await showDialog(

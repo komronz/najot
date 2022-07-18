@@ -5,7 +5,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 
-class NotificationService {
+class NotificationApiService {
   static final BehaviorSubject onNotification = BehaviorSubject<String?>();
   static late final FlutterLocalNotificationsPlugin _notifications;
    static Future requestPermissions() async{

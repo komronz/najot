@@ -139,24 +139,7 @@ class DrawerBodySecond extends StatelessWidget {
               Navigator.pop(context);
             },
           ),
-          state.tobeVolunteer
-         ? AppWidgets.rowIconText(
-            isActive: pageType == AppPageType.ORDERS,
-            icon: AppImageUtils.PRODUCTS,
-            iconSelect: AppImageUtils.PRODUCTS2,
-            text: LocaleKeys.my_products,
-            fontSize: 16.sp,
-            padding: EdgeInsets.symmetric(
-              horizontal: 18.w,
-              vertical: 14,
-            ),
-            onTap: () {
-              context.read<AppPageCubit>().changePage(
-                    pageType: AppPageType.ORDERS_VOLUNTEER,
-                  );
-              Navigator.pop(context);
-            },
-          ): AppWidgets.rowIconText(
+         AppWidgets.rowIconText(
             isActive: pageType == AppPageType.ORDERS,
             icon: AppImageUtils.PRODUCTS,
             iconSelect: AppImageUtils.PRODUCTS2,
