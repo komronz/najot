@@ -115,7 +115,7 @@ class MyProfilePage extends StatelessWidget {
                                   ],
                                 ),
                               ).paddingOnly(bottom: 6.h),
-                             true
+                             state.isVolunteer
                                  ?Row(
                                mainAxisAlignment: MainAxisAlignment.center,
                                children: [
@@ -126,7 +126,8 @@ class MyProfilePage extends StatelessWidget {
                                        text: LocaleKeys.volunteer,
                                        color: AppColorUtils.TEXT_GREEN,
                                        fontSize: 16.sp,
-                                       fontWeight: FontWeight.w600),
+                                       fontWeight: FontWeight.w600,
+                                   ),
                                  )
                                ],
                              ): Container(

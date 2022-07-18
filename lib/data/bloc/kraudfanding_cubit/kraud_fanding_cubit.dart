@@ -8,6 +8,8 @@ import 'package:najot/data/services/crowdfunding_service.dart';
 import 'package:najot/data/services/main_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 
+import '../../../ui/widgets/app_widgets.dart';
+
 part 'kraud_fanding_state.dart';
 
 class CrowdfundingCubit extends Cubit<CrowdfundingState> {
@@ -24,13 +26,13 @@ class CrowdfundingCubit extends Cubit<CrowdfundingState> {
   var internetConnection;
 
   Future load() async {
+    emit(state.copyWith(searchChange: ""));
     internetConnection = await MainService().checkInternetConnection();
     emit(state.copyWith(internetConnection: internetConnection));
     var crowdfundingModel = await crowdfundingService.getCrowdfundingModel();
     var categories = await crowdfundingService.getCategoriesModel();
     var list= categories!.results![0];
     var tabProjects=await crowdfundingService.getProjectsById(list.children![0].id!);
-
 
     if (crowdfundingModel != null&&tabProjects!= null ) {
       emit(state.copyWith(loading: false));
@@ -45,7 +47,13 @@ class CrowdfundingCubit extends Cubit<CrowdfundingState> {
     }
   }
 
+  void reload(){
+    emit(state.copyWith());
+  }
+
   Future SearchChange(String v)async{
+    internetConnection = await mainService.checkInternetConnection();
+    emit(state.copyWith(internetConnection: internetConnection));
     emit(state.copyWith(searchProgress: true));
     var getSearch = await crowdfundingService.getProjectsByName(v);
     if(getSearch != null){
@@ -57,7 +65,7 @@ class CrowdfundingCubit extends Cubit<CrowdfundingState> {
 
   }
   Future tabChange(int id) async{
-    internetConnection = await MainService().checkInternetConnection();
+    internetConnection = await mainService.checkInternetConnection();
     emit(state.copyWith(internetConnection: internetConnection));
     emit(state.copyWith(tabLoading: true));
     var tabProjects=await crowdfundingService.getProjectsById(id);
@@ -71,12 +79,16 @@ class CrowdfundingCubit extends Cubit<CrowdfundingState> {
       }
   }
   Future changeLike(int id) async{
-    internetConnection = await MainService().checkInternetConnection();
-    emit(state.copyWith(internetConnection: internetConnection));
-    var changeLike= await mainService.changeLike(id);
-    if(changeLike!=null){
-      load();
+    internetConnection = await mainService.checkInternetConnection();
+    if(internetConnection){
+      var changeLike= await mainService.changeLike(id);
+      if(changeLike!=null){
+        load();
+      }
+    }else{
+      AppWidgets.showText(text: "Internet bilan aloqa yo'q!");
     }
+
   }
   void detailTabChange(int tabChange) {
     emit(state.copyWith(tabChange: tabChange));

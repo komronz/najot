@@ -18,7 +18,8 @@ class ProjectDataService {
   Future<NewsModel?> getNewsById(int id) async {
     try {
       final Response response = await RootService.httpService.get(
-          url: "https://api.najot.uz/${LanguageCubit.getLang()}/news/?project__id=${id}",
+          url:
+              "https://api.najot.uz/${LanguageCubit.getLang()}/news/?project__id=${id}",
           token: HiveService.to.getToken());
       print(response.statusCode);
       if (response.statusCode == 200) {
@@ -109,10 +110,13 @@ class ProjectDataService {
     }
   }
 
-  Future<bool?> postCommentsBYId(int id, String content) async {
+  Future<bool?> postCommentsBYId(int id, String title, String content) async {
     try {
       final path = 'https://api.najot.uz/uz/project/${id}/comment/create/';
-      final body = {"content": content};
+      final body = {
+        "title": title,
+        "content": content,
+      };
       final headers = {HttpHeaders.contentTypeHeader: "application/json"};
       var response = await _httpService.post(
           path: path,
@@ -183,13 +187,10 @@ class ProjectDataService {
     return null;
   }
 
-  Future<bool?> postDeleteBYId(int id,String content) async {
+  Future<bool?> postDeleteBYId(int id, String content) async {
     try {
       final path = 'https://api.najot.uz/ru/application/';
-      final body = {
-        "project": id,
-        "description": content
-      };
+      final body = {"project": id, "description": content};
       final headers = {HttpHeaders.contentTypeHeader: "application/json"};
       var response = await _httpService.post(
           path: path,

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,11 +31,17 @@ class KraudfandingAuthorWidget extends StatelessWidget {
               height: 50.w,
               width: 50.w,
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: NetworkImage(model.cover!),
-                  fit: BoxFit.cover,
+                shape : BoxShape.circle,
+                color: Colors.black12,
+              ),
+              child: CachedNetworkImage(
+                imageUrl: model.owner!.photo!,
+                fit: BoxFit.cover,
+                placeholder: (context, url) => Center(
+                  child: CircularProgressIndicator(),
                 ),
+                errorWidget: (context, url, error) =>
+                    Icon(Icons.person),
               ),
             ),
             Column(

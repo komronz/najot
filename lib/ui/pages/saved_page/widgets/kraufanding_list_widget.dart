@@ -11,10 +11,10 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../../data/bloc/favorite-add_cubit/favorite_add_cubit.dart';
 
-class KraufandingSavedListWidget extends StatelessWidget {
+class CrowdfundingSavedListWidget extends StatelessWidget {
   final FavoriteAddCubit cubit;
 
-  const KraufandingSavedListWidget({
+  const CrowdfundingSavedListWidget({
     required this.cubit,
     Key? key,
   }) : super(key: key);

@@ -14,6 +14,8 @@ import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import '../../../../data/bloc/home_cubit/home_cubit.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
+import '../../../widgets/app_error_widget.dart';
+import '../../../widgets/app_widgets.dart';
 
 class CrowdfundingDetailModel {
   CrowdfundingDetailModel({
@@ -80,44 +82,55 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
         body: BlocBuilder<CrowdfundingCubit, CrowdfundingState>(
           bloc: CrowdfundingCubit.to,
           builder: (context, state) {
-            return SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
-              child: Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(top: 18.w),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(11),
-                        topLeft: Radius.circular(11),
+            if(state.internetConnection){
+              return SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                child: Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(top: 18.w),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(11),
+                          topLeft: Radius.circular(11),
+                        ),
                       ),
+                      child: TabBarWidget(
+                          _controller,
+                          LocaleKeys.about_project.tr(),
+                          LocaleKeys.products.tr(), (int i) {
+                        if (i == 0) {
+                          widget.model.cubit.detailTabChange(0);
+                        } else {
+                          widget.model.cubit.detailTabChange(1);
+                        }
+                      }),
                     ),
-                    child: TabBarWidget(
-                        _controller,
-                        LocaleKeys.about_project.tr(),
-                        LocaleKeys.products.tr(), (int i) {
-                      if (i == 0) {
-                        widget.model.cubit.detailTabChange(0);
-                      } else {
-                        widget.model.cubit.detailTabChange(1);
-                      }
-                    }),
-                  ),
-                  Container(
-                    child: [
-                      AboutProjectWidget(
-                        cardModel: widget.model.cardModel,
-                        cubit: widget.model.cubit,
-                      ),
-                      ProductsWidget(
-                        cubit: productCubit,
-                      )
-                    ][_controller.index],
-                  )
-                ],
-              ),
-            );
+                    Container(
+                      child: [
+                        AboutProjectWidget(
+                          cardModel: widget.model.cardModel,
+                          cubit: widget.model.cubit,
+                        ),
+                        ProductsWidget(
+                          cubit: productCubit,
+                        )
+                      ][_controller.index],
+                    )
+                  ],
+                ),
+              );
+            }else{
+              return AppErrorWidget(
+                  onTap: () async{
+                    AppWidgets.isLoading(true);
+                    await CrowdfundingCubit.to.load();
+                    AppWidgets.isLoading(false);
+
+                  });
+            }
+
           },
         ),
       ),

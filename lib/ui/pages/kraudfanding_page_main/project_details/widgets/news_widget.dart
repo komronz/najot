@@ -1,13 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/bloc/project_data_cubit/project_data_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/card_model.dart';
-import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -35,7 +32,8 @@ class NewsWidget extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    color: AppColorUtils.GREEN_ACCENT4),
+                    color: AppColorUtils.GREEN_ACCENT4,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -49,10 +47,17 @@ class NewsWidget extends StatelessWidget {
                               height: 50.w,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                image: DecorationImage(
-                                    image: NetworkImage(cubit.state.newsData[index].user!.photo!),
-                                    fit: BoxFit.cover),
+                                  shape : BoxShape.circle,
+                                  color: Colors.black12,
+                              ),
+                              child: CachedNetworkImage(
+                                imageUrl:cubit.state.newsData[index].user!.photo!,
+                                fit: BoxFit.cover,
+                                placeholder: (context, url) => Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    Icon(Icons.person),
                               ),
                             ),
                             Column(
@@ -149,7 +154,8 @@ class NewsWidget extends StatelessWidget {
                       color: AppColorUtils.DARK_4,
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w600,
-                      maxLines: 2),
+                      maxLines: 2,
+                  ),
                 )
               ],
             ),

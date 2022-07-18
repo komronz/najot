@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/services/charity_saved_service.dart';
 import 'package:najot/data/services/main_service.dart';
-
+import '../../../ui/widgets/app_widgets.dart';
 import '../../model/categories_model.dart';
 import '../../model/project_model.dart';
 import '../../model/volunteer_model.dart';
@@ -23,8 +23,13 @@ class CharityCubit extends Cubit<CharityState> {
   CharityCubit() : super(CharityState());
   CharityService charityService = CharityService();
   MainService mainService=MainService();
+  var internetConnection;
 
   Future load() async {
+    emit(state.copyWith(searchChange: ""));
+    internetConnection = await mainService.checkInternetConnection();
+    emit(state.copyWith(internetConnection: internetConnection));
+    var isVolunteer = await mainService.getUserModel();
     var charityModel = await charityService.getCharityModel();
     var categories = await charityService.getCategoriesModel();
     var list= categories!.results![0];
@@ -40,9 +45,15 @@ class CharityCubit extends Cubit<CharityState> {
       );
       AppLoggerUtil.i(charityModel.count.toString());
     }
+
+    if(isVolunteer !=null){
+      emit(state.copyWith(tobeVolunteer: isVolunteer.isVolunteer));
+    }
   }
 
   Future searchChange(String v)async{
+    internetConnection = await mainService.checkInternetConnection();
+    emit(state.copyWith(internetConnection: internetConnection));
     emit(state.copyWith(searchProgress: true));
     var getSearch = await charityService.getProjectsByName(v);
     if(getSearch != null){
@@ -54,6 +65,8 @@ class CharityCubit extends Cubit<CharityState> {
 
   }
   Future tabChange(int id) async{
+    internetConnection = await mainService.checkInternetConnection();
+    emit(state.copyWith(internetConnection: internetConnection));
     emit(state.copyWith(tabLoading: true));
     var tabProjects=await charityService.getProjectsById(id);
     if(tabProjects!=null){
@@ -75,9 +88,15 @@ class CharityCubit extends Cubit<CharityState> {
     emit(state.copyWith(saveHelp: v));
   }
   Future changeLike(int id) async{
-    var changeLike= await mainService.changeLike(id);
-    if(changeLike!=null){
-      load();
+    internetConnection = await mainService.checkInternetConnection();
+    if(internetConnection){
+      var changeLike= await mainService.changeLike(id);
+      if(changeLike!=null){
+        load();
+      }
+    }else{
+      AppWidgets.showText(text: "Internet bilan aloqa yo'q!");
     }
+
   }
 }

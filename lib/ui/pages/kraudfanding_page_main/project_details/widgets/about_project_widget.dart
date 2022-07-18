@@ -8,6 +8,7 @@ import 'package:najot/data/bloc/project_data_cubit/project_data_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
+import 'package:najot/data/services/main_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comments_widget.dart';
 import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
@@ -306,11 +307,19 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                             height: 48.w,
                             width: 48.w,
                             onTap: () async{
-                              await widget.cubit.changeLike(widget.cardModel.id!);
-                              setState(() {
-                                like=!like;
-                              });
-                              await HomeCubit.to.getModel();
+                              var connection= await MainService().checkInternetConnection();
+                              if(connection){
+                                await widget.cubit.changeLike(widget.cardModel.id!);
+                                setState(() {
+                                  like=!like;
+                                });
+
+                                await HomeCubit.to.getModel();
+                              }else{
+                                AppWidgets.showText(text: "internet bilan aloqa yo'q!");
+                              }
+                               
+
                             },
                           )
                         ],

@@ -20,6 +20,8 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../../data/bloc/home_cubit/home_cubit.dart';
 import '../../../../data/bloc/project_data_cubit/project_data_cubit.dart';
 import '../../../../data/model/project_model.dart';
+import '../../../../data/services/main_service.dart';
+import '../../../widgets/app_error_widget.dart';
 import '../../kraudfanding_page_main/project_details/widgets/comments_widget.dart';
 import '../../kraudfanding_page_main/project_details/widgets/more_widget.dart';
 import '../../kraudfanding_page_main/project_details/widgets/news_widget.dart';
@@ -81,9 +83,11 @@ class _CharityFullPageState extends State<CharityFullPage>
         ),
         body: BlocBuilder<CharityCubit, CharityState>(
           builder: (context, state) {
+          if(state.internetConnection){
             return SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 child: Column(
+
                   children: [
                     Container(
                       decoration: BoxDecoration(
@@ -94,6 +98,7 @@ class _CharityFullPageState extends State<CharityFullPage>
                         ),
                       ),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Stack(
                             children: [
@@ -233,9 +238,9 @@ class _CharityFullPageState extends State<CharityFullPage>
                               indicatorSize: TabBarIndicatorSize.tab,
                               padding: EdgeInsets.only(right: 10),
                               indicatorPadding:
-                                  EdgeInsets.only(right: 10, left: 10),
+                              EdgeInsets.only(right: 10, left: 10),
                               labelPadding:
-                                  EdgeInsets.only(right: 10, left: 10),
+                              EdgeInsets.only(right: 10, left: 10),
                             ).paddingOnly(left: 15.w, top: 8.w),
                             BlocBuilder<ProjectDataCubit, ProjectDataState>(
                               bloc: cubitData..load(widget.model.id!),
@@ -289,11 +294,18 @@ class _CharityFullPageState extends State<CharityFullPage>
                                   height: 48.w,
                                   width: 48.w,
                                   onTap: () async{
-                                    await CharityCubit.to.changeLike(widget.model.id!);
-                                    setState(() {
-                                      like=!like;
-                                    });
-                                    await HomeCubit.to.getModel();
+                                    var connection= await MainService().checkInternetConnection();
+                                    if(connection){
+                                      await CharityCubit.to.changeLike(widget.model.id!);
+                                      setState(() {
+                                        like=!like;
+                                      });
+
+                                      await HomeCubit.to.getModel();
+                                    }else{
+                                      AppWidgets.showText(text: "internet bilan aloqa yo'q!");
+                                    }
+
                                   },
                                 )
                               ],
@@ -304,6 +316,16 @@ class _CharityFullPageState extends State<CharityFullPage>
                     ),
                   ],
                 ));
+          }else{
+            return AppErrorWidget(
+                onTap: () async{
+                  AppWidgets.isLoading(true);
+                  await CharityCubit.to.load();
+                  AppWidgets.isLoading(false);
+
+
+                });
+          }
           },
         ),
       ),

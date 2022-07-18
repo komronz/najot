@@ -9,6 +9,7 @@ class VolunteerState extends Equatable {
       this.searchProjects = const [],
       this.searchProgress = false,
       this.searchChange = "",
+      this.internetConnection = true,
       this.loading = false});
 
   List<ProjectModel> list;
@@ -18,6 +19,7 @@ class VolunteerState extends Equatable {
   final loading;
    List<ProjectModel> searchProjects;
   final bool searchProgress;
+  final bool internetConnection;
    String searchChange;
 
   @override
@@ -31,6 +33,7 @@ class VolunteerState extends Equatable {
         searchProgress,
         searchProjects,
         searchChange,
+    internetConnection
       ];
 
   VolunteerState copyWith({
@@ -42,6 +45,7 @@ class VolunteerState extends Equatable {
     bool? loading,
     String? searchChange,
     bool? searchProgress,
+    bool? internetConnection,
   }) {
     return VolunteerState(
       list: list ?? this.list,
@@ -52,6 +56,7 @@ class VolunteerState extends Equatable {
       searchProjects: searchProjects ?? this.searchProjects,
       searchChange: searchChange ?? this.searchChange,
       searchProgress: searchProgress ?? this.searchProgress,
+      internetConnection: internetConnection ?? this.internetConnection,
     );
   }
 }

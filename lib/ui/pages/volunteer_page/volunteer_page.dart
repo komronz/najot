@@ -13,6 +13,7 @@ import 'package:najot/ui/widgets/app_search_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 
+import '../../widgets/app_error_widget.dart';
 import '../kraudfanding_page_main/kraudfanding_page.dart';
 
 class VolunteerPage extends StatelessWidget {
@@ -37,143 +38,153 @@ class VolunteerPage extends StatelessWidget {
         body: BlocBuilder<VolunteerCubit, VolunteerState>(
           bloc: VolunteerCubit.to,
           builder: (context, state) {
-            if (state.loading == false) {
-              return SafeArea(
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      AppSearchWidget(
-                        onChange: (v) {
-                          VolunteerCubit.to.searchChange(v);
-                        },
-                        search: () {},
-                      ).paddingSymmetric(horizontal: 20.w),
-                      state.searchProgress
-                          ? Center(
-                        child: CircularProgressIndicator().paddingOnly(top: 220.w),
-                      )
-                          : state.searchChange==""
-                          ? Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          BannerCard().paddingSymmetric(
-                            horizontal: 10.w,
-                            vertical: 20.w,
-                          ),
-                          AppWidgets.textLocale(
-                              text: LocaleKeys.new_add,
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColorUtils.DARK2)
-                              .paddingOnly(left: 15.w, bottom: 7.w),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            physics: BouncingScrollPhysics(),
-                            child: Row(
-                              children: List.generate(
-                                state.list.length,
-                                    (index) => Container(
-                                  margin: EdgeInsets.only(left: 10.w),
-                                  child: NewVolunteerCard(
-                                    onTap: () {
-                                      NavigatorService.to.pushNamed(
-                                        VolunteerDetailPage.routeName,
-                                        arguments: VolunteerDetailModel(
-                                          cubit: VolunteerCubit.to,
-                                          cardModel: state.list[index],
-                                        ),
-                                      );
-                                    },
-                                    cardModel: state.list[index],
-                                    cubit: VolunteerCubit.to,
+            if(state.internetConnection){
+              if (state.loading == false) {
+                return SafeArea(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AppSearchWidget(
+                          onChange: (v) {
+                            VolunteerCubit.to.searchChange(v);
+                          },
+                          search: () {},
+                        ).paddingSymmetric(horizontal: 20.w),
+                        state.searchProgress
+                            ? Center(
+                          child: CircularProgressIndicator().paddingOnly(top: 220.w),
+                        )
+                            : state.searchChange==""
+                            ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            BannerCard().paddingSymmetric(
+                              horizontal: 10.w,
+                              vertical: 20.w,
+                            ),
+                            AppWidgets.textLocale(
+                                text: LocaleKeys.new_add,
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.w600,
+                                color: AppColorUtils.DARK2)
+                                .paddingOnly(left: 15.w, bottom: 7.w),
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              physics: BouncingScrollPhysics(),
+                              child: Row(
+                                children: List.generate(
+                                  state.list.length,
+                                      (index) => Container(
+                                    margin: EdgeInsets.only(left: 10.w),
+                                    child: NewVolunteerCard(
+                                      onTap: () {
+                                        NavigatorService.to.pushNamed(
+                                          VolunteerDetailPage.routeName,
+                                          arguments: VolunteerDetailModel(
+                                            cubit: VolunteerCubit.to,
+                                            cardModel: state.list[index],
+                                          ),
+                                        );
+                                      },
+                                      cardModel: state.list[index],
+                                      cubit: VolunteerCubit.to,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          AppWidgets.textLocale(
-                              text: LocaleKeys.all,
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.w600,
-                              color: AppColorUtils.DARK2)
-                              .paddingOnly(
-                            left: 15.w,
-                            top: 15.w,
-                          ),
-                          GridView.count(
-                            shrinkWrap: true,
-                            physics: ClampingScrollPhysics(),
-                            childAspectRatio: 0.68,
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 15,
-                              vertical: 5,
+                            AppWidgets.textLocale(
+                                text: LocaleKeys.all,
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.w600,
+                                color: AppColorUtils.DARK2)
+                                .paddingOnly(
+                              left: 15.w,
+                              top: 15.w,
                             ),
-                            crossAxisSpacing: 8,
-                            mainAxisSpacing: 6,
-                            crossAxisCount: 2,
-                            children: List.generate(
-                              state.list.length,
-                                  (index) => NewVolunteerCard(
-                                cubit: VolunteerCubit.to,
-                                onTap: () {
-                                  NavigatorService.to.pushNamed(
-                                    VolunteerDetailPage.routeName,
-                                    arguments: VolunteerDetailModel(
-                                      cubit: VolunteerCubit.to,
-                                      cardModel: state.list[index],
-                                    ),
-                                  );
-                                },
-                                cardModel: state.list[index],
+                            GridView.count(
+                              shrinkWrap: true,
+                              physics: ClampingScrollPhysics(),
+                              childAspectRatio: 0.68,
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 15,
+                                vertical: 5,
+                              ),
+                              crossAxisSpacing: 8,
+                              mainAxisSpacing: 6,
+                              crossAxisCount: 2,
+                              children: List.generate(
+                                state.list.length,
+                                    (index) => NewVolunteerCard(
+                                  cubit: VolunteerCubit.to,
+                                  onTap: () {
+                                    NavigatorService.to.pushNamed(
+                                      VolunteerDetailPage.routeName,
+                                      arguments: VolunteerDetailModel(
+                                        cubit: VolunteerCubit.to,
+                                        cardModel: state.list[index],
+                                      ),
+                                    );
+                                  },
+                                  cardModel: state.list[index],
+                                ),
                               ),
                             ),
+                          ],
+                        )
+                            :state.searchProjects.isNotEmpty
+                            ?GridView.count(
+                          shrinkWrap: true,
+                          physics: ClampingScrollPhysics(),
+                          childAspectRatio: 0.68,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 15,
+                            vertical: 5,
                           ),
-                        ],
-                      )
-                          :state.searchProjects.isNotEmpty
-                          ?GridView.count(
-                            shrinkWrap: true,
-                            physics: ClampingScrollPhysics(),
-                            childAspectRatio: 0.68,
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 15,
-                              vertical: 5,
+                          crossAxisSpacing: 8,
+                          mainAxisSpacing: 6,
+                          crossAxisCount: 2,
+                          children: List.generate(
+                            state.searchProjects.length,
+                                (index) => NewVolunteerCard(
+                              cubit: VolunteerCubit.to,
+                              onTap: () {
+                                NavigatorService.to.pushNamed(
+                                  VolunteerDetailPage.routeName,
+                                  arguments: VolunteerDetailModel(
+                                    cubit: VolunteerCubit.to,
+                                    cardModel: state.searchProjects[index],
+                                  ),
+                                );
+                              },
+                              cardModel: state.list[index],
                             ),
-                            crossAxisSpacing: 8,
-                            mainAxisSpacing: 6,
-                            crossAxisCount: 2,
-                            children: List.generate(
-                              state.searchProjects.length,
-                                  (index) => NewVolunteerCard(
-                                cubit: VolunteerCubit.to,
-                                onTap: () {
-                                  NavigatorService.to.pushNamed(
-                                    VolunteerDetailPage.routeName,
-                                    arguments: VolunteerDetailModel(
-                                      cubit: VolunteerCubit.to,
-                                      cardModel: state.searchProjects[index],
-                                    ),
-                                  );
-                                },
-                                cardModel: state.list[index],
-                              ),
-                            ),
-                          )
-                          :SearchNotFound()
+                          ),
+                        )
+                            :SearchNotFound()
 
 
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              );
-            } else {
-              return Container(
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
+                );
+              } else {
+                return Container(
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              }
+            }else{
+              return AppErrorWidget(
+                  onTap: () async{
+                    AppWidgets.isLoading(true);
+                    await VolunteerCubit.to.load();
+                    AppWidgets.isLoading(false);
+                  });
             }
+
           },
         ),
       ),

@@ -5,12 +5,10 @@ import 'package:dio/dio.dart';
 import 'package:najot/data/model/main_model.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/http_service.dart';
-import 'package:najot/data/services/http_service.dart';
 import 'package:najot/data/services/root_service.dart';
-
 import '../bloc/language_cubit/language_cubit.dart';
+import '../model/auth_model/user.dart';
 import '../utils/app_logger_util.dart';
-import 'http_service.dart';
 import 'http_service.dart';
 
 class MainService {
@@ -22,6 +20,28 @@ class MainService {
       return false;
     } else {
       return true;
+    }
+  }
+
+  Future<User?> getUserModel() async {
+    try {
+      final Response response = await RootService.httpService.get(
+          url: "https://api.najot.uz/ru/users/me/",
+          token: HiveService.to.getToken()
+      );
+
+      if (response.statusCode == 200) {
+        final User userModel =
+        User.fromJson(
+          response.data,);
+
+        return userModel;
+      } else {
+        AppLoggerUtil.e("-----------------");
+        return null;
+      }
+    } catch (e) {
+      return null;
     }
   }
 

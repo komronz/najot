@@ -59,26 +59,21 @@ class SavedPage extends StatelessWidget {
                 ],
               ).paddingAll(20),
             ),
-            body: _buildBody(context, state),
+            body: _buildBody(context.read<FavoriteAddCubit>()),
           ),),
 
     );
   }
-  Widget _buildBody(BuildContext context, FavoriteAddState state,
-      ) {
-    if (state.hasLoading) {
+  Widget _buildBody(FavoriteAddCubit cubit) {
+    if (cubit.state.hasLoading) {
       return Center(
         child: CircularProgressIndicator(),
-      );
-    } else if (state.hasError) {
-      return Center(
-        child: AppWidgets.imageSvg(path: AppImageUtils.IMG_WAIT),
       );
     }
     return Container(
         child: ListView(
         children: [
-          KraufandingSavedListWidget(cubit: context.read<FavoriteAddCubit>(),)
+          CrowdfundingSavedListWidget(cubit: cubit,)
         ],
     ),
     ).paddingAll(15);
