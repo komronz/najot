@@ -11,12 +11,14 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/comment_to_author_dialog.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/comments_widget.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/crowdfunding_authot_widget.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/more_widget.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/news_widget.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/payment_history_dialog.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/question_asked_widget.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comments_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/more_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/news_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/payment_history_dialog.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
@@ -79,7 +81,6 @@ class _OrganizationItemWidgetState
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: AppColorUtils.BACKGROUND,
       appBar: AppBarWithTitle(
@@ -168,7 +169,7 @@ class _OrganizationItemWidgetState
                           fontWeight: FontWeight.w500,
                           maxLines: 2,
                         ).paddingSymmetric(horizontal: 20.w),
-                        KraudfandingAuthorWidget(
+                        CrowdfundingAuthorWidget(
                           model: widget.helpModel.cardModel,
                           onTap: () {
                             showDialog(
@@ -405,7 +406,7 @@ class _OrganizationItemWidgetState
                 AppWidgets.isLoading(false);
               });
 
-        },
+        }
       ),
     );
   }

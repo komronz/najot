@@ -8,7 +8,7 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/charity_history_page/widgets/kraufanding_item_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/project_details_page.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/project_details_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class KraufandingListWidget extends StatelessWidget {

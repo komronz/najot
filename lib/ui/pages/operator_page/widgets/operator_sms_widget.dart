@@ -22,8 +22,6 @@ class OperatorSmsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var width = OperatorUserSmsWidget.calculateWidth(model.content??"");
-    var widthSize=MediaQuery.of(context).size.width;
-    var heightSize=MediaQuery.of(context).size.height;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -39,7 +37,8 @@ class OperatorSmsWidget extends StatelessWidget {
                       aspectRatio: 1,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
-                        child: Image.network(model.file!, fit: BoxFit.contain,),
+                        child: Image.network(model.file!, fit: BoxFit.contain,).paddingAll(15.w)
+                        ,
                       ),
                     ),
                   ).paddingAll(10.w),
@@ -51,23 +50,21 @@ class OperatorSmsWidget extends StatelessWidget {
               },
             );
           },
-          child: Container(
-            width: 200.w,
-            height: 200.w,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: model.file==null?Container():Container(
+              width: 250.w,
+              height: 250.w,
               child: CachedNetworkImage(
                 placeholder: (context, url)=>Center(
                   child: CircularProgressIndicator(),
                 ),
-                imageUrl: model.file!,
-                errorWidget: (context, url, error) =>
-                    Container(),
+                imageUrl: model.file??"",
                 fit: BoxFit.cover,
               ),
             ),
           ),
-        ),
+        ).paddingOnly(bottom: 5.w),
         Container(
           padding: EdgeInsets.symmetric(
             vertical: 15,

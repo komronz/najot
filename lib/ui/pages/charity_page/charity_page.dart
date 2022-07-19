@@ -11,6 +11,7 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/charity_page/widgets/charity_item2_widget.dart';
 import 'package:najot/ui/pages/charity_page/widgets/charity_item_widget.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/crowdfunding_page.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_search_widget.dart';
@@ -408,7 +409,6 @@ class _CharityPageState extends State<CharityPage>
 
                 });
           }
-
         },
       ),
     );

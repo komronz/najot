@@ -3,7 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:najot/data/bloc/kraudfanding_cubit/kraud_fanding_cubit.dart';
+import 'package:najot/data/bloc/crowdFounding_cubit/kraud_fanding_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -16,8 +16,8 @@ import '../../../widgets/app_widgets.dart';
 import '../../main_page/widgets/button_card_widget.dart';
 import '../project_details/project_details_page.dart';
 
-class KraudfandingMiniCardWidget extends StatelessWidget {
-  KraudfandingMiniCardWidget(
+class CrowdfundingMiniCardWidget extends StatelessWidget {
+  CrowdfundingMiniCardWidget(
       {required this.cardModel, required this.visible, required this.cubit});
 
   final ProjectModel cardModel;

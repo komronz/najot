@@ -2,19 +2,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/bloc/login_bloc/login_bloc.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/login_page/custom_shape.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
-
 import '../reg_page/reg_page.dart';
 import '../verification_page/verification_page.dart';
 
@@ -97,7 +94,7 @@ class LoginPage extends StatelessWidget {
                       right: 20,
                     ),
                     state.hasError ? AppWidgets.starTextWidget(
-                        text: "Telefon raqamni to'g'ri kiriting",
+                        text: LocaleKeys.enter_correct_phone_number.tr(),
                         color: AppColorUtils.RED
                     ).paddingOnly(left: 20) : SizedBox(),
                     AppWidgets.appButton(

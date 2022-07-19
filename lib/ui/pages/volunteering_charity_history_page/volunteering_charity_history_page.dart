@@ -12,8 +12,8 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/volunteering_charity_history_page/widgets/volunteering_charity_list_widget.dart';
+import 'package:najot/ui/pages/volunteering_charity_history_page/widgets/volunteering_crowdfunding_list_widget.dart';
 import 'package:najot/ui/pages/volunteering_charity_history_page/widgets/volunteering_items_charity_list_widget.dart';
-import 'package:najot/ui/pages/volunteering_charity_history_page/widgets/volunteering_kraufanding_list_widget.dart';
 import 'package:najot/ui/widgets/app_search_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../data/bloc/volunteering_charity_history_cubit/volunteering_charity_history_cubit.dart';
@@ -138,7 +138,7 @@ class VolunteeringCharityHistoryPage extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: [
-                  VolunteeringKraufandingListWidget(list: state.kraufandingList),
+                  VolunteeringCrowdfundingListWidget(list: state.kraufandingList),
                   VolunteeringCharityListWidget(list: state.charityList),
                   VolunteeringItemsCharityList(list: state.itemsCharity,)
                 ],

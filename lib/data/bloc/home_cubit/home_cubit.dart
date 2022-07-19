@@ -5,10 +5,6 @@ import 'package:najot/data/model/main_model.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/main_service.dart';
 
-import '../charity_page_cubit/charity_cubit.dart';
-import '../kraudfanding_cubit/kraud_fanding_cubit.dart';
-import '../volunteer_bloc/volunteer_cubit.dart';
-
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {

@@ -49,7 +49,7 @@ class OperatorUserSmsWidget extends StatelessWidget {
           },
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: model.file==null?Container():Container(
+            child: model.file!=null?Container(
               width: 250.w,
               height: 250.w,
               child: CachedNetworkImage(
@@ -59,10 +59,10 @@ class OperatorUserSmsWidget extends StatelessWidget {
                 imageUrl: model.file??"",
                 fit: BoxFit.cover,
               ),
-            ),
+            ):Container(),
           ),
         ).paddingOnly(bottom: 5.w),
-        Container(
+        model.content!=null?Container(
           padding: EdgeInsets.symmetric(
             vertical: 15,
             horizontal: 20,
@@ -72,7 +72,7 @@ class OperatorUserSmsWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             color: AppColorUtils.SMS_USER,
           ),
-          child: Column(
+          child:Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               AppWidgets.text(
@@ -94,7 +94,7 @@ class OperatorUserSmsWidget extends StatelessWidget {
               ).paddingOnly(top: 10),
             ],
           ),
-        ),
+        ):Container(),
       ],
     ).paddingOnly(
       bottom: 5.w,

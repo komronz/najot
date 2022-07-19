@@ -5,6 +5,7 @@ import 'package:najot/data/bloc/volunteer_bloc/volunteer_cubit.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/crowdfunding_page.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/volunteer_detail_page.dart';
 import 'package:najot/ui/pages/volunteer_page/widgets/banner_card_widget.dart';
 import 'package:najot/ui/pages/volunteer_page/widgets/new_volunteer_card.dart';
@@ -12,9 +13,6 @@ import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_search_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-
-import '../../widgets/app_error_widget.dart';
-import '../kraudfanding_page_main/kraudfanding_page.dart';
 
 class VolunteerPage extends StatelessWidget {
   VolunteerPage();
@@ -185,7 +183,7 @@ class VolunteerPage extends StatelessWidget {
                   });
             }
 
-          },
+          }
         ),
       ),
     );

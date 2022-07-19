@@ -255,5 +255,14 @@
   "project_successful_added": "Loyiha //muvaffaqiyatli// qo'shildi",
   "delete_profile": "Profilni o'chirish",
   "request_sent_successful": "So’rov //muavvaqiyatli// yuborildi",
-  "profile_will_be_deleted": "Tez orada profilingiz o’chiriladi, salomat bo’ling"
+  "profile_will_be_deleted": "Tez orada profilingiz o’chiriladi, salomat bo’ling",
+  "enter_correct_phone_number": "Telefon raqamni to'g'ri kiriting",
+  "donation": "Ehson",
+  "enter_info": "Ma'lumot kiriting",
+  "code_entered_incorrectly": "Kod notug'ri kiritilgan",
+  "enter_confirmation_code": "Tasdiqlash kodini kiriting",
+  "number_been_blocked": "Raqamingiz 24 soatga bloklandi!",
+  "wrong_code_entered": "Xato kod terildi!",
+  "number_is_registered": "Bu raqam registratsiyadan o'tgan"
+
 }

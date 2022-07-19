@@ -9,8 +9,8 @@ class OrdersCubit extends Cubit<OrdersState> {
   OrderService orderService=OrderService();
 
   Future load() async {
-    var orderServiceModel = await orderService.getModel();
     emit(state.copyWith(isLoading: true, hasError: false,),);
+    var orderServiceModel = await orderService.getModel();
     if(orderServiceModel!=null){
       emit(state.copyWith(isLoading: false, list: orderServiceModel.results));
     }else{

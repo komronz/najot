@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +9,6 @@ import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/sms_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
@@ -19,16 +16,17 @@ import 'package:najot/ui/pages/my_profil_page/my_profile_widget/show_picker_widg
 import 'package:najot/ui/widgets/app_rounded_button.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-import 'widgets/operator_clear_sms_widget.dart';
 import 'widgets/operator_sms_widget.dart';
 import 'widgets/operator_user_sms_widget.dart';
 
 class OperatorPage extends StatelessWidget {
-   OperatorPage({Key? key}) : super(key: key);
-  OperatorCubit operatorCubit= OperatorCubit();
-   TextEditingController content = TextEditingController();
+  static const String routeName = "/operatorPage";
 
-   @override
+  OperatorPage({Key? key}) : super(key: key);
+  OperatorCubit operatorCubit = OperatorCubit();
+  TextEditingController content = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => operatorCubit,
@@ -74,24 +72,24 @@ class OperatorPage extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    AppWidgets.iconButton(
-                      onTap: () async {
-                        await showDialog(
-                          context: context,
-                          builder: (ctx) => OperatorClearSmsWidget(
-                            cubit: operatorCubit,
-                          ),
-                        );
-                      },
-                      iconWidget: AppWidgets.imageSvg(
-                        path: AppImageUtils.IC_BASKET,
-                        color: AppColorUtils.RED,
-                      ).paddingAll(6.w),
-                      width: 31.w,
-                      height: 31.w,
-                      borderRadius: 3,
-                      color: AppColorUtils.DELETE_BTN,
-                    )
+                    // AppWidgets.iconButton(
+                    //   onTap: () async {
+                    //     await showDialog(
+                    //       context: context,
+                    //       builder: (ctx) => OperatorClearSmsWidget(
+                    //         cubit: operatorCubit,
+                    //       ),
+                    //     );
+                    //   },
+                    //   iconWidget: AppWidgets.imageSvg(
+                    //     path: AppImageUtils.IC_BASKET,
+                    //     color: AppColorUtils.RED,
+                    //   ).paddingAll(6.w),
+                    //   width: 31.w,
+                    //   height: 31.w,
+                    //   borderRadius: 3,
+                    //   color: AppColorUtils.DELETE_BTN,
+                    // )
                   ],
                 ).paddingSymmetric(horizontal: 20),
               ),
@@ -169,7 +167,7 @@ class OperatorPage extends StatelessWidget {
                           height: 35.w,
                           image: AppImageUtils.IC_OTHER_FILE,
                           color: AppColorUtils.SMS_BTN1,
-                          imageSelect: (v){
+                          imageSelect: (v) {
                             operatorCubit.saveImage(v);
                           },
                           imageFile: state.userImgPath,
@@ -183,9 +181,11 @@ class OperatorPage extends StatelessWidget {
                                 .textController
                                 .text
                                 .isNotEmpty) {
-                              operatorCubit
-                                  .sendSms(state.userImgPath, state.sendSmsTxt,);
-                             }
+                              operatorCubit.sendSms(
+                                state.userImgPath,
+                                state.sendSmsTxt,
+                              );
+                            }
                           },
                           icon: Icon(
                             Icons.arrow_forward_rounded,
@@ -205,6 +205,7 @@ class OperatorPage extends StatelessWidget {
   }
 
   Widget buildBody(BuildContext context, OperatorState state) {
+    var list = state.list;
     if (state.isLoading) {
       return Center(child: CircularProgressIndicator());
     } else if (state.hasError) {
@@ -214,11 +215,6 @@ class OperatorPage extends StatelessWidget {
         child: Icon(Icons.network_check),
       );
     }
-    return buildList(context, state);
-  }
-
-  Widget buildList(BuildContext context, OperatorState state) {
-    var list = state.list;
     if (list!.isEmpty) {
       return SingleChildScrollView(
         child: Column(
@@ -239,7 +235,8 @@ class OperatorPage extends StatelessWidget {
               fontSize: 18.sp,
               color: AppColorUtils.GRAY_4,
               height: 1.4,
-            ).paddingOnly(top: 21).paddingSymmetric(horizontal: 86.w), // TODO: Warning
+            ).paddingOnly(top: 21).paddingSymmetric(horizontal: 86.w),
+            // TODO: Warning
           ],
         ),
       );
@@ -249,7 +246,7 @@ class OperatorPage extends StatelessWidget {
       controller: operatorCubit.controller,
       physics: BouncingScrollPhysics(),
       itemBuilder: (context, index) {
-        if (list[index]!.isClient==false) {
+        if (list[index]!.isClient == false) {
           return OperatorSmsWidget(
             model: list[index]!,
           );

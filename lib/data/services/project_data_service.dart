@@ -18,8 +18,7 @@ class ProjectDataService {
   Future<NewsModel?> getNewsById(int id) async {
     try {
       final Response response = await RootService.httpService.get(
-          url:
-              "https://api.najot.uz/${LanguageCubit.getLang()}/news/?project__id=${id}",
+          url: "https://api.najot.uz/${LanguageCubit.getLang()}/news/?project__id=${id}",
           token: HiveService.to.getToken());
       print(response.statusCode);
       if (response.statusCode == 200) {
@@ -43,7 +42,7 @@ class ProjectDataService {
     File image,
   ) async {
     try {
-      final path = 'https://api.najot.uz/ru/news/';
+      final path = 'https://api.najot.uz/${LanguageCubit.getLang()}/news/';
       String fileName = image.path.split('/').last;
       FormData formData = FormData.fromMap({
         "project": id,
@@ -75,7 +74,7 @@ class ProjectDataService {
   Future<QuestionModel?> getQuestionsById(int id) async {
     try {
       final Response response = await RootService.httpService.get(
-          url: "https://api.najot.uz/ru/question/?project__id=${id}",
+          url: "https://api.najot.uz/${LanguageCubit.getLang()}/question/?project__id=${id}",
           token: HiveService.to.getToken());
       if (response.statusCode == 200) {
         final QuestionModel responseModel = QuestionModel.fromJson(
@@ -94,7 +93,7 @@ class ProjectDataService {
   Future<CommentsModel?> getCommentsById(int id) async {
     try {
       final Response response = await RootService.httpService.get(
-          url: "https://api.najot.uz/uz/project/${id}/comment/list/",
+          url: "https://api.najot.uz/${LanguageCubit.getLang()}/project/${id}/comment/list/",
           token: HiveService.to.getToken());
       if (response.statusCode == 200) {
         final CommentsModel responseModel = CommentsModel.fromJson(
@@ -164,7 +163,7 @@ class ProjectDataService {
 
   Future<bool?> postQuestionBYId(int id, String title, String content) async {
     try {
-      final path = 'https://api.najot.uz/ru/question/';
+      final path = 'https://api.najot.uz/${LanguageCubit.getLang()}/question/';
       final body = {"title": title, "content": content, "project": id};
       final headers = {HttpHeaders.contentTypeHeader: "application/json"};
       var response = await _httpService.post(

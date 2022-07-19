@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
+import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/my_profile_service.dart';
 import 'package:najot/data/services/user_update_service.dart';
 import '../../../ui/widgets/app_widgets.dart';

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:najot/data/bloc/language_cubit/language_cubit.dart';
 import 'package:najot/data/model/operator_model.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/http_service.dart';
@@ -18,7 +19,7 @@ class OperatorService{
   Future<OperatorModel?> getModel() async {
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://api.najot.uz/ru/operator-chat/",
+        url: "https://api.najot.uz/${LanguageCubit.getLang()}/operator-chat/",
         token: HiveService.to.getToken(),
       );
       if (response.statusCode == 200) {
@@ -40,7 +41,7 @@ class OperatorService{
       String content,
       ) async {
     try {
-      final _path = "https://api.najot.uz/ru/operator-chat/";
+      final _path = "https://api.najot.uz/${LanguageCubit.getLang()}/operator-chat/";
       FormData formData;
       if(file!=null){
         String file1 = file.path.split('/').last;

@@ -38,8 +38,6 @@ class AboutPage extends StatelessWidget {
             create: (context) =>AboutCubit()..getAboutList(),
         )
       ],
-
-
       child: Scaffold(
         key: UniqueKey(),
       backgroundColor: AppColorUtils.BACKGROUND,
@@ -86,7 +84,6 @@ class AboutPage extends StatelessWidget {
           scrollDirection: Axis.vertical,
           child: Column(children: [
             SizedBox(
-
               child: BlocBuilder<AboutCubit, AboutState>(
                   builder: (context, state){
                     if(state.hasLoading){
@@ -107,10 +104,7 @@ class AboutPage extends StatelessWidget {
                                     width: 400,
                                     height: 360,
                                   ).paddingOnly(top: 30,left: 20,right: 20),
-                                  // AppWidgets.imageAsset(
-                                  //     path:AppImageUtils.IMG_ABOUT,
-                                  //   width: context.width,
-                                  // ).paddingOnly(top: 30,left: 20,right: 20),
+
                                   AppWidgets.text(
                                     text:'${state.list.length>0 ? state.list[3].name : ""}',
                                     maxLines: 100,

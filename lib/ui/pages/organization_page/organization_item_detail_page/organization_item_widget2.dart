@@ -10,11 +10,15 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/charity_page/widgets/detail_body_part2.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/comment_to_author_dialog.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/comments_widget.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/crowdfunding_authot_widget.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/more_widget.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/news_widget.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/payment_history_dialog.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/question_asked_widget.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/support_project_dialog.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/comment_to_author_dialog.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/payment_history_dialog.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/support_project_dialog.dart';
 import 'package:najot/ui/pages/organization_page/organization_item_detail_page/organization_item_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -56,6 +60,7 @@ class _OrganizationItemWidget2State extends State<OrganizationItemWidget2>
 
   @override
   void initState() {
+    print(widget.model.cardModel.isFavourite!);
     like = widget.model.cardModel.isFavourite!;
     _controller = TabController(length: 4, vsync: this);
     _controller.addListener(_handleTabSelection);
@@ -160,7 +165,7 @@ class _OrganizationItemWidget2State extends State<OrganizationItemWidget2>
                             fontWeight: FontWeight.w500,
                             maxLines: 2,
                           ).paddingSymmetric(horizontal: 20.w),
-                          KraudfandingAuthorWidget(
+                          CrowdfundingAuthorWidget(
                             model: widget.model.cardModel,
                             onTap: () {
                               showDialog(

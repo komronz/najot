@@ -257,5 +257,12 @@ abstract class  LocaleKeys {
   static const delete_profile = 'delete_profile';
   static const request_sent_successful = 'request_sent_successful';
   static const profile_will_be_deleted = 'profile_will_be_deleted';
-
+  static const enter_correct_phone_number = 'enter_correct_phone_number';
+  static const donation = 'donation';
+  static const enter_info = 'enter_info';
+  static const code_entered_incorrectly = 'code_entered_incorrectly';
+  static const enter_confirmation_code = 'enter_confirmation_code';
+  static const number_been_blocked = 'number_been_blocked';
+  static const wrong_code_entered = 'wrong_code_entered';
+  static const number_is_registered = 'number_is_registered';
 }

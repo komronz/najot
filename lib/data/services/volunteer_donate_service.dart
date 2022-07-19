@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:najot/data/bloc/language_cubit/language_cubit.dart';
 import 'package:najot/data/model/volunteer_donate_model.dart';
 import 'package:najot/data/model/volunteer_model.dart';
 import 'package:najot/data/services/hive_service.dart';
@@ -9,9 +10,8 @@ class VolunteerDonateService{
   Future<VolunteerDonate?> getVolunteerModel() async {
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://api.najot.uz/ru/volunteer-donate/?status=pending&page_size=15",
+        url: "https://api.najot.uz/${LanguageCubit.getLang()}/volunteer-donate/?status=pending&page_size=15",
         token: HiveService.to.getToken(),
-
       );
       if (response.statusCode == 200) {
         final VolunteerDonate responseModel =
@@ -29,7 +29,7 @@ class VolunteerDonateService{
   Future<VolunteerDonate?> getItemVolunteerModel() async {
     try {
       final Response response = await RootService.httpService.get(
-        url: "https://api.najot.uz/ru/volunteer-donate/?type=CH&page_size=15",
+        url: "https://api.najot.uz/${LanguageCubit.getLang()}/volunteer-donate/?type=CH&page_size=15",
         token: HiveService.to.getToken(),
       );
       if (response.statusCode == 200) {

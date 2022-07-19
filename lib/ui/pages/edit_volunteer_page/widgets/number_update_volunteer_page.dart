@@ -139,7 +139,7 @@ class NumberUpdateVolunteerPage extends StatelessWidget {
                                     right: 20.w,
                                   ),
                                   state.hasError ? AppWidgets.starTextWidget(
-                                      text: "Telefon raqamni to'g'ri kiriting",
+                                      text: LocaleKeys.enter_correct_phone_number.tr(),
                                       color: AppColorUtils.RED
                                   ).paddingOnly(left: 20) : SizedBox(),
                                   SizedBox(height: 15.w,)

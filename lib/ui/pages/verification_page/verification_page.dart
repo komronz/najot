@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -68,7 +69,7 @@ class VerificationPage extends StatelessWidget with SmartAuth {
                         ).paddingOnly(top: 20),
                         state.codeError
                             ? AppWidgets.starTextWidget(
-                                    text: "Kod notug'ri kiritilgan",
+                                    text: LocaleKeys.code_entered_incorrectly.tr(),
                                     fontSize: 12.w,
                         )
                                 .paddingOnly(left: 120.w, top: 10)
@@ -98,7 +99,7 @@ class VerificationPage extends StatelessWidget with SmartAuth {
                                 LoginEnd(a),
                               );
                             }else{
-                              AppWidgets.showText(text: "tasdiqlash kodini kiriting");
+                              AppWidgets.showText(text: LocaleKeys.enter_confirmation_code.tr());
                             }
 
                           },
@@ -108,10 +109,8 @@ class VerificationPage extends StatelessWidget with SmartAuth {
                           right: 20,
                         ),
                         AppWidgets.appButton(
-                          title: "Boshqa raqam kiritish",
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
+                          title: LocaleKeys.enter_another_number.tr(),
+                          onTap: () {},
                           color: Colors.transparent,
                           textColor: AppColorUtils.TEXT_GREEN,
                         ).paddingOnly(

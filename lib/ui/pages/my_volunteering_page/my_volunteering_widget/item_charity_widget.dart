@@ -10,6 +10,7 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/volunteer_donate_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/waiting_for_date_picker_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../../data/model/volunteering_model.dart';
@@ -234,8 +235,26 @@ class ItemCharityWidget extends StatelessWidget {
                         model.project!.isDone!
                             ? AppWidgets.imageSvg(
                                 path: AppImageUtils.NOTIFICATION_GREY)
-                            : AppWidgets.imageSvg(
-                                path: AppImageUtils.NOTIFICATION),
+                            :
+                        InkWell(
+                          onTap: () async {
+                            await showDialog(
+                              context: context,
+                              builder: (context) => WaitingForDatePickerWidget(
+                                selectFunction: (dateTime) {
+                                  // print(dateTime.toUtc().toString());
+                                  // bloc.add(VolunteerBirthDateSelected(dateTime));
+                                },
+                                index: index,
+                                model: model,
+                                cubit: cubit,
+                              ),
+                            );
+                          },
+                          child: AppWidgets.imageSvg(
+                            path: AppImageUtils.NOTIFICATION,),
+                        ),
+
                       ],
                     ),
                   ],

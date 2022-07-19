@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:najot/data/bloc/kraudfanding_cubit/kraud_fanding_cubit.dart';
+import 'package:najot/data/bloc/crowdFounding_cubit/kraud_fanding_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/kraudfanding_page_main/project_details/widgets/KraudfandingBanner.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/crowdfunding_widget/crowdfunding_mini_card_widget.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/crowdfunding_banner.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_search_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../widgets/app_error_widget.dart';
-import 'kraudfanding_widget/kraudfanding_mini_card_widget.dart';
 
 class CrowdfundingPage extends StatefulWidget {
   CrowdfundingPage();
@@ -89,7 +89,7 @@ class _CrowdfundingPageState extends State<CrowdfundingPage>
                         ?Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        KraudfandingBanner(),
+                        CrowdfundingBanner(),
                         AppWidgets.textLocale(
                           text: LocaleKeys.new_add,
                           fontSize: 18,
@@ -106,7 +106,7 @@ class _CrowdfundingPageState extends State<CrowdfundingPage>
                           child: Row(
                             children: List.generate(
                               state.crowdfundingModel.length,
-                                  (index) => KraudfandingMiniCardWidget(
+                                  (index) => CrowdfundingMiniCardWidget(
                                 cubit: CrowdfundingCubit.to,
                                 cardModel:
                                 state.crowdfundingModel[index],
@@ -197,7 +197,7 @@ class _CrowdfundingPageState extends State<CrowdfundingPage>
                                       mainAxisSpacing: 6,
                                       children: List.generate(
                                         state.tabProjects.length,
-                                            (index) => KraudfandingMiniCardWidget(
+                                            (index) => CrowdfundingMiniCardWidget(
                                           cubit: CrowdfundingCubit.to,
                                           visible: true,
                                           cardModel: state.tabProjects[index],
@@ -226,7 +226,7 @@ class _CrowdfundingPageState extends State<CrowdfundingPage>
                         mainAxisSpacing: 6,
                         children: List.generate(
                           state.searchProjects.length,
-                              (index) => KraudfandingMiniCardWidget(
+                              (index) => CrowdfundingMiniCardWidget(
                             cubit: CrowdfundingCubit.to,
                             visible: true,
                             cardModel: state.searchProjects[index],

@@ -12,8 +12,8 @@ import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
 import '../../main_page/widgets/button_card_widget.dart';
 
-class KraudfandingSavedPage extends StatelessWidget {
-  KraudfandingSavedPage(
+class CrowdfundingSavedPage extends StatelessWidget {
+  CrowdfundingSavedPage(
       {required this.model, required this.visible, Key? key})
       : super(key: key);
   final FavouriteModel model;

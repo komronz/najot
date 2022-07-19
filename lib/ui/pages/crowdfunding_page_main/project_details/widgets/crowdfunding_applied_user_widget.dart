@@ -6,10 +6,10 @@ import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-class KraudfandingAppliedUserWidgets extends StatelessWidget {
+class CrowdfundingAppliedUserWidgets extends StatelessWidget {
   final ProjectModel model;
 
-  const KraudfandingAppliedUserWidgets({
+  CrowdfundingAppliedUserWidgets({
     required this.model,
     Key? key,
   }) : super(key: key);
