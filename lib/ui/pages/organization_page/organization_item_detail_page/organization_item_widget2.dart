@@ -20,6 +20,8 @@ import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../../data/bloc/home_cubit/home_cubit.dart';
 import '../../../../data/bloc/project_data_cubit/project_data_cubit.dart';
+import '../../../../data/services/main_service.dart';
+import '../../../widgets/app_error_widget.dart';
 import '../../kraudfanding_page_main/project_details/widgets/comments_widget.dart';
 import '../../kraudfanding_page_main/project_details/widgets/more_widget.dart';
 import '../../kraudfanding_page_main/project_details/widgets/news_widget.dart';
@@ -54,7 +56,6 @@ class _OrganizationItemWidget2State extends State<OrganizationItemWidget2>
 
   @override
   void initState() {
-    print(widget.model.cardModel.isFavourite!);
     like = widget.model.cardModel.isFavourite!;
     _controller = TabController(length: 4, vsync: this);
     _controller.addListener(_handleTabSelection);
@@ -80,9 +81,11 @@ class _OrganizationItemWidget2State extends State<OrganizationItemWidget2>
             NavigatorService.to.pop();
           },
         ),
-        body: BlocBuilder<CharityCubit, CharityState>(
+        body: BlocBuilder<OrganizationCubit, OrganizationState>(
+          bloc: OrganizationCubit.to,
           builder: (context, state) {
-            return SingleChildScrollView(
+            if(state.internetConnection){
+              return SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 child: Column(
                   children: [
@@ -290,12 +293,16 @@ class _OrganizationItemWidget2State extends State<OrganizationItemWidget2>
                                   height: 48.w,
                                   width: 48.w,
                                   onTap: () async{
-                                    print(like);
-                                    await OrganizationCubit.to.changeLike(widget.model.cardModel.id!);
-                                    setState(() {
-                                      like=!like;
-                                    });
-                                    await OrganizationCubit.to.findProject(widget.model.id);
+                                    var connection = await MainService().checkInternetConnection();
+                                    if(connection){
+                                      await OrganizationCubit.to.changeLike(widget.model.cardModel.id!,);
+                                      setState(() {
+                                        like=!like;
+                                      });
+                                      await OrganizationCubit.to.findProject(widget.model.id,);
+                                    }else{
+                                      AppWidgets.showText(text: "Internet bilan aloqa yo'q!",);
+                                    }
                                   },
                                 )
                               ],
@@ -305,7 +312,15 @@ class _OrganizationItemWidget2State extends State<OrganizationItemWidget2>
                       ),
                     ),
                   ],
-                ));
+                ),);
+            }
+            return AppErrorWidget(
+                onTap: () async{
+                  AppWidgets.isLoading(true);
+                  await OrganizationCubit.to.load();
+                  AppWidgets.isLoading(false);
+                });
+
           },
         ),
       ),

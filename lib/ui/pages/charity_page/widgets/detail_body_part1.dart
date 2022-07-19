@@ -71,7 +71,7 @@ class DetailBodyPart1 extends StatelessWidget {
           color: AppColorUtils.DARK_6,
         ).paddingOnly(top: 13.w, left: 20.w, bottom: 3.w),
         AppWidgets.text(
-            text: cardModel.title??"",
+            text: cardModel.helpType??"",
             maxLines: 2,
             fontWeight: FontWeight.w600,
             fontSize: 16.sp,

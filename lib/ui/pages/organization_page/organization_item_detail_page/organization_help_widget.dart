@@ -1,5 +1,6 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -48,6 +49,7 @@ class OrganizationHelpWidget extends StatelessWidget {
         body: BlocBuilder<OrganizationCubit, OrganizationState>(
           bloc: helpModel.cubit,
           builder: (context, state) {
+            var modifiedAt = DateTime.parse(helpModel.cardModel.modifiedAt!);
             return SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,7 +91,7 @@ class OrganizationHelpWidget extends StatelessWidget {
                     bottom: 3.w,
                   ),
                   AppWidgets.text(
-                    text: "Drenajni kuzatish uchun mo’ljallangan moslama",
+                    text: helpModel.cardModel.title??"",
                     fontSize: 20.sp,
                     color: AppColorUtils.DARK2,
                     fontWeight: FontWeight.w500,
@@ -102,9 +104,16 @@ class OrganizationHelpWidget extends StatelessWidget {
                         width: 50.w,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: NetworkImage(helpModel.cardModel.coverUrl!),
-                              fit: BoxFit.cover),
+                          color: Colors.black12,
+                        ),
+                        child: CachedNetworkImage(
+                          imageUrl: helpModel.cardModel.cover!,
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) => Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.person),
                         ),
                       ).paddingOnly(
                         top: 15.w,
@@ -123,7 +132,8 @@ class OrganizationHelpWidget extends StatelessWidget {
                           SizedBox(
                             width: 150.w,
                             child: AppWidgets.text(
-                              text: "Eshonov Fakhriyor",
+                              text:   "${helpModel.cardModel.owner!.firstName} "
+                                  "${helpModel.cardModel.owner!.lastName}",
                               color: AppColorUtils.TEXT_GREEN2,
                               fontWeight: FontWeight.w600,
                               fontSize: 14.sp,
@@ -147,7 +157,7 @@ class OrganizationHelpWidget extends StatelessWidget {
                         children: [
                           SvgPicture.asset(AppImageUtils.DATE),
                           AppWidgets.text(
-                            text: helpModel.cardModel.createdAt!,
+                            text: DateFormat("yyyy.MM.dd").format(modifiedAt),
                             color: AppColorUtils.BLUE_PERCENT,
                             fontWeight: FontWeight.w600,
                             fontSize: 16.sp,
@@ -163,7 +173,7 @@ class OrganizationHelpWidget extends StatelessWidget {
                     color: AppColorUtils.DARK_6,
                   ).paddingOnly(top: 13.w, left: 20.w, bottom: 3.w),
                   AppWidgets.text(
-                      text: "Ovqat qilib berish va uyni yig'ishtirish",
+                      text: helpModel.cardModel.helpType??"",
                       maxLines: 2,
                       fontWeight: FontWeight.w600,
                       fontSize: 16.sp,
@@ -180,7 +190,7 @@ class OrganizationHelpWidget extends StatelessWidget {
                     bottom: 3.w,
                   ),
                   AppWidgets.text(
-                      text: "Toshkent Shahar, Mirobod tumani*********",
+                      text: helpModel.cardModel.address??"",
                       fontSize: 14.w,
                       fontWeight: FontWeight.w500,
                       color: AppColorUtils.TEXT_BLUE,

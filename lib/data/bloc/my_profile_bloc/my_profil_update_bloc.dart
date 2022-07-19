@@ -8,6 +8,7 @@ import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/services/my_profile_service.dart';
 import 'package:najot/data/services/user_update_service.dart';
 import '../../../ui/widgets/app_widgets.dart';
+import '../../model/number_change_model.dart';
 import '../../utils/app_logger_util.dart';
 part 'my_profil_update_event.dart';
 
@@ -192,12 +193,18 @@ class MyProfileUpdateBloc
   ) async {
     print(event.number);
       var response = await userUpdateService.postNumber(event.number);
-      if (response != null) {
+      if (response is NumberChangeModel) {
         emit(state.copyWith(codeToken: response.code));
         emit(state.copyWith(isVisible: true));
         emit(state.copyWith(isVisible: false));
-      }else{
-        AppWidgets.showText(text: "Bu raqam registratsiyadan o'tgan");
+      }
+      if(response is bool){
+        if(response ==true){
+          AppWidgets.showText(text: "Bu raqam registratsiyadan o'tgan");
+        }
+        if(response ==false){
+          AppWidgets.showText(text: "Raqam noto'g'ri kiritilgan!");
+        }
       }
 
   }

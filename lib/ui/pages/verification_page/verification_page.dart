@@ -109,7 +109,9 @@ class VerificationPage extends StatelessWidget with SmartAuth {
                         ),
                         AppWidgets.appButton(
                           title: "Boshqa raqam kiritish",
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
                           color: Colors.transparent,
                           textColor: AppColorUtils.TEXT_GREEN,
                         ).paddingOnly(

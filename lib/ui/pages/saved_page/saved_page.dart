@@ -56,6 +56,7 @@ class SavedPage extends StatelessWidget {
                       fit: BoxFit.fill,
                     ),
                   )
+
                 ],
               ).paddingAll(20),
             ),

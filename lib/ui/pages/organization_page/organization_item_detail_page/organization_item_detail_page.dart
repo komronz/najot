@@ -166,7 +166,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
                           children: List.generate(
                             OrganizationCubit.to.state.project?.results?.length ?? 0,
                             (index) {
-                              if (state.project!.results![index].organization !=
+                              if (state.project!.results![index].requiredFund !=
                                   null) {
                                 return CharityItemWidget(
                                   onTap: () {
@@ -180,12 +180,11 @@ class OrganizationItemDetailPage extends StatelessWidget {
                                   },
                                   model: state.project!.results![index],
                                   onTapLike: () {
-                                    print(state.project!.results![index].isFavourite);
-                                  }
-                                  //   OrganizationCubit.to.changeLike(
-                                  //       state.project!.results![index].id!);
-                                  //   OrganizationCubit.to.findProject(model.model.id!);
-                                  // },
+
+                                    OrganizationCubit.to.changeLike(
+                                        state.project!.results![index].id!);
+                                    OrganizationCubit.to.findProject(model.model.id!);
+                                  },
                                 ).paddingOnly(left: 20.w);
                               } else {
                                 return CharityItem2Widget(

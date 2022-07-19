@@ -6,11 +6,13 @@ class OrganizationState extends Equatable {
   final bool tobeVolunteer;
   final bool checkBox;
   final bool saveHelp;
+  final bool internetConnection;
 
   OrganizationState(
       {required this.checkBox,
       this.list = const [],
       this.project,
+      this.internetConnection = true,
       this.tobeVolunteer = true,
       this.saveHelp = true});
 
@@ -22,6 +24,7 @@ class OrganizationState extends Equatable {
         project,
         checkBox,
         saveHelp,
+    internetConnection
       ];
 
   OrganizationState copyWith({
@@ -30,6 +33,7 @@ class OrganizationState extends Equatable {
     bool? tobeVolunteer,
     bool? checkBox,
     bool? saveHelp,
+    bool? internetConnection
   }) {
     return OrganizationState(
       list: list ?? this.list,
@@ -37,6 +41,7 @@ class OrganizationState extends Equatable {
       tobeVolunteer: tobeVolunteer ?? this.tobeVolunteer,
       checkBox: checkBox ?? this.checkBox,
       saveHelp: saveHelp ?? this.saveHelp,
+      internetConnection: internetConnection ?? this.internetConnection,
     );
   }
 }

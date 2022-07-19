@@ -7,6 +7,7 @@ import '../../../data/localization/locale_keys.g.dart';
 import '../../../data/services/navigator_service.dart';
 import '../../../data/utils/app_color_utils.dart';
 import '../../../data/utils/app_image_utils.dart';
+import '../../widgets/app_error_widget.dart';
 import '../../widgets/app_widgets.dart';
 import '../home_page/home_page.dart';
 import '../notification_page/notification_page.dart';
@@ -22,6 +23,7 @@ class OrganizationPage extends StatelessWidget {
       create: (context) => OrganizationCubit.to..load(),
       child: BlocBuilder<OrganizationCubit, OrganizationState>(
           builder: (context, state) {
+          if(state.internetConnection){
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: AppColorUtils.BACKGROUND,
@@ -42,7 +44,7 @@ class OrganizationPage extends StatelessWidget {
                 ),
               ),
               body: Container(
-                 padding: EdgeInsets.all(15.w),
+                padding: EdgeInsets.all(15.w),
                 color: AppColorUtils.BACKGROUND,
                 child: GridView.count(
                   shrinkWrap: true,
@@ -62,6 +64,13 @@ class OrganizationPage extends StatelessWidget {
                 ),
               ),
             );
+          }
+          return AppErrorWidget(
+              onTap: () async{
+                AppWidgets.isLoading(true);
+                await OrganizationCubit.to.load();
+                AppWidgets.isLoading(false);
+              });
           }),
     );
   }

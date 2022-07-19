@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +8,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:najot/data/bloc/organization_cubit/organization_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
@@ -21,6 +21,9 @@ import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 import '../../../../data/bloc/project_data_cubit/project_data_cubit.dart';
+import '../../../../data/services/main_service.dart';
+import '../../../widgets/app_error_widget.dart';
+import '../../charity_page/widgets/detail_body_part1.dart';
 import '../../kraudfanding_page_main/project_details/widgets/comment_to_author_dialog.dart';
 import '../../kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
 import 'organization_help_widget.dart';
@@ -76,6 +79,7 @@ class _OrganizationItemWidgetState
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: AppColorUtils.BACKGROUND,
       appBar: AppBarWithTitle(
@@ -87,7 +91,8 @@ class _OrganizationItemWidgetState
       body: BlocBuilder<OrganizationCubit, OrganizationState>(
         bloc: OrganizationCubit.to,
         builder: (context, state) {
-          return SingleChildScrollView(
+          if(state.internetConnection){
+            return SingleChildScrollView(
               physics: BouncingScrollPhysics(),
               child: Column(
                 children: [
@@ -100,6 +105,7 @@ class _OrganizationItemWidgetState
                       ),
                     ),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Stack(
                           children: [
@@ -156,7 +162,7 @@ class _OrganizationItemWidgetState
                           ],
                         ),
                         AppWidgets.text(
-                          text: "Drenajni kuzatish uchun mo’jallangan moslama",
+                          text: widget.helpModel.cardModel.title??"",
                           fontSize: 20.sp,
                           color: AppColorUtils.DARK2,
                           fontWeight: FontWeight.w500,
@@ -177,7 +183,8 @@ class _OrganizationItemWidgetState
                           },
                         ).paddingOnly(top: 15.w),
                         SizedBox(height: 12.w),
-                        // DetailBodyPart1(cardModel: widget.helpModel.cardModel)
+                        DetailBodyPart1(cardModel: widget.helpModel.cardModel,),
+                        SizedBox(height: 12.w),
                       ],
                     ),
                   ),
@@ -277,113 +284,127 @@ class _OrganizationItemWidgetState
                           ),
                           state.saveHelp
                               ? Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    state.tobeVolunteer
-                                        ? SizedBox()
-                                        : AppWidgets.text(
-                                            text:
-                                                LocaleKeys.tobe_volunteer.tr(),
-                                            color: AppColorUtils.DARK_6,
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 12.w,
-                                            richText: true,
-                                            othersMarkers: [
-                                                MarkerText(
-                                                  marker: "&",
-                                                  style: TextStyle(
-                                                    color: AppColorUtils.RED,
-                                                  ),
-                                                ),
-                                                MarkerText(
-                                                  marker: "//",
-                                                  style: TextStyle(
-                                                    color: AppColorUtils.BLACK,
-                                                  ),
-                                                )
-                                              ]).paddingSymmetric(
-                                            horizontal: 20.w,
-                                            vertical: 10.w,
-                                          ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        ButtonCard(
-                                          onPress: () {
-                                            if (state.tobeVolunteer == true) {
-                                              NavigatorService.to.pushNamed(
-                                                OrganizationHelpWidget
-                                                    .routeName,
-                                                arguments:
-                                                    OrganizationHelpModel(
-                                                  cardModel: widget
-                                                      .helpModel.cardModel,
-                                                  cubit: OrganizationCubit.to,
-                                                ),
-                                              );
-                                            } else {
-                                              Fluttertoast.showToast(
-                                                msg: LocaleKeys.be_volunteer.tr(),
-                                              );
-                                            }
-                                          },
-                                          text: LocaleKeys.help,
-                                          height: 48.w,
-                                          width: 274.w,
-                                          color: state.tobeVolunteer
-                                              ? AppColorUtils.PERCENT_COLOR
-                                              : AppColorUtils.DISABLE_BC,
-                                          textSize: 16.sp,
-                                          fontWeight: FontWeight.w600,
-                                          textColor: AppColorUtils.WHITE,
-                                        ),
-                                        AppWidgets.favouriteButton(
-                                          select: like,
-                                          height: 48.w,
-                                          width: 48.w,
-                                          onTap: () async{
-                                            await OrganizationCubit.to.changeLike(widget.helpModel.cardModel.id!);
-                                            setState(() {
-                                              like=!like;
-                                            });
-                                            await OrganizationCubit.to.findProject(widget.helpModel.id);
-                                          },
-                                        )
-                                      ],
-                                    ).paddingSymmetric(horizontal: 20.w),
-                                  ],
-                                )
-                              : Column(
-                                  children: [
-                                    ButtonCard(
-                                      onPress: () {},
-                                      text: LocaleKeys.go_to_personal_profile,
-                                      height: 48.w,
-                                      width: 1.sw,
-                                      color: AppColorUtils.BLUE_BUTTON,
-                                      textSize: 16.sp,
-                                      fontWeight: FontWeight.w600,
-                                      textColor: AppColorUtils.WHITE,
-                                    ).paddingSymmetric(horizontal: 20.w),
-                                    AppWidgets.starTextWidget(
-                                      text: LocaleKeys.you_accepted_ad,
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w500,
-                                      color: AppColorUtils.DARK_6,
-                                    ).paddingOnly(
-                                      left: 20.w,
-                                      top: 10.w,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              state.tobeVolunteer
+                                  ? SizedBox()
+                                  : AppWidgets.text(
+                                  text:
+                                  LocaleKeys.tobe_volunteer.tr(),
+                                  color: AppColorUtils.DARK_6,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 12.w,
+                                  richText: true,
+                                  othersMarkers: [
+                                    MarkerText(
+                                      marker: "&",
+                                      style: TextStyle(
+                                        color: AppColorUtils.RED,
+                                      ),
+                                    ),
+                                    MarkerText(
+                                      marker: "//",
+                                      style: TextStyle(
+                                        color: AppColorUtils.BLACK,
+                                      ),
                                     )
-                                  ],
-                                )
+                                  ]).paddingSymmetric(
+                                horizontal: 20.w,
+                                vertical: 10.w,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+                                children: [
+                                  ButtonCard(
+                                    onPress: () {
+                                      if (state.tobeVolunteer == true) {
+                                        NavigatorService.to.pushNamed(
+                                          OrganizationHelpWidget
+                                              .routeName,
+                                          arguments:
+                                          OrganizationHelpModel(
+                                            cardModel: widget
+                                                .helpModel.cardModel,
+                                            cubit: OrganizationCubit.to,
+                                          ),
+                                        );
+                                      } else {
+                                        Fluttertoast.showToast(
+                                          msg: LocaleKeys.be_volunteer.tr(),
+                                        );
+                                      }
+                                    },
+                                    text: LocaleKeys.help,
+                                    height: 48.w,
+                                    width: 274.w,
+                                    color: state.tobeVolunteer
+                                        ? AppColorUtils.PERCENT_COLOR
+                                        : AppColorUtils.DISABLE_BC,
+                                    textSize: 16.sp,
+                                    fontWeight: FontWeight.w600,
+                                    textColor: AppColorUtils.WHITE,
+                                  ),
+                                  AppWidgets.favouriteButton(
+                                    select: like,
+                                    height: 48.w,
+                                    width: 48.w,
+                                    onTap: () async{
+                                      var connection = await MainService().checkInternetConnection();
+                                      if(connection){
+                                        await OrganizationCubit.to.changeLike(widget.helpModel.cardModel.id!);
+                                        setState(() {
+                                          like=!like;
+                                        });
+                                        await OrganizationCubit.to.findProject(widget.helpModel.id);
+                                      }else{
+                                        AppWidgets.showText(text: "Internet bilan aloqa yo'q!");
+                                      }
+
+                                    },
+                                  )
+                                ],
+                              ).paddingSymmetric(horizontal: 20.w),
+                            ],
+                          )
+                              : Column(
+                            children: [
+                              ButtonCard(
+                                onPress: () {},
+                                text: LocaleKeys.go_to_personal_profile,
+                                height: 48.w,
+                                width: 1.sw,
+                                color: AppColorUtils.BLUE_BUTTON,
+                                textSize: 16.sp,
+                                fontWeight: FontWeight.w600,
+                                textColor: AppColorUtils.WHITE,
+                              ).paddingSymmetric(horizontal: 20.w),
+                              AppWidgets.starTextWidget(
+                                text: LocaleKeys.you_accepted_ad,
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w500,
+                                color: AppColorUtils.DARK_6,
+                              ).paddingOnly(
+                                left: 20.w,
+                                top: 10.w,
+                              )
+                            ],
+                          )
                         ],
                       ),
                     ),
                   ),
                 ],
               ),
-          );
+            );
+          }
+          return AppErrorWidget(
+              onTap: () async{
+                AppWidgets.isLoading(true);
+                await OrganizationCubit.to.load();
+                AppWidgets.isLoading(false);
+              });
+
         },
       ),
     );
