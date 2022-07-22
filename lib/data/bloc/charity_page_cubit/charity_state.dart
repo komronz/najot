@@ -11,6 +11,7 @@ class CharityState extends Equatable {
       this.checkBox = false,
       this.searchProjects = const [],
       this.searchProgress = false,
+      this.internetConnection = false,
       this.searchChange = "",
       this.saveHelp = true});
 
@@ -24,6 +25,7 @@ class CharityState extends Equatable {
   final bool saveHelp;
   List<ProjectModel> searchProjects;
   final bool searchProgress;
+  final bool internetConnection;
   String searchChange;
 
   @override
@@ -40,6 +42,7 @@ class CharityState extends Equatable {
         searchProjects,
         searchProjects,
         searchChange,
+    internetConnection
       ];
 
   CharityState copyWith({
@@ -54,6 +57,7 @@ class CharityState extends Equatable {
     List<ProjectModel>? searchProjects,
     String? searchChange,
     bool? searchProgress,
+    bool? internetConnection,
   }) {
     return CharityState(
       charityModel: charityModel ?? this.charityModel,
@@ -67,6 +71,7 @@ class CharityState extends Equatable {
       searchProjects: searchProjects ?? this.searchProjects,
       searchChange: searchChange ?? this.searchChange,
       searchProgress: searchProgress ?? this.searchProgress,
+      internetConnection: internetConnection ?? this.internetConnection,
     );
   }
 }

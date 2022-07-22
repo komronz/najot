@@ -40,3 +40,7 @@ class SendDateEvent extends AppealEvent {
   @override
   List<Object?> get props => [];
 }
+class GetAboutDataEvent extends AppealEvent {
+  @override
+  List<Object?> get props => [];
+}

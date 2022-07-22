@@ -6,6 +6,7 @@ import 'package:najot/data/services/about_service.dart';
 
 import '../../model/about_model.dart';
 import '../../model/product_model.dart';
+import '../../services/main_service.dart';
 
 part 'about_state.dart';
 
@@ -14,15 +15,17 @@ class AboutCubit extends Cubit<AboutState> {
   AboutCubit() : super(AboutState());
 
   AboutService aboutService = AboutService();
-
+    var internetConnection;
 
   static Future init() async {
     GetIt.instance..registerSingleton<AboutCubit>(AboutCubit());
   }
 
   Future getAboutList() async {
-    var aboutAllModel = await aboutService.getModel();
+    internetConnection = await MainService().checkInternetConnection();
+    emit(state.copyWith(hasConnection: internetConnection));
     emit(state.copyWith(hasLoading: true, hasError: false,));
+    var aboutAllModel = await aboutService.getModel();
     if(aboutAllModel!=null){
       emit(state.copyWith(hasLoading: false, list: aboutAllModel.aboutModel));
     }else{

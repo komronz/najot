@@ -7,12 +7,34 @@ import 'package:najot/data/services/root_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 
 import '../bloc/language_cubit/language_cubit.dart';
+import '../model/about_model.dart';
 class AboutUsService{
   final HttpService _httpService= RootService.httpService;
 
   static Future init() async {
     final getIt = GetIt.instance;
     getIt.registerSingleton<AboutUsService>(AboutUsService());
+  }
+
+  Future<MainAboutModel?> getModel() async {
+    try {
+      final Response response = await RootService.httpService.get(
+        url: "https://api.najot.uz/${LanguageCubit.getLang()}/about/",
+      );
+      if (response.statusCode == 200) {
+        final MainAboutModel responseModel = MainAboutModel.fromJson(response.data['results']);
+        // List<FaqModel> list=[];
+        // response.data.forEach((v) {
+        //   list.add(new FaqModel.fromJson(v));
+        // });
+        return responseModel;
+      } else {
+        AppLoggerUtil.e("-----------------");
+        return null;
+      }
+    } catch (e) {
+      return null;
+    }
   }
 
   Future<AboutUs?> postModel(

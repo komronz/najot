@@ -16,6 +16,8 @@ import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_search_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+
+import '../../widgets/app_error_widget.dart';
 import 'charity_full_page/charity_full_page.dart';
 import 'charity_full_page/charity_full_page2.dart';
 
@@ -67,333 +69,344 @@ class _CharityPageState extends State<CharityPage>
       body: BlocBuilder<CharityCubit, CharityState>(
         bloc: CharityCubit.to,
         builder: (context, state) {
-          List<ProjectModel> list = state.charityModel!.results!;
-          if (state.loading == true) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          } else {
-            return SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AppSearchWidget(
-                    onChange: (v) {
-                      CharityCubit.to.searchChange(v);
-                    },
-                    search: () {},
-                  ).paddingSymmetric(horizontal: 20, vertical: 15.w),
-                  state.searchProgress
-                      ? Center(
-                          child: CircularProgressIndicator()
-                              .paddingOnly(top: 220.w),
-                        )
-                      : state.searchChange == ""
-                          ? Column(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 18.w, vertical: 20.w),
-                                  width: context.width,
-                                  decoration: BoxDecoration(
-                                    color: AppColorUtils.BACK_AD,
-                                    borderRadius: BorderRadius.circular(12),
-                                    border: Border.all(
-                                      color: AppColorUtils.DIVIDER,
-                                      width: 1,
+          if(state.internetConnection){
+            List<ProjectModel> list = state.charityModel!.results!;
+            if (state.loading == true) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              return SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppSearchWidget(
+                      onChange: (v) {
+                        CharityCubit.to.searchChange(v);
+                      },
+                      search: () {},
+                    ).paddingSymmetric(horizontal: 20, vertical: 15.w),
+                    state.searchProgress
+                        ? Center(
+                      child: CircularProgressIndicator()
+                          .paddingOnly(top: 220.w),
+                    )
+                        : state.searchChange == ""
+                        ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 18.w,
+                            vertical: 20.w,
+                          ),
+                          width: context.width,
+                          decoration: BoxDecoration(
+                            color: AppColorUtils.BACK_AD,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: AppColorUtils.DIVIDER,
+                              width: 1,
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Column(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment:
+                                CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width: 190.w,
+                                    child: AppWidgets.text(
+                                      text:
+                                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'?",
+                                      height: 1.5,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12.sp,
+                                      maxLines: 5,
                                     ),
                                   ),
-                                  child: Row(
-                                    children: [
-                                      Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          SizedBox(
-                                            width: 190.w,
-                                            child: AppWidgets.text(
-                                              text:
-                                                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'?",
-                                              height: 1.5,
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 12.sp,
-                                              maxLines: 5,
-                                            ),
-                                          ),
-                                          ButtonCard(
-                                            onPress: () {},
-                                            text: LocaleKeys.advertising.tr(),
-                                            width: 126.w,
-                                            height: 30.w,
-                                            color: AppColorUtils.GREEN_APP,
-                                            textColor: AppColorUtils.WHITE,
-                                            fontWeight: FontWeight.w600,
-                                            textSize: 12.sp,
-                                          ).paddingOnly(top: 13)
-                                        ],
-                                      ),
-                                      Expanded(
-                                        child: AppWidgets.imageAsset(
-                                            path: "assets/images/splash_1.png"),
-                                      )
-                                    ],
-                                  ),
-                                ).paddingSymmetric(horizontal: 8),
-                                AppWidgets.textLocale(
-                                  text: LocaleKeys.new_add,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 18,
-                                ).paddingOnly(
-                                  top: 30.w,
-                                  left: 20.w,
-                                  bottom: 7.w,
+                                  ButtonCard(
+                                    onPress: () {},
+                                    text: LocaleKeys.advertising.tr(),
+                                    width: 126.w,
+                                    height: 30.w,
+                                    color: AppColorUtils.GREEN_APP,
+                                    textColor: AppColorUtils.WHITE,
+                                    fontWeight: FontWeight.w600,
+                                    textSize: 12.sp,
+                                  ).paddingOnly(top: 13)
+                                ],
+                              ),
+                              Expanded(
+                                child: AppWidgets.imageAsset(
+                                    path: "assets/images/splash_1.png"),
+                              )
+                            ],
+                          ),
+                        ).paddingSymmetric(horizontal: 8),
+                        AppWidgets.textLocale(
+                          text: LocaleKeys.new_add,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                        ).paddingOnly(
+                          top: 30.w,
+                          left: 20.w,
+                          bottom: 7.w,
+                        ),
+                        SizedBox(
+                          child: SingleChildScrollView(
+                            physics: BouncingScrollPhysics(),
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children:
+                              List.generate(list.length, (index) {
+                                if (list[index].requiredFund != null) {
+                                  return CharityItemWidget(
+                                    model: list[index],
+                                    onTap: () {
+                                      NavigatorService.to.pushNamed(
+                                          CharityFullPage.routName,
+                                          arguments: list[index]);
+                                    },
+                                    onTapLike: () {
+                                      CharityCubit.to
+                                          .changeLike(list[index].id!);
+                                    },
+                                  ).paddingOnly(left: 10.w);
+                                } else {
+                                  return CharityItem2Widget(
+                                    onTap: () {
+                                      NavigatorService.to.pushNamed(
+                                          CharityFullPage2.routName,
+                                          arguments: list[index]);
+                                    },
+                                    model: list[index],
+                                    onTapLike: () {
+                                      CharityCubit.to
+                                          .changeLike(list[index].id!);
+                                    },
+                                  ).paddingOnly(left: 10.w);
+                                }
+                              }),
+                            ),
+                          ),
+                        ),
+                        DefaultTabController(
+                          initialIndex: 0,
+                          length: 3,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(11),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color.fromRGBO(
+                                      11, 191, 144, 0.02),
+                                  blurRadius: 11,
                                 ),
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment:
+                              CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                AppWidgets.textLocale(
+                                  text: LocaleKeys.category,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 18.sp,
+                                ).paddingOnly(left: 24, top: 18),
+                                TabBar(
+                                  controller: _tabController,
+                                  enableFeedback: true,
+                                  labelColor: AppColorUtils.GREEN_APP,
+                                  unselectedLabelColor:
+                                  AppColorUtils.DARK_6,
+                                  unselectedLabelStyle: TextStyle(
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                  labelStyle: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                  tabs: List.generate(
+                                      state.category.length,
+                                          (index) => Text(
+                                          state.category[index].name!)),
+                                  onTap: (index) {
+                                    CharityCubit.to.tabChange(
+                                        state.category[index].id!);
+                                  },
+                                  isScrollable: true,
+                                  indicatorWeight: 4,
+                                  indicatorColor:
+                                  AppColorUtils.GREEN_APP,
+                                  indicatorSize:
+                                  TabBarIndicatorSize.tab,
+                                  padding: EdgeInsets.only(right: 10),
+                                  indicatorPadding: EdgeInsets.only(
+                                      right: 10, left: 10),
+                                  labelPadding: EdgeInsets.only(
+                                      right: 10, left: 10),
+                                ).paddingOnly(left: 15, top: 8),
                                 SizedBox(
-                                  child: SingleChildScrollView(
-                                    physics: BouncingScrollPhysics(),
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      children:
-                                          List.generate(list.length, (index) {
-                                        if (list[index].requiredFund != null) {
+                                  height: 20.w,
+                                ),
+                                state.tabLoading
+                                    ? Center(
+                                  child:
+                                  CircularProgressIndicator(),
+                                ).paddingSymmetric(vertical: 50.w)
+                                    : Container(
+                                  child: List.generate(
+                                    state.category.length,
+                                        (index) => GridView.count(
+                                      shrinkWrap: true,
+                                      crossAxisCount: 2,
+                                      physics:
+                                      ClampingScrollPhysics(),
+                                      childAspectRatio: 160 / 267,
+                                      padding: EdgeInsets.all(0),
+                                      reverse: false,
+                                      crossAxisSpacing: 8,
+                                      mainAxisSpacing: 6,
+                                      children: List.generate(
+                                          state
+                                              .tabProjects!
+                                              .results!
+                                              .length, (index) {
+                                        if (state
+                                            .tabProjects!
+                                            .results![index]
+                                            .requiredFund !=
+                                            null) {
                                           return CharityItemWidget(
-                                            model: list[index],
                                             onTap: () {
-                                              NavigatorService.to.pushNamed(
-                                                CharityFullPage.routName,
-                                                arguments: list[index]
+                                              NavigatorService.to
+                                                  .pushNamed(
+                                                CharityFullPage
+                                                    .routName,
+                                                arguments: state
+                                                    .tabProjects!
+                                                    .results![index],
                                               );
                                             },
+                                            model: list[index],
                                             onTapLike: () {
                                               CharityCubit.to
-                                                  .changeLike(list[index].id!);
+                                                  .changeLike(
+                                                  list[index]
+                                                      .id!);
                                             },
-                                          ).paddingOnly(left: 10.w);
+                                          );
                                         } else {
                                           return CharityItem2Widget(
+                                            model: list[index],
                                             onTap: () {
-                                              NavigatorService.to.pushNamed(
-                                                CharityFullPage2.routName,
-                                                arguments: list[index]
+                                              NavigatorService.to
+                                                  .pushNamed(
+                                                CharityFullPage2
+                                                    .routName,
+                                                arguments: state
+                                                    .tabProjects!
+                                                    .results![index],
                                               );
                                             },
-                                            model: list[index],
                                             onTapLike: () {
                                               CharityCubit.to
-                                                  .changeLike(list[index].id!);
+                                                  .changeLike(
+                                                  list[index]
+                                                      .id!);
                                             },
-                                          ).paddingOnly(left: 10.w);
+                                          );
                                         }
                                       }),
                                     ),
-                                  ),
-                                ),
-                                DefaultTabController(
-                                  initialIndex: 0,
-                                  length: 3,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(11),
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color.fromRGBO(
-                                              11, 191, 144, 0.02),
-                                          blurRadius: 11,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        AppWidgets.textLocale(
-                                          text: LocaleKeys.category,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 18.sp,
-                                        ).paddingOnly(left: 24, top: 18),
-                                        TabBar(
-                                          controller: _tabController,
-                                          enableFeedback: true,
-                                          labelColor: AppColorUtils.GREEN_APP,
-                                          unselectedLabelColor:
-                                              AppColorUtils.DARK_6,
-                                          unselectedLabelStyle: TextStyle(
-                                            fontSize: 14.sp,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                          labelStyle: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                          tabs: List.generate(
-                                              state.category.length,
-                                              (index) => Text(
-                                                  state.category[index].name!)),
-                                          onTap: (index) {
-                                            CharityCubit.to.tabChange(
-                                                state.category[index].id!);
-                                          },
-                                          isScrollable: true,
-                                          indicatorWeight: 4,
-                                          indicatorColor:
-                                              AppColorUtils.GREEN_APP,
-                                          indicatorSize:
-                                              TabBarIndicatorSize.tab,
-                                          padding: EdgeInsets.only(right: 10),
-                                          indicatorPadding: EdgeInsets.only(
-                                              right: 10, left: 10),
-                                          labelPadding: EdgeInsets.only(
-                                              right: 10, left: 10),
-                                        ).paddingOnly(left: 15, top: 8),
-                                        SizedBox(
-                                          height: 20.w,
-                                        ),
-                                        state.tabLoading
-                                            ? Center(
-                                                child:
-                                                    CircularProgressIndicator(),
-                                              ).paddingSymmetric(vertical: 50.w)
-                                            : Container(
-                                                child: List.generate(
-                                                  state.category.length,
-                                                  (index) => GridView.count(
-                                                    shrinkWrap: true,
-                                                    crossAxisCount: 2,
-                                                    physics:
-                                                        ClampingScrollPhysics(),
-                                                    childAspectRatio: 160 / 267,
-                                                    padding: EdgeInsets.all(0),
-                                                    reverse: false,
-                                                    crossAxisSpacing: 8,
-                                                    mainAxisSpacing: 6,
-                                                    children: List.generate(
-                                                        state
-                                                            .tabProjects!
-                                                            .results!
-                                                            .length, (index) {
-                                                      if (state
-                                                              .tabProjects!
-                                                              .results![index]
-                                                              .requiredFund !=
-                                                          null) {
-                                                        return CharityItemWidget(
-                                                          onTap: () {
-                                                            NavigatorService.to
-                                                                .pushNamed(
-                                                              CharityFullPage
-                                                                  .routName,
-                                                              arguments: state
-                                                                  .tabProjects!
-                                                                  .results![index],
-                                                            );
-                                                          },
-                                                          model: list[index],
-                                                          onTapLike: () {
-                                                            CharityCubit.to
-                                                                .changeLike(
-                                                                    list[index]
-                                                                        .id!);
-                                                          },
-                                                        );
-                                                      } else {
-                                                        return CharityItem2Widget(
-                                                          model: list[index],
-                                                          onTap: () {
-                                                            NavigatorService.to
-                                                                .pushNamed(
-                                                              CharityFullPage2
-                                                                  .routName,
-                                                              arguments:
-                                                              state
-                                                                  .tabProjects!
-                                                                  .results![index],
-                                                            );
-                                                          },
-                                                          onTapLike: () {
-                                                            CharityCubit.to
-                                                                .changeLike(
-                                                                    list[index]
-                                                                        .id!);
-                                                          },
-                                                        );
-                                                      }
-                                                    }),
-                                                  ),
-                                                )[_tabController.index],
-                                              ).paddingSymmetric(
-                                                horizontal: 15.w),
-                                      ],
-                                    ),
-                                  ).paddingOnly(top: 18.w),
-                                )
+                                  )[_tabController.index],
+                                ).paddingSymmetric(
+                                    horizontal: 15.w),
                               ],
-                            )
-                          : state.searchProjects.isNotEmpty
-                              ? Container(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 10.w),
-                                  child: GridView.count(
-                                    shrinkWrap: true,
-                                    crossAxisCount: 2,
-                                    physics: ClampingScrollPhysics(),
-                                    childAspectRatio: 160 / 267,
-                                    padding: EdgeInsets.all(0),
-                                    reverse: false,
-                                    crossAxisSpacing: 8,
-                                    mainAxisSpacing: 6,
-                                    children: List.generate(
-                                        state.tabProjects!.results!.length,
-                                        (index) {
-                                      if (state.tabProjects!.results![index]
-                                              .requiredFund !=
-                                          null) {
-                                        return CharityItemWidget(
-                                          onTap: () {
-                                            NavigatorService.to.pushNamed(
-                                              CharityFullPage.routName,
-                                              arguments: CharityFullModel(
-                                                cardModel: state.tabProjects!
-                                                    .results![index],
-                                                cubit: CharityCubit.to,
-                                              ),
-                                            );
-                                          },
-                                          model: list[index],
-                                          onTapLike: () {
-                                            CharityCubit.to
-                                                .changeLike(list[index].id!);
-                                          },
-                                        );
-                                      } else {
-                                        return CharityItem2Widget(
-                                          model: list[index],
-                                          onTap: () {
-                                            NavigatorService.to.pushNamed(
-                                              CharityFullPage2.routName,
-                                              arguments: CharityFullModel(
-                                                cardModel: state.tabProjects!
-                                                    .results![index],
-                                                cubit: CharityCubit.to,
-                                              ),
-                                            );
-                                          },
-                                          onTapLike: () {
-                                            CharityCubit.to
-                                                .changeLike(list[index].id!);
-                                          },
-                                        );
-                                      }
-                                    }),
-                                  ),
-                                )
-                              : SearchNotFound()
-                ],
-              ),
-            );
+                            ),
+                          ).paddingOnly(top: 18.w),
+                        )
+                      ],
+                    )
+                        : state.searchProjects.isNotEmpty
+                        ? Container(
+                      padding:
+                      EdgeInsets.symmetric(horizontal: 10.w),
+                      child: GridView.count(
+                        shrinkWrap: true,
+                        crossAxisCount: 2,
+                        physics: ClampingScrollPhysics(),
+                        childAspectRatio: 160 / 267,
+                        padding: EdgeInsets.all(0),
+                        reverse: false,
+                        crossAxisSpacing: 8,
+                        mainAxisSpacing: 6,
+                        children: List.generate(
+                            state.tabProjects!.results!.length,
+                                (index) {
+                              if (state.tabProjects!.results![index]
+                                  .requiredFund !=
+                                  null) {
+                                return CharityItemWidget(
+                                  onTap: () {
+                                    NavigatorService.to.pushNamed(
+                                      CharityFullPage.routName,
+                                      arguments: CharityFullModel(
+                                        cardModel: state.tabProjects!
+                                            .results![index],
+                                        cubit: CharityCubit.to,
+                                      ),
+                                    );
+                                  },
+                                  model: list[index],
+                                  onTapLike: () {
+                                    CharityCubit.to
+                                        .changeLike(list[index].id!);
+                                  },
+                                );
+                              } else {
+                                return CharityItem2Widget(
+                                  model: list[index],
+                                  onTap: () {
+                                    NavigatorService.to.pushNamed(
+                                      CharityFullPage2.routName,
+                                      arguments: CharityFullModel(
+                                        cardModel: state.tabProjects!
+                                            .results![index],
+                                        cubit: CharityCubit.to,
+                                      ),
+                                    );
+                                  },
+                                  onTapLike: () {
+                                    CharityCubit.to
+                                        .changeLike(list[index].id!);
+                                  },
+                                );
+                              }
+                            }),
+                      ),
+                    )
+                        : SearchNotFound()
+                  ],
+                ),
+              );
+            }
+          }else{
+            return AppErrorWidget(
+                onTap: () async{
+                  AppWidgets.isLoading(true);
+                  await CharityCubit.to.load();
+                  AppWidgets.isLoading(false);
+
+
+                });
           }
         },
       ),

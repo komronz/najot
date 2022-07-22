@@ -7,6 +7,8 @@ import 'package:najot/data/model/volunteer_model.dart';
 import 'package:najot/data/services/main_service.dart';
 import 'package:najot/data/services/organization_service.dart';
 import 'package:najot/data/services/volunteer_service.dart';
+
+import '../../../ui/widgets/app_widgets.dart';
 part 'organization_state.dart';
 
 class OrganizationCubit extends Cubit<OrganizationState> {
@@ -24,18 +26,15 @@ class OrganizationCubit extends Cubit<OrganizationState> {
         ));
   OrganizationService organizationService = OrganizationService();
   MainService mainService = MainService();
+  var internetConnection;
 
   Future load() async{
-      emit(state.copyWith(hasLoading: true, hasError: false));
+    internetConnection = await mainService.checkInternetConnection();
+    emit(state.copyWith(internetConnection: internetConnection));
     var organizationModel=await organizationService.getModel();
-    try{
-      if(organizationModel != null){
-        emit(state.copyWith(list: organizationModel.results,hasLoading: false));
-      }
-    }catch (e){
-      emit(state.copyWith(hasError: true, hasLoading: false));
+    if(organizationModel != null){
+      emit(state.copyWith(list: organizationModel.results));
     }
-      emit(state.copyWith(hasLoading: false, hasError: false));
 
   }
   void onTapCheckBox(bool v) {
@@ -46,6 +45,8 @@ class OrganizationCubit extends Cubit<OrganizationState> {
     emit(state.copyWith(saveHelp: v));
   }
   Future findProject(int id) async{
+    internetConnection = await mainService.checkInternetConnection();
+    emit(state.copyWith(internetConnection: internetConnection));
       var tabProjects=await organizationService.getProjectModelById(id);
       if(tabProjects!=null){
         emit(state.copyWith(project: tabProjects));
@@ -54,8 +55,14 @@ class OrganizationCubit extends Cubit<OrganizationState> {
   }
 
   Future changeLike(int id) async{
-    var changeLike= await mainService.changeLike(id);
-    if(changeLike!=null){
+    internetConnection = await mainService.checkInternetConnection();
+    if(internetConnection){
+      var changeLike= await mainService.changeLike(id);
+      if(changeLike!=null){
+        load();
+      }
+    }else{
+      AppWidgets.showText(text: "Internet bilan aloqa yo'q!");
     }
   }
 }

@@ -36,8 +36,8 @@ class VolunteerHelpWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var modifiedAt= DateTime.parse(volunteerHelpModel.cardModel.modifiedAt!);
-
+    var model = volunteerHelpModel.cardModel;
+    var modifiedAt = DateTime.parse(model.modifiedAt!);
     return Scaffold(
         backgroundColor: AppColorUtils.BACKGROUND,
         appBar: AppBarWithTitle(
@@ -66,7 +66,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                             Radius.circular(12),
                           ),
                           child: CachedNetworkImage(
-                            imageUrl: volunteerHelpModel.cardModel.coverUrl!,
+                            imageUrl: model.coverUrl!,
                             fit: BoxFit.cover,
                             width: MediaQuery.of(context).size.width,
                             placeholder: (context, url) => Center(
@@ -90,7 +90,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                     bottom: 3.w,
                   ),
                   AppWidgets.text(
-                    text: volunteerHelpModel.cardModel.title??"",
+                    text: model.title ?? "",
                     fontSize: 20.sp,
                     color: AppColorUtils.DARK2,
                     fontWeight: FontWeight.w500,
@@ -103,11 +103,19 @@ class VolunteerHelpWidget extends StatelessWidget {
                         width: 50.w,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                volunteerHelpModel.cardModel.coverUrl!,
-                              ),
-                              fit: BoxFit.cover),
+                          color: Colors.black12,
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(25.w),
+                          child: CachedNetworkImage(
+                            imageUrl: model.owner!.photo!,
+                            fit: BoxFit.cover,
+                            placeholder: (context, url) => Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.person),
+                          ),
                         ),
                       ).paddingOnly(
                         top: 15.w,
@@ -126,7 +134,9 @@ class VolunteerHelpWidget extends StatelessWidget {
                           SizedBox(
                             width: 150.w,
                             child: AppWidgets.text(
-                              text: volunteerHelpModel.cardModel.owner!.firstName??"",
+                              text:
+                                  "${model.owner!.firstName} "
+                                      "${model.owner!.lastName}",
                               color: AppColorUtils.TEXT_GREEN2,
                               fontWeight: FontWeight.w600,
                               fontSize: 14.sp,
@@ -166,7 +176,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                     color: AppColorUtils.DARK_6,
                   ).paddingOnly(top: 13.w, left: 20.w, bottom: 3.w),
                   AppWidgets.text(
-                          text: volunteerHelpModel.cardModel.title??"",
+                          text: model.title ?? "",
                           maxLines: 2,
                           fontWeight: FontWeight.w600,
                           fontSize: 16.sp,
@@ -183,7 +193,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                     bottom: 3.w,
                   ),
                   AppWidgets.text(
-                          text: volunteerHelpModel.cardModel.address??"",
+                          text: model.address ?? "",
                           fontSize: 14.w,
                           fontWeight: FontWeight.w500,
                           color: AppColorUtils.TEXT_BLUE,
@@ -195,7 +205,7 @@ class VolunteerHelpWidget extends StatelessWidget {
                         showDialog(
                             context: context,
                             builder: (ctx) => TimePikerVolunteer(
-                                  model: volunteerHelpModel.cardModel,
+                                  model: model,
                                   cubit: volunteerHelpModel.cubit,
                                   con: context,
                                 ));

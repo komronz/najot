@@ -7,6 +7,7 @@ import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
+import 'package:najot/data/services/main_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/success_send_question_dialog.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
@@ -112,25 +113,33 @@ class CommentToAuthorDialog extends StatelessWidget {
                   height: 12.w,
                 ),
                 ButtonCard(
-                  onPress: () {
-                    if (titleController.text != "" &&
-                        commentController.text != "") {
-                      cubit.postQuestion(
-                        projectModel.id!,
-                        titleController.text,
-                        commentController.text,
-                      );
-                      Navigator.pop(context);
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return SuccessSendQuestion();
-                        },
-                      );
-                      cubit.load(projectModel.id!);
+                  onPress: () async{
+                    var internetConnection=await MainService().checkInternetConnection();
+                    if(internetConnection){
+                      if (titleController.text != "" &&
+                          commentController.text != "") {
+                        cubit.postQuestion(
+                          projectModel.id!,
+                          titleController.text,
+                          commentController.text,
+                        );
+                        Navigator.pop(context);
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return SuccessSendQuestion();
+                          },
+                        );
+                        cubit.load(projectModel.id!);
+
+
+                      }else{
+                        AppWidgets.showText(text: LocaleKeys.write_question.tr());
+                      }
                     }else{
-                      AppWidgets.showText(text: LocaleKeys.write_question.tr());
+                      AppWidgets.showText(text: "Internet bilan aloqa yo'q!");
                     }
+
                   },
                   text: LocaleKeys.send.tr(),
                   textSize: 16.sp,

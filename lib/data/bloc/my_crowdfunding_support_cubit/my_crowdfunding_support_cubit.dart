@@ -49,7 +49,7 @@ class MyCrowdfundingSupportCubit extends Cubit<MyCrowdfundingSupportState> {
 
 
 Future postCommentById(int id, String title,String content) async{
-    var postComments= await projectDataService.postCommentsBYId(id, content);
+    var postComments= await projectDataService.postCommentsBYId(id,title, content);
     if(postComments !=null){
       print("vot eta da");
     }

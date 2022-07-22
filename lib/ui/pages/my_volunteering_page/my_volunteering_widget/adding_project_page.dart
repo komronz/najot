@@ -8,6 +8,7 @@ import 'package:najot/data/bloc/add_project_bloc/add_project_event.dart';
 import 'package:najot/data/bloc/add_project_bloc/add_project_state.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/services/main_service.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -167,14 +168,19 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                   AppWidgets.appButton(
                     title: LocaleKeys.send,
                     onTap: () async {
-                      _key=UniqueKey();
-                      await showDialog(
-                        context: context,
-                        builder: (context) =>
-                            AddProjectShowSuccessSend(
-                              addProjectBloc: addProjectBloc,
-                            ),
-                      );
+                     var connection = await MainService().checkInternetConnection();
+                     if(connection){
+                       _key=UniqueKey();
+                       await showDialog(
+                         context: context,
+                         builder: (context) =>
+                             AddProjectShowSuccessSend(
+                               addProjectBloc: addProjectBloc,
+                             ),
+                       );
+                     }else{
+                       AppWidgets.showText(text: LocaleKeys.disConnection.tr());
+                     }
                     },
                     textColor: Colors.white,
                     color: context.read<AddProjectBloc>().state.isBtnActive

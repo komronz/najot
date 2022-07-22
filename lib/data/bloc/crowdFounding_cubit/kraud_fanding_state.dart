@@ -19,7 +19,7 @@ class CrowdfundingState extends Equatable {
   final bool searchProgress;
   final bool loading;
   final bool tabLoading;
-  final bool internetConnection;
+   bool internetConnection;
   final int tabChange;
   final String searchChange;
   final List<TabCategories> category;

@@ -25,7 +25,6 @@ class FavoriteAddService {
       if (response.statusCode == 200) {
         final FavoriteAddModel responseModel = FavoriteAddModel.fromJson(response.data);
         return responseModel;
-        return responseModel;
       } else {
         AppLoggerUtil.e("-----------------");
         return null;

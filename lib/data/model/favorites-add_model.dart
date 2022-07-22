@@ -1,9 +1,11 @@
+import 'package:najot/data/model/project_model.dart';
+
 class FavoriteAddModel {
   Links? links;
   int? currentPageNumber;
   int? totalPages;
   int? count;
-  List<FavouriteModel>? results;
+  List<ProjectModel>? results;
 
   FavoriteAddModel(
       {this.links,
@@ -18,9 +20,9 @@ class FavoriteAddModel {
     totalPages = json['total_pages'];
     count = json['count'];
     if (json['results'] != null) {
-      results = <FavouriteModel>[];
+      results = <ProjectModel>[];
       json['results'].forEach((v) {
-        results!.add(new FavouriteModel.fromJson(v));
+        results!.add(new ProjectModel.fromJson(v));
       });
     }
   }
@@ -41,8 +43,8 @@ class FavoriteAddModel {
 }
 
 class Links {
-  Null? next;
-  Null? previous;
+  String? next;
+  String? previous;
 
   Links({this.next, this.previous});
 
@@ -59,27 +61,7 @@ class Links {
   }
 }
 
-class FavouriteModel {
-  int? id;
-  Project? project;
 
-  FavouriteModel({this.id, this.project});
-
-  FavouriteModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    project =
-    json['project'] != null ? new Project.fromJson(json['project']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    if (this.project != null) {
-      data['project'] = this.project!.toJson();
-    }
-    return data;
-  }
-}
 
 class Project {
   int? id;

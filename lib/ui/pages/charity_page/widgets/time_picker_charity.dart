@@ -203,18 +203,20 @@ class TimePikerCharity extends StatelessWidget {
                         _time.minute,
                       );
                       NavigatorService.to.pop();
+                      cubit.addDbVolunteer(dateTime, model);
                       await showDialog(
                         context: context,
                         barrierDismissible: false,
                         builder: (context) => ItemAddingSuccess(
                           dateTime: dateTime,
                           goto: () {
-                            cubit.onChangeSave(false);
+                            // cubit.onChangeSave(false);
                             Navigator.pop(con);
                             Navigator.pop(context);
                           },
-                          back: () {
-                            cubit.onChangeSave(false);
+                          back: () async{
+                            // cubit.onChangeSave(false);
+                            await CharityCubit.to.load();
                             Navigator.pop(con);
                             Navigator.pop(context);
 

@@ -57,7 +57,7 @@ class CharityItemWidget extends StatelessWidget {
                               ),
                               width: double.infinity,
                               height: double.infinity,
-                              imageUrl: model.coverUrl!,
+                              imageUrl: model.cover!,
                               errorWidget: (context, url, error) =>
                                   Icon(Icons.error),
                               fit: BoxFit.cover,

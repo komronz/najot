@@ -65,7 +65,7 @@ class _CrowdfundingPageState extends State<CrowdfundingPage>
       body: BlocBuilder<CrowdfundingCubit, CrowdfundingState>(
         bloc: CrowdfundingCubit.to,
         builder: (context, state) {
-          if(true){
+          if(state.internetConnection){
             if (state.loading != true) {
               return SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
@@ -247,7 +247,10 @@ class _CrowdfundingPageState extends State<CrowdfundingPage>
           }else{
             return AppErrorWidget(
                 onTap: () async{
+                  AppWidgets.isLoading(true);
                   await CrowdfundingCubit.to.load();
+                  AppWidgets.isLoading(false);
+
 
                 });
           }

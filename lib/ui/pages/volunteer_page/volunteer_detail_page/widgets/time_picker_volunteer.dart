@@ -16,6 +16,8 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/item_adding_success.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import 'about_project_volunteer_widget.dart';
+
 class TimePikerVolunteer extends StatelessWidget {
   TimePikerVolunteer({
     required this.model,
@@ -215,13 +217,14 @@ class TimePikerVolunteer extends StatelessWidget {
                         builder: (context) => ItemAddingSuccess(
                           dateTime: dateTime,
                           goto: () {
-                            cubit.onChangeSave(false);
-                            cubit.loading();
+                            VolunteerCubit.to.addDbVolunteer(dateTime, model);
+                            VolunteerCubit.to.loading();
                             Navigator.pop(con);
                             Navigator.pop(context);
                           },
                           back: () {
-                            cubit.loading();
+                            VolunteerCubit.to.loading();
+                            Navigator.pop(con);
                             Navigator.pop(context);
 
                           }, time: _time,
@@ -236,7 +239,8 @@ class TimePikerVolunteer extends StatelessWidget {
                     color: AppColorUtils.LIGHT_GRAY,
                     textColor: AppColorUtils.BLACK,
                     onTap: () {
-                      NavigatorService.to.pop();
+                      Navigator.pop(con);
+                      Navigator.pop(context);
                     },
                     title: LocaleKeys.exit,
                     fontSize: 16.sp,

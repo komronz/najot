@@ -85,6 +85,7 @@ class _AboutMyVolunteeringItemProjectWidgetState
                   width: context.width,
                   decoration: DecorationConst.DEC_WITH_SHADOW,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Stack(
                         children: [
@@ -141,7 +142,8 @@ class _AboutMyVolunteeringItemProjectWidgetState
                                 ).paddingOnly(right: 12.w),
                                 InkWell(
                                   child: SvgPicture.asset(
-                                      AppImageUtils.EDIT_GREEN),
+                                      AppImageUtils.EDIT_GREEN,
+                                  ),
                                   onTap: () {
                                     showDialog(
                                       context: context,
@@ -157,7 +159,7 @@ class _AboutMyVolunteeringItemProjectWidgetState
                         ],
                       ),
                       AppWidgets.text(
-                        text: widget.model.title!,
+                        text: widget.model.title??"",
                         fontWeight: FontWeight.w500,
                         fontSize: 20.sp,
                         color: AppColorUtils.DARK2,

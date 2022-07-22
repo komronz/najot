@@ -94,7 +94,7 @@ class UserUpdateService {
     return null;
   }
 
-  Future<NumberChangeModel?> postNumber(
+  Future<dynamic> postNumber(
       String phone,
       ) async {
     try {
@@ -114,6 +114,12 @@ class UserUpdateService {
           final NumberChangeModel code=
           NumberChangeModel.fromJson(response.data);
           return code;
+        }
+        if(response.statusCode ==400){
+          return false;
+        }
+        if(response.statusCode ==409){
+          return true;
         }
       } else {
         return null;

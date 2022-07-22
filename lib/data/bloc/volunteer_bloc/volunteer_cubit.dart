@@ -6,6 +6,10 @@ import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/main_service.dart';
 import 'package:najot/data/services/volunteer_project_service.dart';
 
+import '../../../ui/widgets/app_widgets.dart';
+import '../../model/volunteer_db_model.dart';
+import '../../model/volunteer_donate_model.dart';
+import '../../services/db_service.dart';
 import '../../services/volunteer_service.dart';
 
 part 'volunteer_state.dart';
@@ -20,15 +24,46 @@ class VolunteerCubit extends Cubit<VolunteerState> {
   VolunteerCubit() : super(VolunteerState());
   VolunteerProjectService service= VolunteerProjectService();
   MainService mainService=MainService();
+  var internetConnection;
+  final DBService dbService=DBService();
 
+  Future addDbVolunteer( DateTime dateTime,ProjectModel model)async{
+    VolunteerDbModel volunteerDbModel=VolunteerDbModel();
+    volunteerDbModel.id=model.id;
+    volunteerDbModel.title=model.title;
+    volunteerDbModel.helpType=model.helpType;
+    volunteerDbModel.address=model.address;
+    volunteerDbModel.modifiedAt=dateTime.toString();
+    volunteerDbModel.deadLine=model.deadline;
+    dbService.saveVolunteer(volunteerDbModel);
+    load();
+  }
   Future changeLike(int id) async{
-    var changeLike= await mainService.changeLike(id);
-    if(changeLike!=null){
-      load();
+    internetConnection = await mainService.checkInternetConnection();
+    if(internetConnection){
+      var changeLike= await mainService.changeLike(id);
+      if(changeLike!=null){
+        load();
+      }
+    }else{
+      AppWidgets.showText(text: "Internet bilan aloqa yo'q!");
     }
+
+  }
+
+  Future isContribution(int id) async{
+    internetConnection = await mainService.checkInternetConnection();
+    emit(state.copyWith(internetConnection: internetConnection));
+     var isContribution = await service.contributionChange(id);
+     if(isContribution !=null){
+       load();
+     }
+
   }
 
   Future searchChange(String v)async{
+    internetConnection = await mainService.checkInternetConnection();
+    emit(state.copyWith(internetConnection: internetConnection));
     emit(state.copyWith(searchProgress: true));
     var getSearch = await service.getProjectsByName(v);
     if(getSearch != null){
@@ -41,16 +76,19 @@ class VolunteerCubit extends Cubit<VolunteerState> {
   }
 
   Future load() async {
-
+    emit(state.copyWith(searchChange: ""));
+    internetConnection = await mainService.checkInternetConnection();
+    emit(state.copyWith(internetConnection: internetConnection));
     var volunteerModel = await service.getVolunteerModel();
-
+    var isVolunteer = await mainService.getUserModel();
     if (volunteerModel != null) {
-
       emit(state.copyWith(
         list: volunteerModel.results!,
         checkBox: false,
-        tobeVolunteer: Volunteer.tobeVolunteer,
       ));
+    }
+    if(isVolunteer != null){
+        emit(state.copyWith(tobeVolunteer: isVolunteer.isVolunteer));
     }
   }
 

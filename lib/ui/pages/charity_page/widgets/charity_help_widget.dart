@@ -37,7 +37,7 @@ class CharityHelpWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var modifiedAt= DateTime.parse(helpModel.cardModel.modifiedAt!);
+    var modifiedAt = DateTime.parse(helpModel.cardModel.modifiedAt!);
     return Scaffold(
         backgroundColor: AppColorUtils.BACKGROUND,
         appBar: AppBarWithTitle(
@@ -90,7 +90,7 @@ class CharityHelpWidget extends StatelessWidget {
                     bottom: 3.w,
                   ),
                   AppWidgets.text(
-                    text: helpModel.cardModel.title??"",
+                    text: helpModel.cardModel.title ?? "",
                     fontSize: 20.sp,
                     color: AppColorUtils.DARK2,
                     fontWeight: FontWeight.w500,
@@ -103,9 +103,19 @@ class CharityHelpWidget extends StatelessWidget {
                         width: 50.w,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: NetworkImage(helpModel.cardModel.coverUrl!),
-                              fit: BoxFit.cover),
+                          color: Colors.black12,
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(25.w),
+                          child: CachedNetworkImage(
+                            imageUrl: helpModel.cardModel.owner!.photo!,
+                            fit: BoxFit.cover,
+                            placeholder: (context, url) => Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.person),
+                          ),
                         ),
                       ).paddingOnly(
                         top: 15.w,
@@ -168,7 +178,7 @@ class CharityHelpWidget extends StatelessWidget {
                     bottom: 3.w,
                   ),
                   AppWidgets.text(
-                          text: helpModel.cardModel.title??"",
+                          text: helpModel.cardModel.title ?? "",
                           maxLines: 2,
                           fontWeight: FontWeight.w600,
                           fontSize: 16.sp,
@@ -185,7 +195,7 @@ class CharityHelpWidget extends StatelessWidget {
                     bottom: 3.w,
                   ),
                   AppWidgets.text(
-                          text: helpModel.cardModel.address??"",
+                          text: helpModel.cardModel.address ?? "",
                           fontSize: 14.w,
                           fontWeight: FontWeight.w500,
                           color: AppColorUtils.TEXT_BLUE,
@@ -194,6 +204,7 @@ class CharityHelpWidget extends StatelessWidget {
                   ButtonCard(
                     onPress: () {
                       if (state.checkBox) {
+                        helpModel.cubit.isContribution(helpModel.cardModel.id!);
                         showDialog(
                             context: context,
                             builder: (ctx) => TimePikerCharity(
@@ -244,13 +255,12 @@ class CharityHelpWidget extends StatelessWidget {
                     ],
                   ),
                   AppWidgets.textLocale(
-                          text:
-                              LocaleKeys.attention_agree_help,
+                          text: LocaleKeys.attention_agree_help,
                           color: AppColorUtils.RED,
                           fontWeight: FontWeight.w400,
                           fontSize: 12.sp,
-                          maxLines: 2)
-                      .paddingSymmetric(horizontal: 20.w),
+                          maxLines: 2,
+                  ).paddingSymmetric(horizontal: 20.w),
                   SizedBox(height: 20.w)
                 ],
               ),

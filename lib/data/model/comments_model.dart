@@ -47,13 +47,15 @@ class CommentsModel {
 
 class CommentsData {
   int? id;
+  String? title;
   String? content;
   User? user;
 
-  CommentsData({this.id, this.content, this.user});
+  CommentsData({this.id,this.title, this.content, this.user});
 
   CommentsData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    title = json['title'];
     content = json['content'];
     user = json['user'] != null ? new User.fromJson(json['user']) : null;
   }
@@ -61,6 +63,7 @@ class CommentsData {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
+    data['title'] = this.title;
     data['content'] = this.content;
     if (this.user != null) {
       data['user'] = this.user!.toJson();

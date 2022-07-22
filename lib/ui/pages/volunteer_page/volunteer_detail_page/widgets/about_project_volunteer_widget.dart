@@ -9,6 +9,7 @@ import 'package:najot/data/bloc/volunteer_bloc/volunteer_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
+import 'package:najot/data/services/main_service.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -44,6 +45,7 @@ class _AboutProjectVolunteerWidgetState
     extends State<AboutProjectVolunteerWidget> with TickerProviderStateMixin {
   late TabController _tabController;
  late bool like;
+ static late bool isContribution;
   ProjectDataCubit cubitData = ProjectDataCubit();
 
   @override
@@ -55,6 +57,7 @@ class _AboutProjectVolunteerWidgetState
   @override
   void initState() {
     like=widget.cardModel.isFavourite!;
+    isContribution=widget.cardModel.isContribution!;
     _tabController = TabController(length: 4, vsync: this);
     _tabController.addListener(_handleTabSelection);
     super.initState();
@@ -211,7 +214,7 @@ class _AboutProjectVolunteerWidgetState
                 color: AppColorUtils.DARK_6,
               ).paddingOnly(top: 13.w, left: 20.w, bottom: 3.w),
               AppWidgets.text(
-                      text: widget.cardModel.title!,
+                      text: widget.cardModel.title??"",
                       maxLines: 2,
                       fontWeight: FontWeight.w600,
                       fontSize: 16.sp,
@@ -324,7 +327,7 @@ class _AboutProjectVolunteerWidgetState
                 SizedBox(
                   height: 10.w,
                 ),
-                widget.cubit.state.saveHelp
+                !isContribution
                     ? Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -358,7 +361,9 @@ class _AboutProjectVolunteerWidgetState
                             children: [
                               ButtonCard(
                                 onPress: () {
-                                  if (widget.cubit.state.tobeVolunteer == true) {
+                                  if (widget.cubit.state.tobeVolunteer) {
+
+                                    VolunteerCubit.to.isContribution(widget.cardModel.id!);
                                     NavigatorService.to.pushNamed(
                                       VolunteerHelpWidget.routeName,
                                       arguments: VolunteerHelpModel(
@@ -366,6 +371,9 @@ class _AboutProjectVolunteerWidgetState
                                         cubit: widget.cubit,
                                       ),
                                     );
+                                    setState(() {
+                                      isContribution=true;
+                                    });
                                   } else {
                                     Fluttertoast.showToast(
                                       msg: LocaleKeys.be_volunteer.tr(),
@@ -387,11 +395,17 @@ class _AboutProjectVolunteerWidgetState
                                 height: 48.w,
                                 width: 48.w,
                                 onTap: () async{
-                                  await widget.cubit.changeLike(widget.cardModel.id!);
-                                 setState(() {
-                                   like=!like;
-                                 });
-                                  await HomeCubit.to.getModel();
+                                  var connection= await MainService().checkInternetConnection();
+                                  if(connection){
+                                    await widget.cubit.changeLike(widget.cardModel.id!);
+                                    setState(() {
+                                      like=!like;
+                                    });
+                                    await HomeCubit.to.getModel();
+                                  }else{
+                                    AppWidgets.showText(text: "Internet bilan aloqa yo'q");
+                                  }
+
 
                                 },
                               )

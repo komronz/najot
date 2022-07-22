@@ -11,11 +11,13 @@ import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/charity_page/charity_full_page/charity_full_page2.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/crowdfunding_page.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/project_details_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/main_page/widgets/carousel_slider_widget.dart';
+import 'package:najot/ui/pages/main_page/widgets/charity_card_widget.dart';
 import 'package:najot/ui/pages/main_page/widgets/crowdfunding_card_widget.dart';
 import 'package:najot/ui/pages/main_page/widgets/icon_name_widget.dart';
 import 'package:najot/ui/pages/main_page/widgets/volunteer_card_widget.dart';
@@ -242,28 +244,51 @@ class MainPage extends StatelessWidget {
                                      child: Row(
                                        children: List.generate(
                                          state.charity.length,
-                                             (index) => Container(
-                                           margin: EdgeInsets.only(left: 10.w),
-                                           child: CrowdfundingCardWidget(
-                                             projectModel: state.charity[index],
-                                             visible: false,
-                                             onTap: () {
-                                               NavigatorService.to.pushNamed(
-                                                 ProjectDetailsPage.routeName,
-                                                 arguments:
-                                                 CrowdfundingDetailModel(
-                                                   cubit: CrowdfundingCubit.to,
-                                                   cardModel: state.charity[index],
-                                                 ),
-                                               );
-                                             },
-                                             onTapLike: () {
-                                               homeCubit.changeLike(
-                                                   state.charity[index].id!);
-                                               homeCubit.getModel();
-                                             },
-                                           ),
-                                         ),
+                                             (index) {
+                                           if(state.charity[index].requiredFund==null){
+                                             return Container(
+                                               margin: EdgeInsets.only(left: 10.w),
+                                               child: CharityCardWidget(
+                                                 projectModel: state.charity[index],
+                                                 onTap: () {
+                                                   NavigatorService.to.pushNamed(
+                                                     CharityFullPage2.routName,
+                                                     arguments:
+                                                     state.charity[index]
+                                                   );
+                                                 },
+                                                 onTapLike: () {
+                                                   homeCubit.changeLike(
+                                                       state.charity[index].id!);
+                                                   homeCubit.getModel();
+                                                 },
+                                               ),
+                                             );
+                                           }else{
+                                             return Container(
+                                               margin: EdgeInsets.only(left: 10.w),
+                                               child: CrowdfundingCardWidget(
+                                                 projectModel: state.charity[index],
+                                                 visible: false,
+                                                 onTap: () {
+                                                   NavigatorService.to.pushNamed(
+                                                     ProjectDetailsPage.routeName,
+                                                     arguments:
+                                                     CrowdfundingDetailModel(
+                                                       cubit: CrowdfundingCubit.to,
+                                                       cardModel: state.charity[index],
+                                                     ),
+                                                   );
+                                                 },
+                                                 onTapLike: () {
+                                                   homeCubit.changeLike(
+                                                       state.charity[index].id!);
+                                                   homeCubit.getModel();
+                                                 },
+                                               ),
+                                             );
+                                           }
+                                             }
                                        ),
                                      ),
                                    ),

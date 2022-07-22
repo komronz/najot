@@ -5,6 +5,7 @@ import 'package:najot/data/model/volunteer_model.dart';
 import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/data/services/charity_service.dart';
 import 'package:najot/data/services/crowdfunding_service.dart';
+import 'package:najot/data/services/main_service.dart';
 import 'package:najot/data/services/volunteer_project_service.dart';
 
 import '../../model/charity_model.dart';
@@ -22,11 +23,16 @@ class MyProjectAndAnnouncementsPagesCubit extends Cubit<MyProjectAndAnnouncement
   CrowdfundingService crowdfundingService = CrowdfundingService();
   VolunteerProjectService volunteerProjectService = VolunteerProjectService();
   CharityService charityService = CharityService();
+  MainService mainService = MainService();
+  var internetConnection;
 
 
   MyProjectAndAnnouncementsPagesCubit() : super(MyProjectAndAnnouncementsPagesState());
 
   Future load() async{
+    internetConnection = await mainService.checkInternetConnection();
+    emit(state.copyWith(hasConnection: internetConnection));
+    emit(state.copyWith(isLoading: true));
     var crowdfundingModel = await crowdfundingService.getCrowdfundingModel();
     var volunteeringModel = await volunteerProjectService.getVolunteerModel();
     var charityModel = await charityService.getCharityModel();
@@ -34,8 +40,11 @@ class MyProjectAndAnnouncementsPagesCubit extends Cubit<MyProjectAndAnnouncement
       emit(state.copyWith(kraufandingList: crowdfundingModel));
       emit(state.copyWith(volunteeringList: volunteeringModel));
       emit(state.copyWith(charityList: charityModel));
+      emit(state.copyWith(isLoading: false));
+
 
     }
+    emit(state.copyWith(isLoading: false));
 
 
   }

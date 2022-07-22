@@ -47,7 +47,7 @@ class NewVolunteerCard extends StatelessWidget {
                       ),
                       child: CachedNetworkImage(
                         width: double.infinity,
-                        imageUrl: cardModel.coverUrl!,
+                        imageUrl: cardModel.cover!,
                         errorWidget: (context, url, error) => Image.asset(
                           AppImageUtils.Splash2,
                         ),

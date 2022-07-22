@@ -262,7 +262,8 @@
     "enter_confirmation_code": "Введите код подтверждения",
     "number_been_blocked": "Ваш номер заблокирован на 24 часа!",
     "wrong_code_entered": "Был введен неверный код!",
-    "number_is_registered": "Этот номер зарегистрирован"
+    "number_is_registered": "Этот номер зарегистрирован",
+    "disConnection": "Нет соединения с интернетом!"
 
 
 

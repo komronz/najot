@@ -11,12 +11,14 @@ import 'package:najot/data/bloc/volunteer_bloc/volunteer_cubit.dart';
 import 'package:najot/data/services/notification_api_service.dart';
 
 import 'db_service.dart';
+import 'hive_service.dart';
 
 class DIService {
   static Future<void> init() async {
     // Services
     await DBService.init();
     await NotificationApiService.init(initScheduled: true);
+    print(HiveService.to.getToken());
 
     // BloCs
     await LanguageCubit.init();

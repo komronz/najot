@@ -9,6 +9,7 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/project_model.dart';
+import 'package:najot/data/services/main_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -66,14 +67,17 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Colors.black12),
-                              child: CachedNetworkImage(
-                                imageUrl: list[index].user!.photo!,
-                                fit: BoxFit.cover,
-                                placeholder: (context, url) => Center(
-                                  child: CircularProgressIndicator(),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(25.w),
+                                child: CachedNetworkImage(
+                                  imageUrl: list[index].user!.photo!,
+                                  fit: BoxFit.cover,
+                                  placeholder: (context, url) => Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                  errorWidget: (context, url, error) =>
+                                      Icon(Icons.person),
                                 ),
-                                errorWidget: (context, url, error) =>
-                                    Icon(Icons.person),
                               ),
                             ),
                             Column(
@@ -81,7 +85,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                               children: [
                                 SizedBox(
                                   child: AppWidgets.text(
-                                    text: LocaleKeys.great_project.tr(),
+                                    text: list[index].title ?? "",
                                     color: AppColorUtils.TEXT_GREEN2,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 14.sp,
@@ -100,7 +104,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                           ],
                         ),
                         AppWidgets.text(
-                          text: list[index].content!,
+                          text: list[index].content ?? "",
                           fontWeight: FontWeight.w400,
                           fontSize: 14.sp,
                           color: AppColorUtils.TEXT_GREY2,
@@ -194,21 +198,29 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                 ),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(25),
-                  onTap: () {
-                    if (hasTextComment && hasTextTitle) {
-                      widget.cubit.postCommitById(
-                        widget.projectModel.id!,
-                        title.text,
-                        content.text,
-                      );
-                      widget.cubit.load(widget.projectModel.id!);
-                      title.text="";
-                      content.text="";
-                      hasTextTitle=false;
-                      hasTextComment=false;
-                    } else {
-                      AppWidgets.showText(text: "Ma'lumot kiriting");
+                  onTap: () async{
+                    var internetConnection = await MainService().checkInternetConnection();
+                    if(internetConnection){
+                      if (hasTextComment && hasTextTitle) {
+                        widget.cubit.postCommitById(
+                          widget.projectModel.id!,
+                          title.text,
+                          content.text,
+                        );
+                        widget.cubit.load(widget.projectModel.id!);
+                        title.text="";
+                        content.text="";
+                        hasTextTitle=false;
+                        hasTextComment=false;
+
+
+                      } else {
+                        AppWidgets.showText(text: "Ma'lumot kiriting");
+                      }
+                    }else{
+                      AppWidgets.showText(text: "Internet bilan aloqa yo'q!");
                     }
+
                   },
                   child: Container(
                     height: 46.w,
