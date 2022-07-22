@@ -3,10 +3,8 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/model/operator_model.dart';
 import 'package:najot/data/services/operator_service.dart';
-import 'package:najot/ui/widgets/app_widgets.dart';
 
 part 'operator_state.dart';
 
@@ -31,17 +29,15 @@ class OperatorCubit extends Cubit<OperatorState> {
       emit(state.copyWith(hasError: true, isLoading: false));
     }
   }
-  Future listenSms() async{
-
-  }
 
   Future loads() async {
-    var sms = await operatorService.getModel();
-    emit(state.copyWith(isLoading: true, hasError: false));
+    // emit(state.copyWith(isLoading: true, hasError: false));
     try {
-      if (sms != null) {
-        emit(state.copyWith(list: sms.results!, isLoading: false));
+      var sms = await operatorService.getModel();
+      if (state.list!.length < sms!.results!.length) {
+        controller.jumpTo(controller.position.maxScrollExtent + 100);
       }
+      emit(state.copyWith(list: sms.results!, isLoading: false));
     } catch (e) {
       emit(state.copyWith(hasError: true, isLoading: false));
     }
@@ -56,13 +52,12 @@ class OperatorCubit extends Cubit<OperatorState> {
       content,
     );
     if (operatorModel != null) {
-      print(operatorModel);
       saveImage(null);
-      loads();
+      var sms = await operatorService.getModel();
+      emit(state.copyWith(list: sms!.results!));
       textController.clear();
       controller.jumpTo(controller.position.maxScrollExtent + 100);
     }
-
   }
 
   Future writeSms(String v) async {
@@ -75,7 +70,6 @@ class OperatorCubit extends Cubit<OperatorState> {
       userImgPath: imagePicker,
       list: state.list,
       sendSmsTxt: state.sendSmsTxt,
-
     );
     emit(newState);
   }

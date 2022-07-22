@@ -33,6 +33,8 @@ class MyVolunteeringCubit extends Cubit<MyVolunteeringState> {
         for (int j = 0; j < db.length; j++) {
           if(volunteering.results![i].id==db[j].id){
             volunteering.results![i].project!.isDone=true;
+          }else{
+            volunteering.results![i].project!.isDone=false;
           }
       }
     }
@@ -40,6 +42,8 @@ class MyVolunteeringCubit extends Cubit<MyVolunteeringState> {
         for (int j = 0; j < db.length; j++) {
           if(volunteeringType.results![i].id==db[j].id){
             volunteeringType.results![i].project!.isDone=true;
+          }else{
+            volunteeringType.results![i].project!.isDone=false;
           }
         }
       }

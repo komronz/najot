@@ -19,7 +19,7 @@ class NotificationCubit extends Cubit<NotificationState> {
   static NotificationCubit get to => GetIt.I<NotificationCubit>();
 
   static Future init() async {
-    GetIt.instance..registerSingleton<NotificationCubit>(NotificationCubit());
+    GetIt.instance..registerSingleton<NotificationCubit>(NotificationCubit()..getList());
 
 
   }

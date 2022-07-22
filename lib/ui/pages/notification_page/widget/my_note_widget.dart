@@ -16,7 +16,7 @@ import 'notification_date_widget.dart';
 import 'notification_delete_widget.dart';
 import 'notification_edit.dart';
 
-class MyNoteWidget extends StatefulWidget {
+class MyNoteWidget extends StatelessWidget {
   MyNoteWidget({
     required this.model,
     required this.index,
@@ -27,23 +27,6 @@ class MyNoteWidget extends StatefulWidget {
   final VolunteerDbModel model;
   final int index;
   final NotificationCubit cubit;
-
-  @override
-  State<MyNoteWidget> createState() => _MyNoteWidgetState();
-}
-
-class _MyNoteWidgetState extends State<MyNoteWidget> {
-  @override
-  void initState() {
-    super.initState();
-    // TODO: implement initState
-    NotificationApiService.showNotification(
-        title: LocaleKeys.attention_hello_volunteer.tr(),
-        body: LocaleKeys.you_go_to_help.tr(),
-        payload: jsonEncode(widget.cubit.state.cardList[widget.index].toJson()),
-        scheduledDate: DateTime.parse(widget.cubit.state.cardList[widget.index].modifiedAt!),
-      );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,10 +66,10 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
                           context: context,
                           builder: (context) {
                             return NotificationEdit(
-                              cubit: widget.cubit,
+                              cubit: cubit,
                               selectFunction: (dateTime) {},
-                              model: widget.model,
-                              index: widget.index,
+                              model: model,
+                              index: index,
                             );
                           },
                         );
@@ -97,7 +80,7 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
                 Container(
                   width: 260.w,
                   child: AppWidgets.text(
-                    text: widget.model.title ?? "",
+                    text: model.title ?? "",
                     height: 1.3,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w500,
@@ -114,7 +97,7 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
                   top: 12.w,
                   bottom: 3,
                 ),
-                NotificationDateWidget(date: widget.model.modifiedAt!),
+                NotificationDateWidget(date: model.modifiedAt!),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -136,7 +119,7 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
                             ).paddingOnly(right: 5),
                             AppWidgets.textLocale(
                               text: DateFormat("dd.MM.yyyy").format(
-                                  DateTime.parse(widget.model.deadLine!)),
+                                  DateTime.parse(model.deadLine!)),
                               color: AppColorUtils.KRAUDFANDING,
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w500,
@@ -153,9 +136,9 @@ class _MyNoteWidgetState extends State<MyNoteWidget> {
                               context: context,
                               builder: (context) {
                                 return NotificationDeleteWidget(
-                                  index: widget.index,
-                                  cubit: widget.cubit,
-                                  model: widget.model,
+                                  index: index,
+                                  cubit: cubit,
+                                  model: model,
                                 );
                               },
                             );

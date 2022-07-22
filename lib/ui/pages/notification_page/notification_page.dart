@@ -11,22 +11,18 @@ class NotificationPage extends StatelessWidget {
   static const String routeName = "/notificationPage";
   NotificationPage({Key? key}) : super(key: key);
 
-  NotificationCubit cubit=NotificationCubit();
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => cubit..getList(),
-      child: BlocBuilder<NotificationCubit, NotificationState>(
-        builder: (context, state) => Scaffold(
-          appBar: AppBarWithTitle(
-            title: LocaleKeys.note.tr(),
-            onPress: () {
-
-              NavigatorService.to.pop();
-            },
-          ),
-          body: _buildBody(state, context),
+    return BlocBuilder<NotificationCubit, NotificationState>(
+      bloc: NotificationCubit.to..getList(),
+      builder: (context, state) => Scaffold(
+        appBar: AppBarWithTitle(
+          title: LocaleKeys.note.tr(),
+          onPress: () {
+            NavigatorService.to.pop();
+          },
         ),
+        body: _buildBody(state, context),
       ),
     );
   }
@@ -38,7 +34,7 @@ class NotificationPage extends StatelessWidget {
         return MyNoteWidget(
           model: state.cardList[index],
           index: index,
-          cubit: cubit,
+          cubit: NotificationCubit.to,
         );
       },
       itemCount: state.cardList.length,

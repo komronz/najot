@@ -18,8 +18,6 @@ class DIService {
     await DBService.init();
     await NotificationApiService.init(initScheduled: true);
 
-
-
     // BloCs
     await LanguageCubit.init();
     await HomeCubit.init();
@@ -30,6 +28,5 @@ class DIService {
     await VolunteerCubit.init();
     await OrganizationCubit.init();
     await NotificationCubit.init();
-
   }
 }
