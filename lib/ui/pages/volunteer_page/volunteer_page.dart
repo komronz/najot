@@ -14,6 +14,8 @@ import 'package:najot/ui/widgets/app_search_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 
+import '../../widgets/app_error_widget.dart';
+
 class VolunteerPage extends StatelessWidget {
   VolunteerPage();
 
@@ -156,7 +158,7 @@ class VolunteerPage extends StatelessWidget {
                                   ),
                                 );
                               },
-                              cardModel: state.list[index],
+                              cardModel: state.searchProjects[index],
                             ),
                           ),
                         )

@@ -10,6 +10,9 @@ class AppealState extends Equatable {
   final bool isNextBtnActive;
   final bool hasError;
   final bool isLoading;
+  final bool hasLoading;
+  final bool internetConnection;
+  final List<AboutModel> list;
 
   const AppealState({
     this.name = '',
@@ -21,6 +24,9 @@ class AppealState extends Equatable {
     this.phoneFill = false,
     this.hasError = false,
     this.isLoading = false,
+    this.hasLoading = false,
+    this.internetConnection = true,
+    this.list = const []
   });
 
   @override
@@ -33,7 +39,10 @@ class AppealState extends Equatable {
         applyFill,
         phoneFill,
         hasError,
-        isLoading
+        isLoading,
+    hasLoading,
+    internetConnection,
+    list
       ];
 
   AppealState copyWith({
@@ -46,6 +55,9 @@ class AppealState extends Equatable {
     bool? phoneFill,
     bool? hasError,
     bool? isLoading,
+    bool? hasLoading,
+    bool? internetConnection,
+     List<AboutModel>? list
   }) {
     return AppealState(
       name: firstName ?? this.name,
@@ -57,6 +69,9 @@ class AppealState extends Equatable {
       phoneFill: phoneFill ?? this.phoneFill,
       hasError: hasError ?? this.hasError,
       isLoading: isLoading ?? this.isLoading,
+      hasLoading: hasLoading ?? this.hasLoading,
+      internetConnection: internetConnection ?? this.internetConnection,
+      list: list ?? this.list,
     );
   }
 }

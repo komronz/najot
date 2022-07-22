@@ -64,7 +64,7 @@ class DrawerBody extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 AppWidgets.textLocale(
-                                  text: "Fakhriyor",
+                                  text: state.user!.firstName??"",
                                   fontWeight: FontWeight.w500,
                                   fontSize: 18.sp,
                                   color: AppColorUtils.TEXT_COLOR,
@@ -245,16 +245,16 @@ class DrawerBody extends StatelessWidget {
                       Navigator.pop(context);
                     },
                   ),
-                  FlutterSwitch(
-                    showOnOff: true,
-                    value: state.tobeVolunteer,
-                    onToggle: (v) {
-                      Volunteer.tobeVolunteer = !Volunteer.tobeVolunteer;
-                      context
-                          .read<AppPageCubit>()
-                          .changeVolunteer(Volunteer.tobeVolunteer);
-                    },
-                  ),
+                  // FlutterSwitch(
+                  //   showOnOff: true,
+                  //   value: state.tobeVolunteer,
+                  //   onToggle: (v) {
+                  //     Volunteer.tobeVolunteer = !Volunteer.tobeVolunteer;
+                  //     context
+                  //         .read<AppPageCubit>()
+                  //         .changeVolunteer(Volunteer.tobeVolunteer);
+                  //   },
+                  // ),
                 ],
               ),
             ),

@@ -6,12 +6,14 @@ class FaqState extends Equatable {
   final bool hasLoading;
   final bool hasError;
   final bool hasConnection;
+  final bool internetConnection;
   final List<FaqModel> list;
 
   const FaqState({
     this.hasLoading = false,
     this.hasError = false,
     this.hasConnection = true,
+    this.internetConnection = true,
     this.list = const [],
   });
 
@@ -19,6 +21,7 @@ class FaqState extends Equatable {
     bool? hasLoading,
     bool? hasError,
     bool? hasConnection,
+    bool? internetConnection,
     List<FaqModel>? list,
   }) {
     return FaqState(
@@ -26,6 +29,7 @@ class FaqState extends Equatable {
       list: list ?? this.list,
       hasConnection: hasConnection ?? this.hasConnection,
       hasLoading: hasLoading ?? this.hasLoading,
+      internetConnection: internetConnection ?? this.internetConnection,
     );
   }
 
@@ -35,6 +39,7 @@ class FaqState extends Equatable {
         hasError,
         hasConnection,
         list,
+    internetConnection
       ];
 
   @override
@@ -45,5 +50,6 @@ class FaqState extends Equatable {
           hasError == other.hasError &&
           list == other.list &&
           hasConnection == other.hasConnection &&
+          internetConnection == other.internetConnection &&
           hasLoading == other.hasLoading;
 }

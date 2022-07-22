@@ -28,9 +28,6 @@ import 'package:super_rich_text/super_rich_text.dart';
 
 import '../../../../data/services/main_service.dart';
 import '../../../widgets/app_error_widget.dart';
-import '../../kraudfanding_page_main/project_details/widgets/comments_widget.dart';
-import '../../kraudfanding_page_main/project_details/widgets/more_widget.dart';
-import '../../kraudfanding_page_main/project_details/widgets/news_widget.dart';
 
 class CharityFullModel {
   ProjectModel cardModel;
@@ -173,7 +170,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                       fontWeight: FontWeight.w500,
                       maxLines: 2,
                     ).paddingSymmetric(horizontal: 20.w),
-                    KraudfandingAuthorWidget(
+                    CrowdfundingAuthorWidget(
                       model: widget.helpModel,
                       onTap: () {
                         showDialog(
@@ -278,11 +275,11 @@ class _CharityFullPageState extends State<CharityFullPage2>
                       SizedBox(
                         height: 10.w,
                       ),
-                      state.saveHelp
+                      !widget.helpModel.isContribution!
                           ? Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          state.tobeVolunteer
+                          widget.helpModel.isFavourite!
                               ? SizedBox()
                               : AppWidgets.text(
                               text: LocaleKeys.tobe_volunteer.tr(),
@@ -313,7 +310,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                             children: [
                               ButtonCard(
                                 onPress: () {
-                                  if (state.tobeVolunteer == true) {
+                                  if (widget.helpModel.isFavourite!) {
                                     NavigatorService.to.pushNamed(
                                       CharityHelpWidget.routeName,
                                       arguments: CharityHelpModel(

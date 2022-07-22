@@ -44,38 +44,27 @@ class VolunteeringProjectWidget extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: Stack(
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(12),
-                          ),
-                          child: CachedNetworkImage(
-                            placeholder: (context, url) => Center(
-                              child: CircularProgressIndicator(),
-                            ),
-                            imageUrl: model.coverUrl!,
-                            errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ],
+              child: ClipRRect(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(12),
+                ),
+                child: CachedNetworkImage(
+                  placeholder: (context, url) => Center(
+                    child: CircularProgressIndicator(),
                   ),
-                ],
+                  imageUrl: model.coverUrl!,
+                  errorWidget: (context, url, error) =>
+                      Icon(Icons.error),
+                  fit: BoxFit.cover,
+                ),
               ),
-              flex: 1,
             ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppWidgets.text(
-                    text: model.title!,
+                    text: model.title??"",
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
                     maxLines: 2,
@@ -90,7 +79,7 @@ class VolunteeringProjectWidget extends StatelessWidget {
                     bottom: 3.h,
                   ),
                   AppWidgets.text(
-                    text: model.helpType!,
+                    text: model.helpType??"",
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.GREEN_TEXT,

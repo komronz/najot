@@ -26,12 +26,6 @@ import '../../../../data/bloc/home_cubit/home_cubit.dart';
 import '../../../../data/bloc/project_data_cubit/project_data_cubit.dart';
 import '../../../../data/services/main_service.dart';
 import '../../../widgets/app_error_widget.dart';
-import '../../kraudfanding_page_main/project_details/widgets/comments_widget.dart';
-import '../../kraudfanding_page_main/project_details/widgets/more_widget.dart';
-import '../../kraudfanding_page_main/project_details/widgets/news_widget.dart';
-import '../../kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
-
-
 
 class OrganizationItemWidget2 extends StatefulWidget {
   OrganizationItemWidget2({required this.model});
@@ -60,7 +54,6 @@ class _OrganizationItemWidget2State extends State<OrganizationItemWidget2>
 
   @override
   void initState() {
-    print(widget.model.cardModel.isFavourite!);
     like = widget.model.cardModel.isFavourite!;
     _controller = TabController(length: 4, vsync: this);
     _controller.addListener(_handleTabSelection);

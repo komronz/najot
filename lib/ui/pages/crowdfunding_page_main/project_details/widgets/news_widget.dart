@@ -50,14 +50,17 @@ class NewsWidget extends StatelessWidget {
                                   shape : BoxShape.circle,
                                   color: Colors.black12,
                               ),
-                              child: CachedNetworkImage(
-                                imageUrl:cubit.state.newsData[index].user!.photo!,
-                                fit: BoxFit.cover,
-                                placeholder: (context, url) => Center(
-                                  child: CircularProgressIndicator(),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(25.w),
+                                child: CachedNetworkImage(
+                                  imageUrl:cubit.state.newsData[index].user!.photo!,
+                                  fit: BoxFit.cover,
+                                  placeholder: (context, url) => Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                  errorWidget: (context, url, error) =>
+                                      Icon(Icons.person),
                                 ),
-                                errorWidget: (context, url, error) =>
-                                    Icon(Icons.person),
                               ),
                             ),
                             Column(

@@ -18,7 +18,6 @@ import 'package:najot/ui/widgets/app_search_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../widgets/app_error_widget.dart';
-import '../kraudfanding_page_main/kraudfanding_page.dart';
 import 'charity_full_page/charity_full_page.dart';
 import 'charity_full_page/charity_full_page2.dart';
 

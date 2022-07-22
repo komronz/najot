@@ -99,21 +99,25 @@ class OrganizationHelpWidget extends StatelessWidget {
                   ).paddingSymmetric(horizontal: 20.w),
                   Row(
                     children: [
+                     
                       Container(
                         height: 50.w,
                         width: 50.w,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.black12,
+                          color: Colors.black12
                         ),
-                        child: CachedNetworkImage(
-                          imageUrl: helpModel.cardModel.cover!,
-                          fit: BoxFit.cover,
-                          placeholder: (context, url) => Center(
-                            child: CircularProgressIndicator(),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(25),
+                          child: CachedNetworkImage(
+                            imageUrl: helpModel.cardModel.owner!.photo!,
+                            fit: BoxFit.cover,
+                            placeholder: (context, url) => Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.person),
                           ),
-                          errorWidget: (context, url, error) =>
-                              Icon(Icons.person),
                         ),
                       ).paddingOnly(
                         top: 15.w,

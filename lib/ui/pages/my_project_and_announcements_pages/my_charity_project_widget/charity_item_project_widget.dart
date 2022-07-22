@@ -43,29 +43,21 @@ class CharityItemProjectWidget extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: Stack(
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(12),
-                          ),
-                          child: CachedNetworkImage(
-                            placeholder: (context, url) => Center(
-                              child: CircularProgressIndicator(),
-                            ),
-                            imageUrl: model.coverUrl!,
-                            errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ],
+              child: Expanded(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(12),
                   ),
-                ],
+                  child: CachedNetworkImage(
+                    placeholder: (context, url) => Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    imageUrl: model.coverUrl!,
+                    errorWidget: (context, url, error) =>
+                        Icon(Icons.error),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               flex: 1,
             ),

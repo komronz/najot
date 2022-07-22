@@ -23,53 +23,57 @@ class OrganizationPage extends StatelessWidget {
       create: (context) => OrganizationCubit.to..load(),
       child: BlocBuilder<OrganizationCubit, OrganizationState>(
           builder: (context, state) {
-            return Scaffold(
-              appBar: AppBar(
-                backgroundColor: AppColorUtils.BACKGROUND,
-                titleSpacing: 0,
-                elevation: 0,
-                automaticallyImplyLeading: false,
-                title: AppWidgets.appBarMenu(
-                  title: LocaleKeys.organizations,
-                  onTapMenu: () {
-                    HomePage.globalKey.currentState!.openDrawer();
-                  },
-                  visibleIcon: true,
-                  onTapIcon: () {
-                    NavigatorService.to.pushNamed(NotificationPage.routeName,);
 
-                  },
-                  icon: AppImageUtils.NOTIFICATION,
+            if(state.internetConnection){
+              return Scaffold(
+                appBar: AppBar(
+                  backgroundColor: AppColorUtils.BACKGROUND,
+                  titleSpacing: 0,
+                  elevation: 0,
+                  automaticallyImplyLeading: false,
+                  title: AppWidgets.appBarMenu(
+                    title: LocaleKeys.organizations,
+                    onTapMenu: () {
+                      HomePage.globalKey.currentState!.openDrawer();
+                    },
+                    visibleIcon: true,
+                    onTapIcon: () {
+                      NavigatorService.to.pushNamed(NotificationPage.routeName,);
+
+                    },
+                    icon: AppImageUtils.NOTIFICATION,
+                  ),
                 ),
-              ),
-              body: Container(
-                padding: EdgeInsets.all(15.w),
-                color: AppColorUtils.BACKGROUND,
-                child: GridView.count(
-                  shrinkWrap: true,
-                  crossAxisCount: 2,
-                  physics: ClampingScrollPhysics(),
-                  childAspectRatio: 160.w / 238.w,
-                  padding: EdgeInsets.all(0),
-                  reverse: false,
-                  crossAxisSpacing: 8,
-                  mainAxisSpacing: 6,
-                  children: List.generate(state.list.length, (index) {
-                    return OrganizationItemWidget(
-                      model: state.list[index],
-                      cubit: cubit,
-                    );
-                  }),
+                body: Container(
+                  padding: EdgeInsets.all(15.w),
+                  color: AppColorUtils.BACKGROUND,
+                  child: GridView.count(
+                    shrinkWrap: true,
+                    crossAxisCount: 2,
+                    physics: ClampingScrollPhysics(),
+                    childAspectRatio: 160.w / 238.w,
+                    padding: EdgeInsets.all(0),
+                    reverse: false,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 6,
+                    children: List.generate(state.list.length, (index) {
+                      return OrganizationItemWidget(
+                        model: state.list[index],
+                        cubit: cubit,
+                      );
+                    }),
+                  ),
                 ),
-              ),
-            );
-          }
-          return AppErrorWidget(
-              onTap: () async{
-                AppWidgets.isLoading(true);
-                await OrganizationCubit.to.load();
-                AppWidgets.isLoading(false);
-              });
+              );
+            }
+            return AppErrorWidget(
+                onTap: () async{
+                  AppWidgets.isLoading(true);
+                  await OrganizationCubit.to.load();
+                  AppWidgets.isLoading(false);
+                });
+
+
           }),
     );
   }

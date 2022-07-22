@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:najot/data/bloc/kraudfanding_cubit/kraud_fanding_cubit.dart';
 import 'package:najot/data/model/product_model.dart';
 import 'package:najot/data/services/product_service.dart';
 
 import '../../services/main_service.dart';
+import '../crowdFounding_cubit/kraud_fanding_cubit.dart';
 
 part 'product_state.dart';
 

@@ -7,6 +7,9 @@ import 'package:najot/data/services/main_service.dart';
 import 'package:najot/data/services/volunteer_project_service.dart';
 
 import '../../../ui/widgets/app_widgets.dart';
+import '../../model/volunteer_db_model.dart';
+import '../../model/volunteer_donate_model.dart';
+import '../../services/db_service.dart';
 import '../../services/volunteer_service.dart';
 
 part 'volunteer_state.dart';
@@ -22,7 +25,19 @@ class VolunteerCubit extends Cubit<VolunteerState> {
   VolunteerProjectService service= VolunteerProjectService();
   MainService mainService=MainService();
   var internetConnection;
+  final DBService dbService=DBService();
 
+  Future addDbVolunteer( DateTime dateTime,ProjectModel model)async{
+    VolunteerDbModel volunteerDbModel=VolunteerDbModel();
+    volunteerDbModel.id=model.id;
+    volunteerDbModel.title=model.title;
+    volunteerDbModel.helpType=model.helpType;
+    volunteerDbModel.address=model.address;
+    volunteerDbModel.modifiedAt=dateTime.toString();
+    volunteerDbModel.deadLine=model.deadline;
+    dbService.saveVolunteer(volunteerDbModel);
+    load();
+  }
   Future changeLike(int id) async{
     internetConnection = await mainService.checkInternetConnection();
     if(internetConnection){
@@ -33,6 +48,16 @@ class VolunteerCubit extends Cubit<VolunteerState> {
     }else{
       AppWidgets.showText(text: "Internet bilan aloqa yo'q!");
     }
+
+  }
+
+  Future isContribution(int id) async{
+    internetConnection = await mainService.checkInternetConnection();
+    emit(state.copyWith(internetConnection: internetConnection));
+     var isContribution = await service.contributionChange(id);
+     if(isContribution !=null){
+       load();
+     }
 
   }
 
@@ -60,11 +85,10 @@ class VolunteerCubit extends Cubit<VolunteerState> {
       emit(state.copyWith(
         list: volunteerModel.results!,
         checkBox: false,
-        tobeVolunteer: Volunteer.tobeVolunteer,
       ));
     }
     if(isVolunteer != null){
-
+        emit(state.copyWith(tobeVolunteer: isVolunteer.isVolunteer));
     }
   }
 

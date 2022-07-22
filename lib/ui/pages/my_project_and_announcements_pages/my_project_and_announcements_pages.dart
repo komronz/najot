@@ -13,6 +13,7 @@ import '../../../data/config/const/decoration_const.dart';
 import '../../../data/services/navigator_service.dart';
 import '../../../data/utils/app_color_utils.dart';
 import '../../../data/utils/app_image_utils.dart';
+import '../../widgets/app_error_widget.dart';
 import '../../widgets/app_widgets.dart';
 import '../home_page/home_page.dart';
 import '../notification_page/notification_page.dart';
@@ -22,12 +23,12 @@ import 'my_crowdfunding_project/my_crowdfunding_list_widget.dart';
 class MyProjectAndAnnouncementsPages extends StatelessWidget {
   static const String routeName = '/myProjectAndAnnouncementsPages';
 
-  const MyProjectAndAnnouncementsPages({Key? key}) : super(key: key);
-
+   MyProjectAndAnnouncementsPages({Key? key}) : super(key: key);
+  MyProjectAndAnnouncementsPagesCubit cubit=MyProjectAndAnnouncementsPagesCubit();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MyProjectAndAnnouncementsPagesCubit()..load(),
+      create: (context) =>cubit..load(),
       child: BlocBuilder<MyProjectAndAnnouncementsPagesCubit,
           MyProjectAndAnnouncementsPagesState>(
         builder: (context, state) => Scaffold(
@@ -82,69 +83,74 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
     BuildContext context,
     MyProjectAndAnnouncementsPagesState state,
   ) {
-    if (state.isLoading) {
-      return Center(
-        child: CircularProgressIndicator(),
-      );
-    } else if (state.hasError) {
-      return Center(
-        child: AppWidgets.imageSvg(path: AppImageUtils.IMG_WAIT),
-      );
-    }
-    return DefaultTabController(
-      initialIndex: 0,
-      length: 3,
-      child: Container(
-        decoration: DecorationConst.DEC_WITH_SHADOW,
-        height: context.height,
-        width: context.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            TabBar(
-              enableFeedback: true,
-              labelColor: AppColorUtils.GREEN_APP,
-              unselectedLabelColor: AppColorUtils.DARK_6,
-              labelPadding: EdgeInsets.symmetric(horizontal: 15),
-              padding: EdgeInsets.symmetric(vertical: 5),
-              unselectedLabelStyle: TextStyle(
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w400,
-              ),
-              labelStyle: TextStyle(
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w600,
-              ),
-              tabs: [
-                Text(LocaleKeys.crowdfunding.tr()),
-                Text(LocaleKeys.volunteering.tr()),
-                Text(LocaleKeys.charity.tr()),
-              ],
-              isScrollable: true,
-              indicatorWeight: 1.5,
-              indicatorColor: AppColorUtils.GREEN_APP,
-              indicatorSize: TabBarIndicatorSize.label,
-              // padding: EdgeInsets.only(right: 10),
-              // indicatorPadding: EdgeInsets.only(right: 10, left: 10),
-              // labelPadding: EdgeInsets.only(right: 10, left: 10),
-            ).paddingOnly(
-              left: 15,
-              top: 10,
-              bottom: 10,
-            ),
-            Expanded(
-              child: TabBarView(
-                children: [
-                  MyCrowdfundingListWidget(list: state.kraufandingList),
-                  MyVolunteeringProjectPage(list: state.volunteeringList),
-                  MyCharityProjectList(list: state.charityList)
+    if(state.hasConnection){
+      if (state.isLoading) {
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+      return DefaultTabController(
+        initialIndex: 0,
+        length: 3,
+        child: Container(
+          decoration: DecorationConst.DEC_WITH_SHADOW,
+          height: context.height,
+          width: context.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              TabBar(
+                enableFeedback: true,
+                labelColor: AppColorUtils.GREEN_APP,
+                unselectedLabelColor: AppColorUtils.DARK_6,
+                labelPadding: EdgeInsets.symmetric(horizontal: 15),
+                padding: EdgeInsets.symmetric(vertical: 5),
+                unselectedLabelStyle: TextStyle(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w400,
+                ),
+                labelStyle: TextStyle(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w600,
+                ),
+                tabs: [
+                  Text(LocaleKeys.crowdfunding.tr()),
+                  Text(LocaleKeys.volunteering.tr()),
+                  Text(LocaleKeys.charity.tr()),
                 ],
+                isScrollable: true,
+                indicatorWeight: 1.5,
+                indicatorColor: AppColorUtils.GREEN_APP,
+                indicatorSize: TabBarIndicatorSize.label,
+                // padding: EdgeInsets.only(right: 10),
+                // indicatorPadding: EdgeInsets.only(right: 10, left: 10),
+                // labelPadding: EdgeInsets.only(right: 10, left: 10),
+              ).paddingOnly(
+                left: 15,
+                top: 10,
+                bottom: 10,
               ),
-            )
-          ],
+              Expanded(
+                child: TabBarView(
+                  children: [
+                    MyCrowdfundingListWidget(list: state.kraufandingList),
+                    MyVolunteeringProjectPage(list: state.volunteeringList),
+                    MyCharityProjectList(list: state.charityList)
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    }else{
+      return AppErrorWidget(
+          onTap: () async{
+            AppWidgets.isLoading(true);
+            await cubit.load();
+            AppWidgets.isLoading(false);
+          });
+    }
   }
 }

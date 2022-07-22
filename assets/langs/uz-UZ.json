@@ -263,6 +263,7 @@
   "enter_confirmation_code": "Tasdiqlash kodini kiriting",
   "number_been_blocked": "Raqamingiz 24 soatga bloklandi!",
   "wrong_code_entered": "Xato kod terildi!",
-  "number_is_registered": "Bu raqam registratsiyadan o'tgan"
+  "number_is_registered": "Bu raqam registratsiyadan o'tgan",
+  "disConnection": "Internet bilan aloqa yo'q!"
 
 }

@@ -26,8 +26,6 @@ import '../../../../data/bloc/project_data_cubit/project_data_cubit.dart';
 import '../../../../data/services/main_service.dart';
 import '../../../widgets/app_error_widget.dart';
 import '../../charity_page/widgets/detail_body_part1.dart';
-import '../../kraudfanding_page_main/project_details/widgets/comment_to_author_dialog.dart';
-import '../../kraudfanding_page_main/project_details/widgets/kraudfanding_authot_widget.dart';
 import 'organization_help_widget.dart';
 
 class OrganizationItemModel {

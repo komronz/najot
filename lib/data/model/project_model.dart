@@ -10,12 +10,14 @@ class Category {
     this.type,
     this.photo,
   });
+
   Category.fromJson(Map<String, dynamic> json) {
     id = json['id']?.toInt();
     name = json['name']?.toString();
     type = json['type']?.toString();
     photo = json['photo']?.toString();
   }
+
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['id'] = id;
@@ -27,7 +29,6 @@ class Category {
 }
 
 class Organization {
-
   int? id;
   String? name;
 
@@ -35,10 +36,12 @@ class Organization {
     this.id,
     this.name,
   });
+
   Organization.fromJson(Map<String, dynamic> json) {
     id = json['id']?.toInt();
     name = json['name']?.toString();
   }
+
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['id'] = id;
@@ -59,12 +62,14 @@ class Owner {
     this.lastName,
     this.photo,
   });
+
   Owner.fromJson(Map<String, dynamic> json) {
     id = json['id']?.toInt();
     firstName = json['first_name']?.toString();
     lastName = json['last_name']?.toString();
     photo = json['photo']?.toString();
   }
+
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['id'] = id;
@@ -74,6 +79,7 @@ class Owner {
     return data;
   }
 }
+
 class ProjectModel {
   int? id;
   Owner? owner;
@@ -93,10 +99,33 @@ class ProjectModel {
   String? requiredFund;
   String? address;
   bool? isFavourite;
+  bool? isContribution;
   String? createdAt;
   String? modifiedAt;
 
-  ProjectModel({this.id, this.owner, this.type, this.title, this.helpType, this.organization, this.deadline, this.cover, this.content, this.coverUrl, this.category, this.investorsCount, this.amountCollected, this.percent, this.cardNumber, this.requiredFund, this.address, this.isFavourite, this.createdAt, this.modifiedAt});
+  ProjectModel({
+    this.id,
+    this.owner,
+    this.type,
+    this.title,
+    this.helpType,
+    this.organization,
+    this.deadline,
+    this.cover,
+    this.content,
+    this.coverUrl,
+    this.category,
+    this.investorsCount,
+    this.amountCollected,
+    this.percent,
+    this.cardNumber,
+    this.requiredFund,
+    this.address,
+    this.isFavourite,
+    this.createdAt,
+    this.modifiedAt,
+    this.isContribution,
+  });
 
   ProjectModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -104,12 +133,16 @@ class ProjectModel {
     type = json['type'];
     title = json['title'];
     helpType = json['help_type'];
-    organization = json['organization'] != null ? new Organization.fromJson(json['organization']) : null;
+    organization = json['organization'] != null
+        ? new Organization.fromJson(json['organization'])
+        : null;
     deadline = json['deadline'];
     cover = json['cover'];
     content = json['content'];
     coverUrl = json['cover_url'];
-    category = json['category'] != null ? new Category.fromJson(json['category']) : null;
+    category = json['category'] != null
+        ? new Category.fromJson(json['category'])
+        : null;
     investorsCount = json['investors_count'];
     amountCollected = json['amount_collected'];
     percent = json['percent'];
@@ -117,6 +150,7 @@ class ProjectModel {
     requiredFund = json['required_fund'];
     address = json['address'];
     isFavourite = json['is_favourite'];
+    isContribution = json['is_contribution'];
     createdAt = json['created_at'];
     modifiedAt = json['modified_at'];
   }
@@ -147,13 +181,14 @@ class ProjectModel {
     data['required_fund'] = this.requiredFund;
     data['address'] = this.address;
     data['is_favourite'] = this.isFavourite;
+    data['is_contribution'] = this.isContribution;
     data['created_at'] = this.createdAt;
     data['modified_at'] = this.modifiedAt;
     return data;
   }
 }
-class ProjectModelLinks {
 
+class ProjectModelLinks {
   String? next;
   String? previous;
 
@@ -161,10 +196,12 @@ class ProjectModelLinks {
     this.next,
     this.previous,
   });
+
   ProjectModelLinks.fromJson(Map<String, dynamic> json) {
     next = json['next']?.toString();
     previous = json['previous']?.toString();
   }
+
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['next'] = next;
@@ -172,7 +209,3 @@ class ProjectModelLinks {
     return data;
   }
 }
-
-
-
-

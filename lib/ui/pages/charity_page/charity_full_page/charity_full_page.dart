@@ -24,10 +24,6 @@ import '../../../../data/bloc/project_data_cubit/project_data_cubit.dart';
 import '../../../../data/model/project_model.dart';
 import '../../../../data/services/main_service.dart';
 import '../../../widgets/app_error_widget.dart';
-import '../../kraudfanding_page_main/project_details/widgets/comments_widget.dart';
-import '../../kraudfanding_page_main/project_details/widgets/more_widget.dart';
-import '../../kraudfanding_page_main/project_details/widgets/news_widget.dart';
-import '../../kraudfanding_page_main/project_details/widgets/question_asked_widget.dart';
 import '../../crowdfunding_page_main/project_details/widgets/crowdfunding_authot_widget.dart';
 
 

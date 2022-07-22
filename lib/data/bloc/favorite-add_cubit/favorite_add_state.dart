@@ -1,7 +1,7 @@
 part of 'favorite_add_cubit.dart';
 
 class FavoriteAddState extends Equatable {
-  final List<FavouriteModel> list;
+  final List<ProjectModel> list;
   final bool hasError;
   final bool hasConnection;
   final bool hasLoading;
@@ -14,7 +14,7 @@ class FavoriteAddState extends Equatable {
   });
 
   FavoriteAddState copyWith({
-    List<FavouriteModel>? list,
+    List<ProjectModel>? list,
     bool? hasError,
     bool? hasConnection,
     bool? hasLoading,

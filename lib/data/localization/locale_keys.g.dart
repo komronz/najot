@@ -252,8 +252,8 @@ abstract class  LocaleKeys {
   static const card_number = 'card_number';
   static const be_save = 'be_save';
   static const user = 'user';
-  static const project_successful_added = 'project_successful_added';
   static const try_again = 'try_again';
+  static const project_successful_added = 'project_successful_added';
   static const delete_profile = 'delete_profile';
   static const request_sent_successful = 'request_sent_successful';
   static const profile_will_be_deleted = 'profile_will_be_deleted';
@@ -265,4 +265,6 @@ abstract class  LocaleKeys {
   static const number_been_blocked = 'number_been_blocked';
   static const wrong_code_entered = 'wrong_code_entered';
   static const number_is_registered = 'number_is_registered';
+  static const disConnection = 'disConnection';
+
 }

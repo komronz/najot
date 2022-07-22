@@ -49,7 +49,7 @@ class CharityItem2Widget extends StatelessWidget {
                               ),
                               height: double.infinity,
                               width: double.infinity,
-                              imageUrl: model.coverUrl!,
+                              imageUrl: model.cover!,
                               errorWidget: (context, url, error) =>
                                   Icon(Icons.error),
                               fit: BoxFit.cover,
@@ -79,7 +79,7 @@ class CharityItem2Widget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppWidgets.text(
-                      text: model.title!,
+                      text: model.title??"",
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w600,
                       maxLines: 2,
@@ -94,7 +94,7 @@ class CharityItem2Widget extends StatelessWidget {
                           color: AppColorUtils.DARK_6,
                         ).paddingOnly(top: 12.w),
                         AppWidgets.text(
-                          text: model.title??"",
+                          text: model.title ?? "",
                           fontWeight: FontWeight.w600,
                           color: AppColorUtils.TEXT_GREEN,
                           fontSize: 12.sp,

@@ -6,8 +6,10 @@ import 'package:najot/data/services/main_service.dart';
 import '../../../ui/widgets/app_widgets.dart';
 import '../../model/categories_model.dart';
 import '../../model/project_model.dart';
+import '../../model/volunteer_db_model.dart';
 import '../../model/volunteer_model.dart';
 import '../../services/charity_service.dart';
+import '../../services/db_service.dart';
 import '../../utils/app_logger_util.dart';
 
 part 'charity_state.dart';
@@ -23,8 +25,29 @@ class CharityCubit extends Cubit<CharityState> {
   CharityCubit() : super(CharityState());
   CharityService charityService = CharityService();
   MainService mainService=MainService();
-  var internetConnection;
 
+  var internetConnection;
+  final DBService dbService=DBService();
+
+  Future addDbVolunteer( DateTime dateTime,ProjectModel model)async{
+    VolunteerDbModel volunteerDbModel=VolunteerDbModel();
+    volunteerDbModel.id=model.id;
+    volunteerDbModel.title=model.title;
+    volunteerDbModel.helpType=model.helpType;
+    volunteerDbModel.address=model.address;
+    volunteerDbModel.modifiedAt=dateTime.toString();
+    volunteerDbModel.deadLine=model.deadline;
+    dbService.saveVolunteer(volunteerDbModel);
+  }
+
+  Future isContribution(int id) async{
+    internetConnection = await mainService.checkInternetConnection();
+    emit(state.copyWith(internetConnection: internetConnection));
+    var isContribution = await charityService.contributionChange(id);
+    if(isContribution !=null){
+    }
+
+  }
   Future load() async {
     emit(state.copyWith(searchChange: ""));
     internetConnection = await mainService.checkInternetConnection();
