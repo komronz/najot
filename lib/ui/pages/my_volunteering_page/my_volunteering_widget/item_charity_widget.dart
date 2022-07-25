@@ -138,23 +138,8 @@ class ItemCharityWidget extends StatelessWidget {
                               ),
                             ],
                           ),
-                          InkWell(
-                            onTap: () async {
-                              await showDialog(
-                                context: context,
-                                builder: (context) =>
-                                    ItemCharityDatePickerWidget(
-                                  selectFunction: (dateTime) {
-                                    // print(dateTime.toUtc().toString());
-                                    // bloc.add(VolunteerBirthDateSelected(dateTime));
-                                  },
-                                  model: model,
-                                  index: index,
-                                  cubit: cubit,
-                                ),
-                              );
-                            },
-                            child: Row(
+
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 AppWidgets.imageSvg(
@@ -170,7 +155,6 @@ class ItemCharityWidget extends StatelessWidget {
                                 ),
                               ],
                             ),
-                          ),
                         ],
                       ),
                     ),
@@ -206,7 +190,7 @@ class ItemCharityWidget extends StatelessWidget {
                             color: AppColorUtils.BLUE_TEXT,
                           ).paddingOnly(right: 5),
                           AppWidgets.text(
-                            text: model.phone!,
+                            text: model.project!.owner!.phone!,
                             fontSize: 14.sp,
                           ),
                         ],
@@ -240,7 +224,7 @@ class ItemCharityWidget extends StatelessWidget {
                           onTap: () async {
                             await showDialog(
                               context: context,
-                              builder: (context) => WaitingForDatePickerWidget(
+                              builder: (context) => ItemCharityDatePickerWidget(
                                 selectFunction: (dateTime) {
                                   // print(dateTime.toUtc().toString());
                                   // bloc.add(VolunteerBirthDateSelected(dateTime));

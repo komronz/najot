@@ -1,12 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/volunteer_db_model.dart';
 import 'package:najot/data/model/volunteer_donate_model.dart';
 import 'package:najot/data/services/db_service.dart';
 import 'package:najot/data/services/volunteer_donate_service.dart';
-
 part 'my_volunteering_state.dart';
 
 class MyVolunteeringCubit extends Cubit<MyVolunteeringState> {
@@ -15,6 +13,7 @@ class MyVolunteeringCubit extends Cubit<MyVolunteeringState> {
   static Future init() async {
     GetIt.instance..registerSingleton<MyVolunteeringCubit>(MyVolunteeringCubit());
   }
+
   VolunteerDonateService volunteerDonateService=VolunteerDonateService();
   final DBService dbService=DBService();
 
@@ -25,26 +24,23 @@ class MyVolunteeringCubit extends Cubit<MyVolunteeringState> {
 
   Future load() async {
     var volunteering= await volunteerDonateService.getVolunteerModel();
-      var volunteeringType= await volunteerDonateService.getItemVolunteerModel();
+    var volunteeringType= await volunteerDonateService.getItemVolunteerModel();
     var db=await dbService.getVolunteerList();
 
     if(volunteering!=null&&volunteeringType!=null){
       for(int i=0; i<volunteering.results!.length; i++){
         for (int j = 0; j < db.length; j++) {
-          if(volunteering.results![i].id==db[j].id){
+          if(volunteering.results![i].project!.id==db[j].id){
             volunteering.results![i].project!.isDone=true;
-          }else{
-            volunteering.results![i].project!.isDone=false;
           }
       }
     }
       for(int i=0; i<volunteeringType.results!.length; i++){
         for (int j = 0; j < db.length; j++) {
-          if(volunteeringType.results![i].id==db[j].id){
+          if(volunteeringType.results![i].project!.id==db[j].id){
             volunteeringType.results![i].project!.isDone=true;
-          }else{
-            volunteeringType.results![i].project!.isDone=false;
           }
+
         }
       }
       emit(state.copyWith(cardList: volunteering.results));
@@ -68,7 +64,7 @@ class MyVolunteeringCubit extends Cubit<MyVolunteeringState> {
       VolunteerDbModel volunteerDbModel=VolunteerDbModel();
     List<VolunteerDonateResults> list=List.from(state.cardList);
     var box=list[index];
-    volunteerDbModel.id=box.id;
+    volunteerDbModel.id=box.project!.id;
     volunteerDbModel.title=box.project!.title;
     volunteerDbModel.helpType=box.project!.helpType;
     volunteerDbModel.address=box.project!.address;
@@ -81,7 +77,7 @@ class MyVolunteeringCubit extends Cubit<MyVolunteeringState> {
     VolunteerDbModel volunteerDbModel=VolunteerDbModel();
     List<VolunteerDonateResults> list=List.from(state.itemList);
     var box=list[index];
-    volunteerDbModel.id=box.id;
+    volunteerDbModel.id=box.project!.id;
     volunteerDbModel.title=box.project!.title;
     volunteerDbModel.helpType=box.project!.helpType;
     volunteerDbModel.address=box.project!.address;

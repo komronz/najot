@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/my_volunteering_cubit/my_volunteering_cubit.dart';
+import 'package:najot/data/bloc/notification_cubit/notification_cubit.dart';
 import 'package:najot/data/custom_time_picker/flutter_time_picker_spinner.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/volunteer_donate_model.dart';
@@ -229,15 +230,8 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                               model: model, dateTime: _date, time: _time,
                             ),
                           );
-                          // state.cardList.forEachIndexed((i, value) {
-                          //   NotificationApiService.showNotification(
-                          //     title: LocaleKeys.attention_hello_volunteer.tr(),
-                          //     body: LocaleKeys.you_go_to_help.tr(),
-                          //     payload: jsonEncode(value.toJson()),
-                          //     scheduledDate: DateTime.parse(value.project!.modifiedAt!),
-                          //   );
-                          // });
-                        },
+                          NotificationCubit.to..getList();
+                          },
                         title: LocaleKeys.save,
                         fontSize: 16.sp,
                       ),
