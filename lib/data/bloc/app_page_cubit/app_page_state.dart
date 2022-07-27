@@ -4,9 +4,9 @@ class AppPageState extends Equatable {
   final AppPageType pageType;
   final int changeMenu;
   final bool tobeVolunteer;
-  final User? user;
+    User? user;
 
-  const AppPageState(
+   AppPageState(
       {this.pageType = AppPageType.MAIN,
       this.changeMenu = 1,
       this.tobeVolunteer = false,

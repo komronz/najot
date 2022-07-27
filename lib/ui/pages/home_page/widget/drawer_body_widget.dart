@@ -6,26 +6,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
+import 'package:najot/data/bloc/home_cubit/home_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-import '../../../../data/services/volunteer_service.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 
 class DrawerBody extends StatelessWidget {
   DrawerBody({
-    required this.state,
+    required this.cubit,
   });
 
-  AppPageState state;
+  AppPageCubit cubit;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    AppPageType pageType = context.read<AppPageCubit>().state.pageType;
+    AppPageType pageType = cubit.state.pageType;
     return Container(
       width: 266.w,
       decoration: BoxDecoration(
@@ -64,7 +63,7 @@ class DrawerBody extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 AppWidgets.textLocale(
-                                  text: state.user!.firstName??"",
+                                  text: cubit.state.user!.firstName??"",
                                   fontWeight: FontWeight.w500,
                                   fontSize: 18.sp,
                                   color: AppColorUtils.TEXT_COLOR,
@@ -80,7 +79,7 @@ class DrawerBody extends StatelessWidget {
                                         horizontal: 5.w,
                                       ),
                                       child: AppWidgets.text(
-                                        text: state.user!.isVolunteer!
+                                        text: cubit.state.user!.isVolunteer!
                                             ? LocaleKeys.volunteer.tr()
                                             : LocaleKeys.normal_user.tr(),
                                         color: AppColorUtils.BLUE_PERCENT,
@@ -109,7 +108,7 @@ class DrawerBody extends StatelessWidget {
                           ),
                         ),
                         onTap: () {
-                          context.read<AppPageCubit>().changePage(
+                          cubit.changePage(
                                 pageType: AppPageType.USERPROFILE,
                               );
                           Navigator.pop(context);
@@ -122,11 +121,11 @@ class DrawerBody extends StatelessWidget {
                     height: 1,
                     thickness: 1,
                   ),
-                  state.user!.isVolunteer!
+                  cubit.state.user!.isVolunteer!
                       ? SizedBox()
                       : ButtonCard(
                           onPress: () {
-                            context.read<AppPageCubit>().changePage(
+                            cubit.changePage(
                                   pageType: AppPageType.VOLUNTEER,
                                 );
                             Navigator.pop(context);
@@ -156,9 +155,8 @@ class DrawerBody extends StatelessWidget {
                       vertical: 14,
                     ),
                     onTap: () {
-                      context
-                          .read<AppPageCubit>()
-                          .changePage(pageType: AppPageType.MAIN);
+                      HomeCubit.to.getModel();
+                     cubit.changePage(pageType: AppPageType.MAIN);
                       Navigator.pop(context);
                     },
                   ),
@@ -174,7 +172,7 @@ class DrawerBody extends StatelessWidget {
                       vertical: 14,
                     ),
                     onTap: () {
-                      context.read<AppPageCubit>().changeMenu(2);
+                      cubit.changeMenu(2);
                     },
                   ),
                   AppWidgets.rowIconText(
@@ -188,8 +186,7 @@ class DrawerBody extends StatelessWidget {
                       vertical: 14.w,
                     ),
                     onTap: () {
-                      context
-                          .read<AppPageCubit>()
+                      cubit
                           .changePage(pageType: AppPageType.ORGANIZATIONS);
                       Navigator.pop(context);
                     },
@@ -205,8 +202,7 @@ class DrawerBody extends StatelessWidget {
                       vertical: 14,
                     ),
                     onTap: () {
-                      context
-                          .read<AppPageCubit>()
+                      cubit
                           .changePage(pageType: AppPageType.RULES);
                       Navigator.pop(context);
                     },
@@ -222,8 +218,7 @@ class DrawerBody extends StatelessWidget {
                       vertical: 14,
                     ),
                     onTap: () {
-                      context
-                          .read<AppPageCubit>()
+                    cubit
                           .changePage(pageType: AppPageType.FAQ);
                       Navigator.pop(context);
                     },
@@ -239,15 +234,14 @@ class DrawerBody extends StatelessWidget {
                       vertical: 14,
                     ),
                     onTap: () {
-                      context
-                          .read<AppPageCubit>()
+                     cubit
                           .changePage(pageType: AppPageType.ABOUT);
                       Navigator.pop(context);
                     },
                   ),
                   // FlutterSwitch(
                   //   showOnOff: true,
-                  //   value: state.tobeVolunteer,
+                  //   value: cubit.state.tobeVolunteer,
                   //   onToggle: (v) {
                   //     Volunteer.tobeVolunteer = !Volunteer.tobeVolunteer;
                   //     context
@@ -267,8 +261,7 @@ class DrawerBody extends StatelessWidget {
                     width: size.width,
                     height: 44.h,
                     onPress: () {
-                      context
-                          .read<AppPageCubit>()
+                    cubit
                           .changePage(pageType: AppPageType.SAVED);
                       Navigator.pop(context);
                     },
@@ -292,7 +285,7 @@ class DrawerBody extends StatelessWidget {
                     width: size.width,
                     height: 44.h,
                     onPress: () {
-                      context.read<AppPageCubit>().changePage(
+                      cubit.changePage(
                             pageType: AppPageType.OPERATOR,
                           );
                       Navigator.pop(context);

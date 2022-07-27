@@ -15,6 +15,7 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/item_adding_success.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../../../data/bloc/notification_cubit/notification_cubit.dart';
 import '../../../../data/model/project_model.dart';
 
 class TimePikerCharity extends StatelessWidget {
@@ -217,8 +218,7 @@ class TimePikerCharity extends StatelessWidget {
                           back: () async{
                             // cubit.onChangeSave(false);
                             await CharityCubit.to.load();
-                            Navigator.pop(con);
-                            Navigator.pop(context);
+
 
                           }, time: _time,
                         ),
@@ -232,7 +232,8 @@ class TimePikerCharity extends StatelessWidget {
                     color: AppColorUtils.LIGHT_GRAY,
                     textColor: AppColorUtils.BLACK,
                     onTap: () {
-                      NavigatorService.to.pop();
+                      Navigator.pop(con);
+                      Navigator.pop(context);
                     },
                     title: LocaleKeys.exit,
                     fontSize: 16.sp,

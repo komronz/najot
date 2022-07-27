@@ -22,7 +22,7 @@ class RuleService{
     try {
       final Response response = await RootService.httpService.get(
           url: "https://api.najot.uz/${LanguageCubit.getLang()}/rule/",
-        token: HiveService.to.getToken(),
+        token: HiveService.to.getToken()!.access,
 
       );
       if (response.statusCode == 200) {

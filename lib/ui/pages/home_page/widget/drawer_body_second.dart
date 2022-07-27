@@ -9,17 +9,16 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-import 'package:provider/src/provider.dart';
 
 
 class DrawerBodySecond extends StatelessWidget {
-   DrawerBodySecond({required this.state}) ;
+   DrawerBodySecond({required this.cubit}) ;
 
-  AppPageState state;
+  AppPageCubit cubit;
 
   @override
   Widget build(BuildContext context) {
-    AppPageType pageType = context.read<AppPageCubit>().state.pageType;
+    AppPageType pageType = cubit.state.pageType;
     return Container(
       width: 315.w,
       decoration: BoxDecoration(
@@ -41,7 +40,7 @@ class DrawerBodySecond extends StatelessWidget {
               child: SvgPicture.asset(AppImageUtils.BACK_ICON),
             ),
             onTap: () {
-              context.read<AppPageCubit>().changeMenu(1);
+              cubit.changeMenu(1);
             },
           ).paddingOnly(
             top: 50.w,
@@ -51,7 +50,7 @@ class DrawerBodySecond extends StatelessWidget {
             height: 48.w,
             width: MediaQuery.of(context).size.width,
             onPress: () {
-              context.read<AppPageCubit>().changePage(
+              cubit.changePage(
                 pageType: AppPageType.ADD_PROJECT,
               );
               Navigator.pop(context);
@@ -80,13 +79,13 @@ class DrawerBodySecond extends StatelessWidget {
               vertical: 14,
             ),
             onTap: () {
-              context.read<AppPageCubit>().changePage(
+              cubit.changePage(
                 pageType: AppPageType.PROJECT,
               );
               Navigator.pop(context);
             },
           ),
-          state.user!.isVolunteer!
+          cubit.state.user!.isVolunteer!
           ? AppWidgets.rowIconText(
             isActive: pageType == AppPageType.VOLUNTEERING,
             icon: AppImageUtils.TOBE_VOLUNTEER,
@@ -98,14 +97,14 @@ class DrawerBodySecond extends StatelessWidget {
               vertical: 14,
             ),
             onTap: () {
-              context.read<AppPageCubit>().changePage(
+              cubit.changePage(
                 pageType: AppPageType.VOLUNTEERING,
               );
               Navigator.pop(context);
 
             },
           ) : SizedBox(),
-          state.tobeVolunteer
+          cubit.state.tobeVolunteer
           ? AppWidgets.rowIconText(
             isActive: pageType == AppPageType.CHARITY_VOLUNTEER,
             icon: AppImageUtils.HISTORY,
@@ -117,7 +116,7 @@ class DrawerBodySecond extends StatelessWidget {
               vertical: 14,
             ),
             onTap: () {
-              context.read<AppPageCubit>().changePage(
+              cubit.changePage(
                     pageType: AppPageType.CHARITY_VOLUNTEER,
                   );
               Navigator.pop(context);
@@ -133,7 +132,7 @@ class DrawerBodySecond extends StatelessWidget {
               vertical: 14,
             ),
             onTap: () {
-              context.read<AppPageCubit>().changePage(
+              cubit.changePage(
                 pageType: AppPageType.CHARITY,
               );
               Navigator.pop(context);
@@ -150,7 +149,7 @@ class DrawerBodySecond extends StatelessWidget {
               vertical: 14,
             ),
             onTap: () {
-              context.read<AppPageCubit>().changePage(
+              cubit.changePage(
                 pageType: AppPageType.ORDERS,
               );
               Navigator.pop(context);

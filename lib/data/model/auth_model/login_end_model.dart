@@ -4,23 +4,21 @@ import 'package:najot/data/model/auth_model/user.dart';
 class LoginEndModel {
   String? refresh;
   String? access;
-  User? user;
+  String? exp;
 
-  LoginEndModel({this.refresh, this.access, this.user});
+  LoginEndModel({this.refresh, this.access, this.exp});
 
   LoginEndModel.fromJson(Map<String, dynamic> json) {
     refresh = json['refresh'];
     access = json['access'];
-    user = json['user'] != null ? new User.fromJson(json['user']) : null;
+    exp = json['exp'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['refresh'] = this.refresh;
     data['access'] = this.access;
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
-    }
+    data['exp'] = this.exp;
     return data;
   }
 }

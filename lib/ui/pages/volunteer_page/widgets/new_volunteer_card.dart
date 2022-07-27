@@ -16,10 +16,12 @@ class NewVolunteerCard extends StatelessWidget {
     required this.cardModel,
     required this.onTap,
     required this.cubit,
+    required this.changeLike,
   });
 
   ProjectModel cardModel;
   VoidCallback onTap;
+  VoidCallback changeLike;
   VolunteerCubit cubit;
 
   @override
@@ -99,9 +101,7 @@ class NewVolunteerCard extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {
-              cubit.changeLike(cardModel.id!);
-            },
+            onTap: changeLike,
             child: Align(
               child: Container(
                 width: 24.w,

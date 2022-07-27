@@ -18,15 +18,14 @@ class DIService {
     // Services
     await DBService.init();
     await NotificationApiService.init(initScheduled: true);
-    print(HiveService.to.getToken());
 
 
 
     // BloCs
     await LanguageCubit.init();
+    await AppPageCubit.init();
     await HomeCubit.init();
     await ThemeCubit.init();
-    await AppPageCubit.init();
     await CrowdfundingCubit.init();
     await CharityCubit.init();
     await VolunteerCubit.init();

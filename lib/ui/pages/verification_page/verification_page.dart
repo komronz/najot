@@ -11,6 +11,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../../data/bloc/app_page_cubit/app_page_cubit.dart';
+import '../../../data/bloc/home_cubit/home_cubit.dart';
 import '../../../data/localization/locale_keys.g.dart';
 import '../home_page/home_page.dart';
 
@@ -35,6 +36,7 @@ class VerificationPage extends StatelessWidget with SmartAuth {
         body: BlocConsumer<LoginBloc, LoginState>(
             listener: (context, state) {
               if (state.loginSuccess) {
+                 HomeCubit.to.getModel();
                 NavigatorService.to.pushNamedAndRemoveUntil(
                   HomePage.routeName,
                   arguments: AppPageType.MAIN,
@@ -110,7 +112,10 @@ class VerificationPage extends StatelessWidget with SmartAuth {
                         ),
                         AppWidgets.appButton(
                           title: LocaleKeys.enter_another_number.tr(),
-                          onTap: () {},
+                          onTap: () {
+                            loginBloc.add(CheckPhoneNumberChanged(0));
+                            NavigatorService.to.pop();
+                          },
                           color: Colors.transparent,
                           textColor: AppColorUtils.TEXT_GREEN,
                         ).paddingOnly(

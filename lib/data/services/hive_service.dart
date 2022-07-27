@@ -51,17 +51,16 @@ class HiveService {
     _box.delete(_HiveKeys.USER);
   }
   //token
-  void setToken(String loginEndModel) {
-    _box.put(_HiveKeys.TOKEN, loginEndModel);
+  void setToken(LoginEndModel loginEndModel) {
+    _box.put(_HiveKeys.TOKEN, json.encode(loginEndModel.toJson()));
   }
 
-  String? getToken() {
-    var loginEndModel = _box.get(_HiveKeys.TOKEN);
-    return loginEndModel;
-    // if (loginEndModel != null) {
-    //   return LoginEndModel.fromJson(jsonDecode(loginEndModel));
-    // }
-    // return null;
+  LoginEndModel? getToken() {
+    var user = _box.get(_HiveKeys.TOKEN, defaultValue: null);
+    if(user!=null){
+      return LoginEndModel.fromJson(json.decode(user));
+    }
+    return user;
   }
 
   void deleteToken() {

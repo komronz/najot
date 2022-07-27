@@ -21,7 +21,7 @@ class OrganizationService{
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/organization/",
-        token: HiveService.to.getToken(),
+        token: HiveService.to.getToken()!.access,
       );
       if (response.statusCode == 200) {
         final OrganizationModel responseModel =
@@ -40,7 +40,7 @@ class OrganizationService{
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/${LanguageCubit.getLang()}/project/?organization=$id&page_size=15",
-          token: HiveService.to.getToken(),
+          token: HiveService.to.getToken()!.access,
       );
       if (response.statusCode == 200) {
         final RootProjectModel responseModel =

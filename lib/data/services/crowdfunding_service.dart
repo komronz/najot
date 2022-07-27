@@ -21,7 +21,7 @@ class CrowdfundingService{
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/${LanguageCubit.getLang()}/project/?type=CF",
-        token: HiveService.to.getToken()
+        token: HiveService.to.getToken()!.access
       );
       if (response.statusCode == 200) {
         final RootProjectModel responseModel =
@@ -67,7 +67,7 @@ class CrowdfundingService{
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/${LanguageCubit.getLang()}/project/?type=CF&category=${id}&page_size=15",
-          token: HiveService.to.getToken()
+          token: HiveService.to.getToken()!.access
       );
 
       if (response.statusCode == 200) {
@@ -90,7 +90,7 @@ class CrowdfundingService{
     try {
       final Response response = await RootService.httpService.get(
           url: "https://api.najot.uz/${LanguageCubit.getLang()}/project/?type=CF&search=${name}",
-          token: HiveService.to.getToken()
+          token:HiveService.to.getToken()!.access
       );
 
       if (response.statusCode == 200) {

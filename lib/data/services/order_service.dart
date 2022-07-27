@@ -19,7 +19,7 @@ class OrderService{
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/${LanguageCubit.getLang()}/product/",
-        token: HiveService.to.getToken(),
+        token: HiveService.to.getToken()!.access,
 
       );
       if (response.statusCode == 200) {

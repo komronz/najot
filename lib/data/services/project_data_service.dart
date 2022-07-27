@@ -19,7 +19,8 @@ class ProjectDataService {
     try {
       final Response response = await RootService.httpService.get(
           url: "https://api.najot.uz/${LanguageCubit.getLang()}/news/?project__id=${id}",
-          token: HiveService.to.getToken());
+          token: HiveService.to.getToken()!.access,
+      );
       print(response.statusCode);
       if (response.statusCode == 200) {
         final NewsModel responseModel = NewsModel.fromJson(
@@ -56,7 +57,7 @@ class ProjectDataService {
           path: path,
           formData: formData,
           headers: headers,
-          token: HiveService.to.getToken());
+          token: HiveService.to.getToken()!.access);
       if (response != null) {
         if (response.statusCode == 201) {
           return true;
@@ -75,7 +76,7 @@ class ProjectDataService {
     try {
       final Response response = await RootService.httpService.get(
           url: "https://api.najot.uz/${LanguageCubit.getLang()}/question/?project__id=${id}",
-          token: HiveService.to.getToken());
+          token: HiveService.to.getToken()!.access);
       if (response.statusCode == 200) {
         final QuestionModel responseModel = QuestionModel.fromJson(
           response.data,
@@ -94,7 +95,7 @@ class ProjectDataService {
     try {
       final Response response = await RootService.httpService.get(
           url: "https://api.najot.uz/${LanguageCubit.getLang()}/project/${id}/comment/list/",
-          token: HiveService.to.getToken());
+          token: HiveService.to.getToken()!.access);
       if (response.statusCode == 200) {
         final CommentsModel responseModel = CommentsModel.fromJson(
           response.data,
@@ -121,7 +122,7 @@ class ProjectDataService {
           path: path,
           fields: body,
           headers: headers,
-          token: HiveService.to.getToken());
+          token: HiveService.to.getToken()!.access);
       if (response != null) {
         print(response.statusCode);
         if (response.statusCode == 201) {
@@ -146,7 +147,7 @@ class ProjectDataService {
           path: path,
           fields: body,
           headers: headers,
-          token: HiveService.to.getToken());
+          token: HiveService.to.getToken()!.access);
       if (response != null) {
         if (response.statusCode == 201) {
           return true;
@@ -170,7 +171,7 @@ class ProjectDataService {
           path: path,
           fields: body,
           headers: headers,
-          token: HiveService.to.getToken());
+          token: HiveService.to.getToken()!.access);
       if (response != null) {
         print(response.statusCode);
         if (response.statusCode == 201) {
@@ -195,7 +196,7 @@ class ProjectDataService {
           path: path,
           fields: body,
           headers: headers,
-          token: HiveService.to.getToken());
+          token: HiveService.to.getToken()!.access);
       if (response != null) {
         if (response.statusCode == 201) {
           return true;

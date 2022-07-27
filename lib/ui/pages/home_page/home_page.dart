@@ -30,16 +30,18 @@ class HomePage extends StatefulWidget {
 
   AppPageType appPageType;
   static const String routeName = "/homePage";
-  static final GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>(debugLabel: "globalKey");
+  static final GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>(
+      debugLabel: "globalKey");
 
   @override
   State<HomePage> createState() => _HomePageState();
+
 }
 
 class _HomePageState extends State<HomePage> {
 
   @override
-  void initState(){
+  void initState() {
     // TODO: implement initState
     super.initState();
     listenNotifications();
@@ -48,7 +50,7 @@ class _HomePageState extends State<HomePage> {
   void listenNotifications() =>
       NotificationApiService.onNotification.stream.listen(onClickNotification);
 
-  Future onClickNotification(dynamic payload) async{
+  Future onClickNotification(dynamic payload) async {
     await showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -63,20 +65,19 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) => AppPageCubit.to..load(widget.appPageType),
-      child: BlocBuilder<AppPageCubit, AppPageState>(
-        builder: (context, state) {
-          return Scaffold(
-            // backgroundColor: AppColorUtils.BACKGROUND,
+    AppPageCubit.to.load(widget.appPageType);
+    return BlocBuilder<AppPageCubit, AppPageState>(
+      bloc: AppPageCubit.to,
+      builder: (context, state) {
+        return Scaffold(
+          // backgroundColor: AppColorUtils.BACKGROUND,
             key: HomePage.globalKey,
-            drawer: state.changeMenu==1
-                ? DrawerBody(state: state)
-                : DrawerBodySecond(state: state),
+            drawer: state.changeMenu == 1
+                ? DrawerBody(cubit: AppPageCubit.to,)
+                : DrawerBodySecond(cubit: AppPageCubit.to),
             body: buildBody(state)
-          );
-        },
-      ),
+        );
+      },
     );
   }
 
@@ -116,7 +117,7 @@ class _HomePageState extends State<HomePage> {
         return AddingProjectPage();
       case AppPageType.NOTIFICATION:
         return NotificationPage();
-           default:
+      default:
         return Container();
     }
   }

@@ -89,6 +89,9 @@ class VolunteerPage extends StatelessWidget {
                                       },
                                       cardModel: state.list[index],
                                       cubit: VolunteerCubit.to,
+                                      changeLike: () {
+                                        VolunteerCubit.to.changeLike(state.list[index].id!);
+                                      },
                                     ),
                                   ),
                                 ),
@@ -117,6 +120,9 @@ class VolunteerPage extends StatelessWidget {
                               children: List.generate(
                                 state.list.length,
                                     (index) => NewVolunteerCard(
+                                      changeLike: () {
+                                        VolunteerCubit.to.changeLike(state.list[index].id!);
+                                      },
                                   cubit: VolunteerCubit.to,
                                   onTap: () {
                                     NavigatorService.to.pushNamed(
@@ -158,6 +164,9 @@ class VolunteerPage extends StatelessWidget {
                                   ),
                                 );
                               },
+                                  changeLike: () {
+                                    VolunteerCubit.to.changeLike(state.list[index].id!);
+                                  },
                               cardModel: state.searchProjects[index],
                             ),
                           ),

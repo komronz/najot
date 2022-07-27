@@ -46,7 +46,7 @@ class AppErrorWidget extends StatelessWidget {
                 SvgPicture.asset(AppImageUtils.NETWORK_ERROR),
                 SizedBox(height: 24.h),
                 AppWidgets.textLocale(
-                  text: LocaleKeys.connection_error,
+                  text: LocaleKeys.disConnection,
                   color: AppColorUtils.DARK3,
                   fontSize: 18.sp,
                 ),

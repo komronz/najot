@@ -163,6 +163,7 @@ class MyProfileUpdateBloc
           lastName: user.lastName,
           gender: user.gender,
           phone: user.phone,
+          isVolunteer: user.isVolunteer
         ),
       );
     } else {

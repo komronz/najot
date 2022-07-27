@@ -27,21 +27,15 @@ class CharityService{
     try {
       final path = 'https://api.najot.uz/ru/volunteer-donate/';
       final body = {
-        "user": 0,
         "project": id,
-        "execution_time": "2022-07-21T12:43:11.030Z",
-        "phone": "string",
-        "type": "CF",
-        "status": "pending"
       };
       final headers = {HttpHeaders.contentTypeHeader: "application/json"};
       var response = await _httpService.post(
           path: path,
           fields: body,
           headers: headers,
-          token: HiveService.to.getToken()
+          token: HiveService.to.getToken()!.access
       );
-      print(response!.statusCode);
       if (response != null) {
         if (response.statusCode == 201) {
           return true;
@@ -60,7 +54,7 @@ class CharityService{
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/${LanguageCubit.getLang()}/project/?type=CH&page_size=15",
-          token: HiveService.to.getToken()
+          token: HiveService.to.getToken()!.access
       );
 
 
@@ -106,7 +100,7 @@ class CharityService{
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/${LanguageCubit.getLang()}/project/?type=CH&category=${id}&page_size=15",
-        token: HiveService.to.getToken()
+        token:HiveService.to.getToken()!.access
       );
 
       if (response.statusCode == 200) {
@@ -131,7 +125,7 @@ class CharityService{
     try {
       final Response response = await RootService.httpService.get(
           url: "https://api.najot.uz/${LanguageCubit.getLang()}/project/?type=CH&search=${name}",
-          token: HiveService.to.getToken()
+          token: HiveService.to.getToken()!.access
       );
 
       if (response.statusCode == 200) {

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
+import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/volunteer_profile_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 
@@ -22,12 +23,24 @@ class AppPageCubit extends Cubit<AppPageState> {
 
   Future load(AppPageType pageType) async{
     var user = await service.getUser();
+    print(user);
+    if(user != null){
+      state.user=user;
+    }
+    emit(state.copyWith(
+      pageType: pageType,
+      changeMenu: 1,
+      tobeVolunteer: Volunteer.tobeVolunteer,
+    ));
+  }
+
+  Future getUser()async{
+    var user = await service.getUser();
     if(user != null){
       emit(state.copyWith(user: user));
+    }else{
+      emit(state.copyWith(user: HiveService.to.getUser()));
     }
-    emit(state.copyWith(pageType: pageType,
-      changeMenu: 1,
-      tobeVolunteer: Volunteer.tobeVolunteer,));
   }
 
   Future changePage({required AppPageType pageType}) async {

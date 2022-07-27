@@ -17,12 +17,17 @@ import '../../main_page/widgets/button_card_widget.dart';
 import '../project_details/project_details_page.dart';
 
 class CrowdfundingMiniCardWidget extends StatelessWidget {
-  CrowdfundingMiniCardWidget(
-      {required this.cardModel, required this.visible, required this.cubit});
+  CrowdfundingMiniCardWidget({
+    required this.cardModel,
+    required this.visible,
+    required this.cubit,
+    required this.changeLike,
+  });
 
   final ProjectModel cardModel;
   final bool visible;
   final CrowdfundingCubit cubit;
+  VoidCallback changeLike;
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +86,7 @@ class CrowdfundingMiniCardWidget extends StatelessWidget {
                               animation: true,
                               padding: EdgeInsets.all(0),
                               animationDuration: 2000,
-                              percent: cardModel.percent!/100,
+                              percent: cardModel.percent! / 100,
                               progressColor: AppColorUtils.PERCENT_COLOR,
                               backgroundColor: AppColorUtils.PERCENT_COLOR2,
                             ),
@@ -113,9 +118,7 @@ class CrowdfundingMiniCardWidget extends StatelessWidget {
             ),
             Align(
               child: InkWell(
-                onTap: (){
-                  cubit.changeLike(cardModel.id!);
-                },
+                onTap: changeLike,
                 child: cardModel.isFavourite!
                     ? SvgPicture.asset(AppImageUtils.LIKE)
                     : SvgPicture.asset(AppImageUtils.UNLIKE),

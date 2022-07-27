@@ -56,6 +56,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
   late TabController _controller;
   ProjectDataCubit cubitData = ProjectDataCubit();
   late bool like;
+  late bool isContribution;
 
   @override
   void dispose() {
@@ -66,6 +67,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
   @override
   void initState() {
     like=widget.helpModel.isFavourite!;
+    isContribution=widget.helpModel.isContribution!;
     _controller = TabController(length: 4, vsync: this);
     _controller.addListener(_handleTabSelection);
     super.initState();
@@ -311,6 +313,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                               ButtonCard(
                                 onPress: () {
                                   if (widget.helpModel.isFavourite!) {
+                                    CharityCubit.to.isContribution(widget.helpModel.id!);
                                     NavigatorService.to.pushNamed(
                                       CharityHelpWidget.routeName,
                                       arguments: CharityHelpModel(
@@ -319,6 +322,9 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                         cubit: CharityCubit.to,
                                       ),
                                     );
+                                    setState(() {
+                                      isContribution=true;
+                                    });
                                   } else {
                                     Fluttertoast.showToast(
                                       msg: LocaleKeys.be_volunteer.tr(),
@@ -328,7 +334,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                 text: LocaleKeys.help.tr(),
                                 height: 48.w,
                                 width: 274.w,
-                                color: state.tobeVolunteer
+                                color: widget.helpModel.isFavourite!
                                     ? AppColorUtils.PERCENT_COLOR
                                     : AppColorUtils.DISABLE_BC,
                                 textSize: 16.sp,
@@ -349,7 +355,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
 
                                     await HomeCubit.to.getModel();
                                   }else{
-                                    AppWidgets.showText(text: "internet bilan aloqa yo'q!");
+                                    AppWidgets.showText(text: LocaleKeys.disConnection.tr());
                                   }
                                 },
                               )

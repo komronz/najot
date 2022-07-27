@@ -11,7 +11,7 @@ class VolunteerDonateService{
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/${LanguageCubit.getLang()}/volunteer-donate/?status=pending&page_size=15",
-        token: HiveService.to.getToken(),
+        token: HiveService.to.getToken()!.access,
       );
       if (response.statusCode == 200) {
         final VolunteerDonate responseModel =
@@ -30,7 +30,7 @@ class VolunteerDonateService{
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/${LanguageCubit.getLang()}/volunteer-donate/?type=CH&page_size=15",
-        token: HiveService.to.getToken(),
+        token: HiveService.to.getToken()!.access,
       );
       if (response.statusCode == 200) {
         final VolunteerDonate responseModel =

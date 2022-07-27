@@ -24,6 +24,7 @@ import 'package:najot/ui/pages/main_page/widgets/volunteer_card_widget.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_page.dart';
 import 'package:najot/ui/widgets/app_error_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+import '../../../data/bloc/app_page_cubit/app_page_cubit.dart';
 import '../../../data/bloc/volunteer_bloc/volunteer_cubit.dart';
 import '../notification_page/notification_page.dart';
 import '../volunteer_page/volunteer_detail_page/volunteer_detail_page.dart';
@@ -35,19 +36,18 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-     CharityCubit.to.load();
-     CrowdfundingCubit.to.load();
-     VolunteerCubit.to.load();
+    CharityCubit.to.load();
+    CrowdfundingCubit.to.load();
+    VolunteerCubit.to.load();
     return MultiBlocProvider(
       providers: [
         BlocProvider<HomeCubit>(
-          create: (BuildContext context) => homeCubit,
+          create: (BuildContext context) => homeCubit..getModel(),
         ),
       ],
       child: Scaffold(
         body: BlocBuilder<HomeCubit, HomeState>(
-          bloc: homeCubit..getModel(),
+          bloc: homeCubit,
           builder: (context, state) {
             if(state.internetConnection){
              if(!state.progress){

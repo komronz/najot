@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/model/news_model.dart';
 import 'package:najot/data/model/volunteer_profile_model.dart';
@@ -14,13 +15,18 @@ import '../model/auth_model/user.dart';
 import '../utils/app_logger_util.dart';
 
 class VolunteerProfileService {
+
+  static Future init() async {
+    final getIt = GetIt.instance;
+    getIt.registerSingleton<VolunteerProfileService>(VolunteerProfileService());
+  }
   HttpService _httpService = RootService.httpService;
 
   Future<NewsModel?> getNewsById(int id) async {
     try {
       final Response response = await RootService.httpService.get(
           url: "https://api.najot.uz/${LanguageCubit.getLang()}/news/?project__id=${id}",
-          token: HiveService.to.getToken());
+          token: HiveService.to.getToken()!.access);
       print(response.statusCode);
       if (response.statusCode == 200) {
         final NewsModel responseModel = NewsModel.fromJson(
@@ -40,7 +46,8 @@ class VolunteerProfileService {
     try {
       final Response response = await RootService.httpService.get(
           url: "https://api.najot.uz/${LanguageCubit.getLang()}/users/me/",
-          token: HiveService.to.getToken());
+          token: HiveService.to.getToken()!.access);
+      print(response.statusCode);
       if (response.statusCode == 200) {
         final User user = User.fromJson(
           response.data,
@@ -59,7 +66,7 @@ class VolunteerProfileService {
     try {
       final Response response = await RootService.httpService.get(
           url: "https://api.najot.uz/ru/users/valunteer-profile/me/",
-          token: HiveService.to.getToken());
+          token: HiveService.to.getToken()!.access);
       if (response.statusCode == 200) {
         final VolunteerProfileModel user = VolunteerProfileModel.fromJson(
           response.data,
@@ -107,7 +114,7 @@ class VolunteerProfileService {
           path: path,
           formData: formData,
           headers: headers,
-          token: HiveService.to.getToken());
+          token: HiveService.to.getToken()!.access);
       print(response!.statusCode);
       if (response != null) {
         if (response.statusCode == 201) {
@@ -133,7 +140,7 @@ class VolunteerProfileService {
           path: path,
           fields: body,
           headers: headers,
-          token: HiveService.to.getToken());
+          token: HiveService.to.getToken()!.access);
       if (response != null) {
         print(response.statusCode);
         if (response.statusCode == 201) {

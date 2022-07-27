@@ -43,7 +43,7 @@ class UserUpdateService {
         path: _path,
         formData: formData,
         headers: headers,
-        token: HiveService.to.getToken(),
+        token: HiveService.to.getToken()!.access,
       );
       if (response != null) {
         if (response.statusCode == 200) {
@@ -77,7 +77,7 @@ class UserUpdateService {
           path: path,
           fields: body,
           headers: headers,
-          token: HiveService.to.getToken()
+          token: HiveService.to.getToken()!.access
       );
       if (response != null) {
         if (response.statusCode == 200) {
@@ -107,7 +107,7 @@ class UserUpdateService {
         path: path,
         fields: body,
         headers: headers,
-        token: HiveService.to.getToken()
+        token: HiveService.to.getToken()!.access
       );
       if (response != null) {
         if (response.statusCode == 200) {
@@ -134,7 +134,7 @@ class UserUpdateService {
     try {
       final Response response = await RootService.httpService.get(
           url: "https://api.najot.uz/ru/users/me/",
-          token: HiveService.to.getToken()
+          token: HiveService.to.getToken()!.access
       );
 
       if (response.statusCode == 200) {

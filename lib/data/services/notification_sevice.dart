@@ -21,7 +21,7 @@ class NotificationService{
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/${LanguageCubit.getLang()}/project/?owner/$id&page_size=15",
-        token: HiveService.to.getToken(),
+        token: HiveService.to.getToken()!.access,
       );
       if (response.statusCode == 200) {
         final RootProjectModel responseModel =

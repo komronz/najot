@@ -19,7 +19,7 @@ class MyProfileService{
           path: path,
           fields: body,
           headers: headers,
-          token: HiveService.to.getToken());
+          token: HiveService.to.getToken()!.access);
       if (response != null) {
         if (response.statusCode == 201) {
           return true;

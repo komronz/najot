@@ -204,7 +204,7 @@ class CharityHelpWidget extends StatelessWidget {
                   ButtonCard(
                     onPress: () {
                       if (state.checkBox) {
-                        helpModel.cubit.isContribution(helpModel.cardModel.id!);
+
                         showDialog(
                             context: context,
                             builder: (ctx) => TimePikerCharity(

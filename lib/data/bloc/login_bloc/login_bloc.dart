@@ -3,17 +3,13 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/auth_model/token_model.dart';
-import 'package:najot/data/model/auth_model/user.dart';
 import 'package:najot/data/model/blocked_model.dart';
 import 'package:najot/data/services/auth_service.dart';
 import 'package:najot/data/services/hive_service.dart';
-import 'package:najot/data/services/navigator_service.dart';
-import 'package:najot/data/utils/app_logger_util.dart';
-import 'package:najot/ui/pages/home_page/home_page.dart';
+import 'package:najot/data/services/main_service.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 part 'login_event.dart';
@@ -40,6 +36,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   final AuthService authService = AuthService();
+  final MainService mainService = MainService();
+
 
   void uiChange() {
     emit(state.copyWith());
@@ -180,99 +178,121 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     CheckPhoneNumber event,
     Emitter<LoginState> emit,
   ) async {
-    if (state.phone.length == 12) {
-      emit(state.copyWith(hasError: false));
-      var checkPhoneNumber = await authService.confirmPhoneNumber(state.phone);
-      if (checkPhoneNumber != null) {
-        AppWidgets.isLoading(true);
-        if (checkPhoneNumber.isExists == true) {
-          var codeToken = await authService.registration(state.phone, "string", "string");
-          if(codeToken is TokenModel){
-            emit(state.copyWith(codeToken: codeToken.token));
-            emit(state.copyWith(checkPhoneNumber: 1));
+    var  internetConnection = await mainService.checkInternetConnection();
+    if(internetConnection){
+      if (state.phone.length == 12) {
+        emit(state.copyWith(hasError: false));
+        var checkPhoneNumber = await authService.confirmPhoneNumber(state.phone);
+        if (checkPhoneNumber != null) {
+          AppWidgets.isLoading(true);
+          if (checkPhoneNumber.isExists == true) {
+            var codeToken = await authService.registration(state.phone, "string", "string");
+            if(codeToken is TokenModel){
+              emit(state.copyWith(codeToken: codeToken.token,checkPhoneNumber: 1));
+
+            }
+            if(codeToken is BlockedModel){
+              int a=codeToken.retryAfter!~/3600;
+              int b=(codeToken.retryAfter!-a*3600)~/60;
+              emit(state.copyWith(blockedTime: codeToken.retryAfter));
+
+              AppWidgets.showText(text: "Raqamingiz ${a} soat ${b} minutga bloklangan!");
+
+            }
+            AppWidgets.isLoading(false);
+          } else {
+            emit(state.copyWith(checkPhoneNumber: -1));
             AppWidgets.isLoading(false);
           }
-          if(codeToken is BlockedModel){
-            int a=codeToken.retryAfter!~/3600;
-            int b=(codeToken.retryAfter!-a*3600)~/60;
-            emit(state.copyWith(blockedTime: codeToken.retryAfter));
-            AppWidgets.isLoading(false);
-            AppWidgets.showText(text: "Raqamingiz ${a} soat ${b} minutga bloklangan!");
-
-          }
-
         } else {
-          emit(state.copyWith(checkPhoneNumber: -1));
-          AppWidgets.isLoading(false);
+          emit(state.copyWith(hasError: true));
         }
       } else {
         emit(state.copyWith(hasError: true));
       }
-    } else {
-      emit(state.copyWith(hasError: true));
+    }else{
+      AppWidgets.showText(text: LocaleKeys.disConnection.tr());
     }
+
   }
 
   Future _resendCode(
       ResendCode event,
       Emitter<LoginState> emit,
       ) async {
-    emit(state.copyWith(sendCodeDuration: true));
-    var codeToken = await authService.resendCode(
-     state.codeToken
-    );
-    if (codeToken == true) {
-      emit(state.copyWith(sendCodeDuration: false));
+    var  internetConnection = await mainService.checkInternetConnection();
+    if(internetConnection){
+      emit(state.copyWith(sendCodeDuration: true));
+      var codeToken = await authService.resendCode(
+          state.codeToken
+      );
+      if (codeToken == true) {
+        emit(state.copyWith(sendCodeDuration: false));
 
-    } else {
-      emit(state.copyWith(sendCodeDuration: false));
-      AppWidgets.showText(text: LocaleKeys.number_been_blocked.tr());
+      } else {
+        emit(state.copyWith(sendCodeDuration: false));
+        AppWidgets.showText(text: LocaleKeys.number_been_blocked.tr());
 
 
+      }
+    }else{
+      AppWidgets.showText(text: LocaleKeys.disConnection.tr());
     }
+
   }
 
   Future _registration(
     Registration event,
     Emitter<LoginState> emit,
   ) async {
-    AppWidgets.isLoading(true);
-    emit(state.copyWith(hasError: false));
-    var codeToken = await authService.registration(
-      state.phone,
-      state.firstName,
-      state.lastName,
-    );
-    if (codeToken != null&&codeToken==TokenModel) {
-      emit(state.copyWith(codeToken: codeToken.token));
-      emit(state.copyWith(registerSuccess: true));
-      AppWidgets.isLoading(false);
+    var  internetConnection = await mainService.checkInternetConnection();
+    if(internetConnection){
+      AppWidgets.isLoading(true);
+      emit(state.copyWith(hasError: false));
+      var codeToken = await authService.registration(
+        state.phone,
+        state.firstName,
+        state.lastName,
+      );
+      if (codeToken != null) {
+        emit(state.copyWith(codeToken: codeToken.token));
+        emit(state.copyWith(registerSuccess: true));
+        AppWidgets.isLoading(false);
 
-    } else {
-      emit(state.copyWith(hasError: true));
-      AppWidgets.isLoading(false);
+      } else {
+        emit(state.copyWith(hasError: true));
+        AppWidgets.isLoading(false);
 
+      }
+      AppWidgets.isLoading(false);
+    }else{
+      AppWidgets.showText(text: LocaleKeys.disConnection.tr());
     }
-    AppWidgets.isLoading(false);
+
   }
 
   Future _loginEnd(
     LoginEnd event,
     Emitter<LoginState> emit,
   ) async {
-    AppWidgets.isLoading(true);
-    var loginEndModel = await authService.loginEnd(
-      event.code,
-      state.codeToken,
-    );
+    var  internetConnection = await mainService.checkInternetConnection();
+    if(internetConnection){
+      AppWidgets.isLoading(true);
+      var loginEndModel = await authService.loginEnd(
+        event.code,
+        state.codeToken,
+      );
+      if (loginEndModel != null) {
+        HiveService.to.setToken(loginEndModel);
+        emit(state.copyWith(loginSuccess: true));
 
-    if (loginEndModel != null) {
-      HiveService.to.setUser(loginEndModel.user!);
-      HiveService.to.setToken(loginEndModel.access!);
-      emit(state.copyWith(loginSuccess: true));
+        AppWidgets.isLoading(false);
+      }
       AppWidgets.isLoading(false);
+      emit(state.copyWith(codeError: true));
+    }else{
+      AppWidgets.showText(text: LocaleKeys.disConnection.tr());
     }
-    AppWidgets.isLoading(false);
-    emit(state.copyWith(codeError: true));
+
   }
 }

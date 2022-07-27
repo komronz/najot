@@ -8,6 +8,7 @@ import 'package:najot/data/services/organization_service.dart';
 import 'package:najot/data/services/product_service.dart';
 import 'package:najot/data/services/rule_service.dart';
 import 'package:najot/data/services/storage_service.dart';
+import 'package:najot/data/services/volunteer_profile_service.dart';
 
 import 'about_us_service.dart';
 import 'crowdfunding_service.dart';
@@ -30,6 +31,7 @@ class RootService {
     await NetworkConnectionService.init();
     await HiveService.init();
     await HttpService.init();
+    await VolunteerProfileService.init();
     await AboutUsService.init();
     await OrderService.init();
     await FaqService.init();

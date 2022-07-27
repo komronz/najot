@@ -20,7 +20,7 @@ class FavoriteAddService {
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/${LanguageCubit.getLang()}/users/me/favourites/",
-        token: HiveService.to.getToken(),
+        token: HiveService.to.getToken()!.access
       );
       if (response.statusCode == 200) {
         final FavoriteAddModel responseModel = FavoriteAddModel.fromJson(response.data);

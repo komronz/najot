@@ -7,7 +7,7 @@ class HomeState extends Equatable {
     this.volunteer = const [],
     this.charity = const [],
     this.slider = const [],
-    this.internetConnection=false,
+    this.internetConnection=true,
     this.progress=false
   });
 

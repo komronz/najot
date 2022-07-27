@@ -20,7 +20,7 @@ class OperatorService{
     try {
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/${LanguageCubit.getLang()}/operator-chat/",
-        token: HiveService.to.getToken(),
+        token: HiveService.to.getToken()!.access,
       );
       if (response.statusCode == 200) {
         final OperatorModel responseModel =
@@ -60,7 +60,7 @@ class OperatorService{
         path: _path,
         formData: formData,
         headers: headers,
-        token: HiveService.to.getToken(),
+        token: HiveService.to.getToken()!.access,
       );
       if (response != null) {
         if (response.statusCode == 201) {

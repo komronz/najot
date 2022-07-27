@@ -66,7 +66,7 @@ class CharityItemProjectWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppWidgets.text(
-                    text: model.title!,
+                    text: model.title??"",
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
                     maxLines: 2,
@@ -125,7 +125,7 @@ class CharityItemProjectWidget extends StatelessWidget {
                         ).paddingAll(0.2),
                       ).paddingOnly(right: 5),
                       AppWidgets.textLocale(
-                        text: model.owner!.firstName!,
+                        text: model.owner!.firstName??"",
                         fontSize: 12.sp,
                         color: AppColorUtils.TEXT_GREEN,
                         fontWeight: FontWeight.w600,
