@@ -53,6 +53,7 @@ class _HomePageState extends State<HomePage> {
       context: context,
       builder: (BuildContext context) {
         return AttentionNote(
+          con: context,
           model: VolunteerDbModel.fromJson(
             jsonDecode(payload!),
           ),

@@ -223,6 +223,7 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                           );
                           // cubit.openFaqItem(index);
                           cubit.addDbVolunteer(index,dateTime);
+                          NotificationCubit.to..getList();
                           NavigatorService.to.pop();
                           await showDialog(
                             context: context,
@@ -230,7 +231,6 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                               model: model, dateTime: _date, time: _time,
                             ),
                           );
-                          NotificationCubit.to..getList();
                           },
                         title: LocaleKeys.save,
                         fontSize: 16.sp,

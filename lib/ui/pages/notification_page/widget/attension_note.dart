@@ -16,8 +16,9 @@ import '../../../widgets/app_widgets.dart';
 
 class AttentionNote extends StatelessWidget {
   static const String routeName = "/attentionNote";
-  AttentionNote({required this.model, Key? key}) : super(key: key);
+  AttentionNote({required this.model,required this.con});
   final VolunteerDbModel model;
+  BuildContext con;
 
   @override
   Widget build(BuildContext context) {
@@ -139,12 +140,12 @@ class AttentionNote extends StatelessWidget {
                   children: [
                     AppWidgets.appButton(
                       onTap: () {
-                        Navigator.pop(context);
                         // NavigatorService.to.pushNamedAndRemoveUntil(
                         //   HomePage.routeName,
                         //   arguments: AppPageType.VOLUNTEERING,
                         // );
-                        // AppPageCubit.to.changePage(pageType: AppPageType.VOLUNTEERING);
+                        AppPageCubit.to.changePage(pageType: AppPageType.VOLUNTEERING);
+                        Navigator.pop(con);
                       },
                       title: LocaleKeys.my_volunteering.tr(),
                       fontSize: 16.sp,

@@ -218,6 +218,7 @@ class ItemCharityDatePickerWidget extends StatelessWidget {
                             );
                             // cubit.openItem(index);
                             cubit.addDbVolunteerItem(index, dateTime);
+                            NotificationCubit.to..getList();
                             NavigatorService.to.pop();
                             await showDialog(
                               context: context,
@@ -231,7 +232,6 @@ class ItemCharityDatePickerWidget extends StatelessWidget {
                                 },
                               ),
                             );
-                            NotificationCubit.to..getList();
                           },
                           title: LocaleKeys.save,
                           fontSize: 16.sp,
