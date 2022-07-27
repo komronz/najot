@@ -105,4 +105,5 @@ class AppImageUtils {
   static const String TOBE_VOLUNTEER = "assets/app_icons/tobeVolunteer.svg";
   static const String TOBE_VOLUNTEER2 = "assets/app_icons/tobeVolunteer2.svg";
    static const String NETWORK_ERROR = "assets/images/network_error.svg";
+   static const String NOTIFICATION_BIG = "assets/app_icons/notification_big.png";
 }

@@ -271,12 +271,6 @@ class AppRouteUtils {
         return MaterialPageRoute(
           builder: (context) => VolunteeringCharityHistoryPage(),
         );
-      case AttentionNote.routeName:
-        return MaterialPageRoute(
-          builder: (context) => AttentionNote(
-            model: settings.arguments as VolunteerDbModel,
-          ),
-        );
       case MyCrowdfundingAboutWidget.routeName:
         return MaterialPageRoute(
           builder: (context) => MyCrowdfundingAboutWidget(

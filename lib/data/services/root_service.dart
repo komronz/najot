@@ -39,6 +39,7 @@ class RootService {
     await DIService.init();
     await CrowdfundingService.init();
     await RuleService.init();
+
   }
   static HttpService get httpService => _getIt.get<HttpService>();
   static HiveService get hiveService => _getIt.get<HiveService>();

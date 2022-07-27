@@ -55,6 +55,7 @@ class _HomePageState extends State<HomePage> {
       context: context,
       builder: (BuildContext context) {
         return AttentionNote(
+          con: context,
           model: VolunteerDbModel.fromJson(
             jsonDecode(payload!),
           ),
@@ -62,7 +63,6 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
-
   @override
   Widget build(BuildContext context) {
     AppPageCubit.to.load(widget.appPageType);

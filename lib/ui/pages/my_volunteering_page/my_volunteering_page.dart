@@ -22,55 +22,52 @@ class MyVolunteeringPage extends StatelessWidget {
   static const String routeName = '/myVolunteeringPage';
 
   MyVolunteeringPage({Key? key}) : super(key: key);
-  MyVolunteeringCubit cubit=MyVolunteeringCubit();
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => cubit,
-      child: BlocBuilder<MyVolunteeringCubit, MyVolunteeringState>(
-        bloc: cubit..load(),
-        builder: (context, state) => Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            titleSpacing: 0,
-            title: Builder(
-              builder: (context) => Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    child: SvgPicture.asset(
-                      AppImageUtils.MENU,
-                      height: 35.w,
-                      width: 35.w,
-                    ),
-                    onTap: () {
-                      HomePage.globalKey.currentState!.openDrawer();
-                    },
+    return BlocBuilder<MyVolunteeringCubit, MyVolunteeringState>(
+      bloc: MyVolunteeringCubit.to..load(),
+      builder: (context, state) => Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          titleSpacing: 0,
+          title: Builder(
+            builder: (context) => Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  child: SvgPicture.asset(
+                    AppImageUtils.MENU,
+                    height: 35.w,
+                    width: 35.w,
                   ),
-                  AppWidgets.textLocale(
-                    text: LocaleKeys.volunteering,
-                    fontSize: 26.sp,
-                    fontWeight: FontWeight.w600,
+                  onTap: () {
+                    HomePage.globalKey.currentState!.openDrawer();
+                  },
+                ),
+                AppWidgets.textLocale(
+                  text: LocaleKeys.volunteering,
+                  fontSize: 26.sp,
+                  fontWeight: FontWeight.w600,
+                ),
+                InkWell(
+                  child: SvgPicture.asset(
+                    AppImageUtils.NOTIFICATION,
+                    height: 35.w,
+                    width: 35.w,
+                    fit: BoxFit.fill,
                   ),
-                  InkWell(
-                    child: SvgPicture.asset(
-                      AppImageUtils.NOTIFICATION,
-                      height: 35.w,
-                      width: 35.w,
-                      fit: BoxFit.fill,
-                    ),
-                    onTap: (){
-                     NavigatorService.to.pushNamed(NotificationPage.routeName,);
-                    },
-                  ),
-                ],
-              ).paddingSymmetric(horizontal: 20),
-            ),
+                  onTap: (){
+                   NavigatorService.to.pushNamed(NotificationPage.routeName,);
+                  },
+                ),
+              ],
+            ).paddingSymmetric(horizontal: 20),
           ),
-          body: _buildBody(context, state),
         ),
+        body: _buildBody(context, state),
       ),
     );
   }
@@ -126,7 +123,7 @@ class MyVolunteeringPage extends StatelessWidget {
                       (index) => WaitingForWidget(
                         model: state.cardList[index],
                         index: index,
-                        cubit: cubit,
+                        cubit: MyVolunteeringCubit.to,
                       ),
                     ),
                   ),
@@ -141,7 +138,7 @@ class MyVolunteeringPage extends StatelessWidget {
                       (index) => ItemCharityWidget(
                         model: state.itemList[index],
                         index: index,
-                        cubit: cubit,
+                        cubit: MyVolunteeringCubit.to,
 
 
                       ),

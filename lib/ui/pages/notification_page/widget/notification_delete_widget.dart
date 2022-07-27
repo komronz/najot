@@ -3,11 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
+import 'package:najot/data/bloc/my_volunteering_cubit/my_volunteering_cubit.dart';
 import 'package:najot/data/bloc/notification_cubit/notification_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/volunteer_db_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
+import 'package:najot/data/services/notification_api_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
@@ -79,7 +81,10 @@ class NotificationDeleteWidget extends StatelessWidget {
                   ButtonCard(
                     onPress: () {
                       cubit.delete(index,model);
+                      MyVolunteeringCubit.to.load();
+                      NotificationApiService.cancelNotification();
                       NavigatorService.to.pop();
+                      // NotificationCubit.to..getList();
                       // NavigatorService.to.pushNamed(
                       //   HomePage.routeName,
                       //   arguments: AppPageType.VOLUNTEERING,

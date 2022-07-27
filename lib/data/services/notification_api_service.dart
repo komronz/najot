@@ -67,14 +67,7 @@ class NotificationApiService {
         createUniqueId(),
         title,
         body,
-        _scheduleDaily(DateTime(
-          scheduledDate!.year,
-          scheduledDate.month,
-          scheduledDate.day,
-          scheduledDate.hour,
-          scheduledDate.minute,
-          scheduledDate.second,
-        )),
+        _scheduleDaily(scheduledDate!),
         await notificationDetails(),
         payload: payload,
         androidAllowWhileIdle: true,
@@ -93,7 +86,9 @@ class NotificationApiService {
         ? scheduledDate.add(Duration(seconds: 0))
         : scheduledDate;
   }
-  static void cancel(int id) => _notifications.cancel(id);
+  static Future<void> cancelNotification() async {
+    await _notifications.cancel(createUniqueId());
+  }
   static void cancelAll(int id) => _notifications.cancelAll();
 
 // static tz.TZDateTime _scheduleWeekly(Time time,{required List<int> days}){

@@ -43,29 +43,21 @@ class CharityCashWidget extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: Stack(
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(12),
-                          ),
-                          child: CachedNetworkImage(
-                            placeholder: (context, url) => Center(
-                              child: CircularProgressIndicator(),
-                            ),
-                            imageUrl: model.coverUrl!,
-                            errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ],
+              child: Expanded(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(12),
                   ),
-                ],
+                  child: CachedNetworkImage(
+                    placeholder: (context, url) => Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    imageUrl: model.coverUrl!,
+                    errorWidget: (context, url, error) =>
+                        Icon(Icons.error),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               flex: 1,
             ),
@@ -128,7 +120,7 @@ class CharityCashWidget extends StatelessWidget {
                         height: 11.w,
                       ).paddingOnly(right: 2),
                       AppWidgets.textLocale(
-                        text: ": ${model.modifiedAt!}",
+                        text: ": ${DateFormat("dd.MM.yyyy").format(DateTime.parse(model.modifiedAt!))}",
                         color: AppColorUtils.BLUE_TEXT,
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w500,

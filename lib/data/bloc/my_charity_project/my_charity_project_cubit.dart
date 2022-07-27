@@ -37,7 +37,7 @@ class MyProjectAndAnnouncementsPagesCubit extends Cubit<MyProjectAndAnnouncement
     var volunteeringModel = await volunteerProjectService.getVolunteerModel();
     var charityModel = await charityService.getCharityModel();
     if(crowdfundingModel!=null && volunteeringModel!=null && charityModel!=null){
-      emit(state.copyWith(kraufandingList: crowdfundingModel));
+      emit(state.copyWith(crowdFoundingList: crowdfundingModel));
       emit(state.copyWith(volunteeringList: volunteeringModel));
       emit(state.copyWith(charityList: charityModel));
       emit(state.copyWith(isLoading: false));

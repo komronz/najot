@@ -182,7 +182,7 @@ class WaitingForWidget extends StatelessWidget {
                           color: AppColorUtils.BLUE_TEXT,
                         ).paddingOnly(right: 5),
                         AppWidgets.text(
-                          text: model.phone??"",
+                          text: model.project!.owner!.phone!,
                           fontSize: 14.sp,
                         ),
                       ],

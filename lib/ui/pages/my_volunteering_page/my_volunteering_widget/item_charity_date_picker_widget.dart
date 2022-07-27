@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/my_volunteering_cubit/my_volunteering_cubit.dart';
+import 'package:najot/data/bloc/notification_cubit/notification_cubit.dart';
 import 'package:najot/data/custom_time_picker/flutter_time_picker_spinner.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/volunteer_donate_model.dart';
@@ -217,6 +218,7 @@ class ItemCharityDatePickerWidget extends StatelessWidget {
                             );
                             // cubit.openItem(index);
                             cubit.addDbVolunteerItem(index, dateTime);
+                            NotificationCubit.to..getList();
                             NavigatorService.to.pop();
                             await showDialog(
                               context: context,

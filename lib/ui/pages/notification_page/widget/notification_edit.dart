@@ -219,6 +219,7 @@ class NotificationEdit extends StatelessWidget {
                               _time.minute,
                             );
                             cubit.dateChange(index, dateTime);
+                            NotificationCubit.to..getList();
                             NavigatorService.to.pop();
                             await showDialog(
                               context: context,

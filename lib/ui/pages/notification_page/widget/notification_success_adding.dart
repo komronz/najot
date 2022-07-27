@@ -24,7 +24,6 @@ class NotificationSuccessAdding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Center(
       child: Material(
         color: Colors.transparent,
@@ -102,7 +101,8 @@ class NotificationSuccessAdding extends StatelessWidget {
                 children: [
                   AppWidgets.appButton(
                     onTap: () {
-                      NavigatorService.to.pushReplacementNamed(NotificationPage.routeName);
+                      NavigatorService.to.pop();
+                      // NavigatorService.to.pushReplacementNamed(NotificationPage.routeName);
                       // NavigatorService.to.pushNamed(
                       //       HomePage.routeName,
                       //       arguments: AppPageType.NOTIFICATION,);

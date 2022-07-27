@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,186 +21,206 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'widgets/operator_sms_widget.dart';
 import 'widgets/operator_user_sms_widget.dart';
 
-class OperatorPage extends StatelessWidget {
+class OperatorPage extends StatefulWidget {
   static const String routeName = "/operatorPage";
 
   OperatorPage({Key? key}) : super(key: key);
+
+  @override
+  State<OperatorPage> createState() => _OperatorPageState();
+}
+
+class _OperatorPageState extends State<OperatorPage> {
   OperatorCubit operatorCubit = OperatorCubit();
+
   TextEditingController content = TextEditingController();
+  late Timer? timer;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    operatorCubit.load();
+    timer= Timer.periodic(Duration(seconds: 4), (timer) {
+      operatorCubit.loads();
+    });
+  }
+
+@override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    timer!.cancel();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => operatorCubit,
-      child: BlocBuilder<OperatorCubit, OperatorState>(
-        bloc: operatorCubit..load(),
-        builder: (context, state) => Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(70),
-            child: Container(
+    return BlocBuilder<OperatorCubit, OperatorState>(
+      bloc: operatorCubit,
+      builder: (context, state) => Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(70),
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColorUtils.WAIT_COLOR,
+              boxShadow: [
+                BoxShadow(
+                  color: Color.fromRGBO(0, 0, 0, 0.1),
+                  offset: Offset(0, 2),
+                  blurRadius: 10,
+                )
+              ],
+            ),
+            child: AppBar(
+              automaticallyImplyLeading: false,
+              backgroundColor: Colors.transparent,
+              elevation: 0.0,
+              titleSpacing: 0,
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                    child: SvgPicture.asset(
+                      AppImageUtils.MENU,
+                      height: 35.w,
+                      width: 35.w,
+                    ),
+                    onTap: () {
+                      HomePage.globalKey.currentState!.openDrawer();
+                    },
+                  ),
+                  Expanded(
+                    child: AppWidgets.textLocale(
+                      textAlign: TextAlign.center,
+                      text: LocaleKeys.write_to_the_operator,
+                      fontSize: 26.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  // AppWidgets.iconButton(
+                  //   onTap: () async {
+                  //     await showDialog(
+                  //       context: context,
+                  //       builder: (ctx) => OperatorClearSmsWidget(
+                  //         cubit: operatorCubit,
+                  //       ),
+                  //     );
+                  //   },
+                  //   iconWidget: AppWidgets.imageSvg(
+                  //     path: AppImageUtils.IC_BASKET,
+                  //     color: AppColorUtils.RED,
+                  //   ).paddingAll(6.w),
+                  //   width: 31.w,
+                  //   height: 31.w,
+                  //   borderRadius: 3,
+                  //   color: AppColorUtils.DELETE_BTN,
+                  // )
+                ],
+              ).paddingSymmetric(horizontal: 20),
+            ),
+          ),
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: Container(
+                color: Colors.white,
+                width: context.width,
+                height: context.height,
+                child: buildBody(context, state),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20.w,
+                vertical: 18.w,
+              ),
+              height: 150.w,
               decoration: BoxDecoration(
-                color: AppColorUtils.WAIT_COLOR,
+                color: AppColorUtils.GREEN_BACK,
                 boxShadow: [
                   BoxShadow(
-                    color: Color.fromRGBO(0, 0, 0, 0.1),
-                    offset: Offset(0, 2),
+                    color: Color.fromRGBO(11, 191, 144, 0.08),
+                    offset: Offset(0, -2),
                     blurRadius: 10,
                   )
                 ],
               ),
-              child: AppBar(
-                automaticallyImplyLeading: false,
-                backgroundColor: Colors.transparent,
-                elevation: 0.0,
-                titleSpacing: 0,
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      child: SvgPicture.asset(
-                        AppImageUtils.MENU,
-                        height: 35.w,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 110.w,
+                      decoration: BoxDecoration(
+                        color: AppColorUtils.WHITE,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: TextField(
+                        controller: operatorCubit.textController,
+                        expands: true,
+                        textAlignVertical: TextAlignVertical.top,
+                        maxLines: null,
+                        enabled: true,
+                        style: GoogleFonts.inter(
+                          fontSize: 15.sp,
+                        ),
+                        decoration: InputDecoration(
+                          // border: _border,
+                          disabledBorder: DecorationConst.INPUT_BORDER,
+                          focusedBorder: DecorationConst.INPUT_BORDER,
+                          enabledBorder: DecorationConst.INPUT_BORDER,
+                          contentPadding: EdgeInsets.all(14),
+                          hintText: LocaleKeys.send_message.tr(),
+                          hintStyle: GoogleFonts.inter(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w500,
+                            color: AppColorUtils.GRAY_4,
+                          ),
+                        ),
+                        keyboardType: TextInputType.multiline,
+                        onChanged: (v) {
+                          operatorCubit.writeSms(v);
+                        },
+                      ),
+                    ),
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ShowPickerWidget(
                         width: 35.w,
-                      ),
-                      onTap: () {
-                        HomePage.globalKey.currentState!.openDrawer();
-                      },
-                    ),
-                    Expanded(
-                      child: AppWidgets.textLocale(
-                        textAlign: TextAlign.center,
-                        text: LocaleKeys.write_to_the_operator,
-                        fontSize: 26.sp,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    // AppWidgets.iconButton(
-                    //   onTap: () async {
-                    //     await showDialog(
-                    //       context: context,
-                    //       builder: (ctx) => OperatorClearSmsWidget(
-                    //         cubit: operatorCubit,
-                    //       ),
-                    //     );
-                    //   },
-                    //   iconWidget: AppWidgets.imageSvg(
-                    //     path: AppImageUtils.IC_BASKET,
-                    //     color: AppColorUtils.RED,
-                    //   ).paddingAll(6.w),
-                    //   width: 31.w,
-                    //   height: 31.w,
-                    //   borderRadius: 3,
-                    //   color: AppColorUtils.DELETE_BTN,
-                    // )
-                  ],
-                ).paddingSymmetric(horizontal: 20),
-              ),
-            ),
-          ),
-          body: Column(
-            children: [
-              Expanded(
-                child: Container(
-                  color: Colors.white,
-                  width: context.width,
-                  height: context.height,
-                  child: buildBody(context, state),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 20.w,
-                  vertical: 18.w,
-                ),
-                height: 150.w,
-                decoration: BoxDecoration(
-                  color: AppColorUtils.GREEN_BACK,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color.fromRGBO(11, 191, 144, 0.08),
-                      offset: Offset(0, -2),
-                      blurRadius: 10,
-                    )
-                  ],
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 110.w,
-                        decoration: BoxDecoration(
-                          color: AppColorUtils.WHITE,
-                          borderRadius: BorderRadius.circular(12),
+                        height: 35.w,
+                        image: AppImageUtils.IC_OTHER_FILE,
+                        color: AppColorUtils.SMS_BTN1,
+                        imageSelect: (v) {
+                          operatorCubit.saveImage(v);
+                        },
+                        imageFile: state.userImgPath,
+                        padding: 10.w,
+                      ).paddingAll(5.w),
+                      AppRoundedButton(
+                        color: AppColorUtils.PERCENT_COLOR,
+                        onTap: () {
+                          if (operatorCubit
+                              .textController
+                              .text
+                              .isNotEmpty) {
+                            operatorCubit.sendSms(
+                              state.userImgPath,
+                              state.sendSmsTxt,
+                            );
+                          }
+                        },
+                        icon: Icon(
+                          Icons.arrow_forward_rounded,
+                          color: Colors.white,
                         ),
-                        child: TextField(
-                          controller: operatorCubit.textController,
-                          expands: true,
-                          textAlignVertical: TextAlignVertical.top,
-                          maxLines: null,
-                          enabled: true,
-                          style: GoogleFonts.inter(
-                            fontSize: 15.sp,
-                          ),
-                          decoration: InputDecoration(
-                            // border: _border,
-                            disabledBorder: DecorationConst.INPUT_BORDER,
-                            focusedBorder: DecorationConst.INPUT_BORDER,
-                            enabledBorder: DecorationConst.INPUT_BORDER,
-                            contentPadding: EdgeInsets.all(14),
-                            hintText: LocaleKeys.send_message.tr(),
-                            hintStyle: GoogleFonts.inter(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w500,
-                              color: AppColorUtils.GRAY_4,
-                            ),
-                          ),
-                          keyboardType: TextInputType.multiline,
-                          onChanged: (v) {
-                            operatorCubit.writeSms(v);
-                          },
-                        ),
-                      ),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ShowPickerWidget(
-                          width: 35.w,
-                          height: 35.w,
-                          image: AppImageUtils.IC_OTHER_FILE,
-                          color: AppColorUtils.SMS_BTN1,
-                          imageSelect: (v) {
-                            operatorCubit.saveImage(v);
-                          },
-                          imageFile: state.userImgPath,
-                          padding: 10.w,
-                        ).paddingAll(5.w),
-                        AppRoundedButton(
-                          color: AppColorUtils.PERCENT_COLOR,
-                          onTap: () {
-                            if (context
-                                .read<OperatorCubit>()
-                                .textController
-                                .text
-                                .isNotEmpty) {
-                              operatorCubit.sendSms(
-                                state.userImgPath,
-                                state.sendSmsTxt,
-                              );
-                            }
-                          },
-                          icon: Icon(
-                            Icons.arrow_forward_rounded,
-                            color: Colors.white,
-                          ),
-                        )
-                      ],
-                    ).paddingOnly(left: 11),
-                  ],
-                ),
-              )
-            ],
-          ),
+                      )
+                    ],
+                  ).paddingOnly(left: 11),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

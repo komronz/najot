@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/volunteer_db_model.dart';
@@ -8,14 +9,16 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/notification_page/notification_page.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 import '../../../widgets/app_widgets.dart';
 
 class AttentionNote extends StatelessWidget {
   static const String routeName = "/attentionNote";
-  AttentionNote({required this.model, Key? key}) : super(key: key);
+  AttentionNote({required this.model,required this.con});
   final VolunteerDbModel model;
+  BuildContext con;
 
   @override
   Widget build(BuildContext context) {
@@ -137,11 +140,12 @@ class AttentionNote extends StatelessWidget {
                   children: [
                     AppWidgets.appButton(
                       onTap: () {
-                        NavigatorService.to.pop();
-                        // NavigatorService.to.pushNamed(
+                        // NavigatorService.to.pushNamedAndRemoveUntil(
                         //   HomePage.routeName,
                         //   arguments: AppPageType.VOLUNTEERING,
                         // );
+                        AppPageCubit.to.changePage(pageType: AppPageType.VOLUNTEERING);
+                        Navigator.pop(con);
                       },
                       title: LocaleKeys.my_volunteering.tr(),
                       fontSize: 16.sp,
