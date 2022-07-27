@@ -115,14 +115,13 @@ class _AppTextFieldState extends State<AppTextField> {
             controller: _textEditingController,
             enabled: widget.enabled,
             style: GoogleFonts.inter(
-              fontSize: 16,
+              fontSize: 16.sp,
             ),
             decoration: InputDecoration(
               // border: _border,
               disabledBorder: _border,
               focusedBorder: _border,
               enabledBorder: _border,
-              contentPadding: EdgeInsets.all(14),
               hintText: widget.hintText,
               hintStyle: GoogleFonts.inter(
                 fontSize: 16.sp,
@@ -136,7 +135,7 @@ class _AppTextFieldState extends State<AppTextField> {
                       child: Center(
                         child: AppWidgets.text(
                           text: "+998",
-                          fontSize: 15.sp,
+                          fontSize: 16.sp,
                           color: AppColorUtils.DARK2,
                         ),
                       ),

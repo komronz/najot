@@ -69,6 +69,7 @@ class LoginPage extends StatelessWidget {
                       ],
                     ),
                     AppTextField(
+
                       hasError: context
                           .read<LoginBloc>()
                           .state
