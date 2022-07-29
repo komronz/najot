@@ -75,7 +75,7 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
             appBar: AppBarWithTitle(
               title: LocaleKeys.about_project.tr(),
               onPress: () {
-                NavigatorService.to.pop();
+                Navigator.pop(context);
               },
             ),
             body: SingleChildScrollView(

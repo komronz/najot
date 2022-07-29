@@ -43,23 +43,20 @@ class CharityCashWidget extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: Expanded(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(12),
+              child: ClipRRect(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(12),
+                ),
+                child: CachedNetworkImage(
+                  placeholder: (context, url) => Center(
+                    child: CircularProgressIndicator(),
                   ),
-                  child: CachedNetworkImage(
-                    placeholder: (context, url) => Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                    imageUrl: model.coverUrl!,
-                    errorWidget: (context, url, error) =>
-                        Icon(Icons.error),
-                    fit: BoxFit.cover,
-                  ),
+                  imageUrl: model.coverUrl!,
+                  errorWidget: (context, url, error) =>
+                      Icon(Icons.error),
+                  fit: BoxFit.cover,
                 ),
               ),
-              flex: 1,
             ),
             Expanded(
               child: Column(

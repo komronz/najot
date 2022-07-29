@@ -56,7 +56,7 @@ class _MyCharityItemFullPageState extends State<MyCharityItemFullPage>
         appBar: AppBarWithTitle(
           title: LocaleKeys.about_the_ad,
           onPress: () {
-            NavigatorService.to.pop();
+           Navigator.pop(context);
           },
         ),
         body: BlocBuilder<MyProjectCharityCubit, MyProjectCharityState>(
