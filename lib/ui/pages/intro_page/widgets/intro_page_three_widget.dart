@@ -42,7 +42,7 @@ class IntroPageThreeWidget extends StatelessWidget {
               maxLines: 2,
               fontSize: 15.sp,
               fontWeight: FontWeight.w400,
-            ),
+            ).paddingOnly(right: 30.w,left: 30.w),
           ],
         ).paddingOnly(top: 100.w),
       ],

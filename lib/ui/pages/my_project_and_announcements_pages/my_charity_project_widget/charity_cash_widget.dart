@@ -120,7 +120,7 @@ class CharityCashWidget extends StatelessWidget {
                         height: 11.w,
                       ).paddingOnly(right: 2),
                       AppWidgets.textLocale(
-                        text: ": ${DateFormat("dd.MM.yyyy").format(DateTime.parse(model.modifiedAt!))}",
+                        text: DateFormat("dd.MM.yyyy").format(DateTime.parse(model.modifiedAt!)),
                         color: AppColorUtils.BLUE_TEXT,
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w500,

@@ -266,5 +266,7 @@ abstract class  LocaleKeys {
   static const wrong_code_entered = 'wrong_code_entered';
   static const number_is_registered = 'number_is_registered';
   static const disConnection = 'disConnection';
+  static const language = 'language';
+  static const there_no_questions = 'there_no_questions';
 
 }

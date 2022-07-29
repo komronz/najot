@@ -36,6 +36,7 @@ class OperatorModelResults {
   int? id;
   String? file;
   String? content;
+  String? createdAt;
   OperatorModelResultsUser? user;
   bool? isClient;
 
@@ -45,6 +46,7 @@ class OperatorModelResults {
     this.content,
     this.user,
     this.isClient,
+    this.createdAt,
   });
   OperatorModelResults.fromJson(Map<String, dynamic> json) {
     id = json['id']?.toInt();
@@ -52,12 +54,15 @@ class OperatorModelResults {
     content = json['content']?.toString();
     user = (json['user'] != null) ? OperatorModelResultsUser.fromJson(json['user']) : null;
     isClient = json['is_client'];
+    createdAt = json['created_at']?.toString();
+
   }
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['id'] = id;
     data['file'] = file;
     data['content'] = content;
+    data['created_at'] = createdAt;
     if (user != null) {
       data['user'] = user!.toJson();
     }

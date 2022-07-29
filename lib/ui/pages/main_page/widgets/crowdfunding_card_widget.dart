@@ -8,6 +8,7 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/data/utils/app_utils.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -97,13 +98,10 @@ class CrowdfundingCardWidget extends StatelessWidget {
                                       height: 2,
                                     ),
                                     AppWidgets.textLocale(
-                                      text: LocaleKeys.sum,
+                                      text: Format.moneyFormat(double.parse(projectModel.amountCollected!)),
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w600,
                                       color: AppColorUtils.GREEN_TEXT,
-                                      args: [
-                                        "${projectModel.amountCollected ?? ""}"
-                                      ],
                                     )
                                   ],
                                 ),

@@ -24,7 +24,7 @@ class CharityItem2Widget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        width: 160.w,
+        width: 165.w,
         height: 267.w,
         child: Card(
           shape: RoundedRectangleBorder(

@@ -94,7 +94,7 @@
     "we_help": "поможем",
     "advertising": "Реклама",
     "normal_user": "Обычный пользователь",
-    "charity_history": "История благотворительности",
+    "charity_history": "История пожертвование",
     "my_products": "Мои продукты",
     "project_rules": "Правила проекта",
     "about_us": "O нас",
@@ -263,10 +263,8 @@
     "number_been_blocked": "Ваш номер заблокирован на 24 часа!",
     "wrong_code_entered": "Был введен неверный код!",
     "number_is_registered": "Этот номер зарегистрирован",
-    "disConnection": "Нет соединения с интернетом!"
-
-
-
-
+    "disConnection": "Нет соединения с интернетом!",
+    "language": "Язык",
+    "there_no_questions": "Вопросы еще не заданы"
 
 }

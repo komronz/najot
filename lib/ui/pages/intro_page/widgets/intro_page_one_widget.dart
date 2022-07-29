@@ -26,7 +26,7 @@ class IntroPageOneWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             AppWidgets.imageAsset(path: image).paddingOnly(
-              bottom: 60.w,
+              bottom: 60.w, left: 40.w,
             ),
             AppWidgets.textLocale(
               text: title,
@@ -42,7 +42,7 @@ class IntroPageOneWidget extends StatelessWidget {
               maxLines: 2,
               fontSize: 15.sp,
               fontWeight: FontWeight.w400,
-            )
+            ).paddingOnly(right: 30.w,left: 30.w),
           ],
         ).paddingOnly(top: 120.w),
       ],

@@ -46,7 +46,7 @@ class IntroPage extends StatelessWidget {
                     ),
                     IntroPageThreeWidget(
                         image: "assets/images/splash_3.png",
-                        title: LocaleKeys.charity.tr(),
+                        title: LocaleKeys.volunteering.tr(),
                         content:
                             "Lorem Ipsum is simply dummy text of the printing and typesetting industry"),
                   ],

@@ -39,7 +39,7 @@ class DetailBodyPart1 extends StatelessWidget {
                       text: DateFormat("dd.MM.yyyy").format(modifiedAt),
                       color: AppColorUtils.BLUE_PERCENT,
                       fontWeight: FontWeight.w600,
-                      fontSize: 16.sp,
+                      fontSize: 14.sp,
                     ).paddingOnly(left: 6.w),
                   ],
                 ),
@@ -92,9 +92,9 @@ class DetailBodyPart1 extends StatelessWidget {
             fontSize: 14.w,
             fontWeight: FontWeight.w500,
             color: AppColorUtils.TEXT_BLUE2,
-            maxLines: 2)
+            maxLines: 2,)
             .paddingSymmetric(horizontal: 20.w)
       ],
-    );
+    ).paddingOnly(bottom: 15.w);
   }
 }

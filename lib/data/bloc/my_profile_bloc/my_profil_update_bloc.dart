@@ -146,7 +146,7 @@ class MyProfileUpdateBloc
       );
       if (user!=null) {
       emit(state.copyWith(hasError: false));
-      MyProfileLoad();
+      add(MyProfileLoad());
     } else {
       emit(state.copyWith(hasError: true));
     }

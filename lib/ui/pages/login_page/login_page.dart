@@ -8,6 +8,7 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/login_page/custom_shape.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -27,14 +28,14 @@ class LoginPage extends StatelessWidget {
       create: (context) => LoginBloc(),
       child: BlocConsumer<LoginBloc, LoginState>(
         listener: (context, state) {
-          if (state.checkPhoneNumber==1) {
+          if (state.checkPhoneNumber == 1) {
             NavigatorService.to.pushNamed(
               VerificationPage.routeName,
               arguments: context.read<LoginBloc>(),
             );
             context.read<LoginBloc>().add(LoginAuthSuccess(false));
           }
-          if(state.checkPhoneNumber==-1){
+          if (state.checkPhoneNumber == -1) {
             NavigatorService.to.pushNamed(
               RegPage.routeName,
               arguments: context.read<LoginBloc>(),
@@ -43,72 +44,69 @@ class LoginPage extends StatelessWidget {
             context.read<LoginBloc>().add(LoginAuthSuccess(false));
           }
         },
-        builder: (context, state) =>
-            Scaffold(
-              body: SingleChildScrollView(
-                physics: ClampingScrollPhysics(),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+        builder: (context, state) => Scaffold(
+          body: SingleChildScrollView(
+            physics: ClampingScrollPhysics(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Stack(
                   children: [
-                    Stack(
+                    ClipPathWidget(height: context.height * 0.5),
+                    Align(
+                      alignment: Alignment.center,
+                      child: AppWidgets.imageSvg(path: AppImageUtils.LOGO_BIG)
+                          .paddingOnly(top: 140.w),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ClipPathWidget(height: context.height * 0.5),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            AppWidgets.appBarWidget(
-                              onTap: () {
-                                NavigatorService.to.pop();
-                              },
-                              title: LocaleKeys.sign_in,
-                              color: AppColorUtils.GREEN_BACK_SPLASH,
-                              textColor: AppColorUtils.WHITE,
-                            ),
-                          ],
-                        ).paddingOnly(top: 40.h),
+                        AppWidgets.appBarWidget(
+                          onTap: () {
+                            NavigatorService.to.pop();
+                          },
+                          title: LocaleKeys.sign_in,
+                          color: AppColorUtils.GREEN_BACK_SPLASH,
+                          textColor: AppColorUtils.WHITE,
+                        ),
                       ],
-                    ),
-                    AppTextField(
-
-                      hasError: context
-                          .read<LoginBloc>()
-                          .state
-                          .hasError,
-                      isFill: context
-                          .read<LoginBloc>()
-                          .state
-                          .phoneFill,
-                      hintText: "",
-                      onChanged: (v) {
-                        context.read<LoginBloc>().add(LoginPhoneChanged(v));
-                      },
-                      title: LocaleKeys.phone_number,
-                      textInputType: TextInputType.number,
-                      inputFormatter:
-                      context
-                          .read<LoginBloc>()
-                          .phoneNumberFormatter,
-                      phoneNumberCode: true,
-                    ).paddingOnly(
-                      top: 24,
-                      left: 20,
-                      right: 20,
-                    ),
-                    state.hasError ? AppWidgets.starTextWidget(
-                        text: LocaleKeys.enter_correct_phone_number.tr(),
-                        color: AppColorUtils.RED
-                    ).paddingOnly(left: 20) : SizedBox(),
-                    AppWidgets.appButton(
-                      title: LocaleKeys.enter,
-                      color: AppColorUtils.GREEN_APP,
-                      onTap: () {
-                        context.read<LoginBloc>().add(CheckPhoneNumber());
-                      },
-                    ).paddingSymmetric(vertical: 24.h, horizontal: 20),
+                    ).paddingOnly(top: 40.h),
                   ],
                 ),
-              ),
+                AppTextField(
+                  hasError: context.read<LoginBloc>().state.hasError,
+                  isFill: context.read<LoginBloc>().state.phoneFill,
+                  hintText: "",
+                  onChanged: (v) {
+                    context.read<LoginBloc>().add(LoginPhoneChanged(v));
+                  },
+                  title: LocaleKeys.phone_number,
+                  textInputType: TextInputType.number,
+                  inputFormatter:
+                      context.read<LoginBloc>().phoneNumberFormatter,
+                  phoneNumberCode: true,
+                ).paddingOnly(
+                  top: 24,
+                  left: 20,
+                  right: 20,
+                ),
+                state.hasError
+                    ? AppWidgets.starTextWidget(
+                            text: LocaleKeys.enter_correct_phone_number.tr(),
+                            color: AppColorUtils.RED)
+                        .paddingOnly(left: 20)
+                    : SizedBox(),
+                AppWidgets.appButton(
+                  title: LocaleKeys.enter,
+                  color: AppColorUtils.GREEN_APP,
+                  onTap: () {
+                    context.read<LoginBloc>().add(CheckPhoneNumber());
+                  },
+                ).paddingSymmetric(vertical: 24.h, horizontal: 20),
+              ],
             ),
+          ),
+        ),
       ),
     );
   }
@@ -128,20 +126,20 @@ class LoginRegBtnWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return hasError
         ? Column(
-      children: [
-        AppWidgets.text(
-          text: LocaleKeys.you_not_registered.tr(),
-          fontSize: 12.sp,
-          fontWeight: FontWeight.w400,
-          color: AppColorUtils.DARK_6,
-        ),
-        AppWidgets.appButton(
-            title: LocaleKeys.str_registration,
-            onTap: onTap,
-            color: AppColorUtils.BLUE)
-            .paddingOnly(top: 10),
-      ],
-    ).paddingOnly(bottom: 100)
+            children: [
+              AppWidgets.text(
+                text: LocaleKeys.you_not_registered.tr(),
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w400,
+                color: AppColorUtils.DARK_6,
+              ),
+              AppWidgets.appButton(
+                      title: LocaleKeys.str_registration,
+                      onTap: onTap,
+                      color: AppColorUtils.BLUE)
+                  .paddingOnly(top: 10),
+            ],
+          ).paddingOnly(bottom: 100)
         : SizedBox();
   }
 }
@@ -158,41 +156,39 @@ class LoginErrorTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return hasError
         ? Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '*',
-          style: TextStyle(
-            fontSize: 14.sp,
-            color: AppColorUtils.RED,
-          ),
-        ),
-        SizedBox(
-          width: context.width * 0.85,
-          child: AppWidgets.text(
-            richText: true,
-            othersMarkers: [
-              MarkerText(
-                marker: LocaleKeys.phone_number.tr(),
-                style: TextStyle(color: AppColorUtils.RED),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '*',
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  color: AppColorUtils.RED,
+                ),
+              ),
+              SizedBox(
+                width: context.width * 0.85,
+                child: AppWidgets.text(
+                  richText: true,
+                  othersMarkers: [
+                    MarkerText(
+                      marker: LocaleKeys.phone_number.tr(),
+                      style: TextStyle(color: AppColorUtils.RED),
+                    ),
+                  ],
+                  text: LocaleKeys.information_not_found.tr(),
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                  maxLines: 3,
+                  color: AppColorUtils.GRAY_4,
+                  height: 1.2,
+                ),
               ),
             ],
-            text: LocaleKeys
-                .information_not_found
-                .tr(),
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w400,
-            maxLines: 3,
-            color: AppColorUtils.GRAY_4,
-            height: 1.2,
-          ),
-        ),
-      ],
-    ).paddingOnly(
-      left: 20,
-      right: 20,
-      top: 8,
-    )
+          ).paddingOnly(
+            left: 20,
+            right: 20,
+            top: 8,
+          )
         : SizedBox();
   }
 }

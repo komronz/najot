@@ -66,7 +66,7 @@
   "date_implementation": "Amalga oshirish sanasi",
   "buy_product": "Mahsulot sotib olish",
   "exit": "Chiqish",
-  "volunteering": "Voluntorlik",
+  "volunteering": "Volontyorlik",
   "crowdfunding": "Kraufanding",
   "charity": "Xayriya",
   "waiting_for_me": "Meni kutayotganlar",
@@ -113,7 +113,7 @@
   "product_amount": "Mahsulot summasi",
   "i_accepted": "Qabul qildim",
   "note": "Eslatma",
-  "advertising": "E'lon",
+  "advertising": "E'lon berish",
   "charity_amount":"Loyiha summasi",
   "my_volunteering": "Volontyorlik faoliyatim",
   "notes": "Eslatmalar",
@@ -133,7 +133,7 @@
   "buy": "Sotib olish",
   "wait_answer": "Iltimos, muallifning javobini kuting!",
   "success_answer": "Savolingiz // muvaffaqiyatli // topshirildi",
-  "all": "Hammasi",
+  "all": "Barchasi",
   "done_date": "Bajarilgan sana",
   "tobe_volunteer": "& * & iltimos, avval // \"Volontyor\" // bo'ling",
   "we_to_you": "Biz sizga albatta ",
@@ -264,6 +264,8 @@
   "number_been_blocked": "Raqamingiz 24 soatga bloklandi!",
   "wrong_code_entered": "Xato kod terildi!",
   "number_is_registered": "Bu raqam registratsiyadan o'tgan",
-  "disConnection": "Internet bilan aloqa yo'q!"
+  "disConnection": "Internet bilan aloqa yo'q!",
+  "language": "Til",
+  "there_no_questions": "Hozircha berilgan savollar yo’q"
 
 }

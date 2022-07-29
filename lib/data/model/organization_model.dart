@@ -36,6 +36,7 @@ class OrganizationModelResults {
   int? id;
   OrganizationModelResultsFounder? founder;
   String? founderImage;
+  int? totalProjects;
   String? name;
   String? description;
   String? logo;
@@ -45,6 +46,7 @@ class OrganizationModelResults {
     this.id,
     this.founder,
     this.founderImage,
+    this.totalProjects,
     this.name,
     this.description,
     this.logo,
@@ -54,6 +56,7 @@ class OrganizationModelResults {
     id = json['id']?.toInt();
     founder = (json['founder'] != null) ? OrganizationModelResultsFounder.fromJson(json['founder']) : null;
     founderImage = json['founder_image']?.toString();
+    totalProjects = json['total_projects']?.toInt();
     name = json['name']?.toString();
     description = json['description']?.toString();
     logo = json['logo']?.toString();
@@ -66,6 +69,7 @@ class OrganizationModelResults {
       data['founder'] = founder!.toJson();
     }
     data['founder_image'] = founderImage;
+    data['total_projects'] = totalProjects;
     data['name'] = name;
     data['description'] = description;
     data['logo'] = logo;

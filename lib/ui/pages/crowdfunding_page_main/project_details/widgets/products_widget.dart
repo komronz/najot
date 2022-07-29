@@ -8,6 +8,7 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/data/utils/app_utils.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/product_datail_page/product_detail_page.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -72,24 +73,11 @@ final ProductCubit cubit;
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      children: [
-                                        AppWidgets.text(
-                                          text: state.list[index].price!,
-                                          color: AppColorUtils.SMS_BTN3,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 20.sp,
-                                        ),
-                                        SizedBox(
-                                          width: 10.w,
-                                        ),
-                                        AppWidgets.textLocale(
-                                          text: LocaleKeys.toSum,
-                                          color: AppColorUtils.SMS_BTN3,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 14.sp,
-                                        ),
-                                      ],
+                                    AppWidgets.text(
+                                      text: Format.moneyFormat(double.parse(state.list[index].price!),),
+                                      color: AppColorUtils.SMS_BTN3,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 20.sp,
                                     ),
                                     SizedBox(
                                       height: 10.w,

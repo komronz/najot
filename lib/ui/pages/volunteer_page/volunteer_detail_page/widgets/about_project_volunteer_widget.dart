@@ -73,8 +73,6 @@ class _AboutProjectVolunteerWidgetState
   Widget build(BuildContext context) {
     var modifiedAt = DateTime.parse(widget.cardModel.modifiedAt!);
     var createdAt = DateTime.parse(widget.cardModel.createdAt!);
-
-
     return Column(
       children: [
         Container(
@@ -182,7 +180,7 @@ class _AboutProjectVolunteerWidgetState
                             text: DateFormat("dd.MM.yyyy").format(modifiedAt),
                             color: AppColorUtils.BLUE_PERCENT,
                             fontWeight: FontWeight.w600,
-                            fontSize: 16.sp,
+                            fontSize: 14.sp,
                           ).paddingOnly(left: 6.w),
                         ],
                       ),
@@ -238,7 +236,7 @@ class _AboutProjectVolunteerWidgetState
                       maxLines: 2)
                   .paddingSymmetric(horizontal: 20.w)
             ],
-          ),
+          ).paddingOnly(bottom: 15.w),
         ),
         SizedBox(
           height: 24.w,

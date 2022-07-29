@@ -18,12 +18,12 @@ class OperatorUserSmsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = calculateWidth(model.content??"");
+    var width = calculateWidth(model.content ?? "");
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         InkWell(
-          onTap: (){
+          onTap: () {
             showDialog(
               barrierDismissible: false,
               context: context,
@@ -34,67 +34,71 @@ class OperatorUserSmsWidget extends StatelessWidget {
                       aspectRatio: 1,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
-                        child: Image.network(model.file!, fit: BoxFit.contain,).paddingAll(15.w)
-                        ,
+                        child: Image.network(
+                          model.file!,
+                          fit: BoxFit.contain,
+                        ).paddingAll(15.w),
                       ),
                     ),
                   ).paddingAll(10.w),
-                  onTap: (){
+                  onTap: () {
                     Navigator.pop(context);
                   },
-
                 );
               },
             );
           },
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: model.file!=null?Container(
-              width: 250.w,
-              height: 250.w,
-              child: CachedNetworkImage(
-                placeholder: (context, url)=>Center(
-                  child: CircularProgressIndicator(),
-                ),
-                imageUrl: model.file??"",
-                fit: BoxFit.cover,
-              ),
-            ):Container(),
+            child: model.file != null
+                ? Container(
+                    width: 250.w,
+                    height: 250.w,
+                    child: CachedNetworkImage(
+                      placeholder: (context, url) => Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                      imageUrl: model.file ?? "",
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                : Container(),
           ),
         ).paddingOnly(bottom: 5.w),
-        model.content!=null?Container(
-          padding: EdgeInsets.symmetric(
-            vertical: 15,
-            horizontal: 20,
-          ),
-          width: width.w,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: AppColorUtils.SMS_USER,
-          ),
-          child:Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              AppWidgets.text(
-                text: model.content??"",
-                maxLines: 100,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w400,
-                color: AppColorUtils.WHITE,
-                height: 1.5,
-              ),
-              AppWidgets.text(
-                text: DateTimeUtil.dmy(
-                  DateTime.now(),
-                  context.locale,
+        model.content != null
+            ? Container(
+                padding: EdgeInsets.symmetric(
+                  vertical: 15,
+                  horizontal: 20,
                 ),
-                fontSize: 10.sp,
-                fontWeight: FontWeight.w500,
-                color: AppColorUtils.WHITE,
-              ).paddingOnly(top: 10),
-            ],
-          ),
-        ):Container(),
+                width: width.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: AppColorUtils.SMS_USER,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    AppWidgets.text(
+                      text: model.content ?? "",
+                      maxLines: 100,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColorUtils.WHITE,
+                      height: 1.5,
+                    ),
+                    AppWidgets.text(
+                      text: DateFormat("dd.MM.yyyy, hh:mm").format(
+                        DateTime.parse(model.createdAt!),
+                      ),
+                      fontSize: 10.sp,
+                      fontWeight: FontWeight.w500,
+                      color: AppColorUtils.WHITE,
+                    ).paddingOnly(top: 10),
+                  ],
+                ),
+              )
+            : Container(),
       ],
     ).paddingOnly(
       bottom: 5.w,

@@ -85,7 +85,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                   ),
                 )
               ],
-            ).paddingSymmetric(horizontal: 20.w),
+            ).paddingSymmetric(horizontal: 20.w,),
           ),
         ),
         body: BlocBuilder<AddProjectBloc, AddProjectState>(
@@ -108,7 +108,9 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                     fontWeight: FontWeight.w600,
                     textAlign: TextAlign.center,
                   ).paddingSymmetric(horizontal: 20.w),
+                  SizedBox(height: 60.w,),
                   DropDownWidget(
+                    height: 52.w,
                     items: projectName,
                     key: _key,
                     hasTitle: true,
@@ -127,6 +129,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                     isFill: context.read<AddProjectBloc>().state.nameFill,
                     hintText: LocaleKeys.enter_project_name.tr(),
                     key: _key,
+                    height: 52.w,
                     onChanged: (v) {
                       context
                           .read<AddProjectBloc>()
@@ -135,6 +138,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                     title: LocaleKeys.project_name.tr(),
                   ).paddingOnly(bottom: 18.w),
                   DropDownWidget(
+                    height: 52.w,
                     items: projectType,
                     key: _key,
                     hasTitle: true,
@@ -154,7 +158,6 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                     context.read<AddProjectBloc>().state.descriptionFill,
                     isMultiLine: true,
                     key: _key,
-
                     height: 145.w,
                     hintText: LocaleKeys.write_short_card.tr(),
                     onChanged: (v) {

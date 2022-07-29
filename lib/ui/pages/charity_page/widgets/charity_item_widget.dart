@@ -30,7 +30,7 @@ class CharityItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 160.w,
+      width: 165.w,
       height: 267.w,
       child: Card(
         shape: RoundedRectangleBorder(

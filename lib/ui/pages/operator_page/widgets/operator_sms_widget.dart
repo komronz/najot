@@ -21,12 +21,12 @@ class OperatorSmsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = OperatorUserSmsWidget.calculateWidth(model.content??"");
+    var width = OperatorUserSmsWidget.calculateWidth(model.content ?? "");
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         InkWell(
-          onTap: (){
+          onTap: () {
             showDialog(
               barrierDismissible: false,
               context: context,
@@ -37,32 +37,35 @@ class OperatorSmsWidget extends StatelessWidget {
                       aspectRatio: 1,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
-                        child: Image.network(model.file!, fit: BoxFit.contain,).paddingAll(15.w)
-                        ,
+                        child: Image.network(
+                          model.file!,
+                          fit: BoxFit.contain,
+                        ).paddingAll(15.w),
                       ),
                     ),
                   ).paddingAll(10.w),
-                  onTap: (){
+                  onTap: () {
                     Navigator.pop(context);
                   },
-
                 );
               },
             );
           },
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: model.file==null?Container():Container(
-              width: 250.w,
-              height: 250.w,
-              child: CachedNetworkImage(
-                placeholder: (context, url)=>Center(
-                  child: CircularProgressIndicator(),
-                ),
-                imageUrl: model.file??"",
-                fit: BoxFit.cover,
-              ),
-            ),
+            child: model.file == null
+                ? Container()
+                : Container(
+                    width: 250.w,
+                    height: 250.w,
+                    child: CachedNetworkImage(
+                      placeholder: (context, url) => Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                      imageUrl: model.file ?? "",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
           ),
         ).paddingOnly(bottom: 5.w),
         Container(
@@ -79,7 +82,7 @@ class OperatorSmsWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppWidgets.text(
-                text: model.content??"",
+                text: model.content ?? "",
                 maxLines: 100,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
@@ -87,9 +90,8 @@ class OperatorSmsWidget extends StatelessWidget {
                 height: 1.5,
               ),
               AppWidgets.text(
-                      text: DateTimeUtil.dmy(
-                        DateTime.now(),
-                        context.locale,
+                      text: DateFormat("dd.MM.yyyy, HH:mm").format(
+                        DateTime.parse(model.createdAt!),
                       ),
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w500,
@@ -101,6 +103,4 @@ class OperatorSmsWidget extends StatelessWidget {
       ],
     ).paddingOnly(left: 18, bottom: 18, top: 18);
   }
-
 }
-

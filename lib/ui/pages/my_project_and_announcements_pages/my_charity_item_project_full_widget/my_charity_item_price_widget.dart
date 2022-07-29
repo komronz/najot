@@ -87,7 +87,7 @@ class MyCharityItemPriceWidget extends StatelessWidget {
               color: AppColorUtils.DARK_6,
             ),
             AppWidgets.textLocale(
-              text: "Toshkent Shahar, Mirobod tumani, A Qodiriy 48",
+              text: model.address??"",
               color: AppColorUtils.BLUE_TEXT,
               maxLines: 2,
               fontWeight: FontWeight.w600,

@@ -216,7 +216,7 @@ class UserDegreePage extends StatelessWidget {
                         ),
                       ),
                     ],
-                  ),
+                  ).paddingOnly(bottom: 20.w),
                 ),
               ),
             ),

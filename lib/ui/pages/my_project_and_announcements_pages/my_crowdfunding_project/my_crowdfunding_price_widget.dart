@@ -5,6 +5,7 @@ import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/kraufanding_model.dart';
 import 'package:najot/data/model/project_model.dart';
+import 'package:najot/data/utils/app_utils.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
@@ -33,11 +34,10 @@ class MyCrowdfundingPriceWidget extends StatelessWidget {
               children: [
                 AppWidgets.starTextWidget(text: LocaleKeys.amount_needed.tr(),),
                 AppWidgets.textLocale(
-                  text:  LocaleKeys.sum,
+                  text:  Format.moneyFormat(double.parse(model.requiredFund!)),
                   color: Color(0xFF043F3B),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
-                  args: [model.requiredFund!.toString().split('.').first],
                 ).paddingOnly(top: 5.w),
               ],
             ),
@@ -86,11 +86,10 @@ class MyCrowdfundingPriceWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppWidgets.textLocale(
-                    text: LocaleKeys.sum,
+                    text: Format.moneyFormat(double.parse(model.amountCollected!)),
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.GREEN_TEXT,
-                    args: [model.amountCollected!.toString().split('.').first],
                   ),
                   AppWidgets.text(
                     text: "${model.percent.toString().split('.').first} %",

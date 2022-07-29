@@ -185,7 +185,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
                                         state.project!.results![index].id!);
                                     OrganizationCubit.to.findProject(model.model.id!);
                                   },
-                                ).paddingOnly(left: 20.w);
+                                );
                               } else {
                                 return CharityItem2Widget(
                                   model: state.project!.results![index],
@@ -203,12 +203,12 @@ class OrganizationItemDetailPage extends StatelessWidget {
                                         state.project!.results![index].id!);
                                     OrganizationCubit.to.findProject(model.model.id!);
                                   },
-                                ).paddingOnly(left: 20.w);
+                                );
                               }
                             },
                           ),
                         ),
-                      ).paddingOnly(bottom: 10.w)
+                      ).paddingOnly(bottom: 10.w, left: 15.w),
                     ],
                   ),
                 ),
