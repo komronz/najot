@@ -21,12 +21,12 @@ class IntroPageOneWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        IntroClipPathWidget(height: context.height * 0.82.w),
+        IntroClipPathWidget(height: context.height * 0.91),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            AppWidgets.imageAsset(path: image).paddingOnly(
-              bottom: 60.w, left: 40.w,
+            AppWidgets.imageAsset(path: image, height: 250.w,).paddingOnly(
+              bottom: 60.h, left: 40.w,
             ),
             AppWidgets.textLocale(
               text: title,
@@ -34,7 +34,7 @@ class IntroPageOneWidget extends StatelessWidget {
               fontSize: 30.sp,
               fontWeight: FontWeight.w600,
               textAlign: TextAlign.center,
-            ).paddingOnly(bottom: 8.w),
+            ).paddingOnly(bottom: 20.h),
             AppWidgets.textLocale(
               text: content,
               color: AppColorUtils.GREEN_WHITE,
@@ -44,7 +44,7 @@ class IntroPageOneWidget extends StatelessWidget {
               fontWeight: FontWeight.w400,
             ).paddingOnly(right: 30.w,left: 30.w),
           ],
-        ).paddingOnly(top: 120.w),
+        ).paddingOnly(top: 120.h),
       ],
     );
   }

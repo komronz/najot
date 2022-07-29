@@ -38,7 +38,7 @@ class DrawerBody extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: size.height * 0.75,
+              height: size.height * 0.76,
               child: Column(
                 // Important: Remove any padding from the ListView.
                 children: [

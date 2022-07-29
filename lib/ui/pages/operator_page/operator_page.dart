@@ -188,18 +188,19 @@ class _OperatorPageState extends State<OperatorPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ShowPickerWidget(
-                        width: 35.w,
-                        height: 35.w,
+                        width: 45.w,
+                        height: 45.w,
                         image: AppImageUtils.IC_OTHER_FILE,
                         color: AppColorUtils.SMS_BTN1,
                         imageSelect: (v) {
                           operatorCubit.saveImage(v);
                         },
                         imageFile: state.userImgPath,
-                        padding: 10.w,
+                        padding: 13.w,
                       ).paddingAll(5.w),
                       AppRoundedButton(
                         color: AppColorUtils.PERCENT_COLOR,
+                        height: 45.w,
                         onTap: () {
                           if (operatorCubit
                               .textController
@@ -215,7 +216,7 @@ class _OperatorPageState extends State<OperatorPage> {
                           Icons.arrow_forward_rounded,
                           color: Colors.white,
                         ),
-                      )
+                      ).paddingOnly(bottom: 5.w),
                     ],
                   ).paddingOnly(left: 11),
                 ],

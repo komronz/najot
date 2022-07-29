@@ -55,7 +55,9 @@ class UserUpdatePage extends StatelessWidget {
                       },
                       visibleIcon: true,
                       onTapIcon: () {
-                        context.read<MyProfileUpdateBloc>().add(EditProfileChangePage(1));
+                        context
+                            .read<MyProfileUpdateBloc>()
+                            .add(EditProfileChangePage(1));
                       },
                       icon: AppImageUtils.REMOVE,
                     ),
@@ -74,15 +76,15 @@ class UserUpdatePage extends StatelessWidget {
                           child: Column(
                             children: [
                               ShowPickerWidget(
-                                width: 150,
-                                height: 150,
+                                width: 150.w,
+                                height: 150.w,
                                 image: AppImageUtils.USERADD,
                                 color: AppColorUtils.WHITE,
-                                imageSelect: (v){
+                                imageSelect: (v) {
                                   bloc.add(SaveImagePickers(v));
-                              },
+                                },
                                 imageFile: state.userImgPath,
-                              ).paddingOnly(top:15.w),
+                              ).paddingOnly(top: 15.w),
                               Container(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,8 +114,8 @@ class UserUpdatePage extends StatelessWidget {
                                             var gender = v == 1
                                                 ? Gender.MAN.toString()
                                                 : Gender.WOMAN.toString();
-                                            bloc.add(GenderChanged(gender.toString()));
-
+                                            bloc.add(GenderChanged(
+                                                gender.toString()));
                                           },
                                           initial: state.gender!,
                                         ).paddingOnly(top: 20),
@@ -149,7 +151,11 @@ class UserUpdatePage extends StatelessWidget {
                                 ),
                               ),
                             ],
-                          ).paddingOnly(right: 20, left: 20),
+                          ).paddingOnly(
+                            bottom: 15.w,
+                            right: 20,
+                            left: 20,
+                          ),
                         ),
                       ),
                     ),

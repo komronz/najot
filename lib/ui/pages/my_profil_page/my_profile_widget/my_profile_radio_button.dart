@@ -30,7 +30,7 @@ class MyProfileRadioButton extends StatelessWidget {
         Row(
           children: [
             Container(
-              height: 48.h,
+              height: 48.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
@@ -56,7 +56,7 @@ class MyProfileRadioButton extends StatelessWidget {
               ).paddingOnly(right: 18.w),
             ),
             Container(
-              height: 48.h,
+              height: 48.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(

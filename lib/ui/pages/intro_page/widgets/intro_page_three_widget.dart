@@ -21,12 +21,14 @@ class IntroPageThreeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        IntroClipPathWidget(height: context.height * 0.63.w),
+        IntroClipPathWidget(height: context.height * 0.78),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            AppWidgets.imageAsset(path: image).paddingOnly(
-              bottom: 85.w,
+            AppWidgets.imageAsset(path: image, height: 400.h,).paddingOnly(
+              bottom: 50.h,
+              right: 25.w,
+              left: 25.w,
             ),
             AppWidgets.textLocale(
               text: title,
@@ -42,7 +44,7 @@ class IntroPageThreeWidget extends StatelessWidget {
               maxLines: 2,
               fontSize: 15.sp,
               fontWeight: FontWeight.w400,
-            ).paddingOnly(right: 30.w,left: 30.w),
+            ).paddingOnly(right: 30.w, left: 30.w),
           ],
         ).paddingOnly(top: 100.w),
       ],

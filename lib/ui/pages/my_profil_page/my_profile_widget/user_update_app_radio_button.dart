@@ -51,7 +51,7 @@ class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
           children: [
             InkWell(
               child: Container(
-                height: 48.h,
+                height: 48.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
@@ -89,7 +89,7 @@ class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
             ),
             InkWell(
               child: Container(
-                height: 48.h,
+                height: 48.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
