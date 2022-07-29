@@ -52,10 +52,10 @@ class LoginPage extends StatelessWidget {
               children: [
                 Stack(
                   children: [
-                    ClipPathWidget(height: context.height * 0.5),
+                    ClipPathWidget(height: context.height * 0.6),
                     Align(
                       alignment: Alignment.center,
-                      child: AppWidgets.imageSvg(path: AppImageUtils.LOGO_BIG)
+                      child: AppWidgets.imageSvg(path: AppImageUtils.LOGO_BIG,height: 118.w, width: 118.w)
                           .paddingOnly(top: 140.w),
                     ),
                     Column(

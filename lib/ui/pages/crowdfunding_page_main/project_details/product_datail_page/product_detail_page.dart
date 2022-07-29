@@ -58,7 +58,7 @@ class ProductDetailPage extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: size.height*0.8,
+              height: size.height*0.75,
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

@@ -20,10 +20,10 @@ class AuthPage extends StatelessWidget {
           children: [
             Stack(
               children: [
-                ClipPathWidget(height: context.height*0.5,),
+                ClipPathWidget(height: context.height*0.6,),
                 Align(
                   alignment: Alignment.center,
-                  child: AppWidgets.imageSvg(path: AppImageUtils.LOGO_WORD_BIG)
+                  child: AppWidgets.imageSvg(path: AppImageUtils.LOGO_WORD_BIG,height: 136.w,width: 124.w)
                       .paddingOnly(top: 120.w),
                 ),
               ],

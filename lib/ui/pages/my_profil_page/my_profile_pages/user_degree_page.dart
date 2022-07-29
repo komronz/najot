@@ -39,7 +39,7 @@ class UserDegreePage extends StatelessWidget {
                   SizedBox(width: 93.w),
                   AppWidgets.textLocale(
                     text: LocaleKeys.degrees,
-                    fontSize: 24,
+                    fontSize: 24.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.DARK2,
                   ),
@@ -127,7 +127,7 @@ class UserDegreePage extends StatelessWidget {
                                         AppImageUtils.CHECK_SMALL,
                                     ),
                                   ).paddingOnly(bottom: 8.h),
-                                  SizedBox(width: 8),
+                                  SizedBox(width: 8.h),
                                   Column(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,

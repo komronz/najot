@@ -22,7 +22,7 @@ class IntroPageTwoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        IntroClipPathWidget(height: context.height * 0.82.w),
+        IntroClipPathWidget(height: context.height * 0.92),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -41,7 +41,7 @@ class IntroPageTwoWidget extends StatelessWidget {
               fontSize: 15.sp,
               fontWeight: FontWeight.w400,
             ).paddingOnly(bottom: 58.w,right: 30.w,left: 30.w),
-            AppWidgets.imageAsset(path: image)
+            AppWidgets.imageAsset(path: image).paddingSymmetric(horizontal: 25),
           ],
         ).paddingOnly(top: 120.w),
       ],

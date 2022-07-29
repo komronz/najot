@@ -17,16 +17,18 @@ import 'my_crowdfunding_about_widget.dart';
 
 class MyCrowdfundingList extends StatelessWidget {
   MyCrowdfundingList(
-      {required this.cardModel, required this.visible, Key? key, required this.onTap})
+      {required this.cardModel,
+      required this.visible,
+      Key? key,
+      required this.onTap})
       : super(key: key);
   final ProjectModel cardModel;
   final bool visible;
   final VoidCallback onTap;
 
-
   @override
   Widget build(BuildContext context) {
-    var createdAt= DateTime.parse(cardModel.createdAt!);
+    var createdAt = DateTime.parse(cardModel.createdAt!);
 
     return InkWell(
       child: Container(
@@ -46,94 +48,96 @@ class MyCrowdfundingList extends StatelessWidget {
         width: 175.w,
         child: Stack(
           children: [
-           Column(
-                children: [
-                  Expanded(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                        topRight: Radius.circular(12),
-                      ),
-                      child: CachedNetworkImage(
-                        width: double.infinity,
-                        imageUrl: cardModel.coverUrl!,
-                        errorWidget: (context, url, error) => Image.asset(
-                          AppImageUtils.Splash2,
-                        ),
-                        placeholder: (context, url) =>
-                            Center(child: CircularProgressIndicator()),
-                        fit: BoxFit.cover,
-                      ),
-                      // child: Image.asset(
-                      //   cardModel.image,
-                      //   fit: BoxFit.cover,
-                      //   width: MediaQuery.of(context).size.width,
-                      // ),
+            Column(
+              children: [
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(12),
+                      topRight: Radius.circular(12),
                     ),
-                    flex: 1,
+                    child: CachedNetworkImage(
+                      width: double.infinity,
+                      imageUrl: cardModel.coverUrl!,
+                      errorWidget: (context, url, error) => Image.asset(
+                        AppImageUtils.Splash2,
+                      ),
+                      placeholder: (context, url) =>
+                          Center(child: CircularProgressIndicator()),
+                      fit: BoxFit.cover,
+                    ),
+                    // child: Image.asset(
+                    //   cardModel.image,
+                    //   fit: BoxFit.cover,
+                    //   width: MediaQuery.of(context).size.width,
+                    // ),
                   ),
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(left: 12, top: 12, right: 5),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AppWidgets.text(
-                            text: cardModel.title!,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500,
-                            maxLines: 2,
-                          ).paddingOnly(bottom: 12.w),
-                          Row(
-                            children: [
-                              AppWidgets.textLocale(
-                                text: LocaleKeys.done.tr()+":",
-                                fontWeight: FontWeight.w400,
-                                fontSize: 10.sp,
-                                color: AppColorUtils.DARK6,
-                              ).paddingOnly(right: 5.w),
-                              AppWidgets.text(
-                                text: "${cardModel.percent}%",
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w600,
-                                color: AppColorUtils.BLUE_PERCENT,
-                              ),
-                            ],
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: 13),
-                            child: LinearPercentIndicator(
-                              animation: true,
-                              padding: EdgeInsets.all(0),
-                              animationDuration: 2000,
-                              percent: cardModel.percent!/100,
-                              progressColor: AppColorUtils.PERCENT_COLOR,
-                              backgroundColor: AppColorUtils.PERCENT_COLOR2,
+                  flex: 1,
+                ),
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.only(left: 12, top: 12, right: 5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AppWidgets.text(
+                          text: cardModel.title!,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                          maxLines: 2,
+                        ).paddingOnly(bottom: 12.w),
+                        Row(
+                          children: [
+                            AppWidgets.textLocale(
+                              text: LocaleKeys.done.tr() + ":",
+                              fontWeight: FontWeight.w400,
+                              fontSize: 10.sp,
+                              color: AppColorUtils.DARK6,
+                            ).paddingOnly(right: 5.w),
+                            AppWidgets.text(
+                              text: "${cardModel.percent}%",
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w600,
+                              color: AppColorUtils.BLUE_PERCENT,
                             ),
-                          ).paddingOnly(bottom: 10.w),
-                          AppWidgets.starTextWidget(text: LocaleKeys.must_collected_date.tr()),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.calendar_today_outlined,
-                                color: AppColorUtils.BLUE_PERCENT,
-                                size: 12.sp,
-                              ),
-                              AppWidgets.text(
-                                text: DateFormat("dd.MM.yyyy").format(createdAt),
-                                color: AppColorUtils.BLUE_PERCENT,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 12.sp,
-                              ).paddingOnly(left: 6.w),
-                            ],
-                          ).paddingOnly(top: 7.w)
-                        ],
-                      ),
+                          ],
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 13),
+                          child: LinearPercentIndicator(
+                            animation: true,
+                            padding: EdgeInsets.all(0),
+                            animationDuration: 2000,
+                            percent: cardModel.percent! / 100,
+                            progressColor: AppColorUtils.PERCENT_COLOR,
+                            backgroundColor: AppColorUtils.PERCENT_COLOR2,
+                          ),
+                        ).paddingOnly(bottom: 10.w),
+                        AppWidgets.starTextWidget(
+                          text: LocaleKeys.must_collected_date.tr(),
+                          fontSize: 10.sp
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.calendar_today_outlined,
+                              color: AppColorUtils.BLUE_PERCENT,
+                              size: 12.sp,
+                            ),
+                            AppWidgets.text(
+                              text: DateFormat("dd.MM.yyyy").format(createdAt),
+                              color: AppColorUtils.BLUE_PERCENT,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 12.sp,
+                            ).paddingOnly(left: 6.w),
+                          ],
+                        ).paddingOnly(top: 7.w)
+                      ],
                     ),
                   ),
-                ],
+                ),
+              ],
             ),
-
             Visibility(
               visible: visible,
               child: ButtonCard(

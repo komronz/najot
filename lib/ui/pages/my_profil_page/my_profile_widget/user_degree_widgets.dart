@@ -81,7 +81,7 @@ class greenCheckWidgets extends StatelessWidget {
               color: AppColorUtils.GREEN_TEXT_10,
             ),
           ).paddingOnly(top: 5.w),
-          SizedBox(width: 8),
+          SizedBox(width: 8.h),
           Expanded(
             child: AppWidgets.textLocale(
                 fontSize: 14.sp,

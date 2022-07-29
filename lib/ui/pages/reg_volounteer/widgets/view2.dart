@@ -25,162 +25,164 @@ class View2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var bloc = context.read<RegVolunteerBloc>();
-    return Column(
-      children: [
-        Row(
-          children: [
-            Expanded(
-              child: AppTextField(
-                title: LocaleKeys.passport_series,
-                textInputType: TextInputType.name,
-                onChanged: (v) {
-                  bloc.add(VolunteerSerialChanged(v));
-                },
-                isFill: bloc.state.serial.isNotEmpty,
-                initialText: bloc.state.serial,
-                hintText: "(AA)",
-              ),
-            ),
-            SizedBox(width: 20.w,),
-            Expanded(
-              child: AppTextField(
-                title: LocaleKeys.passport_number,
-                textInputType: TextInputType.number,
-                onChanged: (v) {
-                  bloc.add(VolunteerSerialNumberChanged(v));
-                },
-                isFill: bloc.state.serialNumber.isNotEmpty,
-                initialText: bloc.state.serialNumber,
-                hintText: "(123456)",
-              ),
-            )
-          ],
-        ).paddingOnly(top: 15,left: 20.w,right: 20.w,),
-        AppTextField(
-          hintText: LocaleKeys.tashkent_city_yunsabad.tr(),
-          onChanged: (v) {
-            bloc.add(VolunteerGiveAddressChanged(v));
-          },
-          isFill: bloc.state.givenAddress.isNotEmpty,
-          initialText: bloc.state.givenAddress,
-          title: LocaleKeys.given_by,
-          textInputType: TextInputType.name,
-        ).paddingOnly(top: 24.w,left: 20.w,right: 20.w,),
-        AppDatePicker(
-          title: LocaleKeys.when_given,
-          onTap: () async {
-            await showDialog(
-              context: context,
-              builder: (context) => AppDatePickerWidget(
-                selectFunction: (dateTime) {
-                  bloc.add(VolunteerGiveDateSelected(dateTime));
-                },
-              ),
-            );
-          },
-          text: bloc.state.givenDate,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                AppWidgets.text(
-                  text: LocaleKeys.upload_passport_photo.tr(),
-                  fontWeight: FontWeight.w400,
-                  fontSize: 14.sp,
-                  color: AppColorUtils.DARK_4,
-                ),
-                GestureDetector(
-                  child: AppWidgets.imageSvg(
-                    path: AppImageUtils.IC_QUESTION,
-                    width: 18.w,
-                    height: 18.w,
-                  ).paddingOnly(left: 6),
-                  onTap: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) => VolunteerPassInfoDialog());
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: AppTextField(
+                  title: LocaleKeys.passport_series,
+                  textInputType: TextInputType.name,
+                  onChanged: (v) {
+                    bloc.add(VolunteerSerialChanged(v));
                   },
-                )
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: ImgUploadWidget(
-                    deleteImg: () {
-                      bloc.add(VolunteerPassImgDeleted());
-                    },
-                    onTapImg: () {
-                      NavigatorService.to.pushNamed(
-                        ImgView.routeName,
-                        arguments: bloc.state.passportImgPath!.path,
-                      );
-                    },
-                    uploadBtn: () async {
-                      bloc.add(VolunteerPassImgUploaded());
-                    },
-                    img: bloc.state.passportImgPath,
-                    title: LocaleKeys.passport_information_page.tr(),
+                  isFill: bloc.state.serial.isNotEmpty,
+                  initialText: bloc.state.serial,
+                  hintText: "(AA)",
+                ),
+              ),
+              SizedBox(width: 20.w,),
+              Expanded(
+                child: AppTextField(
+                  title: LocaleKeys.passport_number,
+                  textInputType: TextInputType.number,
+                  onChanged: (v) {
+                    bloc.add(VolunteerSerialNumberChanged(v));
+                  },
+                  isFill: bloc.state.serialNumber.isNotEmpty,
+                  initialText: bloc.state.serialNumber,
+                  hintText: "(123456)",
+                ),
+              )
+            ],
+          ).paddingOnly(top: 15,left: 20.w,right: 20.w,),
+          AppTextField(
+            hintText: LocaleKeys.tashkent_city_yunsabad.tr(),
+            onChanged: (v) {
+              bloc.add(VolunteerGiveAddressChanged(v));
+            },
+            isFill: bloc.state.givenAddress.isNotEmpty,
+            initialText: bloc.state.givenAddress,
+            title: LocaleKeys.given_by,
+            textInputType: TextInputType.name,
+          ).paddingOnly(top: 24.w,left: 20.w,right: 20.w,),
+          AppDatePicker(
+            title: LocaleKeys.when_given,
+            onTap: () async {
+              await showDialog(
+                context: context,
+                builder: (context) => AppDatePickerWidget(
+                  selectFunction: (dateTime) {
+                    bloc.add(VolunteerGiveDateSelected(dateTime));
+                  },
+                ),
+              );
+            },
+            text: bloc.state.givenDate,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  AppWidgets.text(
+                    text: LocaleKeys.upload_passport_photo.tr(),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14.sp,
+                    color: AppColorUtils.DARK_4,
                   ),
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                Expanded(
-                  child: ImgUploadWidget(
-                    deleteImg: () {
-                      context
-                          .read<RegVolunteerBloc>()
-                          .add(VolunteerPageImgDeleted(null));
-                    },
-                    onTapImg: () {
-                      NavigatorService.to.pushNamed(
-                        ImgView.routeName,
-                        arguments: bloc.state.pageImgPath!.path,
-                      );
-                    },
-                    title: LocaleKeys.registration_page.tr(),
-                    uploadBtn: () {
-                      bloc.add(VolunteerPageImgUploaded());
-                    },
-                    img: bloc.state.pageImgPath,
-                  ),
-                ),
-              ],
-            ),
-            AppWidgets.appButton(
-              title: LocaleKeys.send,
-              onTap: bloc.state.sendBtnActive
-                  ? () {
-                      bloc.add(PostVolunteerData());
-                         showDialog(
+                  GestureDetector(
+                    child: AppWidgets.imageSvg(
+                      path: AppImageUtils.IC_QUESTION,
+                      width: 18.w,
+                      height: 18.w,
+                    ).paddingOnly(left: 6),
+                    onTap: () {
+                      showDialog(
                           context: context,
-                          builder: (ctx) => VolunteerSuccessWidget(
-                            bloc: context.read<RegVolunteerBloc>(),
-                          ),
-                        );
-                    }
-                  : () {
-                      AppWidgets.showText(
-                        text: LocaleKeys.fill_in_the_blanks.tr(),
-                        duration: Duration(milliseconds: 800),
-                      );
+                          builder: (context) => VolunteerPassInfoDialog());
                     },
-              color: bloc.state.sendBtnActive
-                  ? AppColorUtils.GREEN_APP
-                  : AppColorUtils.DISABLE_BC,
-            ).paddingOnly(top: 20),
-            SizedBox(
-              height: 20,
-            )
-          ],
-        ).paddingSymmetric(horizontal: 20)
-      ],
+                  )
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: ImgUploadWidget(
+                      deleteImg: () {
+                        bloc.add(VolunteerPassImgDeleted());
+                      },
+                      onTapImg: () {
+                        NavigatorService.to.pushNamed(
+                          ImgView.routeName,
+                          arguments: bloc.state.passportImgPath!.path,
+                        );
+                      },
+                      uploadBtn: () async {
+                        bloc.add(VolunteerPassImgUploaded());
+                      },
+                      img: bloc.state.passportImgPath,
+                      title: LocaleKeys.passport_information_page.tr(),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 12,
+                  ),
+                  Expanded(
+                    child: ImgUploadWidget(
+                      deleteImg: () {
+                        context
+                            .read<RegVolunteerBloc>()
+                            .add(VolunteerPageImgDeleted(null));
+                      },
+                      onTapImg: () {
+                        NavigatorService.to.pushNamed(
+                          ImgView.routeName,
+                          arguments: bloc.state.pageImgPath!.path,
+                        );
+                      },
+                      title: LocaleKeys.registration_page.tr(),
+                      uploadBtn: () {
+                        bloc.add(VolunteerPageImgUploaded());
+                      },
+                      img: bloc.state.pageImgPath,
+                    ),
+                  ),
+                ],
+              ),
+              AppWidgets.appButton(
+                title: LocaleKeys.send,
+                onTap: bloc.state.sendBtnActive
+                    ? () {
+                        bloc.add(PostVolunteerData());
+                           showDialog(
+                            context: context,
+                            builder: (ctx) => VolunteerSuccessWidget(
+                              bloc: context.read<RegVolunteerBloc>(),
+                            ),
+                          );
+                      }
+                    : () {
+                        AppWidgets.showText(
+                          text: LocaleKeys.fill_in_the_blanks.tr(),
+                          duration: Duration(milliseconds: 800),
+                        );
+                      },
+                color: bloc.state.sendBtnActive
+                    ? AppColorUtils.GREEN_APP
+                    : AppColorUtils.DISABLE_BC,
+              ).paddingOnly(top: 20),
+              SizedBox(
+                height: 20,
+              )
+            ],
+          ).paddingSymmetric(horizontal: 20)
+        ],
+      ),
     );
   }
 }
