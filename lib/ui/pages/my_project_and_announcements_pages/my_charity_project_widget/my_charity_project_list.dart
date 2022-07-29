@@ -60,7 +60,7 @@ class MyCharityProjectList extends StatelessWidget {
             children: List.generate(
               list!.results!.length,
               (index) {
-                  if(   list!.results![index].requiredFund==null){
+                  if(  list!.results![index].requiredFund==null){
                     return CharityItemProjectWidget(
                       model:  list!.results![index],
                       onTap: () {
