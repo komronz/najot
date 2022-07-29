@@ -110,7 +110,7 @@ class NewsWidget extends StatelessWidget {
                     ),
                     AppWidgets.text(
                         height: 1.5,
-                        text:  cubit.state.newsData[index].content!,
+                        text:  cubit.state.newsData[index].content??"",
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColorUtils.TEXT_GREY2,

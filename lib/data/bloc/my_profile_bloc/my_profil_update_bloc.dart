@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/services/main_service.dart';
 import 'package:najot/data/services/my_profile_service.dart';
 import 'package:najot/data/services/user_update_service.dart';
 import '../../../ui/widgets/app_widgets.dart';
@@ -49,8 +50,10 @@ class MyProfileUpdateBloc
   }
 
 
-  Future _onPageChanged(PageChanged event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _onPageChanged(
+      PageChanged event,
+      Emitter<MyProfileUpdateState> emit,
+      ) async {
     emit(
       state.copyWith(
         isVisible: event.isVisible,
@@ -135,25 +138,34 @@ class MyProfileUpdateBloc
 
   Future _saveIn(SaveIn event,
       Emitter<MyProfileUpdateState> emit,) async {
+    var internetConnection = await  MainService().checkInternetConnection();
+    if(internetConnection){
       var user = await userUpdateService.postModel(
-          state.phone,
-          state.firstName,
-          state.lastName,
-          state.gender!,
-          state.userImgPath!,
-          state.status,
-          state.isVolunteer,
+        state.phone,
+        state.firstName,
+        state.lastName,
+        state.gender!,
+        state.userImgPath!,
+        state.status,
+        state.isVolunteer,
       );
       if (user!=null) {
-      emit(state.copyWith(hasError: false));
-      add(MyProfileLoad());
-    } else {
-      emit(state.copyWith(hasError: true));
+        emit(state.copyWith(hasError: false));
+        MyProfileLoad();
+      } else {
+        emit(state.copyWith(hasError: true));
+      }
+    }else{
+      AppWidgets.showText(text: LocaleKeys.disConnection.tr());
     }
+
   }
 
-  Future _loadProfile(MyProfileLoad event,
+  Future _loadProfile(
+      MyProfileLoad event,
       Emitter<MyProfileUpdateState> emit,) async {
+    var internetConnection = await MainService().checkInternetConnection();
+    emit(state.copyWith(internetConnection:  internetConnection));
     var user =  await userUpdateService.getUserModel();
     if (user != null) {
       emit(
@@ -175,17 +187,24 @@ class MyProfileUpdateBloc
     ChangeNumber event,
     Emitter<MyProfileUpdateState> emit,
   ) async {
-    var changeNumber = await userUpdateService.changeNumber(
-      state.codeToken,
-      event.code,
-    );
-      if(changeNumber !=null){
-        add(MyProfileLoad());
-        add(EditProfileChangePage(1));
-        emit(state.copyWith(isVisible: true));
+    var internetConnection = await  MainService().checkInternetConnection();
+      if(internetConnection){
+        var changeNumber = await userUpdateService.changeNumber(
+          state.codeToken,
+          event.code,
+        );
+        if(changeNumber !=null){
+          add(MyProfileLoad());
+          add(EditProfileChangePage(1));
+          emit(state.copyWith(isVisible: true));
+        }else{
+          AppWidgets.showText(text: "Xato kod terildi!");
+        }
       }else{
-        AppWidgets.showText(text: "Xato kod terildi!");
+        AppWidgets.showText(text: LocaleKeys.disConnection.tr());
+
       }
+
 
 
   }
@@ -194,28 +213,39 @@ class MyProfileUpdateBloc
     SendCode event,
     Emitter<MyProfileUpdateState> emit,
   ) async {
-    print(event.number);
-      var response = await userUpdateService.postNumber(event.number);
-      if (response is NumberChangeModel) {
-        emit(state.copyWith(codeToken: response.code));
-        emit(state.copyWith(isVisible: true));
-        emit(state.copyWith(isVisible: false));
-      }
-      if(response is bool){
-        if(response ==true){
-          AppWidgets.showText(text: "Bu raqam registratsiyadan o'tgan");
-        }
-        if(response ==false){
-          AppWidgets.showText(text: "Raqam noto'g'ri kiritilgan!");
-        }
-      }
+    var internetConnection = await  MainService().checkInternetConnection();
+     if(internetConnection){
+       var response = await userUpdateService.postNumber(event.number);
+       if (response is NumberChangeModel) {
+         emit(state.copyWith(codeToken: response.code));
+         emit(state.copyWith(isVisible: true));
+         emit(state.copyWith(isVisible: false));
+       }
+       if(response is bool){
+         if(response ==true){
+           AppWidgets.showText(text: "Bu raqam registratsiyadan o'tgan");
+         }
+         if(response ==false){
+           AppWidgets.showText(text: "Raqam noto'g'ri kiritilgan!");
+         }
+       }
+     }else{
+       AppWidgets.showText(text: LocaleKeys.disConnection.tr());
+     }
+
 
   }
 
   Future deletePost(String reason) async {
-    var deletePost = await myProfileService.postDeleteBYId(reason);
-    if (deletePost != null) {
-      print("delete success");
+    var internetConnection = await  MainService().checkInternetConnection();
+    if(internetConnection){
+      var deletePost = await myProfileService.postDeleteBYId(reason);
+      if (deletePost != null) {
+        print("delete success");
+      }
+    }else{
+      AppWidgets.showText(text: LocaleKeys.disConnection.tr());
     }
+
   }
 }

@@ -106,6 +106,7 @@ class _AppTextFieldState extends State<AppTextField> {
           decoration: BoxDecoration(
             color: AppColorUtils.WHITE,
             borderRadius: BorderRadius.circular(12),
+
           ),
           child: TextField(
             autofocus: widget.autoFocus ? true : false,
@@ -123,6 +124,7 @@ class _AppTextFieldState extends State<AppTextField> {
               focusedBorder: _border,
               enabledBorder: _border,
               hintText: widget.hintText,
+              contentPadding: EdgeInsets.all(14),
               hintStyle: GoogleFonts.inter(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w400,
@@ -139,7 +141,7 @@ class _AppTextFieldState extends State<AppTextField> {
                           color: AppColorUtils.DARK2,
                         ),
                       ),
-                    )
+                    ).paddingOnly(top: 2)
                   : null,
               suffixIcon: widget.isPassword
                   ? InkWell(

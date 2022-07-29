@@ -18,6 +18,8 @@ import 'package:najot/ui/pages/orders_page/orders_page.dart';
 import 'package:najot/ui/pages/organization_page/organization_page.dart';
 import 'package:najot/ui/pages/reg_volounteer/reg_volunteer.dart';
 import 'package:najot/ui/pages/rules_page/rules_page.dart';
+import '../../widgets/app_error_widget.dart';
+import '../../widgets/app_widgets.dart';
 import '../my_products_page/my_products_page.dart';
 import '../my_project_and_announcements_pages/my_project_and_announcements_pages.dart';
 import '../my_volunteering_page/my_volunteering_page.dart';
@@ -69,14 +71,24 @@ class _HomePageState extends State<HomePage> {
     return BlocBuilder<AppPageCubit, AppPageState>(
       bloc: AppPageCubit.to,
       builder: (context, state) {
-        return Scaffold(
-          // backgroundColor: AppColorUtils.BACKGROUND,
-            key: HomePage.globalKey,
-            drawer: state.changeMenu == 1
-                ? DrawerBody(cubit: AppPageCubit.to,)
-                : DrawerBodySecond(cubit: AppPageCubit.to),
-            body: buildBody(state)
-        );
+       if(state.internetConnection){
+         return Scaffold(
+           // backgroundColor: AppColorUtils.BACKGROUND,
+             key: HomePage.globalKey,
+             drawer: state.changeMenu == 1
+                 ? DrawerBody(cubit: AppPageCubit.to,)
+                 : DrawerBodySecond(cubit: AppPageCubit.to),
+             body: buildBody(state)
+         );
+       }else{
+         return AppErrorWidget(
+           onTap: () async {
+             AppWidgets.isLoading(true);
+             await  AppPageCubit.to.load(widget.appPageType);
+             AppWidgets.isLoading(false);
+           },
+         );
+       }
       },
     );
   }
@@ -90,7 +102,7 @@ class _HomePageState extends State<HomePage> {
       case AppPageType.RULES:
         return RulesPage();
       case AppPageType.ABOUT:
-        return AboutPage();
+        return AboutView();
       case AppPageType.USERPROFILE:
         return MyProfilePage();
       case AppPageType.VOLUNTEER:

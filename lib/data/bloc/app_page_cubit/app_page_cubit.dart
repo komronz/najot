@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/services/hive_service.dart';
+import 'package:najot/data/services/main_service.dart';
 import 'package:najot/data/services/volunteer_profile_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 
@@ -22,8 +23,9 @@ class AppPageCubit extends Cubit<AppPageState> {
   VolunteerProfileService service= VolunteerProfileService();
 
   Future load(AppPageType pageType) async{
+    var internetConnection = await MainService().checkInternetConnection();
+    emit(state.copyWith(internetConnection: internetConnection));
     var user = await service.getUser();
-    print(user);
     if(user != null){
       state.user=user;
     }
@@ -34,14 +36,6 @@ class AppPageCubit extends Cubit<AppPageState> {
     ));
   }
 
-  Future getUser()async{
-    var user = await service.getUser();
-    if(user != null){
-      emit(state.copyWith(user: user));
-    }else{
-      emit(state.copyWith(user: HiveService.to.getUser()));
-    }
-  }
 
   Future changePage({required AppPageType pageType}) async {
     emit(state.copyWith(pageType: pageType));

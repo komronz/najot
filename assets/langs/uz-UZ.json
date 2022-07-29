@@ -67,7 +67,7 @@
   "buy_product": "Mahsulot sotib olish",
   "exit": "Chiqish",
   "volunteering": "Volontyorlik",
-  "crowdfunding": "Kraufanding",
+  "crowdfunding": "Kraudfanding",
   "charity": "Xayriya",
   "waiting_for_me": "Meni kutayotganlar",
   "item_charity": "Buyumlar xayriyasi",
@@ -127,7 +127,7 @@
   "your_answer": "Sizning javobingiz",
   "new_add": "Yangi qo'shilganlar",
   "category": "Kategoriyalar",
-  "have_idea": "Fikringiz bor, lekin pul yo'qmi?",
+  "have_idea": "G'oya bor, ammo mablag' yo'qmi?",
   "we_help_you": "Biz sizga yordam beramiz!",
   "add_project": "Loyiha qo'shish",
   "buy": "Sotib olish",
@@ -238,7 +238,7 @@
   "fill_out_form_volunteer": "Iltimos volontyor bo’lish uchun quyidagi formani to’ldiring.",
   "all_data_change": "amaldagi barcha ma’lumotlaringiz o’zgaradi",
   "general_rules": "1. Umumiy qoyidalar",
-  "enter_6_digit_code": "{} raqamiga yuborilgan 6 raqamli kodni kiriting",
+  "enter_6_digit_code": "&+998 {}& raqamiga yuborilgan 6 raqamli kodni kiriting",
   "enter_another_number": "Boshqa raqam kiritish",
   "select_date":"Sanani tanlang",
   "enter_project_name": "Loyiha nomini kiriting",
@@ -266,6 +266,7 @@
   "number_is_registered": "Bu raqam registratsiyadan o'tgan",
   "disConnection": "Internet bilan aloqa yo'q!",
   "language": "Til",
-  "there_no_questions": "Hozircha berilgan savollar yo’q"
+  "there_no_questions": "Hozircha berilgan savollar yo’q",
+  "code_verification": "Kodni tasdiqlash"
 
 }

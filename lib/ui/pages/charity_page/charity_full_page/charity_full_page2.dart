@@ -84,7 +84,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
     return Scaffold(
       backgroundColor: AppColorUtils.BACKGROUND,
       appBar: AppBarWithTitle(
-        title: LocaleKeys.about_project.tr(),
+        title: LocaleKeys.about_the_ad.tr(),
         onPress: () async{
           await HomeCubit.to.getModel();
           NavigatorService.to.pop();
