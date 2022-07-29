@@ -23,10 +23,6 @@ class AboutUsService{
       );
       if (response.statusCode == 200) {
         final MainAboutModel responseModel = MainAboutModel.fromJson(response.data['results']);
-        // List<FaqModel> list=[];
-        // response.data.forEach((v) {
-        //   list.add(new FaqModel.fromJson(v));
-        // });
         return responseModel;
       } else {
         AppLoggerUtil.e("-----------------");

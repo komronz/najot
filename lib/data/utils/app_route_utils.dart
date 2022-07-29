@@ -289,9 +289,9 @@ class AppRouteUtils {
             list: settings.arguments as List<KraufandingModel>,
           ),
         );
-      case AboutPage.routeName:
+      case AboutView.routeName:
         return MaterialPageRoute(
-          builder: (context) => AboutPage(),
+          builder: (context) => AboutView(),
         );
       case OperatorPage.routeName:
         return MaterialPageRoute(

@@ -117,6 +117,7 @@ class CrowdfundingPriceWidget extends StatelessWidget {
         ).paddingOnly(top: 12.w),
         Container(
           decoration: DecorationConst.DEC_WITH_SHADOW,
+
         )
       ],
     );

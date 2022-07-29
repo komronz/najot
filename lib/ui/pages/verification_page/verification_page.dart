@@ -9,6 +9,7 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/verification_page/widgets/pin_put_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:pinput/pinput.dart';
+import 'package:super_rich_text/super_rich_text.dart';
 
 import '../../../data/bloc/app_page_cubit/app_page_cubit.dart';
 import '../../../data/bloc/home_cubit/home_cubit.dart';
@@ -53,18 +54,28 @@ class VerificationPage extends StatelessWidget with SmartAuth {
                         loginBloc.add(CheckPhoneNumberChanged(0));
                         NavigatorService.to.pop();
                       },
-                      title: LocaleKeys.personal_information,
+                      title: LocaleKeys.code_verification.tr(),
                     ).paddingOnly(top: 58.h),
                     Column(
                       children: [
                         AppWidgets.textLocale(
-                          textAlign: TextAlign.center,
-                          text: LocaleKeys.enter_6_digit_code,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          args: ["${state.phone}"],
-                          maxLines: 3,
-                        ).paddingSymmetric(horizontal: 40.w),
+                            text: LocaleKeys.enter_6_digit_code,
+                            color: AppColorUtils.DARK3,
+                            textAlign: TextAlign.center,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16.sp,
+                            maxLines: 3,
+                            args: ["${state.phone}"],
+                            richText: true,
+                            othersMarkers: [
+                              MarkerText(
+                                marker: "&",
+                                style: TextStyle(
+                                  color: AppColorUtils.BLACK,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ]).paddingSymmetric(horizontal: 60.w),
                         PinPutWidget(
                           pinPutFocusNode: _pinPutFocusNode,
                           pinPutController: _pinPutController,

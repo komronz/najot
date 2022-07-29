@@ -37,7 +37,7 @@ class MoreWidget extends StatelessWidget {
         SizedBox(height: 6.h),
         Container(
           child: Text(
-            cardModel.content!,
+            cardModel.content??"",
             style: TextStyle(
                 fontSize: 14.sp,
                 color: AppColorUtils.DARK3,

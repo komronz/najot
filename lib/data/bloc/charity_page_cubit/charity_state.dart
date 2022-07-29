@@ -11,7 +11,7 @@ class CharityState extends Equatable {
       this.checkBox = false,
       this.searchProjects = const [],
       this.searchProgress = false,
-      this.internetConnection = false,
+      this.internetConnection = true,
       this.searchChange = "",
       this.saveHelp = true});
 

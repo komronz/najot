@@ -25,17 +25,16 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
 
   Future _getAboutList(GetAboutDataEvent event, Emitter<AppealState> emit,) async {
     internetConnection = await MainService().checkInternetConnection();
- if(internetConnection){
-   emit(state.copyWith(hasLoading: true, hasError: false,));
+    emit(state.copyWith(internetConnection: internetConnection));
+   emit(state.copyWith(hasLoading: true, hasError: false));
    var aboutAllModel = await aboutUsService.getModel();
+
    if(aboutAllModel!=null){
      emit(state.copyWith(hasLoading: false, list: aboutAllModel.aboutModel));
    }else{
      emit(state.copyWith(hasLoading: false, hasError: true,));
    }
- }else{
-   emit(state.copyWith(internetConnection: internetConnection));
- }
+    emit(state.copyWith(hasLoading: false));
 
   }
   Future _onNameChanged(AppealNameChanged event, Emitter<AppealState> emit,) async {
@@ -73,7 +72,7 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
         phoneNumber: event.phoneNumber,
         phoneFill: _isNotEmpty(event.phoneNumber),
         isNextBtnActive: _nextBtnActive(
-          state.name,
+          state.firstName,
           state.content,
           event.phoneNumber,
         ),
@@ -89,7 +88,7 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
         content: event.content,
         applyFill: _isNotEmpty(event.content),
         isNextBtnActive: _nextBtnActive(
-          state.name,
+          state.firstName,
           event.content,
           state.phoneNumber,
         ),
@@ -102,18 +101,18 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
     Emitter<AppealState> emit,
   ) async {
     emit(
-      AppealState(name: "",
-          phoneNumber: "",
-          content: ""
-      ),
+     state.copyWith(
+         firstName: "",
+         phoneNumber: "",
+         content: "",
+     )
     );
   }
   Future _onBtnSend(
       SendDateEvent event,
       Emitter<AppealState> emit,
       ) async {
-    AboutUs? aboutUs =await aboutUsService.postModel(state.name, state.phoneNumber, state.content);
-    print(aboutUs!.phoneNumber);
+    AboutUs? aboutUs =await aboutUsService.postModel(state.firstName, state.phoneNumber, state.content);
     if(aboutUs !=null){
       emit(state.copyWith(isLoading: true));
     }else{

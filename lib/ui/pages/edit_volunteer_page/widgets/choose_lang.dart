@@ -33,7 +33,7 @@ class _ChooseLangPageState extends State<ChooseLangPage> {
       appBar: AppBarWithTitle(
         title: "Til",
         onPress: () {
-          NavigatorService.to.pop();
+          Navigator.pop(context);
         },
       ),
       body: BlocBuilder<LanguageCubit,LanguageState>(
@@ -121,7 +121,7 @@ class _ChooseLangPageState extends State<ChooseLangPage> {
                           activeColor: AppColorUtils.PERCENT_COLOR,
                           onChanged: (value) {
                             LanguageCubit.to.change(Locale('ru', 'RU'));
-                            setState(() {
+                            setState(() {   
                               val = 2;
                             });
                           },

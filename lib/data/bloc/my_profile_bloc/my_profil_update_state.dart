@@ -19,6 +19,7 @@ class MyProfileUpdateState extends Equatable {
   final File? userImgPath;
   final int changePage;
   final String codeToken;
+  final bool internetConnection;
 
 
   const MyProfileUpdateState({
@@ -39,7 +40,8 @@ class MyProfileUpdateState extends Equatable {
     this.isVolunteer=false,
     this.userImgPath,
     this.changePage=1,
-    this.codeToken=""
+    this.codeToken="",
+    this.internetConnection= true
   });
 
   @override
@@ -61,7 +63,8 @@ class MyProfileUpdateState extends Equatable {
         isVisible,
         changePage,
     codeToken,
-    newPhone
+    newPhone,
+    internetConnection
 
       ];
 
@@ -82,6 +85,7 @@ class MyProfileUpdateState extends Equatable {
     bool? sendBtnActive,
     bool? isVisible,
     bool? nextPage,
+    bool? internetConnection,
     File? userImgPath,
     int? changePage,
     String? codeToken
@@ -105,6 +109,7 @@ class MyProfileUpdateState extends Equatable {
       userImgPath: userImgPath ?? this.userImgPath,
       changePage: changePage ?? this.changePage,
       codeToken: codeToken ?? this.codeToken,
+      internetConnection: internetConnection ?? this.internetConnection,
 
     );
   }

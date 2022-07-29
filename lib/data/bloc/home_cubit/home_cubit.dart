@@ -43,8 +43,6 @@ class HomeCubit extends Cubit<HomeState> {
     if (RootService.hiveService.getToken() != null) {
       var createdAt = DateTime.parse(RootService.hiveService.getToken()!.exp!);
       var currentDay = DateTime.now().add(Duration(days: 1));
-      print(createdAt.day);
-      print(currentDay.day);
       if (createdAt.year == currentDay.year &&
           createdAt.month == currentDay.month&&
           createdAt.day<currentDay.day

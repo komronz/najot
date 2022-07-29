@@ -1,7 +1,7 @@
 part of 'appeal_bloc.dart';
 
 class AppealState extends Equatable {
-  final String name;
+  final String firstName;
   final String content;
   final String phoneNumber;
   final bool firstNameFill;
@@ -15,7 +15,7 @@ class AppealState extends Equatable {
   final List<AboutModel> list;
 
   const AppealState({
-    this.name = '',
+    this.firstName = '',
     this.content = '',
     this.phoneNumber = '',
     this.isNextBtnActive = false,
@@ -31,7 +31,7 @@ class AppealState extends Equatable {
 
   @override
   List<Object?> get props => [
-        name,
+    firstName,
         content,
         phoneNumber,
         isNextBtnActive,
@@ -60,7 +60,7 @@ class AppealState extends Equatable {
      List<AboutModel>? list
   }) {
     return AppealState(
-      name: firstName ?? this.name,
+      firstName: firstName ?? this.firstName,
       content: content ?? this.content,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       isNextBtnActive: isNextBtnActive ?? this.isNextBtnActive,

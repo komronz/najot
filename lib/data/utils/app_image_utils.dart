@@ -6,8 +6,8 @@ class AppImageUtils {
    static const String KRAUDFANDING = "assets/app_icons/kroudfanding.svg";
    static const String VOLONTYOR = "assets/app_icons/volontyor.svg";
    static const String CHARITY = "assets/app_icons/charity.svg";
-   static const String LIKE = "assets/app_icons/like.svg";
-   static const String UNLIKE = "assets/app_icons/un_like.svg";
+   static const String LIKE = "assets/app_icons/un_like.svg";
+   static const String UNLIKE = "assets/app_icons/like.svg";
    static const String USER = "assets/app_icons/user.svg";
    static const String USERADD = "assets/app_icons/user_add.svg";
    static const String QUESTION = "assets/app_icons/question.svg";

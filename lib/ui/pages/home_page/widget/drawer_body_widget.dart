@@ -11,8 +11,11 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/ui/pages/home_page/widget/log_out_dialog.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+
+import '../../crowdfunding_page_main/project_details/widgets/payment_history_dialog.dart';
 
 class DrawerBody extends StatelessWidget {
   DrawerBody({
@@ -303,13 +306,20 @@ class DrawerBody extends StatelessWidget {
                   padding: EdgeInsets.only(left: 20.w),
                   child: InkWell(
                     onTap: () {
-                      exit(0);
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return LogOutDialog();
+                        },
+                      );
+
                     },
                     child: Container(
                       height: 44.h,
                       width: 120.w,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12)),
+                          borderRadius: BorderRadius.circular(12),
+                      ),
                       child: Row(
                         children: [
                           Stack(

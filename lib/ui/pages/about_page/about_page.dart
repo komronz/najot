@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:najot/data/bloc/about/about_cubit.dart';
 import 'package:najot/data/bloc/applied_bloc/appeal_bloc.dart';
 import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/context_extension.dart';
@@ -20,79 +19,93 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../widgets/app_error_widget.dart';
 import 'edit_show_success.dart';
 
-class AboutPage extends StatelessWidget {
+class AboutView extends StatelessWidget {
   static const String routeName = '/aboutPage';
 
+  const AboutView({Key? key}) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => AppealBloc()..add(GetAboutDataEvent()),
+      child: AboutPage(),
+    );
+  }
+}
+
+class AboutPage extends StatelessWidget {
   AboutPage({Key? key}) : super(key: key);
-  AppealBloc appealBloc = AppealBloc();
-  Key _key=Key("");
+
+  Key  _key= Key("");
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: UniqueKey(),
-    backgroundColor: AppColorUtils.BACKGROUND,
-    appBar: AppBar(
-      automaticallyImplyLeading: false,
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      titleSpacing: 0,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          InkWell(
-            child: SvgPicture.asset(
-              AppImageUtils.MENU,
-              height: 35.w,
-              width: 35.w,
+      backgroundColor: AppColorUtils.BACKGROUND,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        titleSpacing: 0,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            InkWell(
+              child: SvgPicture.asset(
+                AppImageUtils.MENU,
+                height: 35.w,
+                width: 35.w,
+              ),
+              onTap: () {
+                HomePage.globalKey.currentState!.openDrawer();
+              },
             ),
-            onTap: () {
-              HomePage.globalKey.currentState!.openDrawer();
-            },
-          ),
-          AppWidgets.textLocale(
-            text: LocaleKeys.about_us,
-            fontSize: 26.sp,
-            fontWeight: FontWeight.w600,
-          ),
-          InkWell(
-            onTap: () {
-              NavigatorService.to.pushNamed(
-                NotificationPage.routeName,
-              );
-            },
-            child: SvgPicture.asset(
-              AppImageUtils.NOTIFICATION,
-              height: 35.w,
-              width: 35.w,
-              fit: BoxFit.fill,
+            AppWidgets.textLocale(
+              text: LocaleKeys.about_us,
+              fontSize: 26.sp,
+              fontWeight: FontWeight.w600,
             ),
-          )
-        ],
-      ).paddingSymmetric(horizontal: 20),
-    ),
-      body:  SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: BlocProvider(
-  create: (context) => appealBloc..add(GetAboutDataEvent()),
-  child: BlocBuilder<AppealBloc, AppealState>(
-          bloc: appealBloc,
-          builder: (context, state) {
-              if(state.internetConnection){
-                return Column(
+            InkWell(
+              onTap: () {
+                NavigatorService.to.pushNamed(
+                  NotificationPage.routeName,
+                );
+              },
+              child: SvgPicture.asset(
+                AppImageUtils.NOTIFICATION,
+                height: 35.w,
+                width: 35.w,
+                fit: BoxFit.fill,
+              ),
+            )
+          ],
+        ).paddingSymmetric(horizontal: 20),
+      ),
+      body:  BlocBuilder<AppealBloc, AppealState>(
+        bloc: context.read<AppealBloc>(),
+        builder: (context, state) {
+          if (state.internetConnection) {
+            if(state.isLoading){
+              return Center(child: CircularProgressIndicator(),).paddingOnly(top: 300.h);
+
+            }
+            else if(state.list.isNotEmpty){
+              return SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
                   children: [
                     Container(
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           AppWidgets.networkImage(
-                            url: '${state.list.length>0 ? state.list[3].cover : ''}',
+                            url: state.list[0].cover!,
                             width: 400,
                             height: 360,
-                          ).paddingOnly(top: 30,left: 20,right: 20),
-
+                          ).paddingOnly(top: 30, left: 20, right: 20),
                           AppWidgets.text(
-                            text:'${state.list.length>0 ? state.list[3].name : ""}',
+                            text: state.list[0].name ?? "",
                             maxLines: 100,
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w400,
@@ -103,11 +116,12 @@ class AboutPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              AppWidgets.imageSvg(path: AppImageUtils.IC_LOCATION),
+                              AppWidgets.imageSvg(
+                                  path: AppImageUtils.IC_LOCATION),
                               Expanded(
                                 child: AppWidgets.text(
                                   textAlign: TextAlign.start,
-                                  text:'${state.list.length>0 ? state.list[3].address : ""}',
+                                  text: state.list[0].address ?? "",
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.w600,
                                   height: 1.2,
@@ -126,7 +140,7 @@ class AboutPage extends StatelessWidget {
                                 children: [
                                   AppWidgets.text(
                                     textAlign: TextAlign.start,
-                                    text:'${state.list.length>0 ? state.list[3].phone1 : ""}',
+                                    text: state.list[0].phone1 ?? "",
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.w600,
                                     height: 1.5,
@@ -135,7 +149,7 @@ class AboutPage extends StatelessWidget {
                                   ),
                                   AppWidgets.text(
                                     textAlign: TextAlign.start,
-                                    text:'${state.list.length>0 ? state.list[3].phone2 : ""}',
+                                    text: state.list[0].phone2 ?? "",
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.w600,
                                     height: 1.2,
@@ -162,26 +176,25 @@ class AboutPage extends StatelessWidget {
                             color: AppColorUtils.DARK2,
                           ).paddingOnly(top: 24),
                           AppTextField(
-
-                            isFill: context.read<AppealBloc>().state.firstNameFill,
+                            key: _key,
+                            isFill:
+                            context.read<AppealBloc>().state.firstNameFill,
                             hintText: "(abdumalik)",
-                            initialText: state.name,
+                            initialText: state.firstName,
                             onChanged: (v) {
-                              context.read<AppealBloc>().add(AppealNameChanged(v));
+                              context
+                                  .read<AppealBloc>()
+                                  .add(AppealNameChanged(v));
                             },
                             title: LocaleKeys.name.tr(),
                           ).paddingOnly(top: 18),
                           AppTextField(
+                            key: _key,
                             textInputType: TextInputType.phone,
-                            isFill: context
-                                .read<AppealBloc>()
-                                .state
-                                .phoneFill,
+                            isFill: context.read<AppealBloc>().state.phoneFill,
                             hintText: "+998",
                             inputFormatter:
-                            context
-                                .read<AppealBloc>()
-                                .phoneNumberFormatter,
+                            context.read<AppealBloc>().phoneNumberFormatter,
                             initialText: state.phoneNumber,
                             onChanged: (v) {
                               context
@@ -191,10 +204,8 @@ class AboutPage extends StatelessWidget {
                             title: LocaleKeys.phone_number.tr(),
                           ).paddingOnly(top: 18),
                           AppTextField(
-                            isFill: context
-                                .read<AppealBloc>()
-                                .state
-                                .applyFill,
+                            key: _key,
+                            isFill: context.read<AppealBloc>().state.applyFill,
                             isMultiLine: true,
                             height: 154.w,
                             initialText: state.content,
@@ -210,17 +221,19 @@ class AboutPage extends StatelessWidget {
                           AppWidgets.appButton(
                             title: LocaleKeys.send.tr(),
                             onTap: () async {
-                              _key=UniqueKey();
+                              _key = UniqueKey();
+
                               await showDialog(
                                 context: context,
-                                builder: (context) =>
-                                    EditShowSuccessSend(
-                                      appealBloc: appealBloc,
-                                    ),
+                                builder: (con) => EditShowSuccessSend(
+                                  appealBloc: context.read<AppealBloc>(),
+                                ),
                               );
                             },
                             textColor: Colors.white,
-                            color: context.read<AppealBloc>().state.isNextBtnActive ? AppColorUtils.PERCENT_COLOR
+                            color:
+                            context.read<AppealBloc>().state.isNextBtnActive
+                                ? AppColorUtils.PERCENT_COLOR
                                 : AppColorUtils.GREEN_BTN,
                           ).paddingSymmetric(vertical: 25),
                         ],
@@ -230,20 +243,26 @@ class AboutPage extends StatelessWidget {
                       ),
                     ),
                   ],
-                );
-              }else{
-                return AppErrorWidget(
-                    onTap: () async{
-                      AppWidgets.isLoading(true);
-                      await context.read<AppealBloc>()..add(GetAboutDataEvent());
-                      AppWidgets.isLoading(false);
-                    });
-              }
+                ),
+              );
+            }else{
+              return Container();
+            }
 
-          },
-        ),
-).paddingOnly(top: 15),
-      ),
+          } else{
+            return AppErrorWidget(
+              onTap: () async {
+                AppWidgets.isLoading(true);
+                await context.read<AppealBloc>()
+                  ..add(GetAboutDataEvent());
+                AppWidgets.isLoading(false);
+              },
+            );
+          }
+
+
+        },
+      ).paddingOnly(top: 15)
     );
   }
 }
