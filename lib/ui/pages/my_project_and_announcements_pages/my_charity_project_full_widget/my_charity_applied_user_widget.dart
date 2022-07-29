@@ -26,7 +26,6 @@ class MyCharityAppliedUserWidget extends StatelessWidget {
           fontWeight: FontWeight.w400,
         ),
         AppWidgets.circleImages(
-
           count: 100,
         ).paddingOnly(top: 3)
       ],

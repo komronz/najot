@@ -27,7 +27,7 @@ class ProfileDeleteDialog extends StatelessWidget {
       ),
       elevation: 0,
       child: Container(
-        height: 370.w,
+        height: 380.w,
         padding: EdgeInsets.all(20.w),
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,

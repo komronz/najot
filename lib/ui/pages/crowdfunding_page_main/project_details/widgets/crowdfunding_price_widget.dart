@@ -9,6 +9,7 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/data/utils/app_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
@@ -33,11 +34,10 @@ class CrowdfundingPriceWidget extends StatelessWidget {
               children: [
                 AppWidgets.starTextWidget(text: LocaleKeys.need_summa.tr()),
                 AppWidgets.textLocale(
-                  text: LocaleKeys.sum,
+                  text: Format.moneyFormat(double.parse(model.requiredFund!)),
                   color: Color(0xFF043F3B),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
-                  args: ["${model.requiredFund}"]
                 ).paddingOnly(top: 3.w),
               ],
             ),
@@ -86,11 +86,10 @@ class CrowdfundingPriceWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppWidgets.textLocale(
-                    text: LocaleKeys.sum,
+                    text: Format.moneyFormat(double.parse(model.amountCollected!)),
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.GREEN_TEXT,
-                    args: ["${model.amountCollected}"],
                   ),
                   AppWidgets.text(
                     text: "${model.percent} %",

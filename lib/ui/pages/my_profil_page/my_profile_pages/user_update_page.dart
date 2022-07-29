@@ -115,6 +115,7 @@ class UserUpdatePage extends StatelessWidget {
                                             bloc.add(GenderChanged(gender.toString()));
 
                                           },
+                                          initial: state.gender!,
                                         ).paddingOnly(top: 20),
                                       ],
                                     ),

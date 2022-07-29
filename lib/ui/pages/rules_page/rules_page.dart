@@ -108,7 +108,7 @@ class RulesPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppWidgets.text(
-                      text: state.list[index].title!,
+                      text: "${(index+1).toString()}. ${state.list[index].title}",
                       color: AppColorUtils.BLACK,
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w600,

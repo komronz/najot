@@ -15,6 +15,7 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_widget/show_picker_widget.dart';
+import 'package:najot/ui/pages/operator_page/widgets/operator_clear_sms_widget.dart';
 import 'package:najot/ui/widgets/app_rounded_button.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -96,24 +97,24 @@ class _OperatorPageState extends State<OperatorPage> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  // AppWidgets.iconButton(
-                  //   onTap: () async {
-                  //     await showDialog(
-                  //       context: context,
-                  //       builder: (ctx) => OperatorClearSmsWidget(
-                  //         cubit: operatorCubit,
-                  //       ),
-                  //     );
-                  //   },
-                  //   iconWidget: AppWidgets.imageSvg(
-                  //     path: AppImageUtils.IC_BASKET,
-                  //     color: AppColorUtils.RED,
-                  //   ).paddingAll(6.w),
-                  //   width: 31.w,
-                  //   height: 31.w,
-                  //   borderRadius: 3,
-                  //   color: AppColorUtils.DELETE_BTN,
-                  // )
+                  AppWidgets.iconButton(
+                    onTap: () async {
+                      await showDialog(
+                        context: context,
+                        builder: (ctx) => OperatorClearSmsWidget(
+                          cubit: operatorCubit,
+                        ),
+                      );
+                    },
+                    iconWidget: AppWidgets.imageSvg(
+                      path: AppImageUtils.IC_BASKET,
+                      color: AppColorUtils.RED,
+                    ).paddingAll(6.w),
+                    width: 31.w,
+                    height: 31.w,
+                    borderRadius: 3,
+                    color: AppColorUtils.DELETE_BTN,
+                  )
                 ],
               ).paddingSymmetric(horizontal: 20),
             ),

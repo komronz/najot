@@ -23,7 +23,6 @@ class OrganizationPage extends StatelessWidget {
       create: (context) => OrganizationCubit.to..load(),
       child: BlocBuilder<OrganizationCubit, OrganizationState>(
           builder: (context, state) {
-
             if(state.internetConnection){
               return Scaffold(
                 appBar: AppBar(

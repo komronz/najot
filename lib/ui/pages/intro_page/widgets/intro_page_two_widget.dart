@@ -40,7 +40,7 @@ class IntroPageTwoWidget extends StatelessWidget {
               maxLines: 2,
               fontSize: 15.sp,
               fontWeight: FontWeight.w400,
-            ).paddingOnly(bottom: 58.w),
+            ).paddingOnly(bottom: 58.w,right: 30.w,left: 30.w),
             AppWidgets.imageAsset(path: image)
           ],
         ).paddingOnly(top: 120.w),

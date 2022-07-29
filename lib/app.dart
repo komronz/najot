@@ -30,43 +30,46 @@ class App extends StatelessWidget {
       designSize: Size(375, 812),
       builder: (context, widget) =>
           BlocListener<NotificationCubit, NotificationState>(
-            bloc: NotificationCubit.to..getList(),
-            listener: (context, state) {
-              state.cardList.forEachIndexed((i, value) {
-                NotificationApiService.showNotification(
-                  title: LocaleKeys.attention_hello_volunteer.tr(),
-                  body: LocaleKeys.you_go_to_help.tr(),
-                  payload: jsonEncode(value.toJson()),
-                  scheduledDate: DateTime.parse(value.modifiedAt!),
-                );
-              });
-            },
-            child: BlocListener<LanguageCubit, LanguageState>(
-              bloc: LanguageCubit.to,
-              listener: (context, state) {
-                context.setLocale(state.locale);
-              },
-              child: MaterialApp(
-                navigatorKey: NavigatorService.to.key,
-                title: "Najot",
-                debugShowCheckedModeBanner: false,
-                onGenerateRoute: AppRouteUtils.onGenerateRoute,
-                supportedLocales: context.supportedLocales,
-                // themeMode: ThemeCubit.to.state.themeMode,
-                // theme: AppThemes.lightTheme(),
-                // darkTheme: AppThemes.darkTheme(),
-                localizationsDelegates: context.localizationDelegates,
-                builder: BotToastInit(),
-                // home: LanguagePage(),
-               home: RootService.hiveService.getToken() !=null?HomePage(appPageType: AppPageType.MAIN,)
-                    :LanguagePage(),
-                navigatorObservers: [
-                  BotToastNavigatorObserver(),
-                ],
-                locale: context.locale,
-              ),
-            ),
+        bloc: NotificationCubit.to..getList(),
+        listener: (context, state) {
+          state.cardList.forEachIndexed((i, value) {
+            NotificationApiService.showNotification(
+              title: LocaleKeys.attention_hello_volunteer.tr(),
+              body: LocaleKeys.you_go_to_help.tr(),
+              payload: jsonEncode(value.toJson()),
+              scheduledDate: DateTime.parse(value.modifiedAt!),
+            );
+          });
+        },
+        child: BlocListener<LanguageCubit, LanguageState>(
+          bloc: LanguageCubit.to,
+          listener: (context, state) {
+            context.setLocale(state.locale);
+          },
+          child: MaterialApp(
+            navigatorKey: NavigatorService.to.key,
+            title: "Najot",
+            debugShowCheckedModeBanner: false,
+            onGenerateRoute: AppRouteUtils.onGenerateRoute,
+            supportedLocales: context.supportedLocales,
+            // themeMode: ThemeCubit.to.state.themeMode,
+            // theme: AppThemes.lightTheme(),
+            // darkTheme: AppThemes.darkTheme(),
+            localizationsDelegates: context.localizationDelegates,
+            builder: BotToastInit(),
+            // home: LanguagePage(),
+            home: RootService.hiveService.getToken() != null
+                ? HomePage(
+                    appPageType: AppPageType.MAIN,
+                  )
+                : LanguagePage(),
+            navigatorObservers: [
+              BotToastNavigatorObserver(),
+            ],
+            locale: context.locale,
           ),
+        ),
+      ),
     );
   }
 }

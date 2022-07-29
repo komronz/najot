@@ -94,7 +94,7 @@
     "we_help": "поможем",
     "advertising": "Реклама",
     "normal_user": "Обычный пользователь",
-    "charity_history": "История благотворительности",
+    "charity_history": "История пожертвование",
     "my_products": "Мои продукты",
     "project_rules": "Правила проекта",
     "about_us": "O нас",
@@ -237,7 +237,7 @@
     "fill_out_form_volunteer": "Пожалуйста, заполните форму ниже, чтобы стать волонтером.",
     "all_data_change": "все ваши текущие данные изменятся",
     "general_rules": "1. Общие правила",
-    "enter_6_digit_code": "Введите 6 значный код отправлено в &+998 {}&",
+    "enter_6_digit_code": "Введите 6-значный код",
     "enter_another_number": "Введите другой номер",
     "select_date":"Выберите дату",
     "enter_project_name": "Введите название проекта",
@@ -263,8 +263,10 @@
     "number_been_blocked": "Ваш номер заблокирован на 24 часа!",
     "wrong_code_entered": "Был введен неверный код!",
     "number_is_registered": "Этот номер зарегистрирован",
+    "disConnection": "Нет соединения с интернетом!",
+    "language": "Язык",
+    "there_no_questions": "Вопросы еще не заданы"
     "code_verification": "Проверка кода",
-    "disConnection": "Нет соединения с интернетом!"
 
 
 

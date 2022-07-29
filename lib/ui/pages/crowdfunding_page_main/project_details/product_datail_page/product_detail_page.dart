@@ -10,6 +10,7 @@ import 'package:najot/data/model/product_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/data/utils/app_utils.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -183,21 +184,20 @@ class ProductDetailPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         AppWidgets.textLocale(
-                          text: LocaleKeys.sum,
-                          args: ["${model.products.price}".tr()],
+                          text: Format.moneyFormat(double.parse(model.products.price!)),
                           fontWeight: FontWeight.w600,
                           fontSize: 16.sp,
                           color: AppColorUtils.TEXT_GREEN,
                         ),
                         Row(
                           children: [
-                            SvgPicture.asset(AppImageUtils.DATE),
+                            SvgPicture.asset(AppImageUtils.DATE, height: 16.w,),
                             AppWidgets.text(
                               text: DateFormat("dd.MM.yyyy").format(createdAt),
                               color: AppColorUtils.BLUE_PERCENT,
                               fontWeight: FontWeight.w600,
                               fontSize: 16.sp,
-                            ).paddingOnly(left: 6.w),
+                            ).paddingOnly(left: 6.w, top: 5.w),
                           ],
                         ),
                       ],

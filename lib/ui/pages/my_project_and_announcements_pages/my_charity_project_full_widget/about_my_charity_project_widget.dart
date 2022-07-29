@@ -157,7 +157,7 @@ class _AboutMyCharityProjectWidgetState
                                   size: 14.sp,
                                 ),
                                 AppWidgets.text(
-                                  text: "25.02.2022",
+                                  text: DateFormat("dd.MM.yyyy").format(DateTime.parse(widget.model.deadline!)),
                                   color: AppColorUtils.BLUE_PERCENT,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 14.sp,

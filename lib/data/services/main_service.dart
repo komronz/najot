@@ -30,7 +30,8 @@ class MainService {
       final body = {
         "refresh": HiveService.to.getToken()!.refresh,
       };
-      final headers = {HttpHeaders.contentTypeHeader: "application/json"};
+      final headers = {HttpHeaders.contentTypeHeader: "application/json",};
+
       var response = await _httpService.post(
         path: path,
         fields: body,

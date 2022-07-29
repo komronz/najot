@@ -68,7 +68,7 @@ class OrganizationItemWidget extends StatelessWidget {
                         color: AppColorUtils.DARK_6,
                       ),
                       AppWidgets.text(
-                        text: "${cubit.state.list.length}",
+                        text: "${model.totalProjects}",
                         fontWeight: FontWeight.w600,
                         color: AppColorUtils.BLUE_PERCENT,
                         fontSize: 15.sp,

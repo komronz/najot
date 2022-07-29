@@ -25,13 +25,11 @@ class MyProfilePage extends StatelessWidget {
   static const String routeName = "/myProfilePage";
 
   MyProfilePage({Key? key}) : super(key: key);
-  MyProfileUpdateBloc myProfileUpdateBloc=MyProfileUpdateBloc();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => myProfileUpdateBloc,
+      create: (context) => MyProfileUpdateBloc()..add(MyProfileLoad()),
       child: BlocConsumer<MyProfileUpdateBloc, MyProfileUpdateState>(
-        bloc: myProfileUpdateBloc..add(MyProfileLoad()),
           listener: (context, state) {},
           builder: (context, state) {
             if (state.changePage == 1) {
@@ -150,7 +148,7 @@ class MyProfilePage extends StatelessWidget {
                                   children: [
                                     AppDisableTextField(
                                       isFill: false,
-                                      hintText: myProfileUpdateBloc
+                                      hintText: context.read<MyProfileUpdateBloc>()
                                           .state
                                           .firstName,
                                       onChanged: (v) {},
@@ -158,12 +156,12 @@ class MyProfilePage extends StatelessWidget {
                                     ).paddingOnly(bottom: 23.h),
                                     AppDisableTextField(
                                       isFill: false,
-                                      hintText: myProfileUpdateBloc.state.lastName,
+                                      hintText: context.read<MyProfileUpdateBloc>().state.lastName,
                                       onChanged: (v) {},
                                       title: LocaleKeys.surname.tr(),
                                     ).paddingOnly(bottom: 23.h),
                                     MyProfileRadioButton(
-                                      initial: myProfileUpdateBloc
+                                      initial: context.read<MyProfileUpdateBloc>()
                                           .state
                                           .gender??"",
                                     ).paddingOnly(top: 20),
@@ -256,9 +254,9 @@ class MyProfilePage extends StatelessWidget {
                                     () {
                                       showDialog(
                                         context: context,
-                                        builder: (context) {
+                                        builder: (con) {
                                           return ProfileDeleteDialog(
-                                            myProfileUpdateBloc: myProfileUpdateBloc,
+                                            myProfileUpdateBloc: context.read<MyProfileUpdateBloc>(),
                                           );
                                         },
                                       );
@@ -273,9 +271,9 @@ class MyProfilePage extends StatelessWidget {
                 ),
               );
             } else if (state.changePage == 2) {
-              return UserUpdatePage(bloc: myProfileUpdateBloc);
+              return UserUpdatePage(bloc: context.read<MyProfileUpdateBloc>());
             } else {
-              return NumberUpdatePage(bloc: myProfileUpdateBloc,);
+              return NumberUpdatePage(bloc: context.read<MyProfileUpdateBloc>());
             }
           }),
     );

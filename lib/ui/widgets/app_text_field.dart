@@ -165,7 +165,7 @@ class _AppTextFieldState extends State<AppTextField> {
                     widget.inputFormatter!,
                   ],
           ),
-        )
+        ),
       ],
     );
   }

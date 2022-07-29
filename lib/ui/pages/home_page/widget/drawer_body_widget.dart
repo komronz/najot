@@ -29,7 +29,7 @@ class DrawerBody extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     AppPageType pageType = cubit.state.pageType;
     return Container(
-      width: 266.w,
+      width: 275.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: AppColorUtils.WHITE,

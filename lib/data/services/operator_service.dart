@@ -48,10 +48,13 @@ class OperatorService{
          formData = FormData.fromMap({
           "content": content,
           "file": await MultipartFile.fromFile(file.path, filename: file1),
+           "created_at": DateTime.now(),
         });
+
       }else{
         formData = FormData.fromMap({
           "content": content,
+          "created_at": DateTime.now(),
         });
       }
 

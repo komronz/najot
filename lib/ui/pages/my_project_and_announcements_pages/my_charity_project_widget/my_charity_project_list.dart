@@ -6,7 +6,6 @@ import 'package:najot/data/model/volunteer_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-
 import '../../../../data/services/navigator_service.dart';
 import '../my_charity_item_project_full_widget/my_charity_item_full_page.dart';
 import '../my_charity_project_full_widget/my_charity_project_full_page.dart';
@@ -56,7 +55,7 @@ class MyCharityProjectList extends StatelessWidget {
             crossAxisCount: 2,
             physics: ClampingScrollPhysics(),
             childAspectRatio: 168 / 298,
-            padding: EdgeInsets.all(0),
+            padding: EdgeInsets.only(bottom: 15),
             reverse: false,
             children: List.generate(
               list!.results!.length,
@@ -68,7 +67,7 @@ class MyCharityProjectList extends StatelessWidget {
                         NavigatorService.to.pushNamed(MyCharityItemFullPage.routeName,
                             arguments:  list!.results![index]);
                       },
-                    );
+                    ).paddingOnly(bottom: 10);
                   }else{
                    return CharityCashWidget(
                       model:  list!.results![index],
@@ -77,17 +76,16 @@ class MyCharityProjectList extends StatelessWidget {
                             MyCharityProjectFullPage.routeName,
                             arguments:  list!.results![index]);
                       },
-                    );
+                    ).paddingOnly(bottom: 10);
                   }
-
               }
             ),
           ),
         ],
       ).paddingOnly(
-        left: 20,
-        top: 10,
-        right: 10,
+        left: 20.w,
+        top: 10.w,
+        right: 10.w,
       ),
     );
   }

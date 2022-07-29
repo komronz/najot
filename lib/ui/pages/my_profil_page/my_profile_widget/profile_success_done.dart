@@ -21,7 +21,7 @@ class ProfileSuccessDone extends StatelessWidget {
       ),
       elevation: 0,
       child: Container(
-        height: 330.w,
+        height: 345.w,
         padding: EdgeInsets.all(25.w),
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,

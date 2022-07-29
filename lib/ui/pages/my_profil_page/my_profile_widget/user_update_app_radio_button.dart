@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/data/utils/app_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
 
 class UserUpdateAppRadioButton extends StatefulWidget {
   final ValueChanged<int> onChanged;
+  String initial;
 
-  const UserUpdateAppRadioButton({required this.onChanged, Key? key})
+   UserUpdateAppRadioButton({required this.onChanged, required this.initial, Key? key})
       : super(key: key);
 
   @override
@@ -18,13 +20,20 @@ class UserUpdateAppRadioButton extends StatefulWidget {
 }
 
 class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
-  var _selection = 1;
+  late int _selection;
 
   void selectTime(int timeSelected) {
     setState(() {
       _selection = timeSelected;
       widget.onChanged(_selection);
     });
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    _selection=widget.initial==Gender.MAN.toString()?1:2;
+    super.initState();
+
   }
 
   @override

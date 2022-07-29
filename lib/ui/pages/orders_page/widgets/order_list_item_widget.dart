@@ -9,6 +9,7 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/oreder_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/data/utils/app_utils.dart';
 import 'package:najot/ui/pages/charity_history_page/widgets/date_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -95,8 +96,7 @@ class OrdersItemsWidget extends StatelessWidget {
             children: [
               DateWidget(date: date),
               AppWidgets.textLocale(
-                text: LocaleKeys.sum,
-                args: [model.price!],
+                text: Format.moneyFormat(double.parse(model.price!)),
                 color: AppColorUtils.KRAUDFANDING,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,

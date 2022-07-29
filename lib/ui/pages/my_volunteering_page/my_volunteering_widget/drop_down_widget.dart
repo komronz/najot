@@ -10,10 +10,11 @@ import '../../../../data/utils/app_color_utils.dart';
 
 class DropDownWidget extends StatelessWidget {
   DropDownWidget(
-      {required this.items, required this.title, required this.hasTitle,required this.onChange, this.isEmpty = false, this.selectValue, Key? key,})
+      {required this.items, required this.title, required this.hasTitle,required this.onChange, this.isEmpty = false, this.selectValue, Key? key, required this.height,})
       : super(key: key);
   final List<String>? items;
   final bool isEmpty;
+  final double height;
   final bool hasTitle;
   final String title;
   final String? selectValue;
@@ -43,78 +44,81 @@ class DropDownWidget extends StatelessWidget {
           ],
         ).paddingOnly(bottom: 8)
             : SizedBox(),
-        DropdownButtonHideUnderline(
-          child: DropdownButton2(
-            isExpanded: true,
-            hint: Row(
-              children: [
-                Icon(
-                  Icons.keyboard_arrow_down_outlined,
-                  size: 35,
-                  color: AppColorUtils.GREEN_TEXT,
-                ),
-                SizedBox(
-                  width: 4,
-                ),
-                Expanded(
-                  child: Text(
-                    LocaleKeys.select.tr(),
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w400,
-                      color: AppColorUtils.GRAY_4,
+        Container(
+          height: height,
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton2(
+              isExpanded: true,
+              hint: Row(
+                children: [
+                  Icon(
+                    Icons.keyboard_arrow_down_outlined,
+                    size: 35,
+                    color: AppColorUtils.GREEN_TEXT,
+                  ),
+                  SizedBox(
+                    width: 4,
+                  ),
+                  Expanded(
+                    child: Text(
+                      LocaleKeys.select.tr(),
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w400,
+                        color: AppColorUtils.GRAY_4,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            items: items
-                !.map((item) =>
-                DropdownMenuItem<String>(
-                  value: item,
-                  child: Text(
-                    item,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                      color: AppColorUtils.DARK2,
-                    ),
-                  ),
-                ))
-                .toList(),
-            value: selectValue,
-            onChanged:(v)=>onChange(v),
-            icon: const Icon(
-              Icons.keyboard_arrow_down_outlined,
-              color: AppColorUtils.WHITE,
-            ),
-            buttonHeight: 50.h,
-            buttonPadding: const EdgeInsets.symmetric(
-              horizontal: 14,
-            ),
-            buttonDecoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(14),
-              border: Border.all(
-                width: 2,
-                color: AppColorUtils.BORDER_COLOR,
+                ],
               ),
-              color: AppColorUtils.WHITE,
+              items: items
+                  !.map((item) =>
+                  DropdownMenuItem<String>(
+                    value: item,
+                    child: Text(
+                      item,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: AppColorUtils.DARK2,
+                      ),
+                    ),
+                  ))
+                  .toList(),
+              value: selectValue,
+              onChanged:(v)=>onChange(v),
+              icon: const Icon(
+                Icons.keyboard_arrow_down_outlined,
+                color: AppColorUtils.WHITE,
+              ),
+              buttonHeight: 50.h,
+              buttonPadding: const EdgeInsets.symmetric(
+                horizontal: 4,
+              ),
+              buttonDecoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(14),
+                border: Border.all(
+                  width: 2,
+                  color: AppColorUtils.BORDER_COLOR,
+                ),
+                color: AppColorUtils.WHITE,
+              ),
+              buttonElevation: 0,
+              itemHeight: 40,
+              itemPadding: const EdgeInsets.only(left: 14, right: 14),
+              dropdownMaxHeight: 200.h,
+              dropdownWidth: 250.w,
+              dropdownPadding: null,
+              dropdownDecoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: AppColorUtils.WHITE,
+              ),
+              dropdownElevation: 0,
+              scrollbarRadius: const Radius.circular(40),
+              scrollbarThickness: 6,
+              scrollbarAlwaysShow: false,
+              offset: const Offset(0, 0),
             ),
-            buttonElevation: 0,
-            itemHeight: 40,
-            itemPadding: const EdgeInsets.only(left: 14, right: 14),
-            dropdownMaxHeight: 200.h,
-            dropdownWidth: 250.w,
-            dropdownPadding: null,
-            dropdownDecoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: AppColorUtils.WHITE,
-            ),
-            dropdownElevation: 0,
-            scrollbarRadius: const Radius.circular(40),
-            scrollbarThickness: 6,
-            scrollbarAlwaysShow: false,
-            offset: const Offset(0, 0),
           ),
         ),
       ],

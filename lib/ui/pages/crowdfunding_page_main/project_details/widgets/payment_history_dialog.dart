@@ -22,7 +22,7 @@ class PaymentHistoryDialog extends StatelessWidget {
       ),
       elevation: 0,
       child: Container(
-        height: 260.w,
+        height: 275.w,
         padding: EdgeInsets.all(20.w),
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
