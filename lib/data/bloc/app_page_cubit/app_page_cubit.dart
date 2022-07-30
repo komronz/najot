@@ -35,6 +35,17 @@ class AppPageCubit extends Cubit<AppPageState> {
       tobeVolunteer: Volunteer.tobeVolunteer,
     ));
   }
+  Future getUser() async{
+    var internetConnection = await MainService().checkInternetConnection();
+    emit(state.copyWith(internetConnection: internetConnection));
+    var user = await service.getUser();
+    if(user != null){
+      state.user=user;
+    }
+    emit(state.copyWith(
+      tobeVolunteer: Volunteer.tobeVolunteer,
+    ));
+  }
 
 
   Future changePage({required AppPageType pageType}) async {

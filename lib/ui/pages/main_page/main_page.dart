@@ -62,6 +62,7 @@ class MainPage extends StatelessWidget {
                        title: LocaleKeys.main.tr(),
                        onTapMenu: () {
                          HomePage.globalKey.currentState!.openDrawer();
+                         AppPageCubit.to.getUser();
                        },
                        visibleIcon: true,
                        onTapIcon: () {

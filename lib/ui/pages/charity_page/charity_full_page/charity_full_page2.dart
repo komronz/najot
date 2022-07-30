@@ -277,7 +277,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                       SizedBox(
                         height: 10.w,
                       ),
-                      !widget.helpModel.isContribution!
+                      !isContribution
                           ? Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
