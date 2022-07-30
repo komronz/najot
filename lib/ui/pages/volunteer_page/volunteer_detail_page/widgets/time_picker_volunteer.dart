@@ -16,6 +16,8 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/item_adding_success.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
+import '../../../../../data/bloc/notification_cubit/notification_cubit.dart';
+import '../../../notification_page/notification_page.dart';
 import 'about_project_volunteer_widget.dart';
 
 class TimePikerVolunteer extends StatelessWidget {
@@ -222,8 +224,11 @@ class TimePikerVolunteer extends StatelessWidget {
                             goto: () {
                               VolunteerCubit.to.addDbVolunteer(dateTime, model);
                               VolunteerCubit.to.loading();
+                              NotificationCubit.to..getList();
                               Navigator.pop(con);
                               Navigator.pop(context);
+                              NavigatorService.to.pushReplacementNamed(NotificationPage.routeName);
+
                             },
                             back: () {
                               VolunteerCubit.to.loading();
