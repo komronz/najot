@@ -65,7 +65,6 @@ class HomeCubit extends Cubit<HomeState> {
     emit(state.copyWith(internetConnection: internetConnection));
     var changeLike = await mainService.changeLike(id);
     if (changeLike != null) {
-      print(1);
       getModel();
     }
   }

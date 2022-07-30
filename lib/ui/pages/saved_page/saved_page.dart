@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/bloc/favorite-add_cubit/favorite_add_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../data/bloc/crowdFounding_cubit/kraud_fanding_cubit.dart';
@@ -78,6 +79,27 @@ class SavedPage extends StatelessWidget {
     if (cubit.state.hasLoading) {
       return Center(
         child: CircularProgressIndicator(),
+      );
+    }else if(cubit.state.list.isEmpty){
+      return Center(
+        child: Column(
+          children: [
+            AppWidgets.imageSvg(
+              path: AppImageUtils.BIG_HEART,
+              height: 70.w,
+              width: 70.w,
+              fit: BoxFit.none,
+            ).paddingOnly(top: 120.w,),
+            AppWidgets.textLocale(
+              text: LocaleKeys.nothing_found_yet,
+              textAlign: TextAlign.center,
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w600,
+              color: AppColorUtils.GRAY_4,
+              maxLines: 2,
+            ).paddingOnly(top: 20,left: 60.w, right: 60.w),
+          ],
+        ),
       );
     }
     return Container(
