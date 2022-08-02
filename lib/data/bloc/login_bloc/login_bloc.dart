@@ -6,10 +6,12 @@ import 'package:equatable/equatable.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/auth_model/token_model.dart';
+import 'package:najot/data/model/auth_model/user.dart';
 import 'package:najot/data/model/blocked_model.dart';
 import 'package:najot/data/services/auth_service.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/main_service.dart';
+import 'package:najot/data/services/user_update_service.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 part 'login_event.dart';
@@ -254,6 +256,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         state.firstName,
         state.lastName,
       );
+
       if (codeToken != null) {
         emit(state.copyWith(codeToken: codeToken.token));
         emit(state.copyWith(registerSuccess: true));

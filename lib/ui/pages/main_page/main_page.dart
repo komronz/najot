@@ -197,6 +197,9 @@ class MainPage extends StatelessWidget {
                                    top: 20.w,
                                  ),
                                  SizedBox(
+                                   height: 10.w,
+                                 ),
+                                 SizedBox(
                                    height: 300.w,
                                    child: SingleChildScrollView(
                                      physics: BouncingScrollPhysics(),

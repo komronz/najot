@@ -163,4 +163,23 @@ static HttpService get to=> GetIt.I<HttpService>();
       return null;
     }
   }
+  Future<dynamic> delete({
+    String? path,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? fields,
+    String? token,
+  }) async {
+    try {
+      return await _dio!.delete(path!,
+          options: Options(
+            headers: headers,
+          ),
+          data: jsonEncode(fields));
+    } on DioError catch (e) {
+      return e.response;
+    } catch (e) {
+      AppLoggerUtil.e("$e");
+      return null;
+    }
+  }
 }

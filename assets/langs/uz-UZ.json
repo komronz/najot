@@ -267,6 +267,8 @@
   "disConnection": "Internet bilan aloqa yo'q!",
   "language": "Til",
   "there_no_questions": "Hozircha berilgan savollar yo’q",
-  "code_verification": "Kodni tasdiqlash"
+  "code_verification": "Kodni tasdiqlash",
+  "no_results_found": "Natijalar topilmadi",
+  "enter_phone_number": "Telefon raqamini kiriting"
 
 }

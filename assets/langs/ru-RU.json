@@ -266,7 +266,9 @@
     "disConnection": "Нет соединения с интернетом!",
     "language": "Язык",
     "there_no_questions": "Вопросы еще не заданы",
-    "code_verification": "Проверка кода"
+    "code_verification": "Проверка кода",
+    "no_results_found": "Результатов не найдено",
+    "enter_phone_number": "Введите номер телефона"
 
 
 

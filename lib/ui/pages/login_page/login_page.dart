@@ -65,7 +65,7 @@ class LoginPage extends StatelessWidget {
                           onTap: () {
                             NavigatorService.to.pop();
                           },
-                          title: LocaleKeys.sign_in,
+                          title: LocaleKeys.log_in,
                           color: AppColorUtils.GREEN_BACK_SPLASH,
                           textColor: AppColorUtils.WHITE,
                         ),
@@ -80,7 +80,7 @@ class LoginPage extends StatelessWidget {
                   onChanged: (v) {
                     context.read<LoginBloc>().add(LoginPhoneChanged(v));
                   },
-                  title: LocaleKeys.phone_number,
+                  title: LocaleKeys.enter_phone_number,
                   textInputType: TextInputType.number,
                   inputFormatter:
                       context.read<LoginBloc>().phoneNumberFormatter,

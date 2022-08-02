@@ -93,9 +93,9 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
         initialIndex: 0,
         length: 3,
         child: Container(
-          decoration: DecorationConst.DEC_WITH_SHADOW,
-          height: context.height,
-          width: context.width,
+            decoration: DecorationConst.DEC_WITH_SHADOW,
+            height: context.height,
+            width: context.width,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,

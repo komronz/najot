@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:najot/data/model/auth_model/user.dart';
 import 'package:najot/data/model/operator_model.dart';
 import 'package:najot/data/services/operator_service.dart';
+import 'package:najot/data/services/user_update_service.dart';
 
 part 'operator_state.dart';
 
@@ -75,6 +77,15 @@ class OperatorCubit extends Cubit<OperatorState> {
   }
 
   Future deleteSmsList() async {
-    emit(state.copyWith(list: []));
+    try {
+      User? user = await UserUpdateService().getUserModel();
+      bool deletedModel = await operatorService.deleteSms(user!.id!);
+      if (deletedModel) {
+        emit(state.copyWith(list: []));
+      }
+    }catch (e) {
+      emit(state.copyWith(hasError: true));
+    }
+    }
   }
-}
+

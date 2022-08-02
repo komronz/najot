@@ -103,6 +103,7 @@ class _OperatorPageState extends State<OperatorPage> {
                         context: context,
                         builder: (ctx) => OperatorClearSmsWidget(
                           cubit: operatorCubit,
+
                         ),
                       );
                     },

@@ -117,7 +117,7 @@ class VerificationPage extends StatelessWidget with SmartAuth {
 
                           },
                         ).paddingOnly(
-                          top: 100.h,
+                          top: 20.h,
                           left: 20,
                           right: 20,
                         ),

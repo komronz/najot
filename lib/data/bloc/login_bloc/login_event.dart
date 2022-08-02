@@ -94,3 +94,12 @@ class Registration extends LoginEvent {
   // TODO: implement props
   List<Object?> get props => [];
 }
+class AuthLoginEvent extends LoginEvent {
+  final User user;
+
+  AuthLoginEvent({required this.user});
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
