@@ -269,5 +269,7 @@ abstract class  LocaleKeys {
   static const disConnection = 'disConnection';
   static const language = 'language';
   static const there_no_questions = 'there_no_questions';
+  static const no_results_found = 'no_results_found';
+  static const enter_phone_number = 'enter_phone_number';
 
 }

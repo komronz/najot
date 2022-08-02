@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:najot/data/bloc/language_cubit/language_cubit.dart';
+import 'package:najot/data/model/auth_model/token_model.dart';
 import 'package:najot/data/model/auth_model/user.dart';
 import 'package:najot/data/model/number_change_model.dart';
 import 'package:najot/data/services/hive_service.dart';

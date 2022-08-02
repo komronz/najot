@@ -82,6 +82,33 @@ class OperatorService{
     }
   }
 
+  Future<bool> deleteSms(int id) async {
+    try {
+      final path =
+          'https://api.najot.uz/${LanguageCubit.getLang()}/operator-chat/${id}/';
+      final headers = {HttpHeaders.contentTypeHeader: "application/json"};
+      var response = await httpService.delete(
+        path: path,
+        headers: headers,
+        token: HiveService.to.getToken()!.access,
+      );
+      if (response != null) {
+        print(response.statusCode);
+        if (response.statusCode == 204) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } catch (e) {
+      AppLoggerUtil.e("$e");
+      return null;
+    }
+  }
+
+
 
 
 }

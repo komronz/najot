@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/operator_cubit/operator_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -12,6 +13,7 @@ import 'package:super_rich_text/super_rich_text.dart';
 
 class OperatorClearSmsWidget extends StatelessWidget {
   final OperatorCubit cubit;
+
 
   const OperatorClearSmsWidget({
     required this.cubit,

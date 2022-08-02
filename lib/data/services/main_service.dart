@@ -64,7 +64,6 @@ class MainService {
         final User userModel = User.fromJson(
           response.data,
         );
-
         return userModel;
       } else {
         AppLoggerUtil.e("-----------------");

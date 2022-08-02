@@ -354,7 +354,7 @@ class SearchNotFound extends StatelessWidget {
               width: 200.sp,
               child: AppWidgets.textLocale(
                   textAlign: TextAlign.center,
-                  text: "Natijalar topilmadi",
+                  text: LocaleKeys.no_results_found,
                   color: AppColorUtils.DARK6,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,

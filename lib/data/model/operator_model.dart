@@ -31,8 +31,6 @@ class OperatorModelResultsUser {
 }
 
 class OperatorModelResults {
-
-
   int? id;
   String? file;
   String? content;
