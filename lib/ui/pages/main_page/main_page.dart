@@ -49,272 +49,309 @@ class MainPage extends StatelessWidget {
         body: BlocBuilder<HomeCubit, HomeState>(
           bloc: homeCubit,
           builder: (context, state) {
-            if(state.internetConnection){
-             if(!state.progress){
-               return Container(
-                 color: AppColorUtils.BACKGROUND,
-                 child: Column(
-                   children: [
-                     SizedBox(
-                       height: 20.w,
-                     ),
-                     AppWidgets.appBarMenu(
-                       title: LocaleKeys.main.tr(),
-                       onTapMenu: () {
-                         HomePage.globalKey.currentState!.openDrawer();
-                         AppPageCubit.to.getUser();
-                       },
-                       visibleIcon: true,
-                       onTapIcon: () {
-                         NavigatorService.to.pushNamed(
-                           NotificationPage.routeName,
-                         );
-                       },
-                       icon: AppImageUtils.NOTIFICATION,
-                     ),
-                     Expanded(
-                       child: SingleChildScrollView(
-                         child: Column(
-                           crossAxisAlignment: CrossAxisAlignment.start,
-                           children: [
-                             CarouselSliderWidget(sliderList: state.slider),
-                             SizedBox(
-                               height: 20.h,
-                             ),
-                             Column(
-                               crossAxisAlignment: CrossAxisAlignment.start,
-                               children: [
-                                 AppWidgets.textLocale(
-                                   text: LocaleKeys.category,
-                                   fontWeight: FontWeight.w600,
-                                   fontSize: 22.sp,
-                                 ).paddingOnly(left: 20.w),
-                                 Padding(
-                                   padding: const EdgeInsets.only(
-                                     right: 20,
-                                     top: 10,
-                                     bottom: 20,
-                                     left: 20,
-                                   ),
-                                   child: Row(
-                                     mainAxisAlignment:
-                                     MainAxisAlignment.spaceBetween,
-                                     children: [
-                                       IconAndName(
-                                         text: LocaleKeys.crowdfunding.tr(),
-                                         icon: AppImageUtils.KRAUDFANDING,
-                                         fontWeight: FontWeight.w600,
-                                         fontsize: 14.sp,
-                                         color: AppColorUtils.KRAUDFANDING,
-                                         onTap: () {
-                                           CrowdfundingCubit.to.state.searchProjects=[];
-                                           VolunteerCubit.to.state.searchChange="";
-                                           NavigatorService.to.pushNamed(
-                                             CrowdfundingPage.routeName,
-                                           );
-                                         },
-                                       ),
-                                       IconAndName(
-                                         text: LocaleKeys.volunteering.tr(),
-                                         icon: AppImageUtils.VOLONTYOR,
-                                         fontWeight: FontWeight.w600,
-                                         fontsize: 14.sp,
-                                         color: AppColorUtils.VOLONTYOR,
-                                         onTap: () {
-                                           VolunteerCubit.to.state.searchProjects=[];
-                                           VolunteerCubit.to.state.searchChange="";
-                                           NavigatorService.to.pushNamed(
-                                             VolunteerPage.routeName,
-                                           );
-                                         },
-                                       ),
-                                       IconAndName(
-                                         text: LocaleKeys.charity.tr(),
-                                         icon: AppImageUtils.CHARITY,
-                                         fontWeight: FontWeight.w600,
-                                         fontsize: 14.sp,
-                                         color: AppColorUtils.CHARITY,
-                                         onTap: () {
-                                           CharityCubit.to.state.searchProjects=[];
-                                           CharityCubit.to.state.searchChange="";
-                                           NavigatorService.to.pushNamed(
-                                             CharityPage.routeName,
-                                           );
-                                         },
-                                       ),
-                                     ],
-                                   ),
-                                 ),
-                                 AppWidgets.textLocale(
-                                   text: LocaleKeys.crowdfunding,
-                                   fontWeight: FontWeight.w600,
-                                   fontSize: 22.sp,
-                                 ).paddingOnly(left: 20.w),
-                                 SizedBox(
-                                   height: 10.w,
-                                 ),
-                                 SizedBox(
-                                   height: 300.w,
-                                   child: SingleChildScrollView(
-                                     physics: BouncingScrollPhysics(),
-                                     scrollDirection: Axis.horizontal,
-                                     child: Row(
-                                       children: List.generate(
-                                         state.crudFunding.length,
-                                             (index) => Container(
-                                           margin: EdgeInsets.only(left: 10.w),
-                                           child: CrowdfundingCardWidget(
-                                             projectModel:
-                                             state.crudFunding[index],
-                                             visible: true,
-                                             onTap: () {
-                                               NavigatorService.to.pushNamed(
-                                                 ProjectDetailsPage.routeName,
-                                                 arguments:
-                                                 CrowdfundingDetailModel(
-                                                   cubit: CrowdfundingCubit.to,
-                                                   cardModel:
-                                                   state.crudFunding[index],
-                                                 ),
-                                               );
-                                             },
-                                             onTapLike: () {
-                                               homeCubit.changeLike(
-                                                   state.crudFunding[index].id!);
-                                             },
-                                           ),
-                                         ),
-                                       ),
-                                     ),
-                                   ),
-                                 ),
-                                 AppWidgets.textLocale(
-                                   text: LocaleKeys.volunteering,
-                                   fontWeight: FontWeight.w600,
-                                   fontSize: 22.sp,
-                                 ).paddingOnly(
-                                   left: 20.w,
-                                   top: 20.w,
-                                 ),
-                                 SizedBox(
-                                   height: 300.w,
-                                   child: SingleChildScrollView(
-                                     physics: BouncingScrollPhysics(),
-                                     scrollDirection: Axis.horizontal,
-                                     child: Row(
-                                       children: List.generate(
-                                         state.volunteer.length,
-                                             (index) => Container(
-                                           margin: EdgeInsets.only(left: 10.w),
-                                           child: VolunteerCardWidget(
-                                             onTap: () {
-                                               NavigatorService.to.pushNamed(
-                                                 VolunteerDetailPage.routeName,
-                                                 arguments: VolunteerDetailModel(
-                                                   cubit: VolunteerCubit.to,
-                                                   cardModel:
-                                                   state.volunteer[index],
-                                                 ),
-                                               );
-                                             },
-                                             projectModel: state.volunteer[index],
-                                             onTapLike: () {
-                                               homeCubit.changeLike(
-                                                   state.volunteer[index].id!);
-                                             },
-                                           ),
-                                         ),
-                                       ),
-                                     ),
-                                   ),
-                                 ),
-                                 AppWidgets.textLocale(
-                                   text: LocaleKeys.charity,
-                                   fontWeight: FontWeight.w600,
-                                   fontSize: 22.sp,
-                                 ).paddingOnly(
-                                   left: 20.w,
-                                   top: 10.w,
-                                   bottom: 10.w,
-                                 ),
-                                 SizedBox(
-                                   height: 300.w,
-                                   child: SingleChildScrollView(
-                                     physics: BouncingScrollPhysics(),
-                                     scrollDirection: Axis.horizontal,
-                                     child: Row(
-                                       children: List.generate(
-                                         state.charity.length,
-                                             (index) {
-                                           if(state.charity[index].requiredFund==null){
-                                             return Container(
-                                               margin: EdgeInsets.only(left: 10.w),
-                                               child: CharityCardWidget(
-                                                 projectModel: state.charity[index],
-                                                 onTap: () {
-                                                   NavigatorService.to.pushNamed(
-                                                     CharityFullPage2.routName,
-                                                     arguments:
-                                                     state.charity[index]
-                                                   );
-                                                 },
-                                                 onTapLike: () {
-                                                   homeCubit.changeLike(
-                                                       state.charity[index].id!);
-                                                   homeCubit.getModel();
-                                                 },
-                                               ),
-                                             );
-                                           }else{
-                                             return Container(
-                                               margin: EdgeInsets.only(left: 10.w),
-                                               child: CrowdfundingCardWidget(
-                                                 projectModel: state.charity[index],
-                                                 visible: false,
-                                                 onTap: () {
-                                                   NavigatorService.to.pushNamed(
-                                                     ProjectDetailsPage.routeName,
-                                                     arguments:
-                                                     CrowdfundingDetailModel(
-                                                       cubit: CrowdfundingCubit.to,
-                                                       cardModel: state.charity[index],
-                                                     ),
-                                                   );
-                                                 },
-                                                 onTapLike: () {
-                                                   homeCubit.changeLike(
-                                                       state.charity[index].id!);
-                                                   homeCubit.getModel();
-                                                 },
-                                               ),
-                                             );
-                                           }
-                                             }
-                                       ),
-                                     ),
-                                   ),
-                                 ),
-                               ],
-                             )
-                           ],
-                         ),
-                       ),
-                     )
-                   ],
-                 ),
-               );
-             }else {
-               return Center(child: CircularProgressIndicator(),);
-             }
-            }else{
-              return AppErrorWidget(
-                  onTap: () async{
-                    print(HiveService.to.getToken());
-                    AppWidgets.isLoading(true);
-                    await homeCubit.getModel();
-                    AppWidgets.isLoading(false);
+            if (state.internetConnection) {
+              if (!state.progress) {
+                return Container(
+                  color: AppColorUtils.BACKGROUND,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 20.w,
+                      ),
+                      AppWidgets.appBarMenu(
+                        title: LocaleKeys.main.tr(),
+                        onTapMenu: () {
+                          HomePage.globalKey.currentState!.openDrawer();
+                          AppPageCubit.to.getUser();
+                        },
+                        visibleIcon: true,
+                        onTapIcon: () {
+                          NavigatorService.to.pushNamed(
+                            NotificationPage.routeName,
+                          );
+                        },
+                        icon: AppImageUtils.NOTIFICATION,
+                      ),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CarouselSliderWidget(sliderList: state.slider),
+                              SizedBox(
+                                height: 20.h,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  AppWidgets.textLocale(
+                                    text: LocaleKeys.category,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 22.sp,
+                                  ).paddingOnly(left: 20.w),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 20,
+                                      top: 10,
+                                      bottom: 20,
+                                      left: 20,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        IconAndName(
+                                          text: LocaleKeys.crowdfunding.tr(),
+                                          icon: AppImageUtils.KRAUDFANDING,
+                                          fontWeight: FontWeight.w600,
+                                          fontsize: 14.sp,
+                                          color: AppColorUtils.KRAUDFANDING,
+                                          onTap: () {
+                                            CrowdfundingCubit
+                                                .to.state.searchProjects = [];
+                                            VolunteerCubit
+                                                .to.state.searchChange = "";
+                                            NavigatorService.to.pushNamed(
+                                              CrowdfundingPage.routeName,
+                                            );
+                                          },
+                                        ),
+                                        IconAndName(
+                                          text: LocaleKeys.volunteering.tr(),
+                                          icon: AppImageUtils.VOLONTYOR,
+                                          fontWeight: FontWeight.w600,
+                                          fontsize: 14.sp,
+                                          color: AppColorUtils.VOLONTYOR,
+                                          onTap: () {
+                                            VolunteerCubit
+                                                .to.state.searchProjects = [];
+                                            VolunteerCubit
+                                                .to.state.searchChange = "";
+                                            NavigatorService.to.pushNamed(
+                                              VolunteerPage.routeName,
+                                            );
+                                          },
+                                        ),
+                                        IconAndName(
+                                          text: LocaleKeys.charity.tr(),
+                                          icon: AppImageUtils.CHARITY,
+                                          fontWeight: FontWeight.w600,
+                                          fontsize: 14.sp,
+                                          color: AppColorUtils.CHARITY,
+                                          onTap: () {
+                                            CharityCubit
+                                                .to.state.searchProjects = [];
+                                            CharityCubit.to.state.searchChange =
+                                                "";
+                                            NavigatorService.to.pushNamed(
+                                              CharityPage.routeName,
+                                            );
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  AppWidgets.textLocale(
+                                    text: LocaleKeys.crowdfunding,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 22.sp,
+                                  ).paddingOnly(left: 20.w),
+                                  SizedBox(
+                                    height: 10.w,
+                                  ),
+                                  SizedBox(
+                                    height: 300.w,
+                                    child: SingleChildScrollView(
+                                      physics: BouncingScrollPhysics(),
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        children: List.generate(
+                                          state.crudFunding.length,
+                                          (index) => Container(
+                                            margin: EdgeInsets.only(left: 10.w),
+                                            child: CrowdfundingCardWidget(
+                                              projectModel:
+                                                  state.crudFunding[index],
+                                              visible: true,
+                                              onTap: () {
+                                                NavigatorService.to.pushNamed(
+                                                  ProjectDetailsPage.routeName,
+                                                  arguments:
+                                                      CrowdfundingDetailModel(
+                                                    cubit: CrowdfundingCubit.to,
+                                                    cardModel: state
+                                                        .crudFunding[index],
+                                                  ),
+                                                );
+                                              },
+                                              onTapLike: () async {
+                                                await homeCubit.changeLike(state
+                                                    .crudFunding[index].id!);
+                                                homeCubit
+                                                    .crowdFundingChangeLike(
+                                                  index,
+                                                  state.crudFunding[index]
+                                                      .isFavourite!,
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  AppWidgets.textLocale(
+                                    text: LocaleKeys.volunteering,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 22.sp,
+                                  ).paddingOnly(
+                                    left: 20.w,
+                                    top: 20.w,
+                                  ),
+                                  SizedBox(
+                                    height: 300.w,
+                                    child: SingleChildScrollView(
+                                      physics: BouncingScrollPhysics(),
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        children: List.generate(
+                                          state.volunteer.length,
+                                          (index) => Container(
+                                            margin: EdgeInsets.only(left: 10.w),
+                                            child: VolunteerCardWidget(
+                                              onTap: () {
+                                                NavigatorService.to.pushNamed(
+                                                  VolunteerDetailPage.routeName,
+                                                  arguments:
+                                                      VolunteerDetailModel(
+                                                    cubit: VolunteerCubit.to,
+                                                    cardModel:
+                                                        state.volunteer[index],
+                                                  ),
+                                                );
+                                              },
+                                              projectModel:
+                                                  state.volunteer[index],
+                                              onTapLike: () {
+                                                homeCubit.changeLike(
+                                                    state.volunteer[index].id!);
+                                                homeCubit.volunteerChangeLike(
+                                                  index,
+                                                  state.volunteer[index]
+                                                      .isFavourite!,
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  AppWidgets.textLocale(
+                                    text: LocaleKeys.charity,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 22.sp,
+                                  ).paddingOnly(
+                                    left: 20.w,
+                                    top: 10.w,
+                                    bottom: 10.w,
+                                  ),
+                                  SizedBox(
+                                    height: 300.w,
+                                    child: SingleChildScrollView(
+                                      physics: BouncingScrollPhysics(),
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        children: List.generate(
+                                            state.charity.length, (index) {
+                                          if (state.charity[index]
+                                                  .requiredFund ==
+                                              null) {
+                                            return Container(
+                                              margin:
+                                                  EdgeInsets.only(left: 10.w),
+                                              child: CharityCardWidget(
+                                                projectModel:
+                                                    state.charity[index],
+                                                onTap: () {
+                                                  NavigatorService.to.pushNamed(
+                                                      CharityFullPage2.routName,
+                                                      arguments:
+                                                          state.charity[index]);
+                                                },
+                                                onTapLike: () async{
+                                                 await
+                                                 homeCubit.changeLike(
+                                                      state.charity[index].id!);
+                                                  homeCubit.getModel();
+                                                  homeCubit.charityChangeLike(
+                                                    index,
+                                                    state.charity[index]
+                                                        .isFavourite!,
+                                                  );
 
-                  });
+                                                },
+                                              ),
+                                            );
+                                          } else {
+                                            return Container(
+                                              margin:
+                                                  EdgeInsets.only(left: 10.w),
+                                              child: CrowdfundingCardWidget(
+                                                projectModel:
+                                                    state.charity[index],
+                                                visible: false,
+                                                onTap: () {
+                                                  NavigatorService.to.pushNamed(
+                                                    ProjectDetailsPage
+                                                        .routeName,
+                                                    arguments:
+                                                        CrowdfundingDetailModel(
+                                                      cubit:
+                                                          CrowdfundingCubit.to,
+                                                      cardModel:
+                                                          state.charity[index],
+                                                    ),
+                                                  );
+                                                },
+                                                onTapLike: () async{
+                                                 await  homeCubit.changeLike(
+                                                      state.charity[index].id!);
+                                                  homeCubit.getModel();
+                                                  homeCubit.charityChangeLike(
+                                                    index,
+                                                    state.charity[index]
+                                                        .isFavourite!,
+                                                  );
+                                                },
+                                              ),
+                                            );
+                                          }
+                                        }),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            } else {
+              return AppErrorWidget(onTap: () async {
+                print(HiveService.to.getToken());
+                AppWidgets.isLoading(true);
+                await homeCubit.getModel();
+                AppWidgets.isLoading(false);
+              });
             }
           },
         ),

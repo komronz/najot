@@ -281,7 +281,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                           ? Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          widget.helpModel.isFavourite!
+                          CharityCubit.to.state.tobeVolunteer
                               ? SizedBox()
                               : AppWidgets.text(
                               text: LocaleKeys.tobe_volunteer.tr(),
@@ -312,7 +312,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                             children: [
                               ButtonCard(
                                 onPress: () {
-                                  if (widget.helpModel.isFavourite!) {
+                                  if ( CharityCubit.to.state.tobeVolunteer) {
                                     CharityCubit.to.isContribution(widget.helpModel.id!);
                                     NavigatorService.to.pushNamed(
                                       CharityHelpWidget.routeName,
@@ -334,7 +334,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                 text: LocaleKeys.help.tr(),
                                 height: 48.w,
                                 width: 274.w,
-                                color: widget.helpModel.isFavourite!
+                                color: CharityCubit.to.state.tobeVolunteer
                                     ? AppColorUtils.PERCENT_COLOR
                                     : AppColorUtils.DISABLE_BC,
                                 textSize: 16.sp,
@@ -342,6 +342,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                                 textColor: AppColorUtils.WHITE,
                               ),
                               AppWidgets.favouriteButton(
+
                                 select: like,
                                 height: 48.w,
                                 width: 48.w,

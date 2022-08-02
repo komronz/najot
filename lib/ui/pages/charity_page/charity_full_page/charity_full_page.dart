@@ -290,7 +290,7 @@ class _CharityFullPageState extends State<CharityFullPage>
                                   textColor: AppColorUtils.WHITE,
                                 ),
                                 AppWidgets.favouriteButton(
-                                  select: true,
+                                  select: like,
                                   height: 48.w,
                                   width: 48.w,
                                   onTap: () async{
@@ -303,7 +303,7 @@ class _CharityFullPageState extends State<CharityFullPage>
 
                                       await HomeCubit.to.getModel();
                                     }else{
-                                      AppWidgets.showText(text: "internet bilan aloqa yo'q!");
+                                      AppWidgets.showText(text: LocaleKeys.disConnection.tr());
                                     }
 
                                   },

@@ -11,7 +11,9 @@ class CrowdfundingState extends Equatable {
       this.searchProjects=const [],
         this.searchProgress=false,
         this.searchChange="",
-        this.tabChange=0});
+        this.tabChange=0,
+        this.reload=false,
+      });
 
   final List<ProjectModel> crowdfundingModel;
   final List<ProjectModel> tabProjects;
@@ -23,6 +25,7 @@ class CrowdfundingState extends Equatable {
   final int tabChange;
   final String searchChange;
   final List<TabCategories> category;
+  final bool reload;
 
   @override
   // TODO: implement props
@@ -36,6 +39,7 @@ class CrowdfundingState extends Equatable {
     searchProgress,
     searchChange,
         tabChange,
+    reload,
     internetConnection
       ];
 
@@ -49,6 +53,7 @@ class CrowdfundingState extends Equatable {
       bool? internetConnection,
         int? tabChange,
     String? searchChange,
+    bool? reload,
       List<TabCategories>? category}) {
     return CrowdfundingState(
       crowdfundingModel: crowdfundingModel ?? this.crowdfundingModel,
@@ -61,6 +66,7 @@ class CrowdfundingState extends Equatable {
       searchProjects: searchProjects ?? this.searchProjects,
       searchChange: searchChange ?? this.searchChange,
       searchProgress: searchProgress ?? this.searchProgress,
+      reload: reload ?? this.reload,
     );
   }
 }

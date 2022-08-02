@@ -32,7 +32,6 @@ class FavoriteAddCubit extends Cubit<FavoriteAddState> {
     var favoriteAddAllModel = await favoriteAddService.getModel();
     if(favoriteAddAllModel!=null){
       emit(state.copyWith(hasLoading: false, list: favoriteAddAllModel.results));
-      print(favoriteAddAllModel.results![0].type);
     }else{
       emit(state.copyWith(hasLoading: false, hasError: true,));
     }

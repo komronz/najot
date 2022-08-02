@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/card_model.dart';
@@ -7,6 +8,7 @@ import 'package:najot/data/services/main_service.dart';
 import 'package:najot/data/services/volunteer_project_service.dart';
 
 import '../../../ui/widgets/app_widgets.dart';
+import '../../localization/locale_keys.g.dart';
 import '../../model/volunteer_db_model.dart';
 import '../../model/volunteer_donate_model.dart';
 import '../../services/db_service.dart';
@@ -38,19 +40,35 @@ class VolunteerCubit extends Cubit<VolunteerState> {
     dbService.saveVolunteer(volunteerDbModel);
     load();
   }
-  Future changeLike(int id) async{
+
+
+  Future changeLike(int id) async {
     internetConnection = await mainService.checkInternetConnection();
-    if(internetConnection){
-      var changeLike= await mainService.changeLike(id);
-      if(changeLike!=null){
-        load();
+    if (internetConnection) {
+      var changeLike = await mainService.changeLike(id);
+      if (changeLike != null) {
+        for (int j = 0; j < state.list.length; j++) {
+          if (state.list[j].id == id) {
+            state.list[j].isFavourite =
+            !state.list[j].isFavourite!;
+            break;
+          }
+        }
+        for (int j = 0; j < state.searchProjects.length; j++) {
+          if (state.searchProjects[j].id == id) {
+            state.searchProjects[j].isFavourite =
+            !state.searchProjects[j].isFavourite!;
+            break;
+          }
+        }
+        emit(
+          state.copyWith(reload: !state.reload),
+        );
       }
-    }else{
-      AppWidgets.showText(text: "Internet bilan aloqa yo'q!");
+    } else {
+      AppWidgets.showText(text: LocaleKeys.disConnection.tr());
     }
-
   }
-
   Future isContribution(int id) async{
     internetConnection = await mainService.checkInternetConnection();
     emit(state.copyWith(internetConnection: internetConnection));

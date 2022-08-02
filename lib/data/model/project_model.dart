@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 class Category {
   int? id;
   String? name;
@@ -80,7 +82,7 @@ class Owner {
   }
 }
 
-class ProjectModel {
+class ProjectModel extends Equatable{
   int? id;
   Owner? owner;
   String? type;
@@ -186,6 +188,10 @@ class ProjectModel {
     data['modified_at'] = this.modifiedAt;
     return data;
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [isFavourite];
 }
 
 class ProjectModelLinks {

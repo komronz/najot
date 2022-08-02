@@ -8,16 +8,18 @@ class HomeState extends Equatable {
     this.charity = const [],
     this.slider = const [],
     this.internetConnection=true,
-    this.progress=false
+    this.progress=false,
+    this.reload=false
   });
 
   final List<Categories> categories;
-  final List<ProjectModel> crudFunding;
+        List<ProjectModel> crudFunding;
   final List<ProjectModel> volunteer;
   final List<ProjectModel> charity;
   final List<SliderList> slider;
   final bool internetConnection;
   final bool progress;
+  final bool reload;
 
   @override
   // TODO: implement props
@@ -28,7 +30,8 @@ class HomeState extends Equatable {
         charity,
         slider,
         internetConnection,
-    progress
+    progress,
+    reload
       ];
 
   HomeState copyWith({
@@ -39,6 +42,7 @@ class HomeState extends Equatable {
     List<SliderList>? slider,
     bool? internetConnection,
     bool? progress,
+    bool? reload,
   }) {
     return HomeState(
       categories: categories ?? this.categories,
@@ -48,6 +52,7 @@ class HomeState extends Equatable {
       slider: slider ?? this.slider,
       internetConnection: internetConnection ?? this.internetConnection,
       progress: progress ?? this.progress,
+      reload: reload ?? this.reload,
     );
   }
 }

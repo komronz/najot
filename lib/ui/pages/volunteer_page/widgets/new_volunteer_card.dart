@@ -86,7 +86,7 @@ class NewVolunteerCard extends StatelessWidget {
                               height: 2,
                             ),
                             AppWidgets.text(
-                              text: "Ovqat qilib berish va uy tozalash",
+                              text: cardModel.helpType??"",
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w600,
                               color: AppColorUtils.GREEN_TEXT,

@@ -34,9 +34,7 @@ class HomeCubit extends Cubit<HomeState> {
         charity: mainModel.charity,
         slider: mainModel.slider,
       ));
-    } else {
-
-    }
+    } else {}
   }
 
   Future tokenUpdate() async {
@@ -44,30 +42,50 @@ class HomeCubit extends Cubit<HomeState> {
       var createdAt = DateTime.parse(RootService.hiveService.getToken()!.exp!);
       var currentDay = DateTime.now().add(Duration(days: 1));
       if (createdAt.year == currentDay.year &&
-          createdAt.month == currentDay.month&&
-          createdAt.day<currentDay.day
-    ){
-    var tokenModel= await mainService.tokenUpdate();
-    if(tokenModel !=null){
-      RootService.hiveService.setToken(tokenModel);
-
-    }else{
-    AppLoggerUtil.e("token error");
+          createdAt.month == currentDay.month &&
+          createdAt.day < currentDay.day) {
+        var tokenModel = await mainService.tokenUpdate();
+        if (tokenModel != null) {
+          RootService.hiveService.setToken(tokenModel);
+        } else {
+          AppLoggerUtil.e("token error");
+        }
+      }
     }
-    }
-
   }
 
+  void crowdFundingChangeLike(int index, bool like) {
+    List<ProjectModel> list = state.crudFunding;
+    list[index].isFavourite = !like;
+    emit(state.copyWith(
+      crudFunding: list,
+      reload: !state.reload,
+    ));
+  }
+  void volunteerChangeLike(int index, bool like) {
+    List<ProjectModel> list = state.volunteer;
+    list[index].isFavourite = !like;
+    emit(state.copyWith(
+      volunteer: list,
+      reload: !state.reload,
+    ));
+  }
+  void charityChangeLike(int index, bool like) {
+    List<ProjectModel> list = state.charity;
+    list[index].isFavourite = !like;
+    emit(state.copyWith(
+      charity: list,
+      reload: !state.reload,
+    ));
   }
 
+  void reload(){
+    emit(state.copyWith(reload: !state.reload));
+  }
   Future changeLike(int id) async {
     internetConnection = await MainService().checkInternetConnection();
     emit(state.copyWith(internetConnection: internetConnection));
     var changeLike = await mainService.changeLike(id);
-    if (changeLike != null) {
-      print(1);
-      getModel();
-    }
+    if (changeLike != null) {}
   }
-
 }

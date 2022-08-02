@@ -103,8 +103,8 @@ class AppWidgets {
           borderRadius:
           BorderRadius.circular(10),
           color: select
-              ? AppColorUtils.IC_GREEN
-              : AppColorUtils.PURPLE,
+              ? AppColorUtils.PURPLE
+              : AppColorUtils.IC_GREEN,
         ),
         child: InkWell(
           borderRadius:
@@ -115,8 +115,8 @@ class AppWidgets {
             width: width,
             child: SvgPicture.asset(
               select
-                  ? AppImageUtils.LIKE_ICON
-                  : AppImageUtils.UNLIKE_ICON,
+                  ? AppImageUtils.UNLIKE_ICON
+                  : AppImageUtils.LIKE_ICON,
             ).paddingAll(10.w),
           ),
         ),

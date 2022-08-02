@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/services/crowdfunding_service.dart';
+import 'package:najot/data/services/favorite-add_service.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/http_service.dart';
 import 'package:najot/data/services/network_connection_service.dart';
@@ -39,6 +40,7 @@ class RootService {
     await DIService.init();
     await CrowdfundingService.init();
     await RuleService.init();
+    await FavoriteAddService.init();
 
   }
   static HttpService get httpService => _getIt.get<HttpService>();

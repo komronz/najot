@@ -7,6 +7,7 @@ class OrganizationState extends Equatable {
   final bool checkBox;
   final bool saveHelp;
   final bool internetConnection;
+  final bool reload;
 
   OrganizationState(
       {required this.checkBox,
@@ -14,6 +15,7 @@ class OrganizationState extends Equatable {
       this.project,
       this.internetConnection = true,
       this.tobeVolunteer = true,
+      this.reload = false,
       this.saveHelp = true});
 
   @override
@@ -24,6 +26,7 @@ class OrganizationState extends Equatable {
         project,
         checkBox,
         saveHelp,
+        reload,
     internetConnection
       ];
 
@@ -33,7 +36,8 @@ class OrganizationState extends Equatable {
     bool? tobeVolunteer,
     bool? checkBox,
     bool? saveHelp,
-    bool? internetConnection
+    bool? internetConnection,
+    bool? reload
   }) {
     return OrganizationState(
       list: list ?? this.list,
@@ -42,6 +46,7 @@ class OrganizationState extends Equatable {
       checkBox: checkBox ?? this.checkBox,
       saveHelp: saveHelp ?? this.saveHelp,
       internetConnection: internetConnection ?? this.internetConnection,
+      reload: reload ?? this.reload,
     );
   }
 }

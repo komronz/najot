@@ -3,6 +3,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
@@ -12,6 +13,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../data/bloc/charity_page_cubit/charity_cubit.dart';
 import '../../../../data/model/project_model.dart';
+import '../../../../data/utils/app_image_utils.dart';
 
 class CharityItemWidget extends StatelessWidget {
   final ProjectModel model;
@@ -70,9 +72,9 @@ class CharityItemWidget extends StatelessWidget {
                       children: [
                         Expanded(child: SizedBox()),
                         InkWell(
-                          child: FavoriteButton(
-                            isFavorite: model.isFavourite!,
-                          ),
+                          child: model.isFavourite!
+                              ? SvgPicture.asset(AppImageUtils.LIKE)
+                              : SvgPicture.asset(AppImageUtils.UNLIKE),
                           onTap: onTapLike
                         ),
                       ],

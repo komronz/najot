@@ -315,7 +315,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
 
                                 await HomeCubit.to.getModel();
                               }else{
-                                AppWidgets.showText(text: "internet bilan aloqa yo'q!");
+                                AppWidgets.showText(text: LocaleKeys.disConnection.tr());
                               }
                                
 

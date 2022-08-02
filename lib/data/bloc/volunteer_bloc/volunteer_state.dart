@@ -10,12 +10,14 @@ class VolunteerState extends Equatable {
       this.searchProgress = false,
       this.searchChange = "",
       this.internetConnection = true,
+      this.reload = false,
       this.loading = false});
 
   List<ProjectModel> list;
   final bool tobeVolunteer;
   final bool checkBox;
   final bool saveHelp;
+  final bool reload;
   final loading;
    List<ProjectModel> searchProjects;
   final bool searchProgress;
@@ -29,6 +31,7 @@ class VolunteerState extends Equatable {
         tobeVolunteer,
         checkBox,
         saveHelp,
+    reload,
         loading,
         searchProgress,
         searchProjects,
@@ -45,6 +48,7 @@ class VolunteerState extends Equatable {
     bool? loading,
     String? searchChange,
     bool? searchProgress,
+    bool? reload,
     bool? internetConnection,
   }) {
     return VolunteerState(
@@ -57,6 +61,7 @@ class VolunteerState extends Equatable {
       searchChange: searchChange ?? this.searchChange,
       searchProgress: searchProgress ?? this.searchProgress,
       internetConnection: internetConnection ?? this.internetConnection,
+      reload: reload ?? this.reload,
     );
   }
 }

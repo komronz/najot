@@ -9,6 +9,7 @@ import 'package:najot/data/services/organization_service.dart';
 import 'package:najot/data/services/volunteer_service.dart';
 
 import '../../../ui/widgets/app_widgets.dart';
+import '../../localization/locale_keys.g.dart';
 part 'organization_state.dart';
 
 class OrganizationCubit extends Cubit<OrganizationState> {
@@ -54,15 +55,26 @@ class OrganizationCubit extends Cubit<OrganizationState> {
 
   }
 
-  Future changeLike(int id) async{
+
+  Future changeLike(int id) async {
     internetConnection = await mainService.checkInternetConnection();
-    if(internetConnection){
-      var changeLike= await mainService.changeLike(id);
-      if(changeLike!=null){
-        load();
+    if (internetConnection) {
+      var changeLike = await mainService.changeLike(id);
+      if (changeLike != null) {
+        for (int j = 0; j < state.project!.results!.length; j++) {
+          if (state.project!.results![j].id == id) {
+            state.project!.results![j].isFavourite =
+            !state.project!.results![j].isFavourite!;
+            break;
+          }
+        }
+
+        emit(
+          state.copyWith(reload: !state.reload),
+        );
       }
-    }else{
-      AppWidgets.showText(text: "Internet bilan aloqa yo'q!");
+    } else {
+      AppWidgets.showText(text: LocaleKeys.disConnection.tr());
     }
   }
 }

@@ -12,6 +12,7 @@ class CharityState extends Equatable {
       this.searchProjects = const [],
       this.searchProgress = false,
       this.internetConnection = true,
+      this.reload = false,
       this.searchChange = "",
       this.saveHelp = true});
 
@@ -25,6 +26,7 @@ class CharityState extends Equatable {
   final bool saveHelp;
   List<ProjectModel> searchProjects;
   final bool searchProgress;
+  final bool reload;
   final bool internetConnection;
   String searchChange;
 
@@ -42,7 +44,8 @@ class CharityState extends Equatable {
         searchProjects,
         searchProjects,
         searchChange,
-    internetConnection
+        reload,
+        internetConnection
       ];
 
   CharityState copyWith({
@@ -58,6 +61,7 @@ class CharityState extends Equatable {
     String? searchChange,
     bool? searchProgress,
     bool? internetConnection,
+    bool? reload,
   }) {
     return CharityState(
       charityModel: charityModel ?? this.charityModel,
@@ -72,6 +76,7 @@ class CharityState extends Equatable {
       searchChange: searchChange ?? this.searchChange,
       searchProgress: searchProgress ?? this.searchProgress,
       internetConnection: internetConnection ?? this.internetConnection,
+      reload: reload ?? this.reload,
     );
   }
 }
