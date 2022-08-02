@@ -104,7 +104,7 @@ class OperatorService{
       }
     } catch (e) {
       AppLoggerUtil.e("$e");
-      return null;
+      return false;
     }
   }
 
