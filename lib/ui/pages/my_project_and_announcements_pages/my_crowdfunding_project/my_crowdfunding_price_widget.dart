@@ -22,7 +22,7 @@ class MyCrowdfundingPriceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var createdAt= DateTime.parse(model.createdAt!);
+    var createdAt = DateTime.parse(model.createdAt!);
 
     return Column(
       children: [
@@ -32,9 +32,13 @@ class MyCrowdfundingPriceWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppWidgets.starTextWidget(text: LocaleKeys.amount_needed.tr(),),
+                AppWidgets.starTextWidget(
+                  text: LocaleKeys.amount_needed.tr(),
+                ),
                 AppWidgets.textLocale(
-                  text:  Format.moneyFormat(double.parse(model.requiredFund!)),
+                  text: Format.moneyFormat(
+                    double.parse(model.requiredFund!),
+                  ),
                   color: Color(0xFF043F3B),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
@@ -51,7 +55,7 @@ class MyCrowdfundingPriceWidget extends StatelessWidget {
                   color: AppColorUtils.DARK_6,
                 ),
                 AppWidgets.text(
-                  text:  DateFormat("dd.MM.yyyy").format(createdAt),
+                  text: DateFormat("dd.MM.yyyy").format(createdAt),
                   color: Color(0xFF043F3B),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
@@ -86,7 +90,9 @@ class MyCrowdfundingPriceWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppWidgets.textLocale(
-                    text: Format.moneyFormat(double.parse(model.amountCollected!)),
+                    text: Format.moneyFormat(
+                      double.parse(model.amountCollected!),
+                    ),
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.GREEN_TEXT,

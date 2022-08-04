@@ -14,14 +14,12 @@ import '../../../../data/utils/app_image_utils.dart';
 import '../../../data/bloc/applied_bloc/appeal_bloc.dart';
 
 class EditShowSuccessSend extends StatelessWidget {
-
   const EditShowSuccessSend({
     required this.appealBloc,
     Key? key,
   }) : super(key: key);
 
   final AppealBloc appealBloc;
-
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +40,14 @@ class EditShowSuccessSend extends StatelessWidget {
             children: [
               AppWidgets.text(
                 textAlign: TextAlign.center,
-                text:
-                LocaleKeys.successful_send.tr(),
+                text: LocaleKeys.successful_send.tr(),
                 richText: true,
                 othersMarkers: [
                   MarkerText(
                     marker: "//",
-                    style: TextStyle(color: AppColorUtils.KRAUDFANDING),
+                    style: TextStyle(
+                      color: AppColorUtils.KRAUDFANDING,
+                    ),
                   )
                 ],
                 maxLines: 10,
@@ -70,7 +69,7 @@ class EditShowSuccessSend extends StatelessWidget {
                   appealBloc.add(SendDateEvent());
                   appealBloc.add(AppealBtnEvent());
                   Navigator.pop(context);
-                  },
+                },
                 color: Color(0xFFECFFFA),
               ).paddingOnly(
                 top: 26,

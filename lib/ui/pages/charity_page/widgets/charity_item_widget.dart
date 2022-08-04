@@ -1,5 +1,3 @@
-
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/ui/pages/charity_page/widgets/favorite_button.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
@@ -20,12 +17,10 @@ class CharityItemWidget extends StatelessWidget {
   final VoidCallback onTap;
   final VoidCallback onTapLike;
 
-
   const CharityItemWidget({
     required this.model,
     required this.onTap,
     required this.onTapLike,
-
     Key? key,
   }) : super(key: key);
 
@@ -52,7 +47,7 @@ class CharityItemWidget extends StatelessWidget {
                         Expanded(
                           child: ClipRRect(
                             borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(12)),
+                                BorderRadius.vertical(top: Radius.circular(12)),
                             child: CachedNetworkImage(
                               placeholder: (context, url) => Center(
                                 child: CircularProgressIndicator(),
@@ -72,11 +67,10 @@ class CharityItemWidget extends StatelessWidget {
                       children: [
                         Expanded(child: SizedBox()),
                         InkWell(
-                          child: model.isFavourite!
-                              ? SvgPicture.asset(AppImageUtils.LIKE)
-                              : SvgPicture.asset(AppImageUtils.UNLIKE),
-                          onTap: onTapLike
-                        ),
+                            child: model.isFavourite!
+                                ? SvgPicture.asset(AppImageUtils.LIKE)
+                                : SvgPicture.asset(AppImageUtils.UNLIKE),
+                            onTap: onTapLike),
                       ],
                     ).paddingAll(10)
                   ],
@@ -116,7 +110,10 @@ class CharityItemWidget extends StatelessWidget {
                       color: AppColorUtils.BLUE_PERCENT,
                     ).paddingOnly(top: 5.w),
                   ],
-                ).paddingSymmetric(vertical: 14, horizontal: 12),
+                ).paddingSymmetric(
+                  vertical: 14,
+                  horizontal: 12,
+                ),
                 flex: 1,
               )
             ],

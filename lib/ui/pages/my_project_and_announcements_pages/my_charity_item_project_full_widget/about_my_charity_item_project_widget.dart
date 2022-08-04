@@ -304,40 +304,14 @@ class _AboutMyCharityItemProjectWidgetState
                             SizedBox(
                               height: 10.w,
                             ),
-                            // Row(
-                            //   mainAxisAlignment:
-                            //   MainAxisAlignment.spaceBetween,
-                            //   children: [
-                            //     // ButtonCard(
-                            //     //   onPress: () {
-                            //     //     showDialog(
-                            //     //       context: context,
-                            //     //       builder: (context) {
-                            //     //         return SupportProjectDialog();
-                            //     //       },
-                            //     //     );
-                            //     //   },
-                            //     //   text: LocaleKeys.project_implementation,
-                            //     //   height: 48.w,
-                            //     //   width: 274.w,
-                            //     //   color: AppColorUtils.PERCENT_COLOR,
-                            //     //   textSize: 16.sp,
-                            //     //   fontWeight: FontWeight.w600,
-                            //     //   textColor: AppColorUtils.WHITE,
-                            //     // ),
-                            //     // AppWidgets.favouriteButton(
-                            //     //   select: widget.model.isFavorite!,
-                            //     //   height: 48.w,
-                            //     //   width: 48.w,
-                            //     //   onTap: () {},
-                            //     // )
-                            //   ],
-                            // ).paddingSymmetric(horizontal: 20.w),
                           ],
                         ),
                       ),
                     )
-                  : AnswersWidget(cubit: cubit, model: widget.model),
+                  : AnswersWidget(
+                      cubit: cubit,
+                      model: widget.model,
+                    ),
             ],
           );
         },

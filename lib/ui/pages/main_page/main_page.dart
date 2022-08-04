@@ -11,23 +11,20 @@ import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/charity_page/charity_full_page/charity_full_page2.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/crowdfunding_page.dart';
-import 'package:najot/ui/pages/crowdfunding_page_main/project_details/project_details_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/main_page/widgets/carousel_slider_widget.dart';
-import 'package:najot/ui/pages/main_page/widgets/charity_card_widget.dart';
-import 'package:najot/ui/pages/main_page/widgets/crowdfunding_card_widget.dart';
+import 'package:najot/ui/pages/main_page/widgets/charity_list_main.dart';
+import 'package:najot/ui/pages/main_page/widgets/crowdfunding_list_main.dart';
 import 'package:najot/ui/pages/main_page/widgets/icon_name_widget.dart';
-import 'package:najot/ui/pages/main_page/widgets/volunteer_card_widget.dart';
+import 'package:najot/ui/pages/main_page/widgets/volunteer_list_main.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_page.dart';
 import 'package:najot/ui/widgets/app_error_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../data/bloc/app_page_cubit/app_page_cubit.dart';
 import '../../../data/bloc/volunteer_bloc/volunteer_cubit.dart';
 import '../notification_page/notification_page.dart';
-import '../volunteer_page/volunteer_detail_page/volunteer_detail_page.dart';
 
 class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);
@@ -159,46 +156,9 @@ class MainPage extends StatelessWidget {
                                   SizedBox(
                                     height: 10.w,
                                   ),
-                                  SizedBox(
-                                    height: 300.w,
-                                    child: SingleChildScrollView(
-                                      physics: BouncingScrollPhysics(),
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        children: List.generate(
-                                          state.crudFunding.length,
-                                          (index) => Container(
-                                            margin: EdgeInsets.only(left: 10.w),
-                                            child: CrowdfundingCardWidget(
-                                              projectModel:
-                                                  state.crudFunding[index],
-                                              visible: true,
-                                              onTap: () {
-                                                NavigatorService.to.pushNamed(
-                                                  ProjectDetailsPage.routeName,
-                                                  arguments:
-                                                      CrowdfundingDetailModel(
-                                                    cubit: CrowdfundingCubit.to,
-                                                    cardModel: state
-                                                        .crudFunding[index],
-                                                  ),
-                                                );
-                                              },
-                                              onTapLike: () async {
-                                                await homeCubit.changeLike(state
-                                                    .crudFunding[index].id!);
-                                                homeCubit
-                                                    .crowdFundingChangeLike(
-                                                  index,
-                                                  state.crudFunding[index]
-                                                      .isFavourite!,
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
+                                  CrowdFundingListMain(
+                                    homeCubit: homeCubit,
+                                    state: state,
                                   ),
                                   AppWidgets.textLocale(
                                     text: LocaleKeys.volunteering,
@@ -208,44 +168,9 @@ class MainPage extends StatelessWidget {
                                     left: 20.w,
                                     top: 20.w,
                                   ),
-                                  SizedBox(
-                                    height: 300.w,
-                                    child: SingleChildScrollView(
-                                      physics: BouncingScrollPhysics(),
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        children: List.generate(
-                                          state.volunteer.length,
-                                          (index) => Container(
-                                            margin: EdgeInsets.only(left: 10.w),
-                                            child: VolunteerCardWidget(
-                                              onTap: () {
-                                                NavigatorService.to.pushNamed(
-                                                  VolunteerDetailPage.routeName,
-                                                  arguments:
-                                                      VolunteerDetailModel(
-                                                    cubit: VolunteerCubit.to,
-                                                    cardModel:
-                                                        state.volunteer[index],
-                                                  ),
-                                                );
-                                              },
-                                              projectModel:
-                                                  state.volunteer[index],
-                                              onTapLike: () {
-                                                homeCubit.changeLike(
-                                                    state.volunteer[index].id!);
-                                                homeCubit.volunteerChangeLike(
-                                                  index,
-                                                  state.volunteer[index]
-                                                      .isFavourite!,
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
+                                  VolunteerListMain(
+                                    homeCubit: homeCubit,
+                                    state: state,
                                   ),
                                   AppWidgets.textLocale(
                                     text: LocaleKeys.charity,
@@ -256,80 +181,9 @@ class MainPage extends StatelessWidget {
                                     top: 10.w,
                                     bottom: 10.w,
                                   ),
-                                  SizedBox(
-                                    height: 300.w,
-                                    child: SingleChildScrollView(
-                                      physics: BouncingScrollPhysics(),
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        children: List.generate(
-                                            state.charity.length, (index) {
-                                          if (state.charity[index]
-                                                  .requiredFund ==
-                                              null) {
-                                            return Container(
-                                              margin:
-                                                  EdgeInsets.only(left: 10.w),
-                                              child: CharityCardWidget(
-                                                projectModel:
-                                                    state.charity[index],
-                                                onTap: () {
-                                                  NavigatorService.to.pushNamed(
-                                                      CharityFullPage2.routName,
-                                                      arguments:
-                                                          state.charity[index]);
-                                                },
-                                                onTapLike: () async{
-                                                 await
-                                                 homeCubit.changeLike(
-                                                      state.charity[index].id!);
-                                                  homeCubit.getModel();
-                                                  homeCubit.charityChangeLike(
-                                                    index,
-                                                    state.charity[index]
-                                                        .isFavourite!,
-                                                  );
-
-                                                },
-                                              ),
-                                            );
-                                          } else {
-                                            return Container(
-                                              margin:
-                                                  EdgeInsets.only(left: 10.w),
-                                              child: CrowdfundingCardWidget(
-                                                projectModel:
-                                                    state.charity[index],
-                                                visible: false,
-                                                onTap: () {
-                                                  NavigatorService.to.pushNamed(
-                                                    ProjectDetailsPage
-                                                        .routeName,
-                                                    arguments:
-                                                        CrowdfundingDetailModel(
-                                                      cubit:
-                                                          CrowdfundingCubit.to,
-                                                      cardModel:
-                                                          state.charity[index],
-                                                    ),
-                                                  );
-                                                },
-                                                onTapLike: () async{
-                                                 await  homeCubit.changeLike(
-                                                      state.charity[index].id!);
-                                                  homeCubit.getModel();
-                                                  homeCubit.charityChangeLike(
-                                                    index,
-                                                    state.charity[index]
-                                                        .isFavourite!,
-                                                  );
-                                                },
-                                              ),
-                                            );
-                                          }
-                                        }),
-                                      ),
-                                    ),
+                                  CharityListMain(
+                                    homeCubit: homeCubit,
+                                    state: state,
                                   ),
                                 ],
                               )
@@ -359,3 +213,9 @@ class MainPage extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+

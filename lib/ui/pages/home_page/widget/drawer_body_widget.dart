@@ -66,7 +66,7 @@ class DrawerBody extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 AppWidgets.textLocale(
-                                  text: cubit.state.user!.firstName??"",
+                                  text: cubit.state.user!.firstName ?? "",
                                   fontWeight: FontWeight.w500,
                                   fontSize: 18.sp,
                                   color: AppColorUtils.TEXT_COLOR,
@@ -100,7 +100,10 @@ class DrawerBody extends StatelessWidget {
                       ),
                       GestureDetector(
                         child: Padding(
-                          padding: EdgeInsets.only(top: 20.h, right: 15.w),
+                          padding: EdgeInsets.only(
+                            top: 20.h,
+                            right: 15.w,
+                          ),
                           child: Align(
                             alignment: Alignment.topRight,
                             child: SizedBox(
@@ -112,8 +115,8 @@ class DrawerBody extends StatelessWidget {
                         ),
                         onTap: () {
                           cubit.changePage(
-                                pageType: AppPageType.USERPROFILE,
-                              );
+                            pageType: AppPageType.USERPROFILE,
+                          );
                           Navigator.pop(context);
                         },
                       )
@@ -129,8 +132,8 @@ class DrawerBody extends StatelessWidget {
                       : ButtonCard(
                           onPress: () {
                             cubit.changePage(
-                                  pageType: AppPageType.VOLUNTEER,
-                                );
+                              pageType: AppPageType.VOLUNTEER,
+                            );
                             Navigator.pop(context);
                           },
                           text: LocaleKeys.be_volunteer.tr(),
@@ -159,7 +162,7 @@ class DrawerBody extends StatelessWidget {
                     ),
                     onTap: () {
                       HomeCubit.to.getModel();
-                     cubit.changePage(pageType: AppPageType.MAIN);
+                      cubit.changePage(pageType: AppPageType.MAIN);
                       Navigator.pop(context);
                     },
                   ),
@@ -189,8 +192,9 @@ class DrawerBody extends StatelessWidget {
                       vertical: 14.w,
                     ),
                     onTap: () {
-                      cubit
-                          .changePage(pageType: AppPageType.ORGANIZATIONS);
+                      cubit.changePage(
+                        pageType: AppPageType.ORGANIZATIONS,
+                      );
                       Navigator.pop(context);
                     },
                   ),
@@ -205,8 +209,7 @@ class DrawerBody extends StatelessWidget {
                       vertical: 14,
                     ),
                     onTap: () {
-                      cubit
-                          .changePage(pageType: AppPageType.RULES);
+                      cubit.changePage(pageType: AppPageType.RULES);
                       Navigator.pop(context);
                     },
                   ),
@@ -221,8 +224,7 @@ class DrawerBody extends StatelessWidget {
                       vertical: 14,
                     ),
                     onTap: () {
-                    cubit
-                          .changePage(pageType: AppPageType.FAQ);
+                      cubit.changePage(pageType: AppPageType.FAQ);
                       Navigator.pop(context);
                     },
                   ),
@@ -237,21 +239,10 @@ class DrawerBody extends StatelessWidget {
                       vertical: 14,
                     ),
                     onTap: () {
-                     cubit
-                          .changePage(pageType: AppPageType.ABOUT);
+                      cubit.changePage(pageType: AppPageType.ABOUT);
                       Navigator.pop(context);
                     },
                   ),
-                  // FlutterSwitch(
-                  //   showOnOff: true,
-                  //   value: cubit.state.tobeVolunteer,
-                  //   onToggle: (v) {
-                  //     Volunteer.tobeVolunteer = !Volunteer.tobeVolunteer;
-                  //     context
-                  //         .read<AppPageCubit>()
-                  //         .changeVolunteer(Volunteer.tobeVolunteer);
-                  //   },
-                  // ),
                 ],
               ),
             ),
@@ -264,8 +255,7 @@ class DrawerBody extends StatelessWidget {
                     width: size.width,
                     height: 44.h,
                     onPress: () {
-                    cubit
-                          .changePage(pageType: AppPageType.SAVED);
+                      cubit.changePage(pageType: AppPageType.SAVED);
                       Navigator.pop(context);
                     },
                     text: LocaleKeys.saved,
@@ -289,8 +279,8 @@ class DrawerBody extends StatelessWidget {
                     height: 44.h,
                     onPress: () {
                       cubit.changePage(
-                            pageType: AppPageType.OPERATOR,
-                          );
+                        pageType: AppPageType.OPERATOR,
+                      );
                       Navigator.pop(context);
                     },
                     text: LocaleKeys.write_operator,
@@ -312,13 +302,12 @@ class DrawerBody extends StatelessWidget {
                           return LogOutDialog();
                         },
                       );
-
                     },
                     child: Container(
                       height: 44.h,
                       width: 120.w,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(12),
                       ),
                       child: Row(
                         children: [

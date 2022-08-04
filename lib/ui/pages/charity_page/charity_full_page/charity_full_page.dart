@@ -57,7 +57,7 @@ class _CharityFullPageState extends State<CharityFullPage>
   @override
   void initState() {
     like=widget.model.isFavourite!;
-    _controller = TabController(length: 4, vsync: this);
+    _controller = TabController(length: 4, vsync: this,);
     _controller.addListener(_handleTabSelection);
     super.initState();
   }
@@ -322,8 +322,6 @@ class _CharityFullPageState extends State<CharityFullPage>
                   AppWidgets.isLoading(true);
                   await CharityCubit.to.load();
                   AppWidgets.isLoading(false);
-
-
                 });
           }
           },

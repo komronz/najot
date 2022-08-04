@@ -2,10 +2,8 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/news_model.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -56,10 +54,11 @@ class SupportProjectDialog extends StatelessWidget {
                   width: 10,
                 ),
                 AppWidgets.textLocale(
-                    text: LocaleKeys.card_number.tr(),
-                    fontSize: 16.sp,
-                    color: AppColorUtils.DARK_6,
-                    fontWeight: FontWeight.w400),
+                  text: LocaleKeys.card_number.tr(),
+                  fontSize: 16.sp,
+                  color: AppColorUtils.DARK_6,
+                  fontWeight: FontWeight.w400,
+                ),
               ],
             ),
             Material(
@@ -92,10 +91,10 @@ class SupportProjectDialog extends StatelessWidget {
                           width: 10.w,
                         ),
                         AppWidgets.text(
-                            text: projectModel.cardNumber!,
-                            color: AppColorUtils.KRAUDFANDING,
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.w600,
+                          text: projectModel.cardNumber!,
+                          color: AppColorUtils.KRAUDFANDING,
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w600,
                         )
                       ],
                     ),

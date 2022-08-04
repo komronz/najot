@@ -25,7 +25,7 @@ class KraufandingItemWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           color: AppColorUtils.ITEM_CHARITY_COLOR,
         ),
-        margin: EdgeInsets.only(bottom: 12, left: 20, right: 20),
+        margin: EdgeInsets.only(bottom: 12, left: 20, right: 20,),
         child: Stack(
           children: [
             Column(
@@ -36,7 +36,7 @@ class KraufandingItemWidget extends StatelessWidget {
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w400,
                     maxLines: 10,
-                    color: AppColorUtils.ITEM_CHARITY_TEXT2),
+                    color: AppColorUtils.ITEM_CHARITY_TEXT2,),
                 SizedBox(
                   width: 265.w,
                   child: AppWidgets.text(
@@ -44,7 +44,7 @@ class KraufandingItemWidget extends StatelessWidget {
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
                           color: AppColorUtils.ITEM_CHARITY_TEXT,
-                          maxLines: 2)
+                          maxLines: 2,)
                       .paddingOnly(top: 3),
                 ),
                 Row(

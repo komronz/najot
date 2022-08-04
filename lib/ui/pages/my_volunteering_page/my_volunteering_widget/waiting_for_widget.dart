@@ -12,7 +12,6 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/waiting_for_date_picker_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-import '../../../../data/model/volunteering_model.dart';
 class WaitingForWidget extends StatelessWidget {
   final VolunteerDonateResults model;
   final MyVolunteeringCubit cubit;
@@ -61,7 +60,7 @@ class WaitingForWidget extends StatelessWidget {
                 ),
               ).paddingOnly(bottom: 12),
               AppWidgets.textLocale(
-                text: model.project!.title!,
+                text: model.project!.title??"",
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w500,
                 color: AppColorUtils.DARK2,
@@ -75,7 +74,8 @@ class WaitingForWidget extends StatelessWidget {
                       text: LocaleKeys.help_type,
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w400,
-                      color: AppColorUtils.GRAY_4)
+                      color: AppColorUtils.GRAY_4,
+              )
                   .paddingOnly(
                 bottom: 4,
                 right: 6,
@@ -106,7 +106,7 @@ class WaitingForWidget extends StatelessWidget {
                             color: AppColorUtils.GRAY_4,
                           ).paddingOnly(bottom: 4),
                           AppWidgets.textLocale(
-                            text: model.project!.address!,
+                            text: model.project!.address??"",
                             color: AppColorUtils.BLUE_TEXT,
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w500,
@@ -122,10 +122,11 @@ class WaitingForWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             AppWidgets.starTextWidget(
-                                    text: LocaleKeys.executable_date,
+                                    text: LocaleKeys.executable_date.tr(),
                                     fontSize: 9.sp,
                                     fontWeight: FontWeight.w400,
-                                    color: AppColorUtils.GRAY_4)
+                                    color: AppColorUtils.GRAY_4,
+                            )
                                 .paddingOnly(
                               bottom: 4,
                             ),
@@ -157,10 +158,11 @@ class WaitingForWidget extends StatelessWidget {
                 left: 6,
               ),
               AppWidgets.starTextWidget(
-                      text: LocaleKeys.phone_number,
+                      text: LocaleKeys.phone_number.tr(),
                       fontSize: 10.sp,
                       fontWeight: FontWeight.w400,
-                      color: AppColorUtils.GRAY_4)
+                      color: AppColorUtils.GRAY_4,
+              )
                   .paddingOnly(
                 bottom: 4,
                 right: 6,
@@ -182,7 +184,7 @@ class WaitingForWidget extends StatelessWidget {
                           color: AppColorUtils.BLUE_TEXT,
                         ).paddingOnly(right: 5),
                         AppWidgets.text(
-                          text: model.project!.owner!.phone!,
+                          text: model.project!.owner!.phone??"",
                           fontSize: 14.sp,
                         ),
                       ],

@@ -31,7 +31,9 @@ class RegPage extends StatelessWidget {
         listener: (context, state) {
           if (state.registerSuccess) {
             NavigatorService.to.pushNamed(
-              VerificationPage.routeName,arguments: loginBloc,);
+              VerificationPage.routeName,
+              arguments: loginBloc,
+            );
             loginBloc.add(RegisSuccessChange(false));
           }
         },
@@ -92,11 +94,10 @@ class RegPage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(2.0),
                             ),
                             side: MaterialStateBorderSide.resolveWith(
-                                  (states) =>
-                                  BorderSide(
-                                    width: 2.0,
-                                    color: AppColorUtils.BORDER_COLOR,
-                                  ),
+                              (states) => BorderSide(
+                                width: 2.0,
+                                color: AppColorUtils.BORDER_COLOR,
+                              ),
                             ),
                           ),
                           RichTextWidget()
@@ -106,15 +107,14 @@ class RegPage extends StatelessWidget {
                         title: LocaleKeys.log_in,
                         onTap: loginBloc.state.isNextBtnActive
                             ? () {
-                          loginBloc.add(Registration());
-
-                        }
+                                loginBloc.add(Registration());
+                              }
                             : () {
-                          AppWidgets.showText(
-                            text: LocaleKeys.agree_terms_project.tr(),
-                            duration: Duration(seconds: 1),
-                          );
-                        },
+                                AppWidgets.showText(
+                                  text: LocaleKeys.agree_terms_project.tr(),
+                                  duration: Duration(seconds: 1),
+                                );
+                              },
                         color: loginBloc.state.agree
                             ? AppColorUtils.GREEN_APP
                             : AppColorUtils.DISABLE_BC,
@@ -122,21 +122,24 @@ class RegPage extends StatelessWidget {
                       loginBloc.state.agree
                           ? SizedBox()
                           : Row(
-                        children: [
-                          AppWidgets.text(
-                            text: "*",
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: AppColorUtils.RED,
-                          ),
-                          AppWidgets.text(
-                            text: LocaleKeys.agree_project_first.tr(),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            richText: true,
-                          ),
-                        ],
-                      ).paddingOnly(top: 12, left: 20),
+                              children: [
+                                AppWidgets.text(
+                                  text: "*",
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColorUtils.RED,
+                                ),
+                                AppWidgets.text(
+                                  text: LocaleKeys.agree_project_first.tr(),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  richText: true,
+                                ),
+                              ],
+                            ).paddingOnly(
+                              top: 12,
+                              left: 20,
+                            ),
                     ],
                   ).paddingSymmetric(vertical: 100.h),
                 ],

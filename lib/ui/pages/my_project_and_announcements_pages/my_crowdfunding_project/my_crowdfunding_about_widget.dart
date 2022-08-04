@@ -102,7 +102,10 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                                   errorWidget: (context, url, error) =>
                                       Icon(Icons.error),
                                 ),
-                              ).paddingSymmetric(horizontal: 20, vertical: 20),
+                              ).paddingSymmetric(
+                                horizontal: 20,
+                                vertical: 20,
+                              ),
                             ),
                             Align(
                               child: Row(
@@ -330,7 +333,10 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
                             ),
                           ),
                         )
-                      : AnswersWidget(cubit: cubit, model: widget.model),
+                      : AnswersWidget(
+                          cubit: cubit,
+                          model: widget.model,
+                        ),
                 ],
               ),
             ),
@@ -343,10 +349,9 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
 
 class AnswersWidget extends StatelessWidget {
   const AnswersWidget({
-    Key? key,
     required this.cubit,
     required this.model,
-  }) : super(key: key);
+  });
 
   final MyCrowdfundingSupportCubit cubit;
   final ProjectModel model;
@@ -397,7 +402,7 @@ class AnswersWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  true
+                  cubit.state.questionData.isNotEmpty
                       ? Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -407,7 +412,8 @@ class AnswersWidget extends StatelessWidget {
                                   height: 50.w,
                                   width: 50.w,
                                   decoration: BoxDecoration(
-                                      shape: BoxShape.circle, color: Colors.black12),
+                                      shape: BoxShape.circle,
+                                      color: Colors.black12),
                                   child: CachedNetworkImage(
                                     imageUrl: model.owner!.photo!,
                                     fit: BoxFit.cover,

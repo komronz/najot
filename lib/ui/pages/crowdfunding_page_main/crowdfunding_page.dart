@@ -17,6 +17,8 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../data/bloc/home_cubit/home_cubit.dart';
 import '../../widgets/app_error_widget.dart';
+import 'crowdfunding_widget/search_not _found.dart';
+import 'crowdfunding_widget/tab_projects.dart';
 
 class CrowdfundingPage extends StatefulWidget {
   CrowdfundingPage();
@@ -65,7 +67,7 @@ class _CrowdfundingPageState extends State<CrowdfundingPage>
         },
       ),
       body: WillPopScope(
-        onWillPop: () async{
+        onWillPop: () async {
           HomeCubit.to.getModel();
           return true;
         },
@@ -123,15 +125,9 @@ class _CrowdfundingPageState extends State<CrowdfundingPage>
                                             changeLike: () async {
                                               await CrowdfundingCubit.to
                                                   .changeLike(
-                                                state
-                                                    .crowdfundingModel[index].id!,
+                                                state.crowdfundingModel[index]
+                                                    .id!,
                                               );
-                                              // CrowdfundingCubit.to
-                                              //     .crowdFundingChangeLike(
-                                              //   index,
-                                              //   state.crowdfundingModel[index]
-                                              //       .isFavourite!,
-                                              // );
                                             },
                                           ).paddingOnly(left: 10.w),
                                         ),
@@ -169,7 +165,8 @@ class _CrowdfundingPageState extends State<CrowdfundingPage>
                                             TabBar(
                                               controller: _tabController,
                                               enableFeedback: true,
-                                              labelColor: AppColorUtils.GREEN_APP,
+                                              labelColor:
+                                                  AppColorUtils.GREEN_APP,
                                               unselectedLabelColor:
                                                   AppColorUtils.DARK_6,
                                               unselectedLabelStyle: TextStyle(
@@ -181,12 +178,16 @@ class _CrowdfundingPageState extends State<CrowdfundingPage>
                                                 fontWeight: FontWeight.w600,
                                               ),
                                               tabs: List.generate(
-                                                  state.category.length,
-                                                  (index) => Text(state
-                                                      .category[index].name??"")),
+                                                state.category.length,
+                                                (index) => Text(
+                                                  state.category[index].name ??
+                                                      "",
+                                                ),
+                                              ),
                                               onTap: (index) {
                                                 CrowdfundingCubit.to.tabChange(
-                                                    state.category[index].id!);
+                                                  state.category[index].id!,
+                                                );
                                               },
                                               isScrollable: true,
                                               indicatorWeight: 2,
@@ -214,56 +215,12 @@ class _CrowdfundingPageState extends State<CrowdfundingPage>
                                                     child:
                                                         CircularProgressIndicator(),
                                                   ).paddingSymmetric(
-                                                    vertical: 50.w)
-                                                : Container(
-                                                    child: List.generate(
-                                                      state.category.length,
-                                                      (index) => GridView.count(
-                                                        shrinkWrap: true,
-                                                        crossAxisCount: 2,
-                                                        physics:
-                                                            ClampingScrollPhysics(),
-                                                        childAspectRatio:
-                                                            160 / 267,
-                                                        padding:
-                                                            EdgeInsets.all(0),
-                                                        reverse: false,
-                                                        crossAxisSpacing: 8,
-                                                        mainAxisSpacing: 6,
-                                                        children: List.generate(
-                                                          state
-                                                              .tabProjects.length,
-                                                          (index) =>
-                                                              CrowdfundingMiniCardWidget(
-                                                            changeLike: () async{
-                                                             await CrowdfundingCubit.to
-                                                                  .changeLike(
-                                                                state
-                                                                    .tabProjects[
-                                                                        index]
-                                                                    .id!,
-                                                              );
-
-                                                              // CrowdfundingCubit.to
-                                                              //     .tabChangeLike(
-                                                              //   index,
-                                                              //   state
-                                                              //       .tabProjects[
-                                                              //           index]
-                                                              //       .isFavourite!,
-                                                              // );
-                                                            },
-                                                            cubit:
-                                                                CrowdfundingCubit
-                                                                    .to,
-                                                            visible: true,
-                                                            cardModel:
-                                                                state.tabProjects[
-                                                                    index],
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    )[_tabController.index],
+                                                    vertical: 50.w,
+                                                  )
+                                                : TabProjects(
+                                                    state: state,
+                                                    tabController:
+                                                        _tabController,
                                                   ).paddingSymmetric(
                                                     horizontal: 10)
                                           ],
@@ -274,8 +231,8 @@ class _CrowdfundingPageState extends State<CrowdfundingPage>
                                 )
                               : state.searchProjects.isNotEmpty
                                   ? Container(
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 10.w),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 10.w),
                                       child: GridView.count(
                                         shrinkWrap: true,
                                         crossAxisCount: 2,
@@ -290,17 +247,8 @@ class _CrowdfundingPageState extends State<CrowdfundingPage>
                                           (index) => CrowdfundingMiniCardWidget(
                                             changeLike: () {
                                               CrowdfundingCubit.to.changeLike(
-                                                  state
-                                                      .searchProjects[index].id!);
-
-                                              // CrowdfundingCubit.to
-                                              //     .searchChangeLike(
-                                              //   index,
-                                              //   state
-                                              //       .searchProjects[
-                                              //   index]
-                                              //       .isFavourite!,
-                                              // );
+                                                state.searchProjects[index].id!,
+                                              );
                                             },
                                             cubit: CrowdfundingCubit.to,
                                             visible: true,
@@ -335,34 +283,6 @@ class _CrowdfundingPageState extends State<CrowdfundingPage>
   }
 }
 
-class SearchNotFound extends StatelessWidget {
-  const SearchNotFound({
-    Key? key,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 220.w,
-            ),
-            SvgPicture.asset(AppImageUtils.EMPTY_QUESTIONS),
-            SizedBox(
-              width: 200.sp,
-              child: AppWidgets.textLocale(
-                  textAlign: TextAlign.center,
-                  text: LocaleKeys.no_results_found,
-                  color: AppColorUtils.DARK6,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w600,
-                  maxLines: 2),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
+
+

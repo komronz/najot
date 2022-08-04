@@ -113,9 +113,10 @@ class CommentToAuthorDialog extends StatelessWidget {
                   height: 12.w,
                 ),
                 ButtonCard(
-                  onPress: () async{
-                    var internetConnection=await MainService().checkInternetConnection();
-                    if(internetConnection){
+                  onPress: () async {
+                    var internetConnection =
+                        await MainService().checkInternetConnection();
+                    if (internetConnection) {
                       if (titleController.text != "" &&
                           commentController.text != "") {
                         cubit.postQuestion(
@@ -131,15 +132,16 @@ class CommentToAuthorDialog extends StatelessWidget {
                           },
                         );
                         cubit.load(projectModel.id!);
-
-
-                      }else{
-                        AppWidgets.showText(text: LocaleKeys.write_question.tr());
+                      } else {
+                        AppWidgets.showText(
+                          text: LocaleKeys.write_question.tr(),
+                        );
                       }
-                    }else{
-                      AppWidgets.showText(text: "Internet bilan aloqa yo'q!");
+                    } else {
+                      AppWidgets.showText(
+                        text: LocaleKeys.disConnection.tr(),
+                      );
                     }
-
                   },
                   text: LocaleKeys.send.tr(),
                   textSize: 16.sp,

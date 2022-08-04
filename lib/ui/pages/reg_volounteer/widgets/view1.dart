@@ -25,7 +25,7 @@ class View1 extends StatelessWidget {
         AppTextField(
           hintText: "",
           enabled: false,
-          initialText: AppPageCubit.to.state.user!.firstName!,
+          initialText: AppPageCubit.to.state.user!.firstName ?? "",
           onChanged: (v) {
             bloc.add(VolunteerFirstNameChanged(v));
           },
@@ -35,20 +35,23 @@ class View1 extends StatelessWidget {
         AppTextField(
           hintText: "",
           enabled: false,
-          initialText: AppPageCubit.to.state.user!.lastName!,
+          initialText: AppPageCubit.to.state.user!.lastName ?? "",
           onChanged: (v) {
             bloc.add(VolunteerLastNameChanged(v));
           },
           title: LocaleKeys.name_passport,
           isFill: bloc.state.lastName.isNotEmpty,
-        ).paddingSymmetric(horizontal: 20.w,vertical: 10.w),
+        ).paddingSymmetric(
+          horizontal: 20.w,
+          vertical: 10.w,
+        ),
         AppTextField(
           hintText: LocaleKeys.enter_the_address.tr(),
           initialText: bloc.state.address,
           onChanged: (v) {
             bloc.add(VolunteerAddressChanged(v));
           },
-          title:LocaleKeys.address,
+          title: LocaleKeys.address,
           isFill: bloc.state.address.isNotEmpty,
         ).paddingSymmetric(horizontal: 20.w),
         AppRadioButton(

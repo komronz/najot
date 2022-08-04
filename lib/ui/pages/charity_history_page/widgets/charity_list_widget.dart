@@ -37,7 +37,7 @@ class CharityListWidget extends StatelessWidget {
             maxLines: 2,
             fontWeight: FontWeight.w600,
             color: AppColorUtils.GRAY_4,
-          ).paddingOnly(top: 20, right: 70.w, left: 70.w),
+          ).paddingOnly(top: 20, right: 70.w, left: 70.w,),
         ],
       );
     }

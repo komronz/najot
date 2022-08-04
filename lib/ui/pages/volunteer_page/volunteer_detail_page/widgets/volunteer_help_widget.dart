@@ -134,9 +134,8 @@ class VolunteerHelpWidget extends StatelessWidget {
                           SizedBox(
                             width: 150.w,
                             child: AppWidgets.text(
-                              text:
-                                  "${model.owner!.firstName} "
-                                      "${model.owner!.lastName}",
+                              text: "${model.owner!.firstName} "
+                                  "${model.owner!.lastName}",
                               color: AppColorUtils.TEXT_GREEN2,
                               fontWeight: FontWeight.w600,
                               fontSize: 14.sp,
@@ -174,14 +173,18 @@ class VolunteerHelpWidget extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     fontSize: 10.sp,
                     color: AppColorUtils.DARK_6,
-                  ).paddingOnly(top: 13.w, left: 20.w, bottom: 3.w),
+                  ).paddingOnly(
+                    top: 13.w,
+                    left: 20.w,
+                    bottom: 3.w,
+                  ),
                   AppWidgets.text(
-                          text: model.title ?? "",
-                          maxLines: 2,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
-                          color: AppColorUtils.GREEN_TEXT)
-                      .paddingSymmetric(horizontal: 20.w),
+                    text: model.title ?? "",
+                    maxLines: 2,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16.sp,
+                    color: AppColorUtils.GREEN_TEXT,
+                  ).paddingSymmetric(horizontal: 20.w),
                   AppWidgets.textLocale(
                     text: LocaleKeys.address,
                     fontWeight: FontWeight.w400,
@@ -193,22 +196,23 @@ class VolunteerHelpWidget extends StatelessWidget {
                     bottom: 3.w,
                   ),
                   AppWidgets.text(
-                          text: model.address ?? "",
-                          fontSize: 14.w,
-                          fontWeight: FontWeight.w500,
-                          color: AppColorUtils.TEXT_BLUE,
-                          maxLines: 2)
-                      .paddingSymmetric(horizontal: 20.w),
+                    text: model.address ?? "",
+                    fontSize: 14.w,
+                    fontWeight: FontWeight.w500,
+                    color: AppColorUtils.TEXT_BLUE,
+                    maxLines: 2,
+                  ).paddingSymmetric(horizontal: 20.w),
                   ButtonCard(
                     onPress: () {
                       if (state.checkBox) {
                         showDialog(
-                            context: context,
-                            builder: (ctx) => TimePikerVolunteer(
-                                  model: model,
-                                  cubit: volunteerHelpModel.cubit,
-                                  con: context,
-                                ));
+                          context: context,
+                          builder: (ctx) => TimePikerVolunteer(
+                            model: model,
+                            cubit: volunteerHelpModel.cubit,
+                            con: context,
+                          ),
+                        );
                       }
                     },
                     text: LocaleKeys.help,
@@ -245,19 +249,20 @@ class VolunteerHelpWidget extends StatelessWidget {
                         ),
                       ).paddingOnly(left: 8.w),
                       AppWidgets.textLocale(
-                          text: LocaleKeys.i_agree,
-                          color: AppColorUtils.DARK_1,
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w400)
+                        text: LocaleKeys.i_agree,
+                        color: AppColorUtils.DARK_1,
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
+                      )
                     ],
                   ),
                   AppWidgets.textLocale(
-                          text: LocaleKeys.attention_agree_help,
-                          color: AppColorUtils.RED,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12.sp,
-                          maxLines: 2)
-                      .paddingSymmetric(horizontal: 20.w),
+                    text: LocaleKeys.attention_agree_help,
+                    color: AppColorUtils.RED,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 12.sp,
+                    maxLines: 2,
+                  ).paddingSymmetric(horizontal: 20.w),
                   SizedBox(
                     height: 20.w,
                   )

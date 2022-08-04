@@ -5,6 +5,7 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
+import 'intro_clip_path_widget.dart';
 import 'intro_view_widgets.dart';
 
 class IntroPageTwoWidget extends StatelessWidget {
@@ -22,7 +23,9 @@ class IntroPageTwoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        IntroClipPathWidget(height: context.height * 0.92),
+        IntroClipPathWidget(
+          height: context.height * 0.92,
+        ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -40,8 +43,14 @@ class IntroPageTwoWidget extends StatelessWidget {
               maxLines: 2,
               fontSize: 15.sp,
               fontWeight: FontWeight.w400,
-            ).paddingOnly(bottom: 58.w,right: 30.w,left: 30.w),
-            AppWidgets.imageAsset(path: image).paddingSymmetric(horizontal: 25),
+            ).paddingOnly(
+              bottom: 58.w,
+              right: 30.w,
+              left: 30.w,
+            ),
+            AppWidgets.imageAsset(
+              path: image,
+            ).paddingSymmetric(horizontal: 25),
           ],
         ).paddingOnly(top: 120.w),
       ],

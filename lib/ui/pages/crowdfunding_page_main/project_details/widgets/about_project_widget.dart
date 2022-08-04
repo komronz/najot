@@ -40,7 +40,7 @@ class AboutProjectWidget extends StatefulWidget {
 class _AboutProjectWidgetState extends State<AboutProjectWidget>
     with TickerProviderStateMixin {
   late TabController _tabController;
-   late bool like;
+  late bool like;
 
   @override
   void dispose() {
@@ -50,7 +50,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
 
   @override
   void initState() {
-    like=widget.cardModel.isFavourite!;
+    like = widget.cardModel.isFavourite!;
     _tabController = TabController(length: 4, vsync: this);
     _tabController.addListener(_handleTabSelection);
     super.initState();
@@ -258,9 +258,18 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                         indicatorColor: AppColorUtils.GREEN_APP,
                         indicatorSize: TabBarIndicatorSize.tab,
                         padding: EdgeInsets.only(right: 10),
-                        indicatorPadding: EdgeInsets.only(right: 10, left: 10),
-                        labelPadding: EdgeInsets.only(right: 10, left: 10),
-                      ).paddingOnly(left: 15.w, top: 8.w),
+                        indicatorPadding: EdgeInsets.only(
+                          right: 10,
+                          left: 10,
+                        ),
+                        labelPadding: EdgeInsets.only(
+                          right: 10,
+                          left: 10,
+                        ),
+                      ).paddingOnly(
+                        left: 15.w,
+                        top: 8.w,
+                      ),
                       Container(
                         child: [
                           MoreWidget(
@@ -269,7 +278,9 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                           NewsWidget(
                             cubit: cubit,
                           ).paddingAll(20.w),
-                          QuestionsAnswerWidget(cubit: cubit).paddingAll(20.w),
+                          QuestionsAnswerWidget(
+                            cubit: cubit,
+                          ).paddingAll(20.w),
                           CommentsWidget(
                             cubit: cubit,
                             projectModel: widget.cardModel,
@@ -305,20 +316,22 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                             select: like,
                             height: 48.w,
                             width: 48.w,
-                            onTap: () async{
-                              var connection= await MainService().checkInternetConnection();
-                              if(connection){
-                                await widget.cubit.changeLike(widget.cardModel.id!);
+                            onTap: () async {
+                              var connection =
+                                  await MainService().checkInternetConnection();
+                              if (connection) {
+                                await widget.cubit.changeLike(
+                                  widget.cardModel.id!,
+                                );
                                 setState(() {
-                                  like=!like;
+                                  like = !like;
                                 });
 
                                 await HomeCubit.to.getModel();
-                              }else{
-                                AppWidgets.showText(text: LocaleKeys.disConnection.tr());
+                              } else {
+                                AppWidgets.showText(
+                                    text: LocaleKeys.disConnection.tr());
                               }
-                               
-
                             },
                           )
                         ],

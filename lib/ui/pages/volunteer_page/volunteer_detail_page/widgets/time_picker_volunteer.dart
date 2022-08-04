@@ -21,11 +21,9 @@ import '../../../notification_page/notification_page.dart';
 import 'about_project_volunteer_widget.dart';
 
 class TimePikerVolunteer extends StatelessWidget {
-  TimePikerVolunteer({
-    required this.model,
-    required this.cubit,
-    required this.con
-  });
+  TimePikerVolunteer(
+      {required this.model, required this.cubit, required this.con});
+
   DateTime _date = DateTime.now();
   DateTime _time = DateTime.now();
   ProjectModel model;
@@ -34,7 +32,7 @@ class TimePikerVolunteer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var modifiedAt= DateTime.parse(model.modifiedAt!);
+    var modifiedAt = DateTime.parse(model.modifiedAt!);
 
     return Center(
       child: SingleChildScrollView(
@@ -85,7 +83,7 @@ class TimePikerVolunteer extends StatelessWidget {
                               height: 16.w,
                             ).paddingOnly(right: 5.w),
                             AppWidgets.textLocale(
-                              text:  DateFormat("dd.MM.yyyy").format(modifiedAt),
+                              text: DateFormat("dd.MM.yyyy").format(modifiedAt),
                               color: AppColorUtils.VOLONTYOR,
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w500,
@@ -151,7 +149,7 @@ class TimePikerVolunteer extends StatelessWidget {
                           spacing: 15.sp,
                           itemHeight: 40,
                           onTimeChange: (time) {
-                            _time=time;
+                            _time = time;
                             // setState(
                             //       () {
                             //     _time = DateTime(
@@ -227,15 +225,16 @@ class TimePikerVolunteer extends StatelessWidget {
                               NotificationCubit.to..getList();
                               Navigator.pop(con);
                               Navigator.pop(context);
-                              NavigatorService.to.pushReplacementNamed(NotificationPage.routeName);
-
+                              NavigatorService.to.pushReplacementNamed(
+                                NotificationPage.routeName,
+                              );
                             },
                             back: () {
                               VolunteerCubit.to.loading();
                               Navigator.pop(con);
                               Navigator.pop(context);
-
-                            }, time: _time,
+                            },
+                            time: _time,
                           ),
                         );
                       },

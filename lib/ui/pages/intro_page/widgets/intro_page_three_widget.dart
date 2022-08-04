@@ -4,6 +4,7 @@ import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
+import 'intro_clip_path_widget.dart';
 import 'intro_view_widgets.dart';
 
 class IntroPageThreeWidget extends StatelessWidget {
@@ -25,7 +26,10 @@ class IntroPageThreeWidget extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            AppWidgets.imageAsset(path: image, height: 400.h,).paddingOnly(
+            AppWidgets.imageAsset(
+              path: image,
+              height: 400.h,
+            ).paddingOnly(
               bottom: 50.h,
               right: 25.w,
               left: 25.w,
@@ -44,7 +48,10 @@ class IntroPageThreeWidget extends StatelessWidget {
               maxLines: 2,
               fontSize: 15.sp,
               fontWeight: FontWeight.w400,
-            ).paddingOnly(right: 30.w, left: 30.w),
+            ).paddingOnly(
+              right: 30.w,
+              left: 30.w,
+            ),
           ],
         ).paddingOnly(top: 100.w),
       ],

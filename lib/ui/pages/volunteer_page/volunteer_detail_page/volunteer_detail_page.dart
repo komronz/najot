@@ -64,8 +64,7 @@ class _AboutAnnouncementPageState extends State<VolunteerDetailPage>
       backgroundColor: AppColorUtils.BACKGROUND,
       appBar: AppBarWithTitle(
         title: LocaleKeys.about_project.tr(),
-        onPress: () async{
-          await HomeCubit.to.getModel();
+        onPress: () {
           NavigatorService.to.pop();
         },
       ),

@@ -9,9 +9,16 @@ import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 
 class DropDownWidget extends StatelessWidget {
-  DropDownWidget(
-      {required this.items, required this.title, required this.hasTitle,required this.onChange, this.isEmpty = false, this.selectValue, Key? key, required this.height,})
-      : super(key: key);
+  DropDownWidget({
+    required this.items,
+    required this.title,
+    required this.hasTitle,
+    required this.onChange,
+    this.isEmpty = false,
+    this.selectValue,
+    Key? key,
+    required this.height,
+  }) : super(key: key);
   final List<String>? items;
   final bool isEmpty;
   final double height;
@@ -26,23 +33,23 @@ class DropDownWidget extends StatelessWidget {
       children: [
         hasTitle
             ? Row(
-          children: [
-            isEmpty
-                ? SizedBox()
-                : AppWidgets.textLocale(
-              text: "*",
-              color: AppColorUtils.RED,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
-            ),
-            AppWidgets.textLocale(
-              text: title,
-              color: AppColorUtils.DARK_4,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
-            ).paddingOnly(top: 4),
-          ],
-        ).paddingOnly(bottom: 8)
+                children: [
+                  isEmpty
+                      ? SizedBox()
+                      : AppWidgets.textLocale(
+                          text: "*",
+                          color: AppColorUtils.RED,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
+                  AppWidgets.textLocale(
+                    text: title,
+                    color: AppColorUtils.DARK_4,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                  ).paddingOnly(top: 4),
+                ],
+              ).paddingOnly(bottom: 8)
             : SizedBox(),
         Container(
           height: height,
@@ -71,22 +78,21 @@ class DropDownWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              items: items
-                  !.map((item) =>
-                  DropdownMenuItem<String>(
-                    value: item,
-                    child: Text(
-                      item,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: AppColorUtils.DARK2,
-                      ),
-                    ),
-                  ))
+              items: items!
+                  .map((item) => DropdownMenuItem<String>(
+                        value: item,
+                        child: Text(
+                          item,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                            color: AppColorUtils.DARK2,
+                          ),
+                        ),
+                      ))
                   .toList(),
               value: selectValue,
-              onChanged:(v)=>onChange(v),
+              onChanged: (v) => onChange(v),
               icon: const Icon(
                 Icons.keyboard_arrow_down_outlined,
                 color: AppColorUtils.WHITE,
@@ -105,7 +111,10 @@ class DropDownWidget extends StatelessWidget {
               ),
               buttonElevation: 0,
               itemHeight: 40,
-              itemPadding: const EdgeInsets.only(left: 14, right: 14),
+              itemPadding: const EdgeInsets.only(
+                left: 14,
+                right: 14,
+              ),
               dropdownMaxHeight: 200.h,
               dropdownWidth: 250.w,
               dropdownPadding: null,

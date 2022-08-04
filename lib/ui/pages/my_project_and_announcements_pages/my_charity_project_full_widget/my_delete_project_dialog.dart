@@ -18,11 +18,15 @@ import '../../../../data/config/const/decoration_const.dart';
 import 'my_charity_success_send_question_dialog.dart';
 
 class MyDeleteProjectDialog extends StatelessWidget {
-   MyDeleteProjectDialog({required this.cubit,required this.projectModel,}) ;
+  MyDeleteProjectDialog({
+    required this.cubit,
+    required this.projectModel,
+  });
 
-   MyCrowdfundingSupportCubit cubit;
-   ProjectModel projectModel;
-  TextEditingController title= TextEditingController();
+  MyCrowdfundingSupportCubit cubit;
+  ProjectModel projectModel;
+  TextEditingController title = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -46,7 +50,8 @@ class MyDeleteProjectDialog extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    SvgPicture.asset(AppImageUtils.TRASH).paddingOnly(right: 5.w),
+                    SvgPicture.asset(AppImageUtils.TRASH)
+                        .paddingOnly(right: 5.w),
                     AppWidgets.textLocale(
                       text: LocaleKeys.delete_the_project,
                       color: AppColorUtils.DARK2,
@@ -63,20 +68,20 @@ class MyDeleteProjectDialog extends StatelessWidget {
                   fontSize: 16.sp,
                 ).paddingOnly(bottom: 24.h),
                 AppWidgets.textLocale(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.sp,
-                    color: AppColorUtils.DARK2,
-                    text: LocaleKeys.reason_deletion_short,
-                    richText: true,
-                    othersMarkers: [
-                      MarkerText(marker: "//", style: TextStyle(
-                          color: AppColorUtils.RED
-                      ),)
-                    ],
-                    maxLines: 2
-                ).paddingOnly(bottom: 8.h),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14.sp,
+                        color: AppColorUtils.DARK2,
+                        text: LocaleKeys.reason_deletion_short,
+                        richText: true,
+                        othersMarkers: [
+                          MarkerText(
+                            marker: "//",
+                            style: TextStyle(color: AppColorUtils.RED),
+                          )
+                        ],
+                        maxLines: 2)
+                    .paddingOnly(bottom: 8.h),
                 SizedBox(
-
                   height: 170.w,
                   child: TextField(
                     controller: title,
@@ -108,8 +113,11 @@ class MyDeleteProjectDialog extends StatelessWidget {
                 ),
                 ButtonCard(
                   onPress: () {
-                    if(title.text.isNotEmpty){
-                      cubit.deletePost(projectModel.id!, title.text);
+                    if (title.text.isNotEmpty) {
+                      cubit.deletePost(
+                        projectModel.id!,
+                        title.text,
+                      );
                       Navigator.pop(context);
                       showDialog(
                         context: context,
@@ -117,10 +125,11 @@ class MyDeleteProjectDialog extends StatelessWidget {
                           return MyCharitySuccessSendQuestion();
                         },
                       );
-                    }else{
-                      AppWidgets.showText(text: LocaleKeys.write_the_reason.tr());
+                    } else {
+                      AppWidgets.showText(
+                        text: LocaleKeys.write_the_reason.tr(),
+                      );
                     }
-
                   },
                   text: LocaleKeys.send,
                   textSize: 16.sp,

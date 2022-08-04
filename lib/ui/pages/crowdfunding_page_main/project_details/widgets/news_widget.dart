@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,20 +20,20 @@ class NewsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        return cubit.state.newsData.isNotEmpty
-            ? Column(
-          children: List.generate(
-            cubit.state.newsData.length,
-                (index) =>
-              Container(
+    return cubit.state.newsData.isNotEmpty
+        ? Column(
+            children: List.generate(cubit.state.newsData.length, (index) {
+              var createdAt =
+                  DateTime.parse(cubit.state.newsData[index].createdAt!);
+              return Container(
                 padding: EdgeInsets.only(
                   top: 12.w,
                   left: 12.w,
                   right: 12.w,
                 ),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: AppColorUtils.GREEN_ACCENT4,
+                  borderRadius: BorderRadius.circular(12),
+                  color: AppColorUtils.GREEN_ACCENT4,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,13 +48,14 @@ class NewsWidget extends StatelessWidget {
                               height: 50.w,
                               width: 50.w,
                               decoration: BoxDecoration(
-                                  shape : BoxShape.circle,
-                                  color: Colors.black12,
+                                shape: BoxShape.circle,
+                                color: Colors.black12,
                               ),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(25.w),
                                 child: CachedNetworkImage(
-                                  imageUrl:cubit.state.newsData[index].user!.photo!,
+                                  imageUrl:
+                                      cubit.state.newsData[index].user!.photo!,
                                   fit: BoxFit.cover,
                                   placeholder: (context, url) => Center(
                                     child: CircularProgressIndicator(),
@@ -70,13 +72,13 @@ class NewsWidget extends StatelessWidget {
                                 SizedBox(
                                   width: 150.w,
                                   child: AppWidgets.text(
-                                    text:  "${cubit.state.newsData[index].user!.firstName!} ${cubit.state.newsData[index].user!.lastName!}",
+                                    text:
+                                        "${cubit.state.newsData[index].user!.firstName!} ${cubit.state.newsData[index].user!.lastName!}",
                                     color: AppColorUtils.TEXT_GREEN2,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 14.sp,
                                   ),
                                 ),
-
                                 Row(
                                   children: [
                                     AppWidgets.textLocale(
@@ -86,31 +88,32 @@ class NewsWidget extends StatelessWidget {
                                       color: AppColorUtils.DARK_6,
                                     ).paddingOnly(right: 65.w),
                                     AppWidgets.text(
-                                      text: "25.08.2022 18:19",
+                                      text: DateFormat("dd.MM.yyyy HH:mm")
+                                          .format(createdAt),
                                       fontSize: 10.sp,
                                       fontWeight: FontWeight.w500,
-                                      color: AppColorUtils.BLUE_PERCENT,)
+                                      color: AppColorUtils.BLUE_PERCENT,
+                                    )
                                   ],
                                 ).paddingOnly(top: 5),
                               ],
                             ).paddingOnly(left: 10),
                           ],
                         ),
-
                       ],
                     ),
                     AppWidgets.text(
-                      text: cubit.state.newsData[index].title??"",
+                      text: cubit.state.newsData[index].title ?? "",
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
-                      color: AppColorUtils.BLACK,)
-                        .paddingOnly(
+                      color: AppColorUtils.BLACK,
+                    ).paddingOnly(
                       bottom: 7.w,
                       top: 18.w,
                     ),
                     AppWidgets.text(
                         height: 1.5,
-                        text:  cubit.state.newsData[index].content??"",
+                        text: cubit.state.newsData[index].content ?? "",
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColorUtils.TEXT_GREY2,
@@ -125,16 +128,12 @@ class NewsWidget extends StatelessWidget {
                           Radius.circular(12),
                         ),
                         child: CachedNetworkImage(
-                          imageUrl:  cubit.state.newsData[index].cover!,
+                          imageUrl: cubit.state.newsData[index].cover!,
                           fit: BoxFit.cover,
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width,
-                          placeholder: (context, url) =>
-                              Center(
-                                child: CircularProgressIndicator(),
-                              ),
+                          width: MediaQuery.of(context).size.width,
+                          placeholder: (context, url) => Center(
+                            child: CircularProgressIndicator(),
+                          ),
                           errorWidget: (context, url, error) =>
                               Icon(Icons.error),
                         ),
@@ -142,28 +141,28 @@ class NewsWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),),
-        )
-            : Container(
-          child: Center(
-            child: Column(
-              children: [
-                SvgPicture.asset(AppImageUtils.NEWS),
-                SizedBox(
-                  width: 200.sp,
-                  child: AppWidgets.textLocale(
+              );
+            }),
+          )
+        : Container(
+            child: Center(
+              child: Column(
+                children: [
+                  SvgPicture.asset(AppImageUtils.NEWS),
+                  SizedBox(
+                    width: 200.sp,
+                    child: AppWidgets.textLocale(
                       textAlign: TextAlign.center,
                       text: LocaleKeys.news_empty,
                       color: AppColorUtils.DARK_4,
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w600,
                       maxLines: 2,
-                  ),
-                )
-              ],
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-        );
-
+          );
   }
 }

@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/volunteer_model.dart';
-import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/data/services/charity_service.dart';
 import 'package:najot/data/services/crowdfunding_service.dart';
 import 'package:najot/data/services/main_service.dart';

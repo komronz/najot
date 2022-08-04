@@ -23,12 +23,14 @@ import 'my_crowdfunding_project/my_crowdfunding_list_widget.dart';
 class MyProjectAndAnnouncementsPages extends StatelessWidget {
   static const String routeName = '/myProjectAndAnnouncementsPages';
 
-   MyProjectAndAnnouncementsPages({Key? key}) : super(key: key);
-  MyProjectAndAnnouncementsPagesCubit cubit=MyProjectAndAnnouncementsPagesCubit();
+  MyProjectAndAnnouncementsPages({Key? key}) : super(key: key);
+  MyProjectAndAnnouncementsPagesCubit cubit =
+      MyProjectAndAnnouncementsPagesCubit();
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>cubit..load(),
+      create: (context) => cubit..load(),
       child: BlocBuilder<MyProjectAndAnnouncementsPagesCubit,
           MyProjectAndAnnouncementsPagesState>(
         builder: (context, state) => Scaffold(
@@ -52,10 +54,11 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
                 ),
                 Expanded(
                   child: AppWidgets.textLocale(
-                      text: LocaleKeys.projects_and_ads,
-                      fontSize: 25.sp,
-                      fontWeight: FontWeight.w600,
-                      textAlign: TextAlign.center),
+                    text: LocaleKeys.projects_and_ads,
+                    fontSize: 25.sp,
+                    fontWeight: FontWeight.w600,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 InkWell(
                   onTap: () {
@@ -83,7 +86,7 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
     BuildContext context,
     MyProjectAndAnnouncementsPagesState state,
   ) {
-    if(state.hasConnection){
+    if (state.hasConnection) {
       if (state.isLoading) {
         return Center(
           child: CircularProgressIndicator(),
@@ -93,9 +96,9 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
         initialIndex: 0,
         length: 3,
         child: Container(
-            decoration: DecorationConst.DEC_WITH_SHADOW,
-            height: context.height,
-            width: context.width,
+          decoration: DecorationConst.DEC_WITH_SHADOW,
+          height: context.height,
+          width: context.width,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
@@ -144,13 +147,12 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
           ),
         ),
       );
-    }else{
-      return AppErrorWidget(
-          onTap: () async{
-            AppWidgets.isLoading(true);
-            await cubit.load();
-            AppWidgets.isLoading(false);
-          });
+    } else {
+      return AppErrorWidget(onTap: () async {
+        AppWidgets.isLoading(true);
+        await cubit.load();
+        AppWidgets.isLoading(false);
+      });
     }
   }
 }

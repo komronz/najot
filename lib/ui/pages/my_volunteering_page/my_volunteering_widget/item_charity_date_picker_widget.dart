@@ -17,7 +17,6 @@ import '../../../../data/custom_time_picker/date_picker/date_picker_theme.dart';
 import '../../../../data/custom_time_picker/date_picker/i18n/date_picker_i18n.dart';
 import '../../../../data/custom_time_picker/date_picker/widget/date_picker_widget.dart';
 import '../../../../data/localization/locale_keys.g.dart';
-import '../../../../data/model/volunteering_model.dart';
 import '../../../widgets/app_widgets.dart';
 
 class ItemCharityDatePickerWidget extends StatelessWidget {
@@ -34,12 +33,13 @@ class ItemCharityDatePickerWidget extends StatelessWidget {
   final MyVolunteeringCubit cubit;
   final VolunteerDonateResults model;
   final int index;
+
   @override
   Widget build(BuildContext context) {
-    var createdAt= DateTime.parse(model.project!.modifiedAt!);
+    var createdAt = DateTime.parse(model.project!.modifiedAt!);
     return BlocBuilder<MyVolunteeringCubit, MyVolunteeringState>(
-      bloc: cubit,
-        builder: (context, state){
+        bloc: cubit,
+        builder: (context, state) {
           return Center(
             child: SingleChildScrollView(
               child: Material(
@@ -89,7 +89,8 @@ class ItemCharityDatePickerWidget extends StatelessWidget {
                                     height: 16.w,
                                   ).paddingOnly(right: 5.w),
                                   AppWidgets.textLocale(
-                                    text: DateFormat("dd.MM.yyyy").format(createdAt),
+                                    text: DateFormat("dd.MM.yyyy")
+                                        .format(createdAt),
                                     color: AppColorUtils.BLUE_TEXT,
                                     fontSize: 18.sp,
                                     fontWeight: FontWeight.w500,
@@ -155,7 +156,7 @@ class ItemCharityDatePickerWidget extends StatelessWidget {
                                 spacing: 15.sp,
                                 itemHeight: 40,
                                 onTimeChange: (time) {
-                                  _time=time;
+                                  _time = time;
                                   // setState(
                                   //       () {
                                   //     _time = DateTime(
@@ -226,12 +227,15 @@ class ItemCharityDatePickerWidget extends StatelessWidget {
                               await showDialog(
                                 context: context,
                                 builder: (context) => ItemAddingSuccess(
-                                  dateTime: _date, time: _time,
+                                  dateTime: _date,
+                                  time: _time,
                                   back: () {
                                     Navigator.pop(context);
                                   },
                                   goto: () {
-                                    NavigatorService.to.pushReplacementNamed(NotificationPage.routeName);
+                                    NavigatorService.to.pushReplacementNamed(
+                                      NotificationPage.routeName,
+                                    );
                                   },
                                 ),
                               );
@@ -262,7 +266,7 @@ class ItemCharityDatePickerWidget extends StatelessWidget {
               ),
             ),
           );
-        }
+        },
     );
   }
 }

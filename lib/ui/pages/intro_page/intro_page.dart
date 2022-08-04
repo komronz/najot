@@ -11,6 +11,7 @@ import 'package:najot/ui/pages/intro_page/widgets/intro_page_two_widget.dart';
 import 'package:najot/ui/pages/intro_page/widgets/intro_view_widgets.dart';
 
 import '../../../data/bloc/intro_page_bloc/intro_state.dart';
+import '../../../data/utils/app_color_utils.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({Key? key}) : super(key: key);
@@ -45,10 +46,11 @@ class IntroPage extends StatelessWidget {
                       image: "assets/images/splash_2.png",
                     ),
                     IntroPageThreeWidget(
-                        image: "assets/images/splash_3.png",
-                        title: LocaleKeys.volunteering.tr(),
-                        content:
-                            "Lorem Ipsum is simply dummy text of the printing and typesetting industry"),
+                      image: "assets/images/splash_3.png",
+                      title: LocaleKeys.volunteering.tr(),
+                      content:
+                          "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+                    ),
                   ],
                 ),
                 Container(
@@ -64,12 +66,16 @@ class IntroPage extends StatelessWidget {
                     if (state.currentIndex == 0) ...[
                       viewOfOnePage(context),
                     ] else if (state.currentIndex == 1) ...[
-                      viewOfTwoPage(context,state),
+                      viewOfTwoPage(context, state),
                     ] else ...[
-                      viewOfThreePage(context,state),
+                      viewOfThreePage(context, state),
                     ]
                   ],
-                ).paddingOnly(bottom: 35.w, right: 20.w, left: 20.w,),
+                ).paddingOnly(
+                  bottom: 35.w,
+                  right: 20.w,
+                  left: 20.w,
+                ),
               ],
             );
           }
@@ -88,7 +94,7 @@ class IntroPage extends StatelessWidget {
       width: isActive ? 26 : 19,
       margin: const EdgeInsets.only(right: 7),
       decoration: BoxDecoration(
-          color: isActive ? Color(0xFF0BBF90) : Colors.white,
+          color: isActive ? AppColorUtils.PERCENT_COLOR : Colors.white,
           borderRadius: BorderRadius.circular(11)),
     );
   }

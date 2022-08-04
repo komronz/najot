@@ -210,6 +210,7 @@
   "want_delete_note": "Eslatmani //o'chirib// yubormoqchimisiz?",
   "go_back": "Ortga qaytish",
   "yes": "Ha",
+  "no": "Yo'q",
   "note_successful_changed": "Eslatma //muvaffaqiyatli// o'zgartirildi",
   "attention_hello_volunteer": "Diqqat! Salom, Volontyor!",
   "you_go_to_help": "siz yordamga \n borishingiz kerak",
@@ -269,6 +270,7 @@
   "there_no_questions": "Hozircha berilgan savollar yo’q",
   "code_verification": "Kodni tasdiqlash",
   "no_results_found": "Natijalar topilmadi",
+  "logout": "Dasturdan chiqmoqchimisiz?",
   "enter_phone_number": "Telefon raqamini kiriting"
 
 }

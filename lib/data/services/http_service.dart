@@ -172,7 +172,7 @@ static HttpService get to=> GetIt.I<HttpService>();
     try {
       return await _dio!.delete(path!,
           options: Options(
-            headers: headers,
+            headers: {"Authorization": "Bearer $token"},
           ),
           data: jsonEncode(fields));
     } on DioError catch (e) {

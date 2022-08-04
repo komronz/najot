@@ -26,13 +26,18 @@ Widget viewOfOnePage(BuildContext context) {
       GestureDetector(
         onTap: () {
           context.read<IntroCubit>().pageController.nextPage(
-              duration: Duration(milliseconds: 400),
-              curve: Curves.easeInOutQuart);
+                duration: Duration(milliseconds: 400),
+                curve: Curves.easeInOutQuart,
+              );
         },
         child: Container(
           height: 40.w,
           width: 40.w,
-          child: Icon(Icons.chevron_right, color: AppColorUtils.WHITE, size: 34.w),
+          child: Icon(
+            Icons.chevron_right,
+            color: AppColorUtils.WHITE,
+            size: 34.w,
+          ),
           decoration: BoxDecoration(
               color: AppColorUtils.PERCENT_COLOR,
               borderRadius: BorderRadius.circular(25.0)),
@@ -42,7 +47,10 @@ Widget viewOfOnePage(BuildContext context) {
   );
 }
 
-Widget viewOfTwoPage(BuildContext context, IntroPageNextState state) {
+Widget viewOfTwoPage(
+  BuildContext context,
+  IntroPageNextState state,
+) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -58,14 +66,16 @@ Widget viewOfTwoPage(BuildContext context, IntroPageNextState state) {
           GestureDetector(
             onTap: () {
               context.read<IntroCubit>().pageController.animateToPage(
-                  state.currentIndex - 1,
-                  duration: Duration(milliseconds: 400),
-                  curve: Curves.easeInOutQuart);
+                    state.currentIndex - 1,
+                    duration: Duration(milliseconds: 400),
+                    curve: Curves.easeInOutQuart,
+                  );
             },
             child: Container(
               height: 40.w,
               width: 40.w,
-              child: Icon(Icons.chevron_left, color: AppColorUtils.WHITE, size: 34.w),
+              child: Icon(Icons.chevron_left,
+                  color: AppColorUtils.WHITE, size: 34.w),
               decoration: BoxDecoration(
                   color: AppColorUtils.PERCENT_COLOR,
                   borderRadius: BorderRadius.circular(25.0)),
@@ -74,13 +84,18 @@ Widget viewOfTwoPage(BuildContext context, IntroPageNextState state) {
           GestureDetector(
             onTap: () {
               context.read<IntroCubit>().pageController.nextPage(
-                  duration: Duration(milliseconds: 400),
-                  curve: Curves.easeInOutQuart);
+                    duration: Duration(milliseconds: 400),
+                    curve: Curves.easeInOutQuart,
+                  );
             },
             child: Container(
               height: 40.w,
               width: 40.w,
-              child: Icon(Icons.chevron_right, color: AppColorUtils.WHITE, size: 34.w),
+              child: Icon(
+                Icons.chevron_right,
+                color: AppColorUtils.WHITE,
+                size: 34.w,
+              ),
               decoration: BoxDecoration(
                   color: AppColorUtils.PERCENT_COLOR,
                   borderRadius: BorderRadius.circular(25.0)),
@@ -99,14 +114,19 @@ Widget viewOfThreePage(BuildContext context, IntroPageNextState state) {
       GestureDetector(
         onTap: () {
           context.read<IntroCubit>().pageController.animateToPage(
-              state.currentIndex - 1,
-              duration: Duration(milliseconds: 400),
-              curve: Curves.easeInOutQuart);
+                state.currentIndex - 1,
+                duration: Duration(milliseconds: 400),
+                curve: Curves.easeInOutQuart,
+              );
         },
         child: Container(
           height: 40.w,
           width: 40.w,
-          child: Icon(Icons.chevron_left, color: AppColorUtils.WHITE, size: 34.w),
+          child: Icon(
+            Icons.chevron_left,
+            color: AppColorUtils.WHITE,
+            size: 34.w,
+          ),
           decoration: BoxDecoration(
               color: AppColorUtils.PERCENT_COLOR,
               borderRadius: BorderRadius.circular(25.0)),
@@ -127,7 +147,11 @@ Widget viewOfThreePage(BuildContext context, IntroPageNextState state) {
             child: Container(
               height: 40.w,
               width: 40.w,
-              child: Icon(Icons.chevron_right, color: AppColorUtils.WHITE, size: 34.w),
+              child: Icon(
+                Icons.chevron_right,
+                color: AppColorUtils.WHITE,
+                size: 34.w,
+              ),
               decoration: BoxDecoration(
                   color: AppColorUtils.GREEN_APP,
                   borderRadius: BorderRadius.circular(25.0)),
@@ -137,22 +161,5 @@ Widget viewOfThreePage(BuildContext context, IntroPageNextState state) {
       ),
     ],
   );
-}
-class IntroClipPathWidget extends StatelessWidget {
-  final double height;
-
-  IntroClipPathWidget({required this.height});
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipPath(
-      clipper: CustomShape(),
-      child: Container(
-        width: context.width,
-        height: height,
-        color: AppColorUtils.GREEN_INTRO,
-      ),
-    );
-  }
 }
 

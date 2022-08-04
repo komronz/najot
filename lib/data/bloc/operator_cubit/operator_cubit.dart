@@ -76,10 +76,9 @@ class OperatorCubit extends Cubit<OperatorState> {
     emit(newState);
   }
 
-  Future deleteSmsList() async {
+  Future deleteSmsList( int id) async {
     try {
-      User? user = await UserUpdateService().getUserModel();
-      bool deletedModel = await operatorService.deleteSms(user!.id!);
+      bool deletedModel = await operatorService.deleteSms(id);
       if (deletedModel) {
         emit(state.copyWith(list: []));
       }

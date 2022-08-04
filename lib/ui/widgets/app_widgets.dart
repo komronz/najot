@@ -90,33 +90,26 @@ class AppWidgets {
     );
   }
 
-  static Widget favouriteButton({
-    required bool select,
-    required double height,
-    required double width,
-    required VoidCallback onTap
-  }) {
+  static Widget favouriteButton(
+      {required bool select,
+      required double height,
+      required double width,
+      required VoidCallback onTap}) {
     return Material(
       borderRadius: BorderRadius.circular(10),
       child: Ink(
         decoration: BoxDecoration(
-          borderRadius:
-          BorderRadius.circular(10),
-          color: select
-              ? AppColorUtils.PURPLE
-              : AppColorUtils.IC_GREEN,
+          borderRadius: BorderRadius.circular(10),
+          color: select ? AppColorUtils.PURPLE : AppColorUtils.IC_GREEN,
         ),
         child: InkWell(
-          borderRadius:
-          BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10),
           onTap: onTap,
           child: Container(
             height: height,
             width: width,
             child: SvgPicture.asset(
-              select
-                  ? AppImageUtils.UNLIKE_ICON
-                  : AppImageUtils.LIKE_ICON,
+              select ? AppImageUtils.UNLIKE_ICON : AppImageUtils.LIKE_ICON,
             ).paddingAll(10.w),
           ),
         ),
@@ -124,10 +117,7 @@ class AppWidgets {
     );
   }
 
-  static Widget circleImages({
-    required int count
-
-  }) {
+  static Widget circleImages({required int count}) {
     return Row(
       children: [
         Stack(
@@ -138,43 +128,35 @@ class AppWidgets {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: AssetImage(
-                      AppImageUtils
-                          .DEF_PERSON),
+                  image: AssetImage(AppImageUtils.DEF_PERSON),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
             Container(
-              padding:  EdgeInsets.only(left: 8.w),
+              padding: EdgeInsets.only(left: 8.w),
               height: 25.w,
               width: 25.w,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: AssetImage(
-                      AppImageUtils
-                          .DEF_PERSON),
+                  image: AssetImage(AppImageUtils.DEF_PERSON),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
             Container(
-              margin:
-              EdgeInsets.only(left: 16.w),
+              margin: EdgeInsets.only(left: 16.w),
               height: 25.w,
               width: 25.w,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: AssetImage(
-                      AppImageUtils
-                          .DEF_PERSON),
+                  image: AssetImage(AppImageUtils.DEF_PERSON),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
-
           ],
         ),
         AppWidgets.text(
@@ -199,14 +181,16 @@ class AppWidgets {
   }) {
     return Row(
       mainAxisAlignment:
-      isCenter ? MainAxisAlignment.center : MainAxisAlignment.start,
+          isCenter ? MainAxisAlignment.center : MainAxisAlignment.start,
       children: [
         hasStar
             ? SizedBox(
-          child: textLocale(
-            text: '*', fontSize: fontSize, color: AppColorUtils.RED,
-          ),
-        )
+                child: textLocale(
+                  text: '*',
+                  fontSize: fontSize,
+                  color: AppColorUtils.RED,
+                ),
+              )
             : SizedBox(),
         textLocale(
           text: text,
@@ -265,9 +249,9 @@ class AppWidgets {
     );
   }
 
- static Widget selectLangWidget(BuildContext context, VoidCallback onTap) {
+  static Widget selectLangWidget(BuildContext context, VoidCallback onTap) {
     return InkWell(
-      onTap: onTap, 
+      onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 10.w),
         height: 44.w,
@@ -300,11 +284,11 @@ class AppWidgets {
                   borderRadius: BorderRadius.circular(3.w),
                   child: context.locale == Locale('uz', 'UZ')
                       ? SvgPicture.asset(
-                    AppImageUtils.UZ_FLAG,
-                  )
+                          AppImageUtils.UZ_FLAG,
+                        )
                       : SvgPicture.asset(
-                    AppImageUtils.RUS_FLAG,
-                  ),
+                          AppImageUtils.RUS_FLAG,
+                        ),
                 ),
                 SizedBox(
                   width: 8.w,
@@ -328,15 +312,15 @@ class AppWidgets {
       ).paddingOnly(bottom: 24.w),
     );
   }
- static Widget deleteProfile(BuildContext context, VoidCallback onTap) {
+
+  static Widget deleteProfile(BuildContext context, VoidCallback onTap) {
     return InkWell(
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 10.w),
         height: 44.w,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: AppColorUtils.PINK),
+            borderRadius: BorderRadius.circular(12), color: AppColorUtils.PINK),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -373,14 +357,13 @@ class AppWidgets {
     );
   }
 
-
-
-  static Widget appBarMenu({required String title,
-    required VoidCallback onTapMenu,
-    VoidCallback? onTapIcon,
-    Color? textColor = AppColorUtils.BLACK,
-    bool visibleIcon = false,
-    String icon = ""}) {
+  static Widget appBarMenu(
+      {required String title,
+      required VoidCallback onTapMenu,
+      VoidCallback? onTapIcon,
+      Color? textColor = AppColorUtils.BLACK,
+      bool visibleIcon = false,
+      String icon = ""}) {
     return Container(
       height: 80.w,
       padding: EdgeInsets.only(
@@ -392,9 +375,10 @@ class AppWidgets {
         children: [
           InkWell(
             child: Container(
-                height: 35.w,
-                width: 35.w,
-                child: SvgPicture.asset(AppImageUtils.MENU)),
+              height: 35.w,
+              width: 35.w,
+              child: SvgPicture.asset(AppImageUtils.MENU),
+            ),
             onTap: onTapMenu,
           ),
           AppWidgets.textLocale(
@@ -404,16 +388,16 @@ class AppWidgets {
           ),
           visibleIcon
               ? InkWell(
-            child: Container(
-              height: 35.w,
-              width: 35.w,
-              child: SvgPicture.asset(icon),
-            ),
-            onTap: onTapIcon,
-          )
+                  child: Container(
+                    height: 35.w,
+                    width: 35.w,
+                    child: SvgPicture.asset(icon),
+                  ),
+                  onTap: onTapIcon,
+                )
               : SizedBox(
-            width: 20,
-          )
+                  width: 20,
+                )
         ],
       ),
     );
@@ -527,10 +511,10 @@ class AppWidgets {
               ],
             ),
             direction == true
-            ?SvgPicture.asset(
-              AppImageUtils.RIGHT_DIRECTION,
-            )
-            :SizedBox()
+                ? SvgPicture.asset(
+                    AppImageUtils.RIGHT_DIRECTION,
+                  )
+                : SizedBox()
           ],
         ),
       ),
@@ -582,38 +566,31 @@ class AppWidgets {
     );
   }
 
-  static Widget networkImage({
-    required String url,
-    double? height,
-    double? width,
-    Color? color,
-    BoxFit fit = BoxFit.cover,
-    int? scale
-  }) {
+  static Widget networkImage(
+      {required String url,
+      double? height,
+      double? width,
+      Color? color,
+      BoxFit fit = BoxFit.cover,
+      int? scale}) {
     return ClipRRect(
       borderRadius: BorderRadius.all(Radius.circular(14)),
       child: CachedNetworkImage(
-        imageUrl: url,
-        width: width,
-        height: height,
-        fit: fit,
-        color: color,
-        placeholder: (context, url){
-          return Center(
-            widthFactor: 20,
+          imageUrl: url,
+          width: width,
+          height: height,
+          fit: fit,
+          color: color,
+          placeholder: (context, url) {
+            return Center(
+              widthFactor: 20,
               heightFactor: 20,
               child: CircularProgressIndicator(),
             );
-        },
-        errorWidget: (context, url, error ){
-          return Container(
-              color: Colors.black12,
-            child: Container(
-
-            )
-          );
-        }
-      ),
+          },
+          errorWidget: (context, url, error) {
+            return Container(color: Colors.black12, child: Container());
+          }),
     );
   }
 

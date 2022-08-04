@@ -8,7 +8,6 @@ import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/ui/pages/notification_page/notification_page.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
-import '../../../../data/model/volunteering_model.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
@@ -16,9 +15,11 @@ import '../../../../data/utils/date_time_util.dart';
 import '../../../widgets/app_widgets.dart';
 
 class WaitingForAddingSuccess extends StatelessWidget {
-
-   WaitingForAddingSuccess(
-      {required this.model, required this.dateTime, required this.time, Key? key})
+  WaitingForAddingSuccess(
+      {required this.model,
+      required this.dateTime,
+      required this.time,
+      Key? key})
       : super(key: key);
   DateTime dateTime;
   DateTime time;
@@ -105,7 +106,9 @@ class WaitingForAddingSuccess extends StatelessWidget {
                 children: [
                   AppWidgets.appButton(
                     onTap: () {
-                      NavigatorService.to.pushReplacementNamed(NotificationPage.routeName);
+                      NavigatorService.to.pushReplacementNamed(
+                        NotificationPage.routeName,
+                      );
                     },
                     title: LocaleKeys.jump_to_note,
                     fontSize: 16.sp,
@@ -116,7 +119,6 @@ class WaitingForAddingSuccess extends StatelessWidget {
                     textColor: AppColorUtils.BLACK,
                     onTap: () {
                       NavigatorService.to.pop();
-
                     },
                     title: LocaleKeys.exit,
                     fontSize: 16.sp,

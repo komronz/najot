@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
-import 'package:najot/data/services/charity_saved_service.dart';
 import 'package:najot/data/services/main_service.dart';
 import '../../../ui/widgets/app_widgets.dart';
 import '../../localization/locale_keys.g.dart';
@@ -109,7 +108,6 @@ class CharityCubit extends Cubit<CharityState> {
   }
 
   Future onChangeSave(bool v) async {
-    var list = await CharitySavedService().getCharityList();
     emit(state.copyWith(saveHelp: v));
   }
 

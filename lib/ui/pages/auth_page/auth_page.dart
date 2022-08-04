@@ -20,11 +20,16 @@ class AuthPage extends StatelessWidget {
           children: [
             Stack(
               children: [
-                ClipPathWidget(height: context.height*0.6,),
+                ClipPathWidget(
+                  height: context.height * 0.6,
+                ),
                 Align(
                   alignment: Alignment.center,
-                  child: AppWidgets.imageSvg(path: AppImageUtils.LOGO_WORD_BIG,height: 136.w,width: 124.w)
-                      .paddingOnly(top: 120.w),
+                  child: AppWidgets.imageSvg(
+                    path: AppImageUtils.LOGO_WORD_BIG,
+                    height: 136.w,
+                    width: 124.w,
+                  ).paddingOnly(top: 120.w),
                 ),
               ],
             ),
@@ -32,10 +37,8 @@ class AuthPage extends StatelessWidget {
               title: LocaleKeys.log_in,
               onTap: () {
                 NavigatorService.to.pushNamed(LoginPage.routeName);
-
               },
             ).paddingSymmetric(horizontal: 20),
-
           ],
         ),
       ),

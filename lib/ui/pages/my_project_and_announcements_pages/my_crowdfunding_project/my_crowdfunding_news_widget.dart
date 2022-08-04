@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -30,7 +29,6 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
   final TextEditingController title = TextEditingController();
   final TextEditingController content = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -38,11 +36,13 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
       children: [
         cubit.state.newsData.isNotEmpty
             ? Column(
-                children: List.generate(
-                  cubit.state.newsData.length,
-                  (index) {
-                    var createdAt= DateTime.parse(cubit.state.newsData[index].createdAt!);
-                    return Container(
+                children: List.generate(cubit.state.newsData.length, (index) {
+                  var createdAt = DateTime.parse(
+                    cubit.state.newsData[index].createdAt!,
+                  );
+                  var name = cubit.state.newsData[index].user!.firstName??"";
+                  var lastname = cubit.state.newsData[index].user!.lastName??"";
+                  return Container(
                     padding: EdgeInsets.only(
                       top: 12.w,
                       left: 12.w,
@@ -50,7 +50,8 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                     ),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
-                        color: AppColorUtils.GREEN_ACCENT4),
+                        color: AppColorUtils.GREEN_ACCENT4,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -64,10 +65,12 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                                   height: 50.w,
                                   width: 50.w,
                                   decoration: BoxDecoration(
-                                      shape: BoxShape.circle, color: Colors.black12),
+                                      shape: BoxShape.circle,
+                                      color: Colors.black12,
+                                  ),
                                   child: CachedNetworkImage(
-                                    imageUrl: cubit.state
-                                        .newsData[index].user!.photo!,
+                                    imageUrl: cubit
+                                        .state.newsData[index].user!.photo!,
                                     fit: BoxFit.cover,
                                     placeholder: (context, url) => Center(
                                       child: CircularProgressIndicator(),
@@ -85,7 +88,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                                       width: 150.w,
                                       child: AppWidgets.text(
                                         text:
-                                            "${cubit.state.newsData[index].user!.firstName!} ${cubit.state.newsData[index].user!.lastName!}",
+                                            "${name} ${lastname}",
                                         color: AppColorUtils.TEXT_GREEN2,
                                         fontWeight: FontWeight.w600,
                                         fontSize: 14.sp,
@@ -100,7 +103,8 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                                           color: AppColorUtils.DARK_6,
                                         ).paddingOnly(right: 65.w),
                                         AppWidgets.text(
-                                          text: DateFormat("dd.MM.yyyy hh:mm").format(createdAt),
+                                          text: DateFormat("dd.MM.yyyy hh:mm")
+                                              .format(createdAt),
                                           fontSize: 10.sp,
                                           fontWeight: FontWeight.w500,
                                           color: AppColorUtils.BLUE_PERCENT,
@@ -123,12 +127,13 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                           top: 18.w,
                         ),
                         AppWidgets.text(
-                            height: 1.5,
-                            text: cubit.state.newsData[index].content!,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColorUtils.TEXT_GREY2,
-                            maxLines: 40),
+                          height: 1.5,
+                          text: cubit.state.newsData[index].content ?? "",
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                          color: AppColorUtils.TEXT_GREY2,
+                          maxLines: 40,
+                        ),
                         SizedBox(
                           height: 18.w,
                         ),
@@ -153,8 +158,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                       ],
                     ),
                   ).paddingOnly(bottom: 10.w);
-                  }
-                ),
+                }),
               )
             : Container(
                 child: Column(
@@ -177,7 +181,10 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ).paddingOnly(top: 52.h, bottom: 98.h),
+                    ).paddingOnly(
+                      top: 52.h,
+                      bottom: 98.h,
+                    ),
                   ],
                 ),
               ),
@@ -188,7 +195,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
           fontWeight: FontWeight.w600,
         ).paddingOnly(
           top: 10.w,
-          bottom: 5.w
+          bottom: 5.w,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -232,7 +239,6 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
               },
               imageFile: cubit.state.file,
             ),
-
           ],
         ),
         SizedBox(
@@ -261,18 +267,29 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
             ),
             keyboardType: TextInputType.multiline,
           ),
-        ).paddingOnly(top: 12.w, bottom: 12.w),
+        ).paddingOnly(
+          top: 12.w,
+          bottom: 12.w,
+        ),
         AppWidgets.appButton(
           title: LocaleKeys.send,
-          onTap: () async{
-            if(title.text!=""&&content.text!=""&&cubit.state.file!=null){
-              cubit.postNews(cardModel.id!, title.text, content.text,cubit.state.file!);
-              cubit.state.file=null;
+          onTap: () async {
+            if (title.text != "" &&
+                content.text != "" &&
+                cubit.state.file != null) {
+              cubit.postNews(
+                cardModel.id!,
+                title.text,
+                content.text,
+                cubit.state.file!,
+              );
+              cubit.state.file = null;
               cubit.load(cardModel.id!);
-            }else{
-              return AppWidgets.showText(text: "Parametirlarni to'liq kiriting");
+            } else {
+              return AppWidgets.showText(
+                text: LocaleKeys.enter_info.tr(),
+              );
             }
-
           },
         ),
       ],

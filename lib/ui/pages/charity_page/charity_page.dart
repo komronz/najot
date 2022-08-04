@@ -20,6 +20,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
 import '../../widgets/app_error_widget.dart';
+import '../crowdfunding_page_main/crowdfunding_widget/search_not _found.dart';
 import 'charity_full_page/charity_full_page.dart';
 import 'charity_full_page/charity_full_page2.dart';
 

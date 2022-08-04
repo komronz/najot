@@ -73,8 +73,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
         backgroundColor: AppColorUtils.BACKGROUND,
         appBar: AppBarWithTitle(
           title: LocaleKeys.about_project.tr(),
-          onPress: () async{
-            await HomeCubit.to.getModel();
+          onPress: () {
             NavigatorService.to.pop();
           },
         ),
@@ -127,7 +126,8 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
                     await CrowdfundingCubit.to.load();
                     AppWidgets.isLoading(false);
 
-                  });
+                  },
+              );
             }
 
           },

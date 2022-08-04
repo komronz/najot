@@ -76,7 +76,10 @@ class OrganizationItemWidget extends StatelessWidget {
                     ],
                   )
                 ],
-              ).paddingSymmetric(vertical: 14.w, horizontal: 12.w),
+              ).paddingSymmetric(
+                vertical: 14.w,
+                horizontal: 12.w,
+              ),
             )
           ],
         ),

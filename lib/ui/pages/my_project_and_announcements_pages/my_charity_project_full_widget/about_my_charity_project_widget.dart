@@ -51,12 +51,15 @@ class _AboutMyCharityProjectWidgetState
     _tabController.addListener(_handleTabSelection);
     super.initState();
   }
+
   _handleTabSelection() {
     if (_tabController.indexIsChanging) {
       setState(() {});
     }
   }
+
   bool selected = true;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -157,7 +160,9 @@ class _AboutMyCharityProjectWidgetState
                                   size: 14.sp,
                                 ),
                                 AppWidgets.text(
-                                  text: DateFormat("dd.MM.yyyy").format(DateTime.parse(widget.model.deadline!)),
+                                  text: DateFormat("dd.MM.yyyy").format(
+                                    DateTime.parse(widget.model.deadline!),
+                                  ),
                                   color: AppColorUtils.BLUE_PERCENT,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 14.sp,

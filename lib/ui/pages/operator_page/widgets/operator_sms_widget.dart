@@ -2,12 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/operator_model.dart';
-import 'package:najot/data/model/sms_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/data/utils/date_time_util.dart';
 import 'package:najot/ui/pages/operator_page/widgets/operator_user_sms_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 

@@ -12,8 +12,8 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
-import '../../../widgets/app_bar_with_title.dart';
-import '../../../widgets/app_widgets.dart';
+import '../../widgets/app_bar_with_title.dart';
+import '../../widgets/app_widgets.dart';
 
 class ChooseLangPage extends StatefulWidget {
   const ChooseLangPage({Key? key}) : super(key: key);

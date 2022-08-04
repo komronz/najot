@@ -28,8 +28,8 @@ class RegVolunteer extends StatefulWidget {
 
 class _RegVolunteerState extends State<RegVolunteer>
     with SingleTickerProviderStateMixin {
+  RegVolunteerBloc bloc = RegVolunteerBloc();
 
-  RegVolunteerBloc bloc= RegVolunteerBloc();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -72,7 +72,7 @@ class _RegVolunteerState extends State<RegVolunteer>
           listener: (context, state) {},
           builder: (context, state) {
             print(state.user);
-            if (AppPageCubit.to.state.user!.status=="CHECKING") {
+            if (AppPageCubit.to.state.user!.status == "CHECKING") {
               return buildWaitBody(context);
             }
             return buildBody(context);
@@ -112,8 +112,7 @@ class _RegVolunteerState extends State<RegVolunteer>
               ],
             ).paddingOnly(top: 18),
             AppWidgets.text(
-              text:
-                  LocaleKeys.information_write_operator.tr(),
+              text: LocaleKeys.information_write_operator.tr(),
               fontSize: 16.sp,
               fontWeight: FontWeight.w500,
               textAlign: TextAlign.center,
@@ -131,7 +130,11 @@ class _RegVolunteerState extends State<RegVolunteer>
                 ),
               ],
               color: AppColorUtils.DARK2,
-            ).paddingOnly(top: 24, left: 60.w, right: 60.w),
+            ).paddingOnly(
+              top: 24,
+              left: 60.w,
+              right: 60.w,
+            ),
             ButtonCard(
               width: context.width,
               height: 45.w,
@@ -177,8 +180,7 @@ class _RegVolunteerState extends State<RegVolunteer>
             ],
           ).paddingOnly(top: 18),
           AppWidgets.text(
-            text:
-                LocaleKeys.fill_out_form_volunteer.tr(),
+            text: LocaleKeys.fill_out_form_volunteer.tr(),
             fontSize: 16.sp,
             fontWeight: FontWeight.w600,
             color: AppColorUtils.DARK2,

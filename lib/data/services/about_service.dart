@@ -1,4 +1,3 @@
-
 import 'dart:ui';
 
 import 'package:dio/dio.dart';
@@ -10,18 +9,13 @@ import 'package:najot/data/services/root_service.dart';
 import '../bloc/language_cubit/language_cubit.dart';
 import '../utils/app_logger_util.dart';
 
-class AboutService{
+class AboutService {
   final HttpService httpService = HttpService();
 
-
-
-
-
-  static Future init() async{
+  static Future init() async {
     final getIt = GetIt.instance;
     getIt.registerSingleton<AboutService>(AboutService());
   }
-
 
   Future<MainAboutModel?> getModel() async {
     try {
@@ -29,11 +23,10 @@ class AboutService{
         url: "https://api.najot.uz/${LanguageCubit.getLang()}/about/",
       );
       if (response.statusCode == 200) {
-        final MainAboutModel responseModel = MainAboutModel.fromJson(response.data['results']);
-        // List<FaqModel> list=[];
-        // response.data.forEach((v) {
-        //   list.add(new FaqModel.fromJson(v));
-        // });
+        final MainAboutModel responseModel = MainAboutModel.fromJson(
+          response.data['results'],
+        );
+
         return responseModel;
       } else {
         AppLoggerUtil.e("-----------------");

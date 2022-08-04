@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:najot/data/bloc/language_cubit/language_cubit.dart';
 import 'package:najot/data/model/volunteer_donate_model.dart';
-import 'package:najot/data/model/volunteer_model.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/root_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';

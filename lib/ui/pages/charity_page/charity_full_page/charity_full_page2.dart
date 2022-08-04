@@ -85,8 +85,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
       backgroundColor: AppColorUtils.BACKGROUND,
       appBar: AppBarWithTitle(
         title: LocaleKeys.about_the_ad.tr(),
-        onPress: () async{
-          await HomeCubit.to.getModel();
+        onPress: () {
           NavigatorService.to.pop();
         },
       ),
@@ -381,7 +380,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                               text: LocaleKeys.you_accepted_ad.tr(),
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w500,
-                              color: AppColorUtils.DARK_6)
+                              color: AppColorUtils.DARK_6,)
                               .paddingOnly(
                             left: 20.w,
                             top: 10.w,

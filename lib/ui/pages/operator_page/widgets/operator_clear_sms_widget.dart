@@ -97,7 +97,7 @@ class OperatorClearSmsWidget extends StatelessWidget {
                       height: 48.w,
                       title: LocaleKeys.yes,
                       onTap: () {
-                        cubit.deleteSmsList();
+                        cubit.deleteSmsList(cubit.state.list![0]!.id!);
                         Navigator.pop(context);
                       },
                     ),

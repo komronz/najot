@@ -61,7 +61,10 @@ class AppDatePicker extends StatelessWidget {
                 : Row(
                     children: [
                       AppWidgets.text(
-                        text: DateTimeUtil.dmy(text!, context.locale),
+                        text: DateTimeUtil.dmy(
+                          text!,
+                          context.locale,
+                        ),
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
                       ).paddingOnly(left: 10),

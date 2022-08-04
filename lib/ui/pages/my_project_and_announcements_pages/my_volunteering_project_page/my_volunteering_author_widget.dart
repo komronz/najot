@@ -8,7 +8,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
-import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -79,7 +78,7 @@ class MyVolunteeringAuthorWidget extends StatelessWidget {
                       ).paddingAll(0.3),
                     ).paddingOnly(right: 5),
                     AppWidgets.textLocale(
-                      text: model.owner!.firstName!,
+                      text: model.owner!.firstName??"",
                       fontSize: 14.sp,
                       color: AppColorUtils.TEXT_GREEN,
                       fontWeight: FontWeight.w600,

@@ -80,7 +80,7 @@ class SavedPage extends StatelessWidget {
       return Center(
         child: CircularProgressIndicator(),
       );
-    }else if(cubit.state.list.isEmpty){
+    } else if (cubit.state.list.isEmpty) {
       return Center(
         child: Column(
           children: [
@@ -89,7 +89,7 @@ class SavedPage extends StatelessWidget {
               height: 70.w,
               width: 70.w,
               fit: BoxFit.none,
-            ).paddingOnly(top: 120.w,),
+            ).paddingOnly(top: 120.w),
             AppWidgets.textLocale(
               text: LocaleKeys.nothing_found_yet,
               textAlign: TextAlign.center,
@@ -97,7 +97,11 @@ class SavedPage extends StatelessWidget {
               fontWeight: FontWeight.w600,
               color: AppColorUtils.GRAY_4,
               maxLines: 2,
-            ).paddingOnly(top: 20,left: 60.w, right: 60.w),
+            ).paddingOnly(
+              top: 20,
+              left: 60.w,
+              right: 60.w,
+            ),
           ],
         ),
       );
@@ -119,7 +123,9 @@ class SavedPage extends StatelessWidget {
             visible: true,
             cardModel: cubit.state.list[index],
             changeLike: () {
-              cubit.changeLike(cubit.state.list[index].id!);
+              cubit.changeLike(
+                cubit.state.list[index].id!,
+              );
             },
           );
         }
@@ -136,8 +142,10 @@ class SavedPage extends StatelessWidget {
               );
             },
             cardModel: cubit.state.list[index],
-            changeLike: () async{
-              cubit.changeLike(cubit.state.list[index].id!);
+            changeLike: () async {
+              cubit.changeLike(
+                cubit.state.list[index].id!,
+              );
             },
           );
         }
@@ -150,7 +158,9 @@ class SavedPage extends StatelessWidget {
               },
               model: cubit.state.list[index],
               onTapLike: () {
-                cubit.changeLike(cubit.state.list[index].id!);
+                cubit.changeLike(
+                  cubit.state.list[index].id!,
+                );
               },
             );
           } else {
@@ -160,8 +170,10 @@ class SavedPage extends StatelessWidget {
                 NavigatorService.to.pushNamed(CharityFullPage2.routName,
                     arguments: cubit.state.list[index]);
               },
-              onTapLike: () async{
-                cubit.changeLike(cubit.state.list[index].id!);
+              onTapLike: () async {
+                cubit.changeLike(
+                  cubit.state.list[index].id!,
+                );
               },
             );
           }

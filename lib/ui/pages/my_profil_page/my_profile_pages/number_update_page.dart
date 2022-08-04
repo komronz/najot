@@ -21,7 +21,8 @@ import '../my_profile_widget/number_updating.dart';
 class NumberUpdatePage extends StatefulWidget {
   static const String routeName = "/numberUpdatePage";
   MyProfileUpdateBloc bloc;
-  NumberUpdatePage({required this.bloc}) ;
+
+  NumberUpdatePage({required this.bloc});
 
   @override
   State<NumberUpdatePage> createState() => _NumberUpdatePageState();
@@ -104,8 +105,7 @@ class _NumberUpdatePageState extends State<NumberUpdatePage> {
                                   inputFormatters: [maskFormatter],
                                   controller: numberController,
                                   onChanged: (v) {
-                                    widget.bloc
-                                        .add(PhoneChanged(v));
+                                    widget.bloc.add(PhoneChanged(v));
                                   },
                                   keyboardType: TextInputType.number,
                                   validator: (value) {
@@ -131,8 +131,10 @@ class _NumberUpdatePageState extends State<NumberUpdatePage> {
                                 ),
                                 hasError
                                     ? AppWidgets.starTextWidget(
-                                    text: LocaleKeys.enter_correct_phone_number.tr(),
-                                    color: AppColorUtils.RED)
+                                        text: LocaleKeys
+                                            .enter_correct_phone_number
+                                            .tr(),
+                                        color: AppColorUtils.RED)
                                     : SizedBox(),
                                 SizedBox(
                                   height: 20.w,
@@ -149,85 +151,81 @@ class _NumberUpdatePageState extends State<NumberUpdatePage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   SizedBox(height: 8.h),
-                                  widget.bloc
-                                      .state
-                                      .isVisible
+                                  widget.bloc.state.isVisible
                                       ? InkWell(
-                                    onTap: () {
-                                      if(numberController.text.length==12){
-                                        setState((){
-                                          hasError=false;
-                                        });
-                                        widget.bloc
-                                            .add(SendCode(
-                                            numberController.text));
-                                      }else{
-                                        setState((){
-                                          hasError=true;
-                                        });
-                                      }
-
-                                    },
-                                    child: Visibility(
-                                      visible: widget.bloc
-                                          .state
-                                          .isVisible,
-                                      child: Container(
-                                        padding: EdgeInsets.only(
-                                            top: 10,
-                                            bottom: 13,
-                                            right: 10,
-                                            left: 10),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                          BorderRadius.circular(12),
-                                          color: AppColorUtils.BLUE_BUTTON,
-                                        ),
-                                        child: AppWidgets.textLocale(
-                                            text: LocaleKeys.send_code,
-                                            textAlign: TextAlign.center,
-                                            color: AppColorUtils.WHITE,
-                                            fontSize: 15.sp,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                    ),
-                                  )
+                                          onTap: () {
+                                            if (numberController.text.length ==
+                                                12) {
+                                              setState(() {
+                                                hasError = false;
+                                              });
+                                              widget.bloc.add(SendCode(
+                                                  numberController.text));
+                                            } else {
+                                              setState(() {
+                                                hasError = true;
+                                              });
+                                            }
+                                          },
+                                          child: Visibility(
+                                            visible:
+                                                widget.bloc.state.isVisible,
+                                            child: Container(
+                                              padding: EdgeInsets.only(
+                                                  top: 10,
+                                                  bottom: 13,
+                                                  right: 10,
+                                                  left: 10),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
+                                                color:
+                                                    AppColorUtils.BLUE_BUTTON,
+                                              ),
+                                              child: AppWidgets.textLocale(
+                                                  text: LocaleKeys.send_code,
+                                                  textAlign: TextAlign.center,
+                                                  color: AppColorUtils.WHITE,
+                                                  fontSize: 15.sp,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                          ),
+                                        )
                                       : NumberUpdating(
-                                    state: state,
-                                    number: numberController.text,
-                                    confirmation: (v) {
-                                      if (numberController.text.length ==
-                                          12) {
-                                        setState((){
-                                          hasError=false;
-                                        });
-                                        widget.bloc
-                                            .add(ChangeNumber(
-                                          int.parse(v),
-                                          numberController.text,
-                                        ));
-                                      } else {
-                                        setState(() {
-                                          hasError = true;
-                                        });
-                                      }
-                                    },
-                                    resend: () {
-                                      if (numberController.text.length == 12) {
-                                        setState((){
-                                          hasError=false;
-                                        });
-                                        widget.bloc
-                                            .add(SendCode(
-                                          numberController.text,
-                                        ));
-                                      } else {
-                                        setState(() {
-                                          hasError = true;
-                                        });
-                                      }
-                                    },
-                                  ),
+                                          state: state,
+                                          number: numberController.text,
+                                          confirmation: (v) {
+                                            if (numberController.text.length ==
+                                                12) {
+                                              setState(() {
+                                                hasError = false;
+                                              });
+                                              widget.bloc.add(ChangeNumber(
+                                                int.parse(v),
+                                                numberController.text,
+                                              ));
+                                            } else {
+                                              setState(() {
+                                                hasError = true;
+                                              });
+                                            }
+                                          },
+                                          resend: () {
+                                            if (numberController.text.length ==
+                                                12) {
+                                              setState(() {
+                                                hasError = false;
+                                              });
+                                              widget.bloc.add(SendCode(
+                                                numberController.text,
+                                              ));
+                                            } else {
+                                              setState(() {
+                                                hasError = true;
+                                              });
+                                            }
+                                          },
+                                        ),
                                 ],
                               ),
                             ),
@@ -237,8 +235,7 @@ class _NumberUpdatePageState extends State<NumberUpdatePage> {
                     ),
                   ),
                 ],
-              )
-          );
+              ));
         },
       ),
     );

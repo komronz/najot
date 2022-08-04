@@ -108,7 +108,7 @@ class OperatorUserSmsWidget extends StatelessWidget {
 
   static double calculateWidth(String s) {
     if (s.length < 12) {
-      return 150.0;
+      return 140.0;
     }
     if (s.length > 35) {
       return 260.0;

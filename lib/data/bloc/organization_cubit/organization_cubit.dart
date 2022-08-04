@@ -6,7 +6,6 @@ import 'package:najot/data/model/organization_model.dart';
 import 'package:najot/data/model/volunteer_model.dart';
 import 'package:najot/data/services/main_service.dart';
 import 'package:najot/data/services/organization_service.dart';
-import 'package:najot/data/services/volunteer_service.dart';
 
 import '../../../ui/widgets/app_widgets.dart';
 import '../../localization/locale_keys.g.dart';
@@ -23,7 +22,6 @@ class OrganizationCubit extends Cubit<OrganizationState> {
   OrganizationCubit()
       : super(OrganizationState(
           checkBox: false,
-          tobeVolunteer: Volunteer.tobeVolunteer,
         ));
   OrganizationService organizationService = OrganizationService();
   MainService mainService = MainService();

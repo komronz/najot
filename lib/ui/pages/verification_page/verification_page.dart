@@ -37,7 +37,7 @@ class VerificationPage extends StatelessWidget with SmartAuth {
         body: BlocConsumer<LoginBloc, LoginState>(
             listener: (context, state) {
               if (state.loginSuccess) {
-                 HomeCubit.to.getModel();
+                HomeCubit.to.getModel();
                 NavigatorService.to.pushNamedAndRemoveUntil(
                   HomePage.routeName,
                   arguments: AppPageType.MAIN,
@@ -82,39 +82,39 @@ class VerificationPage extends StatelessWidget with SmartAuth {
                         ).paddingOnly(top: 20),
                         state.codeError
                             ? AppWidgets.starTextWidget(
-                                    text: LocaleKeys.code_entered_incorrectly.tr(),
-                                    fontSize: 12.w,
-                        )
-                                .paddingOnly(left: 120.w, top: 10)
+                                text: LocaleKeys.code_entered_incorrectly.tr(),
+                                fontSize: 12.w,
+                              ).paddingOnly(left: 120.w, top: 10)
                             : SizedBox(),
                         state.sendCodeDuration
-                            ?CircularProgressIndicator().paddingOnly(top: 10)
-                            :TextButton(
-                          onPressed: () {
-
-                            loginBloc.add(CheckPhoneNumberChanged(0));
-                            loginBloc.add(ResendCode());
-                          },
-                          child: AppWidgets.textLocale(
-                            text: LocaleKeys.send_again,
-                            color: AppColorUtils.TEXT_BLUE,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
+                            ? CircularProgressIndicator().paddingOnly(top: 10)
+                            : TextButton(
+                                onPressed: () {
+                                  loginBloc.add(CheckPhoneNumberChanged(0));
+                                  loginBloc.add(ResendCode());
+                                },
+                                child: AppWidgets.textLocale(
+                                  text: LocaleKeys.send_again,
+                                  color: AppColorUtils.TEXT_BLUE,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
                         AppWidgets.appButton(
                           title: LocaleKeys.next,
                           onTap: () {
-                            if(_pinPutController.text.isNotEmpty){
-                              int a = int.parse(_pinPutController.text.toString());
+                            if (_pinPutController.text.isNotEmpty) {
+                              int a =
+                                  int.parse(_pinPutController.text.toString());
                               loginBloc.add(
                                 LoginEnd(a),
                               );
-                            }else{
-                              AppWidgets.showText(text: LocaleKeys.enter_confirmation_code.tr());
+                            } else {
+                              AppWidgets.showText(
+                                text: LocaleKeys.enter_confirmation_code.tr(),
+                              );
                             }
-
                           },
                         ).paddingOnly(
                           top: 20.h,

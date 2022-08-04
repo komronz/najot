@@ -52,11 +52,16 @@ class LoginPage extends StatelessWidget {
               children: [
                 Stack(
                   children: [
-                    ClipPathWidget(height: context.height * 0.6),
+                    ClipPathWidget(
+                      height: context.height * 0.6,
+                    ),
                     Align(
                       alignment: Alignment.center,
-                      child: AppWidgets.imageSvg(path: AppImageUtils.LOGO_BIG,height: 118.w, width: 118.w)
-                          .paddingOnly(top: 140.w),
+                      child: AppWidgets.imageSvg(
+                        path: AppImageUtils.LOGO_BIG,
+                        height: 118.w,
+                        width: 118.w,
+                      ).paddingOnly(top: 140.w),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,9 +97,9 @@ class LoginPage extends StatelessWidget {
                 ),
                 state.hasError
                     ? AppWidgets.starTextWidget(
-                            text: LocaleKeys.enter_correct_phone_number.tr(),
-                            color: AppColorUtils.RED)
-                        .paddingOnly(left: 20)
+                        text: LocaleKeys.enter_correct_phone_number.tr(),
+                        color: AppColorUtils.RED,
+                      ).paddingOnly(left: 20)
                     : SizedBox(),
                 AppWidgets.appButton(
                   title: LocaleKeys.enter,
@@ -102,7 +107,10 @@ class LoginPage extends StatelessWidget {
                   onTap: () {
                     context.read<LoginBloc>().add(CheckPhoneNumber());
                   },
-                ).paddingSymmetric(vertical: 24.h, horizontal: 20),
+                ).paddingSymmetric(
+                  vertical: 24.h,
+                  horizontal: 20,
+                ),
               ],
             ),
           ),

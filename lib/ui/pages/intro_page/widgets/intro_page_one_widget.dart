@@ -4,6 +4,7 @@ import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+import 'intro_clip_path_widget.dart';
 import 'intro_view_widgets.dart';
 
 class IntroPageOneWidget extends StatelessWidget {
@@ -25,8 +26,12 @@ class IntroPageOneWidget extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            AppWidgets.imageAsset(path: image, height: 250.w,).paddingOnly(
-              bottom: 60.h, left: 40.w,
+            AppWidgets.imageAsset(
+              path: image,
+              height: 250.w,
+            ).paddingOnly(
+              bottom: 60.h,
+              left: 40.w,
             ),
             AppWidgets.textLocale(
               text: title,
@@ -42,7 +47,10 @@ class IntroPageOneWidget extends StatelessWidget {
               maxLines: 2,
               fontSize: 15.sp,
               fontWeight: FontWeight.w400,
-            ).paddingOnly(right: 30.w,left: 30.w),
+            ).paddingOnly(
+              right: 30.w,
+              left: 30.w,
+            ),
           ],
         ).paddingOnly(top: 120.h),
       ],

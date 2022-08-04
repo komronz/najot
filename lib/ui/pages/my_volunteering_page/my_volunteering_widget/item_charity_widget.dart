@@ -10,10 +10,7 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/volunteer_donate_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/waiting_for_date_picker_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-
-import '../../../../data/model/volunteering_model.dart';
 import 'item_charity_date_picker_widget.dart';
 
 class ItemCharityWidget extends StatelessWidget {
@@ -81,7 +78,8 @@ class ItemCharityWidget extends StatelessWidget {
                         text: LocaleKeys.item_type,
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
-                        color: AppColorUtils.GRAY_4)
+                        color: AppColorUtils.GRAY_4,
+                )
                     .paddingOnly(
                   bottom: 4,
                   right: 6,
@@ -112,7 +110,7 @@ class ItemCharityWidget extends StatelessWidget {
                             color: AppColorUtils.GRAY_4,
                           ).paddingOnly(bottom: 4),
                           AppWidgets.textLocale(
-                            text: model.project!.address!,
+                            text: model.project!.address??"",
                             color: AppColorUtils.BLUE_TEXT,
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w500,
@@ -132,8 +130,8 @@ class ItemCharityWidget extends StatelessWidget {
                                       text: LocaleKeys.executable_date,
                                       fontSize: 9.sp,
                                       fontWeight: FontWeight.w400,
-                                      color: AppColorUtils.GRAY_4)
-                                  .paddingOnly(
+                                      color: AppColorUtils.GRAY_4,
+                              ).paddingOnly(
                                 bottom: 4,
                               ),
                             ],
@@ -168,7 +166,8 @@ class ItemCharityWidget extends StatelessWidget {
                         text: LocaleKeys.phone_number,
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
-                        color: AppColorUtils.GRAY_4)
+                        color: AppColorUtils.GRAY_4,
+                )
                     .paddingOnly(
                   bottom: 4,
                   right: 6,
@@ -190,7 +189,7 @@ class ItemCharityWidget extends StatelessWidget {
                             color: AppColorUtils.BLUE_TEXT,
                           ).paddingOnly(right: 5),
                           AppWidgets.text(
-                            text: model.project!.owner!.phone!,
+                            text: model.project!.owner!.phone??"",
                             fontSize: 14.sp,
                           ),
                         ],
@@ -218,9 +217,9 @@ class ItemCharityWidget extends StatelessWidget {
                             : SizedBox(),
                         model.project!.isDone!
                             ? AppWidgets.imageSvg(
-                                path: AppImageUtils.NOTIFICATION_GREY)
-                            :
-                        InkWell(
+                                path: AppImageUtils.NOTIFICATION_GREY,
+                        )
+                            : InkWell(
                           onTap: () async {
                             await showDialog(
                               context: context,
@@ -236,7 +235,8 @@ class ItemCharityWidget extends StatelessWidget {
                             );
                           },
                           child: AppWidgets.imageSvg(
-                            path: AppImageUtils.NOTIFICATION,),
+                            path: AppImageUtils.NOTIFICATION,
+                          ),
                         ),
 
                       ],

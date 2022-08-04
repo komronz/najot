@@ -18,8 +18,12 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
 class NotificationDeleteWidget extends StatelessWidget {
-  const NotificationDeleteWidget({ required this.cubit, required this.index,Key? key, required this.model})
-      : super(key: key);
+  const NotificationDeleteWidget({
+    required this.cubit,
+    required this.index,
+    Key? key,
+    required this.model,
+  }) : super(key: key);
   final NotificationCubit cubit;
   final int index;
   final VolunteerDbModel model;
@@ -80,7 +84,7 @@ class NotificationDeleteWidget extends StatelessWidget {
                   ),
                   ButtonCard(
                     onPress: () {
-                      cubit.delete(index,model);
+                      cubit.delete(index, model);
                       MyVolunteeringCubit.to.load();
                       NotificationApiService.cancelNotification();
                       NavigatorService.to.pop();
@@ -89,7 +93,6 @@ class NotificationDeleteWidget extends StatelessWidget {
                       //   HomePage.routeName,
                       //   arguments: AppPageType.VOLUNTEERING,
                       // );
-
                     },
                     text: LocaleKeys.yes,
                     textSize: 16.sp,

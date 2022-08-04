@@ -178,12 +178,12 @@ class CharityHelpWidget extends StatelessWidget {
                     bottom: 3.w,
                   ),
                   AppWidgets.text(
-                          text: helpModel.cardModel.title ?? "",
-                          maxLines: 2,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
-                          color: AppColorUtils.GREEN_TEXT)
-                      .paddingSymmetric(horizontal: 20.w),
+                    text: helpModel.cardModel.title ?? "",
+                    maxLines: 2,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16.sp,
+                    color: AppColorUtils.GREEN_TEXT,
+                  ).paddingSymmetric(horizontal: 20.w),
                   AppWidgets.textLocale(
                     text: LocaleKeys.address,
                     fontWeight: FontWeight.w400,
@@ -204,7 +204,6 @@ class CharityHelpWidget extends StatelessWidget {
                   ButtonCard(
                     onPress: () {
                       if (state.checkBox) {
-
                         showDialog(
                             context: context,
                             builder: (ctx) => TimePikerCharity(
@@ -255,11 +254,11 @@ class CharityHelpWidget extends StatelessWidget {
                     ],
                   ),
                   AppWidgets.textLocale(
-                          text: LocaleKeys.attention_agree_help,
-                          color: AppColorUtils.RED,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12.sp,
-                          maxLines: 2,
+                    text: LocaleKeys.attention_agree_help,
+                    color: AppColorUtils.RED,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 12.sp,
+                    maxLines: 2,
                   ).paddingSymmetric(horizontal: 20.w),
                   SizedBox(height: 20.w)
                 ],

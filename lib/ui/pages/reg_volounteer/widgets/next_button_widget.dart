@@ -33,7 +33,9 @@ class NextButtonWidget extends StatelessWidget {
           onTap: isActive
               ? onTap
               : () {
-                  AppWidgets.showText(text: LocaleKeys.fill_fields_completely.tr());
+                  AppWidgets.showText(
+                    text: LocaleKeys.fill_fields_completely.tr(),
+                  );
                 },
           child: CircleAvatar(
             radius: 20,

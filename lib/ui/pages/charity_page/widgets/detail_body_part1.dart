@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,14 +10,14 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class DetailBodyPart1 extends StatelessWidget {
-   DetailBodyPart1({required this.cardModel});
+  DetailBodyPart1({required this.cardModel});
 
   ProjectModel cardModel;
 
   @override
   Widget build(BuildContext context) {
-    var modifiedAt= DateTime.parse(cardModel.modifiedAt??"");
-    var createAt= DateTime.parse(cardModel.createdAt??"");
+    var modifiedAt = DateTime.parse(cardModel.modifiedAt ?? "");
+    var createAt = DateTime.parse(cardModel.createdAt ?? "");
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -69,13 +68,17 @@ class DetailBodyPart1 extends StatelessWidget {
           fontWeight: FontWeight.w400,
           fontSize: 10.sp,
           color: AppColorUtils.DARK_6,
-        ).paddingOnly(top: 13.w, left: 20.w, bottom: 3.w),
+        ).paddingOnly(
+          top: 13.w,
+          left: 20.w,
+          bottom: 3.w,
+        ),
         AppWidgets.text(
-            text: cardModel.helpType??"",
-            maxLines: 2,
-            fontWeight: FontWeight.w600,
-            fontSize: 16.sp,
-            color: AppColorUtils.GREEN_TEXT)
+                text: cardModel.helpType ?? "",
+                maxLines: 2,
+                fontWeight: FontWeight.w600,
+                fontSize: 16.sp,
+                color: AppColorUtils.GREEN_TEXT)
             .paddingSymmetric(horizontal: 20.w),
         AppWidgets.textLocale(
           text: LocaleKeys.address,
@@ -88,12 +91,12 @@ class DetailBodyPart1 extends StatelessWidget {
           bottom: 3.w,
         ),
         AppWidgets.text(
-            text: cardModel.address??"",
-            fontSize: 14.w,
-            fontWeight: FontWeight.w500,
-            color: AppColorUtils.TEXT_BLUE2,
-            maxLines: 2,)
-            .paddingSymmetric(horizontal: 20.w)
+          text: cardModel.address ?? "",
+          fontSize: 14.w,
+          fontWeight: FontWeight.w500,
+          color: AppColorUtils.TEXT_BLUE2,
+          maxLines: 2,
+        ).paddingSymmetric(horizontal: 20.w)
       ],
     ).paddingOnly(bottom: 15.w);
   }

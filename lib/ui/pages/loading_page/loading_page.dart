@@ -17,11 +17,16 @@ class LoadingPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 15.0, sigmaY: 15.0),
+          filter: ImageFilter.blur(
+            sigmaX: 15.0,
+            sigmaY: 15.0,
+          ),
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            decoration: BoxDecoration(color: Colors.white.withOpacity(0.4)),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.4),
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

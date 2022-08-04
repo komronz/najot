@@ -44,95 +44,96 @@ class _CommentsWidgetState extends State<MyCrowdfundingCommentsWidget> {
       children: [
         list.isNotEmpty
             ? Column(
-          children: List.generate(
-            widget.cubit.state.commentsData.length,
-                (index) => Container(
-              padding: EdgeInsets.only(
-                top: 12.w,
-                left: 12.w,
-                right: 12.w,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: AppColorUtils.GREEN_ACCENT4,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 50.w,
-                        width: 50.w,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.black12),
-                        child: CachedNetworkImage(
-                          imageUrl: list[index].user!.photo!,
-                          fit: BoxFit.cover,
-                          placeholder: (context, url) => Center(
-                            child: CircularProgressIndicator(),
-                          ),
-                          errorWidget: (context, url, error) =>
-                              Icon(Icons.person),
-                        ),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            child: AppWidgets.text(
-                              text: LocaleKeys.great_project.tr(),
-                              color: AppColorUtils.TEXT_GREEN2,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14.sp,
+                children: List.generate(
+                  widget.cubit.state.commentsData.length,
+                  (index) => Container(
+                    padding: EdgeInsets.only(
+                      top: 12.w,
+                      left: 12.w,
+                      right: 12.w,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: AppColorUtils.GREEN_ACCENT4,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              height: 50.w,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.black12,
+                              ),
+                              child: CachedNetworkImage(
+                                imageUrl: list[index].user!.photo!,
+                                fit: BoxFit.cover,
+                                placeholder: (context, url) => Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    Icon(Icons.person),
+                              ),
                             ),
-                            width: 220.w,
-                          ),
-                          AppWidgets.text(
-                            text:
-                            "${list[index].user!.lastName} ${list[index].user!.firstName}",
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColorUtils.DARK_6,
-                          ).paddingOnly(top: 5.w),
-                        ],
-                      ).paddingOnly(left: 10),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  child: AppWidgets.text(
+                                    text: LocaleKeys.great_project.tr(),
+                                    color: AppColorUtils.TEXT_GREEN2,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14.sp,
+                                  ),
+                                  width: 220.w,
+                                ),
+                                AppWidgets.text(
+                                  text:
+                                      "${list[index].user!.lastName} ${list[index].user!.firstName}",
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColorUtils.DARK_6,
+                                ).paddingOnly(top: 5.w),
+                              ],
+                            ).paddingOnly(left: 10),
+                          ],
+                        ),
+                        AppWidgets.text(
+                          text: list[index].content ?? "",
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14.sp,
+                          color: AppColorUtils.TEXT_GREY2,
+                          maxLines: 100,
+                          height: 1.5,
+                        ).paddingSymmetric(vertical: 15.w),
+                      ],
+                    ),
+                  ).paddingOnly(bottom: 10),
+                ),
+              )
+            : Container(
+                child: Center(
+                  child: Column(
+                    children: [
+                      SvgPicture.asset(AppImageUtils.NEWS),
+                      SizedBox(
+                        width: 200.sp,
+                        child: AppWidgets.textLocale(
+                          textAlign: TextAlign.center,
+                          text: LocaleKeys.comments_empty,
+                          color: AppColorUtils.DARK_4,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
+                          maxLines: 2,
+                        ),
+                      )
                     ],
                   ),
-                  AppWidgets.text(
-                    text: list[index].content!,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.sp,
-                    color: AppColorUtils.TEXT_GREY2,
-                    maxLines: 100,
-                    height: 1.5,
-                  ).paddingSymmetric(vertical: 15.w),
-                ],
+                ),
               ),
-            ).paddingOnly(bottom: 10),
-          ),
-        )
-            : Container(
-          child: Center(
-            child: Column(
-              children: [
-                SvgPicture.asset(AppImageUtils.NEWS),
-                SizedBox(
-                  width: 200.sp,
-                  child: AppWidgets.textLocale(
-                    textAlign: TextAlign.center,
-                    text: LocaleKeys.comments_empty,
-                    color: AppColorUtils.DARK_4,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w600,
-                    maxLines: 2,
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
         Divider(
           thickness: 1,
           color: AppColorUtils.BLACK_12,
@@ -203,10 +204,10 @@ class _CommentsWidgetState extends State<MyCrowdfundingCommentsWidget> {
                         content.text,
                       );
                       widget.cubit.load(widget.projectModel.id!);
-                      title.text="";
-                      content.text="";
-                      hasTextTitle=false;
-                      hasTextComment=false;
+                      title.text = "";
+                      content.text = "";
+                      hasTextTitle = false;
+                      hasTextComment = false;
                     } else {
                       AppWidgets.showText(text: LocaleKeys.enter_info.tr());
                     }

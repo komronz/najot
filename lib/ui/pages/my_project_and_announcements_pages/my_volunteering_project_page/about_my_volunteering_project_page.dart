@@ -126,8 +126,9 @@ class _AboutMyVolunteeringItemProjectWidgetState
                                 //   icon: SvgPicture.asset(AppImageUtils.USERS),
                                 // ).paddingOnly(right: 17.w),
                                 InkWell(
-                                  child:
-                                      SvgPicture.asset(AppImageUtils.TRASH_RED),
+                                  child: SvgPicture.asset(
+                                    AppImageUtils.TRASH_RED,
+                                  ),
                                   onTap: () {
                                     showDialog(
                                       context: context,
@@ -142,24 +143,29 @@ class _AboutMyVolunteeringItemProjectWidgetState
                                 ).paddingOnly(right: 12.w),
                                 InkWell(
                                   child: SvgPicture.asset(
-                                      AppImageUtils.EDIT_GREEN,
+                                    AppImageUtils.EDIT_GREEN,
                                   ),
                                   onTap: () {
                                     showDialog(
                                       context: context,
                                       builder: (context) {
-                                        return MyEditProjectDialog(cubit: cubit,);
+                                        return MyEditProjectDialog(
+                                          cubit: cubit,
+                                        );
                                       },
                                     );
                                   },
                                 ),
                               ],
                             ),
-                          ).paddingOnly(top: 35.h, right: 15.w),
+                          ).paddingOnly(
+                            top: 35.h,
+                            right: 15.w,
+                          ),
                         ],
                       ),
                       AppWidgets.text(
-                        text: widget.model.title??"",
+                        text: widget.model.title ?? "",
                         fontWeight: FontWeight.w500,
                         fontSize: 20.sp,
                         color: AppColorUtils.DARK2,
@@ -280,7 +286,10 @@ class _AboutMyVolunteeringItemProjectWidgetState
                                               borderRadius:
                                                   BorderRadius.circular(50),
                                               color: Colors.red),
-                                        ).paddingOnly(left: 3.w, top: 2.w),
+                                        ).paddingOnly(
+                                          left: 3.w,
+                                          top: 2.w,
+                                        ),
                                       )
                                     ],
                                   ),
@@ -296,11 +305,18 @@ class _AboutMyVolunteeringItemProjectWidgetState
                                 indicatorColor: AppColorUtils.GREEN_APP,
                                 indicatorSize: TabBarIndicatorSize.tab,
                                 padding: EdgeInsets.only(right: 10),
-                                indicatorPadding:
-                                    EdgeInsets.only(right: 10, left: 10),
-                                labelPadding:
-                                    EdgeInsets.only(right: 10, left: 10),
-                              ).paddingOnly(left: 15.w, top: 8.w),
+                                indicatorPadding: EdgeInsets.only(
+                                  right: 10,
+                                  left: 10,
+                                ),
+                                labelPadding: EdgeInsets.only(
+                                  right: 10,
+                                  left: 10,
+                                ),
+                              ).paddingOnly(
+                                left: 15.w,
+                                top: 8.w,
+                              ),
                               Container(
                                 child: [
                                   MoreWidget(
@@ -331,7 +347,10 @@ class _AboutMyVolunteeringItemProjectWidgetState
                           ),
                         ),
                       )
-                    : AnswersWidget(cubit: cubit, model: widget.model),
+                    : AnswersWidget(
+                        cubit: cubit,
+                        model: widget.model,
+                      ),
               ],
             ),
           ),

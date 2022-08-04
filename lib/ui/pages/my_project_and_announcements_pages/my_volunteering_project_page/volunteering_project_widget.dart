@@ -6,7 +6,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
-import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/about_my_volunteering_project_page.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
@@ -27,13 +26,21 @@ class VolunteeringProjectWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        margin: EdgeInsets.only(right: 10, bottom: 10),
+        margin: EdgeInsets.only(
+          right: 10,
+          bottom: 10,
+        ),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Color.fromRGBO(11, 191, 144, 0.08),
+              color: Color.fromRGBO(
+                11,
+                191,
+                144,
+                0.08,
+              ),
               blurRadius: 12,
               offset: Offset(0, 5),
             )
@@ -53,8 +60,7 @@ class VolunteeringProjectWidget extends StatelessWidget {
                     child: CircularProgressIndicator(),
                   ),
                   imageUrl: model.coverUrl!,
-                  errorWidget: (context, url, error) =>
-                      Icon(Icons.error),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -64,7 +70,7 @@ class VolunteeringProjectWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppWidgets.text(
-                    text: model.title??"",
+                    text: model.title ?? "",
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
                     maxLines: 2,
@@ -79,7 +85,7 @@ class VolunteeringProjectWidget extends StatelessWidget {
                     bottom: 3.h,
                   ),
                   AppWidgets.text(
-                    text: model.helpType??"",
+                    text: model.helpType ?? "",
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.GREEN_TEXT,
@@ -129,7 +135,7 @@ class VolunteeringProjectWidget extends StatelessWidget {
                               ).paddingAll(0.2),
                             ).paddingOnly(right: 5),
                             AppWidgets.textLocale(
-                              text: model.owner!.lastName!,
+                              text: model.owner!.lastName ?? "",
                               fontSize: 12.sp,
                               color: AppColorUtils.TEXT_GREEN,
                               fontWeight: FontWeight.w600,
@@ -146,10 +152,10 @@ class VolunteeringProjectWidget extends StatelessWidget {
           ],
         ),
       ),
-      onTap: (){
+      onTap: () {
         NavigatorService.to.pushNamed(
           AboutMyVolunteeringItemProjectWidget.routeName,
-            arguments: model,
+          arguments: model,
         );
       },
     );

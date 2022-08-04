@@ -1,18 +1,9 @@
-import 'dart:convert';
-
 import 'package:bloc/bloc.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
-import 'package:floor/floor.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/bloc/my_volunteering_cubit/my_volunteering_cubit.dart';
-import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/model/volunteer_db_model.dart';
-import 'package:najot/data/model/volunteering_model.dart';
 import 'package:najot/data/services/db_service.dart';
-import 'package:najot/data/services/notification_api_service.dart';
-
-import '../../localization/locale_keys.g.dart';
 
 part 'notification_state.dart';
 

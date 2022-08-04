@@ -42,7 +42,9 @@ class View2 extends StatelessWidget {
                   hintText: "(AA)",
                 ),
               ),
-              SizedBox(width: 20.w,),
+              SizedBox(
+                width: 20.w,
+              ),
               Expanded(
                 child: AppTextField(
                   title: LocaleKeys.passport_number,
@@ -56,7 +58,11 @@ class View2 extends StatelessWidget {
                 ),
               )
             ],
-          ).paddingOnly(top: 15,left: 20.w,right: 20.w,),
+          ).paddingOnly(
+            top: 15,
+            left: 20.w,
+            right: 20.w,
+          ),
           AppTextField(
             hintText: LocaleKeys.tashkent_city_yunsabad.tr(),
             onChanged: (v) {
@@ -66,7 +72,11 @@ class View2 extends StatelessWidget {
             initialText: bloc.state.givenAddress,
             title: LocaleKeys.given_by,
             textInputType: TextInputType.name,
-          ).paddingOnly(top: 24.w,left: 20.w,right: 20.w,),
+          ).paddingOnly(
+            top: 24.w,
+            left: 20.w,
+            right: 20.w,
+          ),
           AppDatePicker(
             title: LocaleKeys.when_given,
             onTap: () async {
@@ -159,12 +169,12 @@ class View2 extends StatelessWidget {
                 onTap: bloc.state.sendBtnActive
                     ? () {
                         bloc.add(PostVolunteerData());
-                           showDialog(
-                            context: context,
-                            builder: (ctx) => VolunteerSuccessWidget(
-                              bloc: context.read<RegVolunteerBloc>(),
-                            ),
-                          );
+                        showDialog(
+                          context: context,
+                          builder: (ctx) => VolunteerSuccessWidget(
+                            bloc: context.read<RegVolunteerBloc>(),
+                          ),
+                        );
                       }
                     : () {
                         AppWidgets.showText(

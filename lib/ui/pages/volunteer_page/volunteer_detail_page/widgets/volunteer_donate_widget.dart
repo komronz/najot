@@ -36,31 +36,32 @@ class VolunteerDonateWidget extends StatelessWidget {
             bottom: 3.w,
           ),
           AppWidgets.text(
-                  text: cardModel.title??"",
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  color: AppColorUtils.DARK2,
-                  maxLines: 50,
-                  height: 1.4.w)
-              .paddingOnly(
+            text: cardModel.title ?? "",
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w400,
+            color: AppColorUtils.DARK2,
+            maxLines: 50,
+            height: 1.4.w,
+          ).paddingOnly(
             left: 20.w,
             right: 20.w,
             bottom: 12.w,
           ),
           AppWidgets.textLocale(
-                  text: LocaleKeys.person_applied,
-                  fontSize: 10.sp,
-                  fontWeight: FontWeight.w400,
-                  color: AppColorUtils.DARK_6)
-              .paddingSymmetric(horizontal: 20.w),
+            text: LocaleKeys.person_applied,
+            fontSize: 10.sp,
+            fontWeight: FontWeight.w400,
+            color: AppColorUtils.DARK_6,
+          ).paddingSymmetric(horizontal: 20.w),
           AppWidgets.circleImages(
             count: cardModel.investorsCount!,
           ).paddingSymmetric(horizontal: 20.w),
           AppWidgets.textLocale(
-              text: LocaleKeys.card_number.tr(),
-              fontSize: 16.sp,
-              color: AppColorUtils.DARK_6,
-              fontWeight: FontWeight.w400).paddingOnly(left: 20.w),
+            text: LocaleKeys.card_number.tr(),
+            fontSize: 16.sp,
+            color: AppColorUtils.DARK_6,
+            fontWeight: FontWeight.w400,
+          ).paddingOnly(left: 20.w),
           Material(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
@@ -91,16 +92,20 @@ class VolunteerDonateWidget extends StatelessWidget {
                         width: 10.w,
                       ),
                       AppWidgets.text(
-                          text: cardModel.cardNumber!,
-                          color: AppColorUtils.KRAUDFANDING,
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w600)
+                        text: cardModel.cardNumber!,
+                        color: AppColorUtils.KRAUDFANDING,
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w600,
+                      )
                     ],
                   ),
                 ),
               ),
             ),
-          ).paddingSymmetric(horizontal: 20.w,vertical: 10),
+          ).paddingSymmetric(
+            horizontal: 20.w,
+            vertical: 10,
+          ),
           MixTextWidget().paddingSymmetric(
             vertical: 12.w,
             horizontal: 20.w,

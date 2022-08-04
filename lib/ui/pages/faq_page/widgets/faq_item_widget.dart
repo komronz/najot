@@ -44,12 +44,13 @@ class FaqItemWidget extends StatelessWidget {
               GestureDetector(
                 child: Transform.rotate(
                   angle: faqModel.isOpen! ? 45 * pi / 180 : 0,
-                  child: AppWidgets.imageSvg(path: AppImageUtils.IC_FAQ_OPEN),
+                  child: AppWidgets.imageSvg(
+                    path: AppImageUtils.IC_FAQ_OPEN,
+                  ),
                 ),
                 onTap: () {
                   AppLoggerUtil.i("$index  ${faqModel.isOpen}");
                   context.read<FaqCubit>().openFaqItem(index);
-
                 },
               )
             ],

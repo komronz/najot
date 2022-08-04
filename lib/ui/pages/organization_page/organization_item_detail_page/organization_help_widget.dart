@@ -175,13 +175,15 @@ class OrganizationHelpWidget extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     fontSize: 10.sp,
                     color: AppColorUtils.DARK_6,
-                  ).paddingOnly(top: 13.w, left: 20.w, bottom: 3.w),
+                  ).paddingOnly(top: 13.w, left: 20.w, bottom: 3.w,
+                  ),
                   AppWidgets.text(
                       text: helpModel.cardModel.helpType??"",
                       maxLines: 2,
                       fontWeight: FontWeight.w600,
                       fontSize: 16.sp,
-                      color: AppColorUtils.GREEN_TEXT)
+                      color: AppColorUtils.GREEN_TEXT,
+                  )
                       .paddingSymmetric(horizontal: 20.w),
                   AppWidgets.textLocale(
                     text: LocaleKeys.address,
@@ -251,7 +253,8 @@ class OrganizationHelpWidget extends StatelessWidget {
                           text: LocaleKeys.i_agree,
                           color: AppColorUtils.DARK_1,
                           fontSize: 12.sp,
-                          fontWeight: FontWeight.w400)
+                          fontWeight: FontWeight.w400,
+                      )
                     ],
                   ),
                   AppWidgets.textLocale(
@@ -266,6 +269,7 @@ class OrganizationHelpWidget extends StatelessWidget {
               ),
             );
           },
-        ));
+        ),
+    );
   }
 }

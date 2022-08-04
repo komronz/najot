@@ -209,6 +209,7 @@
     "want_delete_note": "Удалить заметку?",
     "go_back": "Вернитесь назад",
     "yes": "Да",
+    "no": "Нет",
     "note_successful_changed": "Примечание // успешно // изменено",
     "attention_hello_volunteer": "Внимание! Привет, Волонтер!",
     "you_go_to_help": "вам нужно \n пойти за помощью",
@@ -268,6 +269,7 @@
     "there_no_questions": "Вопросы еще не заданы",
     "code_verification": "Проверка кода",
     "no_results_found": "Результатов не найдено",
+    "logout": "Вы хотите выйти из программы?",
     "enter_phone_number": "Введите номер телефона"
 
 

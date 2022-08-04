@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/project_model.dart';
-import 'package:najot/data/model/volunteering_model.dart';
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
@@ -18,8 +17,8 @@ class MyVolunteeringInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var createdAt= DateTime.parse(model.createdAt!);
-    var deadline= DateTime.parse(model.deadline!);
+    var createdAt = DateTime.parse(model.createdAt!);
+    var deadline = DateTime.parse(model.deadline!);
 
     return Column(
       children: [
@@ -64,7 +63,6 @@ class MyVolunteeringInfoWidget extends StatelessWidget {
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ).paddingOnly(top: 5.w),
-
               ],
             )
           ],
@@ -76,7 +74,7 @@ class MyVolunteeringInfoWidget extends StatelessWidget {
               text: LocaleKeys.help_type,
             ).paddingOnly(bottom: 5.w),
             AppWidgets.textLocale(
-              text: model.helpType??"",
+              text: model.helpType ?? "",
               color: AppColorUtils.KRAUDFANDING,
               fontWeight: FontWeight.w600,
               fontSize: 14.sp,
@@ -93,14 +91,17 @@ class MyVolunteeringInfoWidget extends StatelessWidget {
               maxLines: 2,
               fontWeight: FontWeight.w600,
               fontSize: 14.sp,
-            ).paddingOnly(top: 3.w, right: 60.w, bottom: 12.w,),
-            Divider(thickness: 2,),
-
+            ).paddingOnly(
+              top: 3.w,
+              right: 60.w,
+              bottom: 12.w,
+            ),
+            Divider(
+              thickness: 2,
+            ),
           ],
         ).paddingOnly(top: 12.w),
-
       ],
     );
   }
 }
-

@@ -9,7 +9,10 @@ Widget singleTabDetail(bool type, String text) {
       decoration: type
           ? BoxDecoration(
               border: Border(
-                bottom: BorderSide(color: AppColorUtils.KRAUDFANDING, width: 1.5),
+                bottom: BorderSide(
+                  color: AppColorUtils.KRAUDFANDING,
+                  width: 1.5,
+                ),
               ),
             )
           : null,
@@ -17,12 +20,11 @@ Widget singleTabDetail(bool type, String text) {
       child: Text(
         text,
         style: TextStyle(
-            fontSize: 14.sp,
-            color: type ? AppColorUtils.KRAUDFANDING : AppColorUtils.DARK6,
-            fontWeight: type ? FontWeight.w600 : FontWeight.w600),
+          fontSize: 14.sp,
+          color: type ? AppColorUtils.KRAUDFANDING : AppColorUtils.DARK6,
+          fontWeight: type ? FontWeight.w600 : FontWeight.w600,
+        ),
       ),
     ),
   );
 }
-
-

@@ -1,5 +1,3 @@
-
-
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,8 +16,7 @@ class SuccessSendQuestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      insetPadding:
-      EdgeInsets.symmetric(horizontal: 20.w),
+      insetPadding: EdgeInsets.symmetric(horizontal: 20.w),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -33,25 +30,23 @@ class SuccessSendQuestion extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
-          crossAxisAlignment:
-          CrossAxisAlignment.center,
-
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SvgPicture.asset(AppImageUtils.SUCCESS),
             AppWidgets.textLocale(
-              fontWeight: FontWeight.w600,
-              fontSize: 18.sp,
-              color: AppColorUtils.DARK2,
-              textAlign: TextAlign.center,
-              text: LocaleKeys.success_answer,
-              richText: true,
-              othersMarkers: [
-                MarkerText(marker: "//", style: TextStyle(
-                  color: AppColorUtils.GREEN_TEXT
-                ),)
-              ],
-              maxLines: 2
-            ),
+                fontWeight: FontWeight.w600,
+                fontSize: 18.sp,
+                color: AppColorUtils.DARK2,
+                textAlign: TextAlign.center,
+                text: LocaleKeys.success_answer,
+                richText: true,
+                othersMarkers: [
+                  MarkerText(
+                    marker: "//",
+                    style: TextStyle(color: AppColorUtils.GREEN_TEXT),
+                  )
+                ],
+                maxLines: 2),
             AppWidgets.textLocale(
               fontWeight: FontWeight.w500,
               fontSize: 14.sp,
@@ -59,18 +54,14 @@ class SuccessSendQuestion extends StatelessWidget {
               textAlign: TextAlign.center,
               text: LocaleKeys.wait_answer,
             ).paddingSymmetric(vertical: 10.w),
-            // TextFieldWidget(
-            //   hintText: "500 000 so'm",
-            //   onChanged: (v) {},
-            //
-            // ),
-
-            SizedBox(height: 12.w,),
+            SizedBox(
+              height: 12.w,
+            ),
             ButtonCard(
               onPress: () {
                 Navigator.pop(context);
               },
-              text:LocaleKeys.thank_you.tr(),
+              text: LocaleKeys.thank_you.tr(),
               textSize: 16.sp,
               fontWeight: FontWeight.w500,
               height: 50.w,

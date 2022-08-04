@@ -1,5 +1,3 @@
-
-
 import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
@@ -18,8 +16,7 @@ class LogOutDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      insetPadding:
-      EdgeInsets.symmetric(horizontal: 20.w),
+      insetPadding: EdgeInsets.symmetric(horizontal: 20.w),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -33,8 +30,7 @@ class LogOutDialog extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
-          crossAxisAlignment:
-          CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             AppWidgets.textLocale(
               fontWeight: FontWeight.w600,
@@ -42,9 +38,11 @@ class LogOutDialog extends StatelessWidget {
               color: AppColorUtils.DARK2,
               textAlign: TextAlign.center,
               maxLines: 2,
-              text:  "Dasturdan chiqmoqchimisiz?",
-            ).paddingSymmetric(vertical: 50.w,horizontal: 20),
-
+              text: LocaleKeys.logout,
+            ).paddingSymmetric(
+              vertical: 50.w,
+              horizontal: 20,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -52,7 +50,7 @@ class LogOutDialog extends StatelessWidget {
                   onPress: () {
                     Navigator.pop(context);
                   },
-                  text: "Yo'q",
+                  text: LocaleKeys.no.tr(),
                   textSize: 16.sp,
                   fontWeight: FontWeight.w500,
                   height: 50.w,
@@ -66,7 +64,7 @@ class LogOutDialog extends StatelessWidget {
                     HiveService.to.deleteToken();
                     exit(0);
                   },
-                  text: "Ha",
+                  text: LocaleKeys.yes.tr(),
                   textSize: 16.sp,
                   fontWeight: FontWeight.w500,
                   height: 50.w,
@@ -75,11 +73,8 @@ class LogOutDialog extends StatelessWidget {
                   textColor: AppColorUtils.WHITE,
                   borderRadius: 10,
                 ),
-
-
               ],
             )
-
           ],
         ),
       ),

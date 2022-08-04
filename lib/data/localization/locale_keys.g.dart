@@ -211,6 +211,7 @@ abstract class  LocaleKeys {
   static const want_delete_note = 'want_delete_note';
   static const go_back = 'go_back';
   static const yes = 'yes';
+  static const no = 'no';
   static const note_successful_changed = 'note_successful_changed';
   static const attention_hello_volunteer = 'attention_hello_volunteer';
   static const you_go_to_help = 'you_go_to_help';
@@ -265,11 +266,12 @@ abstract class  LocaleKeys {
   static const number_been_blocked = 'number_been_blocked';
   static const wrong_code_entered = 'wrong_code_entered';
   static const number_is_registered = 'number_is_registered';
-  static const code_verification = 'code_verification';
   static const disConnection = 'disConnection';
   static const language = 'language';
   static const there_no_questions = 'there_no_questions';
+  static const code_verification = 'code_verification';
   static const no_results_found = 'no_results_found';
+  static const logout = 'logout';
   static const enter_phone_number = 'enter_phone_number';
 
 }

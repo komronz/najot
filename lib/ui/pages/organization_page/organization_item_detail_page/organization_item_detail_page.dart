@@ -12,6 +12,7 @@ import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
 import '../../charity_page/charity_full_page/charity_full_page.dart';
+import '../../charity_page/charity_full_page/charity_full_page2.dart';
 import '../../charity_page/widgets/charity_item2_widget.dart';
 import '../../charity_page/widgets/charity_item_widget.dart';
 import 'organization_item_widget.dart';
@@ -19,10 +20,8 @@ import 'organization_item_widget.dart';
 class OrganizationItemDetailPageModel {
   final OrganizationModelResults model;
 
-
   OrganizationItemDetailPageModel({
     required this.model,
-
   });
 }
 
@@ -41,7 +40,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
         elevation: 0,
         automaticallyImplyLeading: false,
         title: AppWidgets.appBarWidget(
-          title: model.model.name!,
+          title: model.model.name ?? "",
           onTap: () {
             NavigatorService.to.pop();
           },
@@ -113,13 +112,14 @@ class OrganizationItemDetailPage extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     AppWidgets.text(
-                                      text: model.model.founder!.firstName!,
+                                      text:
+                                          model.model.founder!.firstName ?? "",
                                       color: AppColorUtils.TEXT_GREEN2,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 14.sp,
                                     ).paddingOnly(top: 6.w, right: 5.w),
                                     AppWidgets.text(
-                                      text: model.model.founder!.lastName!,
+                                      text: model.model.founder!.lastName ?? "",
                                       color: AppColorUtils.TEXT_GREEN2,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 14.sp,
@@ -142,13 +142,13 @@ class OrganizationItemDetailPage extends StatelessWidget {
                         bottom: 10.w,
                       ),
                       AppWidgets.text(
-                              text: model.model.description!,
-                              fontSize: 16.w,
-                              fontWeight: FontWeight.w400,
-                              color: AppColorUtils.DARK3,
-                              maxLines: 50,
-                              height: 1.1.w)
-                          .paddingSymmetric(horizontal: 20.w),
+                        text: model.model.description ?? "",
+                        fontSize: 16.w,
+                        fontWeight: FontWeight.w400,
+                        color: AppColorUtils.DARK3,
+                        maxLines: 50,
+                        height: 1.1.w,
+                      ).paddingSymmetric(horizontal: 20.w),
                       AppWidgets.textLocale(
                         text: LocaleKeys.organizational_projects,
                         fontWeight: FontWeight.w600,
@@ -164,26 +164,28 @@ class OrganizationItemDetailPage extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: List.generate(
-                            OrganizationCubit.to.state.project?.results?.length ?? 0,
+                            OrganizationCubit
+                                    .to.state.project?.results?.length ??
+                                0,
                             (index) {
                               if (state.project!.results![index].requiredFund !=
                                   null) {
                                 return CharityItemWidget(
                                   onTap: () {
                                     NavigatorService.to.pushNamed(
-                                      OrganizationItemWidget2.routName,
+                                      OrganizationItemWidget.routName,
                                       arguments: OrganizationItemModel(
-                                        cardModel: state.project!.results![index],
+                                        cardModel:
+                                            state.project!.results![index],
                                         id: model.model.id!,
                                       ),
                                     );
                                   },
                                   model: state.project!.results![index],
                                   onTapLike: () {
-
                                     OrganizationCubit.to.changeLike(
-                                        state.project!.results![index].id!);
-                                    OrganizationCubit.to.findProject(model.model.id!);
+                                      state.project!.results![index].id!,
+                                    );
                                   },
                                 );
                               } else {
@@ -191,24 +193,28 @@ class OrganizationItemDetailPage extends StatelessWidget {
                                   model: state.project!.results![index],
                                   onTap: () {
                                     NavigatorService.to.pushNamed(
-                                      OrganizationItemWidget.routName,
+                                      OrganizationItemWidget2.routName,
                                       arguments: OrganizationItemModel(
-                                        cardModel: state.project!.results![index],
+                                        cardModel:
+                                        state.project!.results![index],
                                         id: model.model.id!,
                                       ),
                                     );
                                   },
-                                  onTapLike: () {
+                                  onTapLike: () async {
                                     OrganizationCubit.to.changeLike(
-                                        state.project!.results![index].id!);
-                                    OrganizationCubit.to.findProject(model.model.id!);
+                                      state.project!.results![index].id!,
+                                    );
                                   },
                                 );
                               }
                             },
                           ),
                         ),
-                      ).paddingOnly(bottom: 10.w, left: 15.w),
+                      ).paddingOnly(
+                        bottom: 10.w,
+                        left: 15.w,
+                      ),
                     ],
                   ),
                 ),

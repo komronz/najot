@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -37,6 +38,7 @@ class _MyCrowdfundingQuestionListState
 
   @override
   Widget build(BuildContext context) {
+    var data = widget.cubit.state.questionData;
     return Container(
       padding: EdgeInsets.only(
         top: 12.w,
@@ -54,7 +56,7 @@ class _MyCrowdfundingQuestionListState
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          widget.cubit.state.questionData.isNotEmpty
+          data.isNotEmpty
               ? Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -64,7 +66,9 @@ class _MyCrowdfundingQuestionListState
                           height: 50.w,
                           width: 50.w,
                           decoration: BoxDecoration(
-                              shape: BoxShape.circle, color: Colors.black12),
+                            shape: BoxShape.circle,
+                            color: Colors.black12,
+                          ),
                           child: CachedNetworkImage(
                             imageUrl: widget.cubit.state
                                 .questionData[widget.index].user!.photo!,
@@ -81,9 +85,7 @@ class _MyCrowdfundingQuestionListState
                           children: [
                             SizedBox(
                               child: AppWidgets.text(
-                                text: widget.cubit.state
-                                        .questionData[widget.index].title ??
-                                    "",
+                                text: data[widget.index].title ?? "",
                                 color: AppColorUtils.TEXT_GREEN2,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14.sp,
@@ -92,8 +94,8 @@ class _MyCrowdfundingQuestionListState
                               width: 240.w,
                             ),
                             AppWidgets.textLocale(
-                              text: "${widget.cubit.state.questionData[widget.index].user!.lastName}"
-                                  " ${widget.cubit.state.questionData[widget.index].user!.firstName}",
+                              text: "${data[widget.index].user!.lastName}"
+                                  " ${data[widget.index].user!.firstName}",
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
                               color: AppColorUtils.DARK_6,
@@ -103,9 +105,7 @@ class _MyCrowdfundingQuestionListState
                       ],
                     ),
                     AppWidgets.text(
-                      text: widget
-                              .cubit.state.questionData[widget.index].content ??
-                          "",
+                      text: data[widget.index].content ?? "",
                       fontWeight: FontWeight.w400,
                       fontSize: 14.sp,
                       color: AppColorUtils.TEXT_8,
@@ -123,7 +123,7 @@ class _MyCrowdfundingQuestionListState
                                 color: AppColorUtils.BLACK_12,
                               ),
                               AppWidgets.textLocale(
-                                text: "Sizning javobingiz",
+                                text: LocaleKeys.your_answer,
                                 fontSize: 14.sp,
                                 color: AppColorUtils.TEXT_GREEN2,
                                 fontWeight: FontWeight.w600,
@@ -149,7 +149,7 @@ class _MyCrowdfundingQuestionListState
                                     focusedBorder: DecorationConst.INPUT_BORDER,
                                     enabledBorder: DecorationConst.INPUT_BORDER,
                                     contentPadding: EdgeInsets.all(14),
-                                    hintText: "Sizning  javobingiz",
+                                    hintText: LocaleKeys.your_answer.tr(),
                                     hintStyle: GoogleFonts.inter(
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w500,
@@ -169,8 +169,7 @@ class _MyCrowdfundingQuestionListState
                                 onTap: () {
                                   if (content.text != "") {
                                     widget.cubit.postAnswer(
-                                      widget.cubit.state
-                                          .questionData[widget.index].id!,
+                                      data[widget.index].id!,
                                       content.text,
                                     );
                                     widget.cubit.load(widget.projectModel.id!);
@@ -178,8 +177,10 @@ class _MyCrowdfundingQuestionListState
                                     setState(() {
                                       isVisible = true;
                                     });
-                                  }else{
-                                    AppWidgets.showText(text: "Javobingizni yozing");
+                                  } else {
+                                    AppWidgets.showText(
+                                      text: LocaleKeys.write_your_answer.tr(),
+                                    );
                                   }
                                 },
                               ).paddingOnly(bottom: 12.w),
@@ -202,11 +203,9 @@ class _MyCrowdfundingQuestionListState
                             setState(() {
                               isVisible = false;
                             });
-                            print(widget.cubit.state.questionData.length);
-                            print(widget.projectModel.id);
                           },
                           child: AppWidgets.textLocale(
-                            text: "Javob yozish",
+                            text: LocaleKeys.write_an_answer,
                             color: Color(0xFF024739),
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
@@ -239,7 +238,7 @@ class _MyCrowdfundingQuestionListState
                             fontWeight: FontWeight.w600,
                             maxLines: 2,
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),

@@ -38,7 +38,12 @@ class MyCrowdfundingList extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Color.fromRGBO(11, 191, 144, 0.08),
+              color: Color.fromRGBO(
+                11,
+                191,
+                144,
+                0.08,
+              ),
               blurRadius: 12,
               offset: Offset(0, 5),
             )
@@ -66,22 +71,21 @@ class MyCrowdfundingList extends StatelessWidget {
                           Center(child: CircularProgressIndicator()),
                       fit: BoxFit.cover,
                     ),
-                    // child: Image.asset(
-                    //   cardModel.image,
-                    //   fit: BoxFit.cover,
-                    //   width: MediaQuery.of(context).size.width,
-                    // ),
                   ),
                   flex: 1,
                 ),
                 Expanded(
                   child: Container(
-                    margin: EdgeInsets.only(left: 12, top: 12, right: 5),
+                    margin: EdgeInsets.only(
+                      left: 12,
+                      top: 12,
+                      right: 5,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         AppWidgets.text(
-                          text: cardModel.title!,
+                          text: cardModel.title ?? "",
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w500,
                           maxLines: 2,
@@ -114,9 +118,8 @@ class MyCrowdfundingList extends StatelessWidget {
                           ),
                         ).paddingOnly(bottom: 10.w),
                         AppWidgets.starTextWidget(
-                          text: LocaleKeys.must_collected_date.tr(),
-                          fontSize: 10.sp
-                        ),
+                            text: LocaleKeys.must_collected_date.tr(),
+                            fontSize: 10.sp),
                         Row(
                           children: [
                             Icon(

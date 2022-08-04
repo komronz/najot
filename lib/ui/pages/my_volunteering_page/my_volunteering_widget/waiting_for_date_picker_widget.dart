@@ -20,8 +20,6 @@ import '../../../../data/custom_time_picker/date_picker/date_picker_theme.dart';
 import '../../../../data/custom_time_picker/date_picker/i18n/date_picker_i18n.dart';
 import '../../../../data/custom_time_picker/date_picker/widget/date_picker_widget.dart';
 import '../../../../data/localization/locale_keys.g.dart';
-import '../../../../data/model/volunteering_model.dart';
-import '../../../../data/utils/date_time_util.dart';
 import '../../../widgets/app_widgets.dart';
 
 class WaitingForDatePickerWidget extends StatelessWidget {

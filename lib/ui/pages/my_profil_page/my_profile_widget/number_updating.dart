@@ -4,19 +4,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_state.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/ui/pages/language_page/pinput_number_change.dart';
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
-import '../../edit_volunteer_page/widgets/pinput_number_change.dart';
 import '../../main_page/widgets/button_card_widget.dart';
 
 class NumberUpdating extends StatelessWidget {
-  NumberUpdating({
-    required this.state,
-    required this.number,
-    required this.confirmation,
-    required this.resend
-  });
+  NumberUpdating(
+      {required this.state,
+      required this.number,
+      required this.confirmation,
+      required this.resend});
 
   MyProfileUpdateState state;
   String number;
@@ -32,7 +31,10 @@ class NumberUpdating extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+            padding: EdgeInsets.symmetric(
+              vertical: 15,
+              horizontal: 15,
+            ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: AppColorUtils.WHITE,
@@ -63,7 +65,7 @@ class NumberUpdating extends StatelessWidget {
             height: 48.w,
             width: 1.sw,
             color: AppColorUtils.PERCENT_COLOR,
-            onPress: (){
+            onPress: () {
               confirmation(_pinPutController.text);
             },
             text: LocaleKeys.confirmation.tr(),

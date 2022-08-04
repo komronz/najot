@@ -62,7 +62,10 @@ class OrdersItemsWidget extends StatelessWidget {
             fontSize: 10.sp,
             fontWeight: FontWeight.w400,
             color: AppColorUtils.ITEM_ORDERS_TEXT2,
-          ).paddingOnly(top: 12.w, bottom: 3),
+          ).paddingOnly(
+            top: 12.w,
+            bottom: 3,
+          ),
           AppWidgets.text(
             text: model.description!,
             fontSize: 12.sp,
@@ -96,7 +99,7 @@ class OrdersItemsWidget extends StatelessWidget {
             children: [
               DateWidget(date: date),
               AppWidgets.textLocale(
-                text: Format.moneyFormat(double.parse(model.price!)),
+                text: Format.moneyFormat(double.parse(model.price ?? "")),
                 color: AppColorUtils.KRAUDFANDING,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,
@@ -116,8 +119,9 @@ class OrdersItemsWidget extends StatelessWidget {
                 : AppColorUtils.ITEM_CHARITY_TEXT2,
             height: 38.w,
             width: 145.w,
-            icon: AppWidgets.imageSvg(path: AppImageUtils.IC_ORDERS_SUCCESS)
-                .paddingOnly(right: 5),
+            icon: AppWidgets.imageSvg(
+              path: AppImageUtils.IC_ORDERS_SUCCESS,
+            ).paddingOnly(right: 5),
           ).paddingOnly(top: 15.w),
         ],
       ).paddingAll(12),

@@ -7,7 +7,6 @@ import 'package:najot/data/services/volunteer_profile_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 
 import '../../model/auth_model/user.dart';
-import '../../services/volunteer_service.dart';
 
 part 'app_page_state.dart';
 
@@ -32,7 +31,6 @@ class AppPageCubit extends Cubit<AppPageState> {
     emit(state.copyWith(
       pageType: pageType,
       changeMenu: 1,
-      tobeVolunteer: Volunteer.tobeVolunteer,
     ));
   }
   Future getUser() async{
@@ -43,7 +41,6 @@ class AppPageCubit extends Cubit<AppPageState> {
       state.user=user;
     }
     emit(state.copyWith(
-      tobeVolunteer: Volunteer.tobeVolunteer,
     ));
   }
 

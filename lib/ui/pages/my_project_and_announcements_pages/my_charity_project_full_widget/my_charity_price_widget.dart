@@ -22,7 +22,7 @@ class MyCharityPriceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var createdAt= DateTime.parse(model.createdAt!);
+    var createdAt = DateTime.parse(model.createdAt!);
     return Column(
       children: [
         Row(
@@ -31,9 +31,13 @@ class MyCharityPriceWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppWidgets.starTextWidget(text: LocaleKeys.amount_needed.tr(),),
+                AppWidgets.starTextWidget(
+                  text: LocaleKeys.amount_needed.tr(),
+                ),
                 AppWidgets.text(
-                  text: Format.moneyFormat(double.parse(model.amountCollected!)),
+                  text: Format.moneyFormat(
+                    double.parse(model.amountCollected!),
+                  ),
                   color: AppColorUtils.TEXT_GREEN2,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
@@ -85,7 +89,9 @@ class MyCharityPriceWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppWidgets.textLocale(
-                    text: Format.moneyFormat(double.parse(model.requiredFund!)),
+                    text: Format.moneyFormat(
+                      double.parse(model.requiredFund!),
+                    ),
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.GREEN_TEXT,

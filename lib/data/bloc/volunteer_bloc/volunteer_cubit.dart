@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
-import 'package:najot/data/model/card_model.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/main_service.dart';
 import 'package:najot/data/services/volunteer_project_service.dart';
@@ -10,9 +9,7 @@ import 'package:najot/data/services/volunteer_project_service.dart';
 import '../../../ui/widgets/app_widgets.dart';
 import '../../localization/locale_keys.g.dart';
 import '../../model/volunteer_db_model.dart';
-import '../../model/volunteer_donate_model.dart';
 import '../../services/db_service.dart';
-import '../../services/volunteer_service.dart';
 
 part 'volunteer_state.dart';
 

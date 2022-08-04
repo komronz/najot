@@ -36,17 +36,18 @@ class _OperatorPageState extends State<OperatorPage> {
 
   TextEditingController content = TextEditingController();
   late Timer? timer;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     operatorCubit.load();
-    timer= Timer.periodic(Duration(seconds: 4), (timer) {
+    timer = Timer.periodic(Duration(seconds: 4), (timer) {
       operatorCubit.loads();
     });
   }
 
-@override
+  @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
@@ -103,7 +104,6 @@ class _OperatorPageState extends State<OperatorPage> {
                         context: context,
                         builder: (ctx) => OperatorClearSmsWidget(
                           cubit: operatorCubit,
-
                         ),
                       );
                     },
@@ -141,7 +141,12 @@ class _OperatorPageState extends State<OperatorPage> {
                 color: AppColorUtils.GREEN_BACK,
                 boxShadow: [
                   BoxShadow(
-                    color: Color.fromRGBO(11, 191, 144, 0.08),
+                    color: Color.fromRGBO(
+                      11,
+                      191,
+                      144,
+                      0.08,
+                    ),
                     offset: Offset(0, -2),
                     blurRadius: 10,
                   )
@@ -203,10 +208,7 @@ class _OperatorPageState extends State<OperatorPage> {
                         color: AppColorUtils.PERCENT_COLOR,
                         height: 45.w,
                         onTap: () {
-                          if (operatorCubit
-                              .textController
-                              .text
-                              .isNotEmpty) {
+                          if (operatorCubit.textController.text.isNotEmpty) {
                             operatorCubit.sendSms(
                               state.userImgPath,
                               state.sendSmsTxt,

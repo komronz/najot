@@ -119,7 +119,8 @@ class MyNoteWidget extends StatelessWidget {
                             ).paddingOnly(right: 5),
                             AppWidgets.textLocale(
                               text: DateFormat("dd.MM.yyyy").format(
-                                  DateTime.parse(model.deadLine!)),
+                                DateTime.parse(model.deadLine!),
+                              ),
                               color: AppColorUtils.KRAUDFANDING,
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w500,
@@ -157,12 +158,12 @@ class MyNoteWidget extends StatelessWidget {
         ),
       )
           .paddingSymmetric(
-        horizontal: 20.w,
-      )
+            horizontal: 20.w,
+          )
           .paddingOnly(
-        top: 5.w,
-        bottom: 8.w,
-      ),
+            top: 5.w,
+            bottom: 8.w,
+          ),
     );
   }
 }

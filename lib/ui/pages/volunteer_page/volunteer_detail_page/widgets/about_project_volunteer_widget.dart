@@ -44,8 +44,8 @@ class AboutProjectVolunteerWidget extends StatefulWidget {
 class _AboutProjectVolunteerWidgetState
     extends State<AboutProjectVolunteerWidget> with TickerProviderStateMixin {
   late TabController _tabController;
- late bool like;
- static late bool isContribution;
+  late bool like;
+  static late bool isContribution;
   ProjectDataCubit cubitData = ProjectDataCubit();
 
   @override
@@ -56,8 +56,8 @@ class _AboutProjectVolunteerWidgetState
 
   @override
   void initState() {
-    like=widget.cardModel.isFavourite!;
-    isContribution=widget.cardModel.isContribution!;
+    like = widget.cardModel.isFavourite!;
+    isContribution = widget.cardModel.isContribution!;
     _tabController = TabController(length: 4, vsync: this);
     _tabController.addListener(_handleTabSelection);
     super.initState();
@@ -210,9 +210,13 @@ class _AboutProjectVolunteerWidgetState
                 fontWeight: FontWeight.w400,
                 fontSize: 10.sp,
                 color: AppColorUtils.DARK_6,
-              ).paddingOnly(top: 13.w, left: 20.w, bottom: 3.w),
+              ).paddingOnly(
+                top: 13.w,
+                left: 20.w,
+                bottom: 3.w,
+              ),
               AppWidgets.text(
-                      text: widget.cardModel.title??"",
+                      text: widget.cardModel.title ?? "",
                       maxLines: 2,
                       fontWeight: FontWeight.w600,
                       fontSize: 16.sp,
@@ -229,12 +233,12 @@ class _AboutProjectVolunteerWidgetState
                 bottom: 3.w,
               ),
               AppWidgets.text(
-                      text: widget.cardModel.address ?? "",
-                      fontSize: 14.w,
-                      fontWeight: FontWeight.w500,
-                      color: AppColorUtils.TEXT_BLUE2,
-                      maxLines: 2)
-                  .paddingSymmetric(horizontal: 20.w)
+                text: widget.cardModel.address ?? "",
+                fontSize: 14.w,
+                fontWeight: FontWeight.w500,
+                color: AppColorUtils.TEXT_BLUE2,
+                maxLines: 2,
+              ).paddingSymmetric(horizontal: 20.w)
             ],
           ).paddingOnly(bottom: 15.w),
         ),
@@ -297,9 +301,18 @@ class _AboutProjectVolunteerWidgetState
                   indicatorColor: AppColorUtils.GREEN_APP,
                   indicatorSize: TabBarIndicatorSize.tab,
                   padding: EdgeInsets.only(right: 10),
-                  indicatorPadding: EdgeInsets.only(right: 10, left: 10),
-                  labelPadding: EdgeInsets.only(right: 10, left: 10),
-                ).paddingOnly(left: 15.w, top: 8.w),
+                  indicatorPadding: EdgeInsets.only(
+                    right: 10,
+                    left: 10,
+                  ),
+                  labelPadding: EdgeInsets.only(
+                    right: 10,
+                    left: 10,
+                  ),
+                ).paddingOnly(
+                  left: 15.w,
+                  top: 8.w,
+                ),
                 BlocBuilder<ProjectDataCubit, ProjectDataState>(
                   bloc: cubitData..load(widget.cardModel.id!),
                   builder: (contextData, stateData) {
@@ -360,7 +373,9 @@ class _AboutProjectVolunteerWidgetState
                               ButtonCard(
                                 onPress: () {
                                   if (widget.cubit.state.tobeVolunteer) {
-                                    VolunteerCubit.to.isContribution(widget.cardModel.id!);
+                                    VolunteerCubit.to.isContribution(
+                                      widget.cardModel.id!,
+                                    );
                                     NavigatorService.to.pushNamed(
                                       VolunteerHelpWidget.routeName,
                                       arguments: VolunteerHelpModel(
@@ -369,7 +384,7 @@ class _AboutProjectVolunteerWidgetState
                                       ),
                                     );
                                     setState(() {
-                                      isContribution=true;
+                                      isContribution = true;
                                     });
                                   } else {
                                     Fluttertoast.showToast(
@@ -391,19 +406,21 @@ class _AboutProjectVolunteerWidgetState
                                 select: like,
                                 height: 48.w,
                                 width: 48.w,
-                                onTap: () async{
-                                  var connection= await MainService().checkInternetConnection();
-                                  if(connection){
-                                    await widget.cubit.changeLike(widget.cardModel.id!);
+                                onTap: () async {
+                                  var connection = await MainService()
+                                      .checkInternetConnection();
+                                  if (connection) {
+                                    await widget.cubit
+                                        .changeLike(widget.cardModel.id!);
                                     setState(() {
-                                      like=!like;
+                                      like = !like;
                                     });
                                     await HomeCubit.to.getModel();
-                                  }else{
-                                    AppWidgets.showText(text: "Internet bilan aloqa yo'q");
+                                  } else {
+                                    AppWidgets.showText(
+                                      text: LocaleKeys.disConnection.tr(),
+                                    );
                                   }
-
-
                                 },
                               )
                             ],

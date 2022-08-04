@@ -16,8 +16,10 @@ import 'package:super_rich_text/super_rich_text.dart';
 
 class ProfileDeleteDialog extends StatelessWidget {
   ProfileDeleteDialog({required this.myProfileUpdateBloc});
+
   MyProfileUpdateBloc myProfileUpdateBloc;
-  TextEditingController title= TextEditingController();
+  TextEditingController title = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -27,99 +29,100 @@ class ProfileDeleteDialog extends StatelessWidget {
       ),
       elevation: 0,
       child: Container(
-        height: 380.w,
-        padding: EdgeInsets.all(20.w),
-        decoration: BoxDecoration(
-          shape: BoxShape.rectangle,
-          color: AppColorUtils.WHITE,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: ListView(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AppWidgets.textLocale(
-                  text: LocaleKeys.delete_profile,
-                  color: AppColorUtils.DARK2,
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w600,
-                ).paddingOnly(bottom: 15.w),
-                SizedBox(
-                  height: 170.w,
-                  child: TextField(
-                    controller: title,
-                    expands: true,
-                    textAlignVertical: TextAlignVertical.top,
-                    maxLines: null,
-                    enabled: true,
-                    style: GoogleFonts.inter(
-                      fontSize: 15.sp,
-                    ),
-                    decoration: InputDecoration(
-                      // border: _border,
-                      disabledBorder: DecorationConst.INPUT_BORDER,
-                      focusedBorder: DecorationConst.INPUT_BORDER,
-                      enabledBorder: DecorationConst.INPUT_BORDER,
-                      contentPadding: EdgeInsets.all(14),
-                      hintText: LocaleKeys.write_the_reason.tr(),
-                      hintStyle: GoogleFonts.inter(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w500,
-                        color: AppColorUtils.GRAY_4,
+          height: 380.w,
+          padding: EdgeInsets.all(20.w),
+          decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            color: AppColorUtils.WHITE,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: ListView(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AppWidgets.textLocale(
+                    text: LocaleKeys.delete_profile,
+                    color: AppColorUtils.DARK2,
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w600,
+                  ).paddingOnly(bottom: 15.w),
+                  SizedBox(
+                    height: 170.w,
+                    child: TextField(
+                      controller: title,
+                      expands: true,
+                      textAlignVertical: TextAlignVertical.top,
+                      maxLines: null,
+                      enabled: true,
+                      style: GoogleFonts.inter(
+                        fontSize: 15.sp,
                       ),
+                      decoration: InputDecoration(
+                        // border: _border,
+                        disabledBorder: DecorationConst.INPUT_BORDER,
+                        focusedBorder: DecorationConst.INPUT_BORDER,
+                        enabledBorder: DecorationConst.INPUT_BORDER,
+                        contentPadding: EdgeInsets.all(14),
+                        hintText: LocaleKeys.write_the_reason.tr(),
+                        hintStyle: GoogleFonts.inter(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
+                          color: AppColorUtils.GRAY_4,
+                        ),
+                      ),
+                      keyboardType: TextInputType.multiline,
                     ),
-                    keyboardType: TextInputType.multiline,
                   ),
-                ),
-                SizedBox(
-                  height: 12.w,
-                ),
-                ButtonCard(
-                  onPress: () {
-                    if(title.text.isNotEmpty){
-                      myProfileUpdateBloc.deletePost(title.text);
-                    Navigator.pop(context);
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return ProfileSuccessDone();
-                      },
-                    );
-                    }else{
-                      AppWidgets.showText(text: LocaleKeys.write_the_reason.tr());
-                    }
-
-                  },
-                  text: LocaleKeys.send,
-                  textSize: 16.sp,
-                  fontWeight: FontWeight.w500,
-                  height: 48.w,
-                  width: double.infinity,
-                  color: AppColorUtils.PERCENT_COLOR,
-                  textColor: AppColorUtils.WHITE,
-                  borderRadius: 10,
-                ),
-                SizedBox(
-                  height: 12.w,
-                ),
-                ButtonCard(
-                  onPress: () {
-                    Navigator.pop(context);
-                  },
-                  text: LocaleKeys.exit,
-                  textSize: 16.sp,
-                  fontWeight: FontWeight.w500,
-                  height: 48.w,
-                  width: double.infinity,
-                  color: AppColorUtils.GREEN_ACCENT5,
-                  textColor: AppColorUtils.BLACK,
-                  borderRadius: 10,
-                )
-              ],
-            ),
-          ],
-        )
+                  SizedBox(
+                    height: 12.w,
+                  ),
+                  ButtonCard(
+                    onPress: () {
+                      if (title.text.isNotEmpty) {
+                        myProfileUpdateBloc.deletePost(title.text);
+                        Navigator.pop(context);
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return ProfileSuccessDone();
+                          },
+                        );
+                      } else {
+                        AppWidgets.showText(
+                          text: LocaleKeys.write_the_reason.tr(),
+                        );
+                      }
+                    },
+                    text: LocaleKeys.send,
+                    textSize: 16.sp,
+                    fontWeight: FontWeight.w500,
+                    height: 48.w,
+                    width: double.infinity,
+                    color: AppColorUtils.PERCENT_COLOR,
+                    textColor: AppColorUtils.WHITE,
+                    borderRadius: 10,
+                  ),
+                  SizedBox(
+                    height: 12.w,
+                  ),
+                  ButtonCard(
+                    onPress: () {
+                      Navigator.pop(context);
+                    },
+                    text: LocaleKeys.exit,
+                    textSize: 16.sp,
+                    fontWeight: FontWeight.w500,
+                    height: 48.w,
+                    width: double.infinity,
+                    color: AppColorUtils.GREEN_ACCENT5,
+                    textColor: AppColorUtils.BLACK,
+                    borderRadius: 10,
+                  )
+                ],
+              ),
+            ],
+          ),
       ),
     );
   }
