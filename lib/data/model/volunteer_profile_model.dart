@@ -11,7 +11,7 @@ class VolunteerProfileModel {
   String? givenByWhom;
   String? givenDate;
   String? passportFront;
-  Null? gender;
+  String? gender;
   String? passportBack;
   String? createdAt;
   String? modifiedAt;

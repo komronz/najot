@@ -7,7 +7,6 @@ import 'package:najot/data/model/question_model.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/http_service.dart';
 import 'package:najot/data/services/root_service.dart';
-import 'package:http_parser/http_parser.dart';
 
 import '../bloc/language_cubit/language_cubit.dart';
 import '../utils/app_logger_util.dart';
@@ -21,7 +20,6 @@ class ProjectDataService {
           url: "https://api.najot.uz/${LanguageCubit.getLang()}/news/?project__id=${id}",
           token: HiveService.to.getToken()!.access,
       );
-      print(response.statusCode);
       if (response.statusCode == 200) {
         final NewsModel responseModel = NewsModel.fromJson(
           response.data,
@@ -124,7 +122,6 @@ class ProjectDataService {
           headers: headers,
           token: HiveService.to.getToken()!.access);
       if (response != null) {
-        print(response.statusCode);
         if (response.statusCode == 201) {
           return true;
         }
@@ -173,7 +170,6 @@ class ProjectDataService {
           headers: headers,
           token: HiveService.to.getToken()!.access);
       if (response != null) {
-        print(response.statusCode);
         if (response.statusCode == 201) {
           return true;
         }

@@ -5,7 +5,6 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/project_model.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
-import '../../../../data/model/charity_model.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
 

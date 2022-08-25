@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:pinput/pinput.dart';
 
-import '../pin_put/pin_put.dart';
 
 class PinPutWidget extends StatelessWidget {
   const PinPutWidget({

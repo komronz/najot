@@ -71,7 +71,6 @@ class _RegVolunteerState extends State<RegVolunteer>
           bloc: bloc,
           listener: (context, state) {},
           builder: (context, state) {
-            print(state.user);
             if (AppPageCubit.to.state.user!.status == "CHECKING") {
               return buildWaitBody(context);
             }

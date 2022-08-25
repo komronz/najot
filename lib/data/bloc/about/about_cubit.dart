@@ -5,7 +5,6 @@ import 'package:get_it/get_it.dart';
 import 'package:najot/data/services/about_service.dart';
 
 import '../../model/about_model.dart';
-import '../../model/product_model.dart';
 import '../../services/main_service.dart';
 
 part 'about_state.dart';

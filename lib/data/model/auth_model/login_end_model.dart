@@ -1,4 +1,3 @@
-import 'package:najot/data/model/auth_model/user.dart';
 
 
 class LoginEndModel {

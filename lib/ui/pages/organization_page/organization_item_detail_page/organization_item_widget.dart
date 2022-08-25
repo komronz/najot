@@ -20,7 +20,6 @@ import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/su
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-import '../../../../data/bloc/home_cubit/home_cubit.dart';
 import '../../../../data/bloc/project_data_cubit/project_data_cubit.dart';
 import '../../../../data/model/project_model.dart';
 import '../../../../data/services/main_service.dart';

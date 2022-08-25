@@ -4,9 +4,6 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:najot/data/model/comments_model.dart';
-import 'package:najot/data/model/kraufanding_model.dart';
-import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/project_data_service.dart';
 
 import 'my_crowdfunding_support_state.dart';
@@ -51,7 +48,6 @@ class MyCrowdfundingSupportCubit extends Cubit<MyCrowdfundingSupportState> {
 Future postCommentById(int id, String title,String content) async{
     var postComments= await projectDataService.postCommentsBYId(id,title, content);
     if(postComments !=null){
-      print("vot eta da");
     }
 
 }
@@ -64,10 +60,8 @@ Future postCommentById(int id, String title,String content) async{
   }
 
   Future postNews(int id,String title,String comment, File image) async{
-    print(HiveService.to.getToken());
     var postNews=await projectDataService.postNewsBYId(id, title,comment,image);
     if(postNews !=null){
-      print("file posted");
     }
 
   }
@@ -76,7 +70,6 @@ Future postCommentById(int id, String title,String content) async{
     var deletePost = await projectDataService.postDeleteBYId(id, content);
 
     if(deletePost != null){
-      print("delete success");
     }
 
   }

@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:najot/data/model/product_model.dart';
 import 'package:najot/data/model/rule_page_model.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/root_service.dart';

@@ -17,7 +17,6 @@ class ProductService{
         url: "https://api.najot.uz/${LanguageCubit.getLang()}/product/",
         token: HiveService.to.getToken()!.access
       );
-      print(response.statusCode);
       if (response.statusCode == 200) {
 
         final ProductModel responseModel =

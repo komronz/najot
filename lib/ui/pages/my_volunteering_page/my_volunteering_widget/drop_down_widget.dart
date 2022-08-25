@@ -14,10 +14,11 @@ class DropDownWidget extends StatelessWidget {
     required this.title,
     required this.hasTitle,
     required this.onChange,
+    required this.height,
     this.isEmpty = false,
     this.selectValue,
     Key? key,
-    required this.height,
+
   }) : super(key: key);
   final List<String>? items;
   final bool isEmpty;

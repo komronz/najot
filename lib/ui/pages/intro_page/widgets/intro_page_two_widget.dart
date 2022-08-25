@@ -6,7 +6,6 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
 import 'intro_clip_path_widget.dart';
-import 'intro_view_widgets.dart';
 
 class IntroPageTwoWidget extends StatelessWidget {
   IntroPageTwoWidget({

@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/operator_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/data/utils/date_time_util.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class OperatorUserSmsWidget extends StatelessWidget {

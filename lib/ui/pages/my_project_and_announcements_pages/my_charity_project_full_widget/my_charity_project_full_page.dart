@@ -2,11 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/charity_model.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 
-import '../../../../../data/services/navigator_service.dart';
 import '../../../../../data/utils/app_color_utils.dart';
 import '../../../../data/bloc/my_project_charity_cubit/my_project_charity_cubit.dart';
 import 'about_my_charity_project_widget.dart';
@@ -41,7 +39,7 @@ class _MyCharityProjectFullPageState extends State<MyCharityProjectFullPage>
     super.initState();
   }
 
-  _handleTabSelection() {
+  void _handleTabSelection() {
 
     if (_controller.indexIsChanging) {
       setState(() {});

@@ -11,7 +11,6 @@ import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/ta
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_donate_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 
-import '../../../../data/bloc/home_cubit/home_cubit.dart';
 import 'widgets/about_project_volunteer_widget.dart';
 
 class VolunteerDetailModel {

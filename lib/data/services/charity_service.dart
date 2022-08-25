@@ -111,11 +111,9 @@ class CharityService{
         return responseModel;
       } else {
         AppLoggerUtil.e("-----------------");
-        print(" ddddddddddddddddddddd");
         return null;
       }
     } catch (e) {
-      print(" ddddddddddddddddddddd");
       return null;
     }
   }

@@ -93,7 +93,6 @@ class OperatorService{
         token: HiveService.to.getToken()!.access,
       );
       if (response != null) {
-        print(response.statusCode);
         if (response.statusCode == 204) {
           return true;
         } else {

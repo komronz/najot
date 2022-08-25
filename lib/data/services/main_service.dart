@@ -107,7 +107,6 @@ class MainService {
         token: HiveService.to.getToken()!.access,
       );
       if (response != null) {
-        print(response.statusCode);
         if (response.statusCode == 201) {
           return true;
         } else if (response.statusCode == 200) {

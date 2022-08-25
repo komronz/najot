@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:najot/data/extensions/widget_padding_extension.dart';
-
-import '../../data/config/const/decoration_const.dart';
 import '../../data/localization/locale_keys.g.dart';
 import '../../data/utils/app_color_utils.dart';
 import '../../data/utils/app_image_utils.dart';

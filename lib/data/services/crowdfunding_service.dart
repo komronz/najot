@@ -44,7 +44,6 @@ class CrowdfundingService{
       final Response response = await RootService.httpService.get(
         url: "https://api.najot.uz/${LanguageCubit.getLang()}/categories/?type=CF",
       );
-      print(response.statusCode);
 
       if (response.statusCode == 200) {
         final ProjectCategories responseModel =

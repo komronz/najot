@@ -10,10 +10,9 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class QuestionsAnswerWidget extends StatelessWidget {
-  const QuestionsAnswerWidget({
-    Key? key,
+   QuestionsAnswerWidget({
     required this.cubit,
-  }) : super(key: key);
+  }) ;
 
   final ProjectDataCubit cubit;
 

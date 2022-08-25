@@ -7,7 +7,6 @@ import 'package:najot/data/bloc/crowdFounding_cubit/kraud_fanding_cubit.dart';
 import 'package:najot/data/bloc/home_cubit/home_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -201,7 +200,6 @@ class MainPage extends StatelessWidget {
               }
             } else {
               return AppErrorWidget(onTap: () async {
-                print(HiveService.to.getToken());
                 AppWidgets.isLoading(true);
                 await homeCubit.getModel();
                 AppWidgets.isLoading(false);

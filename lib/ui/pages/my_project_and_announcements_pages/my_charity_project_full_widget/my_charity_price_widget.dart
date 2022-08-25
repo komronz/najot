@@ -8,7 +8,6 @@ import 'package:najot/data/utils/app_utils.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
-import '../../../../data/model/charity_model.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
 

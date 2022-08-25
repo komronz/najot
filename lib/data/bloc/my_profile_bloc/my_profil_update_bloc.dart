@@ -241,7 +241,6 @@ class MyProfileUpdateBloc
     if(internetConnection){
       var deletePost = await myProfileService.postDeleteBYId(reason);
       if (deletePost != null) {
-        print("delete success");
       }
     }else{
       AppWidgets.showText(text: LocaleKeys.disConnection.tr());

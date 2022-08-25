@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/bloc/faq_cubit/faq_state.dart';
 import 'package:najot/data/model/faq_model.dart';

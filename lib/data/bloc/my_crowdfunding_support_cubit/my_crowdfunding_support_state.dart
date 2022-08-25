@@ -4,9 +4,7 @@ import 'dart:io';
 import 'package:equatable/equatable.dart';
 import 'package:najot/data/model/comments_model.dart';
 import 'package:najot/data/model/news_model.dart';
-import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/model/question_model.dart';
-import '../../model/kraufanding_model.dart';
 
 class MyCrowdfundingSupportState extends Equatable {
   MyCrowdfundingSupportState({

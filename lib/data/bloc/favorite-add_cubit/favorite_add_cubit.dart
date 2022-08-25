@@ -3,7 +3,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/favorites-add_model.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/favorite-add_service.dart';
 import 'package:najot/data/services/main_service.dart';
@@ -43,7 +42,6 @@ class FavoriteAddCubit extends Cubit<FavoriteAddState> {
     var favoriteAddAllModel = await favoriteAddService.getModel();
     if(favoriteAddAllModel!=null){
       emit(state.copyWith( list: favoriteAddAllModel.results));
-      print(favoriteAddAllModel.results![0].type);
     }else{
       emit(state.copyWith( hasError: true,));
     }

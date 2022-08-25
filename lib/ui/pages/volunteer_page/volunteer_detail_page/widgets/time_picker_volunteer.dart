@@ -18,7 +18,6 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 
 import '../../../../../data/bloc/notification_cubit/notification_cubit.dart';
 import '../../../notification_page/notification_page.dart';
-import 'about_project_volunteer_widget.dart';
 
 class TimePikerVolunteer extends StatelessWidget {
   TimePikerVolunteer(

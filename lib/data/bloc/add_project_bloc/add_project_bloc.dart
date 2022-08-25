@@ -121,7 +121,6 @@ class AddProjectBloc extends Bloc<AddProjectEvent, AddProjectState> {
       state.type!,
       state.description,
     );
-    print(addProjectModel);
     if (addProjectModel != null) {
       emit(state.copyWith(isLoading: true));
     } else {

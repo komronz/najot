@@ -6,7 +6,6 @@ import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/app_date_picker.dart';
 import 'package:najot/ui/widgets/app_date_picker_widget.dart';
 import 'package:najot/ui/widgets/app_radio_button.dart';

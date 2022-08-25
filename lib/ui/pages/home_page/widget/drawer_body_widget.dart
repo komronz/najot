@@ -1,8 +1,6 @@
-import 'dart:io';
 
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
@@ -15,7 +13,6 @@ import 'package:najot/ui/pages/home_page/widget/log_out_dialog.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-import '../../crowdfunding_page_main/project_details/widgets/payment_history_dialog.dart';
 
 class DrawerBody extends StatelessWidget {
   DrawerBody({

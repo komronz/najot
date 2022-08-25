@@ -46,7 +46,6 @@ class ProjectDataCubit extends Cubit<ProjectDataState> {
 
         var responseComments=await projectDataService.postCommentsBYId(id,title, content);
         if(responseComments != null){
-          print("success");
         }
 
 
@@ -56,7 +55,6 @@ class ProjectDataCubit extends Cubit<ProjectDataState> {
       var responseQuestion=await projectDataService.postQuestionBYId(id, title, content);
 
       if(responseQuestion!= null){
-        print("okey");
       }
 
     }

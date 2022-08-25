@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/bloc/charity_page_cubit/charity_cubit.dart';
 import 'package:najot/data/bloc/crowdFounding_cubit/kraud_fanding_cubit.dart';
@@ -12,7 +11,6 @@ import 'package:najot/data/bloc/volunteer_bloc/volunteer_cubit.dart';
 import 'package:najot/data/services/notification_api_service.dart';
 
 import 'db_service.dart';
-import 'hive_service.dart';
 
 class DIService {
   static Future<void> init() async {

@@ -8,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/bloc/notification_cubit/notification_cubit.dart';
-import 'package:najot/data/bloc/notification_cubit/notification_cubit.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/notification_api_service.dart';
 import 'package:najot/data/utils/app_route_utils.dart';
@@ -16,10 +15,8 @@ import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/language_page/language_page.dart';
 import 'data/bloc/home_cubit/home_cubit.dart';
 import 'data/bloc/language_cubit/language_cubit.dart';
-import 'data/services/hive_service.dart';
 import 'data/services/navigator_service.dart';
 import 'data/services/root_service.dart';
-import 'ui/pages/main_page/main_page.dart';
 
 class App extends StatelessWidget {
   @override

@@ -27,7 +27,6 @@ class VolunteerProfileService {
       final Response response = await RootService.httpService.get(
           url: "https://api.najot.uz/${LanguageCubit.getLang()}/news/?project__id=${id}",
           token: HiveService.to.getToken()!.access);
-      print(response.statusCode);
       if (response.statusCode == 200) {
         final NewsModel responseModel = NewsModel.fromJson(
           response.data,
@@ -47,7 +46,6 @@ class VolunteerProfileService {
       final Response response = await RootService.httpService.get(
           url: "https://api.najot.uz/${LanguageCubit.getLang()}/users/me/",
           token: HiveService.to.getToken()!.access);
-      print(response.statusCode);
       if (response.statusCode == 200) {
         final User user = User.fromJson(
           response.data,
@@ -115,7 +113,6 @@ class VolunteerProfileService {
           formData: formData,
           headers: headers,
           token: HiveService.to.getToken()!.access);
-      print(response!.statusCode);
       if (response != null) {
         if (response.statusCode == 201) {
           return true;
@@ -142,7 +139,6 @@ class VolunteerProfileService {
           headers: headers,
           token: HiveService.to.getToken()!.access);
       if (response != null) {
-        print(response.statusCode);
         if (response.statusCode == 201) {
           return true;
         }

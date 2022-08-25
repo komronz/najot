@@ -6,10 +6,6 @@ import 'package:najot/data/services/charity_service.dart';
 import 'package:najot/data/services/crowdfunding_service.dart';
 import 'package:najot/data/services/main_service.dart';
 import 'package:najot/data/services/volunteer_project_service.dart';
-
-import '../../model/charity_model.dart';
-import '../../model/kraufanding_model.dart';
-
 part 'my_charity_project_state.dart';
 
 class MyProjectAndAnnouncementsPagesCubit extends Cubit<MyProjectAndAnnouncementsPagesState> {

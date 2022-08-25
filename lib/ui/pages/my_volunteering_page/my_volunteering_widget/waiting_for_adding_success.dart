@@ -23,7 +23,6 @@ class WaitingForAddingSuccess extends StatelessWidget {
       : super(key: key);
   DateTime dateTime;
   DateTime time;
-  DateTime _dateTime = DateTime.now();
   TimeOfDay timeOfDay = TimeOfDay.now();
   VolunteerDonateResults model;
 

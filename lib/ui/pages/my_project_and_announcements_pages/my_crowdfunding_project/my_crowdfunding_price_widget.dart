@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/model/kraufanding_model.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/utils/app_utils.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';

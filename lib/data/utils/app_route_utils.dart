@@ -28,7 +28,6 @@ import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volu
 import 'package:najot/ui/pages/volunteer_page/volunteer_page.dart';
 import '../../ui/pages/charity_page/charity_full_page/charity_full_page2.dart';
 import '../../ui/pages/charity_page/widgets/charity_help_widget.dart';
-import '../../ui/pages/my_products_page/my_products_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/number_update_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/user_degree_page.dart';
@@ -222,10 +221,6 @@ class AppRouteUtils {
           builder: (context) => AboutMyVolunteeringItemProjectWidget(
             model: settings.arguments as ProjectModel,
           ),
-        );
-      case MyProductsPage.routeName:
-        return MaterialPageRoute(
-          builder: (context) => MyProductsPage(),
         );
       case NotificationPage.routeName:
         return MaterialPageRoute(

@@ -13,7 +13,6 @@ import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/mo
 import '../../../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_cubit.dart';
 import '../../../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_state.dart';
 import '../../../../data/config/const/decoration_const.dart';
-import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_bar_with_title.dart';
 import '../../../widgets/app_widgets.dart';
@@ -55,7 +54,7 @@ class _AboutMyCharityProjectWidgetState extends State<MyCrowdfundingAboutWidget>
     super.initState();
   }
 
-  _handleTabSelection() {
+  void _handleTabSelection() {
     if (_tabController.indexIsChanging) {
       setState(() {});
     }

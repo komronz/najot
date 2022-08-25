@@ -8,7 +8,6 @@ import 'crowdfunding_mini_card_widget.dart';
 
 class TabProjects extends StatelessWidget {
   TabProjects({
-    Key? key,
     required this.tabController,
     required this.state,
   });

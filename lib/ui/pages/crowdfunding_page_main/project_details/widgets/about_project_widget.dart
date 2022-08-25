@@ -56,7 +56,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
     super.initState();
   }
 
-  _handleTabSelection() {
+  void _handleTabSelection() {
     if (_tabController.indexIsChanging) {
       setState(() {});
     }

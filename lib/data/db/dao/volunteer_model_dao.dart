@@ -1,7 +1,6 @@
 
 import 'package:floor/floor.dart';
 import 'package:najot/data/model/volunteer_db_model.dart';
-import 'package:najot/data/model/volunteer_donate_model.dart';
 
 @dao
 abstract class VolunteerModelDao {

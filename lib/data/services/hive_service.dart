@@ -8,7 +8,6 @@ import 'package:hive/hive.dart';
 // 🌎 Project imports:
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/auth_model/login_end_model.dart';
-import 'package:najot/data/model/auth_model/token_model.dart';
 import 'package:najot/data/model/auth_model/user.dart';
 
 

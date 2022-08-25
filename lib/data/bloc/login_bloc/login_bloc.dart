@@ -11,7 +11,6 @@ import 'package:najot/data/model/blocked_model.dart';
 import 'package:najot/data/services/auth_service.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/main_service.dart';
-import 'package:najot/data/services/user_update_service.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 part 'login_event.dart';
@@ -42,7 +41,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
 
   void uiChange() {
-    emit(state.copyWith());
   }
 
   Future _onFirstNameChanged(

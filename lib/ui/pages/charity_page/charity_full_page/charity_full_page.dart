@@ -300,7 +300,6 @@ class _CharityFullPageState extends State<CharityFullPage>
                                       setState(() {
                                         like=!like;
                                       });
-
                                       await HomeCubit.to.getModel();
                                     }else{
                                       AppWidgets.showText(text: LocaleKeys.disConnection.tr());

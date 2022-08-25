@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import 'package:collection/collection.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +8,6 @@ import 'package:najot/data/custom_time_picker/flutter_time_picker_spinner.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/volunteer_donate_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
-import 'package:najot/data/services/notification_api_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
@@ -187,7 +183,6 @@ class WaitingForDatePickerWidget extends StatelessWidget {
                               dateFormat: "dd-MMMM-yyyy",
                               onChange: (DateTime newDate, _) {
                                 _date = newDate;
-                                print(_date);
                               },
                               pickerTheme: DateTimePickerTheme(
                                 backgroundColor: AppColorUtils.WHITE,

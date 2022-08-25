@@ -140,13 +140,7 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                       _time.minute,
                       _time.second,
                     ).add(Duration(minutes: 30));
-                    print(dateTime);
-                    // RootService.appBloc.orderBloc.add(
-                    //   OrderDateTimeEvent(
-                    //     dateTime: dateTime,
-                    //     isMinTime: false,
-                    //   ),
-                    // );
+
                     Navigator.pop(context);
                   },
                   text: LocaleKeys.executable_date.tr(),

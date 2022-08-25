@@ -11,8 +11,6 @@ import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
-import '../../charity_page/charity_full_page/charity_full_page.dart';
-import '../../charity_page/charity_full_page/charity_full_page2.dart';
 import '../../charity_page/widgets/charity_item2_widget.dart';
 import '../../charity_page/widgets/charity_item_widget.dart';
 import 'organization_item_widget.dart';

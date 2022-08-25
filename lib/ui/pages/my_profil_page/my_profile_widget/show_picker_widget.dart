@@ -5,13 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
-import '../../../../data/utils/app_image_utils.dart';
 
 class ShowPickerWidget extends StatefulWidget {
   ShowPickerWidget(
@@ -50,7 +48,6 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
         this.image = imagePermanent;
       });
     } on PlatformException catch (e) {
-      print('Failed to pick image: $e');
     }
   }
   Future<File> saveImagePermanently(String imagePath) async {

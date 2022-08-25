@@ -53,7 +53,7 @@ class _AboutMyCharityItemProjectWidgetState
     super.initState();
   }
 
-  _handleTabSelection() {
+  void _handleTabSelection() {
     if (_tabController.indexIsChanging) {
       setState(() {});
     }

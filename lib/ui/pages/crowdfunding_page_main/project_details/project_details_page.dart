@@ -10,7 +10,6 @@ import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/ab
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/products_widget.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/tabbar_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
-import '../../../../data/bloc/home_cubit/home_cubit.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_error_widget.dart';
@@ -54,7 +53,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
     super.initState();
   }
 
-  _handleTabSelection() {
+  void _handleTabSelection() {
     if (_controller.indexIsChanging) {
       setState(() {});
     }

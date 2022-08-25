@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
@@ -74,7 +72,6 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
       state.passportImgPath!,);
 
     if(postVolunteerData != null){
-      print(postVolunteerData);
           emit(state.copyWith(postSuccess: true));
     }
   }
