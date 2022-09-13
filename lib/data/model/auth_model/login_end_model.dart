@@ -22,6 +22,7 @@ class LoginEndModel {
   }
 }
 
+
 class UserModel {
   int? id;
   String? phone;
