@@ -112,7 +112,7 @@ class VolunteerCardWidget extends StatelessWidget {
                               ),
                               AppWidgets.text(
                                 text: DateFormat("dd.MM.yyyy").format(modifiedAt),
-                                fontSize: 14.sp,
+                                fontSize: 13.sp,
                                 fontWeight: FontWeight.w600,
                                 color: AppColorUtils.BLUE_PERCENT,
                               )

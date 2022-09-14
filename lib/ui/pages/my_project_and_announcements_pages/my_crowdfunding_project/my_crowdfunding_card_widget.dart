@@ -116,7 +116,7 @@ class MyCrowdfundingList extends StatelessWidget {
                         ).paddingOnly(bottom: 10.w),
                         AppWidgets.starTextWidget(
                             text: LocaleKeys.must_collected_date.tr(),
-                            fontSize: 10.sp),
+                            fontSize: 9.5.sp),
                         Row(
                           children: [
                             Icon(

@@ -472,6 +472,36 @@ class AppWidgets {
     );
   }
 
+  static Widget AutoSizeText({
+    required String text,
+    double? fontSize,
+    double? minFontSize,
+    Color? color,
+    FontWeight fontWeight = FontWeight.normal,
+    FontStyle fontStyle = FontStyle.normal,
+    int maxLines = 1,
+    bool autoResize = false,
+    TextAlign textAlign = TextAlign.start,
+    bool richText = false,
+    List<MarkerText> othersMarkers = const [],
+    double height = 1,
+  }) {
+    return _baseText(
+      textAlign: textAlign,
+      text: text,
+      fontSize: fontSize,
+      color: color,
+      fontWeight: fontWeight,
+      maxLines: maxLines,
+      autoResize: autoResize,
+      fontStyle: fontStyle,
+      richText: richText,
+      othersMarkers: othersMarkers,
+      height: height,
+    );
+  }
+
+
   static Widget rowIconText({
     required String icon,
     required String iconSelect,

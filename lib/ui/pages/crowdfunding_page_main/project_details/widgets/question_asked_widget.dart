@@ -34,7 +34,7 @@ class QuestionsAnswerWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 // border: Border.all(color: AppColorUtils.GREY,width: 1),
-                color: AppColorUtils.GREEN_ACCENT4,
+                color: AppColorUtils.GREEN_ACCENT5,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

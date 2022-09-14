@@ -94,7 +94,7 @@ class _OperatorPageState extends State<OperatorPage> {
                     child: AppWidgets.textLocale(
                       textAlign: TextAlign.center,
                       text: LocaleKeys.write_to_the_operator,
-                      fontSize: 26.sp,
+                      fontSize: 23.sp,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -262,7 +262,7 @@ class _OperatorPageState extends State<OperatorPage> {
               fontSize: 18.sp,
               color: AppColorUtils.GRAY_4,
               height: 1.4,
-            ).paddingOnly(top: 21).paddingSymmetric(horizontal: 86.w),
+            ).paddingOnly(top: 21).paddingSymmetric(horizontal: 60.w),
             // TODO: Warning
           ],
         ),

@@ -52,7 +52,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      color: AppColorUtils.GREEN_ACCENT4,
+                      color: AppColorUtils.GREEN_ACCENT5,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

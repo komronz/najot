@@ -182,8 +182,7 @@ class _CharityPageState extends State<CharityPage>
                                         child: Row(
                                           children:
                                               List.generate(list.length, (index) {
-                                            if (list[index].requiredFund !=
-                                                null) {
+                                            if (list[index].requiredFund != null) {
                                               return CharityItemWidget(
                                                 model: list[index],
                                                 onTap: () {
@@ -279,7 +278,7 @@ class _CharityPageState extends State<CharityPage>
                                             state.tabLoading
                                                 ? Center(
                                                     child:
-                                                        CircularProgressIndicator(),
+                                                        CircularProgressIndicator.adaptive(),
                                                   ).paddingSymmetric(
                                                     vertical: 50.w)
                                                 : Container(

@@ -41,7 +41,7 @@ class AppBarWithTitle extends StatelessWidget implements PreferredSizeWidget {
         top: 10.w,
         bottom: 10.w,
       ),
-      title: AppWidgets.textLocale(
+      title: AppWidgets.AutoSizeText(
         text: title,
         fontWeight: FontWeight.w600,
         color: AppColorUtils.BLACK,

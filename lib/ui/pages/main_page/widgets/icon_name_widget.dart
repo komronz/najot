@@ -10,12 +10,15 @@ class IconAndName extends StatelessWidget {
       required this.onTap,
       this.color = Colors.black,
       this.fontWeight = FontWeight.w500,
-      this.fontsize = 18});
+      this.fontsize = 18,
+      this.minFontSize = 10
+      });
 
   String icon;
   String text;
   Color color;
   double fontsize;
+  double minFontSize;
   FontWeight fontWeight;
   VoidCallback onTap;
 
@@ -36,13 +39,22 @@ class IconAndName extends StatelessWidget {
           SizedBox(height: 5.w,),
           SizedBox(
             width: 105.w,
-            child: AppWidgets.text(
-                text: text,
-                color: color,
-                fontSize: fontsize,
-                fontWeight: fontWeight,
-            textAlign: TextAlign.center,
-            maxLines: 2,
+            // child: AppWidgets.text(
+            //     text: text,
+            //     color: color,
+            //     fontSize: fontsize,
+            //     fontWeight: fontWeight,
+            // textAlign: TextAlign.center,
+            // maxLines: 2,
+            // ),
+            child: AppWidgets.AutoSizeText(
+              minFontSize: minFontSize = 10,
+              text: text,
+              color:color,
+              fontSize: fontsize,
+              fontWeight:fontWeight,
+              maxLines: 1,
+              textAlign: TextAlign.center,
             ),
           )
         ],

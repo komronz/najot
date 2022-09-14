@@ -110,8 +110,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     AppWidgets.text(
-                                      text:
-                                          model.model.founder!.firstName ?? "",
+                                      text: model.model.founder!.firstName ?? "",
                                       color: AppColorUtils.TEXT_GREEN2,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 14.sp,
@@ -121,7 +120,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
                                       color: AppColorUtils.TEXT_GREEN2,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 14.sp,
-                                    ).paddingOnly(top: 2.w),
+                                    ).paddingOnly(top: 6.w),
                                   ],
                                 ),
                               ),

@@ -26,7 +26,7 @@ class VolunteeringProjectWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        margin: EdgeInsets.only(
+        padding: EdgeInsets.only(
           right: 10,
           bottom: 10,
         ),
@@ -91,13 +91,13 @@ class VolunteeringProjectWidget extends StatelessWidget {
                     color: AppColorUtils.GREEN_TEXT,
                   ).paddingOnly(
                     top: 3.w,
-                    bottom: 11.h,
+                    bottom: 10.h,
                   ),
                   AppWidgets.starTextWidget(
                     text: LocaleKeys.volunteering.tr(),
                     fontSize: 10.sp,
                   ).paddingOnly(
-                    bottom: 3.h,
+                   // bottom: 3.h,
                   ),
                   model.owner == null
                       ? Row(

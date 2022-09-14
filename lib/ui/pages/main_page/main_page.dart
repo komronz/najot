@@ -101,6 +101,7 @@ class MainPage extends StatelessWidget {
                                           icon: AppImageUtils.KRAUDFANDING,
                                           fontWeight: FontWeight.w600,
                                           fontsize: 14.sp,
+                                          minFontSize: 10.sp,
                                           color: AppColorUtils.KRAUDFANDING,
                                           onTap: () {
                                             CrowdfundingCubit
