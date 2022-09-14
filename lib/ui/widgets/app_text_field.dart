@@ -137,7 +137,7 @@ class _AppTextFieldState extends State<AppTextField> {
                       child: Center(
                         child: AppWidgets.text(
                           text: "+998",
-                          fontSize: 16.sp,
+                          fontSize: 15.sp,
                           color: AppColorUtils.DARK2,
                         ),
                       ),

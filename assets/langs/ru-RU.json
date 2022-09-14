@@ -4,6 +4,7 @@
     "add": "Add",
     "main": "Основной",
     "str_uzbek": "uz",
+    "str_uzbek_krill": "uzk",
     "str_russian": "ru",
     "collected": "Собрано",
     "done": "Сделанный",
@@ -271,9 +272,4 @@
     "no_results_found": "Результатов не найдено",
     "logout": "Вы хотите выйти из программы?",
     "enter_phone_number": "Введите номер телефона"
-
-
-
-
-
 }

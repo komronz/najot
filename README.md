@@ -39,7 +39,9 @@
 	* app.dart
 	* main.dart
 1. Har qanday o'zgarish bo'lsa ya'ni package lar import bo'lsa
-	**flutter pub run import_sorter:main**
+    **flutter pub run import_sorter:main**
 2. Locales o'zgarsa
-	flutter pub run easy_localization:generate -f keys -o locale_keys.g.dart -O ./lib/data/localization --source-dir ./assets/langs
+    flutter pub run easy_localization:generate -f keys -o locale_keys.g.dart -O ./lib/data/localization --source-dir ./assets/langs
 Qolganini yozishga vaqt yetmadi. 😁
+
+3. Locale("ky", "KG") => Qirg'iziston locali, krill o'zbekcha uchun ishlatildi

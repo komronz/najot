@@ -20,18 +20,27 @@ class LanguageCubit extends HydratedCubit<LanguageState> {
   }
 
   LanguageCubit()
-      : super(LanguageState(
-          locale: Locale('uz', 'UZ'),
-        ));
+      : super(
+          LanguageState(
+            locale: Locale('uz', 'UZ'),
+          ),
+        );
 
   void change(Locale locale) {
     emit(state.copyWith(locale: locale));
-
   }
 
+  static String getLang() {
+    var locale;
+    if (LanguageCubit.to.state.locale == Locale("uz", "UZ")) {
+      locale = "uz";
+    } else if (LanguageCubit.to.state.locale == Locale("ky", "KG")) {
+      // O'zgartishi kerak => ky
+      locale = "uz";
+    } else if (LanguageCubit.to.state.locale == Locale("ru", "RU")) {
+      locale = "ru";
+    }
 
-  static String getLang(){
-    var locale = LanguageCubit.to.state.locale==Locale("uz","UZ")?"uz":"ru";
     return locale;
   }
 
@@ -41,13 +50,18 @@ class LanguageCubit extends HydratedCubit<LanguageState> {
       locale: Locale('uz', 'UZ'),
     ),
     LanguageItem(
+      languageLocaleKey: LocaleKeys.str_uzbek,
+      locale: Locale("ky", "KG"),
+    ),
+    LanguageItem(
       languageLocaleKey: LocaleKeys.str_russian,
       locale: Locale('ru', 'RU'),
     ),
   ];
-     void changeValue(int value){
-       emit(state.copyWith(value: value));
-     }
+
+  void changeValue(int value) {
+    emit(state.copyWith(value: value));
+  }
 
   Future changeLanguage(Locale locale) async {
     if (!await checkConnection()) {
@@ -56,31 +70,6 @@ class LanguageCubit extends HydratedCubit<LanguageState> {
     }
 
     emit(state.copyWith(isLoading: true));
-
-    late String lang;
-
-    switch (locale.languageCode) {
-      case "uz":
-        lang = "uz_latn";
-        break;
-      default:
-        lang = "ru";
-        break;
-    }
-    //
-    // User? _user = await UserService.to.updateMe(
-    //   {"lang": lang},
-    // );
-    // if (_user != null) {
-    //   DBService.to.clearUser();
-    //   DBService.to.saveUser(_user);
-    //   UserCubit.to.load();
-    //   change(locale);
-    // } else {
-    //   AppWidgets.showText(
-    //     text: tr(LocaleKeys.str_smt_went_wrong_try_again),
-    //   );
-    // }
 
     emit(state.copyWith(isLoading: false));
     NavigatorService.to.pop();
@@ -111,11 +100,8 @@ class LanguageCubit extends HydratedCubit<LanguageState> {
 
   @override
   Map<String, dynamic>? toJson(LanguageState state) {
-    if (state is LanguageState) {
-      return {
-        'locale': "${state.locale.languageCode}_${state.locale.countryCode}",
-      };
-    }
-    return null;
+    return {
+      'locale': "${state.locale.languageCode}_${state.locale.countryCode}",
+    };
   }
 }
