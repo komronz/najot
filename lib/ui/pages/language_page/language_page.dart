@@ -87,9 +87,53 @@ class _LanguagePageState extends State<LanguagePage> {
                 ),
                 GestureDetector(
                   onTap: (){
-                    LanguageCubit.to.change(Locale('ru', 'RU'));
+                    LanguageCubit.to.change(Locale("ky", "KG"));
                     setState(() {
                       val = 2;
+                    });
+                  },
+                  child: Container(
+                    height: 44.w,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: AppColorUtils.LANG_BACK),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            SvgPicture.asset(AppImageUtils.UZ_FLAG),
+                            SizedBox(
+                              width: 12.w,
+                            ),
+                            AppWidgets.text(
+                              text: "Ўзбек крилл",
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w400,
+                              color: AppColorUtils.DARK2,
+                            )
+                          ],
+                        ),
+                        Radio(
+                          value: 2,
+                          groupValue: val,
+                          activeColor: AppColorUtils.PERCENT_COLOR,
+                          onChanged: (value) {
+                            setState(() {
+                              LanguageCubit.to.change(Locale("ky", "KG"));
+                              val = 2;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ).paddingOnly(bottom: 24.w),
+                ),
+                GestureDetector(
+                  onTap: (){
+                    LanguageCubit.to.change(Locale('ru', 'RU'));
+                    setState(() {
+                      val = 3;
                     });
                   },
                   child: Container(
@@ -115,13 +159,13 @@ class _LanguagePageState extends State<LanguagePage> {
                           ],
                         ),
                         Radio(
-                          value: 2,
+                          value: 3,
                           groupValue: val,
                           activeColor: AppColorUtils.PERCENT_COLOR,
                           onChanged: (value) {
                             LanguageCubit.to.change(Locale('ru', 'RU'));
                             setState(() {
-                              val = 2;
+                              val = 3;
                             });
                           },
                         ),
@@ -129,11 +173,11 @@ class _LanguagePageState extends State<LanguagePage> {
                     ),
                   ).paddingOnly(bottom: 24.w),
                 ),
+
                 GestureDetector(
                   onTap: () {
                     if (val != 0) {
-                      // NavigatorService.to.pushNamed(IntroPage.routeName);
-                      NavigatorService.to.pushNamed(
+                        NavigatorService.to.pushNamed(
                         IntroPage.routeName,
                       );
                     }

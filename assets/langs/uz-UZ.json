@@ -4,6 +4,7 @@
   "add": "Add",
   "main": "Asosiy",
   "str_uzbek": "uz",
+  "str_uzbek_krill": "uzk",
   "str_russian": "ru",
   "collected": "To'plandi",
   "done": "Bajarildi",
@@ -272,5 +273,4 @@
   "no_results_found": "Natijalar topilmadi",
   "logout": "Dasturdan chiqmoqchimisiz?",
   "enter_phone_number": "Telefon raqamini kiriting"
-
 }

@@ -49,8 +49,8 @@ Future runMainApp() async {
       path: 'assets/langs',
       supportedLocales: [
         Locale("uz", "UZ"),
+        Locale("ky", "KG"), // Qirg'iziton lokali, krill o'zbekcha uchun ishlatildi
         Locale("ru", "RU"),
-        Locale("en", "EN"),
       ],
       fallbackLocale: Locale('uz', 'UZ'),
       child: App(),
