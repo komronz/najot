@@ -83,7 +83,7 @@ class CharityItemProjectWidget extends StatelessWidget {
                     text: LocaleKeys.volunteering.tr(),
                     fontSize: 10.sp,
                   ).paddingOnly(
-                   // bottom: 3.h,
+                    bottom: 3.h,
                   ),
                   model.owner==null
                       ? Row(

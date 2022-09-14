@@ -91,13 +91,13 @@ class VolunteeringProjectWidget extends StatelessWidget {
                     color: AppColorUtils.GREEN_TEXT,
                   ).paddingOnly(
                     top: 3.w,
-                    bottom: 10.h,
+                    bottom: 12.h,
                   ),
                   AppWidgets.starTextWidget(
                     text: LocaleKeys.volunteering.tr(),
                     fontSize: 10.sp,
                   ).paddingOnly(
-                   // bottom: 3.h,
+                    bottom: 3.h,
                   ),
                   model.owner == null
                       ? Row(
