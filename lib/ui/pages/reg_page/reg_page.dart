@@ -50,6 +50,7 @@ class RegPage extends StatelessWidget {
                       NavigatorService.to.pop();
                     },
                     title: LocaleKeys.personal_information,
+
                   ).paddingOnly(top: 58.h),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -57,7 +58,7 @@ class RegPage extends StatelessWidget {
                     children: [
                       AppTextField(
                         isFill: loginBloc.state.firstNameFill,
-                        hintText: "(abdumalik)",
+                        hintText: "",
                         onChanged: (v) {
                           loginBloc.add(LoginFirstNameChanged(v));
                         },
@@ -68,7 +69,7 @@ class RegPage extends StatelessWidget {
                       ),
                       AppTextField(
                         isFill: loginBloc.state.lastNameFill,
-                        hintText: "(sapoqulov)",
+                        hintText: "",
                         onChanged: (v) {
                           loginBloc.add(LoginLastNameChanged(v));
                         },

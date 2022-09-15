@@ -54,7 +54,6 @@ class App extends StatelessWidget {
             // darkTheme: AppThemes.darkTheme(),
             localizationsDelegates: context.localizationDelegates,
             builder: BotToastInit(),
-            // home: LanguagePage(),
             home: RootService.hiveService.getToken() != null
                 ? HomePage(
                     appPageType: AppPageType.MAIN,
