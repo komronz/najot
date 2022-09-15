@@ -54,7 +54,7 @@ class SupportProjectDialog extends StatelessWidget {
                   width: 10,
                 ),
                 AppWidgets.textLocale(
-                  text: LocaleKeys.card_number.tr(),
+                  text: splitCardNumber(LocaleKeys.card_number.tr()),
                   fontSize: 16.sp,
                   color: AppColorUtils.DARK_6,
                   fontWeight: FontWeight.w400,
@@ -135,4 +135,19 @@ class SupportProjectDialog extends StatelessWidget {
       ),
     );
   }
+}
+String splitCardNumber(String cardNumber) {
+  String result = "";
+
+  List myLIst = cardNumber.split("");
+
+  myLIst.insert(4, " ");
+  myLIst.insert(9, " ");
+  myLIst.insert(14, " ");
+
+  for (String i in myLIst) {
+    result += i;
+  }
+
+  return result;
 }
