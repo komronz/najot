@@ -109,4 +109,5 @@ class AppImageUtils {
   static const String LOGO_BIG = "assets/app_icons/logo_big.svg";
   static const String LOGO_WORD_BIG = "assets/app_icons/logo_word_big.svg";
   static const String BOX = "assets/app_icons/box.svg";
+  static const String LOYIHASHARTLARI_RULES = "assets/images/rules.svg";
 }

@@ -103,7 +103,7 @@ class LoginPage extends StatelessWidget {
                     : SizedBox(),
                 AppWidgets.appButton(
                   title: LocaleKeys.enter,
-                  color: AppColorUtils.GREEN_APP,
+                   color: AppColorUtils.GREEN_APP,
                   onTap: () {
                     context.read<LoginBloc>().add(CheckPhoneNumber());
                   },
