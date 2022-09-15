@@ -53,7 +53,7 @@ class CrowdfundingAuthorWidget extends StatelessWidget {
               children: [
                 AppWidgets.textLocale(
                   text: LocaleKeys.project_author,
-                  fontSize: 12.sp,
+                  fontSize: 12,
                   fontWeight: FontWeight.w400,
                   color: AppColorUtils.DARK_6,
                 ),
@@ -63,7 +63,7 @@ class CrowdfundingAuthorWidget extends StatelessWidget {
                     text: "${model.owner!.firstName!} ${model.owner!.lastName!}",
                     color: AppColorUtils.TEXT_GREEN2,
                     fontWeight: FontWeight.w600,
-                    fontSize: 14.sp,
+                    fontSize: 14,
                   ).paddingOnly(top: 2.w),
                 ),
               ],
@@ -78,7 +78,7 @@ class CrowdfundingAuthorWidget extends StatelessWidget {
           color: AppColorUtils.GREEN_BTN,
           textColor: AppColorUtils.GREEN_TEXT,
           borderRadius: 10,
-          textSize: 12.sp,
+          textSize: 12,
           fontWeight: FontWeight.w600,
         ),
       ],

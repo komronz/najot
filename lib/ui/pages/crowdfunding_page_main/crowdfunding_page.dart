@@ -107,7 +107,7 @@ class _CrowdfundingPageState extends State<CrowdfundingPage>
                                     ).paddingOnly(
                                       top: 24.w,
                                       bottom: 15.w,
-                                      left: 18,
+                                      left: 18.w,
                                     ),
                                     SingleChildScrollView(
                                       physics: BouncingScrollPhysics(),
