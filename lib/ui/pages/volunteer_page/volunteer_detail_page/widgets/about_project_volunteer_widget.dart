@@ -21,6 +21,7 @@ import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/ne
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/payment_history_dialog.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/question_asked_widget.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
+import 'package:najot/ui/pages/my_profil_page/my_profile_page.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_help_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:super_rich_text/super_rich_text.dart';
@@ -430,7 +431,9 @@ class _AboutProjectVolunteerWidgetState
                     : Column(
                         children: [
                           ButtonCard(
-                            onPress: () {},
+                            onPress: () {
+                              NavigatorService.to.pushReplacementNamed(MyProfilePage.routeName);
+                            },
                             text: LocaleKeys.go_to_personal_profile,
                             height: 48.w,
                             width: 1.sw,

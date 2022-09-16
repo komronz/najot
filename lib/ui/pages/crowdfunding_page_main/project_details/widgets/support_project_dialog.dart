@@ -132,7 +132,7 @@ class SupportProjectDialog extends StatelessWidget {
               text: LocaleKeys.exit.tr(),
               textSize: 16.sp,
               fontWeight: FontWeight.w500,
-              height: 50.w,
+              height: 49.w,
               width: 296.w,
               color: AppColorUtils.GREEN_ACCENT5,
               textColor: AppColorUtils.BLACK,

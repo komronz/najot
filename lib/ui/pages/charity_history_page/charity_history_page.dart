@@ -47,11 +47,14 @@ class CharityHistoryPage extends StatelessWidget {
                     HomePage.globalKey.currentState!.openDrawer();
                   },
                 ),
-                Expanded(
-                  child: AppWidgets.textLocale(
-                    text: LocaleKeys.charity_history,
-                    fontSize: 25.sp,
-                    fontWeight: FontWeight.w600,
+                Padding(
+                  padding: EdgeInsets.only(left: 4),
+                  child: Expanded(
+                    child: AppWidgets.textLocale(
+                      text: LocaleKeys.charity_history,
+                      fontSize: 25.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
                 InkWell(

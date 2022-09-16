@@ -92,7 +92,7 @@ class VolunteerDonateWidget extends StatelessWidget {
                         width: 10.w,
                       ),
                       AppWidgets.text(
-                        text: cardModel.cardNumber!,
+                        text: splitCardNumber(cardModel.cardNumber!),
                         color: AppColorUtils.KRAUDFANDING,
                         fontSize: 18.sp,
                         fontWeight: FontWeight.w600,
@@ -124,5 +124,21 @@ class VolunteerDonateWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String splitCardNumber(String cardNumber) {
+    String result = "";
+
+    List myLIst = cardNumber.split("");
+
+    myLIst.insert(4, " ");
+    myLIst.insert(9, " ");
+    myLIst.insert(14, " ");
+
+    for (String i in myLIst) {
+      result += i;
+    }
+
+    return result;
   }
 }
