@@ -71,14 +71,14 @@ class CharityCashWidget extends StatelessWidget {
                     children: [
                       AppWidgets.textLocale(
                         text: LocaleKeys.done,
-                        fontSize: 10.sp,
+                        fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColorUtils.DARK_6,
                       ).paddingOnly(
                         right: 5.w,
                       ),
                       AppWidgets.text(
-                        fontSize: 12.h,
+                        fontSize: 16.h,
                         text: "${model.percent.toString().split(".").first}%",
                         fontWeight: FontWeight.w600,
                         color: AppColorUtils.BLUE_PERCENT,
@@ -102,7 +102,7 @@ class CharityCashWidget extends StatelessWidget {
                   Expanded(
                     child: AppWidgets.starTextWidget(
                       text: LocaleKeys.must_collected_date.tr(),
-                      fontSize: 9.sp,
+                      fontSize: 9.5.sp,
                       hasStar: true,
                     ).paddingOnly(
                       bottom: 7.h,
@@ -118,7 +118,7 @@ class CharityCashWidget extends StatelessWidget {
                       AppWidgets.textLocale(
                         text: DateFormat("dd.MM.yyyy").format(DateTime.parse(model.modifiedAt!)),
                         color: AppColorUtils.BLUE_TEXT,
-                        fontSize: 12.sp,
+                        fontSize: 14.sp,
                         fontWeight: FontWeight.w500,
                       ),
                     ],

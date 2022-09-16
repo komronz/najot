@@ -168,7 +168,7 @@ class _AboutMyCharityProjectWidgetState
                                   fontSize: 14.sp,
                                 ).paddingOnly(left: 6.w),
                               ],
-                            ).paddingOnly(top: 3.w)
+                            ).paddingOnly(top: 10.w)
                           ],
                         ).paddingOnly(left: 30.w)
                       ],

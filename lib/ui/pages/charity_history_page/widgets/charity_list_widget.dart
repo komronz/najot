@@ -21,24 +21,26 @@ class CharityListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (list.isEmpty) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          AppWidgets.imageSvg(
-            path: AppImageUtils.IMG_CHARITY_EMPTY,
-            height: 70.w,
-            width: 70.w,
-            fit: BoxFit.none,
-          ).paddingOnly(top: 80.w),
-          AppWidgets.textLocale(
-            text: LocaleKeys.nothing_found_yet,
-            fontSize: 18.sp,
-            textAlign: TextAlign.center,
-            maxLines: 2,
-            fontWeight: FontWeight.w600,
-            color: AppColorUtils.GRAY_4,
-          ).paddingOnly(top: 20, right: 70.w, left: 70.w,),
-        ],
+      return SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            AppWidgets.imageSvg(
+              path: AppImageUtils.IMG_CHARITY_EMPTY,
+              height: 70.w,
+              width: 70.w,
+              fit: BoxFit.none,
+            ).paddingOnly(top: 80.w),
+            AppWidgets.textLocale(
+              text: LocaleKeys.nothing_found_yet,
+              fontSize: 18.sp,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              fontWeight: FontWeight.w600,
+              color: AppColorUtils.GRAY_4,
+            ).paddingOnly(top: 20, right: 70.w, left: 70.w,),
+          ],
+        ),
       );
     }
     return ListView.builder(
