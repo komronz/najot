@@ -5,12 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/model/project_model.dart';
+import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/support_project_dialog.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class PaymentHistoryDialog extends StatelessWidget {
-  const PaymentHistoryDialog({Key? key}) : super(key: key);
+  ProjectModel projectModel = ProjectModel();
+  PaymentHistoryDialog({Key? key, required  this.projectModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -70,8 +74,17 @@ class PaymentHistoryDialog extends StatelessWidget {
             SizedBox(height: 10.w,),
 
             ButtonCard(
-              onPress: () {},
-              text: LocaleKeys.switch_amount.tr(),
+
+              onPress: () {
+                NavigatorService.to.pop();
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return SupportProjectDialog(projectModel: projectModel);
+                  },
+                );
+              },
+              text: LocaleKeys.support_project_again.tr(),
               textSize: 16.sp,
               fontWeight: FontWeight.w500,
               height: 50.w,

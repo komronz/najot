@@ -275,5 +275,6 @@ abstract class  LocaleKeys {
   static const no_results_found = 'no_results_found';
   static const logout = 'logout';
   static const enter_phone_number = 'enter_phone_number';
-
+  static const support_project_again = 'support_project_again';
+  static const copy_card_number = 'copy_card_number';
 }

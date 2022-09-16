@@ -49,7 +49,7 @@
   "switch_amount": "Тўлов тизимига ўтиш",
   "about_project": "Лойиҳа ҳақида",
   "payment_history": "Тўлов тарихи",
-  "was_implementation": "Сиз Лойиҳани қўллагансиз:",
+  "was_implementation": "Сиз лойиҳани қўллагансиз:",
   "summa": "Сумма: ",
   "project_author": "Лойиҳа муаллифи",
   "ask_question": "Савол бериш",
@@ -272,5 +272,7 @@
   "code_verification": "Кодни тасдиқлаш",
   "no_results_found": "Натижалар топилмади",
   "logout": "Дастурдан чиқмоқчимисиз?",
-  "enter_phone_number": "Телефон рақамини киритинг"
+  "enter_phone_number": "Телефон рақамини киритинг",
+  "support_project_again": "Лойиҳани яна қўллаш",
+  "copy_card_number": "Карта рақамини нусхалаш"
 }

@@ -117,7 +117,7 @@ class _AboutProjectVolunteerWidgetState
                         showDialog(
                           context: context,
                           builder: (context) {
-                            return PaymentHistoryDialog();
+                            return PaymentHistoryDialog(projectModel: widget.cardModel,);
                           },
                         );
                       },
