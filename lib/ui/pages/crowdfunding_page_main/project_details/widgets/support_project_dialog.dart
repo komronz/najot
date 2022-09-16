@@ -61,7 +61,9 @@ class SupportProjectDialog extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 12.h,),
+            SizedBox(
+              height: 12.h,
+            ),
             Material(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
@@ -105,8 +107,13 @@ class SupportProjectDialog extends StatelessWidget {
             ),
             MixTextWidget().paddingSymmetric(vertical: 12.w),
             ButtonCard(
-              onPress: () {},
-              text: LocaleKeys.switch_amount.tr(),
+              onPress: () {
+                FlutterClipboard.copy(projectModel.cardNumber!);
+                AppWidgets.showText(
+                  text: LocaleKeys.be_save.tr(),
+                );
+              },
+              text: LocaleKeys.copy_card_number.tr(),
               textSize: 16.sp,
               fontWeight: FontWeight.w500,
               height: 50.w,
@@ -136,7 +143,8 @@ class SupportProjectDialog extends StatelessWidget {
       ),
     );
   }
-  String splitCardNumber(String cardNumber){
+
+  String splitCardNumber(String cardNumber) {
     String result = "";
 
     List myLIst = cardNumber.split("");

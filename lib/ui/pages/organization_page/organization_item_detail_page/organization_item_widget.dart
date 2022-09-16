@@ -137,7 +137,7 @@ class _OrganizationItemWidgetState extends State<OrganizationItemWidget>
                                       showDialog(
                                         context: context,
                                         builder: (context) {
-                                          return PaymentHistoryDialog();
+                                          return PaymentHistoryDialog(projectModel: widget.model.cardModel,);
                                         },
                                       );
                                     },

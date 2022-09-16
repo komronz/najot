@@ -10,13 +10,14 @@ import 'package:najot/data/bloc/app_bloc_observer.dart';
 import 'package:najot/data/services/root_service.dart';
 import 'package:path_provider/path_provider.dart';
 
-class MyHttpOverrides extends HttpOverrides{
-
-  HttpClient createHttpClient(SecurityContext? context){
+class MyHttpOverrides extends HttpOverrides {
+  HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
-      ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
+
 Future main() async {
   HttpOverrides.global = new MyHttpOverrides();
   runZonedGuarded<Future<void>>(
@@ -49,7 +50,8 @@ Future runMainApp() async {
       path: 'assets/langs',
       supportedLocales: [
         Locale("uz", "UZ"),
-        Locale("ky", "KG"), // Qirg'iziton lokali, krill o'zbekcha uchun ishlatildi
+        Locale("ky", "KG"),
+        // Qirg'iziton lokali, krill o'zbekcha uchun ishlatildi
         Locale("ru", "RU"),
       ],
       fallbackLocale: Locale('uz', 'UZ'),

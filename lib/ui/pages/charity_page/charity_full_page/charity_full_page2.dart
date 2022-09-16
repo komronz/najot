@@ -142,7 +142,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                               showDialog(
                                 context: context,
                                 builder: (context) {
-                                  return PaymentHistoryDialog();
+                                  return PaymentHistoryDialog(projectModel: widget.helpModel,);
                                 },
                               );
                             },
