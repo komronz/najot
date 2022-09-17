@@ -229,7 +229,9 @@ class ProductDetailPage extends StatelessWidget {
                   child: ButtonCard(
                     height: 48.w,
                     width: MediaQuery.of(context).size.width,
-                    onPress: () {},
+                    onPress: () {
+
+                    },
                     text: LocaleKeys.switch_amount.tr(),
                     color: AppColorUtils.PERCENT_COLOR,
                     textColor: AppColorUtils.WHITE,

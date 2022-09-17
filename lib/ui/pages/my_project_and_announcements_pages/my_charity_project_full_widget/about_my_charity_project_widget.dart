@@ -62,6 +62,7 @@ class _AboutMyCharityProjectWidgetState
 
   @override
   Widget build(BuildContext context) {
+    print(widget.model.category!.name);
     return BlocProvider(
       create: (context) => cubit..load(widget.model.id!),
       child:
@@ -145,6 +146,7 @@ class _AboutMyCharityProjectWidgetState
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+
                         MyCharityAppliedUserWidget(model: widget.model),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

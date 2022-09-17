@@ -22,6 +22,7 @@ class MyCrowdfundingSupportCubit extends Cubit<MyCrowdfundingSupportState> {
 
   MyCrowdfundingSupportCubit()
       : super(MyCrowdfundingSupportState(
+      questionData: [],
       widgetChange: false,
       isVisible: true
   ));

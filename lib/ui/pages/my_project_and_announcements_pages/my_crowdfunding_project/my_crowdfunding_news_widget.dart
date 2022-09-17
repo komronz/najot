@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -39,81 +38,73 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                   var createdAt = DateTime.parse(
                     cubit.state.newsData[index].createdAt!,
                   );
-                  var name = cubit.state.newsData[index].user!.firstName??"";
-                  var lastname = cubit.state.newsData[index].user!.lastName??"";
+                  var name = cubit.state.newsData[index].user!.firstName ?? "";
+                  var lastname =
+                      cubit.state.newsData[index].user!.lastName ?? "";
                   return Container(
+                    height: MediaQuery.of(context).size.height * 0.6,
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.only(bottom: 15.h),
                     padding: EdgeInsets.only(
                       top: 12.w,
-                      left: 12.w,
-                      right: 12.w,
+                      left: 10.w,
+                      right: 10.w,
                     ),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: AppColorUtils.GREEN_ACCENT4,
+                      borderRadius: BorderRadius.circular(12),
+                      color: AppColorUtils.GREEN_ACCENT5,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Row(
-                              children: [
-                                Container(
-                                  height: 50.w,
-                                  width: 50.w,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.black12,
-                                  ),
-                                  child: CachedNetworkImage(
-                                    imageUrl: cubit
-                                        .state.newsData[index].user!.photo!,
-                                    fit: BoxFit.cover,
-                                    placeholder: (context, url) => Center(
-                                      child: CircularProgressIndicator(),
-                                    ),
-                                    errorWidget: (context, url, error) =>
-                                        Icon(Icons.person),
-                                  ),
+                            Container(
+                              height: 50.w,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.black12,
+                              ),
+                              child: CachedNetworkImage(
+                                imageUrl:
+                                    cubit.state.newsData[index].user!.photo!,
+                                fit: BoxFit.cover,
+                                placeholder: (context, url) => Center(
+                                  child: CircularProgressIndicator(),
                                 ),
-                                Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width: 150.w,
-                                      child: AppWidgets.text(
-                                        text:
-                                            "${name} ${lastname}",
-                                        color: AppColorUtils.TEXT_GREEN2,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 14.sp,
-                                      ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        AppWidgets.textLocale(
-                                          text: LocaleKeys.project_author,
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w400,
-                                          color: AppColorUtils.DARK_6,
-                                        ).paddingOnly(right: 65.w),
-                                        AppWidgets.text(
-                                          text: DateFormat("dd.MM.yyyy hh:mm")
-                                              .format(createdAt),
-                                          fontSize: 10.sp,
-                                          fontWeight: FontWeight.w500,
-                                          color: AppColorUtils.BLUE_PERCENT,
-                                        )
-                                      ],
-                                    ).paddingOnly(top: 5),
-                                  ],
-                                ).paddingOnly(left: 10),
+                                errorWidget: (context, url, error) =>
+                                    Icon(Icons.person),
+                              ),
+                            ),
+                            SizedBox(width: 5.w,),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                AppWidgets.text(
+                                  text: "${name} ${lastname}",
+                                  color: AppColorUtils.TEXT_GREEN2,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14.sp,
+                                ),
+                                AppWidgets.textLocale(
+                                  text: LocaleKeys.project_author,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColorUtils.DARK_6,
+                                ).paddingOnly(right: 65.w),
                               ],
                             ),
+                            Spacer(),
+                            AppWidgets.text(
+                              text: DateFormat("dd.MM.yyyy hh:mm")
+                                  .format(createdAt),
+                              fontSize: 10.sp,
+                              fontWeight: FontWeight.w500,
+                              color: AppColorUtils.BLUE_PERCENT,
+                            )
                           ],
                         ),
                         AppWidgets.text(
@@ -133,9 +124,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                           color: AppColorUtils.TEXT_GREY2,
                           maxLines: 40,
                         ),
-                        SizedBox(
-                          height: 18.w,
-                        ),
+                        SizedBox(height: 18.w),
                         Container(
                           height: 229.w,
                           child: ClipRRect(
@@ -156,7 +145,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                         ),
                       ],
                     ),
-                  ).paddingOnly(bottom: 10.w);
+                  );
                 }),
               )
             : Container(

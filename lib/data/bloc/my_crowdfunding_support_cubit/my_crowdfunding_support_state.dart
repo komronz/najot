@@ -11,7 +11,7 @@ class MyCrowdfundingSupportState extends Equatable {
     required this.isVisible,
     required this.widgetChange,
      this.newsData=const [],
-     this.questionData= const [],
+     required this.questionData,
      this.commentsData= const [],
      this.file,
   });

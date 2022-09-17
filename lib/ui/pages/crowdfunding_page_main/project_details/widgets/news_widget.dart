@@ -20,6 +20,7 @@ class NewsWidget extends StatelessWidget {
   final ProjectDataCubit cubit;
 
   @override
+
   Widget build(BuildContext context) {
     return cubit.state.newsData.isNotEmpty
         ? Column(

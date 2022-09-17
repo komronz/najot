@@ -485,12 +485,12 @@ class AnswersWidget extends StatelessWidget {
                                                 .content!,
                                             fontWeight: FontWeight.w400,
                                             fontSize: 14.sp,
-                                            color: AppColorUtils.TEXT_GREY2,
+                                            color: Colors.black,
                                             maxLines: 100,
                                             height: 1.5,
                                           ).paddingSymmetric(vertical: 15.w),
                                         ],
-                                      )),
+                                      ),),
                             )
                           ],
                         )

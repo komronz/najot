@@ -358,7 +358,7 @@ class AppWidgets {
 
   static Widget appBarMenu({required String title,
     required VoidCallback onTapMenu,
-    VoidCallback? onTapIcon,
+    required VoidCallback onTapIcon,
     Color? textColor = AppColorUtils.BLACK,
     bool visibleIcon = false,
     String icon = ""}) {

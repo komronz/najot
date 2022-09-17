@@ -80,7 +80,7 @@ class _CommentsWidgetState extends State<MyCrowdfundingCommentsWidget> {
                               children: [
                                 SizedBox(
                                   child: AppWidgets.text(
-                                    text: LocaleKeys.great_project.tr(),
+                                    text: list[index].title ?? "",
                                     color: AppColorUtils.TEXT_GREEN2,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 14.sp,
