@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/services/project_data_service.dart';
 
@@ -13,6 +14,8 @@ class MyCrowdfundingSupportCubit extends Cubit<MyCrowdfundingSupportState> {
   static MyCrowdfundingSupportCubit get to =>
       GetIt.I<MyCrowdfundingSupportCubit>();
 
+   TextEditingController title = TextEditingController();
+   TextEditingController content = TextEditingController();
   static Future init() async {
     GetIt.instance
       ..registerSingleton<MyCrowdfundingSupportCubit>(
@@ -63,6 +66,8 @@ Future postCommentById(int id, String title,String content) async{
   Future postNews(int id,String title,String comment, File image) async{
     var postNews=await projectDataService.postNewsBYId(id, title,comment,image);
     if(postNews !=null){
+      this.title.text="";
+      this.content.text="";
     }
 
   }

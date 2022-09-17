@@ -24,8 +24,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
 
   final ProjectModel cardModel;
   final MyCrowdfundingSupportCubit cubit;
-  final TextEditingController title = TextEditingController();
-  final TextEditingController content = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -192,7 +191,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
               width: 270.w,
               height: 46.w,
               child: TextField(
-                controller: title,
+                controller: cubit.title,
                 expands: true,
                 textAlignVertical: TextAlignVertical.top,
                 maxLines: null,
@@ -232,7 +231,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
         SizedBox(
           height: 170,
           child: TextField(
-            controller: content,
+            controller: cubit.content,
             expands: true,
             textAlignVertical: TextAlignVertical.top,
             maxLines: null,
@@ -262,13 +261,11 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
         AppWidgets.appButton(
           title: LocaleKeys.send,
           onTap: () async {
-            if (title.text != "" &&
-                content.text != "" &&
-                cubit.state.file != null) {
+            if (cubit.title.text != "" && cubit.content.text != "" && cubit.state.file != null) {
               cubit.postNews(
                 cardModel.id!,
-                title.text,
-                content.text,
+                cubit.title.text,
+                cubit.content.text,
                 cubit.state.file!,
               );
               cubit.state.file = null;

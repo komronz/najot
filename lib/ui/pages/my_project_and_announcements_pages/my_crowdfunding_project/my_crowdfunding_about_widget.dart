@@ -478,11 +478,7 @@ class AnswersWidget extends StatelessWidget {
                                             fontSize: 14.sp,
                                           ).paddingOnly(top: 20.w),
                                           AppWidgets.text(
-                                            text: cubit
-                                                .state
-                                                .questionData[index]
-                                                .answers![ind]
-                                                .content!,
+                                            text: cubit.state.questionData[index].answers![ind].content!,
                                             fontWeight: FontWeight.w400,
                                             fontSize: 14.sp,
                                             color: Colors.black,
