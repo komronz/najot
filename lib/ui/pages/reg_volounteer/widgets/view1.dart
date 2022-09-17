@@ -38,7 +38,7 @@ class View1 extends StatelessWidget {
           onChanged: (v) {
             bloc.add(VolunteerLastNameChanged(v));
           },
-          title: LocaleKeys.name_passport,
+          title: LocaleKeys.sure_name_passport,
           isFill: bloc.state.lastName.isNotEmpty,
         ).paddingSymmetric(
           horizontal: 20.w,
@@ -59,6 +59,7 @@ class View1 extends StatelessWidget {
             bloc.add(VolunteerGenderChanged(v));
           },
         ).paddingOnly(top: 20.w, left: 20.w),
+
         AppDatePicker(
           title: LocaleKeys.your_date_of_birth.tr(),
           onTap: () async {
@@ -74,6 +75,7 @@ class View1 extends StatelessWidget {
           },
           text: bloc.state.birthDate,
         ),
+
         NextButtonWidget(
           onTap: () {
             bloc.pageController.nextPage(

@@ -23,6 +23,7 @@ class AppTextField extends StatefulWidget {
   final bool autoFocus;
   final Key? key;
   final bool phoneNumberCode;
+  final int? maxLength;
 
   AppTextField({
     required this.hintText,
@@ -41,6 +42,7 @@ class AppTextField extends StatefulWidget {
     this.hasTitle = true,
     this.autoFocus = false,
     this.phoneNumberCode = false,
+    this.maxLength,
   });
 
   @override
@@ -109,6 +111,7 @@ class _AppTextFieldState extends State<AppTextField> {
 
           ),
           child: TextField(
+            maxLength: widget.maxLength,
             autofocus: widget.autoFocus ? true : false,
             expands: widget.isMultiLine ? true : false,
             textAlignVertical: TextAlignVertical.top,
@@ -116,7 +119,7 @@ class _AppTextFieldState extends State<AppTextField> {
             controller: _textEditingController,
             enabled: widget.enabled,
             style: GoogleFonts.inter(
-              fontSize: 16.sp,
+              fontSize: 14.sp,
             ),
             decoration: InputDecoration(
               // border: _border,

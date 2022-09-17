@@ -63,11 +63,14 @@ class _AppRadioButtonState extends State<AppRadioButton> {
                 ),
                 child: Row(
                   children: [
-                    Radio(
-                      activeColor: AppColorUtils.KRAUDFANDING,
-                      value: 1,
-                      groupValue: _selection,
-                      onChanged: (v) => selectTime(v as int),
+                    Transform.scale(
+                      scale: 1.5,
+                      child: Radio(
+                        activeColor: AppColorUtils.KRAUDFANDING,
+                        value: 1,
+                        groupValue: _selection,
+                        onChanged: (v) => selectTime(v as int),
+                      ),
                     ),
                     AppWidgets.textLocale(
                       text: LocaleKeys.man,
@@ -102,13 +105,16 @@ class _AppRadioButtonState extends State<AppRadioButton> {
                 ),
                 child: Row(
                   children: [
-                    Radio(
-                      activeColor: _selection == 2
-                          ? AppColorUtils.KRAUDFANDING
-                          : AppColorUtils.DARK_6,
-                      value: 2,
-                      groupValue: _selection,
-                      onChanged: (v) => selectTime(v as int),
+                    Transform.scale(
+                      scale: 1.5,
+                      child: Radio(
+                        activeColor: _selection == 2
+                            ? AppColorUtils.KRAUDFANDING
+                            : AppColorUtils.DARK_6,
+                        value: 2,
+                        groupValue: _selection,
+                        onChanged: (v) => selectTime(v as int),
+                      ),
                     ),
                     AppWidgets.textLocale(
                       text: LocaleKeys.woman,

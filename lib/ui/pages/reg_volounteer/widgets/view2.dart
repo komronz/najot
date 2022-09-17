@@ -31,6 +31,7 @@ class View2 extends StatelessWidget {
             children: [
               Expanded(
                 child: AppTextField(
+                  maxLength: 2,
                   title: LocaleKeys.passport_series,
                   textInputType: TextInputType.name,
                   onChanged: (v) {
@@ -39,6 +40,7 @@ class View2 extends StatelessWidget {
                   isFill: bloc.state.serial.isNotEmpty,
                   initialText: bloc.state.serial,
                   hintText: "(AA)",
+
                 ),
               ),
               SizedBox(
@@ -46,6 +48,7 @@ class View2 extends StatelessWidget {
               ),
               Expanded(
                 child: AppTextField(
+                  maxLength: 7,
                   title: LocaleKeys.passport_number,
                   textInputType: TextInputType.number,
                   onChanged: (v) {
@@ -53,7 +56,7 @@ class View2 extends StatelessWidget {
                   },
                   isFill: bloc.state.serialNumber.isNotEmpty,
                   initialText: bloc.state.serialNumber,
-                  hintText: "(123456)",
+                  hintText: "(1234567)",
                 ),
               )
             ],
