@@ -90,10 +90,12 @@ class AppWidgets {
     );
   }
 
-  static Widget favouriteButton({required bool select,
+  static Widget favouriteButton({
+    required bool select,
     required double height,
     required double width,
-    required VoidCallback onTap,}) {
+    required VoidCallback onTap,
+  }) {
     return Material(
       borderRadius: BorderRadius.circular(10),
       child: Ink(
@@ -180,16 +182,16 @@ class AppWidgets {
   }) {
     return Row(
       mainAxisAlignment:
-      isCenter ? MainAxisAlignment.center : MainAxisAlignment.start,
+          isCenter ? MainAxisAlignment.center : MainAxisAlignment.start,
       children: [
         hasStar
             ? SizedBox(
-          child: textLocale(
-            text: '*',
-            fontSize: fontSize,
-            color: AppColorUtils.RED,
-          ),
-        )
+                child: textLocale(
+                  text: '*',
+                  fontSize: fontSize,
+                  color: AppColorUtils.RED,
+                ),
+              )
             : SizedBox(),
         textLocale(
           text: text,
@@ -283,11 +285,11 @@ class AppWidgets {
                   borderRadius: BorderRadius.circular(3.w),
                   child: context.locale == Locale('uz', 'UZ')
                       ? SvgPicture.asset(
-                    AppImageUtils.UZ_FLAG,
-                  )
+                          AppImageUtils.UZ_FLAG,
+                        )
                       : SvgPicture.asset(
-                    AppImageUtils.RUS_FLAG,
-                  ),
+                          AppImageUtils.RUS_FLAG,
+                        ),
                 ),
                 SizedBox(
                   width: 8.w,
@@ -356,12 +358,14 @@ class AppWidgets {
     );
   }
 
-  static Widget appBarMenu({required String title,
+  static Widget appBarMenu({
+    required String title,
     required VoidCallback onTapMenu,
     required VoidCallback onTapIcon,
     Color? textColor = AppColorUtils.BLACK,
     bool visibleIcon = false,
-    String icon = ""}) {
+    String icon = "",
+  }) {
     return Container(
       height: 80.w,
       padding: EdgeInsets.only(
@@ -386,16 +390,16 @@ class AppWidgets {
           ),
           visibleIcon
               ? InkWell(
-            child: Container(
-              height: 35.w,
-              width: 35.w,
-              child: SvgPicture.asset(icon),
-            ),
-            onTap: onTapIcon,
-          )
+                  child: Container(
+                    height: 35.w,
+                    width: 35.w,
+                    child: SvgPicture.asset(icon),
+                  ),
+                  onTap: onTapIcon,
+                )
               : SizedBox(
-            width: 20,
-          )
+                  width: 20,
+                )
         ],
       ),
     );
@@ -501,7 +505,6 @@ class AppWidgets {
     );
   }
 
-
   static Widget rowIconText({
     required String icon,
     required String iconSelect,
@@ -540,8 +543,8 @@ class AppWidgets {
             ),
             direction == true
                 ? SvgPicture.asset(
-              AppImageUtils.RIGHT_DIRECTION,
-            )
+                    AppImageUtils.RIGHT_DIRECTION,
+                  )
                 : SizedBox()
           ],
         ),
@@ -594,12 +597,13 @@ class AppWidgets {
     );
   }
 
-  static Widget networkImage({required String url,
-    double? height,
-    double? width,
-    Color? color,
-    BoxFit fit = BoxFit.cover,
-    int? scale}) {
+  static Widget networkImage(
+      {required String url,
+      double? height,
+      double? width,
+      Color? color,
+      BoxFit fit = BoxFit.cover,
+      int? scale}) {
     return ClipRRect(
       borderRadius: BorderRadius.all(Radius.circular(14)),
       child: CachedNetworkImage(

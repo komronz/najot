@@ -33,139 +33,139 @@ class UserUpdatePage extends StatelessWidget {
       },
       child: GestureDetector(
         onTap: () {
-          FocusManager.instance.primaryFocus?.unfocus();
+          FocusManager.instance.primaryFocus!.unfocus();
         },
-        child: BlocConsumer<MyProfileUpdateBloc, MyProfileUpdateState>(
-            bloc: bloc,
-            listener: (context, state) {},
-            builder: (context, state) {
-              return Scaffold(
-                resizeToAvoidBottomInset: false,
-                appBar: AppBar(
-                  backgroundColor: AppColorUtils.BACKGROUND,
-                  titleSpacing: 0,
-                  elevation: 0,
-                  automaticallyImplyLeading: false,
-                  title: Container(
-                    color: AppColorUtils.WAIT_COLOR,
-                    child: AppWidgets.appBarMenu(
-                      title: LocaleKeys.edit_my_profile,
-                      onTapMenu: () {
-                        HomePage.globalKey.currentState!.openDrawer();
-                      },
-                      visibleIcon: true,
-                      onTapIcon: () {
-                        context
-                            .read<MyProfileUpdateBloc>()
-                            .add(EditProfileChangePage(1));
-                      },
-                      icon: AppImageUtils.REMOVE,
-                    ),
+        child: BlocBuilder<MyProfileUpdateBloc, MyProfileUpdateState>(
+          bloc: bloc,
+          builder: (context, state) {
+            return Scaffold(
+              resizeToAvoidBottomInset: false,
+              appBar: AppBar(
+                backgroundColor: AppColorUtils.BACKGROUND,
+                titleSpacing: 0,
+                elevation: 0,
+                automaticallyImplyLeading: false,
+                title: Container(
+                  color: AppColorUtils.WAIT_COLOR,
+                  child: AppWidgets.appBarMenu(
+                    title: LocaleKeys.edit_my_profile,
+                    onTapMenu: () {
+                      HomePage.globalKey.currentState!.openDrawer();
+                    },
+                    visibleIcon: true,
+                    onTapIcon: () {
+                      context
+                          .read<MyProfileUpdateBloc>()
+                          .add(EditProfileChangePage(1));
+                    },
+                    icon: AppImageUtils.REMOVE,
                   ),
                 ),
-                body: Column(
-                  children: [
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: Container(
-                          padding: EdgeInsets.only(),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: AppColorUtils.WHITE,
-                          ),
-                          child: Column(
-                            children: [
-                              ShowPickerWidget(
-                                width: 150.w,
-                                height: 150.w,
-                                image: AppImageUtils.USERADD,
-                                color: AppColorUtils.WHITE,
-                                imageSelect: (v) {
-                                  bloc.add(SaveImagePickers(v));
-                                },
-                                imageFile: state.userImgPath,
-                              ).paddingOnly(top: 15.w),
-                              Container(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    AppTextField(
-                                      isFill: bloc.state.firstName.isNotEmpty,
-                                      initialText: bloc.state.firstName,
-                                      hintText: "(abdumalik)",
-                                      onChanged: (v) {
-                                        bloc.add(FirstNameChanged(v));
-                                      },
-                                      title: LocaleKeys.name.tr(),
-                                    ).paddingOnly(bottom: 23.h),
-                                    AppTextField(
-                                      isFill: bloc.state.lastName.isNotEmpty,
-                                      initialText: bloc.state.lastName,
-                                      hintText: "(sapoqulov)",
-                                      onChanged: (v) {
-                                        bloc.add(LastNameChanged(v));
-                                      },
-                                      title: LocaleKeys.surname.tr(),
-                                    ).paddingOnly(bottom: 24.h),
-                                    Row(
-                                      children: [
-                                        UserUpdateAppRadioButton(
-                                          onChanged: (v) {
-                                            var gender = v == 1
-                                                ? Gender.MAN.toString()
-                                                : Gender.WOMAN.toString();
-                                            bloc.add(
-                                              GenderChanged(
-                                                gender.toString(),
-                                              ),
-                                            );
-                                          },
-                                          initial: state.gender!,
-                                        ).paddingOnly(top: 20),
-                                      ],
-                                    ),
-                                  ],
+              ),
+              body: Column(
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Container(
+                        padding: EdgeInsets.only(),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: AppColorUtils.WHITE,
+                        ),
+                        child: Column(
+                          children: [
+                            ShowPickerWidget(
+                              width: 150.w,
+                              height: 150.w,
+                              image: AppImageUtils.USERADD,
+                              color: AppColorUtils.WHITE,
+                              imageSelect: (v) {
+                                bloc.add(SaveImagePickers(v));
+                              },
+                              imageFile: state.userImgPath,
+                            ).paddingOnly(top: 15.w),
+                            Container(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  AppTextField(
+                                    isFill: bloc.state.firstName.isNotEmpty,
+                                    initialText: bloc.state.firstName,
+                                    hintText: "(abdumalik)",
+                                    onChanged: (v) {
+                                      bloc.add(FirstNameChanged(v));
+                                    },
+                                    title: LocaleKeys.name.tr(),
+                                  ).paddingOnly(bottom: 23.h),
+                                  AppTextField(
+                                    isFill: bloc.state.lastName.isNotEmpty,
+                                    initialText: bloc.state.lastName,
+                                    hintText: "(sapoqulov)",
+                                    onChanged: (v) {
+                                      bloc.add(LastNameChanged(v));
+                                    },
+                                    title: LocaleKeys.surname.tr(),
+                                  ).paddingOnly(bottom: 24.h),
+                                  Row(
+                                    children: [
+                                      UserUpdateAppRadioButton(
+                                        onChanged: (v) {
+                                          var gender = v == 1
+                                              ? Gender.MAN.toString()
+                                              : Gender.WOMAN.toString();
+                                          bloc.add(
+                                            GenderChanged(
+                                              gender.toString(),
+                                            ),
+                                          );
+                                        },
+                                        initial: state.gender ?? "Erkak",
+                                      ).paddingOnly(top: 20),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ).paddingOnly(bottom: 24.h),
+                            InkWell(
+                              onTap: () {
+                                bloc.add(SaveIn());
+                                context
+                                    .read<MyProfileUpdateBloc>()
+                                    .add(EditProfileChangePage(1));
+                              },
+                              child: Container(
+                                width: double.infinity,
+                                padding: EdgeInsets.only(
+                                  top: 10,
+                                  bottom: 15,
                                 ),
-                              ).paddingOnly(bottom: 24.h),
-                              InkWell(
-                                onTap: () {
-                                  bloc.add(SaveIn());
-                                  context
-                                      .read<MyProfileUpdateBloc>()
-                                      .add(EditProfileChangePage(1));
-                                },
-                                child: Container(
-                                  width: double.infinity,
-                                  padding: EdgeInsets.only(
-                                    top: 10,
-                                    bottom: 15,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: AppColorUtils.PERCENT_COLOR,
-                                  ),
-                                  child: AppWidgets.textLocale(
-                                    text: LocaleKeys.save,
-                                    textAlign: TextAlign.center,
-                                    color: AppColorUtils.WHITE,
-                                    fontSize: 15.sp,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: AppColorUtils.PERCENT_COLOR,
+                                ),
+                                child: AppWidgets.textLocale(
+                                  text: LocaleKeys.save,
+                                  textAlign: TextAlign.center,
+                                  color: AppColorUtils.WHITE,
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
-                            ],
-                          ).paddingOnly(
-                            bottom: 15.w,
-                            right: 20,
-                            left: 20,
-                          ),
+                            ),
+                          ],
+                        ).paddingOnly(
+                          bottom: 15.w,
+                          right: 20,
+                          left: 20,
                         ),
                       ),
                     ),
-                  ],
-                ),
-              );
-            }),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }

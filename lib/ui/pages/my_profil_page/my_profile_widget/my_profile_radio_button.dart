@@ -33,6 +33,7 @@ class MyProfileRadioButton extends StatelessWidget {
               height: 48.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
+                color: AppColorUtils.GREEN_10,
                 border: Border.all(
                   color: AppColorUtils.DARK_6,
                   width: 2,
@@ -55,6 +56,7 @@ class MyProfileRadioButton extends StatelessWidget {
                 ],
               ).paddingOnly(right: 18.w),
             ),
+
             Container(
               height: 48.w,
               decoration: BoxDecoration(

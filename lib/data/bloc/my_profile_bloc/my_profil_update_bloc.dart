@@ -13,6 +13,7 @@ import 'package:najot/data/services/user_update_service.dart';
 import '../../../ui/widgets/app_widgets.dart';
 import '../../model/number_change_model.dart';
 import '../../utils/app_logger_util.dart';
+
 part 'my_profil_update_event.dart';
 
 class MyProfileUpdateBloc
@@ -21,7 +22,7 @@ class MyProfileUpdateBloc
   final MyProfileService myProfileService = MyProfileService();
 
   MyProfileUpdateBloc()
-      : pageController=PageController(),
+      : pageController = PageController(),
         super(MyProfileUpdateState()) {
     on<MyProfileLoad>(_loadProfile);
     on<ImageChanged>(_onImageChanged);
@@ -39,21 +40,24 @@ class MyProfileUpdateBloc
     on<ChangeNumber>(_changeNumber);
   }
 
-  Future _onChangeEditProfile(EditProfileChangePage event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _onChangeEditProfile(
+    EditProfileChangePage event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(state.copyWith(changePage: event.changePage));
   }
 
-  Future _saveImagePickers(SaveImagePickers event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _saveImagePickers(
+    SaveImagePickers event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(state.copyWith(userImgPath: event.userImgPath));
   }
 
-
   Future _onPageChanged(
-      PageChanged event,
-      Emitter<MyProfileUpdateState> emit,
-      ) async {
+    PageChanged event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         isVisible: event.isVisible,
@@ -61,8 +65,10 @@ class MyProfileUpdateBloc
     );
   }
 
-  Future _onPageNext(PageNext event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _onPageNext(
+    PageNext event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         nextPage: event.isNext,
@@ -70,8 +76,10 @@ class MyProfileUpdateBloc
     );
   }
 
-  Future _onImagePicker(ImagePickers event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _onImagePicker(
+    ImagePickers event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     File? imagePicker = (await ImagePicker().pickImage(
       source: ImageSource.gallery,
     )) as File?;
@@ -82,8 +90,10 @@ class MyProfileUpdateBloc
     }
   }
 
-  Future _onImageChanged(ImageChanged event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _onImageChanged(
+    ImageChanged event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         imageUrl: event.imageUrl,
@@ -91,8 +101,10 @@ class MyProfileUpdateBloc
     );
   }
 
-  Future _onNameChanged(FirstNameChanged event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _onNameChanged(
+    FirstNameChanged event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         firstName: event.name,
@@ -101,17 +113,20 @@ class MyProfileUpdateBloc
     );
   }
 
-  Future _onPhoneChanged(PhoneChanged event,
-      Emitter<MyProfileUpdateState> emit) async {
-    emit(state.copyWith(
-      newPhone: event.phoneNumber,
-      phoneNumberFill: _isNotEmpty(event.phoneNumber),
-    ),
+  Future _onPhoneChanged(
+      PhoneChanged event, Emitter<MyProfileUpdateState> emit) async {
+    emit(
+      state.copyWith(
+        newPhone: event.phoneNumber,
+        phoneNumberFill: _isNotEmpty(event.phoneNumber),
+      ),
     );
   }
 
-  Future _onGenderChanged(GenderChanged event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _onGenderChanged(
+    GenderChanged event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         gender: event.gender,
@@ -119,8 +134,10 @@ class MyProfileUpdateBloc
     );
   }
 
-  Future _onLastNameChanged(LastNameChanged event,
-      Emitter<MyProfileUpdateState> emit,) async {
+  Future _onLastNameChanged(
+    LastNameChanged event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     emit(
       state.copyWith(
         lastName: event.sureName,
@@ -130,16 +147,17 @@ class MyProfileUpdateBloc
   }
 
   bool _isNotEmpty(String value) {
-    return value
-        .trim()
-        .isNotEmpty;
+    return value.trim().isNotEmpty;
   }
+
   UserUpdateService userUpdateService = UserUpdateService();
 
-  Future _saveIn(SaveIn event,
-      Emitter<MyProfileUpdateState> emit,) async {
-    var internetConnection = await  MainService().checkInternetConnection();
-    if(internetConnection){
+  Future _saveIn(
+    SaveIn event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
+    var internetConnection = await MainService().checkInternetConnection();
+    if (internetConnection) {
       var user = await userUpdateService.postModel(
         state.phone,
         state.firstName,
@@ -149,34 +167,33 @@ class MyProfileUpdateBloc
         state.status,
         state.isVolunteer,
       );
-      if (user!=null) {
+      if (user != null) {
         emit(state.copyWith(hasError: false));
         MyProfileLoad();
       } else {
         emit(state.copyWith(hasError: true));
       }
-    }else{
+    } else {
       AppWidgets.showText(text: LocaleKeys.disConnection.tr());
     }
-
   }
 
   Future _loadProfile(
-      MyProfileLoad event,
-      Emitter<MyProfileUpdateState> emit,) async {
+    MyProfileLoad event,
+    Emitter<MyProfileUpdateState> emit,
+  ) async {
     var internetConnection = await MainService().checkInternetConnection();
-    emit(state.copyWith(internetConnection:  internetConnection));
-    var user =  await userUpdateService.getUserModel();
+    emit(state.copyWith(internetConnection: internetConnection));
+    var user = await userUpdateService.getUserModel();
     if (user != null) {
       emit(
         state.copyWith(
-          imageUrl: user.photo,
-          firstName: user.firstName,
-          lastName: user.lastName,
-          gender: user.gender,
-          phone: user.phone,
-          isVolunteer: user.isVolunteer
-        ),
+            imageUrl: user.photo,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            gender: user.gender,
+            phone: user.phone,
+            isVolunteer: user.isVolunteer),
       );
     } else {
       AppLoggerUtil.e('User null ');
@@ -187,64 +204,56 @@ class MyProfileUpdateBloc
     ChangeNumber event,
     Emitter<MyProfileUpdateState> emit,
   ) async {
-    var internetConnection = await  MainService().checkInternetConnection();
-      if(internetConnection){
-        var changeNumber = await userUpdateService.changeNumber(
-          state.codeToken,
-          event.code,
-        );
-        if(changeNumber !=null){
-          add(MyProfileLoad());
-          add(EditProfileChangePage(1));
-          emit(state.copyWith(isVisible: true));
-        }else{
-          AppWidgets.showText(text: "Xato kod terildi!");
-        }
-      }else{
-        AppWidgets.showText(text: LocaleKeys.disConnection.tr());
-
+    var internetConnection = await MainService().checkInternetConnection();
+    if (internetConnection) {
+      var changeNumber = await userUpdateService.changeNumber(
+        state.codeToken,
+        event.code,
+      );
+      if (changeNumber != null) {
+        add(MyProfileLoad());
+        add(EditProfileChangePage(1));
+        emit(state.copyWith(isVisible: true));
+      } else {
+        AppWidgets.showText(text: "Xato kod terildi!");
       }
-
-
-
+    } else {
+      AppWidgets.showText(text: LocaleKeys.disConnection.tr());
+    }
   }
 
   Future _sendCode(
     SendCode event,
     Emitter<MyProfileUpdateState> emit,
   ) async {
-    var internetConnection = await  MainService().checkInternetConnection();
-     if(internetConnection){
-       var response = await userUpdateService.postNumber(event.number);
-       if (response is NumberChangeModel) {
-         emit(state.copyWith(codeToken: response.code));
-         emit(state.copyWith(isVisible: true));
-         emit(state.copyWith(isVisible: false));
-       }
-       if(response is bool){
-         if(response ==true){
-           AppWidgets.showText(text: "Bu raqam registratsiyadan o'tgan");
-         }
-         if(response ==false){
-           AppWidgets.showText(text: "Raqam noto'g'ri kiritilgan!");
-         }
-       }
-     }else{
-       AppWidgets.showText(text: LocaleKeys.disConnection.tr());
-     }
-
-
+    var internetConnection = await MainService().checkInternetConnection();
+    if (internetConnection) {
+      var response = await userUpdateService.postNumber(event.number);
+      if (response is NumberChangeModel) {
+        emit(state.copyWith(codeToken: response.code));
+        emit(state.copyWith(isVisible: true));
+        emit(state.copyWith(isVisible: false));
+      }
+      if (response is bool) {
+        if (response == true) {
+          AppWidgets.showText(text: "Bu raqam registratsiyadan o'tgan");
+        }
+        if (response == false) {
+          AppWidgets.showText(text: "Raqam noto'g'ri kiritilgan!");
+        }
+      }
+    } else {
+      AppWidgets.showText(text: LocaleKeys.disConnection.tr());
+    }
   }
 
   Future deletePost(String reason) async {
-    var internetConnection = await  MainService().checkInternetConnection();
-    if(internetConnection){
+    var internetConnection = await MainService().checkInternetConnection();
+    if (internetConnection) {
       var deletePost = await myProfileService.postDeleteBYId(reason);
-      if (deletePost != null) {
-      }
-    }else{
+      if (deletePost != null) {}
+    } else {
       AppWidgets.showText(text: LocaleKeys.disConnection.tr());
     }
-
   }
 }

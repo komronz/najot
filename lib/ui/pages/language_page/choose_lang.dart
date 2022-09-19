@@ -30,7 +30,7 @@ class _ChooseLangPageState extends State<ChooseLangPage> {
     int val = 0;
     if(context.locale == Locale("uz","UZ")){
       val = 1;
-    }else if(context.locale == Locale("uz","UZK")){
+    }else if(context.locale == Locale("ky","KG")){
       val = 2;
     }else if(context.locale == Locale("ru","RU")){
       val = 3;

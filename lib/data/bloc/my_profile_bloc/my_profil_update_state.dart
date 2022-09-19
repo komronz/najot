@@ -98,7 +98,7 @@ class MyProfileUpdateState extends Equatable {
       newPhone: newPhone ?? this.newPhone,
       phoneNumberFill: phoneNumberFill ?? this.phoneNumberFill,
       gender: gender ?? this.gender,
-      status: status?? this.status,
+      status: status ?? this.status,
       isSavedBtn: isSavedBtn ?? this.isSavedBtn,
       nameFill: nameFill ?? this.nameFill,
       sureNameFill: sureNameFill ?? this.sureNameFill,
