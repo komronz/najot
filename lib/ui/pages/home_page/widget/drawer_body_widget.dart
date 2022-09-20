@@ -63,7 +63,7 @@ class DrawerBody extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 AppWidgets.textLocale(
-                                  text: cubit.state.user!.firstName ?? "",
+                                  text: cubit.state.user?.firstName ?? "",
                                   fontWeight: FontWeight.w500,
                                   fontSize: 18.sp,
                                   color: AppColorUtils.TEXT_COLOR,
@@ -124,7 +124,7 @@ class DrawerBody extends StatelessWidget {
                     height: 1,
                     thickness: 1,
                   ),
-                  cubit.state.user!.isVolunteer!
+                  cubit.state.user!.isVolunteer ?? false
                       ? SizedBox()
                       : ButtonCard(
                           onPress: () {

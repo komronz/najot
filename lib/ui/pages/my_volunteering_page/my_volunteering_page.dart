@@ -1,4 +1,4 @@
-  import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -59,8 +59,10 @@ class MyVolunteeringPage extends StatelessWidget {
                     width: 35.w,
                     fit: BoxFit.fill,
                   ),
-                  onTap: (){
-                   NavigatorService.to.pushNamed(NotificationPage.routeName,);
+                  onTap: () {
+                    NavigatorService.to.pushNamed(
+                      NotificationPage.routeName,
+                    );
                   },
                 ),
               ],
@@ -92,7 +94,6 @@ class MyVolunteeringPage extends StatelessWidget {
               unselectedLabelStyle: TextStyle(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w400,
-
               ),
               labelStyle: TextStyle(
                 fontSize: 16.sp,
@@ -134,16 +135,13 @@ class MyVolunteeringPage extends StatelessWidget {
                     physics: ClampingScrollPhysics(),
                     padding: EdgeInsets.all(0),
                     reverse: false,
-                    children: List.generate(
-                      state.itemList.length,
-                      (index) => ItemCharityWidget(
+                    children: List.generate(state.itemList.length, (index) {
+                      return ItemCharityWidget(
                         model: state.itemList[index],
                         index: index,
                         cubit: MyVolunteeringCubit.to,
-
-
-                      ),
-                    ),
+                      );
+                    }),
                   ),
                 ],
               ),

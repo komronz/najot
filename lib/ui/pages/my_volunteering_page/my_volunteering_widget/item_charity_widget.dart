@@ -18,12 +18,8 @@ class ItemCharityWidget extends StatelessWidget {
   final MyVolunteeringCubit cubit;
   final int index;
 
-  ItemCharityWidget({
-    required this.model,
-    required this.index,
-    required this.cubit,
-    Key? key
-  })
+  ItemCharityWidget(
+      {required this.model, required this.index, required this.cubit, Key? key})
       : super(key: key);
 
   @override
@@ -75,12 +71,11 @@ class ItemCharityWidget extends StatelessWidget {
                   left: 6,
                 ),
                 AppWidgets.starTextWidget(
-                        text: LocaleKeys.item_type,
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w400,
-                        color: AppColorUtils.GRAY_4,
-                )
-                    .paddingOnly(
+                  text: LocaleKeys.item_type,
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColorUtils.GRAY_4,
+                ).paddingOnly(
                   bottom: 4,
                   right: 6,
                   left: 6,
@@ -110,7 +105,7 @@ class ItemCharityWidget extends StatelessWidget {
                             color: AppColorUtils.GRAY_4,
                           ).paddingOnly(bottom: 4),
                           AppWidgets.textLocale(
-                            text: model.project!.address??"",
+                            text: model.project!.address ?? "",
                             color: AppColorUtils.BLUE_TEXT,
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w500,
@@ -127,32 +122,31 @@ class ItemCharityWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               AppWidgets.starTextWidget(
-                                      text: LocaleKeys.executable_date,
-                                      fontSize: 9.sp,
-                                      fontWeight: FontWeight.w400,
-                                      color: AppColorUtils.GRAY_4,
+                                text: LocaleKeys.executable_date,
+                                fontSize: 9.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColorUtils.GRAY_4,
                               ).paddingOnly(
                                 bottom: 4,
                               ),
                             ],
                           ),
-
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                AppWidgets.imageSvg(
-                                  path: AppImageUtils.CALENDAR_RED,
-                                  height: 12.sp,
-                                ).paddingOnly(right: 5),
-                                AppWidgets.textLocale(
-                                  text: DateFormat("dd.MM.yyyy")
-                                      .format(createdAt),
-                                  color: AppColorUtils.RED,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ],
-                            ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              AppWidgets.imageSvg(
+                                path: AppImageUtils.CALENDAR_RED,
+                                height: 12.sp,
+                              ).paddingOnly(right: 5),
+                              AppWidgets.textLocale(
+                                text:
+                                    DateFormat("dd.MM.yyyy").format(createdAt),
+                                color: AppColorUtils.RED,
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
@@ -163,12 +157,11 @@ class ItemCharityWidget extends StatelessWidget {
                   left: 6,
                 ),
                 AppWidgets.starTextWidget(
-                        text: LocaleKeys.phone_number,
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w400,
-                        color: AppColorUtils.GRAY_4,
-                )
-                    .paddingOnly(
+                  text: LocaleKeys.phone_number,
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColorUtils.GRAY_4,
+                ).paddingOnly(
                   bottom: 4,
                   right: 6,
                   left: 6,
@@ -189,7 +182,7 @@ class ItemCharityWidget extends StatelessWidget {
                             color: AppColorUtils.BLUE_TEXT,
                           ).paddingOnly(right: 5),
                           AppWidgets.text(
-                            text: model.project!.owner!.phone??"",
+                            text: model.project!.owner!.phone ?? "",
                             fontSize: 14.sp,
                           ),
                         ],
@@ -218,27 +211,27 @@ class ItemCharityWidget extends StatelessWidget {
                         model.project!.isDone!
                             ? AppWidgets.imageSvg(
                                 path: AppImageUtils.NOTIFICATION_GREY,
-                        )
+                              )
                             : InkWell(
-                          onTap: () async {
-                            await showDialog(
-                              context: context,
-                              builder: (context) => ItemCharityDatePickerWidget(
-                                selectFunction: (dateTime) {
-                                  // print(dateTime.toUtc().toString());
-                                  // bloc.add(VolunteerBirthDateSelected(dateTime));
+                                onTap: () async {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (context) =>
+                                        ItemCharityDatePickerWidget(
+                                      selectFunction: (dateTime) {
+                                        // print(dateTime.toUtc().toString());
+                                        // bloc.add(VolunteerBirthDateSelected(dateTime));
+                                      },
+                                      index: index,
+                                      model: model,
+                                      cubit: cubit,
+                                    ),
+                                  );
                                 },
-                                index: index,
-                                model: model,
-                                cubit: cubit,
+                                child: AppWidgets.imageSvg(
+                                  path: AppImageUtils.NOTIFICATION,
+                                ),
                               ),
-                            );
-                          },
-                          child: AppWidgets.imageSvg(
-                            path: AppImageUtils.NOTIFICATION,
-                          ),
-                        ),
-
                       ],
                     ),
                   ],
