@@ -108,7 +108,9 @@ class VerificationPage extends StatelessWidget with SmartAuth {
                               int a =
                                   int.parse(_pinPutController.text.toString());
                               loginBloc.add(
-                                LoginEnd(a),
+                                LoginEnd(a, callBack: (){
+                                  NavigatorService.to.pushNamed(HomePage.routeName);
+                                }),
                               );
                             } else {
                               AppWidgets.showText(

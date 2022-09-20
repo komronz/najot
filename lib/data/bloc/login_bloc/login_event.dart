@@ -40,8 +40,9 @@ class RegisSuccessChange extends LoginEvent {
   List<Object?> get props => [change];
 }
 class LoginEnd extends LoginEvent{
-  LoginEnd(this.code);
+  LoginEnd(this.code, {required this.callBack});
   int code;
+  VoidCallback callBack;
   @override
   List<Object?> get props => [code];
 

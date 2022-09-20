@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -12,6 +13,7 @@ import 'package:najot/data/services/auth_service.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/main_service.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+
 
 part 'login_event.dart';
 
@@ -283,10 +285,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         event.code,
         state.codeToken,
       );
+
       if (loginEndModel != null) {
         HiveService.to.setToken(loginEndModel);
         emit(state.copyWith(loginSuccess: true));
-
+        event.callBack.call();
         AppWidgets.isLoading(false);
       }
       AppWidgets.isLoading(false);
