@@ -240,9 +240,9 @@ class MyProfilePage extends StatelessWidget {
                                     onChanged: (v) {},
                                     title: LocaleKeys.surname.tr(),
                                   ).paddingOnly(bottom: 23.h),
-                                  MyRadioButtonStatic(
+                                  state.gender != null ? MyRadioButtonStatic(
                                     initial: state.gender ?? "",
-                                  ).paddingOnly(top: 20),
+                                  ).paddingOnly(top: 20) : SizedBox(),
                                 ],
                               ),
                             ).paddingOnly(bottom: 24.h),
