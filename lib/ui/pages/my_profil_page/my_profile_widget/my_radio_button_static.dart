@@ -12,7 +12,7 @@ class MyRadioButtonStatic extends StatelessWidget {
   final String initial;
 
   const MyRadioButtonStatic({
-    required this.initial,
+    this.initial = "",
     Key? key,
   }) : super(key: key);
 
@@ -34,70 +34,71 @@ class MyRadioButtonStatic extends StatelessWidget {
             color: AppColorUtils.DARK_4,
           ).paddingOnly(bottom: 10),
           Row(
-            children: [
-              Container(
-                height: 48.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: AppColorUtils.REG_BACK,
-                  border: Border.all(
-                    color: AppColorUtils.BORDER,
-                    width: 1.5,
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Transform.scale(
-                      scale: 1.5,
-                      child: Radio(
-                        activeColor: AppColorUtils.BORDER,
-                        value: 1,
-                        groupValue: _selection,
-                        onChanged: (v) {},
+                    Container(
+                      height: 48.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: AppColorUtils.REG_BACK,
+                        border: Border.all(
+                          color: AppColorUtils.BORDER,
+                          width: 1.5,
+                        ),
                       ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Transform.scale(
+                            scale: 1.5,
+                            child: Radio(
+                              activeColor: AppColorUtils.BORDER,
+                              value: 1,
+                              groupValue: _selection,
+                              onChanged: (v) {},
+                            ),
+                          ),
+                          AppWidgets.textLocale(
+                            text: LocaleKeys.man,
+                            color: AppColorUtils.BORDER,
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ],
+                      ).paddingOnly(right: 18.w),
                     ),
-                    AppWidgets.textLocale(
-                      text: LocaleKeys.man,
-                      color: AppColorUtils.BORDER,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                    ),
+                    Container(
+                      height: 48.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: AppColorUtils.REG_BACK,
+                        border: Border.all(
+                          color: AppColorUtils.BORDER,
+                          width: 1.5,
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Transform.scale(
+                            scale: 1.5,
+                            child: Radio(
+                              activeColor: AppColorUtils.BORDER,
+                              value: 2,
+                              groupValue: _selection,
+                              onChanged: (v) {},
+                            ),
+                          ),
+                          AppWidgets.textLocale(
+                            text: LocaleKeys.woman,
+                            color: AppColorUtils.BORDER,
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ],
+                      ).paddingOnly(right: 18.w),
+                    ).paddingOnly(left: 20),
                   ],
-                ).paddingOnly(right: 18.w),
-              ),
-              Container(
-                height: 48.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: AppColorUtils.REG_BACK,
-                  border: Border.all(
-                    color: AppColorUtils.BORDER,
-                    width: 1.5,
-                  ),
                 ),
-                child: Row(
-                  children: [
-                    Transform.scale(
-                      scale: 1.5,
-                      child: Radio(
-                        activeColor: AppColorUtils.BORDER,
-                        value: 2,
-                        groupValue: _selection,
-                        onChanged: (v) {},
-                      ),
-                    ),
-                    AppWidgets.textLocale(
-                      text: LocaleKeys.woman,
-                      color: AppColorUtils.BORDER,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ],
-                ).paddingOnly(right: 18.w),
-              ).paddingOnly(left: 20),
-            ],
-          ),
+
         ],
       ),
     );

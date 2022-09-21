@@ -11,8 +11,7 @@ class IconAndName extends StatelessWidget {
       this.color = Colors.black,
       this.fontWeight = FontWeight.w500,
       this.fontsize = 18,
-      this.minFontSize = 10
-      });
+      this.minFontSize = 10});
 
   String icon;
   String text;
@@ -27,7 +26,6 @@ class IconAndName extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Column(
-
         children: [
           SizedBox(
             height: 85.w,
@@ -36,23 +34,17 @@ class IconAndName extends StatelessWidget {
               icon,
             ),
           ),
-          SizedBox(height: 5.w,),
+          SizedBox(
+            height: 5.w,
+          ),
           SizedBox(
             width: 105.w,
-            // child: AppWidgets.text(
-            //     text: text,
-            //     color: color,
-            //     fontSize: fontsize,
-            //     fontWeight: fontWeight,
-            // textAlign: TextAlign.center,
-            // maxLines: 2,
-            // ),
             child: AppWidgets.AutoSizeText(
               minFontSize: minFontSize = 10,
               text: text,
-              color:color,
+              color: color,
               fontSize: fontsize,
-              fontWeight:fontWeight,
+              fontWeight: fontWeight,
               maxLines: 1,
               textAlign: TextAlign.center,
             ),

@@ -162,7 +162,7 @@ class MyProfileUpdateBloc
         state.phone,
         state.firstName,
         state.lastName,
-        state.gender!,
+        state.gender ?? "",
         state.userImgPath!,
         state.status,
         state.isVolunteer,

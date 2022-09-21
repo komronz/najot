@@ -54,6 +54,9 @@ dependencies:
   http_parser: ^4.0.1
   pinput: ^2.2.11
   collection: ^1.16.0
+  package_info_plus: ^3.0.1
+  store_redirect: ^2.0.1
+  url_launcher: ^6.1.6
 
 
 dev_dependencies:

@@ -27,25 +27,22 @@ import '../saved_page/saved_page.dart';
 import '../volunteering_charity_history_page/volunteering_charity_history_page.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({ required this.appPageType});
+  HomePage({required this.appPageType});
 
   AppPageType appPageType;
   static const String routeName = "/homePage";
-  static final GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>(
-      debugLabel: "globalKey");
+  static final GlobalKey<ScaffoldState> globalKey =
+      GlobalKey<ScaffoldState>(debugLabel: "globalKey");
 
   @override
   State<HomePage> createState() => _HomePageState();
-
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   void initState() {
-    // TODO: implement initState
-    super.initState();
     listenNotifications();
+    super.initState();
   }
 
   void listenNotifications() =>
@@ -64,30 +61,33 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
     AppPageCubit.to.load(widget.appPageType);
     return BlocBuilder<AppPageCubit, AppPageState>(
       bloc: AppPageCubit.to,
       builder: (context, state) {
-       if(state.internetConnection){
-         return Scaffold(
-           // backgroundColor: AppColorUtils.BACKGROUND,
-             key: HomePage.globalKey,
-             drawer: state.changeMenu == 1
-                 ? DrawerBody(cubit: AppPageCubit.to,)
-                 : DrawerBodySecond(cubit: AppPageCubit.to),
-             body: buildBody(state)
-         );
-       }else{
-         return AppErrorWidget(
-           onTap: () async {
-             AppWidgets.isLoading(true);
-             await  AppPageCubit.to.load(widget.appPageType);
-             AppWidgets.isLoading(false);
-           },
-         );
-       }
+        if (state.internetConnection) {
+          return Scaffold(
+            // backgroundColor: AppColorUtils.BACKGROUND,
+            key: HomePage.globalKey,
+            drawer: state.changeMenu == 1
+                ? DrawerBody(
+                    cubit: AppPageCubit.to,
+                  )
+                : DrawerBodySecond(cubit: AppPageCubit.to),
+            body: buildBody(state),
+          );
+        } else {
+          return AppErrorWidget(
+            onTap: () async {
+              AppWidgets.isLoading(true);
+              await AppPageCubit.to.load(widget.appPageType);
+              AppWidgets.isLoading(false);
+            },
+          );
+        }
       },
     );
   }

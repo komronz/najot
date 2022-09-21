@@ -106,23 +106,31 @@ class UserUpdatePage extends StatelessWidget {
                                     },
                                     title: LocaleKeys.surname.tr(),
                                   ).paddingOnly(bottom: 24.h),
-                                  Row(
-                                    children: [
-                                      UserUpdateAppRadioButton(
-                                        onChanged: (v) {
-                                          var gender = v == 1
-                                              ? Gender.MAN.toString()
-                                              : Gender.WOMAN.toString();
-                                          bloc.add(
-                                            GenderChanged(
-                                              gender.toString(),
-                                            ),
-                                          );
-                                        },
-                                        initial: state.gender ?? "Erkak",
-                                      ).paddingOnly(top: 20),
-                                    ],
-                                  ),
+                                  bloc.state.gender != null
+                                      ? Row(
+                                          children: [
+                                            UserUpdateAppRadioButton(
+                                              onChanged: (v) {
+                                                var gender;
+                                                if (v == 1) {
+                                                  gender =
+                                                      Gender.MAN.toString();
+                                                } else if (v == 2) {
+                                                  gender =
+                                                      Gender.WOMAN.toString();
+                                                }
+
+                                                bloc.add(
+                                                  GenderChanged(
+                                                    gender.toString(),
+                                                  ),
+                                                );
+                                              },
+                                              initial: state.gender ?? "Erkak",
+                                            ).paddingOnly(top: 20),
+                                          ],
+                                        )
+                                      : SizedBox(),
                                 ],
                               ),
                             ).paddingOnly(bottom: 24.h),

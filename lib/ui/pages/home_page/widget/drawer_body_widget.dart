@@ -124,6 +124,7 @@ class DrawerBody extends StatelessWidget {
                     height: 1,
                     thickness: 1,
                   ),
+                  ///Be volunteer widget
                   cubit.state.user!.isVolunteer ?? false
                       ? SizedBox()
                       : ButtonCard(

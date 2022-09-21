@@ -135,13 +135,16 @@ class MyVolunteeringPage extends StatelessWidget {
                     physics: ClampingScrollPhysics(),
                     padding: EdgeInsets.all(0),
                     reverse: false,
-                    children: List.generate(state.itemList.length, (index) {
-                      return ItemCharityWidget(
-                        model: state.itemList[index],
-                        index: index,
-                        cubit: MyVolunteeringCubit.to,
-                      );
-                    }),
+                    children: List.generate(
+                      state.itemList.length,
+                      (index) {
+                        return ItemCharityWidget(
+                          model: state.itemList[index],
+                          index: index,
+                          cubit: MyVolunteeringCubit.to,
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),

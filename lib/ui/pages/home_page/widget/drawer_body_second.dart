@@ -104,40 +104,41 @@ class DrawerBodySecond extends StatelessWidget {
 
             },
           ) : SizedBox(),
-          cubit.state.tobeVolunteer
-          ? AppWidgets.rowIconText(
-            isActive: pageType == AppPageType.CHARITY_VOLUNTEER,
-            icon: AppImageUtils.HISTORY,
-            iconSelect: AppImageUtils.HISTORY2,
-            text: LocaleKeys.charity_history,
-            fontSize: 16.sp,
-            padding: EdgeInsets.symmetric(
-              horizontal: 18.w,
-              vertical: 14,
-            ),
-            onTap: () {
-              cubit.changePage(
-                    pageType: AppPageType.CHARITY_VOLUNTEER,
-                  );
-              Navigator.pop(context);
-            },
-          ): AppWidgets.rowIconText(
-            isActive: pageType == AppPageType.CHARITY,
-            icon: AppImageUtils.HISTORY,
-            iconSelect: AppImageUtils.HISTORY2,
-            text: LocaleKeys.charity_history,
-            fontSize: 16.sp,
-            padding: EdgeInsets.symmetric(
-              horizontal: 18.w,
-              vertical: 14,
-            ),
-            onTap: () {
-              cubit.changePage(
-                pageType: AppPageType.CHARITY,
-              );
-              Navigator.pop(context);
-            },
-          ),
+         
+          // cubit.state.tobeVolunteer
+          // ? AppWidgets.rowIconText(
+          //   isActive: pageType == AppPageType.CHARITY_VOLUNTEER,
+          //   icon: AppImageUtils.HISTORY,
+          //   iconSelect: AppImageUtils.HISTORY2,
+          //   text: LocaleKeys.charity_history,
+          //   fontSize: 16.sp,
+          //   padding: EdgeInsets.symmetric(
+          //     horizontal: 18.w,
+          //     vertical: 14,
+          //   ),
+          //   onTap: () {
+          //     cubit.changePage(
+          //           pageType: AppPageType.CHARITY_VOLUNTEER,
+          //         );
+          //     Navigator.pop(context);
+          //   },
+          // ): AppWidgets.rowIconText(
+          //   isActive: pageType == AppPageType.CHARITY,
+          //   icon: AppImageUtils.HISTORY,
+          //   iconSelect: AppImageUtils.HISTORY2,
+          //   text: LocaleKeys.charity_history,
+          //   fontSize: 16.sp,
+          //   padding: EdgeInsets.symmetric(
+          //     horizontal: 18.w,
+          //     vertical: 14,
+          //   ),
+          //   onTap: () {
+          //     cubit.changePage(
+          //       pageType: AppPageType.CHARITY,
+          //     );
+          //     Navigator.pop(context);
+          //   },
+          // ),
          AppWidgets.rowIconText(
             isActive: pageType == AppPageType.ORDERS,
             icon: AppImageUtils.PRODUCTS,

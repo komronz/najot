@@ -3,9 +3,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/ui/pages/reg_page/loyiha_shartlari_page/loyiha_shartlari_page.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RichTextWidget extends StatefulWidget {
   const RichTextWidget({
@@ -21,7 +21,8 @@ class _RichTextWidgetState extends State<RichTextWidget> {
 
   @override
   void initState() {
-    _onTapGestureRecognizer = TapGestureRecognizer()..onTap = _onTap;
+    _onTapGestureRecognizer = TapGestureRecognizer();
+
     super.initState();
   }
 
@@ -29,14 +30,6 @@ class _RichTextWidgetState extends State<RichTextWidget> {
   void dispose() {
     _onTapGestureRecognizer.dispose();
     super.dispose();
-  }
-
-  void _onTap() {
-    NavigatorService.to.push(
-      MaterialPageRoute(
-        builder: (BuildContext context) => LoyihaShartlariPage(),
-      ),
-    );
   }
 
   @override
@@ -53,7 +46,21 @@ class _RichTextWidgetState extends State<RichTextWidget> {
           ),
           children: [
             TextSpan(
-              recognizer: _onTapGestureRecognizer,
+              recognizer: _onTapGestureRecognizer
+                ..onTap = () async {
+                  AppLoggerUtil.e("Hellooo");
+                  final Uri url = Uri.parse("https://najot.uz/privacy/");
+
+                  if (await canLaunchUrl(url)) {
+                    await launchUrl(
+                      url,
+                      mode: LaunchMode.externalNonBrowserApplication,
+                      webViewConfiguration: WebViewConfiguration(
+                        enableJavaScript: true,
+                      ),
+                    );
+                  }
+                },
               text: LocaleKeys.project_conditions.tr(),
               style: TextStyle(
                 color: AppColorUtils.GREEN_APP,

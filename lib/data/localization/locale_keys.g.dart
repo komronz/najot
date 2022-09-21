@@ -277,4 +277,11 @@ abstract class  LocaleKeys {
   static const enter_phone_number = 'enter_phone_number';
   static const support_project_again = 'support_project_again';
   static const copy_card_number = 'copy_card_number';
+  static const ask_no_more = 'ask_no_more';
+  static const reminder_later = 'reminder_later';
+  static const update = 'update';
+  static const might_for_update = 'might_for_update';
+  static const must_update = 'must_update';
+  static const have_new_version = 'have_new_version';
+
 }

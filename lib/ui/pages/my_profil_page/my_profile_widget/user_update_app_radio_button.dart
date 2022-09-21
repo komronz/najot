@@ -12,7 +12,8 @@ class UserUpdateAppRadioButton extends StatefulWidget {
   final ValueChanged<int> onChanged;
   String initial;
 
-   UserUpdateAppRadioButton({required this.onChanged, required this.initial, Key? key})
+  UserUpdateAppRadioButton(
+      {required this.onChanged, required this.initial, Key? key})
       : super(key: key);
 
   @override
@@ -28,12 +29,12 @@ class _AppRadioButtonState extends State<UserUpdateAppRadioButton> {
       widget.onChanged(_selection);
     });
   }
+
   @override
   void initState() {
     // TODO: implement initState
-    _selection=widget.initial==Gender.MAN.toString()?1:2;
+    _selection = widget.initial == Gender.MAN.toString() ? 1 : 2;
     super.initState();
-
   }
 
   @override
