@@ -4,14 +4,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
 class IconAndName extends StatelessWidget {
-  IconAndName(
-      {required this.icon,
-      required this.text,
-      required this.onTap,
-      this.color = Colors.black,
-      this.fontWeight = FontWeight.w500,
-      this.fontsize = 18,
-      this.minFontSize = 10});
+  IconAndName({
+    required this.icon,
+    required this.text,
+    required this.onTap,
+    this.color = Colors.black,
+    this.fontWeight = FontWeight.w500,
+    this.fontsize = 18,
+    this.minFontSize = 10,
+  });
 
   String icon;
   String text;

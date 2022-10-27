@@ -66,7 +66,7 @@ class _MainPageState extends State<MainPage> {
           },
         );
       } else {
-        if (isUpdateAvailableActive != false) {
+        if (isUpdateAvailableActive == true || isUpdateAvailableActive == null) {
           showDialog(
             barrierDismissible: false,
             context: context,

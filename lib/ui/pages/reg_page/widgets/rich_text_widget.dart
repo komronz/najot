@@ -51,15 +51,13 @@ class _RichTextWidgetState extends State<RichTextWidget> {
                   AppLoggerUtil.e("Hellooo");
                   final Uri url = Uri.parse("https://najot.uz/privacy/");
 
-                  if (await canLaunchUrl(url)) {
-                    await launchUrl(
-                      url,
-                      mode: LaunchMode.externalNonBrowserApplication,
-                      webViewConfiguration: WebViewConfiguration(
-                        enableJavaScript: true,
-                      ),
-                    );
-                  }
+                  await launchUrl(
+                    url,
+                    mode: LaunchMode.externalApplication,
+                    webViewConfiguration: WebViewConfiguration(
+                      enableJavaScript: true,
+                    ),
+                  );
                 },
               text: LocaleKeys.project_conditions.tr(),
               style: TextStyle(

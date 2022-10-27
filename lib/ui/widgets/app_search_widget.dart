@@ -45,10 +45,11 @@ class _AppSearchWidgetState extends State<AppSearchWidget> {
           suffixIcon: InkWell(
             onTap: widget.search,
             child: AppWidgets.imageSvg(
-                path: AppImageUtils.IC_SEARCH,
-                height: 14.w,
-                width: 14.w,
-                fit: BoxFit.none),
+              path: AppImageUtils.IC_SEARCH,
+              height: 14.w,
+              width: 14.w,
+              fit: BoxFit.none,
+            ),
           ),
           hintText: LocaleKeys.enter_project_name.tr(),
           hintStyle: TextStyle(

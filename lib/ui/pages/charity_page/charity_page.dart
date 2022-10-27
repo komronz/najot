@@ -10,6 +10,7 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/pages/charity_page/widgets/charity_item2_widget.dart';
 import 'package:najot/ui/pages/charity_page/widgets/charity_item_widget.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
@@ -24,6 +25,7 @@ import 'charity_full_page/charity_full_page.dart';
 import 'charity_full_page/charity_full_page2.dart';
 
 class CharityPage extends StatefulWidget {
+  
   const CharityPage();
 
   static const String routeName = '/routeName';
@@ -60,17 +62,22 @@ class _CharityPageState extends State<CharityPage>
 
   @override
   Widget build(BuildContext context) {
+    int count = 0;
     return Scaffold(
       appBar: AppBarWithTitle(
         title: LocaleKeys.charity.tr(),
-        onPress: () {
-          HomeCubit.to.getModel();
-          NavigatorService.to.pop();
+        onPress: () async {
+          await HomeCubit.to.getModel();
+           
+            if (count == 0) {
+              count++;
+              NavigatorService.to.pop();
+            }
         },
       ),
       backgroundColor: AppColorUtils.BACKGROUND,
       body: WillPopScope(
-        onWillPop: () async{
+        onWillPop: () async {
           HomeCubit.to.getModel();
           return true;
         },
@@ -148,7 +155,8 @@ class _CharityPageState extends State<CharityPage>
                                               ),
                                               ButtonCard(
                                                 onPress: () {},
-                                                text: LocaleKeys.advertising.tr(),
+                                                text:
+                                                    LocaleKeys.advertising.tr(),
                                                 width: 126.w,
                                                 height: 35.w,
                                                 color: AppColorUtils.GREEN_APP,
@@ -180,9 +188,10 @@ class _CharityPageState extends State<CharityPage>
                                         physics: BouncingScrollPhysics(),
                                         scrollDirection: Axis.horizontal,
                                         child: Row(
-                                          children:
-                                              List.generate(list.length, (index) {
-                                            if (list[index].requiredFund != null) {
+                                          children: List.generate(list.length,
+                                              (index) {
+                                            if (list[index].requiredFund !=
+                                                null) {
                                               return CharityItemWidget(
                                                 model: list[index],
                                                 onTap: () {
@@ -218,7 +227,8 @@ class _CharityPageState extends State<CharityPage>
                                       length: 3,
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(11),
+                                          borderRadius:
+                                              BorderRadius.circular(11),
                                           color: Colors.white,
                                           boxShadow: [
                                             BoxShadow(
@@ -241,7 +251,8 @@ class _CharityPageState extends State<CharityPage>
                                             TabBar(
                                               controller: _tabController,
                                               enableFeedback: true,
-                                              labelColor: AppColorUtils.GREEN_APP,
+                                              labelColor:
+                                                  AppColorUtils.GREEN_APP,
                                               unselectedLabelColor:
                                                   AppColorUtils.DARK_6,
                                               unselectedLabelStyle: TextStyle(
@@ -253,9 +264,11 @@ class _CharityPageState extends State<CharityPage>
                                                 fontWeight: FontWeight.w600,
                                               ),
                                               tabs: List.generate(
-                                                  state.category.length,
-                                                  (index) => Text(state
-                                                      .category[index].name!)),
+                                                state.category.length,
+                                                (index) => Text(
+                                                  state.category[index].name!,
+                                                ),
+                                              ),
                                               onTap: (index) {
                                                 CharityCubit.to.tabChange(
                                                     state.category[index].id!);
@@ -266,7 +279,8 @@ class _CharityPageState extends State<CharityPage>
                                                   AppColorUtils.GREEN_APP,
                                               indicatorSize:
                                                   TabBarIndicatorSize.tab,
-                                              padding: EdgeInsets.only(right: 10),
+                                              padding:
+                                                  EdgeInsets.only(right: 10),
                                               indicatorPadding: EdgeInsets.only(
                                                   right: 10, left: 10),
                                               labelPadding: EdgeInsets.only(
@@ -278,7 +292,8 @@ class _CharityPageState extends State<CharityPage>
                                             state.tabLoading
                                                 ? Center(
                                                     child:
-                                                        CircularProgressIndicator.adaptive(),
+                                                        CircularProgressIndicator
+                                                            .adaptive(),
                                                   ).paddingSymmetric(
                                                     vertical: 50.w)
                                                 : Container(
@@ -300,10 +315,12 @@ class _CharityPageState extends State<CharityPage>
                                                             state
                                                                 .tabProjects!
                                                                 .results!
-                                                                .length, (index) {
+                                                                .length,
+                                                            (index) {
                                                           if (state
                                                                   .tabProjects!
-                                                                  .results![index]
+                                                                  .results![
+                                                                      index]
                                                                   .requiredFund !=
                                                               null) {
                                                             return CharityItemWidget(
@@ -318,7 +335,8 @@ class _CharityPageState extends State<CharityPage>
                                                                       .results![index],
                                                                 );
                                                               },
-                                                              model: list[index],
+                                                              model:
+                                                                  list[index],
                                                               onTapLike: () {
                                                                 CharityCubit.to
                                                                     .changeLike(
@@ -328,7 +346,8 @@ class _CharityPageState extends State<CharityPage>
                                                             );
                                                           } else {
                                                             return CharityItem2Widget(
-                                                              model: list[index],
+                                                              model:
+                                                                  list[index],
                                                               onTap: () {
                                                                 NavigatorService
                                                                     .to
@@ -361,8 +380,8 @@ class _CharityPageState extends State<CharityPage>
                                 )
                               : state.searchProjects.isNotEmpty
                                   ? Container(
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 10.w),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 10.w),
                                       child: GridView.count(
                                         shrinkWrap: true,
                                         crossAxisCount: 2,
@@ -383,15 +402,16 @@ class _CharityPageState extends State<CharityPage>
                                                 NavigatorService.to.pushNamed(
                                                   CharityFullPage.routName,
                                                   arguments: CharityFullModel(
-                                                    cardModel: state.searchProjects[index],
+                                                    cardModel: state
+                                                        .searchProjects[index],
                                                     cubit: CharityCubit.to,
                                                   ),
                                                 );
                                               },
                                               model: list[index],
                                               onTapLike: () {
-                                                CharityCubit.to
-                                                    .changeLike(list[index].id!);
+                                                CharityCubit.to.changeLike(
+                                                    list[index].id!);
                                               },
                                             );
                                           } else {
@@ -401,14 +421,15 @@ class _CharityPageState extends State<CharityPage>
                                                 NavigatorService.to.pushNamed(
                                                   CharityFullPage2.routName,
                                                   arguments: CharityFullModel(
-                                                    cardModel: state.searchProjects[index],
+                                                    cardModel: state
+                                                        .searchProjects[index],
                                                     cubit: CharityCubit.to,
                                                   ),
                                                 );
                                               },
                                               onTapLike: () {
-                                                CharityCubit.to
-                                                    .changeLike(list[index].id!);
+                                                CharityCubit.to.changeLike(
+                                                    list[index].id!);
                                               },
                                             );
                                           }

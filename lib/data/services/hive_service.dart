@@ -29,7 +29,7 @@ class HiveService {
     await _box.put("isUAactive", value);
   }
 
-  bool getIsUpdateAvailableActive() {
+  bool? getIsUpdateAvailableActive() {
     return _box.get("isUAactive");
   }
 
