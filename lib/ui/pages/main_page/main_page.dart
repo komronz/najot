@@ -233,6 +233,7 @@ class _MainPageState extends State<MainPage> {
                                     top: 10.w,
                                     bottom: 10.w,
                                   ),
+
                                   CharityListMain(
                                     homeCubit: homeCubit,
                                     state: state,

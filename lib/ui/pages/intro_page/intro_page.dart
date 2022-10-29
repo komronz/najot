@@ -39,18 +39,20 @@ class IntroPage extends StatelessWidget {
                           'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
                       title: LocaleKeys.donation.tr(),
                     ),
-                    IntroPageTwoWidget(
-                      title: LocaleKeys.crowdfunding.tr(),
-                      content:
-                          "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                      image: "assets/images/splash_2.png",
-                    ),
-                    IntroPageThreeWidget(
-                      image: "assets/images/splash_3.png",
-                      title: LocaleKeys.volunteering.tr(),
-                      content:
-                          "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                    ),
+                    ///Change this after new release
+                    
+                    // IntroPageTwoWidget(
+                    //   title: LocaleKeys.crowdfunding.tr(),
+                    //   content:
+                    //       "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+                    //   image: "assets/images/splash_2.png",
+                    // ),
+                    // IntroPageThreeWidget(
+                    //   image: "assets/images/splash_3.png",
+                    //   title: LocaleKeys.volunteering.tr(),
+                    //   content:
+                    //       "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+                    // ),
                   ],
                 ),
                 Container(
@@ -108,6 +110,8 @@ class IntroPage extends StatelessWidget {
         indicators.add(_indicator(false));
       }
     }
-    return indicators;
+    /// Change this after adding Kraudfunding and ...
+    // return indicators;
+    return [];
   }
 }

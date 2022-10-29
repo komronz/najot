@@ -118,7 +118,7 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                               showDialog(
                                 context: context,
                                 builder: (context) {
-                                  return PaymentHistoryDialog(projectModel: widget.cardModel,);
+                                  return  SupportProjectDialog(projectModel: widget.cardModel,);
                                 },
                               );
                             },

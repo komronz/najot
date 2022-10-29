@@ -21,6 +21,7 @@ import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/mo
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/news_widget.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/payment_history_dialog.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/question_asked_widget.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/support_project_dialog.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -142,7 +143,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
                               showDialog(
                                 context: context,
                                 builder: (context) {
-                                  return PaymentHistoryDialog(projectModel: widget.helpModel,);
+                                  return SupportProjectDialog(projectModel: widget.helpModel);
                                 },
                               );
                             },

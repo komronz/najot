@@ -7,7 +7,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:najot/app.dart';
 import 'package:najot/data/bloc/app_bloc_observer.dart';
-import 'package:najot/data/services/app_version_service/app_version_service.dart';
 import 'package:najot/data/services/root_service.dart';
 import 'package:path_provider/path_provider.dart';
 

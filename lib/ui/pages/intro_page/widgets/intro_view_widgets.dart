@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,36 +13,79 @@ import '../../../../data/bloc/intro_page_bloc/intro_state.dart';
 
 Widget viewOfOnePage(BuildContext context) {
   return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      AppWidgets.textLocale(
-        text: LocaleKeys.skip,
-        color: AppColorUtils.TEXT_GREEN,
-        fontSize: 13.sp,
-        fontWeight: FontWeight.w400,
-        textAlign: TextAlign.center,
-      ),
-      GestureDetector(
-        onTap: () {
-          context.read<IntroCubit>().pageController.nextPage(
-                duration: Duration(milliseconds: 400),
-                curve: Curves.easeInOutQuart,
-              );
-        },
-        child: Container(
-          height: 40.w,
-          width: 40.w,
-          child: Icon(
-            Icons.chevron_right,
-            color: AppColorUtils.WHITE,
-            size: 34.w,
+      Material(
+        color: AppColorUtils.GREEN_APP,
+        borderRadius: BorderRadius.circular(12.0),
+        child: InkWell(
+          onTap: () {
+            NavigatorService.to.pushNamedAndRemoveUntil(AuthPage.routeName);
+          },
+          borderRadius: BorderRadius.circular(12.0),
+          child: Ink(
+            width: 260,
+            height: 50,
+            decoration: BoxDecoration(
+              color: AppColorUtils.GREEN_APP,
+              borderRadius: BorderRadius.circular(12.0),
+            ),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AppWidgets.textLocale(
+                    textAlign: TextAlign.center,
+                    text: LocaleKeys.str_registration.tr(),
+                    color: AppColorUtils.WHITE,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  SizedBox(
+                    height: 3,
+                  ),
+                ],
+              ),
+            ),
           ),
-          decoration: BoxDecoration(
-              color: AppColorUtils.PERCENT_COLOR,
-              borderRadius: BorderRadius.circular(25.0)),
         ),
       ),
     ],
+
+    ///CTAU
+    ///
+    // AppWidgets.textLocale(
+    //   text: LocaleKeys.skip,
+    //   color: AppColorUtils.TEXT_GREEN,
+    //   fontSize: 13.sp,
+    //   fontWeight: FontWeight.w400,
+    //   textAlign: TextAlign.center,
+    // ),
+
+    // GestureDetector(
+    //   onTap: () {
+    //     NavigatorService.to.pushNamedAndRemoveUntil(AuthPage.routeName);
+
+    ///Change this
+    ///
+    // context.read<IntroCubit>().pageController.nextPage(
+    //       duration: Duration(milliseconds: 400),
+    //       curve: Curves.easeInOutQuart,
+    //     );
+    // },
+    //     child: Container(
+    //       height: 40.w,
+    //       width: 40.w,
+    //       child: Icon(
+    //         Icons.chevron_right,
+    //         color: AppColorUtils.WHITE,
+    //         size: 34.w,
+    //       ),
+    //       decoration: BoxDecoration(
+    //           color: AppColorUtils.PERCENT_COLOR,
+    //           borderRadius: BorderRadius.circular(25.0)),
+    //     ),
+    //   ),
   );
 }
 
@@ -126,8 +170,9 @@ Widget viewOfThreePage(BuildContext context, IntroPageNextState state) {
             size: 34.w,
           ),
           decoration: BoxDecoration(
-              color: AppColorUtils.PERCENT_COLOR,
-              borderRadius: BorderRadius.circular(25.0)),
+            color: AppColorUtils.PERCENT_COLOR,
+            borderRadius: BorderRadius.circular(25.0),
+          ),
         ),
       ),
       Row(
@@ -151,8 +196,9 @@ Widget viewOfThreePage(BuildContext context, IntroPageNextState state) {
                 size: 34.w,
               ),
               decoration: BoxDecoration(
-                  color: AppColorUtils.GREEN_APP,
-                  borderRadius: BorderRadius.circular(25.0)),
+                color: AppColorUtils.GREEN_APP,
+                borderRadius: BorderRadius.circular(25.0),
+              ),
             ),
           ),
         ],
@@ -160,4 +206,3 @@ Widget viewOfThreePage(BuildContext context, IntroPageNextState state) {
     ],
   );
 }
-
