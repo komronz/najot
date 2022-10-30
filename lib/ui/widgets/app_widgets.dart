@@ -272,7 +272,7 @@ class AppWidgets {
                   width: 10.w,
                 ),
                 AppWidgets.text(
-                  text: context.locale == Locale('uz', 'UZ') ? "Til" : " Язык",
+                  text: LocaleKeys.language.tr(),
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColorUtils.DARK2,
@@ -283,21 +283,19 @@ class AppWidgets {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(3.w),
-                  child: context.locale == Locale('uz', 'UZ')
+                  child: context.locale == Locale('ru', 'RU')
                       ? SvgPicture.asset(
-                          AppImageUtils.UZ_FLAG,
+                          AppImageUtils.RUS_FLAG,
                         )
                       : SvgPicture.asset(
-                          AppImageUtils.RUS_FLAG,
+                          AppImageUtils.UZ_FLAG,
                         ),
                 ),
                 SizedBox(
                   width: 8.w,
                 ),
                 AppWidgets.text(
-                  text: context.locale == Locale('uz', 'UZ')
-                      ? "O'zbek tili"
-                      : "Русский язык",
+                  text: LocaleKeys.languague_name.tr(),
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColorUtils.DARK2,

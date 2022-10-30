@@ -25,7 +25,6 @@ import 'charity_full_page/charity_full_page.dart';
 import 'charity_full_page/charity_full_page2.dart';
 
 class CharityPage extends StatefulWidget {
-  
   const CharityPage();
 
   static const String routeName = '/routeName';
@@ -68,11 +67,11 @@ class _CharityPageState extends State<CharityPage>
         title: LocaleKeys.charity.tr(),
         onPress: () async {
           await HomeCubit.to.getModel();
-           
-            if (count == 0) {
-              count++;
-              NavigatorService.to.pop();
-            }
+
+          if (count == 0) {
+            count++;
+            NavigatorService.to.pop();
+          }
         },
       ),
       backgroundColor: AppColorUtils.BACKGROUND,
@@ -110,70 +109,72 @@ class _CharityPageState extends State<CharityPage>
                               ? Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Container(
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 18.w,
-                                        vertical: 20.w,
-                                      ),
-                                      width: context.width,
-                                      decoration: BoxDecoration(
-                                        color: AppColorUtils.BACK_AD,
-                                        borderRadius: BorderRadius.circular(12),
-                                        border: Border.all(
-                                          color: AppColorUtils.DIVIDER,
-                                          width: 1,
-                                        ),
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              SizedBox(
-                                                width: 190.w,
-                                                child: AppWidgets.text(
-                                                  richText: true,
-                                                  othersMarkers: [
-                                                    MarkerText(
-                                                      marker: "//",
-                                                      style: TextStyle(
-                                                        color: AppColorUtils
-                                                            .KRAUDFANDING,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                  text:
-                                                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.//Lorem Ipsum has been the industry'//? ",
-                                                  height: 1.5,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 12.sp,
-                                                  maxLines: 5,
-                                                ),
-                                              ),
-                                              ButtonCard(
-                                                onPress: () {},
-                                                text:
-                                                    LocaleKeys.advertising.tr(),
-                                                width: 126.w,
-                                                height: 35.w,
-                                                color: AppColorUtils.GREEN_APP,
-                                                textColor: AppColorUtils.WHITE,
-                                                fontWeight: FontWeight.w600,
-                                                textSize: 12.sp,
-                                              ).paddingOnly(top: 13)
-                                            ],
-                                          ),
-                                          Expanded(
-                                            child: AppWidgets.imageAsset(
-                                                path:
-                                                    "assets/images/splash_1.png"),
-                                          )
-                                        ],
-                                      ),
-                                    ).paddingSymmetric(horizontal: 8),
+                                    ///Elon berish
+                                    ///
+                                    // Container(
+                                    //   padding: EdgeInsets.symmetric(
+                                    //     horizontal: 18.w,
+                                    //     vertical: 20.w,
+                                    //   ),
+                                    //   width: context.width,
+                                    //   decoration: BoxDecoration(
+                                    //     color: AppColorUtils.BACK_AD,
+                                    //     borderRadius: BorderRadius.circular(12),
+                                    //     border: Border.all(
+                                    //       color: AppColorUtils.DIVIDER,
+                                    //       width: 1,
+                                    //     ),
+                                    //   ),
+                                    //   child: Row(
+                                    //     children: [
+                                    //       Column(
+                                    //         mainAxisAlignment:
+                                    //             MainAxisAlignment.spaceBetween,
+                                    //         crossAxisAlignment:
+                                    //             CrossAxisAlignment.start,
+                                    //         children: [
+                                    //           SizedBox(
+                                    //             width: 190.w,
+                                    //             child: AppWidgets.text(
+                                    //               richText: true,
+                                    //               othersMarkers: [
+                                    //                 MarkerText(
+                                    //                   marker: "//",
+                                    //                   style: TextStyle(
+                                    //                     color: AppColorUtils
+                                    //                         .KRAUDFANDING,
+                                    //                   ),
+                                    //                 ),
+                                    //               ],
+                                    //               text:
+                                    //                   "Lorem Ipsum is simply dummy text of the printing and typesetting industry.//Lorem Ipsum has been the industry'//? ",
+                                    //               height: 1.5,
+                                    //               fontWeight: FontWeight.w500,
+                                    //               fontSize: 12.sp,
+                                    //               maxLines: 5,
+                                    //             ),
+                                    //           ),
+                                    //           ButtonCard(
+                                    //             onPress: () {},
+                                    //             text:
+                                    //                 LocaleKeys.advertising.tr(),
+                                    //             width: 126.w,
+                                    //             height: 35.w,
+                                    //             color: AppColorUtils.GREEN_APP,
+                                    //             textColor: AppColorUtils.WHITE,
+                                    //             fontWeight: FontWeight.w600,
+                                    //             textSize: 12.sp,
+                                    //           ).paddingOnly(top: 13)
+                                    //         ],
+                                    //       ),
+                                    //       Expanded(
+                                    //         child: AppWidgets.imageAsset(
+                                    //             path:
+                                    //                 "assets/images/splash_1.png"),
+                                    //       )
+                                    //     ],
+                                    //   ),
+                                    // ).paddingSymmetric(horizontal: 8),
                                     AppWidgets.textLocale(
                                       text: LocaleKeys.new_add,
                                       fontWeight: FontWeight.w600,

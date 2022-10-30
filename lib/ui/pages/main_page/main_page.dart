@@ -66,7 +66,8 @@ class _MainPageState extends State<MainPage> {
           },
         );
       } else {
-        if (isUpdateAvailableActive == true || isUpdateAvailableActive == null) {
+        if (isUpdateAvailableActive == true ||
+            isUpdateAvailableActive == null) {
           showDialog(
             barrierDismissible: false,
             context: context,
@@ -122,6 +123,8 @@ class _MainPageState extends State<MainPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              ///Change after update
+                              ///
                               CarouselSliderWidget(sliderList: state.slider),
                               SizedBox(
                                 height: 20.h,

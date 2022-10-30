@@ -283,5 +283,6 @@ abstract class  LocaleKeys {
   static const might_for_update = 'might_for_update';
   static const must_update = 'must_update';
   static const have_new_version = 'have_new_version';
+  static const languague_name = 'languague_name';
 
 }

@@ -118,8 +118,8 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
                 tabs: [
-                  Text(LocaleKeys.crowdfunding.tr()),
-                  Text(LocaleKeys.volunteering.tr()),
+                  // Text(LocaleKeys.crowdfunding.tr()),
+                  // Text(LocaleKeys.volunteering.tr()),
                   Text(LocaleKeys.charity.tr()),
                 ],
                 isScrollable: true,
@@ -137,8 +137,8 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
               Expanded(
                 child: TabBarView(
                   children: [
-                    MyCrowdfundingListWidget(list: state.crowdFoundingList),
-                    MyVolunteeringProjectPage(list: state.volunteeringList),
+                    // MyCrowdfundingListWidget(list: state.crowdFoundingList),
+                    // MyVolunteeringProjectPage(list: state.volunteeringList),
                     MyCharityProjectList(list: state.charityList)
                   ],
                 ),

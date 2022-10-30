@@ -280,5 +280,6 @@
   "update" : "Yangilash",
   "might_for_update" : "Ilovani yangilash uchun, “ Yangilash” tugmasini bosing!",
   "must_update" : "Iltimos, dasturdan to’liq foydalana olish uchun “ Yangilash” tugmasini bosing!",
-  "have_new_version" : "Ilovanig yangiroq versiyasi mavjud"
+  "have_new_version" : "Ilovanig yangiroq versiyasi mavjud",
+  "languague_name":"O'zbek tili"
 }

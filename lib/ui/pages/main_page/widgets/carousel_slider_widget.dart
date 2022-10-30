@@ -1,4 +1,3 @@
-
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:najot/data/model/main_model.dart';
@@ -14,15 +13,18 @@ class CarouselSliderWidget extends StatelessWidget {
     return Container(
       height: 220,
       child: Swiper(
-        itemCount: sliderList.length,
+        itemCount: 1,
+        ///itemCount: sliderList.length,
         itemBuilder: (context, index) {
           return SliderItem(
-            sliderModel: sliderList[index]!,
+            sliderModel: sliderList[0]!,
+            ///sliderList[index]
           );
         },
         viewportFraction: 0.9,
         scale: 0.95,
         autoplay: true,
+        duration: 1000,
       ),
     );
   }
