@@ -70,8 +70,8 @@ class HiveService {
     return user;
   }
 
-  void deleteToken() {
-    _box.delete(_HiveKeys.TOKEN);
+  Future<void> deleteToken() async {
+     await _box.delete(_HiveKeys.TOKEN);
   }
 }
 

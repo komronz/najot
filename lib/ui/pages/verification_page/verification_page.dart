@@ -48,7 +48,7 @@ class _VerificationPageState extends State<VerificationPage> {
         backgroundColor: AppColorUtils.BACKGROUND,
         body: BlocConsumer<LoginBloc, LoginState>(
           listener: (context, state) async {
-            if (state.loginSuccess) {
+            if(state.loginSuccess) {
               HomeCubit.to.getModel();
               await NavigatorService.to.pushNamedAndRemoveUntil(
                 HomePage.routeName,
@@ -71,23 +71,24 @@ class _VerificationPageState extends State<VerificationPage> {
                   Column(
                     children: [
                       AppWidgets.textLocale(
-                          text: LocaleKeys.enter_6_digit_code,
-                          color: AppColorUtils.DARK3,
-                          textAlign: TextAlign.center,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16.sp,
-                          maxLines: 3,
-                          args: ["${state.phone}"],
-                          richText: true,
-                          othersMarkers: [
-                            MarkerText(
-                              marker: "&",
-                              style: TextStyle(
-                                color: AppColorUtils.BLACK,
-                                fontWeight: FontWeight.w600,
-                              ),
+                        text: LocaleKeys.enter_6_digit_code,
+                        color: AppColorUtils.DARK3,
+                        textAlign: TextAlign.center,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16.sp,
+                        maxLines: 3,
+                        args: ["${state.phone}"],
+                        richText: true,
+                        othersMarkers: [
+                          MarkerText(
+                            marker: "&",
+                            style: TextStyle(
+                              color: AppColorUtils.BLACK,
+                              fontWeight: FontWeight.w600,
                             ),
-                          ]).paddingSymmetric(horizontal: 60.w),
+                          ),
+                        ],
+                      ).paddingSymmetric(horizontal: 60.w),
                       PinPutWidget(
                         pinPutFocusNode: _pinPutFocusNode,
                         pinPutController: _pinPutController,

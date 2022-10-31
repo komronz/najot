@@ -26,14 +26,12 @@ import '../../../../data/services/main_service.dart';
 import '../../../widgets/app_error_widget.dart';
 import '../../crowdfunding_page_main/project_details/widgets/crowdfunding_authot_widget.dart';
 
-
 class OrganizationItemModel {
   ProjectModel cardModel;
   int id;
 
   OrganizationItemModel({required this.cardModel, required this.id});
 }
-
 
 class OrganizationItemWidget extends StatefulWidget {
   OrganizationItemWidget({required this.model});
@@ -62,8 +60,11 @@ class _OrganizationItemWidgetState extends State<OrganizationItemWidget>
 
   @override
   void initState() {
-    like=widget.model.cardModel.isFavourite!;
-    _controller = TabController(length: 4, vsync: this,);
+    like = widget.model.cardModel.isFavourite!;
+    _controller = TabController(
+      length: 4,
+      vsync: this,
+    );
     _controller.addListener(_handleTabSelection);
     super.initState();
   }
@@ -88,11 +89,10 @@ class _OrganizationItemWidgetState extends State<OrganizationItemWidget>
         ),
         body: BlocBuilder<CharityCubit, CharityState>(
           builder: (context, state) {
-            if(state.internetConnection){
+            if (state.internetConnection) {
               return SingleChildScrollView(
                   physics: BouncingScrollPhysics(),
                   child: Column(
-
                     children: [
                       Container(
                         decoration: BoxDecoration(
@@ -118,7 +118,8 @@ class _OrganizationItemWidgetState extends State<OrganizationItemWidget>
                                       Radius.circular(12),
                                     ),
                                     child: CachedNetworkImage(
-                                      imageUrl: widget.model.cardModel.coverUrl!,
+                                      imageUrl:
+                                          widget.model.cardModel.coverUrl!,
                                       fit: BoxFit.cover,
                                       width: MediaQuery.of(context).size.width,
                                       placeholder: (context, url) => Center(
@@ -137,7 +138,11 @@ class _OrganizationItemWidgetState extends State<OrganizationItemWidget>
                                       showDialog(
                                         context: context,
                                         builder: (context) {
-                                          return PaymentHistoryDialog(projectModel: widget.model.cardModel,);
+                                          return SupportProjectDialog(
+                                            projectModel:
+                                                widget.model.cardModel,
+                                          );
+                                          // return PaymentHistoryDialog(projectModel: widget.model.cardModel,);
                                         },
                                       );
                                     },
@@ -243,12 +248,13 @@ class _OrganizationItemWidgetState extends State<OrganizationItemWidget>
                                 indicatorSize: TabBarIndicatorSize.tab,
                                 padding: EdgeInsets.only(right: 10),
                                 indicatorPadding:
-                                EdgeInsets.only(right: 10, left: 10),
+                                    EdgeInsets.only(right: 10, left: 10),
                                 labelPadding:
-                                EdgeInsets.only(right: 10, left: 10),
+                                    EdgeInsets.only(right: 10, left: 10),
                               ).paddingOnly(left: 15.w, top: 8.w),
                               BlocBuilder<ProjectDataCubit, ProjectDataState>(
-                                bloc: cubitData..load(widget.model.cardModel.id!),
+                                bloc: cubitData
+                                  ..load(widget.model.cardModel.id!),
                                 builder: (contextData, stateData) {
                                   return Container(
                                     child: [
@@ -273,7 +279,8 @@ class _OrganizationItemWidgetState extends State<OrganizationItemWidget>
                                 height: 10.w,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   ButtonCard(
                                     onPress: () {
@@ -281,7 +288,8 @@ class _OrganizationItemWidgetState extends State<OrganizationItemWidget>
                                         context: context,
                                         builder: (context) {
                                           return SupportProjectDialog(
-                                            projectModel: widget.model.cardModel,
+                                            projectModel:
+                                                widget.model.cardModel,
                                           );
                                         },
                                       );
@@ -298,17 +306,20 @@ class _OrganizationItemWidgetState extends State<OrganizationItemWidget>
                                     select: like,
                                     height: 48.w,
                                     width: 48.w,
-                                    onTap: () async{
-                                      var connection= await MainService().checkInternetConnection();
-                                      if(connection){
-                                        await OrganizationCubit.to.changeLike(widget.model.cardModel.id!);
+                                    onTap: () async {
+                                      var connection = await MainService()
+                                          .checkInternetConnection();
+                                      if (connection) {
+                                        await OrganizationCubit.to.changeLike(
+                                            widget.model.cardModel.id!);
                                         setState(() {
-                                          like=!like;
+                                          like = !like;
                                         });
-                                      }else{
-                                        AppWidgets.showText(text: LocaleKeys.disConnection.tr());
+                                      } else {
+                                        AppWidgets.showText(
+                                            text:
+                                                LocaleKeys.disConnection.tr());
                                       }
-
                                     },
                                   )
                                 ],
@@ -319,13 +330,12 @@ class _OrganizationItemWidgetState extends State<OrganizationItemWidget>
                       ),
                     ],
                   ));
-            }else{
-              return AppErrorWidget(
-                  onTap: () async{
-                    AppWidgets.isLoading(true);
-                    await CharityCubit.to.load();
-                    AppWidgets.isLoading(false);
-                  });
+            } else {
+              return AppErrorWidget(onTap: () async {
+                AppWidgets.isLoading(true);
+                await CharityCubit.to.load();
+                AppWidgets.isLoading(false);
+              });
             }
           },
         ),

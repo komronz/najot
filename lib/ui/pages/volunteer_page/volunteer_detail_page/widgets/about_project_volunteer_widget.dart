@@ -20,6 +20,7 @@ import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/mo
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/news_widget.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/payment_history_dialog.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/question_asked_widget.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/support_project_dialog.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/pages/my_profil_page/my_profile_page.dart';
 import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_help_widget.dart';
@@ -118,7 +119,10 @@ class _AboutProjectVolunteerWidgetState
                         showDialog(
                           context: context,
                           builder: (context) {
-                            return PaymentHistoryDialog(projectModel: widget.cardModel,);
+                            return SupportProjectDialog(
+                              projectModel: widget.cardModel,
+                            );
+                            // return PaymentHistoryDialog(projectModel: widget.cardModel,);
                           },
                         );
                       },
@@ -432,7 +436,8 @@ class _AboutProjectVolunteerWidgetState
                         children: [
                           ButtonCard(
                             onPress: () {
-                              NavigatorService.to.pushReplacementNamed(MyProfilePage.routeName);
+                              NavigatorService.to.pushReplacementNamed(
+                                  MyProfilePage.routeName);
                             },
                             text: LocaleKeys.go_to_personal_profile,
                             height: 48.w,

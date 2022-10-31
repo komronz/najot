@@ -126,6 +126,7 @@ class _MainPageState extends State<MainPage> {
                               ///Change after update
                               ///
                               CarouselSliderWidget(sliderList: state.slider),
+
                               SizedBox(
                                 height: 20.h,
                               ),

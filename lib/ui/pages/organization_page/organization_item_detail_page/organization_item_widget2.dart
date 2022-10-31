@@ -19,6 +19,7 @@ import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/mo
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/news_widget.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/payment_history_dialog.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/question_asked_widget.dart';
+import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/support_project_dialog.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/pages/organization_page/organization_item_detail_page/organization_item_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
@@ -28,7 +29,6 @@ import 'package:super_rich_text/super_rich_text.dart';
 import '../../../../data/bloc/organization_cubit/organization_cubit.dart';
 import '../../../../data/services/main_service.dart';
 import '../../../widgets/app_error_widget.dart';
-
 
 class OrganizationItemWidget2 extends StatefulWidget {
   OrganizationItemWidget2({required this.model});
@@ -56,8 +56,8 @@ class _CharityFullPageState extends State<OrganizationItemWidget2>
 
   @override
   void initState() {
-    like=widget.model.cardModel.isFavourite!;
-    isContribution=widget.model.cardModel.isContribution!;
+    like = widget.model.cardModel.isFavourite!;
+    isContribution = widget.model.cardModel.isContribution!;
     _controller = TabController(length: 4, vsync: this);
     _controller.addListener(_handleTabSelection);
     super.initState();
@@ -82,12 +82,11 @@ class _CharityFullPageState extends State<OrganizationItemWidget2>
       body: BlocBuilder<CharityCubit, CharityState>(
         bloc: CharityCubit.to,
         builder: (context, state) {
-          if(state.internetConnection){
+          if (state.internetConnection) {
             var project = widget.model.cardModel;
             return SingleChildScrollView(
               physics: BouncingScrollPhysics(),
               child: Column(
-
                 children: [
                   Container(
                     decoration: BoxDecoration(
@@ -132,7 +131,12 @@ class _CharityFullPageState extends State<OrganizationItemWidget2>
                                   showDialog(
                                     context: context,
                                     builder: (context) {
-                                      return PaymentHistoryDialog(projectModel: widget.model.cardModel,);
+                                      return SupportProjectDialog(
+                                        projectModel: widget.model.cardModel,
+                                      );
+                                      // return PaymentHistoryDialog(
+                                      //   projectModel: widget.model.cardModel,
+                                      // );
                                     },
                                   );
                                 },
@@ -238,7 +242,7 @@ class _CharityFullPageState extends State<OrganizationItemWidget2>
                             indicatorSize: TabBarIndicatorSize.tab,
                             padding: EdgeInsets.only(right: 10),
                             indicatorPadding:
-                            EdgeInsets.only(right: 10, left: 10),
+                                EdgeInsets.only(right: 10, left: 10),
                             labelPadding: EdgeInsets.only(right: 10, left: 10),
                           ).paddingOnly(left: 15.w, top: 8.w),
                           BlocBuilder<ProjectDataCubit, ProjectDataState>(
@@ -268,113 +272,122 @@ class _CharityFullPageState extends State<OrganizationItemWidget2>
                           ),
                           !isContribution
                               ? Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CharityCubit.to.state.tobeVolunteer
-                                  ? SizedBox()
-                                  : AppWidgets.text(
-                                  text: LocaleKeys.tobe_volunteer.tr(),
-                                  color: AppColorUtils.DARK_6,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 12.w,
-                                  richText: true,
-                                  othersMarkers: [
-                                    MarkerText(
-                                      marker: "&",
-                                      style: TextStyle(
-                                        color: AppColorUtils.RED,
-                                      ),
-                                    ),
-                                    MarkerText(
-                                      marker: "//",
-                                      style: TextStyle(
-                                        color: AppColorUtils.BLACK,
-                                      ),
-                                    )
-                                  ]).paddingSymmetric(
-                                horizontal: 20.w,
-                                vertical: 10.w,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ButtonCard(
-                                    onPress: () {
-                                      if ( CharityCubit.to.state.tobeVolunteer) {
-                                        CharityCubit.to.isContribution(widget.model.cardModel.id!);
-                                        NavigatorService.to.pushNamed(
-                                          CharityHelpWidget.routeName,
-                                          arguments: CharityHelpModel(
-                                            cardModel:
-                                            widget.model.cardModel,
-                                            cubit: CharityCubit.to,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CharityCubit.to.state.tobeVolunteer
+                                        ? SizedBox()
+                                        : AppWidgets.text(
+                                            text:
+                                                LocaleKeys.tobe_volunteer.tr(),
+                                            color: AppColorUtils.DARK_6,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 12.w,
+                                            richText: true,
+                                            othersMarkers: [
+                                                MarkerText(
+                                                  marker: "&",
+                                                  style: TextStyle(
+                                                    color: AppColorUtils.RED,
+                                                  ),
+                                                ),
+                                                MarkerText(
+                                                  marker: "//",
+                                                  style: TextStyle(
+                                                    color: AppColorUtils.BLACK,
+                                                  ),
+                                                )
+                                              ]).paddingSymmetric(
+                                            horizontal: 20.w,
+                                            vertical: 10.w,
                                           ),
-                                        );
-                                        setState(() {
-                                          isContribution=true;
-                                        });
-                                      } else {
-                                        Fluttertoast.showToast(
-                                          msg: LocaleKeys.be_volunteer.tr(),
-                                        );
-                                      }
-                                    },
-                                    text: LocaleKeys.help.tr(),
-                                    height: 48.w,
-                                    width: 274.w,
-                                    color: CharityCubit.to.state.tobeVolunteer
-                                        ? AppColorUtils.PERCENT_COLOR
-                                        : AppColorUtils.DISABLE_BC,
-                                    textSize: 16.sp,
-                                    fontWeight: FontWeight.w600,
-                                    textColor: AppColorUtils.WHITE,
-                                  ),
-                                  AppWidgets.favouriteButton(
-
-                                    select: like,
-                                    height: 48.w,
-                                    width: 48.w,
-                                    onTap: () async{
-                                      var connection= await MainService().checkInternetConnection();
-                                      if(connection){
-                                        await OrganizationCubit.to.changeLike(widget.model.cardModel.id!);
-                                        setState(() {
-                                          like=!like;
-                                        });
-                                      }else{
-                                        AppWidgets.showText(text: LocaleKeys.disConnection.tr());
-                                      }
-                                    },
-                                  )
-                                ],
-                              ).paddingSymmetric(horizontal: 20.w),
-                            ],
-                          )
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        ButtonCard(
+                                          onPress: () {
+                                            if (CharityCubit
+                                                .to.state.tobeVolunteer) {
+                                              CharityCubit.to.isContribution(
+                                                  widget.model.cardModel.id!);
+                                              NavigatorService.to.pushNamed(
+                                                CharityHelpWidget.routeName,
+                                                arguments: CharityHelpModel(
+                                                  cardModel:
+                                                      widget.model.cardModel,
+                                                  cubit: CharityCubit.to,
+                                                ),
+                                              );
+                                              setState(() {
+                                                isContribution = true;
+                                              });
+                                            } else {
+                                              Fluttertoast.showToast(
+                                                msg: LocaleKeys.be_volunteer
+                                                    .tr(),
+                                              );
+                                            }
+                                          },
+                                          text: LocaleKeys.help.tr(),
+                                          height: 48.w,
+                                          width: 274.w,
+                                          color: CharityCubit
+                                                  .to.state.tobeVolunteer
+                                              ? AppColorUtils.PERCENT_COLOR
+                                              : AppColorUtils.DISABLE_BC,
+                                          textSize: 16.sp,
+                                          fontWeight: FontWeight.w600,
+                                          textColor: AppColorUtils.WHITE,
+                                        ),
+                                        AppWidgets.favouriteButton(
+                                          select: like,
+                                          height: 48.w,
+                                          width: 48.w,
+                                          onTap: () async {
+                                            var connection = await MainService()
+                                                .checkInternetConnection();
+                                            if (connection) {
+                                              await OrganizationCubit.to
+                                                  .changeLike(widget
+                                                      .model.cardModel.id!);
+                                              setState(() {
+                                                like = !like;
+                                              });
+                                            } else {
+                                              AppWidgets.showText(
+                                                  text: LocaleKeys.disConnection
+                                                      .tr());
+                                            }
+                                          },
+                                        )
+                                      ],
+                                    ).paddingSymmetric(horizontal: 20.w),
+                                  ],
+                                )
                               : Column(
-                            children: [
-                              ButtonCard(
-                                onPress: () {},
-                                text:
-                                LocaleKeys.go_to_personal_profile.tr(),
-                                height: 48.w,
-                                width: 1.sw,
-                                color: AppColorUtils.BLUE_BUTTON,
-                                textSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                                textColor: AppColorUtils.WHITE,
-                              ).paddingSymmetric(horizontal: 20.w),
-                              AppWidgets.starTextWidget(
-                                text: LocaleKeys.you_accepted_ad.tr(),
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w500,
-                                color: AppColorUtils.DARK_6,)
-                                  .paddingOnly(
-                                left: 20.w,
-                                top: 10.w,
-                              )
-                            ],
-                          )
+                                  children: [
+                                    ButtonCard(
+                                      onPress: () {},
+                                      text: LocaleKeys.go_to_personal_profile
+                                          .tr(),
+                                      height: 48.w,
+                                      width: 1.sw,
+                                      color: AppColorUtils.BLUE_BUTTON,
+                                      textSize: 16.sp,
+                                      fontWeight: FontWeight.w600,
+                                      textColor: AppColorUtils.WHITE,
+                                    ).paddingSymmetric(horizontal: 20.w),
+                                    AppWidgets.starTextWidget(
+                                      text: LocaleKeys.you_accepted_ad.tr(),
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColorUtils.DARK_6,
+                                    ).paddingOnly(
+                                      left: 20.w,
+                                      top: 10.w,
+                                    )
+                                  ],
+                                )
                         ],
                       ),
                     ),
@@ -382,15 +395,12 @@ class _CharityFullPageState extends State<OrganizationItemWidget2>
                 ],
               ),
             );
-          }else{
-            return AppErrorWidget(
-                onTap: () async{
-                  AppWidgets.isLoading(true);
-                  await CharityCubit.to.load();
-                  AppWidgets.isLoading(false);
-
-
-                });
+          } else {
+            return AppErrorWidget(onTap: () async {
+              AppWidgets.isLoading(true);
+              await CharityCubit.to.load();
+              AppWidgets.isLoading(false);
+            });
           }
         },
       ),

@@ -119,8 +119,9 @@ Widget viewOfTwoPage(
               child: Icon(Icons.chevron_left,
                   color: AppColorUtils.WHITE, size: 34.w),
               decoration: BoxDecoration(
-                  color: AppColorUtils.PERCENT_COLOR,
-                  borderRadius: BorderRadius.circular(25.0)),
+                color: AppColorUtils.PERCENT_COLOR,
+                borderRadius: BorderRadius.circular(25.0),
+              ),
             ).paddingOnly(right: 15.w),
           ),
           GestureDetector(
@@ -139,8 +140,9 @@ Widget viewOfTwoPage(
                 size: 34.w,
               ),
               decoration: BoxDecoration(
-                  color: AppColorUtils.PERCENT_COLOR,
-                  borderRadius: BorderRadius.circular(25.0)),
+                color: AppColorUtils.PERCENT_COLOR,
+                borderRadius: BorderRadius.circular(25.0),
+              ),
             ),
           ),
         ],
