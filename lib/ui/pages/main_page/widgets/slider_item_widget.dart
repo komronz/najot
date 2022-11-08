@@ -46,7 +46,7 @@ class SliderItem extends StatelessWidget {
             children: [
               AppWidgets.text(
                 // text: sliderModel.title??"",
-                text: sliderModel.title??"",
+                text: sliderModel.title ?? "",
                 color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
@@ -59,6 +59,7 @@ class SliderItem extends StatelessWidget {
                 color: Colors.white,
                 fontSize: 12,
                 fontWeight: FontWeight.w300,
+                maxLines: 2,
               ),
             ],
           ),

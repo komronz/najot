@@ -25,51 +25,49 @@ class CrowdfundingAuthorWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Container(
-              height: 50.w,
-              width: 50.w,
-              decoration: BoxDecoration(
-                shape : BoxShape.circle,
-                color: Colors.black12,
+        Container(
+          height: 50.w,
+          width: 50.w,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.black12,
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(25.w),
+            child: CachedNetworkImage(
+              imageUrl: model.owner!.photo!,
+              fit: BoxFit.cover,
+              placeholder: (context, url) => Center(
+                child: CircularProgressIndicator(),
               ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(25.w),
-                child: CachedNetworkImage(
-                  imageUrl: model.owner!.photo!,
-                  fit: BoxFit.cover,
-                  placeholder: (context, url) => Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                  errorWidget: (context, url, error) =>
-                      Icon(Icons.person),
-                ),
-              ),
+              errorWidget: (context, url, error) => Icon(Icons.person),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AppWidgets.textLocale(
-                  text: LocaleKeys.project_author,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  color: AppColorUtils.DARK_6,
-                ),
-                SizedBox(
-                  width: 150.w,
-                  child: AppWidgets.text(
-                    text: "${model.owner!.firstName!} ${model.owner!.lastName!}",
-                    color: AppColorUtils.TEXT_GREEN2,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14,
-                  ).paddingOnly(top: 2.w),
-                ),
-              ],
-            ).paddingOnly(left: 10),
-          ],
+          ),
         ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // AppWidgets.textLocale(
+            //   text: LocaleKeys.project_author,
+            //   fontSize: 12,
+            //   fontWeight: FontWeight.w400,
+            //   color: AppColorUtils.DARK_6,
+            // ),
+            SizedBox(
+              width: 150.w,
+              child: AppWidgets.text(
+                      text:
+                          "${model.owner!.firstName!} ${model.owner!.lastName!}",
+                      color: AppColorUtils.TEXT_GREEN2,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
+                      maxLines: 2)
+                  .paddingOnly(top: 2.w),
+            ),
+          ],
+        ).paddingOnly(left: 10),
+        
         ButtonCard(
           onPress: onTap,
           text: LocaleKeys.ask_question.tr(),

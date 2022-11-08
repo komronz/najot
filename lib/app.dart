@@ -23,6 +23,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeCubit.to.tokenUpdate();
     HomeCubit.to.getModel();
+    
     return ScreenUtilInit(
       designSize: Size(375, 812),
       builder: (context, widget) =>
@@ -54,12 +55,12 @@ class App extends StatelessWidget {
             // darkTheme: AppThemes.darkTheme(),
             localizationsDelegates: context.localizationDelegates,
             builder: BotToastInit(),
-            
             home: RootService.hiveService.getToken() != null
                 ? HomePage(
                     appPageType: AppPageType.MAIN,
                   )
                 : LanguagePage(),
+            
             navigatorObservers: [
               BotToastNavigatorObserver(),
             ],
