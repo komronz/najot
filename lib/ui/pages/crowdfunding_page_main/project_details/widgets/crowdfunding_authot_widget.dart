@@ -51,12 +51,12 @@ class CrowdfundingAuthorWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppWidgets.textLocale(
-                  text: LocaleKeys.project_author,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  color: AppColorUtils.DARK_6,
-                ),
+                // AppWidgets.textLocale(
+                //   text: LocaleKeys.project_author,
+                //   fontSize: 12,
+                //   fontWeight: FontWeight.w400,
+                //   color: AppColorUtils.DARK_6,
+                // ),
                 SizedBox(
                   width: 150.w,
                   child: AppWidgets.text(
@@ -64,6 +64,7 @@ class CrowdfundingAuthorWidget extends StatelessWidget {
                     color: AppColorUtils.TEXT_GREEN2,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
+                    maxLines: 2,
                   ).paddingOnly(top: 2.w),
                 ),
               ],
