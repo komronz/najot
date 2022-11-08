@@ -125,29 +125,29 @@ class DrawerBody extends StatelessWidget {
                     thickness: 1,
                   ),
                   ///Be volunteer widget
-                  cubit.state.user!.isVolunteer ?? false
-                      ? SizedBox()
-                      : ButtonCard(
-                          onPress: () {
-                            cubit.changePage(
-                              pageType: AppPageType.VOLUNTEER,
-                            );
-                            Navigator.pop(context);
-                          },
-                          text: LocaleKeys.be_volunteer.tr(),
-                          width: 226.w,
-                          height: 44.h,
-                          color: AppColorUtils.GREEN_ACCENT1,
-                          fontWeight: FontWeight.w600,
-                          textSize: 16.sp,
-                          textColor: AppColorUtils.KRAUDFANDING,
-                          visibleIcon: true,
-                          addIcon: AppImageUtils.HANDS,
-                        ).paddingOnly(
-                          top: 20.w,
-                          right: 20.w,
-                          left: 20.w,
-                        ),
+                  // cubit.state.user!.isVolunteer ?? false
+                  //     ? SizedBox()
+                  //     : ButtonCard(
+                  //         onPress: () {
+                  //           cubit.changePage(
+                  //             pageType: AppPageType.VOLUNTEER,
+                  //           );
+                  //           Navigator.pop(context);
+                  //         },
+                  //         text: LocaleKeys.be_volunteer.tr(),
+                  //         width: 226.w,
+                  //         height: 44.h,
+                  //         color: AppColorUtils.GREEN_ACCENT1,
+                  //         fontWeight: FontWeight.w600,
+                  //         textSize: 16.sp,
+                  //         textColor: AppColorUtils.KRAUDFANDING,
+                  //         visibleIcon: true,
+                  //         addIcon: AppImageUtils.HANDS,
+                  //       ).paddingOnly(
+                  //         top: 20.w,
+                  //         right: 20.w,
+                  //         left: 20.w,
+                  //       ),
                   AppWidgets.rowIconText(
                     iconSelect: AppImageUtils.MAIN,
                     icon: AppImageUtils.MAIN2,
