@@ -31,19 +31,18 @@ class CrowdfundingAuthorWidget extends StatelessWidget {
               height: 50.w,
               width: 50.w,
               decoration: BoxDecoration(
-                shape : BoxShape.circle,
+                shape: BoxShape.circle,
                 color: Colors.black12,
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(25.w),
                 child: CachedNetworkImage(
-                  imageUrl: model.owner!.photo!,
+                  imageUrl: "https://api.najot.uz${model.owner!.photo!}",
                   fit: BoxFit.cover,
                   placeholder: (context, url) => Center(
                     child: CircularProgressIndicator(),
                   ),
-                  errorWidget: (context, url, error) =>
-                      Icon(Icons.person),
+                  errorWidget: (context, url, error) => Icon(Icons.person),
                 ),
               ),
             ),
@@ -60,7 +59,8 @@ class CrowdfundingAuthorWidget extends StatelessWidget {
                 SizedBox(
                   width: 150.w,
                   child: AppWidgets.text(
-                    text: "${model.owner!.firstName!} ${model.owner!.lastName!}",
+                    text:
+                        "${model.owner!.firstName!} ${model.owner!.lastName!}",
                     color: AppColorUtils.TEXT_GREEN2,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,

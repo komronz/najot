@@ -92,7 +92,7 @@ class CharityCubit extends Cubit<CharityState> {
     internetConnection = await mainService.checkInternetConnection();
     emit(state.copyWith(internetConnection: internetConnection));
     emit(state.copyWith(tabLoading: true));
-    var tabProjects=await charityService.getProjectsById(id);
+    var tabProjects= await charityService.getProjectsById(id);
     if(tabProjects!=null){
       await Future.delayed(Duration(seconds: 1));
       emit(state.copyWith(tabProjects: tabProjects));

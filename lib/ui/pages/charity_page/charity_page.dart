@@ -271,6 +271,7 @@ class _CharityPageState extends State<CharityPage>
                                                 ),
                                               ),
                                               onTap: (index) {
+                                             
                                                 CharityCubit.to.tabChange(
                                                     state.category[index].id!);
                                               },

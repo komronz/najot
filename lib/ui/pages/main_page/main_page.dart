@@ -10,6 +10,7 @@ import 'package:najot/data/bloc/crowdFounding_cubit/kraud_fanding_cubit.dart';
 import 'package:najot/data/bloc/home_cubit/home_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
+import 'package:najot/data/model/main_model.dart';
 import 'package:najot/data/services/app_version_service/app_version_service.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/navigator_service.dart';
@@ -83,8 +84,9 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     CharityCubit.to.load();
-    CrowdfundingCubit.to.load();
-    VolunteerCubit.to.load();
+    // CrowdfundingCubit.to.load();
+    // VolunteerCubit.to.load();
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<HomeCubit>(
@@ -125,7 +127,9 @@ class _MainPageState extends State<MainPage> {
                             children: [
                               ///Change after update
                               ///
-                              CarouselSliderWidget(sliderList: state.slider),
+                              if (state.slider.isNotEmpty) ...[
+                                CarouselSliderWidget(sliderList: state.slider),
+                              ],
 
                               SizedBox(
                                 height: 20.h,
