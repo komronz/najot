@@ -84,8 +84,8 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     CharityCubit.to.load();
-    // CrowdfundingCubit.to.load();
-    // VolunteerCubit.to.load();
+    CrowdfundingCubit.to.load();
+    VolunteerCubit.to.load();
 
     return MultiBlocProvider(
       providers: [
@@ -246,6 +246,7 @@ class _MainPageState extends State<MainPage> {
                                     homeCubit: homeCubit,
                                     state: state,
                                   ),
+
                                   SizedBox(
                                     height: 50.w,
                                   ),
