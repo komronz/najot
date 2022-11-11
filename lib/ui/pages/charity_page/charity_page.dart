@@ -10,7 +10,6 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/pages/charity_page/widgets/charity_item2_widget.dart';
 import 'package:najot/ui/pages/charity_page/widgets/charity_item_widget.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
@@ -89,7 +88,8 @@ class _CharityPageState extends State<CharityPage>
                 return Center(
                   child: CircularProgressIndicator(),
                 );
-              } else {
+              }
+              else {
                 return SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -271,7 +271,6 @@ class _CharityPageState extends State<CharityPage>
                                                 ),
                                               ),
                                               onTap: (index) {
-                                             
                                                 CharityCubit.to.tabChange(
                                                     state.category[index].id!);
                                               },
@@ -299,26 +298,22 @@ class _CharityPageState extends State<CharityPage>
                                                   ).paddingSymmetric(
                                                     vertical: 50.w)
                                                 : Container(
-                                                    child: List.generate(
-                                                      state.category.length,
-                                                      (index) => GridView.count(
-                                                        shrinkWrap: true,
-                                                        crossAxisCount: 2,
-                                                        physics:
-                                                            ClampingScrollPhysics(),
-                                                        childAspectRatio:
-                                                            160 / 267,
-                                                        padding:
-                                                            EdgeInsets.all(0),
-                                                        reverse: false,
-                                                        crossAxisSpacing: 8,
-                                                        mainAxisSpacing: 6,
-                                                        children: List.generate(
-                                                            state
-                                                                .tabProjects!
-                                                                .results!
-                                                                .length,
-                                                            (index) {
+                                                    child: GridView.count(
+                                                      shrinkWrap: true,
+                                                      crossAxisCount: 2,
+                                                      physics:
+                                                          ClampingScrollPhysics(),
+                                                      childAspectRatio:
+                                                          160 / 267,
+                                                      padding:
+                                                          EdgeInsets.all(0),
+                                                      reverse: false,
+                                                      crossAxisSpacing: 8,
+                                                      mainAxisSpacing: 6,
+                                                      children: List.generate(
+                                                        state.tabProjects!
+                                                            .results!.length,
+                                                        (index) {
                                                           if (state
                                                                   .tabProjects!
                                                                   .results![
@@ -346,7 +341,8 @@ class _CharityPageState extends State<CharityPage>
                                                                             .id!);
                                                               },
                                                             );
-                                                          } else {
+                                                          }
+                                                           else {
                                                             return CharityItem2Widget(
                                                               model:
                                                                   list[index],
@@ -369,9 +365,9 @@ class _CharityPageState extends State<CharityPage>
                                                               },
                                                             );
                                                           }
-                                                        }),
+                                                        },
                                                       ),
-                                                    )[_tabController.index],
+                                                    ),
                                                   ).paddingSymmetric(
                                                     horizontal: 15.w),
                                           ],
