@@ -92,6 +92,7 @@ class CharityService {
   }
 
   Future<RootProjectModel?> getProjectsById(int id) async {
+
     try {
       final Response response = await RootService.httpService.get(
           url:

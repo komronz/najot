@@ -41,6 +41,7 @@ class _CharityPageState extends State<CharityPage>
 
   @override
   void initState() {
+    CharityCubit.to..load();
     _tabController = TabController(
       length: CharityCubit.to.state.category.length,
       vsync: this,
@@ -77,15 +78,17 @@ class _CharityPageState extends State<CharityPage>
           return true;
         },
         child: BlocBuilder<CharityCubit, CharityState>(
-          bloc: CharityCubit.to..load(),
+          bloc: CharityCubit.to,
           builder: (context, state) {
+
             if (state.internetConnection) {
               List<ProjectModel> list = state.charityModel!.results!;
               if (state.loading == true) {
                 return Center(
                   child: CircularProgressIndicator(),
                 );
-              } else {
+              }
+              else {
                 return SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -307,12 +310,10 @@ class _CharityPageState extends State<CharityPage>
                                                       crossAxisSpacing: 8,
                                                       mainAxisSpacing: 6,
                                                       children: List.generate(
-                                                        state.tabProjects!
-                                                            .results!.length,
+                                                        state.tabProjects.length,
                                                         (index) {
                                                           if (state
-                                                                  .tabProjects!
-                                                                  .results![
+                                                                  .tabProjects[
                                                                       index]
                                                                   .requiredFund !=
                                                               null) {
@@ -324,12 +325,12 @@ class _CharityPageState extends State<CharityPage>
                                                                   CharityFullPage
                                                                       .routName,
                                                                   arguments: state
-                                                                      .tabProjects!
-                                                                      .results![index],
+                                                                      .tabProjects[index],
                                                                 );
                                                               },
                                                               model:
-                                                                  list[index],
+                                                              state
+                                                                  .tabProjects[index],
                                                               onTapLike: () {
                                                                 CharityCubit.to
                                                                     .changeLike(
@@ -337,10 +338,11 @@ class _CharityPageState extends State<CharityPage>
                                                                             .id!);
                                                               },
                                                             );
-                                                          } else {
+                                                          }
+                                                           else {
                                                             return CharityItem2Widget(
                                                               model:
-                                                                  list[index],
+                                                              state.tabProjects[index],
                                                               onTap: () {
                                                                 NavigatorService
                                                                     .to
@@ -348,8 +350,7 @@ class _CharityPageState extends State<CharityPage>
                                                                   CharityFullPage2
                                                                       .routName,
                                                                   arguments: state
-                                                                      .tabProjects!
-                                                                      .results![index],
+                                                                      .tabProjects[index],
                                                                 );
                                                               },
                                                               onTapLike: () {

@@ -6,7 +6,7 @@ class CharityState extends Equatable {
       this.loading = false,
       this.tabLoading = false,
       this.category = const [],
-      this.tabProjects,
+      this.tabProjects = const [],
       this.tobeVolunteer = true,
       this.checkBox = false,
       this.searchProjects = const [],
@@ -14,10 +14,11 @@ class CharityState extends Equatable {
       this.internetConnection = true,
       this.reload = false,
       this.searchChange = "",
-      this.saveHelp = true});
+      this.saveHelp = true,
+      });
 
   final RootProjectModel? charityModel;
-  final RootProjectModel? tabProjects;
+   List<ProjectModel> tabProjects;
   final bool loading;
   final bool tabLoading;
   final List<TabCategories> category;
@@ -50,7 +51,7 @@ class CharityState extends Equatable {
 
   CharityState copyWith({
     RootProjectModel? charityModel,
-    RootProjectModel? tabProjects,
+    List<ProjectModel>? tabProjects,
     bool? loading,
     bool? tabLoading,
     List<TabCategories>? category,

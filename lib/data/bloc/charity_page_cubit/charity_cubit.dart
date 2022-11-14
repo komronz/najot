@@ -61,9 +61,10 @@ class CharityCubit extends Cubit<CharityState> {
     if (charityModel != null) {
       emit(
         state.copyWith(
-            charityModel: charityModel,
-            category: list.children,
-            tabProjects: tabProjects),
+          charityModel: charityModel,
+          category: list.children,
+          tabProjects: tabProjects != null ? tabProjects.results : [],
+        ),
       );
       AppLoggerUtil.i(charityModel.count.toString());
     }
@@ -85,14 +86,15 @@ class CharityCubit extends Cubit<CharityState> {
     emit(state.copyWith(searchProgress: false));
   }
 
+
   Future tabChange(int id) async {
+    emit(state.copyWith(tabProjects: []));
     bool internetConnection = await mainService.checkInternetConnection();
     emit(state.copyWith(internetConnection: internetConnection));
     emit(state.copyWith(tabLoading: true));
     var tabProjects = await charityService.getProjectsById(id);
     if (tabProjects != null) {
-      await Future.delayed(Duration(seconds: 1));
-      emit(state.copyWith(tabProjects: tabProjects));
+      emit(state.copyWith(tabProjects: tabProjects.results));
       emit(state.copyWith(tabLoading: false));
     }
   }
@@ -121,10 +123,10 @@ class CharityCubit extends Cubit<CharityState> {
             break;
           }
         }
-        for (int j = 0; j < state.tabProjects!.results!.length; j++) {
-          if (state.tabProjects!.results![j].id == id) {
-            state.tabProjects!.results![j].isFavourite =
-                !state.tabProjects!.results![j].isFavourite!;
+        for (int j = 0; j < state.tabProjects.length; j++) {
+          if (state.tabProjects[j].id == id) {
+            state.tabProjects[j].isFavourite =
+                !state.tabProjects[j].isFavourite!;
             break;
           }
         }
