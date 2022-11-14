@@ -85,7 +85,8 @@ class _CharityPageState extends State<CharityPage>
                 return Center(
                   child: CircularProgressIndicator(),
                 );
-              } else {
+              }
+              else {
                 return SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -337,7 +338,8 @@ class _CharityPageState extends State<CharityPage>
                                                                             .id!);
                                                               },
                                                             );
-                                                          } else {
+                                                          }
+                                                           else {
                                                             return CharityItem2Widget(
                                                               model:
                                                                   list[index],
