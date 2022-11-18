@@ -80,15 +80,13 @@ class _CharityPageState extends State<CharityPage>
         child: BlocBuilder<CharityCubit, CharityState>(
           bloc: CharityCubit.to,
           builder: (context, state) {
-
             if (state.internetConnection) {
               List<ProjectModel> list = state.charityModel!.results!;
               if (state.loading == true) {
                 return Center(
                   child: CircularProgressIndicator(),
                 );
-              }
-              else {
+              } else {
                 return SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -310,7 +308,8 @@ class _CharityPageState extends State<CharityPage>
                                                       crossAxisSpacing: 8,
                                                       mainAxisSpacing: 6,
                                                       children: List.generate(
-                                                        state.tabProjects.length,
+                                                        state
+                                                            .tabProjects.length,
                                                         (index) {
                                                           if (state
                                                                   .tabProjects[
@@ -324,39 +323,44 @@ class _CharityPageState extends State<CharityPage>
                                                                     .pushNamed(
                                                                   CharityFullPage
                                                                       .routName,
-                                                                  arguments: state
-                                                                      .tabProjects[index],
+                                                                  arguments:
+                                                                      state.tabProjects[
+                                                                          index],
                                                                 );
                                                               },
-                                                              model:
-                                                              state
-                                                                  .tabProjects[index],
+                                                              model: state
+                                                                      .tabProjects[
+                                                                  index],
                                                               onTapLike: () {
                                                                 CharityCubit.to
-                                                                    .changeLike(
-                                                                        list[index]
-                                                                            .id!);
+                                                                    .changeLike(state
+                                                                        .tabProjects[
+                                                                            index]
+                                                                        .id!);
                                                               },
                                                             );
-                                                          }
-                                                           else {
+                                                          } else {
                                                             return CharityItem2Widget(
-                                                              model:
-                                                              state.tabProjects[index],
+                                                              model: state
+                                                                      .tabProjects[
+                                                                  index],
                                                               onTap: () {
                                                                 NavigatorService
                                                                     .to
                                                                     .pushNamed(
                                                                   CharityFullPage2
                                                                       .routName,
-                                                                  arguments: state
-                                                                      .tabProjects[index],
+                                                                  arguments:
+                                                                      state.tabProjects[
+                                                                          index],
                                                                 );
                                                               },
                                                               onTapLike: () {
                                                                 CharityCubit.to
                                                                     .changeLike(
-                                                                  list[index]
+                                                                  state
+                                                                      .tabProjects[
+                                                                          index]
                                                                       .id!,
                                                                 );
                                                               },
@@ -404,15 +408,18 @@ class _CharityPageState extends State<CharityPage>
                                                     ),
                                                   );
                                                 },
-                                                model: list[index],
+                                                model: state.searchProjects[index],
                                                 onTapLike: () {
                                                   CharityCubit.to.changeLike(
-                                                      list[index].id!);
+                                                      state
+                                                          .searchProjects[index]
+                                                          .id!);
                                                 },
                                               );
                                             } else {
                                               return CharityItem2Widget(
-                                                model: list[index],
+                                                model:
+                                                    state.searchProjects[index],
                                                 onTap: () {
                                                   NavigatorService.to.pushNamed(
                                                     CharityFullPage2.routName,
@@ -426,7 +433,9 @@ class _CharityPageState extends State<CharityPage>
                                                 },
                                                 onTapLike: () {
                                                   CharityCubit.to.changeLike(
-                                                      list[index].id!);
+                                                      state
+                                                          .searchProjects[index]
+                                                          .id!);
                                                 },
                                               );
                                             }
