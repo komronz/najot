@@ -48,14 +48,14 @@ Future runMainApp() async {
   runApp(
     EasyLocalization(
       path: 'assets/langs',
-      supportedLocales: const [
+      supportedLocales: [
         Locale("uz", "UZ"),
         Locale("ky", "KG"),
         // Qirg'iziton lokali, krill o'zbekcha uchun ishlatildi
         Locale("ru", "RU"),
       ],
-      fallbackLocale: const Locale('uz', 'UZ'),
-      child:  App(),
+      fallbackLocale: Locale('uz', 'UZ'),
+      child: App(),
     ),
   );
 }
