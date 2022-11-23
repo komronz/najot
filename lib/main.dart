@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,16 @@ import 'package:najot/data/bloc/app_bloc_observer.dart';
 import 'package:najot/data/services/root_service.dart';
 import 'package:path_provider/path_provider.dart';
 
+class MyHttpOverrides extends HttpOverrides {
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
+
 Future main() async {
+  HttpOverrides.global = new MyHttpOverrides();
   runZonedGuarded<Future<void>>(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
@@ -40,11 +50,12 @@ Future runMainApp() async {
       path: 'assets/langs',
       supportedLocales: const [
         Locale("uz", "UZ"),
+        Locale("ky", "KG"),
+        // Qirg'iziton lokali, krill o'zbekcha uchun ishlatildi
         Locale("ru", "RU"),
-        Locale("en", "EN"),
       ],
       fallbackLocale: const Locale('uz', 'UZ'),
-      child: const App(),
+      child:  App(),
     ),
   );
 }
