@@ -16,39 +16,37 @@ import '../../utils/app_logger_util.dart';
 part 'charity_state.dart';
 
 class CharityCubit extends Cubit<CharityState> {
-
-
   static CharityCubit get to => GetIt.I<CharityCubit>();
 
   static Future init() async {
     GetIt.instance..registerSingleton<CharityCubit>(CharityCubit());
   }
+
   CharityCubit() : super(CharityState());
   CharityService charityService = CharityService();
-  MainService mainService=MainService();
+  MainService mainService = MainService();
 
   var internetConnection;
-  final DBService dbService=DBService();
+  final DBService dbService = DBService();
 
-  Future addDbVolunteer( DateTime dateTime,ProjectModel model)async{
-    VolunteerDbModel volunteerDbModel=VolunteerDbModel();
-    volunteerDbModel.id=model.id;
-    volunteerDbModel.title=model.title;
-    volunteerDbModel.helpType=model.helpType;
-    volunteerDbModel.address=model.address;
-    volunteerDbModel.modifiedAt=dateTime.toString();
-    volunteerDbModel.deadLine=model.deadline;
+  Future addDbVolunteer(DateTime dateTime, ProjectModel model) async {
+    VolunteerDbModel volunteerDbModel = VolunteerDbModel();
+    volunteerDbModel.id = model.id;
+    volunteerDbModel.title = model.title;
+    volunteerDbModel.helpType = model.helpType;
+    volunteerDbModel.address = model.address;
+    volunteerDbModel.modifiedAt = dateTime.toString();
+    volunteerDbModel.deadLine = model.deadline;
     dbService.saveVolunteer(volunteerDbModel);
   }
 
-  Future isContribution(int id) async{
+  Future isContribution(int id) async {
     internetConnection = await mainService.checkInternetConnection();
     emit(state.copyWith(internetConnection: internetConnection));
     var isContribution = await charityService.contributionChange(id);
-    if(isContribution !=null){
-    }
-
+    if (isContribution != null) {}
   }
+
   Future load() async {
     emit(state.copyWith(searchChange: ""));
     internetConnection = await mainService.checkInternetConnection();
@@ -56,49 +54,53 @@ class CharityCubit extends Cubit<CharityState> {
     var isVolunteer = await mainService.getUserModel();
     var charityModel = await charityService.getCharityModel();
     var categories = await charityService.getCategoriesModel();
-    var list= categories!.results![0];
-    var tabProjects=await charityService.getProjectsById(list.children![0].id!);
+    var list = categories!.results![0];
+    var tabProjects =
+        await charityService.getProjectsById(list.children![0].id!);
 
     if (charityModel != null) {
-      emit(state.copyWith(
+      emit(
+        state.copyWith(
           charityModel: charityModel,
           category: list.children,
-          tabProjects: tabProjects
-      ),
-
+          tabProjects: tabProjects != null ? tabProjects.results : [],
+        ),
       );
       AppLoggerUtil.i(charityModel.count.toString());
     }
 
-    if(isVolunteer !=null){
+    if (isVolunteer != null) {
       emit(state.copyWith(tobeVolunteer: isVolunteer.isVolunteer));
     }
   }
 
-  Future searchChange(String v)async{
+  Future searchChange(String v) async {
+    print(v);
     internetConnection = await mainService.checkInternetConnection();
     emit(state.copyWith(internetConnection: internetConnection));
     emit(state.copyWith(searchProgress: true));
     var getSearch = await charityService.getProjectsByName(v);
-    if(getSearch != null){
+    if (getSearch != null) {
+      print(getSearch.results!.length);
       emit(state.copyWith(searchProjects: getSearch.results));
     }
     emit(state.copyWith(searchChange: v));
     emit(state.copyWith(searchProgress: false));
-
-
   }
-  Future tabChange(int id) async{
-    internetConnection = await mainService.checkInternetConnection();
+
+
+  Future tabChange(int id) async {
+    emit(state.copyWith(tabProjects: []));
+    bool internetConnection = await mainService.checkInternetConnection();
     emit(state.copyWith(internetConnection: internetConnection));
     emit(state.copyWith(tabLoading: true));
-    var tabProjects=await charityService.getProjectsById(id);
-    if(tabProjects!=null){
-      await Future.delayed(Duration(seconds: 1));
-      emit(state.copyWith(tabProjects: tabProjects));
+    var tabProjects = await charityService.getProjectsById(id);
+    if (tabProjects != null) {
+      emit(state.copyWith(tabProjects: tabProjects.results));
       emit(state.copyWith(tabLoading: false));
     }
   }
+
   void loading() {
     emit(state.copyWith());
   }
@@ -119,14 +121,14 @@ class CharityCubit extends Cubit<CharityState> {
         for (int j = 0; j < state.charityModel!.results!.length; j++) {
           if (state.charityModel!.results![j].id == id) {
             state.charityModel!.results![j].isFavourite =
-            !state.charityModel!.results![j].isFavourite!;
+                !state.charityModel!.results![j].isFavourite!;
             break;
           }
         }
-        for (int j = 0; j < state.tabProjects!.results!.length; j++) {
-          if (state.tabProjects!.results![j].id == id) {
-            state.tabProjects!.results![j].isFavourite =
-            !state.tabProjects!.results![j].isFavourite!;
+        for (int j = 0; j < state.tabProjects.length; j++) {
+          if (state.tabProjects[j].id == id) {
+            state.tabProjects[j].isFavourite =
+                !state.tabProjects[j].isFavourite!;
             break;
           }
         }

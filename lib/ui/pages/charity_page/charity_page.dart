@@ -4,20 +4,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/charity_page_cubit/charity_cubit.dart';
 import 'package:najot/data/bloc/home_cubit/home_cubit.dart';
-import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/pages/charity_page/widgets/charity_item2_widget.dart';
 import 'package:najot/ui/pages/charity_page/widgets/charity_item_widget.dart';
-import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
 import 'package:najot/ui/widgets/app_search_widget.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-import 'package:super_rich_text/super_rich_text.dart';
 
 import '../../widgets/app_error_widget.dart';
 import '../crowdfunding_page_main/crowdfunding_widget/search_not _found.dart';
@@ -45,6 +41,7 @@ class _CharityPageState extends State<CharityPage>
 
   @override
   void initState() {
+    CharityCubit.to..load();
     _tabController = TabController(
       length: CharityCubit.to.state.category.length,
       vsync: this,
@@ -81,7 +78,7 @@ class _CharityPageState extends State<CharityPage>
           return true;
         },
         child: BlocBuilder<CharityCubit, CharityState>(
-          bloc: CharityCubit.to..load(),
+          bloc: CharityCubit.to,
           builder: (context, state) {
             if (state.internetConnection) {
               List<ProjectModel> list = state.charityModel!.results!;
@@ -298,29 +295,24 @@ class _CharityPageState extends State<CharityPage>
                                                   ).paddingSymmetric(
                                                     vertical: 50.w)
                                                 : Container(
-                                                    child: List.generate(
-                                                      state.category.length,
-                                                      (index) => GridView.count(
-                                                        shrinkWrap: true,
-                                                        crossAxisCount: 2,
-                                                        physics:
-                                                            ClampingScrollPhysics(),
-                                                        childAspectRatio:
-                                                            160 / 267,
-                                                        padding:
-                                                            EdgeInsets.all(0),
-                                                        reverse: false,
-                                                        crossAxisSpacing: 8,
-                                                        mainAxisSpacing: 6,
-                                                        children: List.generate(
-                                                            state
-                                                                .tabProjects!
-                                                                .results!
-                                                                .length,
-                                                            (index) {
+                                                    child: GridView.count(
+                                                      shrinkWrap: true,
+                                                      crossAxisCount: 2,
+                                                      physics:
+                                                          ClampingScrollPhysics(),
+                                                      childAspectRatio:
+                                                          160 / 267,
+                                                      padding:
+                                                          EdgeInsets.all(0),
+                                                      reverse: false,
+                                                      crossAxisSpacing: 8,
+                                                      mainAxisSpacing: 6,
+                                                      children: List.generate(
+                                                        state
+                                                            .tabProjects.length,
+                                                        (index) {
                                                           if (state
-                                                                  .tabProjects!
-                                                                  .results![
+                                                                  .tabProjects[
                                                                       index]
                                                                   .requiredFund !=
                                                               null) {
@@ -331,46 +323,52 @@ class _CharityPageState extends State<CharityPage>
                                                                     .pushNamed(
                                                                   CharityFullPage
                                                                       .routName,
-                                                                  arguments: state
-                                                                      .tabProjects!
-                                                                      .results![index],
+                                                                  arguments:
+                                                                      state.tabProjects[
+                                                                          index],
                                                                 );
                                                               },
-                                                              model:
-                                                                  list[index],
+                                                              model: state
+                                                                      .tabProjects[
+                                                                  index],
                                                               onTapLike: () {
                                                                 CharityCubit.to
-                                                                    .changeLike(
-                                                                        list[index]
-                                                                            .id!);
+                                                                    .changeLike(state
+                                                                        .tabProjects[
+                                                                            index]
+                                                                        .id!);
                                                               },
                                                             );
                                                           } else {
                                                             return CharityItem2Widget(
-                                                              model:
-                                                                  list[index],
+                                                              model: state
+                                                                      .tabProjects[
+                                                                  index],
                                                               onTap: () {
                                                                 NavigatorService
                                                                     .to
                                                                     .pushNamed(
                                                                   CharityFullPage2
                                                                       .routName,
-                                                                  arguments: state
-                                                                      .tabProjects!
-                                                                      .results![index],
+                                                                  arguments:
+                                                                      state.tabProjects[
+                                                                          index],
                                                                 );
                                                               },
                                                               onTapLike: () {
                                                                 CharityCubit.to
                                                                     .changeLike(
-                                                                        list[index]
-                                                                            .id!);
+                                                                  state
+                                                                      .tabProjects[
+                                                                          index]
+                                                                      .id!,
+                                                                );
                                                               },
                                                             );
                                                           }
-                                                        }),
+                                                        },
                                                       ),
-                                                    )[_tabController.index],
+                                                    ),
                                                   ).paddingSymmetric(
                                                     horizontal: 15.w),
                                           ],
@@ -393,48 +391,52 @@ class _CharityPageState extends State<CharityPage>
                                         crossAxisSpacing: 8,
                                         mainAxisSpacing: 6,
                                         children: List.generate(
-                                            state.searchProjects.length,
-                                            (index) {
-                                          if (state.searchProjects[index]
-                                                  .requiredFund !=
-                                              null) {
-                                            return CharityItemWidget(
-                                              onTap: () {
-                                                NavigatorService.to.pushNamed(
-                                                  CharityFullPage.routName,
-                                                  arguments: CharityFullModel(
-                                                    cardModel: state
-                                                        .searchProjects[index],
-                                                    cubit: CharityCubit.to,
-                                                  ),
-                                                );
-                                              },
-                                              model: list[index],
-                                              onTapLike: () {
-                                                CharityCubit.to.changeLike(
-                                                    list[index].id!);
-                                              },
-                                            );
-                                          } else {
-                                            return CharityItem2Widget(
-                                              model: list[index],
-                                              onTap: () {
-                                                NavigatorService.to.pushNamed(
-                                                  CharityFullPage2.routName,
-                                                  arguments: CharityFullModel(
-                                                    cardModel: state
-                                                        .searchProjects[index],
-                                                    cubit: CharityCubit.to,
-                                                  ),
-                                                );
-                                              },
-                                              onTapLike: () {
-                                                CharityCubit.to.changeLike(
-                                                    list[index].id!);
-                                              },
-                                            );
-                                          }
-                                        }),
+                                          state.searchProjects.length,
+                                          (index) {
+                                            if (state.searchProjects[index]
+                                                    .requiredFund !=
+                                                null) {
+                                              return CharityItemWidget(
+                                                onTap: () {
+                                                  NavigatorService.to.pushNamed(
+                                                    CharityFullPage.routName,
+                                                    arguments: state.searchProjects[
+                                                    index],
+                                                  );
+                                                },
+                                                model: state.searchProjects[index],
+                                                onTapLike: () {
+                                                  CharityCubit.to.changeLike(
+                                                      state
+                                                          .searchProjects[index]
+                                                          .id!);
+                                                },
+                                              );
+                                            } else {
+                                              return CharityItem2Widget(
+                                                model:
+                                                    state.searchProjects[index],
+                                                onTap: () {
+                                                  NavigatorService.to.pushNamed(
+                                                    CharityFullPage2.routName,
+                                                    arguments: CharityFullModel(
+                                                      cardModel:
+                                                          state.searchProjects[
+                                                              index],
+                                                      cubit: CharityCubit.to,
+                                                    ),
+                                                  );
+                                                },
+                                                onTapLike: () {
+                                                  CharityCubit.to.changeLike(
+                                                      state
+                                                          .searchProjects[index]
+                                                          .id!);
+                                                },
+                                              );
+                                            }
+                                          },
+                                        ),
                                       ),
                                     )
                                   : SearchNotFound()

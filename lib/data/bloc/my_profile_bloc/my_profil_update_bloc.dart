@@ -163,9 +163,10 @@ class MyProfileUpdateBloc
         state.firstName,
         state.lastName,
         state.gender ?? "",
-        state.userImgPath!,
+        state.userImgPath ?? null,
         state.status,
         state.isVolunteer,
+
       );
       if (user != null) {
         emit(state.copyWith(hasError: false));

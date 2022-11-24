@@ -88,29 +88,29 @@ class MyProfilePage extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   AppWidgets.textLocale(
-                                    text: LocaleKeys.degree,
+                                    text: LocaleKeys.degree.tr() + ":",
                                     textAlign: TextAlign.center,
-                                    fontSize: 12.sp,
+                                    fontSize: 15.sp,
                                     color: AppColorUtils.GRAY_4,
                                     fontWeight: FontWeight.w400,
                                   ),
                                   SizedBox(
                                     width: 5,
                                   ),
-                                  Container(
-                                    padding: EdgeInsets.only(top: 1, bottom: 1),
-                                    child: InkWell(
-                                      onTap: () {
-                                        NavigatorService.to.pushNamed(
-                                          UserDegreePage.routeName,
-                                        );
-                                      },
-                                      child: SvgPicture.asset(
-                                        AppImageUtils.FAQ,
-                                        color: AppColorUtils.WHITE_GREEN8,
-                                      ),
-                                    ),
-                                  ),
+                                  // Container(
+                                  //   padding: EdgeInsets.only(top: 1, bottom: 1),
+                                  //   child: InkWell(
+                                  //     onTap: () {
+                                        // NavigatorService.to.pushNamed(
+                                        //   UserDegreePage.routeName,
+                                        // );
+                                  //     },
+                                  //     child: SvgPicture.asset(
+                                  //       AppImageUtils.FAQ,
+                                  //       color: AppColorUtils.WHITE_GREEN8,
+                                  //     ),
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ).paddingOnly(bottom: 6.h),

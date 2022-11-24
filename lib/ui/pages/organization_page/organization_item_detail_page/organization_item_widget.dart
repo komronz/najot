@@ -24,7 +24,7 @@ import '../../../../data/bloc/project_data_cubit/project_data_cubit.dart';
 import '../../../../data/model/project_model.dart';
 import '../../../../data/services/main_service.dart';
 import '../../../widgets/app_error_widget.dart';
-import '../../crowdfunding_page_main/project_details/widgets/crowdfunding_authot_widget.dart';
+import '../../crowdfunding_page_main/project_details/widgets/crowdfunding_author_widget.dart';
 
 class OrganizationItemModel {
   ProjectModel cardModel;

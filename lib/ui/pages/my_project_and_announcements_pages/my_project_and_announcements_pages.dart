@@ -55,7 +55,7 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
                 Expanded(
                   child: AppWidgets.textLocale(
                     text: LocaleKeys.projects_and_ads,
-                    fontSize: 25.sp,
+                    fontSize: 25,
                     fontWeight: FontWeight.w600,
                     textAlign: TextAlign.center,
                   ),

@@ -1,5 +1,6 @@
+import 'package:equatable/equatable.dart';
 import 'package:najot/data/model/project_model.dart';
-class RootProjectModel {
+class RootProjectModel extends Equatable {
   Links? links;
   int? currentPageNumber;
   int? totalPages;
@@ -44,6 +45,10 @@ class RootProjectModel {
     }
     return data;
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [results,links];
 }
 
 
