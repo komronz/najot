@@ -400,12 +400,8 @@ class _CharityPageState extends State<CharityPage>
                                                 onTap: () {
                                                   NavigatorService.to.pushNamed(
                                                     CharityFullPage.routName,
-                                                    arguments: CharityFullModel(
-                                                      cardModel:
-                                                          state.searchProjects[
-                                                              index],
-                                                      cubit: CharityCubit.to,
-                                                    ),
+                                                    arguments: state.searchProjects[
+                                                    index],
                                                   );
                                                 },
                                                 model: state.searchProjects[index],
