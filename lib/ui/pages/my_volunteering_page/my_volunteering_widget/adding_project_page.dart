@@ -67,7 +67,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                   ),
                 ),
                 AppWidgets.textLocale(
-                  text: LocaleKeys.volunteering,
+                  text: LocaleKeys.charity,
                   fontSize: 26.sp,
                   fontWeight: FontWeight.w600,
                 ),
@@ -108,22 +108,24 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                     textAlign: TextAlign.center,
                   ).paddingSymmetric(horizontal: 20.w),
                   SizedBox(height: 60.w,),
-                  DropDownWidget(
-                    height: 52.w,
-                    items: projectName,
-                    key: _key,
-                    hasTitle: true,
-                    title: LocaleKeys.who_joining_project.tr(),
-                    isEmpty: context.read<AddProjectBloc>().state.whoAddFill,
-                    selectValue: context.read<AddProjectBloc>().state.whoAdd,
-                    onChange: (v) {
-                      context
-                          .read<AddProjectBloc>()
-                          .add(AddProjectAddWhoChanged(v));
-                    },
-                  ).paddingOnly(
-                    bottom: 18.w,
-                  ),
+                  //? Who is adding project widget
+                  // DropDownWidget(
+                  //   height: 52.w,
+                  //   items: projectName,
+                  //   key: _key,
+                  //   hasTitle: true,
+                  //   title: LocaleKeys.who_joining_project.tr(),
+                  //   isEmpty: context.read<AddProjectBloc>().state.whoAddFill,
+                  //   selectValue: context.read<AddProjectBloc>().state.whoAdd,
+                  //   onChange: (v) {
+                  //     context
+                  //         .read<AddProjectBloc>()
+                  //         .add(AddProjectAddWhoChanged(v));
+                  //   },
+                  // ).paddingOnly(
+                  //   bottom: 18.w,
+                  // ),
+                  
                   AppTextField(
                     isFill: context.read<AddProjectBloc>().state.nameFill,
                     hintText: LocaleKeys.enter_project_name.tr(),
@@ -136,22 +138,24 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                     },
                     title: LocaleKeys.project_name.tr(),
                   ).paddingOnly(bottom: 18.w),
-                  DropDownWidget(
-                    height: 52.w,
-                    items: projectType,
-                    key: _key,
-                    hasTitle: true,
-                    title: LocaleKeys.project_or_announcement_type.tr(),
-                    isEmpty: context.read<AddProjectBloc>().state.typeFill,
-                    selectValue: context.read<AddProjectBloc>().state.type,
-                    onChange: (v) {
-                      context
-                          .read<AddProjectBloc>()
-                          .add(AddProjectTypeChanged(v));
-                    },
-                  ).paddingOnly(
-                    bottom: 18.w,
-                  ),
+                  
+                  //? Announcement type
+                  // DropDownWidget(
+                  //   height: 52.w,
+                  //   items: projectType,
+                  //   key: _key,
+                  //   hasTitle: true,
+                  //   title: LocaleKeys.project_or_announcement_type.tr(),
+                  //   isEmpty: context.read<AddProjectBloc>().state.typeFill,
+                  //   selectValue: context.read<AddProjectBloc>().state.type,
+                  //   onChange: (v) {
+                  //     context
+                  //         .read<AddProjectBloc>()
+                  //         .add(AddProjectTypeChanged(v));
+                  //   },
+                  // ).paddingOnly(
+                  //   bottom: 18.w,
+                  // ),
                   AppTextField(
                     isFill:
                     context.read<AddProjectBloc>().state.descriptionFill,

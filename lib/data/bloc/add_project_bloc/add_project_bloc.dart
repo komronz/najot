@@ -116,9 +116,11 @@ class AddProjectBloc extends Bloc<AddProjectEvent, AddProjectState> {
     Emitter<AddProjectState> emit,
   ) async {
     AddProjectModel? addProjectModel = await addProjectService.postModel(
-      state.whoAdd!,
+      // state.whoAdd!,
+      "user",
       state.name,
-      state.type!,
+      // state.type!,
+      "CH",
       state.description,
     );
     if (addProjectModel != null) {

@@ -386,18 +386,24 @@ class AppWidgets {
             fontSize: 24.sp,
             fontWeight: FontWeight.w600,
           ),
-          visibleIcon
-              ? InkWell(
-                  child: Container(
-                    height: 35.w,
-                    width: 35.w,
-                    child: SvgPicture.asset(icon),
-                  ),
-                  onTap: onTapIcon,
-                )
-              : SizedBox(
-                  width: 20,
-                )
+          SizedBox(
+            height: 35.w,
+            width: 35.w,
+          ),
+          /// Change in later verions
+          // visibleIcon
+          //     ? InkWell(
+          //         child: Container(
+          //           height: 35.w,
+          //           width: 35.w,
+          //           child: SvgPicture.asset(icon),
+          //         ),
+          //         onTap: onTapIcon,
+          //       )
+          //     : SizedBox(
+          //         height: 35.w,
+          //         width: 35.w,
+          //       ),
         ],
       ),
     );
