@@ -36,7 +36,7 @@ class IntroPage extends StatelessWidget {
                     IntroPageOneWidget(
                       image: 'assets/images/splash_1.png',
                       content:
-                          'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+                          LocaleKeys.splash_ehson_quote,
                       title: LocaleKeys.donation.tr(),
                     ),
                     ///Change this after new release

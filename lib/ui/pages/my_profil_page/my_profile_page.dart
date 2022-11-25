@@ -17,9 +17,7 @@ import '../../../data/utils/app_image_utils.dart';
 import '../../widgets/app_widgets.dart';
 import '../home_page/home_page.dart';
 import 'my_profile_pages/number_update_page.dart';
-import 'my_profile_pages/user_degree_page.dart';
 import 'my_profile_pages/user_update_page.dart';
-import 'my_profile_widget/my_profile_radio_button.dart';
 import 'my_profile_widget/my_radio_button_static.dart';
 
 class MyProfilePage extends StatelessWidget {

@@ -64,9 +64,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    AppPageCubit.to.load(widget.appPageType);
     return BlocBuilder<AppPageCubit, AppPageState>(
-      bloc: AppPageCubit.to,
+      bloc: AppPageCubit.to..load(widget.appPageType),
       builder: (context, state) {
         if (state.internetConnection) {
           return Scaffold(
