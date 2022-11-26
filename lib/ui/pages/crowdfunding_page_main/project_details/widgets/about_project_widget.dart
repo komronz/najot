@@ -118,7 +118,9 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                               showDialog(
                                 context: context,
                                 builder: (context) {
-                                  return  SupportProjectDialog(projectModel: widget.cardModel,);
+                                  return SupportProjectDialog(
+                                    projectModel: widget.cardModel,
+                                  );
                                 },
                               );
                             },
@@ -166,9 +168,11 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CrowdfundingAppliedUserWidgets(
-                          model: widget.cardModel,
-                        ),
+                        ///Change later
+                        ///
+                        // CrowdfundingAppliedUserWidgets(
+                        //   model: widget.cardModel,
+                        // ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -192,7 +196,11 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                               ],
                             ).paddingOnly(top: 10.w)
                           ],
-                        ).paddingOnly(left: 30.w)
+                        ).paddingOnly(left: 5.w)
+
+                        ///Change later
+                        ///
+                        // ).paddingOnly(left: 30.w)
                       ],
                     ).paddingSymmetric(
                       horizontal: 20.w,
