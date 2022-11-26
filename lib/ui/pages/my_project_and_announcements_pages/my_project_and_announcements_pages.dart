@@ -60,19 +60,26 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                InkWell(
-                  onTap: () {
-                    NavigatorService.to.pushNamed(
-                      NotificationPage.routeName,
-                    );
-                  },
-                  child: SvgPicture.asset(
-                    AppImageUtils.NOTIFICATION,
-                    height: 35.w,
-                    width: 35.w,
-                    fit: BoxFit.fill,
-                  ),
-                )
+                SizedBox(
+                  height: 35.w,
+                  width: 35.w,
+                ),
+
+                ///Change later
+                ///
+                // InkWell(
+                //   onTap: () {
+                //     NavigatorService.to.pushNamed(
+                //       NotificationPage.routeName,
+                //     );
+                //   },
+                //   child: SvgPicture.asset(
+                //     AppImageUtils.NOTIFICATION,
+                //     height: 35.w,
+                //     width: 35.w,
+                //     fit: BoxFit.fill,
+                //   ),
+                // )
               ],
             ).paddingSymmetric(horizontal: 20),
           ),

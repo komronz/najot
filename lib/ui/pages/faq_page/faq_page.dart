@@ -57,18 +57,26 @@ class FaqPage extends StatelessWidget {
                           fontSize: 26,
                           fontWeight: FontWeight.w600,
                         ),
-                        InkWell(
-                          onTap: () {
-                            NavigatorService.to.pushNamed(
-                              NotificationPage.routeName,
-                            );
-                          },
-                          child: SvgPicture.asset(
-                            AppImageUtils.NOTIFICATION,
-                            height: 35.w,
-                            width: 35.w,
-                          ),
-                        )
+                        
+                        SizedBox(
+                          width: 35.w,
+                          height: 35.w,
+                        ),
+
+                        /// Change later
+                        ///
+                        // InkWell(
+                        //   onTap: () {
+                        //     NavigatorService.to.pushNamed(
+                        //       NotificationPage.routeName,
+                        //     );
+                        //   },
+                        //   child: SvgPicture.asset(
+                        //     AppImageUtils.NOTIFICATION,
+                        //     height: 35.w,
+                        //     width: 35.w,
+                        //   ),
+                        // )
                       ],
                     ).paddingSymmetric(horizontal: 20),
                   ),

@@ -155,7 +155,7 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                 padding: EdgeInsets.symmetric(horizontal: 12.w),
                 child: ButtonCard(
                   onPress: () {
-                    print(_time.hour);
+        
                     if (_date.month == DateTime.now().month &&
                         _date.day == DateTime.now().day) {
                       if ((_time.hour * 60 + _time.minute) -

@@ -23,11 +23,12 @@ import 'drop_down_widget.dart';
 class AddingProjectPage extends StatefulWidget {
   static const String routeName = '/addingProjectPage';
 
-   AddingProjectPage({Key? key}) : super(key: key);
+  AddingProjectPage({Key? key}) : super(key: key);
 
   @override
   _AddingProjectPageState createState() => _AddingProjectPageState();
 }
+
 class _AddingProjectPageState extends State<AddingProjectPage> {
   List<String> projectType = [
     "CF",
@@ -39,7 +40,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
     "organization",
   ];
   AddProjectBloc addProjectBloc = AddProjectBloc();
-  Key _key=Key("");
+  Key _key = Key("");
 
   @override
   Widget build(BuildContext context) {
@@ -52,39 +53,46 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           titleSpacing: 0,
-          title: Builder(
-            builder: (context) => Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  onTap: () {
-                    HomePage.globalKey.currentState!.openDrawer();
-                  },
-                  child: SvgPicture.asset(
-                    AppImageUtils.MENU,
-                    height: 35.w,
-                    width: 35.w,
-                  ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              InkWell(
+                onTap: () {
+                  HomePage.globalKey.currentState!.openDrawer();
+                },
+                child: SvgPicture.asset(
+                  AppImageUtils.MENU,
+                  height: 35.w,
+                  width: 35.w,
                 ),
-                AppWidgets.textLocale(
-                  text: LocaleKeys.charity,
-                  fontSize: 26.sp,
-                  fontWeight: FontWeight.w600,
-                ),
-                InkWell(
-                  onTap: () {
-                    NavigatorService.to
-                        .pushNamed(NotificationPage.routeName);
-                  },
-                  child: SvgPicture.asset(
-                    AppImageUtils.NOTIFICATION,
-                    height: 35.w,
-                    width: 35.w,
-                    fit: BoxFit.fill,
-                  ),
-                )
-              ],
-            ).paddingSymmetric(horizontal: 20.w,),
+              ),
+              AppWidgets.textLocale(
+                text: LocaleKeys.charity,
+                fontSize: 26.sp,
+                fontWeight: FontWeight.w600,
+              ),
+              SizedBox(
+                width: 35.w,
+                height: 35.w,
+              )
+
+              ///Change later
+              ///
+              // InkWell(
+              //   onTap: () {
+              //     NavigatorService.to
+              //         .pushNamed(NotificationPage.routeName);
+              //   },
+              //   child: SvgPicture.asset(
+              //     AppImageUtils.NOTIFICATION,
+              //     height: 35.w,
+              //     width: 35.w,
+              //     fit: BoxFit.fill,
+              //   ),
+              // )
+            ],
+          ).paddingSymmetric(
+            horizontal: 20.w,
           ),
         ),
         body: BlocBuilder<AddProjectBloc, AddProjectState>(
@@ -107,7 +115,9 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                     fontWeight: FontWeight.w600,
                     textAlign: TextAlign.center,
                   ).paddingSymmetric(horizontal: 20.w),
-                  SizedBox(height: 60.w,),
+                  SizedBox(
+                    height: 60.w,
+                  ),
                   //? Who is adding project widget
                   // DropDownWidget(
                   //   height: 52.w,
@@ -125,7 +135,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                   // ).paddingOnly(
                   //   bottom: 18.w,
                   // ),
-                  
+
                   AppTextField(
                     isFill: context.read<AddProjectBloc>().state.nameFill,
                     hintText: LocaleKeys.enter_project_name.tr(),
@@ -138,7 +148,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                     },
                     title: LocaleKeys.project_name.tr(),
                   ).paddingOnly(bottom: 18.w),
-                  
+
                   //? Announcement type
                   // DropDownWidget(
                   //   height: 52.w,
@@ -158,7 +168,7 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                   // ),
                   AppTextField(
                     isFill:
-                    context.read<AddProjectBloc>().state.descriptionFill,
+                        context.read<AddProjectBloc>().state.descriptionFill,
                     isMultiLine: true,
                     key: _key,
                     height: 145.w,
@@ -174,19 +184,20 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
                   AppWidgets.appButton(
                     title: LocaleKeys.send,
                     onTap: () async {
-                     var connection = await MainService().checkInternetConnection();
-                     if(connection){
-                       _key=UniqueKey();
-                       await showDialog(
-                         context: context,
-                         builder: (context) =>
-                             AddProjectShowSuccessSend(
-                               addProjectBloc: addProjectBloc,
-                             ),
-                       );
-                     }else{
-                       AppWidgets.showText(text: LocaleKeys.disConnection.tr());
-                     }
+                      var connection =
+                          await MainService().checkInternetConnection();
+                      if (connection) {
+                        _key = UniqueKey();
+                        await showDialog(
+                          context: context,
+                          builder: (context) => AddProjectShowSuccessSend(
+                            addProjectBloc: addProjectBloc,
+                          ),
+                        );
+                      } else {
+                        AppWidgets.showText(
+                            text: LocaleKeys.disConnection.tr());
+                      }
                     },
                     textColor: Colors.white,
                     color: context.read<AddProjectBloc>().state.isBtnActive
