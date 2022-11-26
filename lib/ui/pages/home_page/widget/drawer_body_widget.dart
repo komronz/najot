@@ -25,7 +25,6 @@ class DrawerBody extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     AppPageType pageType = cubit.state.pageType;
 
-    cubit..getUser();
 
     return Container(
       width: 275.w,

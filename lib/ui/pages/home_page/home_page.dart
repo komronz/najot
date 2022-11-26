@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
 import 'package:najot/data/model/volunteer_db_model.dart';
+import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/notification_api_service.dart';
 import 'package:najot/ui/pages/about_page/about_page.dart';
 import 'package:najot/ui/pages/charity_history_page/charity_history_page.dart';
@@ -71,10 +72,17 @@ class _HomePageState extends State<HomePage> {
           return Scaffold(
             // backgroundColor: AppColorUtils.BACKGROUND,
             key: HomePage.globalKey,
+            onDrawerChanged: (isOpened) {
+              /// To let know if user changed
+              /// then get api request only once
+              ///
+              var isUserChanged = HiveService.to.isUserChanged();
+              if (isOpened && (isUserChanged ?? false)) {
+                AppPageCubit.to..getUser();
+              }
+            },
             drawer: state.changeMenu == 1
-                ? DrawerBody(
-                    cubit: AppPageCubit.to,
-                  )
+                ? DrawerBody(cubit: AppPageCubit.to)
                 : DrawerBodySecond(cubit: AppPageCubit.to),
             body: buildBody(state),
           );

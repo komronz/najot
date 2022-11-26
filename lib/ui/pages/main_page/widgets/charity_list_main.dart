@@ -21,7 +21,6 @@ class CharityListMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    OrganizationCubit.to.load();
     return SizedBox(
       height: 300.w,
       child: SingleChildScrollView(

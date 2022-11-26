@@ -30,11 +30,10 @@ class OrganizationCubit extends Cubit<OrganizationState> {
   Future load() async{
     internetConnection = await mainService.checkInternetConnection();
     emit(state.copyWith(internetConnection: internetConnection));
-    var organizationModel=await organizationService.getModel();
+    var organizationModel = await organizationService.getModel();
     if(organizationModel != null){
       emit(state.copyWith(list: organizationModel.results));
     }
-
   }
   void onTapCheckBox(bool v) {
     emit(state.copyWith(checkBox: v));
