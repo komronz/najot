@@ -54,18 +54,25 @@ class SavedPage extends StatelessWidget {
                   fontSize: 26.sp,
                   fontWeight: FontWeight.w600,
                 ),
-                InkWell(
-                  onTap: () {
-                    cubit.deleteFavorite();
-                    // NavigatorService.to.pushNamed(NotificationPage.routeName,);
-                  },
-                  child: SvgPicture.asset(
-                    AppImageUtils.NOTIFICATION,
-                    height: 35.w,
-                    width: 35.w,
-                    fit: BoxFit.fill,
-                  ),
-                )
+                SizedBox(
+                  width: 35.w,
+                  height: 35.w,
+                ),
+
+                ///Change later
+                ///
+                // InkWell(
+                //   onTap: () {
+                //     cubit.deleteFavorite();
+                // NavigatorService.to.pushNamed(NotificationPage.routeName,);
+                //   },
+                //   child: SvgPicture.asset(
+                //     AppImageUtils.NOTIFICATION,
+                //     height: 35.w,
+                //     width: 35.w,
+                //     fit: BoxFit.fill,
+                //   ),
+                // )
               ],
             ).paddingAll(20),
           ),

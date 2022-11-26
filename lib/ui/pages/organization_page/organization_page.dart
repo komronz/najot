@@ -35,7 +35,7 @@ class OrganizationPage extends StatelessWidget {
                     onTapMenu: () {
                       HomePage.globalKey.currentState!.openDrawer();
                     },
-                    visibleIcon: true,
+                    visibleIcon: false,
                     onTapIcon: () {
                       NavigatorService.to.pushNamed(NotificationPage.routeName,);
 

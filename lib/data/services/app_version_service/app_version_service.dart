@@ -1,14 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:najot/data/bloc/language_cubit/language_cubit.dart';
-import 'package:najot/data/services/hive_service.dart';
-import 'package:najot/data/services/http_service.dart';
 import 'package:najot/data/services/root_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class AppVersionService {
-  final HttpService _httpService = HttpService();
-
   AppVersionService._init();
   static final AppVersionService _instance = AppVersionService._init();
   static AppVersionService get instance => _instance;

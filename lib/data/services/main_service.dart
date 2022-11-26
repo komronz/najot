@@ -10,7 +10,6 @@ import 'package:najot/data/services/root_service.dart';
 import '../bloc/language_cubit/language_cubit.dart';
 import '../model/auth_model/user.dart';
 import '../utils/app_logger_util.dart';
-import 'http_service.dart';
 
 class MainService {
   HttpService _httpService = RootService.httpService;
@@ -23,14 +22,16 @@ class MainService {
       return true;
     }
   }
+
   Future<LoginEndModel?> tokenUpdate() async {
     try {
-      final path =
-          'https://api.najot.uz/ru/auth/api/token/refresh/';
+      final path = 'https://api.najot.uz/ru/auth/api/token/refresh/';
       final body = {
         "refresh": HiveService.to.getToken()!.refresh,
       };
-      final headers = {HttpHeaders.contentTypeHeader: "application/json",};
+      final headers = {
+        HttpHeaders.contentTypeHeader: "application/json",
+      };
 
       var response = await _httpService.post(
         path: path,
@@ -40,9 +41,10 @@ class MainService {
       );
       if (response != null) {
         if (response.statusCode == 200) {
-          final LoginEndModel loginEndModel = LoginEndModel.fromJson(response.data);
+          final LoginEndModel loginEndModel =
+              LoginEndModel.fromJson(response.data);
           return loginEndModel;
-        }else{
+        } else {
           return null;
         }
       } else {
@@ -77,8 +79,8 @@ class MainService {
   Future<MainModel?> getModel() async {
     try {
       final Response response = await RootService.httpService.get(
-          url: "https://api.najot.uz/${LanguageCubit.getLang()}/home/",
-          token: HiveService.to.getToken()!.access,
+        url: "https://api.najot.uz/${LanguageCubit.getLang()}/home/",
+        token: HiveService.to.getToken()!.access,
       );
       if (response.statusCode == 200) {
         final MainModel responseModel = MainModel.fromJson(
@@ -119,5 +121,7 @@ class MainService {
       AppLoggerUtil.e("$e");
       return null;
     }
+
+    return null;
   }
 }

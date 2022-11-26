@@ -114,9 +114,7 @@ class _NewVersionAvailableDialogState extends State<NewVersionAvailableDialog> {
                   ),
                 ),
                 onPressed: () async {
-                  var isActiveValue =
-                      await HiveService.to.getIsUpdateAvailableActive();
-    
+                  
                   if (widget.isActiveCheckbox) {
                     await HiveService.to.setIsUpdateAvailableActive(false);
                   } else {

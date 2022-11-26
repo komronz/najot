@@ -8,11 +8,9 @@ import 'package:najot/data/config/const/decoration_const.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/pages/notification_page/notification_page.dart';
 import 'package:najot/ui/widgets/app_text_field.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -66,19 +64,27 @@ class AboutPage extends StatelessWidget {
                 fontSize: 26.sp,
                 fontWeight: FontWeight.w600,
               ),
-              InkWell(
-                onTap: () {
-                  NavigatorService.to.pushNamed(
-                    NotificationPage.routeName,
-                  );
-                },
-                child: SvgPicture.asset(
-                  AppImageUtils.NOTIFICATION,
-                  height: 35.w,
-                  width: 35.w,
-                  fit: BoxFit.fill,
-                ),
-              )
+              
+              SizedBox(
+                width: 35.w,
+                height: 35.w,
+              ),
+
+              /// Change later
+              ///
+              // InkWell(
+              //   onTap: () {
+              //     NavigatorService.to.pushNamed(
+              //       NotificationPage.routeName,
+              //     );
+              //   },
+              //   child: SvgPicture.asset(
+              //     AppImageUtils.NOTIFICATION,
+              //     height: 35.w,
+              //     width: 35.w,
+              //     fit: BoxFit.fill,
+              //   ),
+              // )
             ],
           ).paddingSymmetric(horizontal: 20),
         ),

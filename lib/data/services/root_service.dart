@@ -12,7 +12,6 @@ import 'package:najot/data/services/storage_service.dart';
 import 'package:najot/data/services/volunteer_profile_service.dart';
 
 import 'about_us_service.dart';
-import 'crowdfunding_service.dart';
 import 'di_service.dart';
 import 'faq_service.dart';
 import 'navigator_service.dart';

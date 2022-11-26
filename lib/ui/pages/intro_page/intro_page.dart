@@ -6,8 +6,6 @@ import 'package:najot/data/bloc/intro_page_bloc/intro_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/ui/pages/intro_page/widgets/intro_page_one_widget.dart';
-import 'package:najot/ui/pages/intro_page/widgets/intro_page_three_widget.dart';
-import 'package:najot/ui/pages/intro_page/widgets/intro_page_two_widget.dart';
 import 'package:najot/ui/pages/intro_page/widgets/intro_view_widgets.dart';
 
 import '../../../data/bloc/intro_page_bloc/intro_state.dart';
