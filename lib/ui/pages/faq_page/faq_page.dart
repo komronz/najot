@@ -12,9 +12,8 @@ import 'package:najot/ui/pages/faq_page/widgets/faq_item_widget.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
-import '../../../data/services/navigator_service.dart';
 import '../../widgets/app_error_widget.dart';
-import '../notification_page/notification_page.dart';
+
 
 class FaqPage extends StatelessWidget {
   FaqPage({Key? key}) : super(key: key);
@@ -57,18 +56,26 @@ class FaqPage extends StatelessWidget {
                           fontSize: 26,
                           fontWeight: FontWeight.w600,
                         ),
-                        InkWell(
-                          onTap: () {
-                            NavigatorService.to.pushNamed(
-                              NotificationPage.routeName,
-                            );
-                          },
-                          child: SvgPicture.asset(
-                            AppImageUtils.NOTIFICATION,
-                            height: 35.w,
-                            width: 35.w,
-                          ),
-                        )
+                        
+                        SizedBox(
+                          width: 35.w,
+                          height: 35.w,
+                        ),
+
+                        /// Change later
+                        ///
+                        // InkWell(
+                        //   onTap: () {
+                        //     NavigatorService.to.pushNamed(
+                        //       NotificationPage.routeName,
+                        //     );
+                        //   },
+                        //   child: SvgPicture.asset(
+                        //     AppImageUtils.NOTIFICATION,
+                        //     height: 35.w,
+                        //     width: 35.w,
+                        //   ),
+                        // )
                       ],
                     ).paddingSymmetric(horizontal: 20),
                   ),

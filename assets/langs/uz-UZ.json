@@ -281,5 +281,6 @@
   "might_for_update" : "Ilovani yangilash uchun, “ Yangilash” tugmasini bosing!",
   "must_update" : "Iltimos, dasturdan to’liq foydalana olish uchun “ Yangilash” tugmasini bosing!",
   "have_new_version" : "Ilovanig yangiroq versiyasi mavjud",
-  "languague_name":"O'zbek tili"
+  "languague_name":"O'zbek tili",
+  "splash_ehson_quote": "Hayriya so'ngan qalblarni porlatishi, qurigan daraxtlarni yashnatishi mumkin"
 }

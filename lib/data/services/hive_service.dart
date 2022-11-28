@@ -33,6 +33,14 @@ class HiveService {
     return _box.get("isUAactive");
   }
 
+  void userChanged(bool isChanged) {
+    _box.put("isUserChanged", isChanged);
+  }
+
+  bool? isUserChanged() {
+   return _box.get("isUserChanged");
+  }
+
   String getLang() {
     return _box.get(_HiveKeys.LANG, defaultValue: "uz_UZ");
   }
@@ -71,7 +79,7 @@ class HiveService {
   }
 
   Future<void> deleteToken() async {
-     await _box.delete(_HiveKeys.TOKEN);
+    await _box.delete(_HiveKeys.TOKEN);
   }
 }
 

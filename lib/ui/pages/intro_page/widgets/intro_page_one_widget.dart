@@ -43,7 +43,7 @@ class IntroPageOneWidget extends StatelessWidget {
               text: content,
               color: AppColorUtils.GREEN_WHITE,
               textAlign: TextAlign.center,
-              maxLines: 2,
+              maxLines: 6,
               fontSize: 15.sp,
               fontWeight: FontWeight.w400,
             ).paddingOnly(

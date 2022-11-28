@@ -13,12 +13,6 @@ class PinPutNumberChangeWidget extends StatelessWidget {
   final FocusNode _pinPutFocusNode;
   final TextEditingController _pinPutController;
 
-  BoxDecoration get _pinPutDecoration {
-    return BoxDecoration(
-        color: Color(0xffD8F2EB),
-        shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.circular(12));
-  }
 
   @override
   Widget build(BuildContext context) {

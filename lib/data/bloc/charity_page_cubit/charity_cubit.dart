@@ -75,13 +75,13 @@ class CharityCubit extends Cubit<CharityState> {
   }
 
   Future searchChange(String v) async {
-    print(v);
+  
     internetConnection = await mainService.checkInternetConnection();
     emit(state.copyWith(internetConnection: internetConnection));
     emit(state.copyWith(searchProgress: true));
     var getSearch = await charityService.getProjectsByName(v);
     if (getSearch != null) {
-      print(getSearch.results!.length);
+
       emit(state.copyWith(searchProjects: getSearch.results));
     }
     emit(state.copyWith(searchChange: v));

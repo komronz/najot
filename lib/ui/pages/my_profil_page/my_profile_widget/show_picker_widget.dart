@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
@@ -18,7 +19,7 @@ class ShowPickerWidget extends StatefulWidget {
       required this.image,
       required this.color,
       required this.imageSelect,
-        this.imageFile,
+      this.imageFile,
       this.radius = 75,
       this.padding = 0});
 
@@ -48,8 +49,10 @@ class _ShowPickerPageState extends State<ShowPickerWidget> {
         this.image = imagePermanent;
       });
     } on PlatformException catch (e) {
+      AppLoggerUtil.e(e.toString());
     }
   }
+
   Future<File> saveImagePermanently(String imagePath) async {
     final directory = await getApplicationDocumentsDirectory();
     final name = basename(imagePath);

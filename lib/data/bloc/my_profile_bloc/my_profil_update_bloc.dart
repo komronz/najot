@@ -44,6 +44,7 @@ class MyProfileUpdateBloc
     EditProfileChangePage event,
     Emitter<MyProfileUpdateState> emit,
   ) async {
+    add(MyProfileLoad());
     emit(state.copyWith(changePage: event.changePage));
   }
 
@@ -163,13 +164,14 @@ class MyProfileUpdateBloc
         state.firstName,
         state.lastName,
         state.gender ?? "",
-        state.userImgPath!,
+        state.userImgPath ?? null,
         state.status,
         state.isVolunteer,
+
       );
       if (user != null) {
         emit(state.copyWith(hasError: false));
-        MyProfileLoad();
+        add(MyProfileLoad());
       } else {
         emit(state.copyWith(hasError: true));
       }

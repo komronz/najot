@@ -99,11 +99,13 @@ class NotificationApiService {
 
   static void cancelAll(int id) => _notifications.cancelAll();
 
-static tz.TZDateTime _scheduleWeekly(DateTime time, {required List<int> days}){
-  tz.TZDateTime scheduledDate=_scheduleDaily(time);
-  while(!days.contains(scheduledDate.weekday)){
-    scheduledDate=scheduledDate.add(Duration(days: 1));
-  }
-  return scheduledDate;
-  }
+  ///Change later
+  ///
+// static tz.TZDateTime _scheduleWeekly(DateTime time, {required List<int> days}){
+//   tz.TZDateTime scheduledDate=_scheduleDaily(time);
+//   while(!days.contains(scheduledDate.weekday)){
+//     scheduledDate=scheduledDate.add(Duration(days: 1));
+//   }
+//   return scheduledDate;
+//   }
 }

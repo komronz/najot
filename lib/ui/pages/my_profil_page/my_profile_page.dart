@@ -17,9 +17,7 @@ import '../../../data/utils/app_image_utils.dart';
 import '../../widgets/app_widgets.dart';
 import '../home_page/home_page.dart';
 import 'my_profile_pages/number_update_page.dart';
-import 'my_profile_pages/user_degree_page.dart';
 import 'my_profile_pages/user_update_page.dart';
-import 'my_profile_widget/my_profile_radio_button.dart';
 import 'my_profile_widget/my_radio_button_static.dart';
 
 class MyProfilePage extends StatelessWidget {
@@ -88,29 +86,29 @@ class MyProfilePage extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   AppWidgets.textLocale(
-                                    text: LocaleKeys.degree,
+                                    text: LocaleKeys.degree.tr() + ":",
                                     textAlign: TextAlign.center,
-                                    fontSize: 12.sp,
+                                    fontSize: 15.sp,
                                     color: AppColorUtils.GRAY_4,
                                     fontWeight: FontWeight.w400,
                                   ),
                                   SizedBox(
                                     width: 5,
                                   ),
-                                  Container(
-                                    padding: EdgeInsets.only(top: 1, bottom: 1),
-                                    child: InkWell(
-                                      onTap: () {
-                                        NavigatorService.to.pushNamed(
-                                          UserDegreePage.routeName,
-                                        );
-                                      },
-                                      child: SvgPicture.asset(
-                                        AppImageUtils.FAQ,
-                                        color: AppColorUtils.WHITE_GREEN8,
-                                      ),
-                                    ),
-                                  ),
+                                  // Container(
+                                  //   padding: EdgeInsets.only(top: 1, bottom: 1),
+                                  //   child: InkWell(
+                                  //     onTap: () {
+                                        // NavigatorService.to.pushNamed(
+                                        //   UserDegreePage.routeName,
+                                        // );
+                                  //     },
+                                  //     child: SvgPicture.asset(
+                                  //       AppImageUtils.FAQ,
+                                  //       color: AppColorUtils.WHITE_GREEN8,
+                                  //     ),
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ).paddingOnly(bottom: 6.h),

@@ -14,12 +14,10 @@ class CarouselSliderWidget extends StatelessWidget {
     return Container(
       height: 220.w,
       child: Swiper(
-        itemCount: 1,
-        ///itemCount: sliderList.length,
+        itemCount: sliderList.length,
         itemBuilder: (context, index) {
           return SliderItem(
             sliderModel: sliderList[index],
-            ///sliderList[index]
           );
         },
         loop: true,

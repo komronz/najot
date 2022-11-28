@@ -7,18 +7,14 @@ import 'package:najot/data/bloc/my_charity_project/my_charity_project_cubit.dart
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/my_volunteering_project_page.dart';
 
 import '../../../data/config/const/decoration_const.dart';
-import '../../../data/services/navigator_service.dart';
 import '../../../data/utils/app_color_utils.dart';
 import '../../../data/utils/app_image_utils.dart';
 import '../../widgets/app_error_widget.dart';
 import '../../widgets/app_widgets.dart';
 import '../home_page/home_page.dart';
-import '../notification_page/notification_page.dart';
 import 'my_charity_project_widget/my_charity_project_list.dart';
-import 'my_crowdfunding_project/my_crowdfunding_list_widget.dart';
 
 class MyProjectAndAnnouncementsPages extends StatelessWidget {
   static const String routeName = '/myProjectAndAnnouncementsPages';
@@ -60,19 +56,26 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                InkWell(
-                  onTap: () {
-                    NavigatorService.to.pushNamed(
-                      NotificationPage.routeName,
-                    );
-                  },
-                  child: SvgPicture.asset(
-                    AppImageUtils.NOTIFICATION,
-                    height: 35.w,
-                    width: 35.w,
-                    fit: BoxFit.fill,
-                  ),
-                )
+                SizedBox(
+                  height: 35.w,
+                  width: 35.w,
+                ),
+
+                ///Change later
+                ///
+                // InkWell(
+                //   onTap: () {
+                //     NavigatorService.to.pushNamed(
+                //       NotificationPage.routeName,
+                //     );
+                //   },
+                //   child: SvgPicture.asset(
+                //     AppImageUtils.NOTIFICATION,
+                //     height: 35.w,
+                //     width: 35.w,
+                //     fit: BoxFit.fill,
+                //   ),
+                // )
               ],
             ).paddingSymmetric(horizontal: 20),
           ),
