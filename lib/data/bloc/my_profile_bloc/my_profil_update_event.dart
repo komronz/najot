@@ -8,7 +8,6 @@ class EditProfileChangePage extends MyProfileUpdateEvent{
   EditProfileChangePage(this.changePage);
   final int changePage;
   @override
-  // TODO: implement props
   List<Object?> get props =>[changePage];
 }
 class MyProfileLoad extends MyProfileUpdateEvent {

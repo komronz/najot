@@ -83,7 +83,6 @@ class CheckPhoneNumberChanged extends LoginEvent {
   CheckPhoneNumberChanged(this.check);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [check];
 }
 
@@ -92,7 +91,6 @@ class Registration extends LoginEvent {
   Registration();
 
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }
 class AuthLoginEvent extends LoginEvent {
@@ -101,6 +99,5 @@ class AuthLoginEvent extends LoginEvent {
   AuthLoginEvent({required this.user});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }

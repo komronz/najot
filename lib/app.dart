@@ -23,7 +23,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeCubit.to.tokenUpdate();
     HomeCubit.to.getModel();
-    
+
     return ScreenUtilInit(
       designSize: Size(375, 812),
       builder: (context, widget) =>
@@ -60,7 +60,6 @@ class App extends StatelessWidget {
                     appPageType: AppPageType.MAIN,
                   )
                 : LanguagePage(),
-            
             navigatorObservers: [
               BotToastNavigatorObserver(),
             ],

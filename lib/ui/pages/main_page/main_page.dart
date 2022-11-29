@@ -188,6 +188,7 @@ class _MainPageState extends State<MainPage> {
                                           icon: AppImageUtils.CHARITY,
                                           fontWeight: FontWeight.w600,
                                           fontsize: 14.sp,
+                                          
                                           color: AppColorUtils.CHARITY,
                                           onTap: () {
                                             CharityCubit

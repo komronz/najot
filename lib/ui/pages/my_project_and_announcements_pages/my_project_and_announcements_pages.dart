@@ -17,9 +17,11 @@ import '../home_page/home_page.dart';
 import 'my_charity_project_widget/my_charity_project_list.dart';
 
 class MyProjectAndAnnouncementsPages extends StatelessWidget {
+
   static const String routeName = '/myProjectAndAnnouncementsPages';
 
   MyProjectAndAnnouncementsPages({Key? key}) : super(key: key);
+
   MyProjectAndAnnouncementsPagesCubit cubit =
       MyProjectAndAnnouncementsPagesCubit();
 

@@ -64,7 +64,7 @@ class AboutPage extends StatelessWidget {
                 fontSize: 26.sp,
                 fontWeight: FontWeight.w600,
               ),
-              
+
               SizedBox(
                 width: 35.w,
                 height: 35.w,
@@ -97,6 +97,9 @@ class AboutPage extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 ).paddingOnly(top: 300.h);
               } else if (state.list.isNotEmpty) {
+                List<String> _addressList =
+                    (state.list[0].address ?? "").split(",");
+
                 return SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Column(
@@ -123,15 +126,41 @@ class AboutPage extends StatelessWidget {
                                   path: AppImageUtils.IC_LOCATION,
                                 ),
                                 Expanded(
-                                  child: AppWidgets.text(
-                                    textAlign: TextAlign.start,
-                                    text: state.list[0].address ?? "",
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.2,
-                                    color: AppColorUtils.KRAUDFANDING,
-                                    maxLines: 10,
-                                  ).paddingOnly(left: 8),
+                                  child: SizedBox(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        AppWidgets.text(
+                                          textAlign: TextAlign.start,
+                                          text: _addressList[0].trim(),
+                                          fontSize: 16.sp,
+                                          fontWeight: FontWeight.w600,
+                                          height: 1.2,
+                                          color: AppColorUtils.KRAUDFANDING,
+                                          maxLines: 10,
+                                        ).paddingOnly(left: 8),
+                                        AppWidgets.text(
+                                          textAlign: TextAlign.start,
+                                          text: _addressList[1].trim(),
+                                          fontSize: 16.sp,
+                                          fontWeight: FontWeight.w600,
+                                          height: 1.2,
+                                          color: AppColorUtils.KRAUDFANDING,
+                                          maxLines: 10,
+                                        ).paddingOnly(left: 8),
+                                        AppWidgets.text(
+                                          textAlign: TextAlign.start,
+                                          text: _addressList[2].trim(),
+                                          fontSize: 16.sp,
+                                          fontWeight: FontWeight.w600,
+                                          height: 1.2,
+                                          color: AppColorUtils.KRAUDFANDING,
+                                          maxLines: 10,
+                                        ).paddingOnly(left: 8),
+                                      ],
+                                    ),
+                                  ),
                                 )
                               ],
                             ).paddingSymmetric(horizontal: 20, vertical: 9),

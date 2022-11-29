@@ -1,4 +1,4 @@
-package com.example.najot
+package uz.najot.app
 
 import io.flutter.embedding.android.FlutterActivity
 

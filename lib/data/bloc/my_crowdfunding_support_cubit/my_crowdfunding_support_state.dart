@@ -23,7 +23,6 @@ class MyCrowdfundingSupportState extends Equatable {
   final List<CommentsData> commentsData;
 
   @override
-  // TODO: implement props
   List<Object?> get props =>
       [isVisible, widgetChange, newsData, file, questionData, commentsData];
 

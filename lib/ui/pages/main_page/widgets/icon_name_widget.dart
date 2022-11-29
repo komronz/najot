@@ -39,7 +39,7 @@ class IconAndName extends StatelessWidget {
             height: 5.w,
           ),
           SizedBox(
-            width: 105.w,
+            width: 115.w,
             child: AppWidgets.AutoSizeText(
               minFontSize: minFontSize = 10,
               text: text,
