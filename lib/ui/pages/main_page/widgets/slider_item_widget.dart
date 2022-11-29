@@ -45,7 +45,6 @@ class SliderItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppWidgets.text(
-                // text: sliderModel.title??"",
                 text: sliderModel.title ?? "",
                 color: Colors.white,
                 fontSize: 18,
@@ -59,7 +58,7 @@ class SliderItem extends StatelessWidget {
                 color: Colors.white,
                 fontSize: 12,
                 fontWeight: FontWeight.w300,
-                maxLines: 2,
+                maxLines: 3,
               ),
             ],
           ),
