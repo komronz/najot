@@ -6,6 +6,8 @@ import 'package:najot/data/bloc/intro_page_bloc/intro_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/ui/pages/intro_page/widgets/intro_page_one_widget.dart';
+import 'package:najot/ui/pages/intro_page/widgets/intro_page_three_widget.dart';
+import 'package:najot/ui/pages/intro_page/widgets/intro_page_two_widget.dart';
 import 'package:najot/ui/pages/intro_page/widgets/intro_view_widgets.dart';
 
 import '../../../data/bloc/intro_page_bloc/intro_state.dart';
@@ -33,24 +35,24 @@ class IntroPage extends StatelessWidget {
                   children: [
                     IntroPageOneWidget(
                       image: 'assets/images/splash_1.png',
-                      content:
-                          LocaleKeys.splash_ehson_quote,
-                      title: LocaleKeys.donation.tr(),
+                      content: LocaleKeys.splash_ehson_quote,
+                      title: LocaleKeys.donation,
                     ),
+
                     ///Change this after new release
-                    
                     // IntroPageTwoWidget(
-                    //   title: LocaleKeys.crowdfunding.tr(),
+                    //   title: LocaleKeys.crowdfunding,
                     //   content:
                     //       "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
                     //   image: "assets/images/splash_2.png",
                     // ),
-                    // IntroPageThreeWidget(
-                    //   image: "assets/images/splash_3.png",
-                    //   title: LocaleKeys.volunteering.tr(),
-                    //   content:
-                    //       "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                    // ),
+
+                    IntroPageThreeWidget(
+                      image: "assets/images/splash_3.png",
+                      title: LocaleKeys.volunteering,
+                      content:
+                          "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+                    ),
                   ],
                 ),
                 Container(
@@ -101,15 +103,14 @@ class IntroPage extends StatelessWidget {
 
   List<Widget> _buildIndicator(IntroPageNextState state) {
     List<Widget> indicators = [];
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 2; i++) {
       if (state.currentIndex == i) {
         indicators.add(_indicator(true));
       } else {
         indicators.add(_indicator(false));
       }
     }
-    /// Change this after adding Kraudfunding and ...
-    // return indicators;
-    return [];
+
+    return indicators;
   }
 }

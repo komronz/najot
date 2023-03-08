@@ -26,6 +26,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../data/bloc/app_page_cubit/app_page_cubit.dart';
 import '../../../data/bloc/volunteer_bloc/volunteer_cubit.dart';
 import '../notification_page/notification_page.dart';
+import '../volunteer_page/volunteer_page.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key? key}) : super(key: key);
@@ -167,22 +168,22 @@ class _MainPageState extends State<MainPage> {
                                         //     );
                                         //   },
                                         // ),
-                                        // IconAndName(
-                                        //   text: LocaleKeys.volunteering.tr(),
-                                        //   icon: AppImageUtils.VOLONTYOR,
-                                        //   fontWeight: FontWeight.w600,
-                                        //   fontsize: 14.sp,
-                                        //   color: AppColorUtils.VOLONTYOR,
-                                        //   onTap: () {
-                                        //     VolunteerCubit
-                                        //         .to.state.searchProjects = [];
-                                        //     VolunteerCubit
-                                        //         .to.state.searchChange = "";
-                                        //     NavigatorService.to.pushNamed(
-                                        //       VolunteerPage.routeName,
-                                        //     );
-                                        //   },
-                                        // ),
+                                        IconAndName(
+                                          text: LocaleKeys.volunteering.tr(),
+                                          icon: AppImageUtils.VOLONTYOR,
+                                          fontWeight: FontWeight.w600,
+                                          fontsize: 14.sp,
+                                          color: AppColorUtils.VOLONTYOR,
+                                          onTap: () {
+                                            VolunteerCubit
+                                                .to.state.searchProjects = [];
+                                            VolunteerCubit
+                                                .to.state.searchChange = "";
+                                            NavigatorService.to.pushNamed(
+                                              VolunteerPage.routeName,
+                                            );
+                                          },
+                                        ),
                                         IconAndName(
                                           text: LocaleKeys.charity.tr(),
                                           icon: AppImageUtils.CHARITY,

@@ -24,15 +24,13 @@ class MainAboutModel extends Equatable {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [AboutModel];
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is MainAboutModel &&
-              runtimeType == other.runtimeType &&
-              AboutModel == other.aboutModel;
-
+      other is MainAboutModel &&
+          runtimeType == other.runtimeType &&
+          AboutModel == other.aboutModel;
 }
 
 class AboutModel extends Equatable {
@@ -59,9 +57,9 @@ class AboutModel extends Equatable {
     name = json['name']?.toString();
     phone1 = json['phone1']?.toString();
     phone2 = json['phone2']?.toString();
-    content= json['content']?.toString();
-    cover= json['cover']?.toString();
-    address=json['address']?.toString();
+    content = json['content']?.toString();
+    cover = json['cover']?.toString();
+    address = json['address']?.toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -78,13 +76,12 @@ class AboutModel extends Equatable {
 
   @override
   List<Object?> get props => [
-    id,
-    name,
-    phone1,
-    phone2,
-    content,
-    cover,
-    address,
-  ];
+        id,
+        name,
+        phone1,
+        phone2,
+        content,
+        cover,
+        address,
+      ];
 }
-

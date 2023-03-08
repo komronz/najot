@@ -117,6 +117,7 @@ class RulesPage extends StatelessWidget {
                       color: AppColorUtils.BLACK,
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w600,
+                      maxLines: 5
                     ).paddingOnly(top: 20),
                     AppWidgets.text(
                       text: state.list[index].content!,
