@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'dart:io';
 
 // 📦 Package imports:
-import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 import 'package:get_it/get_it.dart';
 
 import '../config/const/api_const.dart';
@@ -12,7 +12,9 @@ import '../utils/app_logger_util.dart';
 
 class HttpService {
   Dio? _dio;
-static HttpService get to=> GetIt.I<HttpService>();
+
+  static HttpService get to => GetIt.I<HttpService>();
+
   static Future init() async {
     final getIt = GetIt.instance;
     getIt.registerSingleton<HttpService>(HttpService());
@@ -22,7 +24,7 @@ static HttpService get to=> GetIt.I<HttpService>();
   Future create() async {
     if (_dio == null) {
       _dio = Dio();
-      (_dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+      (_dio!.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate =
           (client) {
         client.badCertificateCallback =
             (X509Certificate cert, String host, int port) => true;
@@ -66,6 +68,7 @@ static HttpService get to=> GetIt.I<HttpService>();
       return null;
     }
   }
+
   // ignore: missing_return
   Future<Response?> post({
     String? path,
@@ -162,6 +165,7 @@ static HttpService get to=> GetIt.I<HttpService>();
       return null;
     }
   }
+
   Future<dynamic> delete({
     String? path,
     Map<String, dynamic>? headers,
