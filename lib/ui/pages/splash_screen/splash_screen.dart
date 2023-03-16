@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   moveToNextPage() {
     var token = RootService.hiveService.getToken();
-    if (token == null) {
+    if (token != null) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
