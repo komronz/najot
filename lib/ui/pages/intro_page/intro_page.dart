@@ -51,7 +51,7 @@ class IntroPage extends StatelessWidget {
                       image: "assets/images/splash_3.png",
                       title: LocaleKeys.volunteering,
                       content:
-                          "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+                          "Ehsonning miqdori muhim emas, balki sizning xayriyangiz ortidagi ma'no muhim",
                     ),
                   ],
                 ),
