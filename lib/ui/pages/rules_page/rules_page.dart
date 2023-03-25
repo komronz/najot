@@ -11,10 +11,7 @@ import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
-
-import '../../../data/services/navigator_service.dart';
 import '../../widgets/app_error_widget.dart';
-import '../notification_page/notification_page.dart';
 
 class RulesPage extends StatelessWidget {
   const RulesPage({Key? key}) : super(key: key);
@@ -51,19 +48,26 @@ class RulesPage extends StatelessWidget {
                     fontSize: 26.sp,
                     fontWeight: FontWeight.w600,
                   ),
-                  InkWell(
-                    onTap: () {
-                      NavigatorService.to.pushNamed(
-                        NotificationPage.routeName,
-                      );
-                    },
-                    child: SvgPicture.asset(
-                      AppImageUtils.NOTIFICATION,
-                      height: 35.w,
-                      width: 35.w,
-                      fit: BoxFit.fill,
-                    ),
-                  )
+                  SizedBox(
+                    width: 35.w,
+                    height: 35.w,
+                  ),
+
+                  ///Change later
+                  ///
+                  // InkWell(
+                  //   onTap: () {
+                  //     NavigatorService.to.pushNamed(
+                  //       NotificationPage.routeName,
+                  //     );
+                  //   },
+                  //   child: SvgPicture.asset(
+                  //     AppImageUtils.NOTIFICATION,
+                  //     height: 35.w,
+                  //     width: 35.w,
+                  //     fit: BoxFit.fill,
+                  //   ),
+                  // )
                 ],
               ).paddingSymmetric(horizontal: 20),
             ),
@@ -113,6 +117,7 @@ class RulesPage extends StatelessWidget {
                       color: AppColorUtils.BLACK,
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w600,
+                      maxLines: 5
                     ).paddingOnly(top: 20),
                     AppWidgets.text(
                       text: state.list[index].content!,

@@ -132,14 +132,16 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                 padding: EdgeInsets.all(12.w),
                 child: ButtonCard(
                   onPress: () {
-                    var dateTime = DateTime(
-                      _date.year,
-                      _date.month,
-                      _date.day,
-                      _time.hour,
-                      _time.minute,
-                      _time.second,
-                    ).add(Duration(minutes: 30));
+                    ///Change later
+                    ///
+                    // var dateTime = DateTime(
+                    //   _date.year,
+                    //   _date.month,
+                    //   _date.day,
+                    //   _time.hour,
+                    //   _time.minute,
+                    //   _time.second,
+                    // ).add(Duration(minutes: 30));
 
                     Navigator.pop(context);
                   },
@@ -155,21 +157,22 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                 padding: EdgeInsets.symmetric(horizontal: 12.w),
                 child: ButtonCard(
                   onPress: () {
-                    print(_time.hour);
                     if (_date.month == DateTime.now().month &&
                         _date.day == DateTime.now().day) {
                       if ((_time.hour * 60 + _time.minute) -
                               (DateTime.now().hour * 60 +
                                   DateTime.now().minute) >
                           30) {
-                        var dateTime = DateTime(
-                          _date.year,
-                          _date.month,
-                          _date.day,
-                          _time.hour,
-                          _time.minute,
-                          _time.second,
-                        );
+                        ///Change later
+                        ///
+                        // var dateTime = DateTime(
+                        //   _date.year,
+                        //   _date.month,
+                        //   _date.day,
+                        //   _time.hour,
+                        //   _time.minute,
+                        //   _time.second,
+                        // );
                         // RootService.appBloc.orderBloc.add(
                         //   OrderDateTimeEvent(
                         //     dateTime: dateTime,
@@ -181,14 +184,16 @@ class _CustomTimePickerDialogState extends State<CustomTimePickerDialog> {
                         // AppWidgets.showToast(LocaleKeys.select_long_time.tr());
                       }
                     } else {
-                      var dateTime = DateTime(
-                        _date.year,
-                        _date.month,
-                        _date.day,
-                        _time.hour,
-                        _time.minute,
-                        _time.second,
-                      );
+                      ///Change later
+                      ///
+                      // var dateTime = DateTime(
+                      //   _date.year,
+                      //   _date.month,
+                      //   _date.day,
+                      //   _time.hour,
+                      //   _time.minute,
+                      //   _time.second,
+                      // );
                       // RootService.appBloc.orderBloc.add(
                       //   OrderDateTimeEvent(
                       //     dateTime: dateTime,

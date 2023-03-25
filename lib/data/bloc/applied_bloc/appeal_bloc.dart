@@ -51,9 +51,7 @@ class AppealBloc extends Bloc<AppealEvent, AppealState> {
   bool _isNotEmpty(String value) {
     return value.trim().isNotEmpty;
   }
-  bool _isEmpty(String value) {
-    return value.trim().isEmpty;
-  }
+
   bool _nextBtnActive(
     String firstName,
     String appealText,

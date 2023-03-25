@@ -35,7 +35,7 @@ class _NewVersionAvailableDialogState extends State<NewVersionAvailableDialog> {
         ),
         child: Container(
           width: 336.w,
-          height: 405.w,
+          height: 415.w,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -114,9 +114,7 @@ class _NewVersionAvailableDialogState extends State<NewVersionAvailableDialog> {
                   ),
                 ),
                 onPressed: () async {
-                  var isActiveValue =
-                      await HiveService.to.getIsUpdateAvailableActive();
-    
+                  
                   if (widget.isActiveCheckbox) {
                     await HiveService.to.setIsUpdateAvailableActive(false);
                   } else {

@@ -11,21 +11,20 @@ class CarouselSliderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 220.w,
+      width: MediaQuery.of(context).size.width,
       child: Swiper(
-        itemCount: 1,
-        ///itemCount: sliderList.length,
+        itemCount: sliderList.length,
         itemBuilder: (context, index) {
           return SliderItem(
             sliderModel: sliderList[index],
-            ///sliderList[index]
           );
         },
-        loop: true,
+        loop: false,
         viewportFraction: 0.9,
         scale: 0.95,
-        autoplay: true,
+        autoplay: false,
         duration: 2000,
         autoplayDelay: 10000,
       ),

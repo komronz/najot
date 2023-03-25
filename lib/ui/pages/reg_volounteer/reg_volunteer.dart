@@ -51,7 +51,7 @@ class _RegVolunteerState extends State<RegVolunteer>
                   width: 35.w,
                 ),
                 onTap: () {
-                  HomePage.globalKey.currentState!.openDrawer();
+                  HomePage.globalKey.currentState?.openDrawer();
                 },
               ),
               AppWidgets.textLocale(
@@ -71,7 +71,7 @@ class _RegVolunteerState extends State<RegVolunteer>
           bloc: bloc,
           listener: (context, state) {},
           builder: (context, state) {
-            if (AppPageCubit.to.state.user!.status == "CHECKING") {
+            if (AppPageCubit.to.state.user?.status == "CHECKING") {
               return buildWaitBody(context);
             }
             return buildBody(context);

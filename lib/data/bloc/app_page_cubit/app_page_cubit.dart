@@ -14,35 +14,41 @@ class AppPageCubit extends Cubit<AppPageState> {
 
   static Future init() async {
     GetIt.instance..registerSingleton<AppPageCubit>(AppPageCubit());
-
   }
+
   AppPageCubit() : super(AppPageState());
 
-  VolunteerProfileService service= VolunteerProfileService();
+  VolunteerProfileService service = VolunteerProfileService();
 
-  Future load(AppPageType pageType) async{
+  Future load(AppPageType pageType) async {
     var internetConnection = await MainService().checkInternetConnection();
     emit(state.copyWith(internetConnection: internetConnection));
     var user = await service.getUser();
-    if(user != null){
-      state.user=user;
+    if (user != null) {
+      emit(
+        state.copyWith(
+          pageType: pageType,
+          changeMenu: 1,
+          user: user,
+        ),
+      );
     }
-    emit(state.copyWith(
-      pageType: pageType,
-      changeMenu: 1,
-    ));
+    emit(
+      state.copyWith(
+        pageType: pageType,
+        changeMenu: 1,
+      ),
+    );
   }
-  Future getUser() async{
+
+  Future getUser() async {
     var internetConnection = await MainService().checkInternetConnection();
     emit(state.copyWith(internetConnection: internetConnection));
     var user = await service.getUser();
-    if(user != null){
-      state.user=user;
+    if (user != null) {
+      emit(state.copyWith(user: user));
     }
-    emit(state.copyWith(
-    ));
   }
-
 
   Future changePage({required AppPageType pageType}) async {
     emit(state.copyWith(pageType: pageType));

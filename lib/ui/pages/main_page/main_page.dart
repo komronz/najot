@@ -4,19 +4,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive/hive.dart';
 import 'package:najot/data/bloc/charity_page_cubit/charity_cubit.dart';
 import 'package:najot/data/bloc/crowdFounding_cubit/kraud_fanding_cubit.dart';
 import 'package:najot/data/bloc/home_cubit/home_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/main_model.dart';
 import 'package:najot/data/services/app_version_service/app_version_service.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/pages/charity_page/charity_page.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/main_page/widgets/carousel_slider_widget.dart';
@@ -29,6 +26,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../data/bloc/app_page_cubit/app_page_cubit.dart';
 import '../../../data/bloc/volunteer_bloc/volunteer_cubit.dart';
 import '../notification_page/notification_page.dart';
+import '../volunteer_page/volunteer_page.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key? key}) : super(key: key);
@@ -112,7 +110,7 @@ class _MainPageState extends State<MainPage> {
                           HomePage.globalKey.currentState!.openDrawer();
                           AppPageCubit.to.getUser();
                         },
-                        visibleIcon: true,
+                        visibleIcon: false,
                         onTapIcon: () {
                           NavigatorService.to.pushNamed(
                             NotificationPage.routeName,
@@ -170,27 +168,28 @@ class _MainPageState extends State<MainPage> {
                                         //     );
                                         //   },
                                         // ),
-                                        // IconAndName(
-                                        //   text: LocaleKeys.volunteering.tr(),
-                                        //   icon: AppImageUtils.VOLONTYOR,
-                                        //   fontWeight: FontWeight.w600,
-                                        //   fontsize: 14.sp,
-                                        //   color: AppColorUtils.VOLONTYOR,
-                                        //   onTap: () {
-                                        //     VolunteerCubit
-                                        //         .to.state.searchProjects = [];
-                                        //     VolunteerCubit
-                                        //         .to.state.searchChange = "";
-                                        //     NavigatorService.to.pushNamed(
-                                        //       VolunteerPage.routeName,
-                                        //     );
-                                        //   },
-                                        // ),
+                                        IconAndName(
+                                          text: LocaleKeys.volunteering.tr(),
+                                          icon: AppImageUtils.VOLONTYOR,
+                                          fontWeight: FontWeight.w600,
+                                          fontsize: 14.sp,
+                                          color: AppColorUtils.VOLONTYOR,
+                                          onTap: () {
+                                            VolunteerCubit
+                                                .to.state.searchProjects = [];
+                                            VolunteerCubit
+                                                .to.state.searchChange = "";
+                                            NavigatorService.to.pushNamed(
+                                              VolunteerPage.routeName,
+                                            );
+                                          },
+                                        ),
                                         IconAndName(
                                           text: LocaleKeys.charity.tr(),
                                           icon: AppImageUtils.CHARITY,
                                           fontWeight: FontWeight.w600,
                                           fontsize: 14.sp,
+                                          
                                           color: AppColorUtils.CHARITY,
                                           onTap: () {
                                             CharityCubit

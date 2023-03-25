@@ -24,7 +24,7 @@ class View1 extends StatelessWidget {
         AppTextField(
           hintText: "",
           enabled: false,
-          initialText: AppPageCubit.to.state.user!.firstName ?? "",
+          initialText: AppPageCubit.to.state.user?.firstName ?? "",
           onChanged: (v) {
             bloc.add(VolunteerFirstNameChanged(v));
           },
@@ -34,7 +34,7 @@ class View1 extends StatelessWidget {
         AppTextField(
           hintText: "",
           enabled: false,
-          initialText: AppPageCubit.to.state.user!.lastName ?? "",
+          initialText: AppPageCubit.to.state.user?.lastName ?? "",
           onChanged: (v) {
             bloc.add(VolunteerLastNameChanged(v));
           },

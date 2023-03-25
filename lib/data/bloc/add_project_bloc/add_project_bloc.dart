@@ -37,9 +37,6 @@ class AddProjectBloc extends Bloc<AddProjectEvent, AddProjectState> {
     return true;
   }
 
-  bool _isEmpty(String value) {
-    return value.trim().isEmpty;
-  }
 
   bool _nextBtnActive(
     String name,

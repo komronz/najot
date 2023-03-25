@@ -16,6 +16,7 @@ class AppDatePickerWidget extends StatelessWidget {
     required this.selectFunction,
     Key? key,
   }) : super(key: key);
+  
   final Function(DateTime) selectFunction;
   DateTime dateTime = DateTime.now();
 

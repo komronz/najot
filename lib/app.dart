@@ -13,6 +13,7 @@ import 'package:najot/data/services/notification_api_service.dart';
 import 'package:najot/data/utils/app_route_utils.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/pages/language_page/language_page.dart';
+import 'package:najot/ui/pages/splash_screen/splash_screen.dart';
 import 'data/bloc/home_cubit/home_cubit.dart';
 import 'data/bloc/language_cubit/language_cubit.dart';
 import 'data/services/navigator_service.dart';
@@ -23,6 +24,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeCubit.to.tokenUpdate();
     HomeCubit.to.getModel();
+
     return ScreenUtilInit(
       designSize: Size(375, 812),
       builder: (context, widget) =>
@@ -54,11 +56,7 @@ class App extends StatelessWidget {
             // darkTheme: AppThemes.darkTheme(),
             localizationsDelegates: context.localizationDelegates,
             builder: BotToastInit(),
-            home: RootService.hiveService.getToken() != null
-                ? HomePage(
-                    appPageType: AppPageType.MAIN,
-                  )
-                : LanguagePage(),
+            home: SplashScreen(),
             navigatorObservers: [
               BotToastNavigatorObserver(),
             ],

@@ -1,4 +1,3 @@
-
 class AboutUs {
   int? id;
   String? name;

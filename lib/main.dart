@@ -27,12 +27,9 @@ Future main() async {
       final storage = await HydratedStorage.build(
         storageDirectory: await getTemporaryDirectory(),
       );
-
-      HydratedBlocOverrides.runZoned(
-        () => runMainApp(),
-        storage: storage,
-        blocObserver: AppBlocObserver(),
-      );
+      HydratedBloc.storage = storage;
+      Bloc.observer = AppBlocObserver();
+      runMainApp();
     },
     (error, stack) {},
   );
@@ -50,8 +47,8 @@ Future runMainApp() async {
       path: 'assets/langs',
       supportedLocales: [
         Locale("uz", "UZ"),
-        Locale("ky", "KG"),
         // Qirg'iziton lokali, krill o'zbekcha uchun ishlatildi
+        Locale("ky", "KG"),
         Locale("ru", "RU"),
       ],
       fallbackLocale: Locale('uz', 'UZ'),

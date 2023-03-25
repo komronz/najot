@@ -10,7 +10,6 @@ import 'package:najot/data/services/root_service.dart';
 
 import '../bloc/language_cubit/language_cubit.dart';
 import '../utils/app_logger_util.dart';
-import 'hive_service.dart';
 import 'http_service.dart';
 
 class VolunteerProjectService{

@@ -396,8 +396,9 @@ class AppWidgets {
                   onTap: onTapIcon,
                 )
               : SizedBox(
-                  width: 20,
-                )
+                  height: 35.w,
+                  width: 35.w,
+                ),
         ],
       ),
     );

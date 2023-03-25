@@ -62,7 +62,7 @@ class _AboutMyCharityProjectWidgetState
 
   @override
   Widget build(BuildContext context) {
-    print(widget.model.category!.name);
+    
     return BlocProvider(
       create: (context) => cubit..load(widget.model.id!),
       child:

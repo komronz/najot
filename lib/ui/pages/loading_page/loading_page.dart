@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -35,7 +34,7 @@ class LoadingPage extends StatelessWidget {
                   color: AppColors.MAIN,
                 ),
                 AppWidgets.textLocale(
-                  text: LocaleKeys.please_wait.tr(),
+                  text: LocaleKeys.please_wait,
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w600,
                   color: AppColors.BLACK,

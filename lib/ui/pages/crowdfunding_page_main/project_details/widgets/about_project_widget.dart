@@ -13,10 +13,8 @@ import 'package:najot/data/services/main_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/comment_to_author_dialog.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/comments_widget.dart';
-import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/crowdfunding_applied_user_widget.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/crowdfunding_author_widget.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/crowdfunding_price_widget.dart';
-import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/payment_history_dialog.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/question_asked_widget.dart';
 import 'package:najot/ui/pages/crowdfunding_page_main/project_details/widgets/support_project_dialog.dart';
 import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
@@ -118,7 +116,9 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                               showDialog(
                                 context: context,
                                 builder: (context) {
-                                  return  SupportProjectDialog(projectModel: widget.cardModel,);
+                                  return SupportProjectDialog(
+                                    projectModel: widget.cardModel,
+                                  );
                                 },
                               );
                             },
@@ -166,9 +166,11 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CrowdfundingAppliedUserWidgets(
-                          model: widget.cardModel,
-                        ),
+                        ///Change later
+                        ///
+                        // CrowdfundingAppliedUserWidgets(
+                        //   model: widget.cardModel,
+                        // ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -192,7 +194,11 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                               ],
                             ).paddingOnly(top: 10.w)
                           ],
-                        ).paddingOnly(left: 30.w)
+                        ).paddingOnly(left: 5.w)
+
+                        ///Change later
+                        ///
+                        // ).paddingOnly(left: 30.w)
                       ],
                     ).paddingSymmetric(
                       horizontal: 20.w,
