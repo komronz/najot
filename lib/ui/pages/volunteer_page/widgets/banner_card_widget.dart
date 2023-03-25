@@ -37,8 +37,7 @@ class BannerCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppWidgets.text(
-                  text: "Lorem Ipsum is simply dummy "
-                      "text of the printing and ?",
+                  text: "Kimningdir yordamiga muhtoj bo'layapsizmi ?",
                   color: AppColorUtils.GRAY_4,
                   fontSize: 12,
                   maxLines: 2,
