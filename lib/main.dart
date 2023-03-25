@@ -27,12 +27,9 @@ Future main() async {
       final storage = await HydratedStorage.build(
         storageDirectory: await getTemporaryDirectory(),
       );
-
-      HydratedBlocOverrides.runZoned(
-        () => runMainApp(),
-        storage: storage,
-        blocObserver: AppBlocObserver(),
-      );
+      HydratedBloc.storage = storage;
+      Bloc.observer = AppBlocObserver();
+      runMainApp();
     },
     (error, stack) {},
   );
