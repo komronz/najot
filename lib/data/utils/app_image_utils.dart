@@ -111,4 +111,5 @@ class AppImageUtils {
   static const String BOX = "assets/app_icons/box.svg";
   static const String LOYIHASHARTLARI_RULES = "assets/images/rules.svg";
   static const String UPDATE_ICON = "assets/app_icons/update_dialog.svg";
+  static const String IC_COPY = "assets/app_icons/ic_copy.svg";
 }

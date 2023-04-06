@@ -181,6 +181,7 @@ class AppWidgets {
     FontStyle fontStyle = FontStyle.normal,
   }) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment:
           isCenter ? MainAxisAlignment.center : MainAxisAlignment.start,
       children: [
@@ -193,13 +194,15 @@ class AppWidgets {
                 ),
               )
             : SizedBox(),
-        textLocale(
-          text: text,
-          color: color,
-          fontSize: fontSize,
-          fontWeight: fontWeight,
-          maxLines: maxLines,
-          fontStyle: fontStyle,
+        Expanded(
+          child: textLocale(
+            text: text,
+            color: color,
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+            maxLines: maxLines,
+            fontStyle: fontStyle,
+          ),
         ),
       ],
     );

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
+import 'package:najot/ui/widgets/ripple_effect.dart';
 
 class AppBarWithTitle extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -21,21 +22,24 @@ class AppBarWithTitle extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: AppColorUtils.BACKGROUND,
       elevation: 0,
-      leading: InkWell(
-        child: Container(
-          width: 31.w,
-          height: 34.w,
-          decoration: BoxDecoration(
-            color: AppColorUtils.BACK_BUTTON,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Icon(
-            Icons.arrow_back_ios_rounded,
-            color: AppColorUtils.IC_GREEN2,
-            size: 20.w,
+      leading: Container(
+        width: 31.w,
+        height: 34.w,
+        decoration: BoxDecoration(
+          color: AppColorUtils.BACK_BUTTON,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: RippleButton(
+            child: Icon(
+              Icons.arrow_back_ios_rounded,
+              color: AppColorUtils.IC_GREEN2,
+              size: 20.w,
+            ),
+            onTap: onPress,
           ),
         ),
-        onTap: onPress,
       ).paddingOnly(
         left: 24.w,
         top: 10.w,

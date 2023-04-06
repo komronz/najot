@@ -147,32 +147,34 @@ class _AboutMyCharityProjectWidgetState
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
 
-                        MyCharityAppliedUserWidget(model: widget.model),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            AppWidgets.starTextWidget(
-                              text: LocaleKeys.must_collected_date,
-                            ),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.calendar_today_outlined,
-                                  color: AppColorUtils.BLUE_PERCENT,
-                                  size: 14.sp,
-                                ),
-                                AppWidgets.text(
-                                  text: DateFormat("dd.MM.yyyy").format(
-                                    DateTime.parse(widget.model.deadline!),
+                        Expanded(child: MyCharityAppliedUserWidget(model: widget.model)),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AppWidgets.starTextWidget(
+                                text: LocaleKeys.must_collected_date,
+                              ),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.calendar_today_outlined,
+                                    color: AppColorUtils.BLUE_PERCENT,
+                                    size: 14.sp,
                                   ),
-                                  color: AppColorUtils.BLUE_PERCENT,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14.sp,
-                                ).paddingOnly(left: 6.w),
-                              ],
-                            ).paddingOnly(top: 10.w)
-                          ],
-                        ).paddingOnly(left: 30.w)
+                                  AppWidgets.text(
+                                    text: DateFormat("dd.MM.yyyy").format(
+                                      DateTime.parse(widget.model.deadline!),
+                                    ),
+                                    color: AppColorUtils.BLUE_PERCENT,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14.sp,
+                                  ).paddingOnly(left: 6.w),
+                                ],
+                              ).paddingOnly(top: 10.w)
+                            ],
+                          ).paddingOnly(left: 30.w),
+                        )
                       ],
                     ).paddingSymmetric(
                       horizontal: 20.w,

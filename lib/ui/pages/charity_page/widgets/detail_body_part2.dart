@@ -27,28 +27,30 @@ class DetailBodyPart2 extends StatelessWidget {
             // CrowdfundingAppliedUserWidgets(
             //   model: cardModel,
             // ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AppWidgets.starTextWidget(
-                    text: LocaleKeys.must_collect_date.tr()),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.calendar_today_outlined,
-                      color: AppColorUtils.BLUE_PERCENT,
-                      size: 13.sp,
-                    ),
-                    AppWidgets.text(
-                      text: DateFormat("dd.MM.yyyy").format(modifiedAt),
-                      color: AppColorUtils.BLUE_PERCENT,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14.sp,
-                    ).paddingOnly(left: 6.w, top: 3.w),
-                  ],
-                ).paddingOnly(top: 3.w)
-              ],
-            ).paddingOnly(left: 5.w)
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AppWidgets.starTextWidget(
+                      text: LocaleKeys.must_collect_date.tr()),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.calendar_today_outlined,
+                        color: AppColorUtils.BLUE_PERCENT,
+                        size: 13.sp,
+                      ),
+                      AppWidgets.text(
+                        text: DateFormat("dd.MM.yyyy").format(modifiedAt),
+                        color: AppColorUtils.BLUE_PERCENT,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14.sp,
+                      ).paddingOnly(left: 6.w, top: 3.w),
+                    ],
+                  ).paddingOnly(top: 3.w)
+                ],
+              ).paddingOnly(left: 5.w),
+            )
             
             ///Change later
             ///

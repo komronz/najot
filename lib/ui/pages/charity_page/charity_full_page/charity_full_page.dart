@@ -131,14 +131,20 @@ class _CharityFullPageState extends State<CharityFullPage>
                                   right: 0,
                                   child: InkWell(
                                     onTap: () {
-                                      showDialog(
+                                      showModalBottomSheet(
+                                        useSafeArea: true,
+                                        isScrollControlled: true,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(24),
+                                            topRight: Radius.circular(24),
+                                          ),
+                                        ),
                                         context: context,
                                         builder: (context) {
-                                          ///Change later
-                                          // return PaymentHistoryDialog(projectModel: widget.model,);
-
                                           return SupportProjectDialog(
-                                              projectModel: widget.model);
+                                            projectModel: widget.model,
+                                          );
                                         },
                                       );
                                     },
@@ -279,7 +285,15 @@ class _CharityFullPageState extends State<CharityFullPage>
                                 children: [
                                   ButtonCard(
                                     onPress: () {
-                                      showDialog(
+                                      showModalBottomSheet(
+                                        useSafeArea: true,
+                                        isScrollControlled: true,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(24),
+                                            topRight: Radius.circular(24),
+                                          ),
+                                        ),
                                         context: context,
                                         builder: (context) {
                                           return SupportProjectDialog(

@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/organization_cubit/organization_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/organization_model.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/pages/organization_page/organization_item_detail_page/organization_item_widget2.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
@@ -45,7 +46,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
         ),
       ),
       body: BlocBuilder<OrganizationCubit, OrganizationState>(
-        bloc: OrganizationCubit.to..findProject(model.model.id!),
+        bloc: OrganizationCubit.to..findProject(model.model.id ?? 0),
         builder: (context, state) {
           return SingleChildScrollView(
             child: Column(
@@ -91,7 +92,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                image: NetworkImage(model.model.founderImage!),
+                                image: NetworkImage(model.model.founderImage ?? ""),
                                 fit: BoxFit.cover,
                               ),
                             ),

@@ -22,6 +22,8 @@ class CharityItem2Widget extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
