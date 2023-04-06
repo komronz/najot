@@ -113,7 +113,15 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                           right: 0,
                           child: InkWell(
                             onTap: () {
-                              showDialog(
+                              showModalBottomSheet(
+                                useSafeArea: true,
+                                isScrollControlled: true,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(24),
+                                    topRight: Radius.circular(24),
+                                  ),
+                                ),
                                 context: context,
                                 builder: (context) {
                                   return SupportProjectDialog(
@@ -171,30 +179,32 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                         // CrowdfundingAppliedUserWidgets(
                         //   model: widget.cardModel,
                         // ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            AppWidgets.starTextWidget(
-                              text: LocaleKeys.must_collect_date.tr(),
-                            ),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.calendar_today_outlined,
-                                  color: AppColorUtils.BLUE_PERCENT,
-                                  size: 14.sp,
-                                ),
-                                AppWidgets.text(
-                                  text: DateFormat("dd.MM.yyyy")
-                                      .format(modifiedAt),
-                                  color: AppColorUtils.BLUE_PERCENT,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14.sp,
-                                ).paddingOnly(left: 6.w),
-                              ],
-                            ).paddingOnly(top: 10.w)
-                          ],
-                        ).paddingOnly(left: 5.w)
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AppWidgets.starTextWidget(
+                                text: LocaleKeys.must_collect_date.tr(),
+                              ),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.calendar_today_outlined,
+                                    color: AppColorUtils.BLUE_PERCENT,
+                                    size: 14.sp,
+                                  ),
+                                  AppWidgets.text(
+                                    text: DateFormat("dd.MM.yyyy")
+                                        .format(modifiedAt),
+                                    color: AppColorUtils.BLUE_PERCENT,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14.sp,
+                                  ).paddingOnly(left: 6.w),
+                                ],
+                              ).paddingOnly(top: 10.w)
+                            ],
+                          ).paddingOnly(left: 5.w),
+                        )
 
                         ///Change later
                         ///
@@ -301,7 +311,15 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                         children: [
                           ButtonCard(
                             onPress: () {
-                              showDialog(
+                              showModalBottomSheet(
+                                useSafeArea: true,
+                                isScrollControlled: true,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(24),
+                                    topRight: Radius.circular(24),
+                                  ),
+                                ),
                                 context: context,
                                 builder: (context) {
                                   return SupportProjectDialog(
@@ -323,8 +341,8 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                             height: 48.w,
                             width: 48.w,
                             onTap: () async {
-                              var connection =
-                                  await MainService().checkInternetConnection();
+                              var connection = await MainService()
+                                  .checkInternetConnection();
                               if (connection) {
                                 await widget.cubit.changeLike(
                                   widget.cardModel.id!,
