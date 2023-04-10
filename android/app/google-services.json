@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "377384737585",
+    "project_id": "najot-uz",
+    "storage_bucket": "najot-uz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:377384737585:android:197b9d1105310174552e10",
+        "android_client_info": {
+          "package_name": "uz.najot.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "377384737585-0mnedink1vor4a07ej1s78q6pqsn3ccu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZFuB5RMVDsfsu_UXtXMkJhFu33FNQAe4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "377384737585-0mnedink1vor4a07ej1s78q6pqsn3ccu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
