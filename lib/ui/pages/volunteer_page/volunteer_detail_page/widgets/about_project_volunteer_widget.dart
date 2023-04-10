@@ -168,44 +168,48 @@ class _AboutProjectVolunteerWidgetState
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      AppWidgets.starTextWidget(
-                        text: LocaleKeys.done_date,
-                      ),
-                      SizedBox(
-                        height: 3.w,
-                      ),
-                      Row(
-                        children: [
-                          SvgPicture.asset(AppImageUtils.DATE),
-                          AppWidgets.text(
-                            text: DateFormat("dd.MM.yyyy").format(modifiedAt),
-                            color: AppColorUtils.BLUE_PERCENT,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14.sp,
-                          ).paddingOnly(left: 6.w),
-                        ],
-                      ),
-                    ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AppWidgets.starTextWidget(
+                          text: LocaleKeys.done_date,
+                        ),
+                        SizedBox(
+                          height: 3.w,
+                        ),
+                        Row(
+                          children: [
+                            SvgPicture.asset(AppImageUtils.DATE),
+                            AppWidgets.text(
+                              text: DateFormat("dd.MM.yyyy").format(modifiedAt),
+                              color: AppColorUtils.BLUE_PERCENT,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14.sp,
+                            ).paddingOnly(left: 6.w),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      AppWidgets.textLocale(
-                        text: LocaleKeys.announcement_day,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 10.sp,
-                        color: AppColorUtils.DARK_6,
-                      ),
-                      AppWidgets.text(
-                        text: DateFormat("dd.MM.yyyy").format(createdAt),
-                        color: Color(0xFF043F3B),
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w600,
-                      ).paddingOnly(top: 3.w),
-                    ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        AppWidgets.textLocale(
+                          text: LocaleKeys.announcement_day,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 10.sp,
+                          color: AppColorUtils.DARK_6,
+                        ),
+                        AppWidgets.text(
+                          text: DateFormat("dd.MM.yyyy").format(createdAt),
+                          color: Color(0xFF043F3B),
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
+                        ).paddingOnly(top: 3.w),
+                      ],
+                    ),
                   )
                 ],
               ).paddingSymmetric(horizontal: 20.w),

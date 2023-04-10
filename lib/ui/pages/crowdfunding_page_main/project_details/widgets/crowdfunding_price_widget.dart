@@ -35,7 +35,7 @@ class CrowdfundingPriceWidget extends StatelessWidget {
                 children: [
                   AppWidgets.starTextWidget(text: LocaleKeys.need_summa.tr()),
                   AppWidgets.textLocale(
-                    text: Format.moneyFormat(double.parse(model.requiredFund!)),
+                    text: Format.moneyFormat(double.parse(model.requiredFund ?? "0")),
                     color: Color(0xFF043F3B),
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
@@ -90,13 +90,13 @@ class CrowdfundingPriceWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppWidgets.textLocale(
-                    text: Format.moneyFormat(double.parse(model.amountCollected!)),
+                    text: Format.moneyFormat(double.parse(model.amountCollected ?? "0")),
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColorUtils.GREEN_TEXT,
                   ),
                   AppWidgets.text(
-                    text: "${model.percent} %",
+                    text: "${model.percent ?? 0} %",
                     color: AppColorUtils.BLUE_PERCENT,
                     fontWeight: FontWeight.w500,
                     fontSize: 16.sp,

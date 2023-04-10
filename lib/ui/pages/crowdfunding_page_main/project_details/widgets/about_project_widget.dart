@@ -204,6 +204,30 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                               ).paddingOnly(top: 10.w)
                             ],
                           ).paddingOnly(left: 5.w),
+                        ),
+                        Builder(
+                          builder: (context) {
+                            if (widget.cardModel.location != null) {
+                              return Row(
+                                children: [
+                                  Text(
+                                    "${LocaleKeys.address.tr()}:  ",
+                                    style: TextStyle(
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 10,
+                                      color: AppColorUtils.DARK_6,
+                                    ),
+                                  ),
+                                  AppWidgets.locationButton(
+                                    widget.cardModel.location!,
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return SizedBox();
+                            }
+                          },
                         )
 
                         ///Change later

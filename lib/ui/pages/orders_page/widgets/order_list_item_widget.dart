@@ -99,7 +99,7 @@ class OrdersItemsWidget extends StatelessWidget {
             children: [
               DateWidget(date: date),
               AppWidgets.textLocale(
-                text: Format.moneyFormat(double.parse(model.price ?? "")),
+                text: Format.moneyFormat(double.parse(model.price ?? "0")),
                 color: AppColorUtils.KRAUDFANDING,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,

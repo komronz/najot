@@ -48,6 +48,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
       body: BlocBuilder<OrganizationCubit, OrganizationState>(
         bloc: OrganizationCubit.to..findProject(model.model.id ?? 0),
         builder: (context, state) {
+          // AppLoggerUtil.d("state: ${state.project!.results!.length}");
           return SingleChildScrollView(
             child: Column(
               children: [
@@ -92,7 +93,8 @@ class OrganizationItemDetailPage extends StatelessWidget {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                image: NetworkImage(model.model.founderImage ?? ""),
+                                image: NetworkImage(
+                                    model.model.founderImage ?? ""),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -111,7 +113,8 @@ class OrganizationItemDetailPage extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     AppWidgets.text(
-                                      text: model.model.founder!.firstName ?? "",
+                                      text:
+                                          model.model.founder!.firstName ?? "",
                                       color: AppColorUtils.TEXT_GREEN2,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 14.sp,
@@ -147,16 +150,18 @@ class OrganizationItemDetailPage extends StatelessWidget {
                         maxLines: 50,
                         height: 1.1.w,
                       ).paddingSymmetric(horizontal: 20.w),
-                      AppWidgets.textLocale(
-                        text: LocaleKeys.organizational_projects,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18.sp,
-                        color: AppColorUtils.DARK_1,
-                      ).paddingOnly(
-                        left: 20.w,
-                        top: 12.w,
-                        bottom: 10.w,
-                      ),
+                      if (state.project?.results?.isNotEmpty ?? false) ...{
+                        AppWidgets.textLocale(
+                          text: LocaleKeys.organizational_projects,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18.sp,
+                          color: AppColorUtils.DARK_1,
+                        ).paddingOnly(
+                          left: 20.w,
+                          top: 12.w,
+                          bottom: 10.w,
+                        ),
+                      },
                       SingleChildScrollView(
                         physics: BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
@@ -194,7 +199,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
                                       OrganizationItemWidget2.routName,
                                       arguments: OrganizationItemModel(
                                         cardModel:
-                                        state.project!.results![index],
+                                            state.project!.results![index],
                                         id: model.model.id!,
                                       ),
                                     );

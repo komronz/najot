@@ -36,7 +36,7 @@ class MyCharityPriceWidget extends StatelessWidget {
                   ),
                   AppWidgets.text(
                     text: Format.moneyFormat(
-                      double.parse(model.amountCollected!),
+                      double.parse(model.amountCollected ?? "0"),
                     ),
                     color: AppColorUtils.TEXT_GREEN2,
                     fontSize: 14.sp,
@@ -93,7 +93,7 @@ class MyCharityPriceWidget extends StatelessWidget {
                 children: [
                   AppWidgets.textLocale(
                     text: Format.moneyFormat(
-                      double.parse(model.requiredFund!),
+                      double.parse(model.requiredFund ?? "0"),
                     ),
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,

@@ -51,7 +51,7 @@ class IntroPage extends StatelessWidget {
                       image: "assets/images/splash_3.png",
                       title: LocaleKeys.volunteering,
                       content:
-                          "Ehsonning miqdori muhim emas, balki sizning xayriyangiz ortidagi ma'no muhim",
+                      LocaleKeys.splash_volontyor_quote,
                     ),
                   ],
                 ),

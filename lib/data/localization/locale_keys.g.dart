@@ -285,5 +285,6 @@ abstract class  LocaleKeys {
   static const have_new_version = 'have_new_version';
   static const languague_name = 'languague_name';
   static const splash_ehson_quote = 'splash_ehson_quote';
-
+  static const splash_volontyor_quote = 'splash_volontyor_quote';
+  static const message_card = 'message_card';
 }

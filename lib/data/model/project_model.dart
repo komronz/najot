@@ -89,6 +89,7 @@ class ProjectModel extends Equatable{
   String? type;
   String? title;
   String? helpType;
+  String? location;
   Organization? organization;
   String? deadline;
   String? cover;
@@ -113,6 +114,7 @@ class ProjectModel extends Equatable{
     this.type,
     this.title,
     this.helpType,
+    this.location,
     this.organization,
     this.deadline,
     this.cover,
@@ -150,6 +152,7 @@ class ProjectModel extends Equatable{
         : null;
     deadline = json['deadline'];
     cover = json['cover'];
+    location = json['location']?.toString();
     content = json['content'];
     coverUrl = json['cover_url'];
     category = json['category'] != null
@@ -183,6 +186,7 @@ class ProjectModel extends Equatable{
     }
     data['type'] = this.type;
     data['title'] = this.title;
+    data['location'] = location;
     data['help_type'] = this.helpType;
     if (this.organization != null) {
       data['organization'] = this.organization!.toJson();

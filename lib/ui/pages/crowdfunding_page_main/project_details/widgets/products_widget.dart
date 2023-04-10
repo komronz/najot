@@ -72,7 +72,7 @@ class ProductsWidget extends StatelessWidget {
                           children: [
                             AppWidgets.text(
                               text: Format.moneyFormat(
-                                double.parse(state.list[index].price!),
+                                double.parse(state.list[index].price ?? "0"),
                               ),
                               color: AppColorUtils.SMS_BTN3,
                               fontWeight: FontWeight.w600,

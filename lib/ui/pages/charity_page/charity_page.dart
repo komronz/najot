@@ -83,10 +83,12 @@ class _CharityPageState extends State<CharityPage>
           bloc: CharityCubit.to,
           builder: (context, state) {
             if (state.internetConnection) {
-              List<ProjectModel> list = state.charityModel!.results!;
+              List<ProjectModel> list = state.charityModel?.results ?? [];
               if (state.loading == true) {
                 return Center(
-                  child: CircularProgressIndicator(color: AppColorUtils.GREEN_APP,),
+                  child: CircularProgressIndicator(
+                    color: AppColorUtils.GREEN_APP,
+                  ),
                 );
               } else {
                 return SingleChildScrollView(
@@ -101,8 +103,9 @@ class _CharityPageState extends State<CharityPage>
                       ).paddingSymmetric(horizontal: 20, vertical: 15.w),
                       state.searchProgress
                           ? Center(
-                              child: CircularProgressIndicator(color: AppColorUtils.GREEN_APP,)
-                                  .paddingOnly(top: 220.w),
+                              child: CircularProgressIndicator(
+                                color: AppColorUtils.GREEN_APP,
+                              ).paddingOnly(top: 220.w),
                             )
                           : state.searchChange == ""
                               ? Column(
@@ -190,12 +193,12 @@ class _CharityPageState extends State<CharityPage>
                                         child: Row(
                                           children: List.generate(list.length,
                                               (index) {
-
                                             if (list[index].requiredFund !=
                                                 null) {
                                               return CharityItemWidget(
                                                 model: list[index],
                                                 onTap: () {
+                                                  AppLoggerUtil.d("click");
                                                   NavigatorService.to.pushNamed(
                                                       CharityFullPage.routName,
                                                       arguments: list[index]);
@@ -208,6 +211,7 @@ class _CharityPageState extends State<CharityPage>
                                             } else {
                                               return CharityItem2Widget(
                                                 onTap: () {
+                                                  AppLoggerUtil.d("click2");
                                                   NavigatorService.to.pushNamed(
                                                       CharityFullPage2.routName,
                                                       arguments: list[index]);
@@ -267,7 +271,8 @@ class _CharityPageState extends State<CharityPage>
                                               tabs: List.generate(
                                                 state.category.length,
                                                 (index) => Text(
-                                                  state.category[index].name!,
+                                                  state.category[index].name ??
+                                                      "",
                                                 ),
                                               ),
                                               onTap: (index) {
@@ -403,11 +408,12 @@ class _CharityPageState extends State<CharityPage>
                                                 onTap: () {
                                                   NavigatorService.to.pushNamed(
                                                     CharityFullPage.routName,
-                                                    arguments: state.searchProjects[
-                                                    index],
+                                                    arguments: state
+                                                        .searchProjects[index],
                                                   );
                                                 },
-                                                model: state.searchProjects[index],
+                                                model:
+                                                    state.searchProjects[index],
                                                 onTapLike: () {
                                                   CharityCubit.to.changeLike(
                                                       state

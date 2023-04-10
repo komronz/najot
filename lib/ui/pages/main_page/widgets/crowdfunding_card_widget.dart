@@ -50,7 +50,7 @@ class CrowdfundingCardWidget extends StatelessWidget {
                         ),
                         child: CachedNetworkImage(
                           width: double.infinity,
-                          imageUrl: projectModel.cover!,
+                          imageUrl: projectModel.cover ?? "",
                           errorWidget: (context, url, error) => Image.asset(
                             AppImageUtils.Splash2,
                           ),
@@ -78,7 +78,7 @@ class CrowdfundingCardWidget extends StatelessWidget {
                               padding: EdgeInsets.all(0),
                               lineHeight: 10.h,
                               animationDuration: 2000,
-                              percent: projectModel.percent! / 100,
+                              percent: (projectModel.percent ?? 0) / 100,
                               progressColor: AppColorUtils.PERCENT_COLOR,
                               backgroundColor: AppColorUtils.PERCENT_COLOR2,
                             ),
@@ -98,7 +98,7 @@ class CrowdfundingCardWidget extends StatelessWidget {
                                       height: 2,
                                     ),
                                     AppWidgets.textLocale(
-                                      text: Format.moneyFormat(double.parse(projectModel.amountCollected!)),
+                                      text: Format.moneyFormat(double.parse(projectModel.amountCollected ?? "0")),
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w600,
                                       color: AppColorUtils.GREEN_TEXT,
@@ -118,7 +118,7 @@ class CrowdfundingCardWidget extends StatelessWidget {
                                       height: 2,
                                     ),
                                     AppWidgets.text(
-                                      text: "${projectModel.percent}%",
+                                      text: "${projectModel.percent ?? 0}%",
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w600,
                                       color: AppColorUtils.BLUE_PERCENT,
@@ -137,7 +137,7 @@ class CrowdfundingCardWidget extends StatelessWidget {
               ),
               Align(
                 child: InkWell(
-                  child: projectModel.isFavourite!
+                  child: projectModel.isFavourite ?? false
                       ? SvgPicture.asset(AppImageUtils.LIKE)
                       : SvgPicture.asset(AppImageUtils.UNLIKE),
                   onTap: onTapLike,

@@ -56,7 +56,7 @@ class CharityItemWidget extends StatelessWidget {
                                 ),
                                 width: double.infinity,
                                 height: double.infinity,
-                                imageUrl: model.cover!,
+                                imageUrl: model.cover ?? "",
                                 errorWidget: (context, url, error) =>
                                     Icon(Icons.error),
                                 fit: BoxFit.cover,
@@ -69,7 +69,7 @@ class CharityItemWidget extends StatelessWidget {
                         children: [
                           Expanded(child: SizedBox()),
                           InkWell(
-                              child: model.isFavourite!
+                              child: model.isFavourite ?? false
                                   ? SvgPicture.asset(AppImageUtils.LIKE)
                                   : SvgPicture.asset(AppImageUtils.UNLIKE),
                               onTap: onTapLike),
@@ -85,7 +85,7 @@ class CharityItemWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppWidgets.text(
-                        text: model.title!,
+                        text: model.title ?? "",
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w600,
                         maxLines: 2,
@@ -95,7 +95,7 @@ class CharityItemWidget extends StatelessWidget {
                         padding: EdgeInsets.all(0),
                         lineHeight: 10.h,
                         animationDuration: 2000,
-                        percent: model.percent! / 100,
+                        percent: (model.percent ?? 0) / 100,
                         progressColor: AppColorUtils.PERCENT_COLOR,
                         backgroundColor: AppColorUtils.PERCENT_COLOR2,
                       ).paddingOnly(top: 12.w),
@@ -107,7 +107,7 @@ class CharityItemWidget extends StatelessWidget {
                       ).paddingOnly(top: 12.w),
                       AppWidgets.text(
                         // text: "${model.progres.toString().split(".").first}%",
-                        text: "${model.percent}%",
+                        text: "${model.percent ?? 0}%",
                         fontWeight: FontWeight.w600,
                         color: AppColorUtils.BLUE_PERCENT,
                       ).paddingOnly(top: 5.w),

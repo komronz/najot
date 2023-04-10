@@ -20,7 +20,9 @@ class DetailBodyPart2 extends StatelessWidget {
       children: [
         CrowdfundingPriceWidget(model: cardModel),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
           children: [
             /// Change later
             ///
@@ -50,8 +52,33 @@ class DetailBodyPart2 extends StatelessWidget {
                   ).paddingOnly(top: 3.w)
                 ],
               ).paddingOnly(left: 5.w),
+            ),
+
+            Builder(
+              builder: (context) {
+                if (cardModel.location != null) {
+                  return Row(
+                    children: [
+                      Text(
+                        "${LocaleKeys.address.tr()}:  ",
+                        style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 10,
+                          color: AppColorUtils.DARK_6,
+                        ),
+                      ),
+                      AppWidgets.locationButton(
+                        cardModel.location!,
+                      ),
+                    ],
+                  );
+                } else {
+                  return SizedBox();
+                }
+              },
             )
-            
+
             ///Change later
             ///
             /// ).paddingOnly(left: 30.w)

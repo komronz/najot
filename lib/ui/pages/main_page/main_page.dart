@@ -124,7 +124,7 @@ class _MainPageState extends State<MainPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ///Change after update
-                              ///
+
                               if (state.slider.isNotEmpty) ...[
                                 CarouselSliderWidget(sliderList: state.slider),
                               ],

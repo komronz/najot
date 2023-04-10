@@ -36,7 +36,7 @@ class MyCrowdfundingPriceWidget extends StatelessWidget {
                 ),
                 AppWidgets.textLocale(
                   text: Format.moneyFormat(
-                    double.parse(model.requiredFund!),
+                    double.parse(model.requiredFund ?? "0"),
                   ),
                   color: Color(0xFF043F3B),
                   fontSize: 14.sp,
@@ -90,7 +90,7 @@ class MyCrowdfundingPriceWidget extends StatelessWidget {
                 children: [
                   AppWidgets.textLocale(
                     text: Format.moneyFormat(
-                      double.parse(model.amountCollected!),
+                      double.parse(model.amountCollected ?? "0"),
                     ),
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,

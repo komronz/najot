@@ -53,7 +53,7 @@ class CharityItem2Widget extends StatelessWidget {
                                 ),
                                 height: double.infinity,
                                 width: double.infinity,
-                                imageUrl: model.cover!,
+                                imageUrl: model.cover ?? "",
                                 errorWidget: (context, url, error) =>
                                     Icon(Icons.error),
                                 fit: BoxFit.cover,
@@ -66,7 +66,7 @@ class CharityItem2Widget extends StatelessWidget {
                         children: [
                           Expanded(child: SizedBox()),
                           InkWell(
-                            child: model.isFavourite!
+                            child: model.isFavourite ?? false
                                 ? SvgPicture.asset(AppImageUtils.LIKE)
                                 : SvgPicture.asset(AppImageUtils.UNLIKE),
                             onTap: onTapLike,

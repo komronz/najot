@@ -52,7 +52,7 @@ class _CharityFullPageState extends State<CharityFullPage>
 
   @override
   void initState() {
-    like = widget.model.isFavourite!;
+    like = widget.model.isFavourite ?? false;
     _controller = TabController(
       length: 4,
       vsync: this,
@@ -115,7 +115,7 @@ class _CharityFullPageState extends State<CharityFullPage>
                                       Radius.circular(12),
                                     ),
                                     child: CachedNetworkImage(
-                                      imageUrl: widget.model.coverUrl!,
+                                      imageUrl: widget.model.coverUrl ?? "",
                                       fit: BoxFit.cover,
                                       width: MediaQuery.of(context).size.width,
                                       placeholder: (context, url) => Center(
@@ -167,7 +167,7 @@ class _CharityFullPageState extends State<CharityFullPage>
                               ],
                             ),
                             AppWidgets.text(
-                              text: widget.model.title!,
+                              text: widget.model.title ?? "",
                               fontSize: 20.sp,
                               color: AppColorUtils.DARK2,
                               fontWeight: FontWeight.w500,
@@ -255,7 +255,7 @@ class _CharityFullPageState extends State<CharityFullPage>
                                     EdgeInsets.only(right: 10, left: 10),
                               ).paddingOnly(left: 15.w, top: 8.w),
                               BlocBuilder<ProjectDataCubit, ProjectDataState>(
-                                bloc: cubitData..load(widget.model.id!),
+                                bloc: cubitData..load(widget.model.id ?? 0),
                                 builder: (contextData, stateData) {
                                   return Container(
                                     child: [
@@ -319,7 +319,7 @@ class _CharityFullPageState extends State<CharityFullPage>
                                           .checkInternetConnection();
                                       if (connection) {
                                         await CharityCubit.to
-                                            .changeLike(widget.model.id!);
+                                            .changeLike(widget.model.id ?? 0);
                                         setState(() {
                                           like = !like;
                                         });

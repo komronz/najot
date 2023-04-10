@@ -22,7 +22,6 @@ class SupportProjectDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> cardWidgets = [];
-    AppLoggerUtil.d("loog1:  ${projectModel.cards!}");
     for (int i = 0; i < projectModel.cards!.length; i++) {
       cardWidgets.add(
         Padding(
@@ -83,7 +82,7 @@ class SupportProjectDialog extends StatelessWidget {
                     GestureDetector(
                       child: SvgPicture.asset(AppImageUtils.IC_COPY),
                       onTap: () {
-                        FlutterClipboard.copy(projectModel.cardNumber!);
+                        FlutterClipboard.copy(projectModel.cards![i]!.cardNumber!);
                         AppWidgets.showText(
                           text: LocaleKeys.be_save.tr(),
                         );
@@ -98,189 +97,96 @@ class SupportProjectDialog extends StatelessWidget {
       );
     }
     return DraggableScrollableSheet(
-        expand: false,
-        initialChildSize: 0.5,
-        minChildSize: 0.5,
-        maxChildSize: 0.8,
-        builder: (context, scrollController) {
-          return Container(
-            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-            // decoration: BoxDecoration(
-            //     color: Colors.white,
-            //     borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                AppWidgets.textLocale(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 20.sp,
-                  color: AppColorUtils.DARK2,
-                  textAlign: TextAlign.left,
-                  text: LocaleKeys.project_implementation,
-                ).paddingOnly(bottom: 7.w, top: 12.h),
-                MixTextWidget().paddingOnly(bottom: 18.w),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.credit_card,
-                      color: AppColorUtils.BORDER_COLOR,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    AppWidgets.textLocale(
-                      text: LocaleKeys.card_number.tr(),
-                      fontSize: 18.sp,
-                      color: AppColorUtils.DARK_1,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ],
-                ),
-                SizedBox(height: 12.h),
-                Flexible(
-                  child: ListView(
-                    controller: scrollController,
-                    physics: BouncingScrollPhysics(),
-                    children: cardWidgets,
-                  ),
-                ),
-              ],
-            ),
-          );
-        });
-
-    //Avvalgi dialog
-    /*Dialog(
-      insetPadding: EdgeInsets.symmetric(horizontal: 20.w),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
-      elevation: 0,
-      child: Container(
-        height: 340.w,
-        padding: EdgeInsets.all(20.w),
-        decoration: BoxDecoration(
-          shape: BoxShape.rectangle,
-          color: AppColorUtils.WHITE,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AppWidgets.textLocale(
-              fontWeight: FontWeight.w500,
-              fontSize: 20.sp,
-              color: AppColorUtils.DARK2,
-              textAlign: TextAlign.center,
-              text: LocaleKeys.project_implementation,
-            ).paddingOnly(bottom: 20.w),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.credit_card,
-                  color: AppColorUtils.BORDER_COLOR,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                AppWidgets.textLocale(
-                  text: LocaleKeys.card_number.tr(),
-                  fontSize: 16.sp,
-                  color: AppColorUtils.DARK_6,
-                  fontWeight: FontWeight.w400,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 12.h,
-            ),
-            Material(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Ink(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: AppColorUtils.GREEN_ACCENT5,
-                ),
-                child: InkWell(
-                  onTap: () {
-                    FlutterClipboard.copy(projectModel.cardNumber!);
-                    AppWidgets.showText(
-                      text: LocaleKeys.be_save.tr(),
+      expand: false,
+      initialChildSize: 0.5,
+      minChildSize: 0.5,
+      maxChildSize: 0.8,
+      builder: (context, scrollController) {
+        return Container(
+          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AppWidgets.textLocale(
+                fontWeight: FontWeight.w500,
+                fontSize: 20.sp,
+                color: AppColorUtils.DARK2,
+                textAlign: TextAlign.left,
+                text: LocaleKeys.project_implementation,
+              ).paddingOnly(bottom: 7.w, top: 12.h),
+              Builder(
+                builder: (context) {
+                  if (cardWidgets.isNotEmpty) {
+                    return Expanded(
+                      child: Column(
+                        children: [
+                          MixTextWidget().paddingOnly(bottom: 18.w),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.credit_card,
+                                color: AppColorUtils.BORDER_COLOR,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              AppWidgets.textLocale(
+                                text: LocaleKeys.card_number.tr(),
+                                fontSize: 18.sp,
+                                color: AppColorUtils.DARK_1,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 12.h),
+                          Flexible(
+                            child: ListView(
+                              controller: scrollController,
+                              physics: BouncingScrollPhysics(),
+                              children: cardWidgets,
+                            ),
+                          ),
+                        ],
+                      ),
                     );
-                  },
-                  borderRadius: BorderRadius.circular(12),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    height: 48.w,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Row(
+                  } else {
+                    return Column(
                       children: [
-                        SvgPicture.asset(AppImageUtils.UZCARD),
-                        SizedBox(
-                          width: 10.w,
+                        Container(
+                          width: double.infinity,
+                          height: 1,
+                          color: Colors.grey,
                         ),
-                        AppWidgets.text(
-                          text: splitCardNumber(projectModel.cardNumber!),
-                          color: AppColorUtils.KRAUDFANDING,
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w600,
-                        )
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 52, horizontal: 24),
+                          child: Center(
+                            child: Text(
+                              LocaleKeys.message_card.tr(),
+                              style: TextStyle(fontWeight: FontWeight.w500),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
                       ],
-                    ),
-                  ),
-                ),
+                    );
+                  }
+                },
               ),
-            ),
-            MixTextWidget().paddingSymmetric(vertical: 12.w),
-            ButtonCard(
-              onPress: () {
-                FlutterClipboard.copy(projectModel.cardNumber!);
-                AppWidgets.showText(
-                  text: LocaleKeys.be_save.tr(),
-                );
-              },
-              text: LocaleKeys.copy_card_number.tr(),
-              textSize: 16.sp,
-              fontWeight: FontWeight.w500,
-              height: 50.w,
-              width: 296.w,
-              color: AppColorUtils.PERCENT_COLOR,
-              textColor: AppColorUtils.WHITE,
-              borderRadius: 10,
-            ),
-            SizedBox(
-              height: 12.w,
-            ),
-            ButtonCard(
-              onPress: () {
-                Navigator.pop(context);
-              },
-              text: LocaleKeys.exit.tr(),
-              textSize: 16.sp,
-              fontWeight: FontWeight.w500,
-              height: 49.w,
-              width: 296.w,
-              color: AppColorUtils.GREEN_ACCENT5,
-              textColor: AppColorUtils.BLACK,
-              borderRadius: 10,
-            )
-          ],
-        ),
-      ),
-    );*/
+            ],
+          ),
+        );
+      },
+    );
   }
 
   String splitCardNumber(String cardNumber) {
+    String cardNumber2 = cardNumber.replaceAll(" ", "");
     String result = "";
 
-    List myLIst = cardNumber.split("");
+    List myLIst = cardNumber2.split("");
 
     myLIst.insert(4, " ");
     myLIst.insert(9, " ");
@@ -293,116 +199,3 @@ class SupportProjectDialog extends StatelessWidget {
     return result;
   }
 }
-
-/*class Namuna extends StatelessWidget {
-  Namuna({required this.projectModel});
-
-  ProjectModel projectModel;
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(children: [
-        AppWidgets.textLocale(
-          fontWeight: FontWeight.w500,
-          fontSize: 20.sp,
-          color: AppColorUtils.DARK2,
-          textAlign: TextAlign.center,
-          text: LocaleKeys.project_implementation,
-        ).paddingOnly(bottom: 20.w),
-        MixTextWidget().paddingSymmetric(vertical: 12.w),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.credit_card,
-              color: AppColorUtils.BORDER_COLOR,
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            AppWidgets.textLocale(
-              text: LocaleKeys.card_number.tr(),
-              fontSize: 18.sp,
-              color: AppColorUtils.DARK_1,
-              fontWeight: FontWeight.w400,
-            ),
-          ],
-        ),
-        SizedBox(height: 12.h),
-        ListView.builder(
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            Material(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Ink(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: AppColorUtils.GREEN_ACCENT6,
-                ),
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  height: 48.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(AppImageUtils.UZCARD),
-                      SizedBox(width: 16.w),
-                      Column(
-                        children: [
-                          AppWidgets.text(
-                            text: splitCardNumber(projectModel.cardNumber!),
-                            color: AppColorUtils.DARK_1,
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          SizedBox(height: 4.h),
-                          //TODO model'dan user_name qo'yish kerak
-                          Text(
-                            "Eshonov Fakhriyor $index",
-                            style: TextStyle(color: AppColorUtils.TEXT_GREEN1),
-                          )
-                        ],
-                      ),
-                      Spacer(),
-                      SizedBox(width: 16.w),
-                      GestureDetector(
-                        child: SvgPicture.asset(AppImageUtils.IC_COPY),
-                        onTap: () {
-                          FlutterClipboard.copy(projectModel.cardNumber!);
-                          AppWidgets.showText(
-                            text: LocaleKeys.be_save.tr(),
-                          );
-                        },
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            );
-          },
-        ),
-      ]),
-    );
-  }
-
-  String splitCardNumber(String cardNumber) {
-    String result = "";
-
-    List myLIst = cardNumber.split("");
-
-    myLIst.insert(4, " ");
-    myLIst.insert(9, " ");
-    myLIst.insert(14, " ");
-
-    for (String i in myLIst) {
-      result += i;
-    }
-
-    return result;
-  }
-}*/

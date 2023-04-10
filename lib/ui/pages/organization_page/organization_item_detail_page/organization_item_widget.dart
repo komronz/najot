@@ -192,7 +192,7 @@ class _OrganizationItemWidgetState extends State<OrganizationItemWidget>
                                 },
                               ).paddingOnly(top: 15.w),
                               SizedBox(height: 12.w),
-                              // DetailBodyPart2(cardModel: widget.model.cardModel)
+                              DetailBodyPart2(cardModel: widget.model.cardModel)
                             ],
                           ),
                         ),
