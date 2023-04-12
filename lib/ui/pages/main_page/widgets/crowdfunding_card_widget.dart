@@ -98,7 +98,7 @@ class CrowdfundingCardWidget extends StatelessWidget {
                                       height: 2,
                                     ),
                                     AppWidgets.textLocale(
-                                      text: Format.moneyFormat(double.parse(projectModel.amountCollected!)),
+                                      text: Format.moneyFormat(double.parse(projectModel.amountCollected??"0")),
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w600,
                                       color: AppColorUtils.GREEN_TEXT,
