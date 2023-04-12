@@ -18,7 +18,6 @@ class DropDownWidget extends StatelessWidget {
     this.isEmpty = false,
     this.selectValue,
     Key? key,
-
   }) : super(key: key);
   final List<String>? items;
   final bool isEmpty;
@@ -94,40 +93,50 @@ class DropDownWidget extends StatelessWidget {
                   .toList(),
               value: selectValue,
               onChanged: (v) => onChange(v),
-              icon: const Icon(
-                Icons.keyboard_arrow_down_outlined,
-                color: AppColorUtils.WHITE,
-              ),
-              buttonHeight: 50.h,
-              buttonPadding: const EdgeInsets.symmetric(
-                horizontal: 4,
-              ),
-              buttonDecoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(14),
-                border: Border.all(
-                  width: 2,
-                  color: AppColorUtils.BORDER_COLOR,
+              iconStyleData: IconStyleData(
+                icon: const Icon(
+                  Icons.keyboard_arrow_down_outlined,
+                  color: AppColorUtils.WHITE,
                 ),
-                color: AppColorUtils.WHITE,
               ),
-              buttonElevation: 0,
-              itemHeight: 40,
-              itemPadding: const EdgeInsets.only(
-                left: 14,
-                right: 14,
+              buttonStyleData: ButtonStyleData(
+                height: 50.h,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 4,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(14),
+                  border: Border.all(
+                    width: 2,
+                    color: AppColorUtils.BORDER_COLOR,
+                  ),
+                  color: AppColorUtils.WHITE,
+                ),
+                elevation: 0,
               ),
-              dropdownMaxHeight: 200.h,
-              dropdownWidth: 250.w,
-              dropdownPadding: null,
-              dropdownDecoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: AppColorUtils.WHITE,
+              menuItemStyleData: MenuItemStyleData(
+                height: 40,
+                padding: const EdgeInsets.only(
+                  left: 14,
+                  right: 14,
+                ),
               ),
-              dropdownElevation: 0,
-              scrollbarRadius: const Radius.circular(40),
-              scrollbarThickness: 6,
-              scrollbarAlwaysShow: false,
-              offset: const Offset(0, 0),
+              dropdownStyleData: DropdownStyleData(
+                maxHeight: 200.h,
+                width: 250.w,
+                padding: null,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: AppColorUtils.WHITE,
+                ),
+                elevation: 0,
+                scrollbarTheme: ScrollbarThemeData(
+                  radius: const Radius.circular(40),
+                  thickness: MaterialStateProperty.all(6),
+                  thumbVisibility: MaterialStateProperty.all(false),
+                ),
+                offset: const Offset(0, 0),
+              ),
             ),
           ),
         ),
