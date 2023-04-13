@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,7 +6,6 @@ import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/ui/pages/intro_page/widgets/intro_page_one_widget.dart';
 import 'package:najot/ui/pages/intro_page/widgets/intro_page_three_widget.dart';
-import 'package:najot/ui/pages/intro_page/widgets/intro_page_two_widget.dart';
 import 'package:najot/ui/pages/intro_page/widgets/intro_view_widgets.dart';
 
 import '../../../data/bloc/intro_page_bloc/intro_state.dart';
@@ -50,8 +48,7 @@ class IntroPage extends StatelessWidget {
                     IntroPageThreeWidget(
                       image: "assets/images/splash_3.png",
                       title: LocaleKeys.volunteering,
-                      content:
-                          "Ehsonning miqdori muhim emas, balki sizning xayriyangiz ortidagi ma'no muhim",
+                      content: LocaleKeys.splash_text_volunteer,
                     ),
                   ],
                 ),
