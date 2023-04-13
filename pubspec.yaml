@@ -57,8 +57,6 @@ dependencies:
   store_redirect: ^2.0.1
   url_launcher: ^6.1.6
   lottie: ^2.2.0
-  
-
 
 dev_dependencies:
   flutter_test:
