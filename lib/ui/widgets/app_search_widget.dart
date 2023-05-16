@@ -35,6 +35,7 @@ class _AppSearchWidgetState extends State<AppSearchWidget> {
       ),
       height: 50,
       child: TextField(
+        cursorColor: AppColorUtils.GREEN_APP,
         enableSuggestions: true,
         onChanged: widget.onChange,
         decoration: InputDecoration(
@@ -42,6 +43,7 @@ class _AppSearchWidgetState extends State<AppSearchWidget> {
           border: _border,
           disabledBorder: _border,
           focusedBorder: _border,
+          focusColor: AppColorUtils.BORDER_COLOR,
           suffixIcon: InkWell(
             onTap: widget.search,
             child: AppWidgets.imageSvg(

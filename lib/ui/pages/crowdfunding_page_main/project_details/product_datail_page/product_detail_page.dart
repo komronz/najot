@@ -189,7 +189,7 @@ class ProductDetailPage extends StatelessWidget {
                           children: [
                             AppWidgets.textLocale(
                               text: Format.moneyFormat(
-                                double.parse(model.products.price ?? ""),
+                                double.parse(model.products.price ?? "0"),
                               ),
                               fontWeight: FontWeight.w600,
                               fontSize: 16.sp,

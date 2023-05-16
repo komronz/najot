@@ -94,7 +94,7 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
     if (state.hasConnection) {
       if (state.isLoading) {
         return Center(
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator(color: AppColorUtils.GREEN_APP),
         );
       }
       return DefaultTabController(

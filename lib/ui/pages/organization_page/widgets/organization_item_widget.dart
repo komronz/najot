@@ -7,6 +7,7 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/organization_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/pages/organization_page/organization_item_detail_page/organization_item_detail_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 
@@ -85,6 +86,7 @@ class OrganizationItemWidget extends StatelessWidget {
         ),
       ),
       onTap: () {
+        AppLoggerUtil.d("looog22: clock");
         NavigatorService.to.pushNamed(
           OrganizationItemDetailPage.routeName,
           arguments: OrganizationItemDetailPageModel(

@@ -13,7 +13,10 @@ import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/styles/app_colors.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
+import 'package:najot/data/utils/map_utils.dart';
 import 'package:najot/ui/pages/loading_page/loading_page.dart';
+import 'package:najot/ui/widgets/ripple_effect.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
 /// Please don't change [fontSize] directly.
@@ -181,25 +184,28 @@ class AppWidgets {
     FontStyle fontStyle = FontStyle.normal,
   }) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment:
-          isCenter ? MainAxisAlignment.center : MainAxisAlignment.start,
+      isCenter ? MainAxisAlignment.center : MainAxisAlignment.start,
       children: [
         hasStar
             ? SizedBox(
-                child: textLocale(
-                  text: '*',
-                  fontSize: fontSize,
-                  color: AppColorUtils.RED,
-                ),
-              )
+          child: textLocale(
+            text: '*',
+            fontSize: fontSize,
+            color: AppColorUtils.RED,
+          ),
+        )
             : SizedBox(),
-        textLocale(
-          text: text,
-          color: color,
-          fontSize: fontSize,
-          fontWeight: fontWeight,
-          maxLines: maxLines,
-          fontStyle: fontStyle,
+        Expanded(
+          child: textLocale(
+            text: text,
+            color: color,
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+            maxLines: maxLines,
+            fontStyle: fontStyle,
+          ),
         ),
       ],
     );
@@ -285,11 +291,11 @@ class AppWidgets {
                   borderRadius: BorderRadius.circular(3.w),
                   child: context.locale == Locale('ru', 'RU')
                       ? SvgPicture.asset(
-                          AppImageUtils.RUS_FLAG,
-                        )
+                    AppImageUtils.RUS_FLAG,
+                  )
                       : SvgPicture.asset(
-                          AppImageUtils.UZ_FLAG,
-                        ),
+                    AppImageUtils.UZ_FLAG,
+                  ),
                 ),
                 SizedBox(
                   width: 8.w,
@@ -356,6 +362,35 @@ class AppWidgets {
     );
   }
 
+  static Widget locationButton(String url) {
+    String url2 = url.replaceAll("https://", "").replaceAll("www.", "");
+    int firstSlashIndex = url2.indexOf('/');
+    AppLoggerUtil.d("location: ${url2}");
+
+    String authority = url2.substring(0, firstSlashIndex);
+    String unenCodePath = url2.substring(firstSlashIndex);
+
+    // Uri uri = Uri.https(authority, unenCodePath);
+    Uri uri = Uri.https(authority, unenCodePath);
+    return Container(
+      width: 42,
+      height: 42,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(42),
+        child: RippleButton(
+          onTap: () {
+            AppLoggerUtil.d("click Location");
+            MapUtils.openMap(uri);
+          },
+          child: Icon(
+            Icons.location_on_outlined,
+            color: AppColorUtils.GREEN_APP,
+          ),
+        ),
+      ),
+    );
+  }
+
   static Widget appBarMenu({
     required String title,
     required VoidCallback onTapMenu,
@@ -388,17 +423,17 @@ class AppWidgets {
           ),
           visibleIcon
               ? InkWell(
-                  child: Container(
-                    height: 35.w,
-                    width: 35.w,
-                    child: SvgPicture.asset(icon),
-                  ),
-                  onTap: onTapIcon,
-                )
+            child: Container(
+              height: 35.w,
+              width: 35.w,
+              child: SvgPicture.asset(icon),
+            ),
+            onTap: onTapIcon,
+          )
               : SizedBox(
-                  height: 35.w,
-                  width: 35.w,
-                ),
+            height: 35.w,
+            width: 35.w,
+          ),
         ],
       ),
     );
@@ -542,8 +577,8 @@ class AppWidgets {
             ),
             direction == true
                 ? SvgPicture.asset(
-                    AppImageUtils.RIGHT_DIRECTION,
-                  )
+              AppImageUtils.RIGHT_DIRECTION,
+            )
                 : SizedBox()
           ],
         ),
@@ -596,13 +631,12 @@ class AppWidgets {
     );
   }
 
-  static Widget networkImage(
-      {required String url,
-      double? height,
-      double? width,
-      Color? color,
-      BoxFit fit = BoxFit.cover,
-      int? scale}) {
+  static Widget networkImage({required String url,
+    double? height,
+    double? width,
+    Color? color,
+    BoxFit fit = BoxFit.cover,
+    int? scale}) {
     return ClipRRect(
       borderRadius: BorderRadius.all(Radius.circular(14)),
       child: CachedNetworkImage(

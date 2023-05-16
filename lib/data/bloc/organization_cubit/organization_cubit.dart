@@ -9,16 +9,16 @@ import 'package:najot/data/services/organization_service.dart';
 
 import '../../../ui/widgets/app_widgets.dart';
 import '../../localization/locale_keys.g.dart';
+
 part 'organization_state.dart';
 
 class OrganizationCubit extends Cubit<OrganizationState> {
-
-
   static OrganizationCubit get to => GetIt.I<OrganizationCubit>();
 
   static Future init() async {
     GetIt.instance..registerSingleton<OrganizationCubit>(OrganizationCubit());
   }
+
   OrganizationCubit()
       : super(OrganizationState(
           checkBox: false,
@@ -27,31 +27,31 @@ class OrganizationCubit extends Cubit<OrganizationState> {
   MainService mainService = MainService();
   var internetConnection;
 
-  Future load() async{
+  Future load() async {
     internetConnection = await mainService.checkInternetConnection();
     emit(state.copyWith(internetConnection: internetConnection));
     var organizationModel = await organizationService.getModel();
-    if(organizationModel != null){
+    if (organizationModel != null) {
       emit(state.copyWith(list: organizationModel.results));
     }
   }
+
   void onTapCheckBox(bool v) {
     emit(state.copyWith(checkBox: v));
   }
 
-  Future  onChangeSave(bool v) async {
+  Future onChangeSave(bool v) async {
     emit(state.copyWith(saveHelp: v));
   }
-  Future findProject(int id) async{
+  Future findProject(int id) async {
     internetConnection = await mainService.checkInternetConnection();
     emit(state.copyWith(internetConnection: internetConnection));
-      var tabProjects=await organizationService.getProjectModelById(id);
-      if(tabProjects!=null){
-        emit(state.copyWith(project: tabProjects));
-      }
-
+    emit(state.copyWith(project: RootProjectModel()));
+    var tabProjects = await organizationService.getProjectModelById(id);
+    if (tabProjects != null) {
+      emit(state.copyWith(project: tabProjects));
+    }
   }
-
 
   Future changeLike(int id) async {
     internetConnection = await mainService.checkInternetConnection();
@@ -61,7 +61,7 @@ class OrganizationCubit extends Cubit<OrganizationState> {
         for (int j = 0; j < state.project!.results!.length; j++) {
           if (state.project!.results![j].id == id) {
             state.project!.results![j].isFavourite =
-            !state.project!.results![j].isFavourite!;
+                !state.project!.results![j].isFavourite!;
             break;
           }
         }

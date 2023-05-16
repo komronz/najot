@@ -27,38 +27,42 @@ class MyCharityPriceWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AppWidgets.starTextWidget(
-                  text: LocaleKeys.amount_needed.tr(),
-                ),
-                AppWidgets.text(
-                  text: Format.moneyFormat(
-                    double.parse(model.amountCollected!),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AppWidgets.starTextWidget(
+                    text: LocaleKeys.amount_needed.tr(),
                   ),
-                  color: AppColorUtils.TEXT_GREEN2,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w600,
-                ).paddingOnly(top: 5.w),
-              ],
+                  AppWidgets.text(
+                    text: Format.moneyFormat(
+                      double.parse(model.amountCollected ?? "0"),
+                    ),
+                    color: AppColorUtils.TEXT_GREEN2,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                  ).paddingOnly(top: 5.w),
+                ],
+              ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                AppWidgets.textLocale(
-                  text: LocaleKeys.date_of_announcement,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 10.sp,
-                  color: AppColorUtils.DARK_6,
-                ),
-                AppWidgets.text(
-                  text: DateFormat("dd.MM.yyyy").format(createdAt),
-                  color: AppColorUtils.TEXT_GREEN2,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w600,
-                ).paddingOnly(top: 5.w),
-              ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  AppWidgets.textLocale(
+                    text: LocaleKeys.date_of_announcement,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 10.sp,
+                    color: AppColorUtils.DARK_6,
+                  ),
+                  AppWidgets.text(
+                    text: DateFormat("dd.MM.yyyy").format(createdAt),
+                    color: AppColorUtils.TEXT_GREEN2,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                  ).paddingOnly(top: 5.w),
+                ],
+              ),
             )
           ],
         ).paddingSymmetric(horizontal: 20),
@@ -89,7 +93,7 @@ class MyCharityPriceWidget extends StatelessWidget {
                 children: [
                   AppWidgets.textLocale(
                     text: Format.moneyFormat(
-                      double.parse(model.requiredFund!),
+                      double.parse(model.requiredFund ?? "0"),
                     ),
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,

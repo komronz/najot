@@ -5,6 +5,7 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/volunteer_model.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../my_charity_item_project_full_widget/my_charity_item_full_page.dart';
@@ -54,7 +55,7 @@ class MyCharityProjectList extends StatelessWidget {
             shrinkWrap: true,
             crossAxisCount: 2,
             physics: ClampingScrollPhysics(),
-            childAspectRatio: 168 / 298,
+            childAspectRatio: 168 / 320,
             padding: EdgeInsets.only(bottom: 15),
             reverse: false,
             children: List.generate(
@@ -64,6 +65,7 @@ class MyCharityProjectList extends StatelessWidget {
                     return CharityItemProjectWidget(
                       model:  list!.results![index],
                       onTap: () {
+                        AppLoggerUtil.d("looog1: Clock1");
                         NavigatorService.to.pushNamed(MyCharityItemFullPage.routeName,
                             arguments:  list!.results![index]);
                       },
@@ -72,6 +74,7 @@ class MyCharityProjectList extends StatelessWidget {
                    return CharityCashWidget(
                       model:  list!.results![index],
                       onTap: () {
+                        AppLoggerUtil.d("looog1: Clock2");
                         NavigatorService.to.pushNamed(
                             MyCharityProjectFullPage.routeName,
                             arguments:  list!.results![index]);

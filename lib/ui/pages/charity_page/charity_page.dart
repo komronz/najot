@@ -2,6 +2,7 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:logger/logger.dart';
 import 'package:najot/data/bloc/charity_page_cubit/charity_cubit.dart';
 import 'package:najot/data/bloc/home_cubit/home_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -9,6 +10,7 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/project_model.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/pages/charity_page/widgets/charity_item2_widget.dart';
 import 'package:najot/ui/pages/charity_page/widgets/charity_item_widget.dart';
 import 'package:najot/ui/widgets/app_bar_with_title.dart';
@@ -81,10 +83,12 @@ class _CharityPageState extends State<CharityPage>
           bloc: CharityCubit.to,
           builder: (context, state) {
             if (state.internetConnection) {
-              List<ProjectModel> list = state.charityModel!.results!;
+              List<ProjectModel> list = state.charityModel?.results ?? [];
               if (state.loading == true) {
                 return Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(
+                    color: AppColorUtils.GREEN_APP,
+                  ),
                 );
               } else {
                 return SingleChildScrollView(
@@ -99,8 +103,9 @@ class _CharityPageState extends State<CharityPage>
                       ).paddingSymmetric(horizontal: 20, vertical: 15.w),
                       state.searchProgress
                           ? Center(
-                              child: CircularProgressIndicator()
-                                  .paddingOnly(top: 220.w),
+                              child: CircularProgressIndicator(
+                                color: AppColorUtils.GREEN_APP,
+                              ).paddingOnly(top: 220.w),
                             )
                           : state.searchChange == ""
                               ? Column(
@@ -193,6 +198,7 @@ class _CharityPageState extends State<CharityPage>
                                               return CharityItemWidget(
                                                 model: list[index],
                                                 onTap: () {
+                                                  AppLoggerUtil.d("click");
                                                   NavigatorService.to.pushNamed(
                                                       CharityFullPage.routName,
                                                       arguments: list[index]);
@@ -205,6 +211,7 @@ class _CharityPageState extends State<CharityPage>
                                             } else {
                                               return CharityItem2Widget(
                                                 onTap: () {
+                                                  AppLoggerUtil.d("click2");
                                                   NavigatorService.to.pushNamed(
                                                       CharityFullPage2.routName,
                                                       arguments: list[index]);
@@ -264,7 +271,8 @@ class _CharityPageState extends State<CharityPage>
                                               tabs: List.generate(
                                                 state.category.length,
                                                 (index) => Text(
-                                                  state.category[index].name!,
+                                                  state.category[index].name ??
+                                                      "",
                                                 ),
                                               ),
                                               onTap: (index) {
@@ -400,11 +408,12 @@ class _CharityPageState extends State<CharityPage>
                                                 onTap: () {
                                                   NavigatorService.to.pushNamed(
                                                     CharityFullPage.routName,
-                                                    arguments: state.searchProjects[
-                                                    index],
+                                                    arguments: state
+                                                        .searchProjects[index],
                                                   );
                                                 },
-                                                model: state.searchProjects[index],
+                                                model:
+                                                    state.searchProjects[index],
                                                 onTapLike: () {
                                                   CharityCubit.to.changeLike(
                                                       state

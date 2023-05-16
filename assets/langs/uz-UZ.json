@@ -282,5 +282,7 @@
   "must_update" : "Iltimos, dasturdan to’liq foydalana olish uchun “ Yangilash” tugmasini bosing!",
   "have_new_version" : "Ilovanig yangiroq versiyasi mavjud",
   "languague_name":"O'zbek tili",
-  "splash_ehson_quote": "Hayriya so'ngan qalblarni porlatishi, qurigan daraxtlarni yashnatishi mumkin"
+  "splash_ehson_quote": "Hayriya so'ngan qalblarni porlatishi, qurigan daraxtlarni yashnatishi mumkin",
+  "splash_volontyor_quote": "Ehsonning miqdori muhim emas, balki sizning xayriyangiz ortidagi ma'no muhim",
+  "message_card": "Qo'llab quvvatlash uchun karta raqamlari mavjud emas!"
 }

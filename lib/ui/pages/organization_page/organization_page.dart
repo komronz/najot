@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/organization_cubit/organization_cubit.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/pages/organization_page/widgets/organization_item_widget.dart';
 import '../../../data/localization/locale_keys.g.dart';
 import '../../../data/services/navigator_service.dart';

@@ -38,7 +38,7 @@ class CharityCashWidget extends StatelessWidget {
           ],
         ),
         width: 175.w,
-        height: 298.w,
+        // height: 298.w,
         child: Column(
           children: [
             Expanded(
@@ -105,7 +105,7 @@ class CharityCashWidget extends StatelessWidget {
                       fontSize: 9.5.sp,
                       hasStar: true,
                     ).paddingOnly(
-                      bottom: 7.h,
+                      // bottom: 7.h,
                     ),
                   ),
                   Row(

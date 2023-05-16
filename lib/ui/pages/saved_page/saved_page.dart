@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot/data/bloc/favorite-add_cubit/favorite_add_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/pages/home_page/home_page.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../data/bloc/crowdFounding_cubit/kraud_fanding_cubit.dart';
@@ -140,6 +141,7 @@ class SavedPage extends StatelessWidget {
           return NewVolunteerCard(
             cubit: VolunteerCubit.to,
             onTap: () {
+              AppLoggerUtil.d("tab: valan");
               NavigatorService.to.pushNamed(
                 VolunteerDetailPage.routeName,
                 arguments: VolunteerDetailModel(
@@ -160,6 +162,7 @@ class SavedPage extends StatelessWidget {
           if (cubit.state.list[index].requiredFund != null) {
             return CharityItemWidget(
               onTap: () {
+                AppLoggerUtil.d("tab: xayriya");
                 NavigatorService.to.pushNamed(CharityFullPage.routName,
                     arguments: cubit.state.list[index]);
               },
@@ -174,6 +177,7 @@ class SavedPage extends StatelessWidget {
             return CharityItem2Widget(
               model: cubit.state.list[index],
               onTap: () {
+                AppLoggerUtil.d("tab: xayriya2");
                 NavigatorService.to.pushNamed(CharityFullPage2.routName,
                     arguments: cubit.state.list[index]);
               },
@@ -185,6 +189,7 @@ class SavedPage extends StatelessWidget {
             );
           }
         } else {
+          AppLoggerUtil.d("tab: container");
           return Container();
         }
       }),

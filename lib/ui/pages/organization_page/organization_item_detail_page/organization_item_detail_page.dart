@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/organization_cubit/organization_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/organization_model.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/pages/organization_page/organization_item_detail_page/organization_item_widget2.dart';
 
 import '../../../../data/localization/locale_keys.g.dart';
@@ -45,8 +46,9 @@ class OrganizationItemDetailPage extends StatelessWidget {
         ),
       ),
       body: BlocBuilder<OrganizationCubit, OrganizationState>(
-        bloc: OrganizationCubit.to..findProject(model.model.id!),
+        bloc: OrganizationCubit.to..findProject(model.model.id ?? 0),
         builder: (context, state) {
+          // AppLoggerUtil.d("state: ${state.project!.results!.length}");
           return SingleChildScrollView(
             child: Column(
               children: [
@@ -91,7 +93,8 @@ class OrganizationItemDetailPage extends StatelessWidget {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                image: NetworkImage(model.model.founderImage!),
+                                image: NetworkImage(
+                                    model.model.founderImage ?? ""),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -110,7 +113,8 @@ class OrganizationItemDetailPage extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     AppWidgets.text(
-                                      text: model.model.founder!.firstName ?? "",
+                                      text:
+                                          model.model.founder!.firstName ?? "",
                                       color: AppColorUtils.TEXT_GREEN2,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 14.sp,
@@ -146,16 +150,18 @@ class OrganizationItemDetailPage extends StatelessWidget {
                         maxLines: 50,
                         height: 1.1.w,
                       ).paddingSymmetric(horizontal: 20.w),
-                      AppWidgets.textLocale(
-                        text: LocaleKeys.organizational_projects,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18.sp,
-                        color: AppColorUtils.DARK_1,
-                      ).paddingOnly(
-                        left: 20.w,
-                        top: 12.w,
-                        bottom: 10.w,
-                      ),
+                      if (state.project?.results?.isNotEmpty ?? false) ...{
+                        AppWidgets.textLocale(
+                          text: LocaleKeys.organizational_projects,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18.sp,
+                          color: AppColorUtils.DARK_1,
+                        ).paddingOnly(
+                          left: 20.w,
+                          top: 12.w,
+                          bottom: 10.w,
+                        ),
+                      },
                       SingleChildScrollView(
                         physics: BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
@@ -193,7 +199,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
                                       OrganizationItemWidget2.routName,
                                       arguments: OrganizationItemModel(
                                         cardModel:
-                                        state.project!.results![index],
+                                            state.project!.results![index],
                                         id: model.model.id!,
                                       ),
                                     );

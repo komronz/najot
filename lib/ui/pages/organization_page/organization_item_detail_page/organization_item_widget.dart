@@ -101,92 +101,100 @@ class _OrganizationItemWidgetState extends State<OrganizationItemWidget>
                             bottomRight: Radius.circular(11),
                           ),
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Stack(
-                              children: [
-                                Container(
-                                  height: 300.w,
-                                  margin: EdgeInsets.symmetric(
-                                    horizontal: 20.w,
-                                    vertical: 18.w,
-                                  ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(12),
+                        child: Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Stack(
+                                children: [
+                                  Container(
+                                    height: 300.w,
+                                    margin: EdgeInsets.symmetric(
+                                      horizontal: 20.w,
+                                      vertical: 18.w,
                                     ),
-                                    child: CachedNetworkImage(
-                                      imageUrl:
-                                          widget.model.cardModel.coverUrl!,
-                                      fit: BoxFit.cover,
-                                      width: MediaQuery.of(context).size.width,
-                                      placeholder: (context, url) => Center(
-                                        child: CircularProgressIndicator(),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(12),
                                       ),
-                                      errorWidget: (context, url, error) =>
-                                          Icon(Icons.error),
+                                      child: CachedNetworkImage(
+                                        imageUrl:
+                                            widget.model.cardModel.coverUrl!,
+                                        fit: BoxFit.cover,
+                                        width: MediaQuery.of(context).size.width,
+                                        placeholder: (context, url) => Center(
+                                          child: CircularProgressIndicator(),
+                                        ),
+                                        errorWidget: (context, url, error) =>
+                                            Icon(Icons.error),
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Positioned(
-                                  bottom: 120.w,
-                                  right: 0,
-                                  child: InkWell(
-                                    onTap: () {
-                                      showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return SupportProjectDialog(
-                                            projectModel:
-                                                widget.model.cardModel,
-                                          );
-                                          // return PaymentHistoryDialog(projectModel: widget.model.cardModel,);
-                                        },
-                                      );
-                                    },
-                                    child: Container(
-                                      height: 35.w,
-                                      width: 60.w,
-                                      decoration: BoxDecoration(
-                                        color: AppColorUtils.BLUE_PERCENT,
-                                        borderRadius: BorderRadius.horizontal(
-                                          left: Radius.circular(12),
+                                  Positioned(
+                                    bottom: 120.w,
+                                    right: 0,
+                                    child: InkWell(
+                                      onTap: () {
+                                        showModalBottomSheet(
+                                          useSafeArea: true,
+                                          isScrollControlled: true,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(24),
+                                              topRight: Radius.circular(24),
+                                            ),
+                                          ),
+                                          context: context,
+                                          builder: (context) {
+                                            return SupportProjectDialog(
+                                              projectModel: widget.model.cardModel,
+                                            );
+                                          },
+                                        );
+                                      },
+                                      child: Container(
+                                        height: 35.w,
+                                        width: 60.w,
+                                        decoration: BoxDecoration(
+                                          color: AppColorUtils.BLUE_PERCENT,
+                                          borderRadius: BorderRadius.horizontal(
+                                            left: Radius.circular(12),
+                                          ),
+                                        ),
+                                        child: Icon(
+                                          Icons.monetization_on_outlined,
+                                          color: Colors.white,
                                         ),
                                       ),
-                                      child: Icon(
-                                        Icons.monetization_on_outlined,
-                                        color: Colors.white,
-                                      ),
                                     ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            AppWidgets.text(
-                              text: widget.model.cardModel.title!,
-                              fontSize: 20.sp,
-                              color: AppColorUtils.DARK2,
-                              fontWeight: FontWeight.w500,
-                              maxLines: 2,
-                            ).paddingSymmetric(horizontal: 20.w),
-                            CrowdfundingAuthorWidget(
-                              model: widget.model.cardModel,
-                              onTap: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return CommentToAuthorDialog(
-                                      cubit: cubitData,
-                                      projectModel: widget.model.cardModel,
-                                    );
-                                  },
-                                );
-                              },
-                            ).paddingOnly(top: 15.w),
-                            SizedBox(height: 12.w),
-                            DetailBodyPart2(cardModel: widget.model.cardModel)
-                          ],
+                                  )
+                                ],
+                              ),
+                              AppWidgets.text(
+                                text: widget.model.cardModel.title!,
+                                fontSize: 20.sp,
+                                color: AppColorUtils.DARK2,
+                                fontWeight: FontWeight.w500,
+                                maxLines: 2,
+                              ).paddingSymmetric(horizontal: 20.w),
+                              CrowdfundingAuthorWidget(
+                                model: widget.model.cardModel,
+                                onTap: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return CommentToAuthorDialog(
+                                        cubit: cubitData,
+                                        projectModel: widget.model.cardModel,
+                                      );
+                                    },
+                                  );
+                                },
+                              ).paddingOnly(top: 15.w),
+                              SizedBox(height: 12.w),
+                              DetailBodyPart2(cardModel: widget.model.cardModel)
+                            ],
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -283,12 +291,19 @@ class _OrganizationItemWidgetState extends State<OrganizationItemWidget>
                                 children: [
                                   ButtonCard(
                                     onPress: () {
-                                      showDialog(
+                                      showModalBottomSheet(
+                                        useSafeArea: true,
+                                        isScrollControlled: true,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(24),
+                                            topRight: Radius.circular(24),
+                                          ),
+                                        ),
                                         context: context,
                                         builder: (context) {
                                           return SupportProjectDialog(
-                                            projectModel:
-                                                widget.model.cardModel,
+                                            projectModel: widget.model.cardModel,
                                           );
                                         },
                                       );

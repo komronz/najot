@@ -43,10 +43,13 @@ class RulesPage extends StatelessWidget {
                       HomePage.globalKey.currentState!.openDrawer();
                     },
                   ),
-                  AppWidgets.textLocale(
-                    text: LocaleKeys.project_rules,
-                    fontSize: 26.sp,
-                    fontWeight: FontWeight.w600,
+                  Expanded(
+                    child: AppWidgets.textLocale(
+                      text: LocaleKeys.project_rules,
+                      fontSize: 26.sp,
+                      autoResize: true,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                   SizedBox(
                     width: 35.w,

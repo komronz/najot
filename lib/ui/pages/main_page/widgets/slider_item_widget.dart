@@ -37,50 +37,56 @@ class SliderItem extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            width: double.infinity,
-            height: 144.w,
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(12),
-                bottomRight: Radius.circular(12),
-              ),
-              boxShadow: <BoxShadow>[
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
-                  offset: Offset(0, 80),
-                  blurRadius: 20,
-                  blurStyle: BlurStyle.inner,
-                )
-              ],
+          ClipRRect(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(12),
+              bottomRight: Radius.circular(12),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AppWidgets.text(
-                  text: sliderModel.title ?? "",
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  maxLines: 2,
+            child: Container(
+              width: double.infinity,
+              height: 144.w,
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(12),
+                  bottomRight: Radius.circular(12),
                 ),
-                SizedBox(
-                  height: 7.w,
-                ),
-                AppWidgets.text(
-                  text: sliderModel.description!,
-                  color: Colors.white,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  maxLines: 3,
-                ),
-              ],
-            ).paddingOnly(
-              left: 18.w,
-              right: 18.w,
-              bottom: 18.w,
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    offset: Offset(0, 80),
+                    blurRadius: 20,
+                    blurStyle: BlurStyle.inner,
+                  )
+                ],
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AppWidgets.text(
+                    text: sliderModel.title ?? "",
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    maxLines: 2,
+                  ),
+                  SizedBox(
+                    height: 7.w,
+                  ),
+                  AppWidgets.text(
+                    text: sliderModel.description!,
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    maxLines: 3,
+                  ),
+                ],
+              ).paddingOnly(
+                left: 18.w,
+                right: 18.w,
+                bottom: 18.w,
+              ),
             ),
           ),
         ],

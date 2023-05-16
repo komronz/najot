@@ -25,10 +25,12 @@ class AppColorUtils {
   static const Color BLUE_ACCENT1 = Color(0xFFEBF3FF);
   static const Color GREEN_ACCENT3 = Color(0xFC8ECE5);
   static const Color GREEN_TAB = Color(0xFF71958E);
+  static const Color TEXT_GREEN1 = Color(0xFF788D88);
   static const Color TEXT_GREY2 = Color(0xFF5A6D6A);
   static const Color GREEN_ACCENT4 = Color(0xFFF8FEFD);
   static const Color LINE_TEXT_FIELD = Color(0xFF9FC9C0);
   static const Color GREEN_ACCENT5 = Color(0xFFEBF8F4);
+  static const Color GREEN_ACCENT6 = Color(0xFFF4F8F7);
   static const Color BLUE_BUTTON = Color(0xFF1F6ADE);
 
   // static const Color GREY = Colors.grey;

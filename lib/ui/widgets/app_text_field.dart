@@ -118,6 +118,7 @@ class _AppTextFieldState extends State<AppTextField> {
             maxLines: widget.isMultiLine ? null : 1,
             controller: _textEditingController,
             enabled: widget.enabled,
+            cursorColor: AppColorUtils.GREEN_APP,
             style: GoogleFonts.inter(
               fontSize: 14.sp,
             ),
