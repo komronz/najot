@@ -31,7 +31,7 @@ class NotificationApiService {
 
   static Future notificationDetails() async {
     return NotificationDetails(
-      android: AndroidNotificationDetails(
+      android: const AndroidNotificationDetails(
         'channel id',
         'channel name',
         channelDescription: "channel description",
