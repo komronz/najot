@@ -7,6 +7,7 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
 import 'package:najot/data/utils/app_image_utils.dart';
+import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/app_date_picker.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/img_view.dart';
 import 'package:najot/ui/pages/reg_volounteer/widgets/volunteer_pass_info_dialog.dart';
@@ -129,12 +130,14 @@ class View2 extends StatelessWidget {
                         bloc.add(VolunteerPassImgDeleted());
                       },
                       onTapImg: () {
+                        AppLoggerUtil.d("btnUplaod1");
                         NavigatorService.to.pushNamed(
                           ImgView.routeName,
                           arguments: bloc.state.passportImgPath!.path,
                         );
                       },
                       uploadBtn: () async {
+                        AppLoggerUtil.d("btnUplaod2");
                         bloc.add(VolunteerPassImgUploaded());
                       },
                       img: bloc.state.passportImgPath,

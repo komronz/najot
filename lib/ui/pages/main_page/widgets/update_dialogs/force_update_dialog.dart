@@ -66,10 +66,9 @@ class ForceUpdateDialog extends StatelessWidget {
                 height: 44.w,
                 title: LocaleKeys.update,
                 onTap: () {
-                  ///O'zgartirish kerak
                   StoreRedirect.redirect(
-                    androidAppId: "org.khanacademy.android",
-                    iOSAppId: "469863705",
+                    androidAppId: "uz.najot.app",
+                    iOSAppId: "6446285986",
                   );
                 },
               ),

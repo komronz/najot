@@ -4,7 +4,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/volunteer_profile_service.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
@@ -59,8 +58,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
   Future _onPostVolunteerData(PostVolunteerData event,
       Emitter<RegVolunteerState> emit,) async {
     var postVolunteerData =await service.postVolunteerData(
-      HiveService.to.getUser()!.firstName!,
-      HiveService.to.getUser()!.lastName!,
+      state.firstName,
+      state.lastName,
       state.address,
       "${state.gender}",
       state.birthDate!,
@@ -273,8 +272,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
           imagePicker,
         ),
       ));
-      AppWidgets.isLoading(false);
     }
+      AppWidgets.isLoading(false);
   }
 
   Future _onPassImgUploaded(VolunteerPassImgUploaded event,
@@ -297,8 +296,8 @@ class RegVolunteerBloc extends Bloc<RegVolunteerEvent, RegVolunteerState> {
           ),
         ),
       );
-      AppWidgets.isLoading(false);
     }
+      AppWidgets.isLoading(false);
   }
 
   Future _onSendBtnPressed(VolunteerSendBtn event,
