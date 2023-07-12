@@ -73,14 +73,7 @@ class _HomePageState extends State<HomePage> {
       builder: (context, state) {
         if (state.internetConnection) {
           return Scaffold(
-            floatingActionButton: FloatingActionButton(onPressed: () {
-              RootService.hiveService.setToken(
-                LoginEndModel(
-                  access: "eyJ0eXAiOiJKV1QiLCJhbGciOklahdI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg5NzU2MjgzLCJpYXQiOjE2ODkxNTE0ODMsImp0aSI6IjRkMGM2M2I4MjRiMzQ5NzM5YjdmNjYzMGYzOGQ1YTZlIiwidXNlcl9pZCI6OTl9.Sc7wcluQ448y_hmYQ3th2vRCDmkVHyspdBZGAWt3aI4",
-             refresh: RootService.hiveService.getToken()!.refresh
-                ),
-              );
-            }),
+
             // backgroundColor: AppColorUtils.BACKGROUND,
             key: HomePage.globalKey,
             onDrawerChanged: (isOpened) {
