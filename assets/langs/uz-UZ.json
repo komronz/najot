@@ -275,14 +275,16 @@
   "enter_phone_number": "Telefon raqamini kiriting",
   "support_project_again": "Loyihani yana qo'llash",
   "copy_card_number": "Karta raqamini nusxalash",
-  "ask_no_more" : "Boshqa so'ramang",
-  "reminder_later" : "Keyinroq eslatish",
-  "update" : "Yangilash",
-  "might_for_update" : "Ilovani yangilash uchun, “ Yangilash” tugmasini bosing!",
-  "must_update" : "Iltimos, dasturdan to’liq foydalana olish uchun “ Yangilash” tugmasini bosing!",
-  "have_new_version" : "Ilovanig yangiroq versiyasi mavjud",
   "languague_name":"O'zbek tili",
-  "splash_ehson_quote": "Hayriya so'ngan qalblarni porlatishi, qurigan daraxtlarni yashnatishi mumkin",
   "splash_volontyor_quote": "Ehsonning miqdori muhim emas, balki sizning xayriyangiz ortidagi ma'no muhim",
   "message_card": "Qo'llab quvvatlash uchun karta raqamlari mavjud emas!"
+  "ask_no_more": "Boshqa so'ramang",
+  "reminder_later": "Keyinroq eslatish",
+  "update": "Yangilash",
+  "might_for_update": "Ilovani yangilash uchun, “ Yangilash” tugmasini bosing!",
+  "must_update": "Iltimos, dasturdan to’liq foydalana olish uchun “ Yangilash” tugmasini bosing!",
+  "have_new_version": "Ilovanig yangiroq versiyasi mavjud",
+  "language_name": "O'zbek tili",
+  "splash_ehson_quote": "Hayriya so'ngan qalblarni porlatishi, qurigan daraxtlarni yashnatishi mumkin",
+  "splash_text_volunteer": "Volontyorlik orqali muhtojlarga yordam bering. Ular sizning yordamingizga muhtoj."
 }

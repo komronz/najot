@@ -283,8 +283,10 @@ abstract class  LocaleKeys {
   static const might_for_update = 'might_for_update';
   static const must_update = 'must_update';
   static const have_new_version = 'have_new_version';
-  static const languague_name = 'languague_name';
+  static const language_name = 'language_name';
   static const splash_ehson_quote = 'splash_ehson_quote';
+  static const splash_text_volunteer = 'splash_text_volunteer';
+
   static const splash_volontyor_quote = 'splash_volontyor_quote';
   static const message_card = 'message_card';
 }

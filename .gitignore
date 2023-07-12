@@ -48,5 +48,4 @@ app.*.map.json
 
 .vscode/
 /pubspec.lock
-/android/key.properties
 pubspec.lock
