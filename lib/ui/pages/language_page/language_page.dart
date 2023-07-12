@@ -12,6 +12,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import '../intro_page/intro_page.dart';
 
 class LanguagePage extends StatefulWidget {
+  static const String routeName = "/languagePage";
   LanguagePage({Key? key}) : super(key: key);
 
   @override
