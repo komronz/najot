@@ -46,6 +46,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     listenNotifications();
     print(RootService.hiveService.getToken()!.access);
+    print(RootService.hiveService.getToken()!.refresh);
     super.initState();
   }
 

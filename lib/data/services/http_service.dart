@@ -6,9 +6,11 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:get_it/get_it.dart';
+import 'package:najot/data/services/root_service.dart';
 
 import '../../ui/pages/language_page/language_page.dart';
 import '../config/const/api_const.dart';
+import '../model/auth_model/login_end_model.dart';
 import '../utils/app_logger_util.dart';
 import 'auth_service.dart';
 import 'navigator_service.dart';
@@ -104,7 +106,7 @@ class HttpService {
       }
     }on DioError catch (e) {
       if (e.response!.statusCode == 401) {
-        var reFresh = await AuthService().reFreshToken();
+        var reFresh = await reFreshToken();
         if (reFresh != null) {
           var res = await post(
             path: path,
@@ -113,8 +115,6 @@ class HttpService {
             headers: headers,
           );
           return res;
-        } else {
-          NavigatorService.to.pushNamedAndRemoveUntil(LanguagePage.routeName);
         }
       }
       return e.response;
@@ -161,7 +161,7 @@ class HttpService {
       }
     }on DioError catch (e) {
       if (e.response!.statusCode == 401) {
-        var reFresh = await AuthService().reFreshToken();
+        var reFresh = await reFreshToken();
         if (reFresh != null) {
           var res = await get(
             path: path,
@@ -170,8 +170,6 @@ class HttpService {
             parameters: parameters,
           );
           return res;
-        } else {
-          NavigatorService.to.pushNamedAndRemoveUntil(LanguagePage.routeName);
         }
       }
       return e.response;
@@ -194,7 +192,7 @@ class HttpService {
           data: jsonEncode(fields));
     }on DioError catch (e) {
       if (e.response!.statusCode == 401) {
-        var reFresh = await AuthService().reFreshToken();
+        var reFresh = await reFreshToken();
         if (reFresh != null) {
           var res = await put(
             path: path,
@@ -203,8 +201,6 @@ class HttpService {
             headers: headers
           );
           return res;
-        } else {
-          NavigatorService.to.pushNamedAndRemoveUntil(LanguagePage.routeName);
         }
       }
       return e.response;
@@ -228,7 +224,7 @@ class HttpService {
           data: jsonEncode(fields));
     }on DioError catch (e) {
       if (e.response!.statusCode == 401) {
-        var reFresh = await AuthService().reFreshToken();
+        var reFresh = await reFreshToken();
         if (reFresh != null) {
           var res = await delete(
             path: path,
@@ -237,8 +233,6 @@ class HttpService {
             headers: headers,
           );
           return res;
-        } else {
-          NavigatorService.to.pushNamedAndRemoveUntil(LanguagePage.routeName);
         }
       }
       return e.response;
@@ -247,4 +241,41 @@ class HttpService {
       return null;
     }
   }
+  Future<LoginEndModel?> reFreshToken() async {
+    var refresh = RootService.hiveService.getToken() == null
+        ? null
+        : RootService.hiveService.getToken()!.refresh!;
+    if (refresh == null) NavigatorService.to.pushNamedAndRemoveUntil(LanguagePage.routeName);
+    try{
+      var res = await _dio!.post(
+        "https://api.najot.uz/en/auth/api/token/refresh/",
+        data: jsonEncode({"refresh": refresh}),
+        options: Options(
+          headers: {
+            HttpHeaders.contentTypeHeader: "application/json",
+          },
+        ),
+      );
+
+      if (res.statusCode == 200 || res.statusCode == 201) {
+        AppLoggerUtil.w("reFresh token function is runned");
+        RootService.hiveService.setToken(
+          LoginEndModel.fromJson(
+              res.data
+          ),
+        );
+        return RootService.hiveService.getToken();
+      }
+      return null;
+    }on DioError catch (e) {
+      if (e.response!.statusCode == 401) {
+        RootService.hiveService.deleteToken();
+        NavigatorService.to.pushNamedAndRemoveUntil(LanguagePage.routeName);
+      }
+    }catch (e) {
+      AppLoggerUtil.e("$e");
+      return null;
+    }
+  }
+
 }

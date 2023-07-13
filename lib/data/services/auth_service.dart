@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:najot/data/model/auth_model/login_end_model.dart';
 import 'package:najot/data/model/blocked_model.dart';
@@ -169,28 +170,5 @@ class AuthService {
     return "998${text}";
   }
 
-  Future<LoginEndModel?> reFreshToken() async {
-    var refresh = RootService.hiveService.getToken() == null
-        ? null
-        : RootService.hiveService.getToken()!.refresh!;
-    if (refresh == null) NavigatorService.to.pushNamedAndRemoveUntil(LanguagePage.routeName);
-    var res = await RootService.httpService.post(
-      path: "https://api.najot.uz/en/auth/api/token/refresh/",
-      fields: {"refresh": refresh},
-    );
-    if(res == null){
-      return null;
-    }
-    if (res.statusCode == 200 || res.statusCode == 201) {
-      AppLoggerUtil.w("reFresh token function is runned");
-      RootService.hiveService.setToken(
-        LoginEndModel.fromJson(
-            res.data
-        ),
-      );
-      return RootService.hiveService.getToken();
-    }
-    return null;
-  }
 
 }
