@@ -6,9 +6,14 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:get_it/get_it.dart';
+import 'package:najot/data/services/root_service.dart';
 
+import '../../ui/pages/language_page/language_page.dart';
 import '../config/const/api_const.dart';
+import '../model/auth_model/login_end_model.dart';
 import '../utils/app_logger_util.dart';
+import 'auth_service.dart';
+import 'navigator_service.dart';
 
 class HttpService {
   Dio? _dio;
@@ -21,6 +26,7 @@ class HttpService {
     await getIt<HttpService>().create();
   }
 
+  // final AuthService _authService = AuthService();
   Future create() async {
     if (_dio == null) {
       _dio = Dio();
@@ -80,7 +86,7 @@ class HttpService {
       AppLoggerUtil.d("API: ${APIConst.API_URL + path!}");
       if (token != null) {
         return await _dio!.post(
-          path,
+          APIConst.API_URL + path,
           data: jsonEncode(fields),
           options: Options(
             headers: {
@@ -98,9 +104,21 @@ class HttpService {
           ),
         );
       }
-    } on DioError catch (e) {
+    }on DioError catch (e) {
+      if (e.response!.statusCode == 401) {
+        var reFresh = await reFreshToken();
+        if (reFresh != null) {
+          var res = await post(
+            path: path,
+            token: reFresh.access!,
+            fields: fields,
+            headers: headers,
+          );
+          return res;
+        }
+      }
       return e.response;
-    } catch (e) {
+    }   catch (e) {
       AppLoggerUtil.e(e.toString());
       return null;
     }
@@ -141,6 +159,20 @@ class HttpService {
           ),
         );
       }
+    }on DioError catch (e) {
+      if (e.response!.statusCode == 401) {
+        var reFresh = await reFreshToken();
+        if (reFresh != null) {
+          var res = await get(
+            path: path,
+            token: reFresh.access!,
+            url: url,
+            parameters: parameters,
+          );
+          return res;
+        }
+      }
+      return e.response;
     } catch (e) {
       AppLoggerUtil.e(e.toString());
     }
@@ -158,9 +190,21 @@ class HttpService {
             headers: headers,
           ),
           data: jsonEncode(fields));
-    } on DioError catch (e) {
+    }on DioError catch (e) {
+      if (e.response!.statusCode == 401) {
+        var reFresh = await reFreshToken();
+        if (reFresh != null) {
+          var res = await put(
+            path: path,
+            token: reFresh.access!,
+            fields: fields,
+            headers: headers
+          );
+          return res;
+        }
+      }
       return e.response;
-    } catch (e) {
+    }   catch (e) {
       AppLoggerUtil.e("$e");
       return null;
     }
@@ -178,11 +222,60 @@ class HttpService {
             headers: {"Authorization": "Bearer $token"},
           ),
           data: jsonEncode(fields));
-    } on DioError catch (e) {
+    }on DioError catch (e) {
+      if (e.response!.statusCode == 401) {
+        var reFresh = await reFreshToken();
+        if (reFresh != null) {
+          var res = await delete(
+            path: path,
+            token: reFresh.access!,
+            fields: fields,
+            headers: headers,
+          );
+          return res;
+        }
+      }
       return e.response;
-    } catch (e) {
+    }  catch (e) {
       AppLoggerUtil.e("$e");
       return null;
     }
   }
+  Future<LoginEndModel?> reFreshToken() async {
+    var refresh = RootService.hiveService.getToken() == null
+        ? null
+        : RootService.hiveService.getToken()!.refresh!;
+    if (refresh == null) NavigatorService.to.pushNamedAndRemoveUntil(LanguagePage.routeName);
+    try{
+      var res = await _dio!.post(
+        "https://api.najot.uz/en/auth/api/token/refresh/",
+        data: jsonEncode({"refresh": refresh}),
+        options: Options(
+          headers: {
+            HttpHeaders.contentTypeHeader: "application/json",
+          },
+        ),
+      );
+
+      if (res.statusCode == 200 || res.statusCode == 201) {
+        AppLoggerUtil.w("reFresh token function is runned");
+        RootService.hiveService.setToken(
+          LoginEndModel.fromJson(
+              res.data
+          ),
+        );
+        return RootService.hiveService.getToken();
+      }
+      return null;
+    }on DioError catch (e) {
+      if (e.response!.statusCode == 401) {
+        RootService.hiveService.deleteToken();
+        NavigatorService.to.pushNamedAndRemoveUntil(LanguagePage.routeName);
+      }
+    }catch (e) {
+      AppLoggerUtil.e("$e");
+      return null;
+    }
+  }
+
 }

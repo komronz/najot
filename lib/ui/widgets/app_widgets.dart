@@ -301,7 +301,7 @@ class AppWidgets {
                   width: 8.w,
                 ),
                 AppWidgets.text(
-                  text: LocaleKeys.languague_name.tr(),
+                  text: LocaleKeys.language_name.tr(),
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColorUtils.DARK2,

@@ -36,23 +36,6 @@ class HomeCubit extends Cubit<HomeState> {
     } else {}
   }
 
-  Future tokenUpdate() async {
-    if (RootService.hiveService.getToken() != null) {
-      var createdAt = DateTime.parse(RootService.hiveService.getToken()!.exp!);
-      var currentDay = DateTime.now().add(Duration(days: 1));
-      if (createdAt.year == currentDay.year &&
-          createdAt.month == currentDay.month &&
-          createdAt.day < currentDay.day) {
-        var tokenModel = await mainService.tokenUpdate();
-        if (tokenModel != null) {
-          RootService.hiveService.setToken(tokenModel);
-        } else {
-          AppLoggerUtil.e("token error");
-        }
-      }
-    }
-  }
-
   void crowdFundingChangeLike(int index, bool like) {
     List<ProjectModel> list = state.crudFunding;
     list[index].isFavourite = !like;

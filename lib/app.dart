@@ -22,7 +22,6 @@ import 'data/services/root_service.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    HomeCubit.to.tokenUpdate();
     HomeCubit.to.getModel();
 
     return ScreenUtilInit(

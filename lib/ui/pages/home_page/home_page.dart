@@ -2,9 +2,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
+import 'package:najot/data/model/auth_model/login_end_model.dart';
 import 'package:najot/data/model/volunteer_db_model.dart';
 import 'package:najot/data/services/hive_service.dart';
 import 'package:najot/data/services/notification_api_service.dart';
+import 'package:najot/data/services/root_service.dart';
 import 'package:najot/ui/pages/about_page/about_page.dart';
 import 'package:najot/ui/pages/charity_history_page/charity_history_page.dart';
 import 'package:najot/ui/pages/faq_page/faq_page.dart';
@@ -43,6 +45,8 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     listenNotifications();
+    print(RootService.hiveService.getToken()!.access);
+    print(RootService.hiveService.getToken()!.refresh);
     super.initState();
   }
 
@@ -70,6 +74,7 @@ class _HomePageState extends State<HomePage> {
       builder: (context, state) {
         if (state.internetConnection) {
           return Scaffold(
+
             // backgroundColor: AppColorUtils.BACKGROUND,
             key: HomePage.globalKey,
             onDrawerChanged: (isOpened) {

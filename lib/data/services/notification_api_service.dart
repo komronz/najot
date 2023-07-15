@@ -31,7 +31,7 @@ class NotificationApiService {
 
   static Future notificationDetails() async {
     return NotificationDetails(
-      android: AndroidNotificationDetails(
+      android: const AndroidNotificationDetails(
         'channel id',
         'channel name',
         channelDescription: "channel description",
@@ -40,7 +40,7 @@ class NotificationApiService {
         autoCancel: true,
         playSound: true,
       ),
-      iOS: IOSNotificationDetails(),
+      iOS: DarwinNotificationDetails(),
     );
   }
 
@@ -48,11 +48,11 @@ class NotificationApiService {
     _notifications = FlutterLocalNotificationsPlugin();
     final AndroidInitializationSettings android =
         AndroidInitializationSettings("@drawable/najot_logo");
-    final IOSInitializationSettings iOS = IOSInitializationSettings();
+    final DarwinInitializationSettings iOS = DarwinInitializationSettings();
     final InitializationSettings setting =
         InitializationSettings(android: android, iOS: iOS);
     await _notifications.initialize(setting,
-        onSelectNotification: (payload) async {
+        onDidReceiveNotificationResponse: (payload) async {
       onNotification.add(payload);
     });
     if (initScheduled) {
@@ -76,7 +76,7 @@ class NotificationApiService {
         _scheduleDaily(scheduledDate!),
         await notificationDetails(),
         payload: payload,
-        androidAllowWhileIdle: true,
+        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         matchDateTimeComponents: DateTimeComponents.dateAndTime,

@@ -4,7 +4,7 @@ description: Flutter CBS Architecture Template
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.2+6
+version: 1.0.0+1
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
@@ -41,13 +41,13 @@ dependencies:
   percent_indicator: ^4.2.2
   cupertino_radio_choice: ^1.0.2
   smooth_page_indicator: ^1.0.0+2
-  syncfusion_flutter_datepicker: ^20.1.58
+  syncfusion_flutter_datepicker: ^21.1.35
   dotted_border: ^2.0.0+2
   image_picker: ^0.8.4+11
   keyboard_attachable: ^2.1.0
   flutter_picker: ^2.0.3
-  dropdown_button2: ^1.5.3
-  flutter_local_notifications: ^9.6.1
+  dropdown_button2: ^2.0.0
+  flutter_local_notifications: ^14.0.0-dev.2
   rxdart: ^0.27.3
   flutter_switch: ^0.3.2
   http_parser: ^4.0.1
@@ -72,6 +72,7 @@ dev_dependencies:
   import_sorter: ^4.4.2
   lint: ^2.0.1
   change_app_package_name: ^1.1.0
+  flutter_lints: ^2.0.1
 
 flutter:
 
