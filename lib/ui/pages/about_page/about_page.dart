@@ -99,7 +99,6 @@ class AboutPage extends StatelessWidget {
               } else if (state.list.isNotEmpty) {
                 List<String> _addressList =
                     (state.list[0].address ?? "").split(",");
-
                 return SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Column(

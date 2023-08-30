@@ -81,7 +81,7 @@ class _AppTextFieldState extends State<AppDisableTextField> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             widget.isFill
-                ? SizedBox()
+                ? const SizedBox()
                 : AppWidgets.textLocale(
                     text: "",
                     color: AppColorUtils.RED,
