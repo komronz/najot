@@ -30,7 +30,7 @@ class CrowdfundingCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: onTap,
-        child: SizedBox(
+        child: Container(
           height: 300.w,
           width: 220.w,
           child: Stack(
@@ -46,9 +46,9 @@ class CrowdfundingCardWidget extends StatelessWidget {
                     Expanded(
                       flex: 1,
                       child: ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(12),
-                          topRight: Radius.circular(12),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(12.r),
+                          topRight: Radius.circular(12.r),
                         ),
                         child: CachedNetworkImage(
                           width: double.infinity,
@@ -65,7 +65,7 @@ class CrowdfundingCardWidget extends StatelessWidget {
                     Expanded(
                       flex: 1,
                       child: Container(
-                        padding: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10.w),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -77,7 +77,6 @@ class CrowdfundingCardWidget extends StatelessWidget {
                             ),
                             LinearPercentIndicator(
                               animation: true,
-                              padding: EdgeInsets.all(0),
                               lineHeight: 10.h,
                               animationDuration: 2000,
                               percent: (projectModel.percent ?? 0) / 100,
@@ -96,14 +95,14 @@ class CrowdfundingCardWidget extends StatelessWidget {
                                       fontSize: 10.sp,
                                       color: AppColorUtils.DARK6,
                                     ),
-                                    SizedBox(
-                                      height: 2,
-                                    ),
                                     AppWidgets.textLocale(
                                       text: Format.moneyFormat(double.parse(projectModel.amountCollected ?? "0")),
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w600,
                                       color: AppColorUtils.GREEN_TEXT,
+                                    ),
+                                    const SizedBox(
+                                      height: 2,
                                     )
                                   ],
                                 ),
