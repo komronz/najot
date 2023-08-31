@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/login_bloc/login_bloc.dart';
+import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/services/navigator_service.dart';
 import 'package:najot/data/utils/app_color_utils.dart';
@@ -46,6 +47,17 @@ class _VerificationPageState extends State<VerificationPage> {
       },
       child: Scaffold(
         backgroundColor: AppColorUtils.BACKGROUND,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          leadingWidth: context.width,
+          leading: AppWidgets.appBarWidget(
+            onTap: () async {
+              widget.loginBloc.add(CheckPhoneNumberChanged(0));
+              NavigatorService.to.pop();
+            },
+            title: LocaleKeys.code_verification.tr(),
+          ),
+        ),
         body: BlocConsumer<LoginBloc, LoginState>(
           listener: (context, state) async {
             if(state.loginSuccess) {
@@ -61,13 +73,6 @@ class _VerificationPageState extends State<VerificationPage> {
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  AppWidgets.appBarWidget(
-                    onTap: () async {
-                      widget.loginBloc.add(CheckPhoneNumberChanged(0));
-                      NavigatorService.to.pop();
-                    },
-                    title: LocaleKeys.code_verification.tr(),
-                  ).paddingOnly(top: 58.h),
                   Column(
                     children: [
                       AppWidgets.textLocale(

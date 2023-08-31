@@ -45,15 +45,27 @@ class LoginPage extends StatelessWidget {
           }
         },
         builder: (context, state) => Scaffold(
+          appBar: AppBar(
+            backgroundColor: const Color(0xFF0BBF90),
+            leadingWidth: context.width,
+            leading: AppWidgets.appBarWidget(
+              onTap: () {
+                NavigatorService.to.pop();
+              },
+              title: LocaleKeys.log_in,
+              color: AppColorUtils.GREEN_BACK_SPLASH,
+              textColor: AppColorUtils.WHITE,
+            ),
+          ),
           body: SingleChildScrollView(
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Stack(
                   children: [
                     ClipPathWidget(
-                      height: context.height * 0.6,
+                      height: context.height * 0.4,
                     ),
                     Align(
                       alignment: Alignment.center,
@@ -61,21 +73,8 @@ class LoginPage extends StatelessWidget {
                         path: AppImageUtils.LOGO_BIG,
                         height: 118.w,
                         width: 118.w,
-                      ).paddingOnly(top: 140.w),
+                      ).paddingOnly(top: 39.h),
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        AppWidgets.appBarWidget(
-                          onTap: () {
-                            NavigatorService.to.pop();
-                          },
-                          title: LocaleKeys.log_in,
-                          color: AppColorUtils.GREEN_BACK_SPLASH,
-                          textColor: AppColorUtils.WHITE,
-                        ),
-                      ],
-                    ).paddingOnly(top: 40.h),
                   ],
                 ),
                 AppTextField(

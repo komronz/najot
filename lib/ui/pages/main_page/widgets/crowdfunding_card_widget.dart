@@ -29,7 +29,8 @@ class CrowdfundingCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        child: Container(
+        onTap: onTap,
+        child: SizedBox(
           height: 300.w,
           width: 220.w,
           child: Stack(
@@ -43,8 +44,9 @@ class CrowdfundingCardWidget extends StatelessWidget {
                 child: Column(
                   children: [
                     Expanded(
+                      flex: 1,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(12),
                           topRight: Radius.circular(12),
                         ),
@@ -55,13 +57,13 @@ class CrowdfundingCardWidget extends StatelessWidget {
                             AppImageUtils.Splash2,
                           ),
                           placeholder: (context, url) =>
-                              Center(child: CircularProgressIndicator()),
+                              const Center(child: CircularProgressIndicator()),
                           fit: BoxFit.cover,
                         ),
                       ),
-                      flex: 1,
                     ),
                     Expanded(
+                      flex: 1,
                       child: Container(
                         padding: EdgeInsets.all(10),
                         child: Column(
@@ -114,7 +116,7 @@ class CrowdfundingCardWidget extends StatelessWidget {
                                       fontSize: 10.sp,
                                       color: AppColorUtils.DARK6,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 2,
                                     ),
                                     AppWidgets.text(
@@ -130,19 +132,18 @@ class CrowdfundingCardWidget extends StatelessWidget {
                           ],
                         ),
                       ),
-                      flex: 1,
                     ),
                   ],
                 ),
               ),
               Align(
+                alignment: Alignment.topRight,
                 child: InkWell(
+                  onTap: onTapLike,
                   child: projectModel.isFavourite ?? false
                       ? SvgPicture.asset(AppImageUtils.LIKE)
                       : SvgPicture.asset(AppImageUtils.UNLIKE),
-                  onTap: onTapLike,
                 ),
-                alignment: Alignment.topRight,
               ).paddingAll(15),
               Visibility(
                 visible: visible,
@@ -161,7 +162,6 @@ class CrowdfundingCardWidget extends StatelessWidget {
               )
             ],
           ),
-        ),
-        onTap: onTap);
+        ));
   }
 }

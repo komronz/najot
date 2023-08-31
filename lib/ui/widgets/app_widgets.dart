@@ -66,6 +66,7 @@ Widget _baseText({
     style: textStyle,
     maxLines: maxLines,
     overflow: TextOverflow.ellipsis,
+
   );
 }
 
@@ -409,26 +410,27 @@ class AppWidgets {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            child: Container(
+            onTap: onTapMenu,
+            child: SizedBox(
               height: 35.w,
               width: 35.w,
               child: SvgPicture.asset(AppImageUtils.MENU),
             ),
-            onTap: onTapMenu,
           ),
           AppWidgets.textLocale(
             text: title,
             fontSize: 24.sp,
             fontWeight: FontWeight.w600,
+            color: const Color(0xFF414042),
           ),
           visibleIcon
               ? InkWell(
-            child: Container(
+            onTap: onTapIcon,
+            child: SizedBox(
               height: 35.w,
               width: 35.w,
               child: SvgPicture.asset(icon),
             ),
-            onTap: onTapIcon,
           )
               : SizedBox(
             height: 35.w,
@@ -446,37 +448,36 @@ class AppWidgets {
     Color? textColor = AppColorUtils.BLACK,
   }) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          InkWell(
+          GestureDetector(
+            onTap: onTap,
             child: Container(
-              width: 31,
-              height: 34,
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
               decoration: BoxDecoration(
                 color: color,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: SvgPicture.asset(AppImageUtils.BACK_ICON),
             ),
-            onTap: onTap,
           ),
-          Expanded(
-            child: Container(
-              child: AppWidgets.textLocale(
-                text: title,
-                fontWeight: FontWeight.w600,
-                color: textColor,
-                fontSize: 20.sp,
-                textAlign: TextAlign.center,
-              ),
+          Container(
+            child: AppWidgets.textLocale(
+              text: title,
+              fontWeight: FontWeight.w600,
+              color: textColor,
+              fontSize: 20.sp,
+              textAlign: TextAlign.center,
             ),
           ),
-          SizedBox(
-            height: 34,
-            width: 31,
-          )
+          //only for size
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            child: SvgPicture.asset(AppImageUtils.BACK_ICON, color: Colors.transparent,),
+          ),
         ],
       ),
     );

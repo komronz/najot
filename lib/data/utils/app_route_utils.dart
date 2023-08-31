@@ -54,11 +54,11 @@ class AppRouteUtils {
         );
       case IntroPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => IntroPage(),
+          builder: (context) => const IntroPage(),
         );
       case ChooseLangPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => ChooseLangPage(),
+          builder: (context) => const ChooseLangPage(),
         );
       case CounterPage.routeName:
         return CupertinoPageRoute(
@@ -66,7 +66,7 @@ class AppRouteUtils {
         );
       case AuthPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => AuthPage(),
+          builder: (context) => const AuthPage(),
         );
       case LoginPage.routeName:
         return MaterialPageRoute(
@@ -166,7 +166,7 @@ class AppRouteUtils {
         );
       case CharityPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => CharityPage(),
+          builder: (context) => const CharityPage(),
         );
       case MyProfilePage.routeName:
         return MaterialPageRoute(
@@ -185,7 +185,7 @@ class AppRouteUtils {
         );
       case UserDegreePage.routeName:
         return MaterialPageRoute(
-          builder: (context) => UserDegreePage(),
+          builder: (context) => const UserDegreePage(),
         );
 
       case ImgView.routeName:
@@ -234,7 +234,7 @@ class AppRouteUtils {
         );
       case VolunteeringCharityHistoryPage.routeName:
         return MaterialPageRoute(
-          builder: (context) => VolunteeringCharityHistoryPage(),
+          builder: (context) => const VolunteeringCharityHistoryPage(),
         );
       case MyCrowdfundingAboutWidget.routeName:
         return MaterialPageRoute(
@@ -244,7 +244,7 @@ class AppRouteUtils {
         );
       case AboutView.routeName:
         return MaterialPageRoute(
-          builder: (context) => AboutView(),
+          builder: (context) => const AboutView(),
         );
       case OperatorPage.routeName:
         return MaterialPageRoute(

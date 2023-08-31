@@ -40,25 +40,29 @@ class RegPage extends StatelessWidget {
           return Scaffold(
             backgroundColor: AppColorUtils.BACKGROUND,
             resizeToAvoidBottomInset: true,
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              leadingWidth: MediaQuery.of(context).size.width,
+              leading: AppWidgets.appBarWidget(
+                onTap: () {
+                  loginBloc.add(CheckPhoneNumberChanged(0));
+                  NavigatorService.to.pop();
+                },
+                title: LocaleKeys.personal_information,
+
+              ),
+            ),
             body: SingleChildScrollView(
               reverse: true,
               child: Column(
                 children: [
-                  AppWidgets.appBarWidget(
-                    onTap: () {
-                      loginBloc.add(CheckPhoneNumberChanged(0));
-                      NavigatorService.to.pop();
-                    },
-                    title: LocaleKeys.personal_information,
-
-                  ).paddingOnly(top: 58.h),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppTextField(
                         isFill: loginBloc.state.firstNameFill,
-                        hintText: "",
+                        hintText: "(ism)",
                         onChanged: (v) {
                           loginBloc.add(LoginFirstNameChanged(v));
                         },
@@ -69,7 +73,7 @@ class RegPage extends StatelessWidget {
                       ),
                       AppTextField(
                         isFill: loginBloc.state.lastNameFill,
-                        hintText: "",
+                        hintText: "(familiya)",
                         onChanged: (v) {
                           loginBloc.add(LoginLastNameChanged(v));
                         },
