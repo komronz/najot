@@ -52,8 +52,7 @@ class _MainPageState extends State<MainPage> {
   Future<void> checkNewVersion() async {
     AppVersionModel? model = await AppVersionService.instance.getVersionInfo();
 
-    var isUpdateAvailableActive =
-        await HiveService.to.getIsUpdateAvailableActive();
+    var isUpdateAvailableActive = HiveService.to.getIsUpdateAvailableActive();
 
     if (model!.hasUpdate) {
       if (model.isUrgent) {

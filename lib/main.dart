@@ -45,7 +45,7 @@ Future runMainApp() async {
   runApp(
     EasyLocalization(
       path: 'assets/langs',
-      supportedLocales: [
+      supportedLocales: const [
         Locale("uz", "UZ"),
         // Qirg'iziton lokali, krill o'zbekcha uchun ishlatildi
         Locale("ky", "KG"),
