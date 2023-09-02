@@ -88,15 +88,15 @@ class _CharityFullPageState extends State<CharityFullPage>
           builder: (context, state) {
             if (state.internetConnection) {
               return SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   child: Column(
                     children: [
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(11),
-                            bottomRight: Radius.circular(11),
+                            bottomLeft: Radius.circular(12.r),
+                            bottomRight: Radius.circular(12.r),
                           ),
                         ),
                         child: Column(

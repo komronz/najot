@@ -34,7 +34,7 @@ class MyCharityProjectList extends StatelessWidget {
             fit: BoxFit.none,
           ).paddingOnly(top: 80.w),
           AppWidgets.textLocale(
-            text: LocaleKeys.nothing_found_yet,
+            text: 'ERROR',
             fontSize: 18.sp,
             fontWeight: FontWeight.w600,
             maxLines: 2,

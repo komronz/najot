@@ -146,7 +146,6 @@ class _AboutMyCharityProjectWidgetState
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         Expanded(child: MyCharityAppliedUserWidget(model: widget.model)),
                         Expanded(
                           child: Column(

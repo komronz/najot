@@ -99,7 +99,7 @@ class _CharityFullPageState extends State<CharityFullPage2>
               child: Column(
                 children: [
                   Container(
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(11),

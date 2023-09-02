@@ -19,11 +19,13 @@ class DrawerBodySecond extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppPageType pageType = cubit.state.pageType;
-    return Container(
-      width: 315.w,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: AppColorUtils.WHITE,
+    return Drawer(
+      width: 266.w,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20),
+            bottomRight: Radius.circular(20)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,58 +106,6 @@ class DrawerBodySecond extends StatelessWidget {
 
             },
           ) : SizedBox(),
-         
-          // cubit.state.tobeVolunteer
-          // ? AppWidgets.rowIconText(
-          //   isActive: pageType == AppPageType.CHARITY_VOLUNTEER,
-          //   icon: AppImageUtils.HISTORY,
-          //   iconSelect: AppImageUtils.HISTORY2,
-          //   text: LocaleKeys.charity_history,
-          //   fontSize: 16.sp,
-          //   padding: EdgeInsets.symmetric(
-          //     horizontal: 18.w,
-          //     vertical: 14,
-          //   ),
-          //   onTap: () {
-          //     cubit.changePage(
-          //           pageType: AppPageType.CHARITY_VOLUNTEER,
-          //         );
-          //     Navigator.pop(context);
-          //   },
-          // ): AppWidgets.rowIconText(
-          //   isActive: pageType == AppPageType.CHARITY,
-          //   icon: AppImageUtils.HISTORY,
-          //   iconSelect: AppImageUtils.HISTORY2,
-          //   text: LocaleKeys.charity_history,
-          //   fontSize: 16.sp,
-          //   padding: EdgeInsets.symmetric(
-          //     horizontal: 18.w,
-          //     vertical: 14,
-          //   ),
-          //   onTap: () {
-          //     cubit.changePage(
-          //       pageType: AppPageType.CHARITY,
-          //     );
-          //     Navigator.pop(context);
-          //   },
-          // ),
-         // AppWidgets.rowIconText(
-         //    isActive: pageType == AppPageType.ORDERS,
-         //    icon: AppImageUtils.PRODUCTS,
-         //    iconSelect: AppImageUtils.PRODUCTS2,
-         //    text: LocaleKeys.my_products,
-         //    fontSize: 16.sp,
-         //    padding: EdgeInsets.symmetric(
-         //      horizontal: 18.w,
-         //      vertical: 14,
-         //    ),
-         //    onTap: () {
-         //      cubit.changePage(
-         //        pageType: AppPageType.ORDERS,
-         //      );
-         //      Navigator.pop(context);
-         //    },
-         //  ),
         ],
       ),
     );

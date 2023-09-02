@@ -59,14 +59,8 @@ class _MyCharityItemFullPageState extends State<MyCharityItemFullPage>
         ),
         body: BlocBuilder<MyProjectCharityCubit, MyProjectCharityState>(
           builder: (context, state) {
-            return SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
-              child: Container(
-                child: [
-                  AboutMyCharityItemProjectWidget(model: widget.cardModel),
-                ][_controller.index],
-              ),
-            );
+            return [AboutMyCharityItemProjectWidget(model: widget.cardModel),
+            ][_controller.index];
           },
         ),
       ),

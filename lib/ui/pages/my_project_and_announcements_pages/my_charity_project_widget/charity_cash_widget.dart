@@ -24,12 +24,13 @@ class CharityCashWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: onTap,
       child: Container(
         margin: EdgeInsets.only(right: 10),
         decoration: BoxDecoration(
           color: AppColorUtils.WHITE,
           borderRadius: BorderRadius.circular(12),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Color.fromRGBO(11, 191, 144, 0.08),
               blurRadius: 12,
@@ -43,21 +44,24 @@ class CharityCashWidget extends StatelessWidget {
           children: [
             Expanded(
               child: ClipRRect(
-                borderRadius: BorderRadius.vertical(
+                borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(12),
                 ),
                 child: CachedNetworkImage(
-                  placeholder: (context, url) => Center(
+                  width: 162.w,
+                  height: 154.w,
+                  fit: BoxFit.fill,
+                  placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
                   ),
                   imageUrl: model.coverUrl!,
                   errorWidget: (context, url, error) =>
                       Icon(Icons.error),
-                  fit: BoxFit.cover,
                 ),
               ),
             ),
             Expanded(
+              flex: 1,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -125,12 +129,10 @@ class CharityCashWidget extends StatelessWidget {
                   ),
                 ],
               ).paddingSymmetric(vertical: 14, horizontal: 12),
-              flex: 1,
             )
           ],
         ),
       ),
-      onTap: onTap,
     );
   }
 }

@@ -15,6 +15,8 @@ import '../../widgets/app_error_widget.dart';
 import '../../widgets/app_widgets.dart';
 import '../home_page/home_page.dart';
 import 'my_charity_project_widget/my_charity_project_list.dart';
+import 'my_crowdfunding_project/my_crowdfunding_list_widget.dart';
+import 'my_volunteering_project_page/my_volunteering_project_page.dart';
 
 class MyProjectAndAnnouncementsPages extends StatelessWidget {
 
@@ -123,17 +125,14 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
                 tabs: [
-                  // Text(LocaleKeys.crowdfunding.tr()),
-                  // Text(LocaleKeys.volunteering.tr()),
+                  Text(LocaleKeys.crowdfunding.tr()),
+                  Text(LocaleKeys.volunteering.tr()),
                   Text(LocaleKeys.charity.tr()),
                 ],
                 isScrollable: true,
                 indicatorWeight: 1.5,
                 indicatorColor: AppColorUtils.GREEN_APP,
                 indicatorSize: TabBarIndicatorSize.label,
-                // padding: EdgeInsets.only(right: 10),
-                // indicatorPadding: EdgeInsets.only(right: 10, left: 10),
-                // labelPadding: EdgeInsets.only(right: 10, left: 10),
               ).paddingOnly(
                 left: 15,
                 top: 10,
@@ -142,8 +141,8 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
               Expanded(
                 child: TabBarView(
                   children: [
-                    // MyCrowdfundingListWidget(list: state.crowdFoundingList),
-                    // MyVolunteeringProjectPage(list: state.volunteeringList),
+                    MyCrowdfundingListWidget(list: state.crowdFoundingList),
+                    MyVolunteeringProjectPage(list: state.volunteeringList),
                     MyCharityProjectList(list: state.charityList)
                   ],
                 ),

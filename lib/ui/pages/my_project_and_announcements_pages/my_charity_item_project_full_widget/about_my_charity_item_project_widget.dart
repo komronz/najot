@@ -85,11 +85,11 @@ class _AboutMyCharityItemProjectWidgetState
                             child: CachedNetworkImage(
                               imageUrl: widget.model.coverUrl!,
                               fit: BoxFit.cover,
-                              placeholder: (context, url) => Center(
+                              placeholder: (context, url) => const Center(
                                 child: CircularProgressIndicator(),
                               ),
                               errorWidget: (context, url, error) =>
-                                  Icon(Icons.error),
+                                  const Icon(Icons.error),
                             ),
                           ).paddingSymmetric(vertical: 20.w),
                         ),
@@ -153,10 +153,10 @@ class _AboutMyCharityItemProjectWidgetState
                               ),
                               Row(
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width: 14.w,
                                     height: 14.w,
-                                    child: CircularProgressIndicator(
+                                    child: const CircularProgressIndicator(
                                       color: AppColorUtils.ORANGE_1,
                                       backgroundColor: AppColorUtils.WHITE,
                                       strokeWidth: 2,

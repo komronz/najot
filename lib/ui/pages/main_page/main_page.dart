@@ -123,93 +123,91 @@ class _MainPageState extends State<MainPage> {
                     children: [
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 10.w),
-                        child: Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ///Change after update
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ///Change after update
 
-                              if (state.slider.isNotEmpty) ...[
-                                CarouselSliderWidget(sliderList: state.slider),
-                              ],
-
-                              SizedBox(
-                                height: 20.h,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  AppWidgets.textLocale(
-                                    text: LocaleKeys.category,
-                                    color: const Color(0xFF414042),
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 22.sp,
-                                  ).paddingOnly(left: 20.w),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                      right: 20,
-                                      top: 10,
-                                      bottom: 20,
-                                      left: 20,
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        IconAndName(
-                                          text: LocaleKeys.volunteering.tr(),
-                                          icon: AppImageUtils.VOLONTYOR,
-                                          fontWeight: FontWeight.w600,
-                                          fontsize: 14.sp,
-                                          color: AppColorUtils.VOLONTYOR,
-                                          onTap: () {
-                                            VolunteerCubit
-                                                .to.state.searchProjects = [];
-                                            VolunteerCubit
-                                                .to.state.searchChange = "";
-                                            NavigatorService.to.pushNamed(
-                                              VolunteerPage.routeName,
-                                            );
-                                          },
-                                        ),
-                                        IconAndName(
-                                          text: LocaleKeys.charity.tr(),
-                                          icon: AppImageUtils.CHARITY,
-                                          fontWeight: FontWeight.w600,
-                                          fontsize: 14.sp,
-
-                                          color: AppColorUtils.CHARITY,
-                                          onTap: () {
-                                            CharityCubit
-                                                .to.state.searchProjects = [];
-                                            CharityCubit.to.state.searchChange =
-                                                "";
-                                            NavigatorService.to.pushNamed(
-                                              CharityPage.routeName,
-                                            );
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  AppWidgets.textLocale(
-                                    color: const Color(0xFF414042),
-                                    text: LocaleKeys.charity,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 22.sp,
-                                  ).paddingOnly(
-                                    left: 20.w,
-                                    top: 10.w,
-                                    bottom: 10.w,
-                                  ),
-                                  CharityListMain(
-                                    homeCubit: homeCubit,
-                                    state: state,
-                                  ),
-                                ],
-                              )
+                            if (state.slider.isNotEmpty) ...[
+                              CarouselSliderWidget(sliderList: state.slider),
                             ],
-                          ),
+
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                AppWidgets.textLocale(
+                                  text: LocaleKeys.category,
+                                  color: const Color(0xFF414042),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 22.sp,
+                                ).paddingOnly(left: 20.w),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    right: 20,
+                                    top: 10,
+                                    bottom: 20,
+                                    left: 20,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.center,
+                                    children: [
+                                      IconAndName(
+                                        text: LocaleKeys.volunteering.tr(),
+                                        icon: AppImageUtils.VOLONTYOR,
+                                        fontWeight: FontWeight.w600,
+                                        fontsize: 14.sp,
+                                        color: AppColorUtils.VOLONTYOR,
+                                        onTap: () {
+                                          VolunteerCubit
+                                              .to.state.searchProjects = [];
+                                          VolunteerCubit
+                                              .to.state.searchChange = "";
+                                          NavigatorService.to.pushNamed(
+                                            VolunteerPage.routeName,
+                                          );
+                                        },
+                                      ),
+                                      IconAndName(
+                                        text: LocaleKeys.charity.tr(),
+                                        icon: AppImageUtils.CHARITY,
+                                        fontWeight: FontWeight.w600,
+                                        fontsize: 14.sp,
+
+                                        color: AppColorUtils.CHARITY,
+                                        onTap: () {
+                                          CharityCubit
+                                              .to.state.searchProjects = [];
+                                          CharityCubit.to.state.searchChange =
+                                              "";
+                                          NavigatorService.to.pushNamed(
+                                            CharityPage.routeName,
+                                          );
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                AppWidgets.textLocale(
+                                  color: const Color(0xFF414042),
+                                  text: LocaleKeys.charity,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 22.sp,
+                                ).paddingOnly(
+                                  left: 20.w,
+                                  top: 10.w,
+                                  bottom: 10.w,
+                                ),
+                                CharityListMain(
+                                  homeCubit: homeCubit,
+                                  state: state,
+                                ),
+                              ],
+                            )
+                          ],
                         ),
                       )
                     ],

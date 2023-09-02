@@ -24,233 +24,230 @@ class DrawerBody extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     AppPageType pageType = cubit.state.pageType;
-
-    return Container(
-      width: 275.w,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: AppColorUtils.WHITE,
+    return Drawer(
+      width: 266.w,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20),
+            bottomRight: Radius.circular(20)),
       ),
-      child: Drawer(
+      child: SafeArea(
         child: Column(
           children: [
-            Container(
-              height: size.height * 0.76,
-              child: Column(
-                // Important: Remove any padding from the ListView.
-                children: [
-                  Stack(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(10.w),
-                        color: AppColorUtils.LEFT_MENU_BACK,
-                        height: 115.h,
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 55.w,
-                              height: 55.w,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(100),
-                                child: CachedNetworkImage(
-                                  imageUrl: cubit.state.user?.photo ?? "",
-                                  placeholder: (context, url) => Center(
-                                    child: CircularProgressIndicator(),
-                                  ),
-                                  errorWidget: (context, url, error) =>
-                                      SvgPicture.asset(AppImageUtils.USER),
-                                  fit: BoxFit.cover,
+            Column(
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(10.w),
+                      color: AppColorUtils.LEFT_MENU_BACK,
+                      height: 115.h,
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 55.w,
+                            height: 55.w,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(100),
+                              child: CachedNetworkImage(
+                                imageUrl: cubit.state.user?.photo ?? "",
+                                placeholder: (context, url) => Center(
+                                  child: CircularProgressIndicator(),
                                 ),
+                                errorWidget: (context, url, error) =>
+                                    SvgPicture.asset(AppImageUtils.USER),
+                                fit: BoxFit.cover,
                               ),
                             ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                AppWidgets.textLocale(
-                                  text: cubit.state.user?.firstName ?? "",
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 18.sp,
-                                  color: AppColorUtils.TEXT_COLOR,
-                                ),
-                                SizedBox(
-                                  height: 8.h,
-                                ),
-                                Row(
-                                  children: [
-                                    SvgPicture.asset(AppImageUtils.PERSON),
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 5.w,
-                                      ),
-                                      child: AppWidgets.text(
-                                        text: cubit.state.user?.isVolunteer ??
-                                                false
-                                            ? LocaleKeys.volunteer.tr()
-                                            : LocaleKeys.normal_user.tr(),
-                                        color: AppColorUtils.BLUE_PERCENT,
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.w500,
-                                      ),
+                          ),
+                          SizedBox(
+                            width: 10.w,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AppWidgets.textLocale(
+                                text: cubit.state.user?.firstName ?? "",
+                                fontWeight: FontWeight.w500,
+                                fontSize: 18.sp,
+                                color: AppColorUtils.TEXT_COLOR,
+                              ),
+                              SizedBox(
+                                height: 8.h,
+                              ),
+                              Row(
+                                children: [
+                                  SvgPicture.asset(AppImageUtils.PERSON),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 5.w,
                                     ),
-                                    SvgPicture.asset(AppImageUtils.QUESTION),
-                                  ],
-                                )
-                              ],
-                            )
-                          ],
+                                    child: AppWidgets.text(
+                                      text: cubit.state.user?.isVolunteer ??
+                                              false
+                                          ? LocaleKeys.volunteer.tr()
+                                          : LocaleKeys.normal_user.tr(),
+                                      color: AppColorUtils.BLUE_PERCENT,
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  SvgPicture.asset(AppImageUtils.QUESTION),
+                                ],
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    GestureDetector(
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          top: 20.h,
+                          right: 15.w,
+                        ),
+                        child: Align(
+                          alignment: Alignment.topRight,
+                          child: SizedBox(
+                            height: 33.w,
+                            width: 33.w,
+                            child: SvgPicture.asset(AppImageUtils.EDIT),
+                          ),
                         ),
                       ),
-                      GestureDetector(
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                            top: 20.h,
-                            right: 15.w,
-                          ),
-                          child: Align(
-                            alignment: Alignment.topRight,
-                            child: SizedBox(
-                              height: 33.w,
-                              width: 33.w,
-                              child: SvgPicture.asset(AppImageUtils.EDIT),
-                            ),
-                          ),
-                        ),
-                        onTap: () {
+                      onTap: () {
+                        cubit.changePage(
+                          pageType: AppPageType.USERPROFILE,
+                        );
+                        Navigator.pop(context);
+                      },
+                    )
+                  ],
+                ),
+                Divider(
+                  color: AppColorUtils.DIVIDER,
+                  height: 1,
+                  thickness: 1,
+                ),
+                cubit.state.user?.isVolunteer ?? false
+                    ? SizedBox()
+                    : ButtonCard(
+                        onPress: () {
                           cubit.changePage(
-                            pageType: AppPageType.USERPROFILE,
+                            pageType: AppPageType.VOLUNTEER,
                           );
                           Navigator.pop(context);
                         },
-                      )
-                    ],
+                        text: LocaleKeys.be_volunteer.tr(),
+                        width: 226.w,
+                        height: 44.h,
+                        color: AppColorUtils.GREEN_ACCENT1,
+                        fontWeight: FontWeight.w600,
+                        textSize: 16.sp,
+                        textColor: AppColorUtils.KRAUDFANDING,
+                        visibleIcon: true,
+                        addIcon: AppImageUtils.HANDS,
+                      ).paddingOnly(
+                        top: 20.w,
+                        right: 20.w,
+                        left: 20.w,
+                      ),
+                AppWidgets.rowIconText(
+                  iconSelect: AppImageUtils.MAIN,
+                  icon: AppImageUtils.MAIN2,
+                  isActive: pageType == AppPageType.MAIN,
+                  text: LocaleKeys.main.tr(),
+                  fontSize: 16.sp,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 18.w,
+                    vertical: 14,
                   ),
-                  Divider(
-                    color: AppColorUtils.DIVIDER,
-                    height: 1,
-                    thickness: 1,
+                  onTap: () {
+                    HomeCubit.to.getModel();
+                    cubit.changePage(pageType: AppPageType.MAIN);
+                    Navigator.pop(context);
+                  },
+                ),
+                AppWidgets.rowIconText(
+                  isActive: pageType == AppPageType.CHARITY,
+                  icon: AppImageUtils.HISTORY,
+                  iconSelect: AppImageUtils.HISTORY2,
+                  text: LocaleKeys.my_services.tr(),
+                  fontSize: 16.sp,
+                  direction: true,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 18.w,
+                    vertical: 14,
                   ),
-                  cubit.state.user?.isVolunteer ?? false
-                      ? SizedBox()
-                      : ButtonCard(
-                          onPress: () {
-                            cubit.changePage(
-                              pageType: AppPageType.VOLUNTEER,
-                            );
-                            Navigator.pop(context);
-                          },
-                          text: LocaleKeys.be_volunteer.tr(),
-                          width: 226.w,
-                          height: 44.h,
-                          color: AppColorUtils.GREEN_ACCENT1,
-                          fontWeight: FontWeight.w600,
-                          textSize: 16.sp,
-                          textColor: AppColorUtils.KRAUDFANDING,
-                          visibleIcon: true,
-                          addIcon: AppImageUtils.HANDS,
-                        ).paddingOnly(
-                          top: 20.w,
-                          right: 20.w,
-                          left: 20.w,
-                        ),
-                  AppWidgets.rowIconText(
-                    iconSelect: AppImageUtils.MAIN,
-                    icon: AppImageUtils.MAIN2,
-                    isActive: pageType == AppPageType.MAIN,
-                    text: LocaleKeys.main.tr(),
-                    fontSize: 16.sp,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 18.w,
-                      vertical: 14,
-                    ),
-                    onTap: () {
-                      HomeCubit.to.getModel();
-                      cubit.changePage(pageType: AppPageType.MAIN);
-                      Navigator.pop(context);
-                    },
+                  onTap: () {
+                    cubit.changeMenu(2);
+                  },
+                ),
+                AppWidgets.rowIconText(
+                  isActive: pageType == AppPageType.ORGANIZATIONS,
+                  icon: AppImageUtils.ORGANIZATION,
+                  iconSelect: AppImageUtils.ORGANIZATION2,
+                  text: LocaleKeys.organizations.tr(),
+                  fontSize: 16.sp,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 18.w,
+                    vertical: 14.w,
                   ),
-                  AppWidgets.rowIconText(
-                    isActive: pageType == AppPageType.CHARITY,
-                    icon: AppImageUtils.HISTORY,
-                    iconSelect: AppImageUtils.HISTORY2,
-                    text: LocaleKeys.my_services.tr(),
-                    fontSize: 16.sp,
-                    direction: true,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 18.w,
-                      vertical: 14,
-                    ),
-                    onTap: () {
-                      cubit.changeMenu(2);
-                    },
+                  onTap: () {
+                    cubit.changePage(
+                      pageType: AppPageType.ORGANIZATIONS,
+                    );
+                    Navigator.pop(context);
+                  },
+                ),
+                AppWidgets.rowIconText(
+                  isActive: pageType == AppPageType.RULES,
+                  icon: AppImageUtils.RULES,
+                  iconSelect: AppImageUtils.RULES2,
+                  text: LocaleKeys.project_rules,
+                  fontSize: 16.sp,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 18.w,
+                    vertical: 14,
                   ),
-                  AppWidgets.rowIconText(
-                    isActive: pageType == AppPageType.ORGANIZATIONS,
-                    icon: AppImageUtils.ORGANIZATION,
-                    iconSelect: AppImageUtils.ORGANIZATION2,
-                    text: LocaleKeys.organizations.tr(),
-                    fontSize: 16.sp,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 18.w,
-                      vertical: 14.w,
-                    ),
-                    onTap: () {
-                      cubit.changePage(
-                        pageType: AppPageType.ORGANIZATIONS,
-                      );
-                      Navigator.pop(context);
-                    },
+                  onTap: () {
+                    cubit.changePage(pageType: AppPageType.RULES);
+                    Navigator.pop(context);
+                  },
+                ),
+                AppWidgets.rowIconText(
+                  isActive: pageType == AppPageType.FAQ,
+                  icon: AppImageUtils.FAQ,
+                  iconSelect: AppImageUtils.FAQ2,
+                  text: "FAQ",
+                  fontSize: 16.sp,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 18.w,
+                    vertical: 14,
                   ),
-                  AppWidgets.rowIconText(
-                    isActive: pageType == AppPageType.RULES,
-                    icon: AppImageUtils.RULES,
-                    iconSelect: AppImageUtils.RULES2,
-                    text: LocaleKeys.project_rules,
-                    fontSize: 16.sp,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 18.w,
-                      vertical: 14,
-                    ),
-                    onTap: () {
-                      cubit.changePage(pageType: AppPageType.RULES);
-                      Navigator.pop(context);
-                    },
+                  onTap: () {
+                    cubit.changePage(pageType: AppPageType.FAQ);
+                    Navigator.pop(context);
+                  },
+                ),
+                AppWidgets.rowIconText(
+                  isActive: pageType == AppPageType.ABOUT,
+                  icon: AppImageUtils.ABOUT_US,
+                  iconSelect: AppImageUtils.ABOUT_US2,
+                  text: LocaleKeys.about_us.tr(),
+                  fontSize: 16.sp,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 18.w,
+                    vertical: 14,
                   ),
-                  AppWidgets.rowIconText(
-                    isActive: pageType == AppPageType.FAQ,
-                    icon: AppImageUtils.FAQ,
-                    iconSelect: AppImageUtils.FAQ2,
-                    text: "FAQ",
-                    fontSize: 16.sp,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 18.w,
-                      vertical: 14,
-                    ),
-                    onTap: () {
-                      cubit.changePage(pageType: AppPageType.FAQ);
-                      Navigator.pop(context);
-                    },
-                  ),
-                  AppWidgets.rowIconText(
-                    isActive: pageType == AppPageType.ABOUT,
-                    icon: AppImageUtils.ABOUT_US,
-                    iconSelect: AppImageUtils.ABOUT_US2,
-                    text: LocaleKeys.about_us.tr(),
-                    fontSize: 16.sp,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 18.w,
-                      vertical: 14,
-                    ),
-                    onTap: () {
-                      cubit.changePage(pageType: AppPageType.ABOUT);
-                      Navigator.pop(context);
-                    },
-                  ),
-                ],
-              ),
+                  onTap: () {
+                    cubit.changePage(pageType: AppPageType.ABOUT);
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -344,7 +341,7 @@ class DrawerBody extends StatelessWidget {
               ],
             )
           ],
-        ).paddingOnly(top: 20.w),
+        ),
       ),
     );
   }

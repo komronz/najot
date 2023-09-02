@@ -24,25 +24,27 @@ class DetailBodyPart1 extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AppWidgets.starTextWidget(text: LocaleKeys.done_date.tr()),
-                SizedBox(
-                  height: 3.w,
-                ),
-                Row(
-                  children: [
-                    SvgPicture.asset(AppImageUtils.DATE),
-                    AppWidgets.text(
-                      text: DateFormat("dd.MM.yyyy").format(modifiedAt),
-                      color: AppColorUtils.BLUE_PERCENT,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14.sp,
-                    ).paddingOnly(left: 6.w),
-                  ],
-                ),
-              ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AppWidgets.starTextWidget(text: LocaleKeys.done_date.tr()),
+                  SizedBox(
+                    height: 3.w,
+                  ),
+                  Row(
+                    children: [
+                      SvgPicture.asset(AppImageUtils.DATE),
+                      AppWidgets.text(
+                        text: DateFormat("dd.MM.yyyy").format(modifiedAt),
+                        color: AppColorUtils.BLUE_PERCENT,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14.sp,
+                      ).paddingOnly(left: 6.w),
+                    ],
+                  ),
+                ],
+              ),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
