@@ -118,8 +118,8 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                                 isScrollControlled: true,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(24),
-                                    topRight: Radius.circular(24),
+                                    topLeft: Radius.circular(24.r),
+                                    topRight: Radius.circular(24.r),
                                   ),
                                 ),
                                 context: context,
@@ -136,10 +136,10 @@ class _AboutProjectWidgetState extends State<AboutProjectWidget>
                               decoration: BoxDecoration(
                                 color: AppColorUtils.BLUE_PERCENT,
                                 borderRadius: BorderRadius.horizontal(
-                                  left: Radius.circular(12),
+                                  left: Radius.circular(12.r),
                                 ),
                               ),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.monetization_on_outlined,
                                 color: Colors.white,
                               ),

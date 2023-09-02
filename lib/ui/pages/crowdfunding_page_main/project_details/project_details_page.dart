@@ -81,7 +81,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
           builder: (context, state) {
             if(state.internetConnection){
               return SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: [
                     Container(
@@ -89,8 +89,8 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage>
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(11),
-                          topLeft: Radius.circular(11),
+                          topRight: Radius.circular(12.r),
+                          topLeft: Radius.circular(12.r),
                         ),
                       ),
                       child: TabBarWidget(

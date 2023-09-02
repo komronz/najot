@@ -23,36 +23,29 @@ class AppBarWithTitle extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: AppColorUtils.BACKGROUND,
       elevation: 0,
       leading: Container(
-        width: 31.w,
-        height: 34.w,
+        margin: EdgeInsets.all(10.w),
         decoration: BoxDecoration(
           color: AppColorUtils.BACK_BUTTON,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
         ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: RippleButton(
-            child: Icon(
-              Icons.arrow_back_ios_rounded,
-              color: AppColorUtils.IC_GREEN2,
-              size: 20.w,
-            ),
-            onTap: onPress,
+        child: RippleButton(
+          borderRadius: BorderRadius.circular(10.r),
+          onTap: onPress,
+          child: Icon(
+            Icons.arrow_back_ios_rounded,
+            color: AppColorUtils.IC_GREEN2,
+            size: 20.w,
           ),
         ),
-      ).paddingOnly(
-        left: 24.w,
-        top: 10.w,
-        bottom: 10.w,
       ),
       title: AppWidgets.AutoSizeText(
         text: title,
         fontWeight: FontWeight.w600,
-        color: AppColorUtils.BLACK,
+        color: const Color(0xFF414042),
         fontSize: 20.sp,
         textAlign: TextAlign.center,
       ),
-      actions: action != null ? action : [SizedBox()],
+      actions: action ?? [SizedBox()],
       centerTitle: true,
     );
   }

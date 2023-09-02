@@ -71,7 +71,7 @@ class _AboutAnnouncementPageState extends State<VolunteerDetailPage>
         bloc: widget.model.cubit,
         builder: (context, state) {
           return SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
                 Container(
@@ -79,8 +79,8 @@ class _AboutAnnouncementPageState extends State<VolunteerDetailPage>
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(11),
-                      topLeft: Radius.circular(11),
+                      topRight: Radius.circular(12.r),
+                      topLeft: Radius.circular(12.r),
                     ),
                   ),
                   child: TabBarWidget(

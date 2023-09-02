@@ -115,8 +115,16 @@ class _AboutProjectVolunteerWidgetState
                     right: 0,
                     child: InkWell(
                       onTap: () {
-                        showDialog(
+                        showModalBottomSheet(
+                          useSafeArea: true,
+                          isScrollControlled: true,
                           context: context,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(24.r),
+                              topRight: Radius.circular(24.r),
+                            ),
+                          ),
                           builder: (context) {
                             return SupportProjectDialog(
                               projectModel: widget.cardModel,
@@ -131,10 +139,10 @@ class _AboutProjectVolunteerWidgetState
                         decoration: BoxDecoration(
                           color: AppColorUtils.BLUE_PERCENT,
                           borderRadius: BorderRadius.horizontal(
-                            left: Radius.circular(12),
+                            left: Radius.circular(12.r),
                           ),
                         ),
-                        child: Icon(
+                        child: const Icon(
                           Icons.monetization_on_outlined,
                           color: AppColorUtils.WHITE,
                         ),

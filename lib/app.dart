@@ -25,7 +25,7 @@ class App extends StatelessWidget {
     HomeCubit.to.getModel();
 
     return ScreenUtilInit(
-      designSize: Size(375, 812),
+      designSize: const Size(375, 812),
       builder: (context, widget) =>
           BlocListener<NotificationCubit, NotificationState>(
         bloc: NotificationCubit.to..getList(),
@@ -47,6 +47,12 @@ class App extends StatelessWidget {
           child: MaterialApp(
             navigatorKey: NavigatorService.to.key,
             title: "Najot",
+            theme: ThemeData(
+              appBarTheme: const AppBarTheme(
+                elevation: 0,
+                centerTitle: true,
+              )
+            ),
             debugShowCheckedModeBanner: false,
             onGenerateRoute: AppRouteUtils.onGenerateRoute,
             supportedLocales: context.supportedLocales,
@@ -55,7 +61,7 @@ class App extends StatelessWidget {
             // darkTheme: AppThemes.darkTheme(),
             localizationsDelegates: context.localizationDelegates,
             builder: BotToastInit(),
-            home: SplashScreen(),
+            home: const SplashScreen(),
             navigatorObservers: [
               BotToastNavigatorObserver(),
             ],

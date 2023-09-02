@@ -51,7 +51,7 @@ Future runMainApp() async {
         Locale("ky", "KG"),
         Locale("ru", "RU"),
       ],
-      fallbackLocale: Locale('uz', 'UZ'),
+      fallbackLocale: const Locale('uz', 'UZ'),
       child: App(),
     ),
   );
