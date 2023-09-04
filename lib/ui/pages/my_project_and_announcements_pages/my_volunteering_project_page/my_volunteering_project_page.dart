@@ -18,7 +18,8 @@ class MyVolunteeringProjectPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (list==null) {
+    bool? check_result = list?.results?.isEmpty;
+    if (check_result ?? false) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -42,33 +43,34 @@ class MyVolunteeringProjectPage extends StatelessWidget {
           ),
         ],
       );
-    }
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          GridView.count(
-            shrinkWrap: true,
-            crossAxisCount: 2,
-            physics: ClampingScrollPhysics(),
-            childAspectRatio: 168 / 298,
-            padding: EdgeInsets.all(0),
-            reverse: false,
-            children: List.generate(
-              list!.results!.length,
-                  (index) => VolunteeringProjectWidget(
-                model: list!.results![index], onTap: () {
+    }else {
+      return SingleChildScrollView(
+        child: Column(
+          children: [
+            GridView.count(
+              shrinkWrap: true,
+              crossAxisCount: 2,
+              physics: const ClampingScrollPhysics(),
+              childAspectRatio: 168 / 298,
+              padding: const EdgeInsets.all(0),
+              reverse: false,
+              children: List.generate(
+                list!.results!.length,
+                    (index) => VolunteeringProjectWidget(
+                  model: list!.results![index], onTap: () {
 
-                  },
+                },
+                ),
               ),
             ),
-          ),
-        ],
-      ).paddingOnly(
-        left: 20,
-        top: 10,
-        right: 10,
+          ],
+        ).paddingOnly(
+          left: 20,
+          top: 10,
+          right: 10,
 
-      ),
-    );
+        ),
+      );
+    }
   }
 }

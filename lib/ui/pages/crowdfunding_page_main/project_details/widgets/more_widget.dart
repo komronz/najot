@@ -51,19 +51,18 @@ class MoreWidget extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             vertical: 10.w,
           ),
-          height: 218.w,
           child: ClipRRect(
             borderRadius: BorderRadius.all(
-              Radius.circular(12),
+              Radius.circular(12.w),
             ),
             child: CachedNetworkImage(
               imageUrl: cardModel.coverUrl!,
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
               width: MediaQuery.of(context).size.width,
-              placeholder: (context, url) => Center(
+              placeholder: (context, url) => const Center(
                 child: CircularProgressIndicator(),
               ),
-              errorWidget: (context, url, error) => Icon(Icons.error),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
         ),

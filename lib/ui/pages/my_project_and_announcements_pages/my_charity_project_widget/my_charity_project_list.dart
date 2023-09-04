@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot/data/bloc/home_cubit/home_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/localization/locale_keys.g.dart';
 import 'package:najot/data/model/volunteer_model.dart';
@@ -8,6 +10,7 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../../data/services/navigator_service.dart';
+import '../ArgumentsClassInTesterPagesInProductsAnnouncements.dart';
 import '../my_charity_item_project_full_widget/my_charity_item_full_page.dart';
 import '../my_charity_project_full_widget/my_charity_project_full_page.dart';
 import 'charity_cash_widget.dart';
@@ -15,10 +18,11 @@ import 'charity_item_project_widget.dart';
 
 class MyCharityProjectList extends StatelessWidget {
   final RootProjectModel? list;
+  final int number;
 
   const MyCharityProjectList({
     required this.list,
-    Key? key,
+    Key? key, required this.number,
   }) : super(key: key);
 
   @override
@@ -54,9 +58,9 @@ class MyCharityProjectList extends StatelessWidget {
           GridView.count(
             shrinkWrap: true,
             crossAxisCount: 2,
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             childAspectRatio: 168 / 320,
-            padding: EdgeInsets.only(bottom: 15),
+            padding: EdgeInsets.only(bottom: 15.w),
             reverse: false,
             children: List.generate(
               list!.results!.length,
@@ -66,8 +70,17 @@ class MyCharityProjectList extends StatelessWidget {
                       model:  list!.results![index],
                       onTap: () {
                         AppLoggerUtil.d("looog1: Clock1");
-                        NavigatorService.to.pushNamed(MyCharityItemFullPage.routeName,
-                            arguments:  list!.results![index]);
+                        // NavigatorService.to.pushNamed(MyCharityItemFullPage.routeName,
+                        //     arguments:  list!.results![index],
+                        // );
+
+                        NavigatorService.to.pushNamed(
+                          'test_route',
+                            arguments: ArgumentsInTesterPage(
+                              number: 3,
+                              projectModel: list!.results![index],
+                            )
+                        );
                       },
                     ).paddingOnly(bottom: 10);
                   }else{
@@ -77,7 +90,8 @@ class MyCharityProjectList extends StatelessWidget {
                         AppLoggerUtil.d("looog1: Clock2");
                         NavigatorService.to.pushNamed(
                             MyCharityProjectFullPage.routeName,
-                            arguments:  list!.results![index]);
+                          arguments: list!.results![index],
+                        );
                       },
                     ).paddingOnly(bottom: 10);
                   }

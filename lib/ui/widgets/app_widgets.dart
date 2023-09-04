@@ -84,12 +84,12 @@ class AppWidgets {
       borderRadius: BorderRadius.circular(borderRadius),
       child: InkWell(
         borderRadius: BorderRadius.circular(borderRadius),
+        onTap: onTap,
         child: Ink(
-          child: iconWidget,
           height: height,
           width: width,
+          child: iconWidget,
         ),
-        onTap: onTap,
       ),
     );
   }
@@ -110,7 +110,7 @@ class AppWidgets {
         child: InkWell(
           borderRadius: BorderRadius.circular(10),
           onTap: onTap,
-          child: Container(
+          child: SizedBox(
             height: height,
             width: width,
             child: SvgPicture.asset(
@@ -130,7 +130,7 @@ class AppWidgets {
             Container(
               height: 25.w,
               width: 25.w,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   image: AssetImage(AppImageUtils.DEF_PERSON),
@@ -142,7 +142,7 @@ class AppWidgets {
               padding: EdgeInsets.only(left: 8.w),
               height: 25.w,
               width: 25.w,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   image: AssetImage(AppImageUtils.DEF_PERSON),
@@ -154,7 +154,7 @@ class AppWidgets {
               margin: EdgeInsets.only(left: 16.w),
               height: 25.w,
               width: 25.w,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   image: AssetImage(AppImageUtils.DEF_PERSON),
@@ -197,7 +197,7 @@ class AppWidgets {
             color: AppColorUtils.RED,
           ),
         )
-            : SizedBox(),
+            : const SizedBox(),
         Expanded(
           child: textLocale(
             text: text,
@@ -229,6 +229,7 @@ class AppWidgets {
       borderRadius: BorderRadius.circular(borderRadius),
       child: InkWell(
         borderRadius: BorderRadius.circular(borderRadius),
+        onTap: onTap,
         child: Ink(
           width: width ?? ScreenUtil().screenWidth,
           height: height ?? 50,
@@ -252,7 +253,6 @@ class AppWidgets {
             ),
           ),
         ),
-        onTap: onTap,
       ),
     );
   }

@@ -62,7 +62,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                             Container(
                               height: 50.w,
                               width: 50.w,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Colors.black12,
                               ),
@@ -70,11 +70,11 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                                 imageUrl:
                                     cubit.state.newsData[index].user!.photo!,
                                 fit: BoxFit.cover,
-                                placeholder: (context, url) => Center(
+                                placeholder: (context, url) => const Center(
                                   child: CircularProgressIndicator(),
                                 ),
                                 errorWidget: (context, url, error) =>
-                                    Icon(Icons.person),
+                                    const Icon(Icons.person),
                               ),
                             ),
                             SizedBox(width: 5.w,),
@@ -83,7 +83,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 AppWidgets.text(
-                                  text: "${name} ${lastname}",
+                                  text: "$name $lastname",
                                   color: AppColorUtils.TEXT_GREEN2,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14.sp,
@@ -96,7 +96,7 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                                 ).paddingOnly(right: 65.w),
                               ],
                             ),
-                            Spacer(),
+                            const Spacer(),
                             AppWidgets.text(
                               text: DateFormat("dd.MM.yyyy hh:mm")
                                   .format(createdAt),
@@ -124,21 +124,21 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                           maxLines: 40,
                         ),
                         SizedBox(height: 18.w),
-                        Container(
+                        SizedBox(
                           height: 229.w,
                           child: ClipRRect(
                             borderRadius: BorderRadius.all(
-                              Radius.circular(12),
+                              Radius.circular(12.w),
                             ),
                             child: CachedNetworkImage(
                               imageUrl: cubit.state.newsData[index].cover!,
                               fit: BoxFit.cover,
                               width: MediaQuery.of(context).size.width,
-                              placeholder: (context, url) => Center(
+                              placeholder: (context, url) => const Center(
                                 child: CircularProgressIndicator(),
                               ),
                               errorWidget: (context, url, error) =>
-                                  Icon(Icons.error),
+                                  const Icon(Icons.error),
                             ),
                           ),
                         ),
@@ -147,34 +147,32 @@ class MyCrowdfundingNewsWidget extends StatelessWidget {
                   );
                 }),
               )
-            : Container(
-                child: Column(
-                  children: [
-                    Center(
-                      child: Column(
-                        children: [
-                          SvgPicture.asset(AppImageUtils.NEWS)
-                              .paddingOnly(bottom: 11.h),
-                          SizedBox(
-                            width: 200.sp,
-                            child: AppWidgets.textLocale(
-                              textAlign: TextAlign.center,
-                              text: LocaleKeys.news_empty,
-                              color: AppColorUtils.DARK_6,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w600,
-                              maxLines: 2,
-                            ),
-                          ),
-                        ],
+            : Column(
+              children: [
+                Center(
+                  child: Column(
+                    children: [
+                      SvgPicture.asset(AppImageUtils.NEWS)
+                          .paddingOnly(bottom: 11.h),
+                      SizedBox(
+                        width: 200.sp,
+                        child: AppWidgets.textLocale(
+                          textAlign: TextAlign.center,
+                          text: LocaleKeys.news_empty,
+                          color: AppColorUtils.DARK_6,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
+                          maxLines: 2,
+                        ),
                       ),
-                    ).paddingOnly(
-                      top: 52.h,
-                      bottom: 98.h,
-                    ),
-                  ],
+                    ],
+                  ),
+                ).paddingOnly(
+                  top: 52.h,
+                  bottom: 98.h,
                 ),
-              ),
+              ],
+            ),
         AppWidgets.textLocale(
           text: LocaleKeys.add_news,
           fontSize: 18.sp,

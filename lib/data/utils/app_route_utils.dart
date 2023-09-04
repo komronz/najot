@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
@@ -33,11 +35,13 @@ import '../../ui/pages/my_profil_page/my_profile_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/number_update_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/user_degree_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/user_update_page.dart';
+import '../../ui/pages/my_project_and_announcements_pages/ArgumentsClassInTesterPagesInProductsAnnouncements.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_charity_item_project_full_widget/my_charity_item_full_page.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_project_full_page.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_crowdfunding_project/my_crowdfunding_about_widget.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_project_and_announcements_pages.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/about_my_volunteering_project_page.dart';
+import '../../ui/pages/my_project_and_announcements_pages/tester_pages_in_progects_announcements.dart';
 import '../../ui/pages/notification_page/notification_page.dart';
 import '../../ui/pages/organization_page/organization_item_detail_page/organization_item_widget.dart';
 import '../../ui/pages/organization_page/organization_item_detail_page/organization_help_widget.dart';
@@ -249,6 +253,16 @@ class AppRouteUtils {
       case OperatorPage.routeName:
         return MaterialPageRoute(
           builder: (context) => OperatorPage(),
+        );
+      case 'test_route':
+        return MaterialPageRoute(
+          builder: (context) {
+            final args = settings.arguments as ArgumentsInTesterPage;
+            return TesterPagesInProjectsAnnouncements(
+              helpModel: args.projectModel,
+              screen_number: args.number,
+            );
+          }
         );
     }
     return null;

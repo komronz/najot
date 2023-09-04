@@ -11,6 +11,7 @@ import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
+import '../ArgumentsClassInTesterPagesInProductsAnnouncements.dart';
 
 class VolunteeringProjectWidget extends StatelessWidget {
   final ProjectModel model;
@@ -27,13 +28,13 @@ class VolunteeringProjectWidget extends StatelessWidget {
     return InkWell(
       child: Container(
         padding: EdgeInsets.only(
-          right: 10,
-          bottom: 10,
+          right: 10.w,
+          bottom: 10.w,
         ),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Color.fromRGBO(
                 11,
@@ -52,20 +53,24 @@ class VolunteeringProjectWidget extends StatelessWidget {
           children: [
             Expanded(
               child: ClipRRect(
+
                 borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(12),
+                  top: Radius.circular(12.r),
                 ),
                 child: CachedNetworkImage(
-                  placeholder: (context, url) => Center(
+                  placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
                   ),
                   imageUrl: model.coverUrl!,
-                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                  width: 162.w,
+                  height: 154.w,
                   fit: BoxFit.cover,
                 ),
               ),
             ),
             Expanded(
+              flex: 1,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -102,10 +107,10 @@ class VolunteeringProjectWidget extends StatelessWidget {
                   model.owner == null
                       ? Row(
                           children: [
-                            Container(
+                            SizedBox(
                               width: 11.w,
                               height: 11.w,
-                              child: CircularProgressIndicator(
+                              child: const CircularProgressIndicator(
                                 color: AppColorUtils.ORANGE_1,
                                 backgroundColor: AppColorUtils.WHITE,
                                 strokeWidth: 2,
@@ -122,7 +127,7 @@ class VolunteeringProjectWidget extends StatelessWidget {
                       : Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.all(2),
+                              padding: EdgeInsets.all(2.w),
                               height: 12.w,
                               width: 12.w,
                               decoration: BoxDecoration(
@@ -147,15 +152,21 @@ class VolunteeringProjectWidget extends StatelessWidget {
                 vertical: 14,
                 horizontal: 12,
               ),
-              flex: 1,
             )
           ],
         ),
       ),
       onTap: () {
+        // NavigatorService.to.pushNamed(
+        //   AboutMyVolunteeringItemProjectWidget.routeName,
+        //   arguments: model,
+        // );
         NavigatorService.to.pushNamed(
-          AboutMyVolunteeringItemProjectWidget.routeName,
-          arguments: model,
+            'test_route',
+            arguments: ArgumentsInTesterPage(
+              number: 2,
+              projectModel: model,
+            ),
         );
       },
     );

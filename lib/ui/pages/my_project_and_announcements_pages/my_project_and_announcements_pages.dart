@@ -95,7 +95,7 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
   ) {
     if (state.hasConnection) {
       if (state.isLoading) {
-        return Center(
+        return const Center(
           child: CircularProgressIndicator(color: AppColorUtils.GREEN_APP),
         );
       }
@@ -114,8 +114,8 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
                 enableFeedback: true,
                 labelColor: AppColorUtils.GREEN_APP,
                 unselectedLabelColor: AppColorUtils.DARK_6,
-                labelPadding: EdgeInsets.symmetric(horizontal: 15),
-                padding: EdgeInsets.symmetric(vertical: 5),
+                labelPadding: EdgeInsets.symmetric(horizontal: 15.w),
+                padding: EdgeInsets.symmetric(vertical: 5.w),
                 unselectedLabelStyle: TextStyle(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w400,
@@ -143,7 +143,7 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
                   children: [
                     MyCrowdfundingListWidget(list: state.crowdFoundingList),
                     MyVolunteeringProjectPage(list: state.volunteeringList),
-                    MyCharityProjectList(list: state.charityList)
+                    MyCharityProjectList(list: state.charityList, number: 3),
                   ],
                 ),
               )

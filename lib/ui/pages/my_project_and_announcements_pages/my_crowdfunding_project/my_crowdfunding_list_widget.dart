@@ -10,7 +10,7 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'my_crowdfunding_card_widget.dart';
 
 class MyCrowdfundingListWidget extends StatelessWidget {
-  final RootProjectModel? list;
+  final RootProjectModel ? list;
 
   const MyCrowdfundingListWidget({
     required this.list,
@@ -19,12 +19,13 @@ class MyCrowdfundingListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (list == null) {
+    bool? check_result = list?.results?.isEmpty;
+    if (check_result ?? true) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           AppWidgets.imageSvg(
-            path: AppImageUtils.IMG_DOLLAR,
+            path: AppImageUtils.BOX,
             height: 70.w,
             width: 70.w,
             fit: BoxFit.none,
@@ -43,32 +44,33 @@ class MyCrowdfundingListWidget extends StatelessWidget {
           ),
         ],
       );
-    }
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          GridView.count(
-            shrinkWrap: true,
-            crossAxisCount: 2,
-            physics: ClampingScrollPhysics(),
-            childAspectRatio: 168 / 298,
-            padding: EdgeInsets.all(0),
-            reverse: false,
-            children: List.generate(
-              list!.results!.length,
-              (index) => MyCrowdfundingList(
-                cardModel: list!.results![index],
-                visible: true,
-                onTap: () {},
+    }else{
+      return SingleChildScrollView(
+        child: Column(
+          children: [
+            GridView.count(
+              shrinkWrap: true,
+              crossAxisCount: 2,
+              physics: const ClampingScrollPhysics(),
+              childAspectRatio: 168 / 298,
+              padding: const EdgeInsets.all(0),
+              reverse: false,
+              children: List.generate(
+                list!.results!.length,
+                    (index) => MyCrowdfundingList(
+                  cardModel: list!.results![index],
+                  visible: true,
+                  onTap: () {},
+                ),
               ),
             ),
-          ),
-        ],
-      ).paddingOnly(
-        left: 20,
-        top: 10,
-        right: 10,
-      ),
-    );
+          ],
+        ).paddingOnly(
+          left: 20,
+          top: 10,
+          right: 10,
+        ),
+      );
+    }
   }
 }

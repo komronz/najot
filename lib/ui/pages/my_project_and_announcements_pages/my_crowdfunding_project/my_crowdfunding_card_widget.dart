@@ -33,7 +33,7 @@ class MyCrowdfundingList extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Color.fromRGBO(
                 11,
@@ -53,10 +53,11 @@ class MyCrowdfundingList extends StatelessWidget {
             Column(
               children: [
                 Expanded(
+                  flex: 1,
                   child: ClipRRect(
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      topRight: Radius.circular(12),
+                      topLeft: Radius.circular(12.w),
+                      topRight: Radius.circular(12.w),
                     ),
                     child: CachedNetworkImage(
                       width: double.infinity,
@@ -65,18 +66,17 @@ class MyCrowdfundingList extends StatelessWidget {
                         AppImageUtils.Splash2,
                       ),
                       placeholder: (context, url) =>
-                          Center(child: CircularProgressIndicator()),
+                          const Center(child: CircularProgressIndicator()),
                       fit: BoxFit.cover,
                     ),
                   ),
-                  flex: 1,
                 ),
                 Expanded(
                   child: Container(
                     margin: EdgeInsets.only(
-                      left: 12,
-                      top: 12,
-                      right: 5,
+                      left: 12.w,
+                      top: 12.w,
+                      right: 5.w,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,7 +90,7 @@ class MyCrowdfundingList extends StatelessWidget {
                         Row(
                           children: [
                             AppWidgets.textLocale(
-                              text: LocaleKeys.done.tr() + ":",
+                              text: "${LocaleKeys.done.tr()}:",
                               fontWeight: FontWeight.w400,
                               fontSize: 10.sp,
                               color: AppColorUtils.DARK6,
@@ -104,10 +104,10 @@ class MyCrowdfundingList extends StatelessWidget {
                           ],
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 13),
+                          margin: EdgeInsets.only(top: 12.w),
                           child: LinearPercentIndicator(
                             animation: true,
-                            padding: EdgeInsets.all(0),
+                            padding: const EdgeInsets.all(0),
                             animationDuration: 2000,
                             percent: cardModel.percent! / 100,
                             progressColor: AppColorUtils.PERCENT_COLOR,

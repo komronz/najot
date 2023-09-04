@@ -49,7 +49,7 @@ class CharityItemProjectWidget extends StatelessWidget {
               child: CachedNetworkImage(
                 width: 162.w,
                 height: 154.w,
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
                 placeholder: (context, url) => const Center(
                   child: CircularProgressIndicator(),
                 ),

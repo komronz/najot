@@ -85,7 +85,7 @@ class _AboutMyCharityProjectWidgetState
                             child: CachedNetworkImage(
                               imageUrl: widget.model.cover!,
                               fit: BoxFit.cover,
-                              placeholder: (context, url) => Center(
+                              placeholder: (context, url) => const Center(
                                 child: CircularProgressIndicator(),
                               ),
                               errorWidget: (context, url, error) =>
@@ -237,8 +237,9 @@ class _AboutMyCharityProjectWidgetState
                                         fontSize: 14.sp,
                                       ),
                                     ),
+                                    ///fake red _ circle
                                     Visibility(
-                                      visible: selected,
+                                      visible: false, ///bool**//selected,
                                       child: Container(
                                         width: 7.w,
                                         height: 7.w,
@@ -265,14 +266,14 @@ class _AboutMyCharityProjectWidgetState
                               indicatorWeight: 2,
                               indicatorColor: AppColorUtils.GREEN_APP,
                               indicatorSize: TabBarIndicatorSize.tab,
-                              padding: EdgeInsets.only(right: 10),
+                              padding: EdgeInsets.only(right: 10.w),
                               indicatorPadding: EdgeInsets.only(
-                                right: 10,
-                                left: 10,
+                                right: 10.w,
+                                left: 10.w,
                               ),
                               labelPadding: EdgeInsets.only(
-                                right: 10,
-                                left: 10,
+                                right: 10.w,
+                                left: 10.w,
                               ),
                             ).paddingOnly(
                               left: 15.w,
