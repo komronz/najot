@@ -35,7 +35,7 @@ import '../../ui/pages/my_profil_page/my_profile_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/number_update_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/user_degree_page.dart';
 import '../../ui/pages/my_profil_page/my_profile_pages/user_update_page.dart';
-import '../../ui/pages/my_project_and_announcements_pages/ArgumentsClassInTesterPagesInProductsAnnouncements.dart';
+import '../../ui/pages/my_project_and_announcements_pages/model_arguments_in_tester_page/ArgumentsClassInTesterPagesInProductsAnnouncements.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_charity_item_project_full_widget/my_charity_item_full_page.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_project_full_page.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_crowdfunding_project/my_crowdfunding_about_widget.dart';

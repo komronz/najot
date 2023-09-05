@@ -51,47 +51,47 @@ class _AddingProjectPageState extends State<AddingProjectPage> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           titleSpacing: 0,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                onTap: () {
-                  HomePage.globalKey.currentState!.openDrawer();
-                },
-                child: SvgPicture.asset(
-                  AppImageUtils.MENU,
-                  height: 35.w,
-                  width: 35.w,
+          title: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: () {
+                    HomePage.globalKey.currentState!.openDrawer();
+                  },
+                  child: SvgPicture.asset(
+                    AppImageUtils.MENU,
+                    height: 35.w,
+                    width: 35.w,
+                  ),
                 ),
-              ),
-              AppWidgets.textLocale(
-                text: LocaleKeys.charity,
-                fontSize: 26.sp,
-                fontWeight: FontWeight.w600,
-              ),
-              SizedBox(
-                width: 35.w,
-                height: 35.w,
-              )
-
-              ///Change later
-              ///
-              // InkWell(
-              //   onTap: () {
-              //     NavigatorService.to
-              //         .pushNamed(NotificationPage.routeName);
-              //   },
-              //   child: SvgPicture.asset(
-              //     AppImageUtils.NOTIFICATION,
-              //     height: 35.w,
-              //     width: 35.w,
-              //     fit: BoxFit.fill,
-              //   ),
-              // )
-            ],
-          ).paddingSymmetric(
-            horizontal: 20.w,
-          ),
+                AppWidgets.textLocale(
+                  text: LocaleKeys.charity,
+                  fontSize: 22.sp,
+                  fontWeight: FontWeight.w600,
+                ),
+                SizedBox(
+                  width: 35.w,
+                  height: 35.w,
+                )
+                ///Change later
+                ///
+                // InkWell(
+                //   onTap: () {
+                //     NavigatorService.to
+                //         .pushNamed(NotificationPage.routeName);
+                //   },
+                //   child: SvgPicture.asset(
+                //     AppImageUtils.NOTIFICATION,
+                //     height: 35.w,
+                //     width: 35.w,
+                //     fit: BoxFit.fill,
+                //   ),
+                // )
+              ],
+            ),
+          )
         ),
         body: BlocBuilder<AddProjectBloc, AddProjectState>(
           bloc: addProjectBloc,

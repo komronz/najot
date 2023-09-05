@@ -23,7 +23,7 @@ import '../../widgets/app_error_widget.dart';
 import 'my_charity_project_full_widget/my_charity_edit_project_dialog.dart';
 import 'my_charity_project_full_widget/my_delete_project_dialog.dart';
 import 'my_crowdfunding_project/my_crowdfunding_news_widget.dart';
-import 'widget_for_tester_page_volontchecker.dart';
+import 'debugged_widgets/widget_for_tester_page_volontchecker.dart';
 
 
 
@@ -171,7 +171,7 @@ class _CharityFullPageState extends State<TesterPagesInProjectsAnnouncements>
                                   ),
                                 ],
                               ),
-                            ).paddingOnly(top: 35.h, right: 35.w),
+                            ).paddingOnly(top: 35.w, right: 35.w),
                           ],
                         ),
                         AppWidgets.text(

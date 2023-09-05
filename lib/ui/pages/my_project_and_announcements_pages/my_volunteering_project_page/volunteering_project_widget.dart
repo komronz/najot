@@ -11,7 +11,7 @@ import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../../data/utils/app_image_utils.dart';
 import '../../../widgets/app_widgets.dart';
-import '../ArgumentsClassInTesterPagesInProductsAnnouncements.dart';
+import '../model_arguments_in_tester_page/ArgumentsClassInTesterPagesInProductsAnnouncements.dart';
 
 class VolunteeringProjectWidget extends StatelessWidget {
   final ProjectModel model;
@@ -31,6 +31,7 @@ class VolunteeringProjectWidget extends StatelessWidget {
           right: 10.w,
           bottom: 10.w,
         ),
+        margin: EdgeInsets.only(bottom: 10.w),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
@@ -53,7 +54,6 @@ class VolunteeringProjectWidget extends StatelessWidget {
           children: [
             Expanded(
               child: ClipRRect(
-
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(12.r),
                 ),

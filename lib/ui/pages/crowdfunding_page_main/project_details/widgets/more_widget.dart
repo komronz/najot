@@ -57,8 +57,7 @@ class MoreWidget extends StatelessWidget {
             ),
             child: CachedNetworkImage(
               imageUrl: cardModel.coverUrl!,
-              fit: BoxFit.contain,
-              width: MediaQuery.of(context).size.width,
+              fit: BoxFit.cover,
               placeholder: (context, url) => const Center(
                 child: CircularProgressIndicator(),
               ),

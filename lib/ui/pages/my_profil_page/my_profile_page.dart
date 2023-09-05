@@ -34,27 +34,31 @@ class MyProfilePage extends StatelessWidget {
         builder: (context, state) {
           if (state.changePage == 1) {
             return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.white,
+                titleSpacing: 0,
+                title: AppWidgets.appBarMenu(
+                  title: LocaleKeys.my_profile,
+                  onTapMenu: () {
+                    HomePage.globalKey.currentState!.openDrawer();
+                  },
+                  visibleIcon: true,
+                  onTapIcon: () {
+                  context
+                      .read<MyProfileUpdateBloc>()
+                      .add(EditProfileChangePage(2));
+                  },
+                  icon: AppImageUtils.EDIT,
+                ),
+              ),
               body: Column(
                 children: [
-                  AppWidgets.appBarMenu(
-                    title: LocaleKeys.my_profile,
-                    onTapMenu: () {
-                      HomePage.globalKey.currentState!.openDrawer();
-                    },
-                    visibleIcon: true,
-                    onTapIcon: () {
-                      context
-                          .read<MyProfileUpdateBloc>()
-                          .add(EditProfileChangePage(2));
-                    },
-                    icon: AppImageUtils.EDIT,
-                  ).paddingOnly(top: 10),
                   Expanded(
                     child: SingleChildScrollView(
                       child: Container(
                         padding: EdgeInsets.only(
-                          left: 19,
-                          right: 20,
+                          left: 19.w,
+                          right: 20.w,
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
@@ -68,7 +72,7 @@ class MyProfilePage extends StatelessWidget {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(100),
                                 child: CachedNetworkImage(
-                                  placeholder: (context, url) => Center(
+                                  placeholder: (context, url) => const Center(
                                     child: CircularProgressIndicator(),
                                   ),
                                   imageUrl: state.imageUrl,
@@ -92,7 +96,7 @@ class MyProfilePage extends StatelessWidget {
                                     color: AppColorUtils.GRAY_4,
                                     fontWeight: FontWeight.w400,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 5,
                                   ),
                                   // Container(
@@ -128,87 +132,83 @@ class MyProfilePage extends StatelessWidget {
                                       )
                                     ],
                                   )
-                                : Container(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        SvgPicture.asset(
-                                          AppImageUtils.PERSON,
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(left: 5),
-                                          child: AppWidgets.textLocale(
-                                            text: LocaleKeys.normal_user,
-                                            color: AppColorUtils.TEXT_BLUE,
-                                            fontSize: 16.sp,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        )
-                                      ],
+                                : Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.center,
+                                  children: [
+                                    SvgPicture.asset(
+                                      AppImageUtils.PERSON,
                                     ),
-                                  ).paddingOnly(bottom: 24.h),
-                            Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  AppWidgets.textLocale(
-                                    text: LocaleKeys.phone_number,
-                                    color: AppColorUtils.DARK_4,
-                                    fontSize: 13.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ).paddingOnly(bottom: 8.h),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(
-                                        child: Container(
-                                          width: 283.w,
-                                          padding: EdgeInsets.only(left: 18),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(12),
-                                            color: AppColorUtils.GREEN_9,
-                                            border: Border.all(
-                                              width: 1,
-                                              color: AppColorUtils.BORDER,
-                                            ),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 5),
+                                      child: AppWidgets.textLocale(
+                                        text: LocaleKeys.normal_user,
+                                        color: AppColorUtils.TEXT_BLUE,
+                                        fontSize: 16.sp,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    )
+                                  ],
+                                ).paddingOnly(bottom: 24.h),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                AppWidgets.textLocale(
+                                  text: LocaleKeys.phone_number,
+                                  color: AppColorUtils.DARK_4,
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w400,
+                                ).paddingOnly(bottom: 8.h),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        width: 283.w,
+                                        padding: EdgeInsets.only(left: 18),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          color: AppColorUtils.GREEN_9,
+                                          border: Border.all(
+                                            width: 1,
+                                            color: AppColorUtils.BORDER,
                                           ),
-                                          child: TextField(
-                                            decoration: InputDecoration(
-                                              enabled: false,
-                                              hintText: state.phone,
-                                              border: InputBorder.none,
-                                              hintStyle: TextStyle(
-                                                color: AppColorUtils.GRAY_4,
-                                                fontSize: 15.sp,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                                        ),
+                                        child: TextField(
+                                          decoration: InputDecoration(
+                                            enabled: false,
+                                            hintText: state.phone,
+                                            border: InputBorder.none,
+                                            hintStyle: TextStyle(
+                                              color: AppColorUtils.GRAY_4,
+                                              fontSize: 15.sp,
+                                              fontWeight: FontWeight.w500,
                                             ),
                                           ),
                                         ),
                                       ),
-                                      InkWell(
-                                        onTap: () {
-                                          context
-                                              .read<MyProfileUpdateBloc>()
-                                              .add(EditProfileChangePage(3));
-                                        },
-                                        child: Container(
-                                          height: 33.w,
-                                          width: 33.w,
-                                          child: AppWidgets.imageSvg(
-                                            path: AppImageUtils.EDIT,
-                                          ),
-                                        ).paddingOnly(left: 10.w),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        context
+                                            .read<MyProfileUpdateBloc>()
+                                            .add(EditProfileChangePage(3));
+                                      },
+                                      child: SizedBox(
+                                        height: 33.w,
+                                        width: 33.w,
+                                        child: AppWidgets.imageSvg(
+                                          path: AppImageUtils.EDIT,
+                                        ),
+                                      ).paddingOnly(left: 10.w),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
-                            Divider(
+                            const Divider(
                               thickness: 2,
                               color: AppColorUtils.GREEN_8,
                             ).paddingOnly(
@@ -222,29 +222,27 @@ class MyProfilePage extends StatelessWidget {
                                     .pushNamed(ChooseLangPage.routeName);
                               },
                             ),
-                            Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  AppDisableTextField(
-                                    isFill: false,
-                                    hintText: state.firstName,
-                                    onChanged: (v) {},
-                                    title: LocaleKeys.name.tr(),
-                                  ).paddingOnly(bottom: 23.h),
-                                  AppDisableTextField(
-                                    isFill: false,
-                                    hintText: state.lastName,
-                                    onChanged: (v) {},
-                                    title: LocaleKeys.surname.tr(),
-                                  ).paddingOnly(bottom: 23.h),
-                                  state.gender != null ? MyRadioButtonStatic(
-                                    initial: state.gender ?? "",
-                                  ).paddingOnly(top: 20) : SizedBox(),
-                                ],
-                              ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                AppDisableTextField(
+                                  isFill: false,
+                                  hintText: state.firstName,
+                                  onChanged: (v) {},
+                                  title: LocaleKeys.name.tr(),
+                                ).paddingOnly(bottom: 23.h),
+                                AppDisableTextField(
+                                  isFill: false,
+                                  hintText: state.lastName,
+                                  onChanged: (v) {},
+                                  title: LocaleKeys.surname.tr(),
+                                ).paddingOnly(bottom: 23.h),
+                                state.gender != null ? MyRadioButtonStatic(
+                                  initial: state.gender ?? "",
+                                ).paddingOnly(top: 20) : SizedBox(),
+                              ],
                             ).paddingOnly(bottom: 24.h),
-                            Divider(
+                            const Divider(
                               thickness: 2,
                               color: AppColorUtils.GREEN_8,
                             ).paddingOnly(bottom: 24.h),

@@ -56,11 +56,10 @@ class _RegVolunteerState extends State<RegVolunteer>
               ),
               AppWidgets.textLocale(
                 text: LocaleKeys.be_volunteer,
-                fontSize: 26.sp,
+                fontSize: 22.sp,
                 fontWeight: FontWeight.w600,
               ),
-              SvgPicture.asset(
-                AppImageUtils.NOTIFICATION,
+              SizedBox(
                 height: 35.w,
                 width: 35.w,
               )

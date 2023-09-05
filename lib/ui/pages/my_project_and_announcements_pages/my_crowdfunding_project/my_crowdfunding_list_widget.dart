@@ -28,7 +28,7 @@ class MyCrowdfundingListWidget extends StatelessWidget {
             path: AppImageUtils.BOX,
             height: 70.w,
             width: 70.w,
-            fit: BoxFit.none,
+            fit: BoxFit.cover,
           ).paddingOnly(top: 80.w),
           AppWidgets.textLocale(
             text: LocaleKeys.nothing_found_yet,

@@ -39,49 +39,51 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
             backgroundColor: Colors.transparent,
             elevation: 0,
             titleSpacing: 0,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  child: SvgPicture.asset(
-                    AppImageUtils.MENU,
+            title: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                    child: SvgPicture.asset(
+                      AppImageUtils.MENU,
+                      height: 35.w,
+                      width: 35.w,
+                    ),
+                    onTap: () {
+                      HomePage.globalKey.currentState!.openDrawer();
+                    },
+                  ),
+                  Expanded(
+                    child: AppWidgets.textLocale(
+                      text: LocaleKeys.projects_and_ads,
+                      fontSize: 22.sp,
+                      fontWeight: FontWeight.w600,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  SizedBox(
                     height: 35.w,
                     width: 35.w,
                   ),
-                  onTap: () {
-                    HomePage.globalKey.currentState!.openDrawer();
-                  },
-                ),
-                Expanded(
-                  child: AppWidgets.textLocale(
-                    text: LocaleKeys.projects_and_ads,
-                    fontSize: 25,
-                    fontWeight: FontWeight.w600,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                SizedBox(
-                  height: 35.w,
-                  width: 35.w,
-                ),
-
-                ///Change later
-                ///
-                // InkWell(
-                //   onTap: () {
-                //     NavigatorService.to.pushNamed(
-                //       NotificationPage.routeName,
-                //     );
-                //   },
-                //   child: SvgPicture.asset(
-                //     AppImageUtils.NOTIFICATION,
-                //     height: 35.w,
-                //     width: 35.w,
-                //     fit: BoxFit.fill,
-                //   ),
-                // )
-              ],
-            ).paddingSymmetric(horizontal: 20),
+                  ///Change later
+                  ///
+                  // InkWell(
+                  //   onTap: () {
+                  //     NavigatorService.to.pushNamed(
+                  //       NotificationPage.routeName,
+                  //     );
+                  //   },
+                  //   child: SvgPicture.asset(
+                  //     AppImageUtils.NOTIFICATION,
+                  //     height: 35.w,
+                  //     width: 35.w,
+                  //     fit: BoxFit.fill,
+                  //   ),
+                  // )
+                ],
+              ),
+            ),
           ),
           body: _buildBody(context, state),
         ),

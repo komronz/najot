@@ -1,4 +1,4 @@
-import '../../../data/model/project_model.dart';
+import '../../../../data/model/project_model.dart';
 
 class ArgumentsInTesterPage{
   final int number;

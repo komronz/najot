@@ -70,11 +70,11 @@ class MyVolunteeringAuthorWidget extends StatelessWidget {
                       width: 13.w,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: Color(0xFFE8FEF2),
+                        color: const Color(0xFFE8FEF2),
                       ),
                       child: SvgPicture.asset(
                         AppImageUtils.CHECK_SMALL,
-                        color: Color(0xFF038D69),
+                        color: const Color(0xFF038D69),
                       ).paddingAll(0.3),
                     ).paddingOnly(right: 5),
                     AppWidgets.textLocale(

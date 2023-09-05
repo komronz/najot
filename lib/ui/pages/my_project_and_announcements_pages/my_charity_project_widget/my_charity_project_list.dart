@@ -10,7 +10,7 @@ import 'package:najot/data/utils/app_image_utils.dart';
 import 'package:najot/data/utils/app_logger_util.dart';
 import 'package:najot/ui/widgets/app_widgets.dart';
 import '../../../../data/services/navigator_service.dart';
-import '../ArgumentsClassInTesterPagesInProductsAnnouncements.dart';
+import '../model_arguments_in_tester_page/ArgumentsClassInTesterPagesInProductsAnnouncements.dart';
 import '../my_charity_item_project_full_widget/my_charity_item_full_page.dart';
 import '../my_charity_project_full_widget/my_charity_project_full_page.dart';
 import 'charity_cash_widget.dart';
@@ -35,7 +35,7 @@ class MyCharityProjectList extends StatelessWidget {
             path: AppImageUtils.IMG_CHARITY_EMPTY,
             height: 70.w,
             width: 70.w,
-            fit: BoxFit.none,
+            fit: BoxFit.cover,
           ).paddingOnly(top: 80.w),
           AppWidgets.textLocale(
             text: 'ERROR',

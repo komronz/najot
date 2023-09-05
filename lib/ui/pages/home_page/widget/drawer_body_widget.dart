@@ -3,15 +3,15 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
-import 'package:najot/data/bloc/home_cubit/home_cubit.dart';
-import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/home_page/widget/log_out_dialog.dart';
-import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
-import 'package:najot/ui/widgets/app_widgets.dart';
+import '/data/bloc/app_page_cubit/app_page_cubit.dart';
+import '/data/bloc/home_cubit/home_cubit.dart';
+import '/data/extensions/widget_padding_extension.dart';
+import '/data/localization/locale_keys.g.dart';
+import '/data/utils/app_color_utils.dart';
+import '/data/utils/app_image_utils.dart';
+import '/ui/pages/home_page/widget/log_out_dialog.dart';
+import '/ui/pages/main_page/widgets/button_card_widget.dart';
+import '/ui/widgets/app_widgets.dart';
 
 class DrawerBody extends StatelessWidget {
   DrawerBody({
@@ -34,6 +34,7 @@ class DrawerBody extends StatelessWidget {
       ),
       child: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               children: [
@@ -45,14 +46,14 @@ class DrawerBody extends StatelessWidget {
                       height: 115.h,
                       child: Row(
                         children: [
-                          Container(
+                          SizedBox(
                             width: 55.w,
                             height: 55.w,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(100),
                               child: CachedNetworkImage(
                                 imageUrl: cubit.state.user?.photo ?? "",
-                                placeholder: (context, url) => Center(
+                                placeholder: (context, url) => const Center(
                                   child: CircularProgressIndicator(),
                                 ),
                                 errorWidget: (context, url, error) =>
@@ -126,13 +127,13 @@ class DrawerBody extends StatelessWidget {
                     )
                   ],
                 ),
-                Divider(
+                const Divider(
                   color: AppColorUtils.DIVIDER,
                   height: 1,
                   thickness: 1,
                 ),
                 cubit.state.user?.isVolunteer ?? false
-                    ? SizedBox()
+                    ? const SizedBox()
                     : ButtonCard(
                         onPress: () {
                           cubit.changePage(
@@ -334,7 +335,7 @@ class DrawerBody extends StatelessWidget {
                             fontWeight: FontWeight.w400,
                           )
                         ],
-                      ),
+                      ).paddingOnly(bottom: 15.w),
                     ),
                   ),
                 )
