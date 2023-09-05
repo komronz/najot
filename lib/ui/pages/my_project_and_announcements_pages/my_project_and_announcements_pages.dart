@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:najot/data/bloc/my_charity_project/my_charity_project_cubit.dart';
 import 'package:najot/data/extensions/context_extension.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
@@ -10,10 +9,8 @@ import 'package:najot/data/localization/locale_keys.g.dart';
 
 import '../../../data/config/const/decoration_const.dart';
 import '../../../data/utils/app_color_utils.dart';
-import '../../../data/utils/app_image_utils.dart';
 import '../../widgets/app_error_widget.dart';
 import '../../widgets/app_widgets.dart';
-import '../home_page/home_page.dart';
 import 'my_charity_project_widget/my_charity_project_list.dart';
 import 'my_crowdfunding_project/my_crowdfunding_list_widget.dart';
 import 'my_volunteering_project_page/my_volunteering_project_page.dart';
@@ -34,57 +31,7 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
       child: BlocBuilder<MyProjectAndAnnouncementsPagesCubit,
           MyProjectAndAnnouncementsPagesState>(
         builder: (context, state) => Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            titleSpacing: 0,
-            title: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    child: SvgPicture.asset(
-                      AppImageUtils.MENU,
-                      height: 35.w,
-                      width: 35.w,
-                    ),
-                    onTap: () {
-                      HomePage.globalKey.currentState!.openDrawer();
-                    },
-                  ),
-                  Expanded(
-                    child: AppWidgets.textLocale(
-                      text: LocaleKeys.projects_and_ads,
-                      fontSize: 22.sp,
-                      fontWeight: FontWeight.w600,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 35.w,
-                    width: 35.w,
-                  ),
-                  ///Change later
-                  ///
-                  // InkWell(
-                  //   onTap: () {
-                  //     NavigatorService.to.pushNamed(
-                  //       NotificationPage.routeName,
-                  //     );
-                  //   },
-                  //   child: SvgPicture.asset(
-                  //     AppImageUtils.NOTIFICATION,
-                  //     height: 35.w,
-                  //     width: 35.w,
-                  //     fit: BoxFit.fill,
-                  //   ),
-                  // )
-                ],
-              ),
-            ),
-          ),
+          appBar: AppWidgets.appBarForFirstPages(title: LocaleKeys.projects_and_ads),
           body: _buildBody(context, state),
         ),
       ),

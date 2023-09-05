@@ -7,16 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/services/navigator_service.dart';
-import 'package:najot/data/styles/app_colors.dart';
-import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/data/utils/app_logger_util.dart';
-import 'package:najot/data/utils/map_utils.dart';
-import 'package:najot/ui/pages/loading_page/loading_page.dart';
-import 'package:najot/ui/widgets/ripple_effect.dart';
+import '../pages/home_page/home_page.dart';
+import '/data/extensions/widget_padding_extension.dart';
+import '/data/localization/locale_keys.g.dart';
+import '/data/services/navigator_service.dart';
+import '/data/styles/app_colors.dart';
+import '/data/utils/app_color_utils.dart';
+import '/data/utils/app_image_utils.dart';
+import '/data/utils/app_logger_util.dart';
+import '/data/utils/map_utils.dart';
+import '/ui/pages/loading_page/loading_page.dart';
+import '/ui/widgets/ripple_effect.dart';
 import 'package:super_rich_text/super_rich_text.dart';
 
 /// Please don't change [fontSize] directly.
@@ -373,7 +374,7 @@ class AppWidgets {
 
     // Uri uri = Uri.https(authority, unenCodePath);
     Uri uri = Uri.https(authority, unenCodePath);
-    return Container(
+    return SizedBox(
       width: 42,
       height: 42,
       child: ClipRRect(
@@ -383,7 +384,7 @@ class AppWidgets {
             AppLoggerUtil.d("click Location");
             MapUtils.openMap(uri);
           },
-          child: Icon(
+          child: const Icon(
             Icons.location_on_outlined,
             color: AppColorUtils.GREEN_APP,
           ),
@@ -510,7 +511,59 @@ class AppWidgets {
       height: height,
     );
   }
-
+  static AppBar appBarForFirstPages({required String title}){
+    return AppBar(
+      automaticallyImplyLeading: false,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      titleSpacing: 0,
+      title: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            InkWell(
+              child: SvgPicture.asset(
+                AppImageUtils.MENU,
+                height: 35.w,
+                width: 35.w,
+              ),
+              onTap: () {
+                HomePage.globalKey.currentState!.openDrawer();
+              },
+            ),
+            Expanded(
+              child: AppWidgets.textLocale(
+                text: title,
+                fontSize: 22.sp,
+                fontWeight: FontWeight.w600,
+                textAlign: TextAlign.center,
+              ),
+            ),
+            SizedBox(
+              height: 35.w,
+              width: 35.w,
+            ),
+            ///Change later
+            ///
+            // InkWell(
+            //   onTap: () {
+            //     NavigatorService.to.pushNamed(
+            //       NotificationPage.routeName,
+            //     );
+            //   },
+            //   child: SvgPicture.asset(
+            //     AppImageUtils.NOTIFICATION,
+            //     height: 35.w,
+            //     width: 35.w,
+            //     fit: BoxFit.fill,
+            //   ),
+            // )
+          ],
+        ),
+      ),
+    );
+  }
   static Widget AutoSizeText({
     required String text,
     double? fontSize,

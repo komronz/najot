@@ -25,55 +25,7 @@ class RulesPage extends StatelessWidget {
         if (state.internetConnection) {
           return Scaffold(
             backgroundColor: AppColorUtils.BACKGROUND,
-            appBar: AppBar(
-              automaticallyImplyLeading: false,
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              titleSpacing: 0,
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    child: SvgPicture.asset(
-                      AppImageUtils.MENU,
-                      height: 35.w,
-                      width: 35.w,
-                    ),
-                    onTap: () {
-                      HomePage.globalKey.currentState!.openDrawer();
-                    },
-                  ),
-                  Expanded(
-                    child: AppWidgets.textLocale(
-                      text: LocaleKeys.project_rules,
-                      fontSize: 26.sp,
-                      autoResize: true,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 35.w,
-                    height: 35.w,
-                  ),
-
-                  ///Change later
-                  ///
-                  // InkWell(
-                  //   onTap: () {
-                  //     NavigatorService.to.pushNamed(
-                  //       NotificationPage.routeName,
-                  //     );
-                  //   },
-                  //   child: SvgPicture.asset(
-                  //     AppImageUtils.NOTIFICATION,
-                  //     height: 35.w,
-                  //     width: 35.w,
-                  //     fit: BoxFit.fill,
-                  //   ),
-                  // )
-                ],
-              ).paddingSymmetric(horizontal: 20),
-            ),
+            appBar: AppWidgets.appBarForFirstPages(title: LocaleKeys.project_rules),
             body: buildBody(state, context),
           );
         }

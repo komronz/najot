@@ -1,14 +1,15 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/model/project_model.dart';
-import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/widgets/app_widgets.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
+
+import '/data/extensions/widget_padding_extension.dart';
+import '/data/localization/locale_keys.g.dart';
+import '/data/model/project_model.dart';
+import '/data/utils/app_color_utils.dart';
+import '/data/utils/app_image_utils.dart';
+import '/ui/widgets/app_widgets.dart';
 
 class CharityCardWidget extends StatelessWidget {
   CharityCardWidget({
@@ -24,7 +25,8 @@ class CharityCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        child: Container(
+        onTap: onTap,
+        child: SizedBox(
           height: 300.w,
           width: 220.w,
           child: Stack(
@@ -38,10 +40,11 @@ class CharityCardWidget extends StatelessWidget {
                 child: Column(
                   children: [
                     Expanded(
+                      flex: 1,
                       child: ClipRRect(
                         borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(12),
-                          topRight: Radius.circular(12),
+                          topLeft: Radius.circular(12.r),
+                          topRight: Radius.circular(12.r),
                         ),
                         child: CachedNetworkImage(
                           width: double.infinity,
@@ -50,15 +53,15 @@ class CharityCardWidget extends StatelessWidget {
                             AppImageUtils.Splash2,
                           ),
                           placeholder: (context, url) =>
-                              Center(child: CircularProgressIndicator()),
+                              const Center(child: CircularProgressIndicator()),
                           fit: BoxFit.cover,
                         ),
                       ),
-                      flex: 1,
                     ),
                     Expanded(
+                      flex: 1,
                       child: Container(
-                        padding: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10.w),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -70,7 +73,7 @@ class CharityCardWidget extends StatelessWidget {
                             ),
                             LinearPercentIndicator(
                               animation: true,
-                              padding: EdgeInsets.all(0),
+                              padding: const EdgeInsets.all(0),
                               lineHeight: 10.h,
                               animationDuration: 2000,
                               percent: projectModel.percent! / 100,
@@ -100,23 +103,21 @@ class CharityCardWidget extends StatelessWidget {
                           ],
                         ),
                       ),
-                      flex: 1,
                     ),
                   ],
                 ),
               ),
               Align(
+                alignment: Alignment.topRight,
                 child: InkWell(
+                  onTap: onTapLike,
                   child: projectModel.isFavourite!
                       ? SvgPicture.asset(AppImageUtils.LIKE)
                       : SvgPicture.asset(AppImageUtils.UNLIKE),
-                  onTap: onTapLike,
                 ),
-                alignment: Alignment.topRight,
               ).paddingAll(15),
             ],
           ),
-        ),
-        onTap: onTap);
+        ));
   }
 }

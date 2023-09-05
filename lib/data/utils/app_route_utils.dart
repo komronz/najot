@@ -1,33 +1,31 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
-import 'package:najot/data/bloc/login_bloc/login_bloc.dart';
-import 'package:najot/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
-import 'package:najot/ui/pages/about_page/about_page.dart';
-import 'package:najot/ui/pages/auth_page/auth_page.dart';
-import 'package:najot/ui/pages/charity_page/charity_full_page/charity_full_page.dart';
-import 'package:najot/ui/pages/charity_page/charity_page.dart';
-import 'package:najot/ui/pages/counter_page/counter_page.dart';
-import 'package:najot/ui/pages/crowdfunding_page_main/crowdfunding_page.dart';
-import 'package:najot/ui/pages/crowdfunding_page_main/project_details/product_datail_page/product_detail_page.dart';
-import 'package:najot/ui/pages/crowdfunding_page_main/project_details/project_details_page.dart';
-import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/pages/intro_page/intro_page.dart';
-import 'package:najot/ui/pages/language_page/choose_lang.dart';
-import 'package:najot/ui/pages/loading_page/loading_page.dart';
-import 'package:najot/ui/pages/login_page/login_page.dart';
-import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_page.dart';
-import 'package:najot/ui/pages/my_volunteering_page/my_volunteering_widget/adding_project_page.dart';
-import 'package:najot/ui/pages/operator_page/operator_page.dart';
-import 'package:najot/ui/pages/organization_page/organization_item_detail_page/organization_item_widget2.dart';
-import 'package:najot/ui/pages/reg_page/reg_page.dart';
-import 'package:najot/ui/pages/reg_volounteer/widgets/img_view.dart';
-import 'package:najot/ui/pages/verification_page/verification_page.dart';
-import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/volunteer_detail_page.dart';
-import 'package:najot/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_help_widget.dart';
-import 'package:najot/ui/pages/volunteer_page/volunteer_page.dart';
+import 'package:najot/ui/pages/organization_page/second_page.dart';
+import '/data/bloc/app_page_cubit/app_page_cubit.dart';
+import '/data/bloc/login_bloc/login_bloc.dart';
+import '/data/bloc/my_profile_bloc/my_profil_update_bloc.dart';
+import '/ui/pages/about_page/about_page.dart';
+import '/ui/pages/auth_page/auth_page.dart';
+import '/ui/pages/charity_page/charity_full_page/charity_full_page.dart';
+import '/ui/pages/charity_page/charity_page.dart';
+import '/ui/pages/counter_page/counter_page.dart';
+import '/ui/pages/crowdfunding_page_main/crowdfunding_page.dart';
+import '/ui/pages/crowdfunding_page_main/project_details/product_datail_page/product_detail_page.dart';
+import '/ui/pages/crowdfunding_page_main/project_details/project_details_page.dart';
+import '/ui/pages/home_page/home_page.dart';
+import '/ui/pages/intro_page/intro_page.dart';
+import '/ui/pages/language_page/choose_lang.dart';
+import '/ui/pages/loading_page/loading_page.dart';
+import '/ui/pages/login_page/login_page.dart';
+import '/ui/pages/my_volunteering_page/my_volunteering_page.dart';
+import '/ui/pages/my_volunteering_page/my_volunteering_widget/adding_project_page.dart';
+import '/ui/pages/operator_page/operator_page.dart';
+import '/ui/pages/reg_page/reg_page.dart';
+import '/ui/pages/reg_volounteer/widgets/img_view.dart';
+import '/ui/pages/verification_page/verification_page.dart';
+import '/ui/pages/volunteer_page/volunteer_detail_page/volunteer_detail_page.dart';
+import '/ui/pages/volunteer_page/volunteer_detail_page/widgets/volunteer_help_widget.dart';
+import '/ui/pages/volunteer_page/volunteer_page.dart';
 import '../../ui/pages/charity_page/charity_full_page/charity_full_page2.dart';
 import '../../ui/pages/charity_page/widgets/charity_help_widget.dart';
 import '../../ui/pages/language_page/language_page.dart';
@@ -41,9 +39,8 @@ import '../../ui/pages/my_project_and_announcements_pages/my_charity_project_ful
 import '../../ui/pages/my_project_and_announcements_pages/my_crowdfunding_project/my_crowdfunding_about_widget.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_project_and_announcements_pages.dart';
 import '../../ui/pages/my_project_and_announcements_pages/my_volunteering_project_page/about_my_volunteering_project_page.dart';
-import '../../ui/pages/my_project_and_announcements_pages/tester_pages_in_progects_announcements.dart';
+import '../../ui/pages/tester_page_for_detail_pages.dart';
 import '../../ui/pages/notification_page/notification_page.dart';
-import '../../ui/pages/organization_page/organization_item_detail_page/organization_item_widget.dart';
 import '../../ui/pages/organization_page/organization_item_detail_page/organization_help_widget.dart';
 import '../../ui/pages/organization_page/organization_item_detail_page/organization_item_detail_page.dart';
 import '../../ui/pages/volunteering_charity_history_page/volunteering_charity_history_page.dart';
@@ -130,12 +127,6 @@ class AppRouteUtils {
             model: settings.arguments as OrganizationItemDetailPageModel,
           ),
         );
-      case OrganizationItemWidget.routName:
-        return MaterialPageRoute(
-          builder: (context) => OrganizationItemWidget(
-            model: settings.arguments as OrganizationItemModel,
-          ),
-        );
       case ProductDetailPage.routeName:
         return MaterialPageRoute(
           builder: (context) => ProductDetailPage(
@@ -156,12 +147,6 @@ class AppRouteUtils {
         return MaterialPageRoute(
           builder: (context) => VolunteerDetailPage(
             model: settings.arguments as VolunteerDetailModel,
-          ),
-        );
-      case OrganizationItemWidget2.routName:
-        return MaterialPageRoute(
-          builder: (context) => OrganizationItemWidget2(
-            model: settings.arguments as OrganizationItemModel,
           ),
         );
       case VolunteerPage.routeName:
@@ -263,6 +248,12 @@ class AppRouteUtils {
               screen_number: args.number,
             );
           }
+        );
+      case 'second_test_page':
+        return MaterialPageRoute(
+          builder: (context) => SecondPage(
+            model: settings.arguments as ProjectModel,
+          ),
         );
     }
     return null;

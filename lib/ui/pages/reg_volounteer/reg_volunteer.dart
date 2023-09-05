@@ -1,23 +1,21 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:super_rich_text/super_rich_text.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:najot/data/bloc/app_page_cubit/app_page_cubit.dart';
-import 'package:najot/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
-import 'package:najot/data/config/const/decoration_const.dart';
-import 'package:najot/data/extensions/context_extension.dart';
-import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/pages/main_page/widgets/button_card_widget.dart';
-import 'package:najot/ui/pages/reg_volounteer/widgets/view1.dart';
-import 'package:najot/ui/pages/reg_volounteer/widgets/view2.dart';
-import 'package:najot/ui/widgets/app_widgets.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:super_rich_text/super_rich_text.dart';
+import '/data/bloc/app_page_cubit/app_page_cubit.dart';
+import '/data/bloc/reg_volunteer_bloc/reg_volunteer_bloc.dart';
+import '/data/config/const/decoration_const.dart';
+import '/data/extensions/context_extension.dart';
+import '/data/extensions/widget_padding_extension.dart';
+import '/data/localization/locale_keys.g.dart';
+import '/data/utils/app_color_utils.dart';
+import '/data/utils/app_image_utils.dart';
+import '/ui/pages/main_page/widgets/button_card_widget.dart';
+import '/ui/pages/reg_volounteer/widgets/view1.dart';
+import '/ui/pages/reg_volounteer/widgets/view2.dart';
+import '/ui/widgets/app_widgets.dart';
 
 class RegVolunteer extends StatefulWidget {
   const RegVolunteer({Key? key}) : super(key: key);
@@ -36,36 +34,7 @@ class _RegVolunteerState extends State<RegVolunteer>
       create: (context) => bloc..add(VolunteerLoad()),
       child: Scaffold(
         backgroundColor: AppColorUtils.BACKGROUND,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          titleSpacing: 0,
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                child: SvgPicture.asset(
-                  AppImageUtils.MENU,
-                  height: 35.w,
-                  width: 35.w,
-                ),
-                onTap: () {
-                  HomePage.globalKey.currentState?.openDrawer();
-                },
-              ),
-              AppWidgets.textLocale(
-                text: LocaleKeys.be_volunteer,
-                fontSize: 22.sp,
-                fontWeight: FontWeight.w600,
-              ),
-              SizedBox(
-                height: 35.w,
-                width: 35.w,
-              )
-            ],
-          ).paddingSymmetric(horizontal: 20),
-        ),
+        appBar: AppWidgets.appBarForFirstPages(title: LocaleKeys.be_volunteer),
         body: BlocConsumer<RegVolunteerBloc, RegVolunteerState>(
           bloc: bloc,
           listener: (context, state) {},

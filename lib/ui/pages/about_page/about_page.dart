@@ -1,18 +1,17 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:najot/data/bloc/applied_bloc/appeal_bloc.dart';
-import 'package:najot/data/config/const/decoration_const.dart';
-import 'package:najot/data/extensions/context_extension.dart';
-import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/localization/locale_keys.g.dart';
-import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/data/utils/app_image_utils.dart';
-import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/widgets/app_text_field.dart';
-import 'package:najot/ui/widgets/app_widgets.dart';
+
+import '/data/bloc/applied_bloc/appeal_bloc.dart';
+import '/data/config/const/decoration_const.dart';
+import '/data/extensions/context_extension.dart';
+import '/data/extensions/widget_padding_extension.dart';
+import '/data/localization/locale_keys.g.dart';
+import '/data/utils/app_color_utils.dart';
+import '/data/utils/app_image_utils.dart';
+import '/ui/widgets/app_text_field.dart';
+import '/ui/widgets/app_widgets.dart';
 
 import '../../widgets/app_error_widget.dart';
 import 'edit_show_success.dart';
@@ -41,53 +40,7 @@ class AboutPage extends StatelessWidget {
     return Scaffold(
         key: UniqueKey(),
         backgroundColor: AppColorUtils.BACKGROUND,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          titleSpacing: 0,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                child: SvgPicture.asset(
-                  AppImageUtils.MENU,
-                  height: 35.w,
-                  width: 35.w,
-                ),
-                onTap: () {
-                  HomePage.globalKey.currentState!.openDrawer();
-                },
-              ),
-              AppWidgets.textLocale(
-                text: LocaleKeys.about_us,
-                fontSize: 26.sp,
-                fontWeight: FontWeight.w600,
-              ),
-
-              SizedBox(
-                width: 35.w,
-                height: 35.w,
-              ),
-
-              /// Change later
-              ///
-              // InkWell(
-              //   onTap: () {
-              //     NavigatorService.to.pushNamed(
-              //       NotificationPage.routeName,
-              //     );
-              //   },
-              //   child: SvgPicture.asset(
-              //     AppImageUtils.NOTIFICATION,
-              //     height: 35.w,
-              //     width: 35.w,
-              //     fit: BoxFit.fill,
-              //   ),
-              // )
-            ],
-          ).paddingSymmetric(horizontal: 20),
-        ),
+        appBar: AppWidgets.appBarForFirstPages(title: LocaleKeys.about_us),
         body: BlocBuilder<AppealBloc, AppealState>(
           bloc: context.read<AppealBloc>(),
           builder: (context, state) {

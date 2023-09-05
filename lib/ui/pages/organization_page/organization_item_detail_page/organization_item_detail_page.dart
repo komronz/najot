@@ -5,16 +5,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot/data/bloc/organization_cubit/organization_cubit.dart';
 import 'package:najot/data/extensions/widget_padding_extension.dart';
 import 'package:najot/data/model/organization_model.dart';
-import 'package:najot/data/utils/app_logger_util.dart';
-import 'package:najot/ui/pages/organization_page/organization_item_detail_page/organization_item_widget2.dart';
 
+import '../../../../data/bloc/crowdFounding_cubit/kraud_fanding_cubit.dart';
 import '../../../../data/localization/locale_keys.g.dart';
 import '../../../../data/services/navigator_service.dart';
 import '../../../../data/utils/app_color_utils.dart';
 import '../../../widgets/app_widgets.dart';
+import '../../charity_page/charity_full_page/charity_full_page2.dart';
 import '../../charity_page/widgets/charity_item2_widget.dart';
 import '../../charity_page/widgets/charity_item_widget.dart';
-import 'organization_item_widget.dart';
+import '../../crowdfunding_page_main/project_details/project_details_page.dart';
+
 
 class OrganizationItemDetailPageModel {
   final OrganizationModelResults model;
@@ -56,8 +57,8 @@ class OrganizationItemDetailPage extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: AppColorUtils.BACKGROUND,
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(11),
-                      bottomRight: Radius.circular(11),
+                      bottomLeft: Radius.circular(12.r),
+                      bottomRight: Radius.circular(12.r),
                     ),
                   ),
                   child: Column(
@@ -71,17 +72,17 @@ class OrganizationItemDetailPage extends StatelessWidget {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.all(
-                            Radius.circular(12),
+                            Radius.circular(12.r),
                           ),
                           child: CachedNetworkImage(
                             imageUrl: model.model.logo!,
                             fit: BoxFit.cover,
                             width: MediaQuery.of(context).size.width,
-                            placeholder: (context, url) => Center(
+                            placeholder: (context, url) => const Center(
                               child: CircularProgressIndicator(),
                             ),
                             errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
+                                const Icon(Icons.error),
                           ),
                         ),
                       ),
@@ -163,25 +164,26 @@ class OrganizationItemDetailPage extends StatelessWidget {
                         ),
                       },
                       SingleChildScrollView(
-                        physics: BouncingScrollPhysics(),
+                        physics: const BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: List.generate(
-                            OrganizationCubit
-                                    .to.state.project?.results?.length ??
-                                0,
-                            (index) {
-                              if (state.project!.results![index].requiredFund !=
-                                  null) {
+                            OrganizationCubit.to.state.project?.results?.length ?? 0, (index) {
+                              if (state.project!.results![index].requiredFund != null) {
                                 return CharityItemWidget(
                                   onTap: () {
+                                    // NavigatorService.to.pushNamed(
+                                    //   OrganizationItemWidget.routName,
+                                    //   arguments: OrganizationItemModel(
+                                    //     cardModel:
+                                    //         state.project!.results![index],
+                                    //     id: model.model.id!,
+                                    //   ),
+                                    // );
+                                    print('pppppppppppppppppppppppp1');
                                     NavigatorService.to.pushNamed(
-                                      OrganizationItemWidget.routName,
-                                      arguments: OrganizationItemModel(
-                                        cardModel:
-                                            state.project!.results![index],
-                                        id: model.model.id!,
-                                      ),
+                                      'second_test_page',
+                                      arguments: state.project!.results![index],
                                     );
                                   },
                                   model: state.project!.results![index],
@@ -195,13 +197,18 @@ class OrganizationItemDetailPage extends StatelessWidget {
                                 return CharityItem2Widget(
                                   model: state.project!.results![index],
                                   onTap: () {
+                                    // NavigatorService.to.pushNamed(
+                                    //   OrganizationItemWidget2.routName,
+                                    //   arguments: OrganizationItemModel(
+                                    //     cardModel:
+                                    //         state.project!.results![index],
+                                    //     id: model.model.id!,
+                                    //   ),
+                                    // );
+                                    print('pppppppppppppppppppppppp2');
                                     NavigatorService.to.pushNamed(
-                                      OrganizationItemWidget2.routName,
-                                      arguments: OrganizationItemModel(
-                                        cardModel:
-                                            state.project!.results![index],
-                                        id: model.model.id!,
-                                      ),
+                                      CharityFullPage2.routName,
+                                      arguments: state.project!.results![index],
                                     );
                                   },
                                   onTapLike: () async {
@@ -217,7 +224,7 @@ class OrganizationItemDetailPage extends StatelessWidget {
                       ).paddingOnly(
                         bottom: 10.w,
                         left: 15.w,
-                      ),
+                      )
                     ],
                   ),
                 ),

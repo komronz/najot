@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_cubit.dart';
-import '../../../data/utils/app_image_utils.dart';
+import '../../data/bloc/my_crowdfunding_support_cubit/my_crowdfunding_support_cubit.dart';
+import '../../data/utils/app_image_utils.dart';
 import '/data/bloc/charity_page_cubit/charity_cubit.dart';
 import '/data/bloc/project_data_cubit/project_data_cubit.dart';
 import '/data/extensions/widget_padding_extension.dart';
@@ -19,11 +19,11 @@ import '/ui/pages/crowdfunding_page_main/project_details/widgets/more_widget.dar
 import '/ui/pages/crowdfunding_page_main/project_details/widgets/question_asked_widget.dart';
 import '/ui/widgets/app_bar_with_title.dart';
 import '/ui/widgets/app_widgets.dart';
-import '../../widgets/app_error_widget.dart';
-import 'my_charity_project_full_widget/my_charity_edit_project_dialog.dart';
-import 'my_charity_project_full_widget/my_delete_project_dialog.dart';
-import 'my_crowdfunding_project/my_crowdfunding_news_widget.dart';
-import 'debugged_widgets/widget_for_tester_page_volontchecker.dart';
+import '../widgets/app_error_widget.dart';
+import 'my_project_and_announcements_pages/my_charity_project_full_widget/my_charity_edit_project_dialog.dart';
+import 'my_project_and_announcements_pages/my_charity_project_full_widget/my_delete_project_dialog.dart';
+import 'my_project_and_announcements_pages/my_crowdfunding_project/my_crowdfunding_news_widget.dart';
+import 'my_project_and_announcements_pages/debugged_widgets/widget_for_tester_page_volontchecker.dart';
 
 
 

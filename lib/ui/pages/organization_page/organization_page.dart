@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot/data/bloc/organization_cubit/organization_cubit.dart';
-import 'package:najot/data/utils/app_logger_util.dart';
-import 'package:najot/ui/pages/organization_page/widgets/organization_item_widget.dart';
 import '../../../data/localization/locale_keys.g.dart';
-import '../../../data/services/navigator_service.dart';
+import '/data/bloc/organization_cubit/organization_cubit.dart';
+import '/ui/pages/organization_page/widgets/organization_item_widget.dart';
 import '../../../data/utils/app_color_utils.dart';
-import '../../../data/utils/app_image_utils.dart';
 import '../../widgets/app_error_widget.dart';
 import '../../widgets/app_widgets.dart';
-import '../home_page/home_page.dart';
-import '../notification_page/notification_page.dart';
 
 class OrganizationPage extends StatelessWidget {
   OrganizationPage({Key? key}) : super(key: key);
@@ -26,24 +21,7 @@ class OrganizationPage extends StatelessWidget {
           builder: (context, state) {
             if(state.internetConnection){
               return Scaffold(
-                appBar: AppBar(
-                  backgroundColor: AppColorUtils.BACKGROUND,
-                  titleSpacing: 0,
-                  elevation: 0,
-                  automaticallyImplyLeading: false,
-                  title: AppWidgets.appBarMenu(
-                    title: LocaleKeys.organizations,
-                    onTapMenu: () {
-                      HomePage.globalKey.currentState!.openDrawer();
-                    },
-                    visibleIcon: false,
-                    onTapIcon: () {
-                      NavigatorService.to.pushNamed(NotificationPage.routeName,);
-
-                    },
-                    icon: AppImageUtils.NOTIFICATION,
-                  ),
-                ),
+                appBar: AppWidgets.appBarForFirstPages(title: LocaleKeys.organizations),
                 body: Container(
                   padding: EdgeInsets.all(15.w),
                   color: AppColorUtils.BACKGROUND,

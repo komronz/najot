@@ -19,15 +19,12 @@ class OrganizationCubit extends Cubit<OrganizationState> {
     GetIt.instance..registerSingleton<OrganizationCubit>(OrganizationCubit());
   }
 
-  OrganizationCubit()
-      : super(OrganizationState(
-          checkBox: false,
-        ));
+  OrganizationCubit() : super(OrganizationState(checkBox: false,));
   OrganizationService organizationService = OrganizationService();
   MainService mainService = MainService();
   var internetConnection;
 
-  Future load() async {
+  Future<void> load() async {
     internetConnection = await mainService.checkInternetConnection();
     emit(state.copyWith(internetConnection: internetConnection));
     var organizationModel = await organizationService.getModel();
@@ -49,7 +46,8 @@ class OrganizationCubit extends Cubit<OrganizationState> {
     emit(state.copyWith(project: RootProjectModel()));
     var tabProjects = await organizationService.getProjectModelById(id);
     if (tabProjects != null) {
-      emit(state.copyWith(project: tabProjects));
+      emit(state.copyWith(project: tabProjects),
+      );
     }
   }
 

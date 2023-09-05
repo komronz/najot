@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:najot/data/bloc/favorite-add_cubit/favorite_add_cubit.dart';
-import 'package:najot/data/extensions/widget_padding_extension.dart';
-import 'package:najot/data/utils/app_color_utils.dart';
-import 'package:najot/data/utils/app_logger_util.dart';
-import 'package:najot/ui/pages/home_page/home_page.dart';
-import 'package:najot/ui/widgets/app_widgets.dart';
+import '/data/bloc/favorite-add_cubit/favorite_add_cubit.dart';
+import '/data/extensions/widget_padding_extension.dart';
+import '/data/utils/app_color_utils.dart';
+import '/data/utils/app_logger_util.dart';
+import '/ui/widgets/app_widgets.dart';
 import '../../../data/bloc/crowdFounding_cubit/kraud_fanding_cubit.dart';
 import '../../../data/bloc/volunteer_bloc/volunteer_cubit.dart';
 import '../../../data/localization/locale_keys.g.dart';
@@ -32,51 +30,7 @@ class SavedPage extends StatelessWidget {
       child: BlocBuilder<FavoriteAddCubit, FavoriteAddState>(
         bloc: cubit..getFavoriteAddList(),
         builder: (context, state) => Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            titleSpacing: 0,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  child: SvgPicture.asset(
-                    AppImageUtils.MENU,
-                    height: 35.w,
-                    width: 35.w,
-                  ),
-                  onTap: () {
-                    HomePage.globalKey.currentState!.openDrawer();
-                  },
-                ),
-                AppWidgets.textLocale(
-                  text: LocaleKeys.saved,
-                  fontSize: 26.sp,
-                  fontWeight: FontWeight.w600,
-                ),
-                SizedBox(
-                  width: 35.w,
-                  height: 35.w,
-                ),
-
-                ///Change later
-                ///
-                // InkWell(
-                //   onTap: () {
-                //     cubit.deleteFavorite();
-                // NavigatorService.to.pushNamed(NotificationPage.routeName,);
-                //   },
-                //   child: SvgPicture.asset(
-                //     AppImageUtils.NOTIFICATION,
-                //     height: 35.w,
-                //     width: 35.w,
-                //     fit: BoxFit.fill,
-                //   ),
-                // )
-              ],
-            ).paddingAll(20),
-          ),
+          appBar: AppWidgets.appBarForFirstPages(title: LocaleKeys.saved),
           body: _buildBody(cubit),
         ),
       ),
