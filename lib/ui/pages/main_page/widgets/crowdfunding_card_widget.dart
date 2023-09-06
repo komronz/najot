@@ -14,17 +14,17 @@ import 'package:najot/ui/widgets/app_widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class CrowdfundingCardWidget extends StatelessWidget {
-  CrowdfundingCardWidget({
+  final ProjectModel projectModel;
+
+  final bool visible;
+  final VoidCallback onTap;
+  final onTapLike;
+  const CrowdfundingCardWidget({Key? key,
     required this.projectModel,
     required this.visible,
     required this.onTap,
     required this.onTapLike,
-  });
-
-  final ProjectModel projectModel;
-  final bool visible;
-  final VoidCallback onTap;
-  final VoidCallback onTapLike;
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -137,11 +137,9 @@ class CrowdfundingCardWidget extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.topRight,
-                child: InkWell(
+                child: GestureDetector(
                   onTap: onTapLike,
-                  child: projectModel.isFavourite ?? false
-                      ? SvgPicture.asset(AppImageUtils.LIKE)
-                      : SvgPicture.asset(AppImageUtils.UNLIKE),
+                  child: SvgPicture.asset(projectModel.isFavourite ?? false ? AppImageUtils.LIKE : AppImageUtils.UNLIKE),//SvgPicture.asset(AppImageUtils.UNLIKE),
                 ),
               ).paddingAll(15),
               Visibility(

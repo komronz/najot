@@ -32,80 +32,137 @@ class MyProjectAndAnnouncementsPages extends StatelessWidget {
           MyProjectAndAnnouncementsPagesState>(
         builder: (context, state) => Scaffold(
           appBar: AppWidgets.appBarForFirstPages(title: LocaleKeys.projects_and_ads),
-          body: _buildBody(context, state),
+          body: DefaultTabController(
+            initialIndex: 0,
+            length: 3,
+            child: Container(
+              decoration: DecorationConst.DEC_WITH_SHADOW,
+              height: context.height,
+              width: context.width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  TabBar(
+                    enableFeedback: true,
+                    labelColor: AppColorUtils.GREEN_APP,
+                    unselectedLabelColor: AppColorUtils.DARK_6,
+                    labelPadding: EdgeInsets.symmetric(horizontal: 15.w),
+                    padding: EdgeInsets.symmetric(vertical: 5.w),
+                    unselectedLabelStyle: TextStyle(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    labelStyle: TextStyle(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    tabs: [
+                      Text(LocaleKeys.crowdfunding.tr()),
+                      Text(LocaleKeys.volunteering.tr()),
+                      Text(LocaleKeys.charity.tr()),
+                    ],
+                    isScrollable: true,
+                    indicatorWeight: 1.5,
+                    indicatorColor: AppColorUtils.GREEN_APP,
+                    indicatorSize: TabBarIndicatorSize.label,
+                  ).paddingOnly(
+                    left: 15,
+                    top: 10,
+                    bottom: 10,
+                  ),
+                  Expanded(
+                    child: state.hasConnection ? state.isLoading ? const Center(
+                      child: CircularProgressIndicator(color: AppColorUtils.GREEN_APP),
+                    ) : TabBarView(
+                      children: [
+                        MyCrowdfundingListWidget(list: state.crowdFoundingList),
+                        MyVolunteeringProjectPage(list: state.volunteeringList),
+                        MyCharityProjectList(list: state.charityList, number: 3),
+                      ],
+                    ) : AppErrorWidget(onTap: () async {
+                      AppWidgets.isLoading(true);
+                      await cubit.load();
+                      AppWidgets.isLoading(false);
+                    }),
+                  )
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildBody(
-    BuildContext context,
-    MyProjectAndAnnouncementsPagesState state,
-  ) {
-    if (state.hasConnection) {
-      if (state.isLoading) {
-        return const Center(
-          child: CircularProgressIndicator(color: AppColorUtils.GREEN_APP),
-        );
-      }
-      return DefaultTabController(
-        initialIndex: 0,
-        length: 3,
-        child: Container(
-          decoration: DecorationConst.DEC_WITH_SHADOW,
-          height: context.height,
-          width: context.width,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              TabBar(
-                enableFeedback: true,
-                labelColor: AppColorUtils.GREEN_APP,
-                unselectedLabelColor: AppColorUtils.DARK_6,
-                labelPadding: EdgeInsets.symmetric(horizontal: 15.w),
-                padding: EdgeInsets.symmetric(vertical: 5.w),
-                unselectedLabelStyle: TextStyle(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w400,
-                ),
-                labelStyle: TextStyle(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w600,
-                ),
-                tabs: [
-                  Text(LocaleKeys.crowdfunding.tr()),
-                  Text(LocaleKeys.volunteering.tr()),
-                  Text(LocaleKeys.charity.tr()),
-                ],
-                isScrollable: true,
-                indicatorWeight: 1.5,
-                indicatorColor: AppColorUtils.GREEN_APP,
-                indicatorSize: TabBarIndicatorSize.label,
-              ).paddingOnly(
-                left: 15,
-                top: 10,
-                bottom: 10,
-              ),
-              Expanded(
-                child: TabBarView(
-                  children: [
-                    MyCrowdfundingListWidget(list: state.crowdFoundingList),
-                    MyVolunteeringProjectPage(list: state.volunteeringList),
-                    MyCharityProjectList(list: state.charityList, number: 3),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
-      );
-    } else {
-      return AppErrorWidget(onTap: () async {
-        AppWidgets.isLoading(true);
-        await cubit.load();
-        AppWidgets.isLoading(false);
-      });
-    }
-  }
+  // Widget _buildBody(
+  //   BuildContext context,
+  //   MyProjectAndAnnouncementsPagesState state,
+  // ) {
+  //   if (state.hasConnection) {
+  //     if (state.isLoading) {
+  //       return const Center(
+  //         child: CircularProgressIndicator(color: AppColorUtils.GREEN_APP),
+  //       );
+  //     }
+  //     return DefaultTabController(
+  //       initialIndex: 0,
+  //       length: 3,
+  //       child: Container(
+  //         decoration: DecorationConst.DEC_WITH_SHADOW,
+  //         height: context.height,
+  //         width: context.width,
+  //         child: Column(
+  //           crossAxisAlignment: CrossAxisAlignment.start,
+  //           mainAxisSize: MainAxisSize.max,
+  //           children: [
+  //             TabBar(
+  //               enableFeedback: true,
+  //               labelColor: AppColorUtils.GREEN_APP,
+  //               unselectedLabelColor: AppColorUtils.DARK_6,
+  //               labelPadding: EdgeInsets.symmetric(horizontal: 15.w),
+  //               padding: EdgeInsets.symmetric(vertical: 5.w),
+  //               unselectedLabelStyle: TextStyle(
+  //                 fontSize: 16.sp,
+  //                 fontWeight: FontWeight.w400,
+  //               ),
+  //               labelStyle: TextStyle(
+  //                 fontSize: 16.sp,
+  //                 fontWeight: FontWeight.w600,
+  //               ),
+  //               tabs: [
+  //                 Text(LocaleKeys.crowdfunding.tr()),
+  //                 Text(LocaleKeys.volunteering.tr()),
+  //                 Text(LocaleKeys.charity.tr()),
+  //               ],
+  //               isScrollable: true,
+  //               indicatorWeight: 1.5,
+  //               indicatorColor: AppColorUtils.GREEN_APP,
+  //               indicatorSize: TabBarIndicatorSize.label,
+  //             ).paddingOnly(
+  //               left: 15,
+  //               top: 10,
+  //               bottom: 10,
+  //             ),
+  //             Expanded(
+  //               child: TabBarView(
+  //                 children: [
+  //                   MyCrowdfundingListWidget(list: state.crowdFoundingList),
+  //                   MyVolunteeringProjectPage(list: state.volunteeringList),
+  //                   MyCharityProjectList(list: state.charityList, number: 3),
+  //                 ],
+  //               ),
+  //             )
+  //           ],
+  //         ),
+  //       ),
+  //     );
+  //   } else {
+  //     return AppErrorWidget( onTap: () async {
+  //       AppWidgets.isLoading(true);
+  //       await cubit.load();
+  //       AppWidgets.isLoading(false);
+  //     });
+  //   }
+  // }
 }
